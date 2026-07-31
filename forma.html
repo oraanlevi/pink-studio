@@ -1,0 +1,1001 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Forma · Case Study · Pink Web Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Poppins:wght@300;400;500&family=Parisienne&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+
+      /* ── Forma page tokens ── */
+      :root {
+        --mocha:   #2E2418;
+        --mocha-d: #1E1710;
+        --mocha-2: rgba(46,36,24,.55);
+        --mocha-3: rgba(46,36,24,.25);
+      }
+
+      /* ── Hero ── */
+      .f-hero {
+        min-height: calc(100vh - var(--nav-h));
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 56px 48px 64px;
+        border-bottom: 1px solid var(--rule);
+        position: relative;
+      }
+      .f-eyebrow {
+        font-family: "Poppins", sans-serif;
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 6px;
+        text-transform: uppercase;
+        color: var(--ink-2);
+        display: block;
+        margin-bottom: 24px;
+      }
+      .f-hero-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(72px, 11vw, 148px);
+        font-weight: 300;
+        color: var(--ink);
+        line-height: .9;
+        letter-spacing: -3px;
+        display: block;
+        margin-bottom: 20px;
+      }
+      .f-hero-sub {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(17px, 1.6vw, 22px);
+        font-weight: 300;
+        font-style: italic;
+        color: var(--ink-2);
+        display: block;
+        margin-bottom: 36px;
+        letter-spacing: .2px;
+      }
+      .f-ctas {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .f-btn {
+        font-family: "Poppins", sans-serif;
+        font-size: 10px;
+        font-weight: 500;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        padding: 14px 32px;
+        display: inline-block;
+        transition: opacity 250ms, transform 250ms;
+      }
+      .f-btn:hover { opacity: .65; transform: translateY(-1px); }
+      .f-demo-login {
+        margin-top: 20px;
+        font-family: "Poppins", sans-serif;
+        font-size: 13px;
+        font-weight: 500;
+        letter-spacing: 1.5px;
+        color: var(--ink-3);
+      }
+      .f-btn--solid {
+        background: var(--mocha);
+        color: #F6F0F1;
+      }
+      .f-btn--ghost {
+        border: 1px solid rgba(26,25,23,.22);
+        color: var(--ink);
+      }
+
+      /* ── Full-width screenshot slot ── */
+      .f-screen {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        background: linear-gradient(160deg, var(--mocha) 0%, var(--mocha-d) 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-bottom: 1px solid var(--rule);
+        overflow: hidden;
+        position: relative;
+      }
+      .f-screen-label {
+        font-family: "Poppins", sans-serif;
+        font-size: 9px;
+        font-weight: 500;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        color: rgba(246,240,241,.2);
+      }
+      .f-screen img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* ── Summary strip ── */
+      .f-summary {
+        display: flex;
+        align-items: stretch;
+        background: var(--bg);
+        border-bottom: 1px solid var(--rule);
+      }
+      .f-summary-cell {
+        padding: 32px 48px;
+        flex: 1;
+        border-right: 1px solid var(--rule);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+      }
+      .f-summary-cell:last-child { border-right: none; }
+      .f-meta-label {
+        font-family: "Poppins", sans-serif;
+        font-size: 7px;
+        font-weight: 500;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: var(--ink-3);
+        display: block;
+      }
+      .f-meta-value {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(18px, 1.7vw, 24px);
+        font-weight: 300;
+        color: var(--ink);
+        line-height: 1.3;
+        display: block;
+      }
+      .f-meta-stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+      .f-tag {
+        font-family: "Poppins", sans-serif;
+        font-size: 7px;
+        font-weight: 500;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--ink-2);
+        border: 1px solid var(--rule);
+        padding: 4px 10px;
+        display: inline-block;
+      }
+
+      /* ── Shared section label + heading + body ── */
+      .f-section-num {
+        font-family: "Poppins", sans-serif;
+        font-size: 8px;
+        font-weight: 500;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        color: var(--ink-3);
+        display: block;
+        margin-bottom: 16px;
+      }
+      .f-section-heading {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(32px, 3.6vw, 54px);
+        font-weight: 300;
+        color: var(--ink);
+        line-height: .97;
+        letter-spacing: -.8px;
+        margin-bottom: 20px;
+        display: block;
+      }
+      .f-section-body {
+        font-family: "EB Garamond", Georgia, serif;
+        font-size: clamp(16px, 1.4vw, 20px);
+        font-weight: 400;
+        color: var(--ink-2);
+        line-height: 1.7;
+        max-width: 48ch;
+      }
+
+      /* ── Challenge + Goal: side by side ── */
+      .f-duo {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        border-bottom: 1px solid var(--rule);
+      }
+      .f-duo-panel {
+        padding: 64px 56px;
+      }
+      .f-duo-panel--dark {
+        background: var(--mocha);
+        border-left: none;
+      }
+      .f-duo-panel--dark .f-section-num  { color: rgba(246,240,241,.3); }
+      .f-duo-panel--dark .f-section-heading { color: #F6F0F1; }
+      .f-duo-panel--dark .f-section-body   { color: rgba(246,240,241,.5); }
+
+      /* ── Workflow: horizontal ── */
+      .f-workflow-section {
+        padding: 48px 56px;
+        border-bottom: 1px solid var(--rule);
+        display: grid;
+        grid-template-columns: 200px 1fr;
+        gap: 48px;
+        align-items: center;
+      }
+      .f-workflow-label-col { display: flex; flex-direction: column; }
+      .f-workflow-h {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0;
+      }
+      .f-workflow-node {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(15px, 1.3vw, 19px);
+        font-weight: 300;
+        color: var(--ink);
+        letter-spacing: -.1px;
+        padding: 10px 20px;
+        border: 1px solid rgba(26,25,23,.14);
+        background: rgba(246,240,241,.7);
+        white-space: nowrap;
+        transition: background 300ms, border-color 300ms;
+      }
+      .f-workflow-node:hover {
+        background: rgba(46,36,24,.06);
+        border-color: rgba(46,36,24,.3);
+      }
+      .f-workflow-arrow {
+        font-size: 11px;
+        color: var(--ink-3);
+        padding: 0 6px;
+        user-select: none;
+        flex-shrink: 0;
+      }
+
+      /* ── Design System: text + grid side by side ── */
+      .f-ds-section {
+        display: grid;
+        grid-template-columns: 260px 1fr;
+        gap: 0;
+        border-bottom: 1px solid var(--rule);
+        align-items: start;
+      }
+      .f-ds-text {
+        padding: 64px 48px 64px 56px;
+        border-right: 1px solid var(--rule);
+        position: sticky;
+        top: var(--nav-h);
+      }
+      .f-ds-content { padding: 64px 56px 64px 48px; }
+
+      /* ── Design system swatches ── */
+      .f-ds-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1px;
+        background: var(--rule);
+        border: 1px solid var(--rule);
+      }
+      .f-ds-cell {
+        background: var(--bg);
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+      .f-ds-cell-label {
+        font-family: "Poppins", sans-serif;
+        font-size: 8px;
+        font-weight: 500;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: var(--ink-3);
+      }
+
+      /* Color swatches */
+      .f-swatches { display: flex; gap: 10px; }
+      .f-swatch {
+        width: 40px;
+        height: 40px;
+        flex-shrink: 0;
+        position: relative;
+      }
+      .f-swatch-label {
+        font-family: "Poppins", sans-serif;
+        font-size: 7px;
+        font-weight: 400;
+        letter-spacing: 1px;
+        color: var(--ink-3);
+        margin-top: 6px;
+        display: block;
+      }
+
+      /* Type sample */
+      .f-type-sample {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 36px;
+        font-weight: 300;
+        color: var(--ink);
+        line-height: 1;
+        letter-spacing: -.5px;
+      }
+      .f-type-label {
+        font-family: "Poppins", sans-serif;
+        font-size: 8px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--ink-3);
+        margin-top: 8px;
+        display: block;
+      }
+
+      /* Component previews */
+      .f-comp-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+      .f-comp-btn-demo {
+        font-family: "Poppins", sans-serif;
+        font-size: 8px;
+        font-weight: 500;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        padding: 10px 20px;
+        display: inline-block;
+      }
+      .f-comp-btn-demo--filled { background: var(--mocha); color: #F6F0F1; }
+      .f-comp-btn-demo--ghost { border: 1px solid rgba(26,25,23,.22); color: var(--ink); }
+      .f-comp-card-demo {
+        border: 1px solid var(--rule);
+        padding: 14px 18px;
+        background: rgba(255,255,255,.5);
+        font-family: "Poppins", sans-serif;
+        font-size: 8px;
+        letter-spacing: 1.5px;
+        color: var(--ink-2);
+        min-width: 100px;
+        text-align: center;
+      }
+      .f-spacing-demo {
+        display: flex;
+        gap: 0;
+        align-items: flex-end;
+      }
+      .f-sp {
+        background: rgba(46,36,24,.12);
+        width: 10px;
+      }
+
+      /* ── Feature rows ── */
+      .f-features { border-bottom: 1px solid var(--rule); }
+      .f-feature {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        min-height: 420px;
+        border-bottom: 1px solid var(--rule);
+      }
+      .f-feature:last-child { border-bottom: none; }
+      .f-feature--flip { direction: rtl; }
+      .f-feature--flip > * { direction: ltr; }
+      .f-feature-text {
+        padding: 52px 56px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        border-right: 1px solid var(--rule);
+      }
+      .f-feature--flip .f-feature-text {
+        border-right: none;
+        border-left: 1px solid var(--rule);
+      }
+      .f-feature-num {
+        font-family: "Poppins", sans-serif;
+        font-size: 8px;
+        font-weight: 500;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        color: var(--ink-3);
+        display: block;
+        margin-bottom: 14px;
+      }
+      .f-feature-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(28px, 3vw, 44px);
+        font-weight: 300;
+        color: var(--ink);
+        line-height: .97;
+        letter-spacing: -.6px;
+        margin-bottom: 16px;
+        display: block;
+      }
+      .f-feature-desc {
+        font-family: "EB Garamond", Georgia, serif;
+        font-size: clamp(16px, 1.3vw, 19px);
+        color: var(--ink-2);
+        line-height: 1.65;
+        max-width: 44ch;
+      }
+      .f-feature-screen {
+        background: var(--bg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+        min-height: 280px;
+        border: 1px solid rgba(46,36,24,.18);
+      }
+      .f-feature-screen img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .f-feature-screen-label {
+        font-family: "Poppins", sans-serif;
+        font-size: 8px;
+        font-weight: 500;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: rgba(246,240,241,.2);
+        position: relative;
+        z-index: 1;
+      }
+
+      /* ── Engineering: full width ── */
+      .f-eng-section {
+        border-bottom: 1px solid var(--rule);
+      }
+      .f-eng-content { padding: 56px 56px; text-align: center; display: flex; flex-direction: column; align-items: center; }
+
+      /* ── Engineering grid ── */
+      .f-eng-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1px;
+        background: var(--rule);
+        border: 1px solid var(--rule);
+      }
+      .f-eng-cell {
+        background: var(--bg);
+        padding: 24px 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .f-eng-tech {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(18px, 1.6vw, 23px);
+        font-weight: 300;
+        color: var(--ink);
+        letter-spacing: -.2px;
+        line-height: 1;
+      }
+      .f-eng-desc {
+        font-family: "Poppins", sans-serif;
+        font-size: 8px;
+        font-weight: 400;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--ink-3);
+        line-height: 1.6;
+      }
+      .f-eng-dot {
+        width: 4px;
+        height: 4px;
+        background: var(--mocha);
+        border-radius: 50%;
+        margin-bottom: 4px;
+        opacity: .6;
+      }
+
+      /* ── Pull quote / learned ── */
+      .f-quote {
+        padding: 80px 120px;
+        border-bottom: 1px solid var(--rule);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 20px;
+      }
+      .f-quote-mark {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 52px;
+        font-weight: 300;
+        font-style: italic;
+        color: var(--mocha-3);
+        line-height: .6;
+        display: block;
+        user-select: none;
+      }
+      .f-quote-text {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(17px, 1.8vw, 26px);
+        font-weight: 300;
+        font-style: italic;
+        color: var(--ink);
+        line-height: 1.55;
+        letter-spacing: -.1px;
+        max-width: 52ch;
+      }
+      .f-quote-attr {
+        font-family: "Poppins", sans-serif;
+        font-size: 8px;
+        font-weight: 500;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: var(--ink-3);
+      }
+
+      /* ── Demo section ── */
+      .f-demo {
+        padding: 72px 80px;
+        border-bottom: 1px solid var(--rule);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 40px;
+      }
+      .f-demo-video {
+        width: 100%;
+        max-width: 1100px;
+        aspect-ratio: 16 / 9;
+        background: linear-gradient(160deg, var(--mocha) 0%, var(--mocha-d) 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .f-demo-video iframe,
+      .f-demo-video video {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+      .f-play-icon {
+        width: 64px;
+        height: 64px;
+        border: 1px solid rgba(246,240,241,.3);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        z-index: 1;
+      }
+      .f-play-icon svg { margin-left: 3px; }
+
+      /* ── Mobile ── */
+      @media (max-width: 860px) {
+        .f-hero { padding: 48px 24px 56px; }
+        .f-hero-title { letter-spacing: -2px; }
+        .f-summary { flex-wrap: wrap; }
+        .f-summary-cell { flex: 1 1 50%; padding: 20px 20px; border-bottom: 1px solid rgba(246,240,241,.08); }
+        .f-summary-cell:nth-child(2) { border-right: none; }
+        .f-summary-cell:last-child { border-bottom: none; border-right: none; }
+        .f-duo { grid-template-columns: 1fr; }
+        .f-duo-panel { padding: 48px 24px; }
+        .f-workflow-section { grid-template-columns: 1fr; gap: 24px; padding: 40px 24px; }
+        .f-workflow-h { flex-direction: column; align-items: flex-start; gap: 0; }
+        .f-workflow-arrow { transform: rotate(90deg); padding: 4px 0; }
+        .f-ds-section { grid-template-columns: 1fr; }
+        .f-ds-text { padding: 48px 24px 24px; border-right: none; position: static; border-bottom: 1px solid var(--rule); }
+        .f-ds-content { padding: 24px 24px 48px; }
+        .f-ds-grid { grid-template-columns: 1fr 1fr; }
+        .f-feature { grid-template-columns: 1fr; }
+        .f-feature--flip { direction: ltr; }
+        .f-feature-text { padding: 40px 24px; border-right: none; border-left: none; border-bottom: 1px solid var(--rule); }
+        .f-feature--flip .f-feature-text { border-left: none; border-bottom: 1px solid var(--rule); }
+        .f-feature-screen { min-height: 56vw; }
+        .f-eng-section { grid-template-columns: 1fr; }
+        .f-eng-text { padding: 48px 24px 24px; border-right: none; position: static; border-bottom: 1px solid var(--rule); }
+        .f-eng-content { padding: 24px 24px 48px; }
+        .f-eng-grid { grid-template-columns: 1fr 1fr; }
+        .f-quote { padding: 56px 24px; }
+        .f-demo { padding: 56px 24px; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="scroll-bar" id="scrollBar"></div>
+
+    <nav class="nav" id="mainNav">
+      <div class="nav-links">
+        <a href="/work">Work</a>
+        <a href="/about">About</a>
+        <a href="/connect">Contact</a>
+      </div>
+      <a class="nav-brand" href="/">Pink Web Studio</a>
+      <div class="nav-end"><a href="/connect">Work with me</a></div>
+      <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+    <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+      <a href="/work">Work</a>
+      <a href="/about">About</a>
+      <a href="/connect">Contact</a>
+    </div>
+
+    <!-- ── Hero ── -->
+    <section class="f-hero reveal">
+      <span class="f-eyebrow">Case Study &middot; Full-Stack Product</span>
+      <span class="f-hero-title" id="heroTitle"></span>
+      <span class="f-hero-sub">Interior design operations software.</span>
+      <div class="f-ctas">
+        <a class="f-btn f-btn--solid" href="https://forma-rho-nine.vercel.app" target="_blank" rel="noopener">Live Demo ↗&#xFE0E;</a>
+        <a class="f-btn f-btn--ghost" href="#demo">Watch Demo</a>
+      </div>
+      <p class="f-demo-login">Demo login: emily@fosterstudio.com &middot; emily@forma</p>
+    </section>
+
+    <!-- ── Hero screenshot ── -->
+    <div class="f-screen">
+      <img src="assets/dashboardforma.png" alt="Forma dashboard" />
+    </div>
+
+
+    <!-- ── 01 Challenge + 02 Goal: side by side ── -->
+    <div class="f-duo reveal">
+      <div class="f-duo-panel">
+        <span class="f-section-heading" style="text-align:center; display:block; margin-bottom:20px;">Why?</span>
+        <p class="f-section-body" style="color:#4a4540; text-align:center; max-width:56ch;">I created FORMA because I wanted to reimagine how interior designers manage projects. Instead of relying on Pinterest for inspiration, spreadsheets for tracking, Dropbox for files, procurement trackers for orders, and email for communication, FORMA brings the entire workflow together in one thoughtfully designed platform.</p>
+      </div>
+      <div class="f-duo-panel f-duo-panel--dark" style="display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;">
+        <span class="f-section-heading" style="color:#F6F0F1; margin-bottom:20px;">Success.</span>
+        <p class="f-section-body" style="color:rgba(246,240,241,.85); max-width:44ch;">Interior design projects deserve software built specifically for the way they evolve. FORMA brings every stage of the process together in one calm, connected workspace.</p>
+      </div>
+    </div>
+
+    <!-- ── 03. Product Workflow: horizontal ── -->
+    <div class="f-workflow-section reveal">
+      <div class="f-workflow-label-col">
+        <span class="f-section-heading" style="font-size:clamp(18px,1.6vw,24px); margin-bottom:0;">The full<br>lifecycle.</span>
+      </div>
+      <div class="f-workflow-h">
+        <span class="f-workflow-node">Project</span>
+        <span class="f-workflow-arrow">→</span>
+        <span class="f-workflow-node">Mood Boards</span>
+        <span class="f-workflow-arrow">→</span>
+        <span class="f-workflow-node">Selections</span>
+        <span class="f-workflow-arrow">→</span>
+        <span class="f-workflow-node">Client Approval</span>
+        <span class="f-workflow-arrow">→</span>
+        <span class="f-workflow-node">Procurement</span>
+        <span class="f-workflow-arrow">→</span>
+        <span class="f-workflow-node">Timeline</span>
+        <span class="f-workflow-arrow">→</span>
+        <span class="f-workflow-node">Installation</span>
+      </div>
+    </div>
+
+    <!-- ── 04. Design System: text left, grid right ── -->
+    <div class="f-ds-section reveal">
+      <div class="f-ds-text">
+        <span class="f-section-heading">Design<br>System.</span>
+      </div>
+      <div class="f-ds-content">
+        <div class="f-ds-grid">
+
+          <!-- Color tokens -->
+          <div class="f-ds-cell" style="grid-column: span 2;">
+            <span class="f-ds-cell-label">Color Tokens</span>
+            <div style="display:grid; grid-template-columns: repeat(4,1fr); gap:16px; margin-top:4px;">
+              <div>
+                <div style="height:36px; background:#F7F3EC; border:1px solid #E7DDD0; border-radius:4px;"></div>
+                <span class="f-swatch-label">bg · #F7F3EC</span>
+              </div>
+              <div>
+                <div style="height:36px; background:#FFFDF9; border:1px solid #E7DDD0; border-radius:4px;"></div>
+                <span class="f-swatch-label">card · #FFFDF9</span>
+              </div>
+              <div>
+                <div style="height:36px; background:#E7DDD0; border-radius:4px;"></div>
+                <span class="f-swatch-label">border · #E7DDD0</span>
+              </div>
+              <div>
+                <div style="height:36px; background:#F8F7F5; border:1px solid #E7DDD0; border-radius:4px;"></div>
+                <span class="f-swatch-label">surface-hover · #F8F7F5</span>
+              </div>
+              <div>
+                <div style="height:36px; background:#2E2418; border-radius:4px;"></div>
+                <span class="f-swatch-label">text-primary · #2E2418</span>
+              </div>
+              <div>
+                <div style="height:36px; background:#7C7060; border-radius:4px;"></div>
+                <span class="f-swatch-label">text-secondary · #7C7060</span>
+              </div>
+              <div>
+                <div style="height:36px; background:#7a8471; border-radius:4px;"></div>
+                <span class="f-swatch-label">olive · #7a8471</span>
+              </div>
+              <div>
+                <div style="height:36px; background:#b9775e; border-radius:4px;"></div>
+                <span class="f-swatch-label">terracotta · #b9775e</span>
+              </div>
+              <div>
+                <div style="height:36px; background:#2a2a2a; border-radius:4px;"></div>
+                <span class="f-swatch-label">button · #2a2a2a</span>
+              </div>
+              <div>
+                <div style="height:36px; background:#D9C2D1; border-radius:4px;"></div>
+                <span class="f-swatch-label">quartz · #D9C2D1</span>
+              </div>
+              <div style="grid-column: span 2;">
+                <div style="height:36px; background:linear-gradient(90deg,#2E2418,#1E1710); border-radius:4px;"></div>
+                <span class="f-swatch-label">sidebar gradient · #2E2418 → #1E1710</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Typography -->
+          <div class="f-ds-cell">
+            <span class="f-ds-cell-label">Typography</span>
+            <div style="display:flex; flex-direction:column; gap:10px; margin-top:4px;">
+              <div>
+                <span style="font-family:'Inter',sans-serif; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#7C7060; display:block;">Eyebrow · 12px Inter</span>
+                <span style="font-family:'Inter',sans-serif; font-size:12px; color:#2E2418; letter-spacing:.08em; text-transform:uppercase;">Section Label</span>
+              </div>
+              <div>
+                <span style="font-family:'Inter',sans-serif; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#7C7060; display:block;">Text-Base · 14px Inter</span>
+                <span style="font-family:'Inter',sans-serif; font-size:14px; color:#2E2418;">Row names and body copy</span>
+              </div>
+              <div>
+                <span style="font-family:'Inter',sans-serif; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#7C7060; display:block;">Greeting · Fraunces 32px</span>
+                <span style="font-family:'Georgia',serif; font-size:22px; font-weight:500; color:#2E2418;">Good morning.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Buttons + Status -->
+          <div class="f-ds-cell">
+            <span class="f-ds-cell-label">Buttons</span>
+            <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:8px;">
+              <span style="font-family:'Inter',sans-serif; font-size:12px; font-weight:500; background:#2a2a2a; color:#fff; padding:8px 16px; border-radius:6px;">Primary</span>
+              <span style="font-family:'Inter',sans-serif; font-size:12px; font-weight:500; border:1px solid #E7DDD0; color:#2E2418; padding:8px 16px; border-radius:6px; background:#FFFDF9;">Secondary</span>
+            </div>
+            <span class="f-ds-cell-label" style="margin-top:20px;">Status Badges</span>
+            <div style="display:flex; flex-wrap:wrap; gap:6px; margin-top:8px;">
+              <span style="font-family:'Inter',sans-serif; font-size:11px; font-weight:500; background:rgba(185,119,94,.15); color:#b9775e; padding:4px 10px; border-radius:20px; border:1px solid rgba(185,119,94,.3);">Awaiting approval</span>
+              <span style="font-family:'Inter',sans-serif; font-size:11px; font-weight:500; background:rgba(122,132,113,.15); color:#7a8471; padding:4px 10px; border-radius:20px; border:1px solid rgba(122,132,113,.3);">Approved</span>
+              <span style="font-family:'Inter',sans-serif; font-size:11px; color:#7C7060; padding:4px 10px; border-radius:20px; border:1px solid #E7DDD0;">Draft</span>
+            </div>
+          </div>
+
+          <!-- Project row preview -->
+          <div class="f-ds-cell" style="grid-column: span 2;">
+            <span class="f-ds-cell-label">Project Row</span>
+            <div style="border:1px solid #E7DDD0; border-radius:8px; overflow:hidden; margin-top:8px; background:#FFFDF9;">
+              <div style="padding:8px 14px; font-family:'Inter',sans-serif; font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:#7C7060; border-bottom:1px solid #E7DDD0;">Active Projects</div>
+              <div style="padding:12px 14px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #E7DDD0;">
+                <div>
+                  <div style="font-family:'Inter',sans-serif; font-size:14px; font-weight:500; color:#2E2418;">Malibu House</div>
+                  <div style="font-family:'Inter',sans-serif; font-size:12px; color:#7C7060; margin-top:2px;">Project Investment · $84,200</div>
+                </div>
+                <span style="font-family:'Inter',sans-serif; font-size:11px; color:#7C7060;">Selections &amp; Sourcing</span>
+              </div>
+              <div style="padding:12px 14px; display:flex; justify-content:space-between; align-items:center;">
+                <div>
+                  <div style="font-family:'Inter',sans-serif; font-size:14px; font-weight:500; color:#2E2418;">Aspen House</div>
+                  <div style="font-family:'Inter',sans-serif; font-size:12px; color:#7C7060; margin-top:2px;">Project Investment · $142,000</div>
+                </div>
+                <span style="font-family:'Inter',sans-serif; font-size:11px; background:rgba(185,119,94,.12); color:#b9775e; padding:3px 8px; border-radius:12px;">Awaiting approval</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 05. Product Features ── -->
+    <div class="f-features">
+
+      <div class="f-feature reveal">
+        <div class="f-feature-text">
+          <span class="f-feature-title">Mood Boards</span>
+          <p class="f-feature-desc">A flexible visual workspace where designers pin inspiration, products, and references into spatial boards. Images can be pulled from the web or uploaded directly, then annotated and organized by room or concept.</p>
+        </div>
+        <div class="f-feature-screen">
+          <img src="assets/moodboard.png" alt="Mood Boards" />
+        </div>
+      </div>
+
+      <div class="f-feature f-feature--flip reveal">
+        <div class="f-feature-text">
+          <span class="f-feature-title">Selections</span>
+          <p class="f-feature-desc">Products move from inspiration into organized specifications: vendor, SKU, dimensions, finish, quantity, and price. All structured and ready for client presentation without any reformatting.</p>
+        </div>
+        <div class="f-feature-screen">
+          <img src="assets/selections.png" alt="Selections" />
+        </div>
+      </div>
+
+      <div class="f-feature reveal">
+        <div class="f-feature-text">
+          <span class="f-feature-title">Client Portal</span>
+          <p class="f-feature-desc">Designers share a curated selection deck directly with clients. Clients review, leave comments, and approve or request changes, all in one place, with no email attachments or PDF confusion.</p>
+        </div>
+        <div class="f-feature-screen">
+          <img src="assets/clientportal.png" alt="Client Portal" />
+        </div>
+      </div>
+
+      <div class="f-feature f-feature--flip reveal">
+        <div class="f-feature-text">
+          <span class="f-feature-title">Procurement</span>
+          <p class="f-feature-desc">Once a selection is approved, it becomes a tracked order. Forma manages the full procurement lifecycle from placed to received, so designers always know where every piece stands without digging through email threads.</p>
+        </div>
+        <div class="f-feature-screen">
+          <img src="assets/procurement.png" alt="Procurement" />
+        </div>
+      </div>
+
+      <div class="f-feature reveal">
+        <div class="f-feature-text">
+          <span class="f-feature-title">Timeline</span>
+          <p class="f-feature-desc">Important project milestones like approvals, orders, deliveries, and installations automatically build a living historical record. The timeline becomes a project diary that both the designer and client can reference at any point.</p>
+        </div>
+        <div class="f-feature-screen">
+          <img src="assets/timeline.png" alt="Timeline" />
+        </div>
+      </div>
+
+      <div class="f-feature f-feature--flip reveal">
+        <div class="f-feature-text">
+          <span class="f-feature-title">Files</span>
+          <p class="f-feature-desc">Contracts, floor plans, renderings, invoices, and drawings live inside the project, not in a separate Dropbox folder or email attachment. Every document is one click away from the work it belongs to.</p>
+        </div>
+        <div class="f-feature-screen">
+          <img src="assets/files.png" alt="Files" />
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── 06. Engineering ── -->
+    <div class="f-eng-section reveal">
+      <div class="f-eng-content" style="grid-column: span 2;">
+        <p class="f-section-body" style="margin-bottom: 32px; text-align: center; max-width: 60ch;">Full-stack with auth, type-safe APIs, cloud file uploads, and a relational database designed for complex project workflows.</p>
+        <div class="f-eng-grid" style="width: 100%;">
+          <div class="f-eng-cell">
+            <div class="f-eng-dot"></div>
+            <span class="f-eng-tech">Next.js</span>
+            <span class="f-eng-desc">App router, server components, API routes</span>
+          </div>
+          <div class="f-eng-cell">
+            <div class="f-eng-dot"></div>
+            <span class="f-eng-tech">TypeScript</span>
+            <span class="f-eng-desc">End-to-end type safety across the stack</span>
+          </div>
+          <div class="f-eng-cell">
+            <div class="f-eng-dot"></div>
+            <span class="f-eng-tech">tRPC</span>
+            <span class="f-eng-desc">Type-safe API layer without code generation</span>
+          </div>
+          <div class="f-eng-cell">
+            <div class="f-eng-dot"></div>
+            <span class="f-eng-tech">Prisma</span>
+            <span class="f-eng-desc">ORM with schema-driven migrations</span>
+          </div>
+          <div class="f-eng-cell">
+            <div class="f-eng-dot"></div>
+            <span class="f-eng-tech">PostgreSQL</span>
+            <span class="f-eng-desc">Relational database for complex workflows</span>
+          </div>
+          <div class="f-eng-cell">
+            <div class="f-eng-dot"></div>
+            <span class="f-eng-tech">Cloudflare R2</span>
+            <span class="f-eng-desc">Cloud file storage for project documents</span>
+          </div>
+          <div class="f-eng-cell">
+            <div class="f-eng-dot"></div>
+            <span class="f-eng-tech">Auth</span>
+            <span class="f-eng-desc">Session-based with protected routes</span>
+          </div>
+          <div class="f-eng-cell">
+            <div class="f-eng-dot"></div>
+            <span class="f-eng-tech">Responsive UI</span>
+            <span class="f-eng-desc">Mobile-first across all features</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Live Demo ── -->
+    <div class="f-demo reveal" id="demo">
+      <div>
+        <span class="f-section-heading" style="font-size:clamp(28px,3vw,48px); display:block; text-align:center; margin-bottom:0;">See it in motion.</span>
+      </div>
+
+      <div class="f-demo-video">
+        <!-- Replace src with your video URL:
+             For YouTube: <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
+             For Vimeo:   <iframe src="https://player.vimeo.com/video/VIDEO_ID" allowfullscreen></iframe>
+             For local:   <video src="assets/forma-demo.mp4" controls></video>
+        -->
+        <div class="f-play-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="rgba(246,240,241,.6)"><polygon points="5,3 19,12 5,21"/></svg>
+        </div>
+      </div>
+
+      <a class="f-btn f-btn--solid" href="https://forma-rho-nine.vercel.app" target="_blank" rel="noopener" style="font-size:11px; padding:18px 48px; letter-spacing:4px;">Launch Live Demo ↗&#xFE0E;</a>
+    </div>
+
+    <footer class="site-footer">
+      <div class="footer-brand-wrap">
+        <span class="footer-brand">Pink Web Studio</span>
+        <span class="footer-brand-sub">Los Angeles &middot; Currently Booking</span>
+      </div>
+      <div class="footer-social">
+        <div class="footer-social-icons">
+          <a href="https://instagram.com/oraanlevi" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/oraan-levi-898a89200/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+        </div>
+        <a href="mailto:studio@pinkwebstudio.com" class="footer-email" style="white-space:nowrap">studio@pinkwebstudio.com</a>
+      </div>
+    </footer>
+
+    <script>
+      /* Nav */
+      const nav = document.getElementById("mainNav");
+      const bar = document.getElementById("scrollBar");
+      window.addEventListener("scroll", () => {
+        nav.classList.toggle("scrolled", window.scrollY > 20);
+        if (bar) bar.style.width = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100) + "%";
+      }, { passive: true });
+      const ham = document.getElementById("navHam");
+      const mob = document.getElementById("mobileNav");
+      ham.addEventListener("click", () => {
+        const open = ham.classList.toggle("open");
+        mob.classList.toggle("open", open);
+        ham.setAttribute("aria-expanded", open);
+        mob.setAttribute("aria-hidden", !open);
+      });
+      mob.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
+        ham.classList.remove("open"); mob.classList.remove("open");
+      }));
+
+      /* Typewriter */
+      const titleEl = document.getElementById("heroTitle");
+      const fullText = "FORMA";
+      let typed = "", ti = 0;
+      function typeTitle() {
+        if (ti < fullText.length) {
+          typed += fullText[ti++];
+          titleEl.innerHTML = typed + '<span style="display:inline-block;width:3px;height:.8em;background:var(--ink);margin-left:6px;vertical-align:middle;animation:blink 900ms step-end infinite;"></span>';
+          setTimeout(typeTitle, 110 + Math.random() * 60);
+        } else {
+          titleEl.textContent = fullText;
+        }
+      }
+      setTimeout(typeTitle, 500);
+
+      /* Reveal on scroll */
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) { e.target.classList.add("visible"); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.06, rootMargin: "0px 0px -48px 0px" });
+      document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+Options -MultiViews
+RewriteEngine On
+
+# Remove .html extension from URLs
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.+)$ $1.html [L,QSA]
+
+# Redirect .html URLs to clean versions
+RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
+RewriteRule ^ /%1 [R=301,L]
+
+# Don't redirect index
+RewriteRule ^index\.html$ / [R=301,L]
+
+# ── Phase 0: Retired pages ──
+# /enter-the-studio is retired. Target /connect exists and is live.
+Redirect 301 /enter-the-studio /connect

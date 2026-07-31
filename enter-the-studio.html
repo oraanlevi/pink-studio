@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Enter the Studio · Pink Web Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+
+      /* ── Layout ── */
+      .studio-page {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        min-height: calc(100vh - var(--nav-h));
+      }
+
+      /* ── Left: Image ── */
+      .studio-img {
+        position: relative;
+        overflow: hidden;
+        border-right: 1px solid var(--rule);
+      }
+      .studio-img-layer {
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        transition: opacity 1.6s cubic-bezier(.16,1,.3,1);
+      }
+      .studio-img-layer.active { opacity: 1; }
+
+      /* ── Right: Content ── */
+      .studio-content {
+        padding: 80px 72px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .studio-eyebrow {
+        font-family: "Poppins", sans-serif;
+        font-size: 10px;
+        font-weight: 500;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        color: var(--ink-3);
+        display: block;
+        margin-bottom: 32px;
+      }
+      .studio-headline {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(40px, 5vw, 68px);
+        font-weight: 300;
+        color: var(--ink);
+        line-height: 1.0;
+        letter-spacing: -.5px;
+        margin-bottom: 28px;
+      }
+      .studio-body {
+        font-family: "Poppins", sans-serif;
+        font-size: 14px;
+        font-weight: 300;
+        color: var(--ink-2);
+        line-height: 1.9;
+        max-width: 42ch;
+        margin-bottom: 52px;
+      }
+
+      /* ── Sticky image on desktop ── */
+      @media (min-width: 861px) {
+        .studio-img {
+          position: sticky;
+          top: var(--nav-h);
+          height: calc(100vh - var(--nav-h));
+        }
+        .studio-content {
+          justify-content: flex-start;
+          padding-top: 80px;
+          padding-bottom: 96px;
+        }
+      }
+
+      /* ── Form ── */
+      .studio-form {
+        display: flex;
+        flex-direction: column;
+      }
+      .studio-field {
+        margin-bottom: 32px;
+      }
+      .studio-field-label {
+        font-family: "Poppins", sans-serif;
+        font-size: 9px;
+        font-weight: 500;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--ink-2);
+        display: block;
+        margin-bottom: 10px;
+      }
+      .studio-input {
+        width: 100%;
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid var(--rule);
+        padding: 10px 0;
+        font-family: "Poppins", sans-serif;
+        font-size: 13px;
+        font-weight: 300;
+        color: var(--ink);
+        outline: none;
+        transition: border-color 250ms;
+        appearance: none;
+        -webkit-appearance: none;
+        border-radius: 0;
+      }
+      .studio-input::placeholder { color: var(--ink-2); }
+      .studio-input:focus { border-bottom-color: var(--ink); }
+      .studio-textarea {
+        resize: none;
+        min-height: 80px;
+        line-height: 1.8;
+      }
+      /* ── Custom dropdown ── */
+      .studio-select-wrap { position: relative; }
+      .studio-dropdown {
+        position: relative;
+        width: 100%;
+        border-bottom: 1px solid var(--rule);
+        cursor: pointer;
+        transition: border-color 250ms;
+      }
+      .studio-dropdown.open { border-bottom-color: var(--ink); }
+      .studio-dropdown-trigger {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 0;
+        font-family: "Poppins", sans-serif;
+        font-size: 13px;
+        font-weight: 300;
+        color: var(--ink-2);
+        user-select: none;
+      }
+      .studio-dropdown-trigger.selected { color: var(--ink); }
+      .studio-dropdown-arrow {
+        flex-shrink: 0;
+        width: 0;
+        height: 0;
+        border-left: 4px solid transparent;
+        border-right: 4px solid transparent;
+        border-top: 5px solid var(--ink-3);
+        transition: transform 250ms cubic-bezier(.16,1,.3,1);
+        margin-left: 12px;
+      }
+      .studio-dropdown.open .studio-dropdown-arrow { transform: rotate(180deg); }
+      .studio-dropdown-list {
+        display: none;
+        position: absolute;
+        top: calc(100% + 1px);
+        left: 0;
+        right: 0;
+        background: var(--bg);
+        border: 1px solid var(--rule);
+        border-top: none;
+        z-index: 40;
+      }
+      .studio-dropdown.open .studio-dropdown-list { display: block; }
+      .studio-dropdown-option {
+        padding: 12px 16px;
+        font-family: "Poppins", sans-serif;
+        font-size: 12px;
+        font-weight: 300;
+        color: var(--ink-2);
+        cursor: pointer;
+        border-bottom: 1px solid var(--rule);
+        transition: color 200ms, padding-left 200ms;
+      }
+      .studio-dropdown-option:last-child { border-bottom: none; }
+      .studio-dropdown-option:hover { color: var(--ink); padding-left: 22px; }
+      .studio-dropdown-option.active { color: var(--ink); font-weight: 400; }
+      .studio-divider {
+        border: none;
+        border-top: 1px solid var(--rule);
+        margin: 8px 0 36px;
+      }
+      .studio-submit {
+        font-family: "Poppins", sans-serif;
+        font-size: 10px;
+        font-weight: 500;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--ink);
+        background: none;
+        border: none;
+        border-bottom: 1px solid var(--ink);
+        padding-bottom: 3px;
+        cursor: pointer;
+        align-self: flex-start;
+        margin-top: 8px;
+        transition: opacity 250ms, letter-spacing 300ms;
+      }
+      .studio-submit:hover { opacity: .5; letter-spacing: 4px; }
+      .studio-success {
+        display: none;
+        margin-top: 24px;
+        font-family: "Poppins", sans-serif;
+        font-size: 11px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--ink-2);
+      }
+
+      /* ── Mobile ── */
+      @media (max-width: 860px) {
+        .studio-page { grid-template-columns: 1fr; }
+        .studio-img { min-height: 56vw; border-right: none; border-bottom: 1px solid var(--rule); }
+        .studio-content { padding: 56px 28px 80px; }
+        .studio-body { max-width: 100%; margin-bottom: 40px; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="scroll-bar" id="scrollBar"></div>
+
+    <nav class="nav" id="mainNav">
+      <div class="nav-links">
+        <a href="/work">Work</a>
+        <a href="/about">About</a>
+        <a href="/connect">Contact</a>
+      </div>
+      <a class="nav-brand" href="/">Pink Web Studio</a>
+      <div class="nav-end"><a href="/connect">Work with me</a></div>
+      <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+    <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+      <a href="/work">Work</a>
+      <a href="/about">About</a>
+      <a href="/connect">Contact</a>
+    </div>
+
+    <div class="studio-page">
+
+      <!-- Left: atelier images -->
+      <div class="studio-img" id="studioImgPane">
+        <div class="studio-img-layer active" style="background-image:url('assets/gym.png')"></div>
+        <div class="studio-img-layer" style="background-image:url('assets/fashion.png')"></div>
+        <div class="studio-img-layer" style="background-image:url('assets/fashionoutside.png')"></div>
+        <div class="studio-img-layer" style="background-image:url('assets/resort.png')"></div>
+        <div class="studio-img-layer" style="background-image:url('assets/mall.png')"></div>
+      </div>
+
+      <!-- Right: copy + form -->
+      <div class="studio-content">
+        <span class="studio-eyebrow">The Studio</span>
+        <h1 class="studio-headline">Welcome.</h1>
+        <p class="studio-body">Every project begins with a conversation. Before we talk about layouts or typography, I'd love to understand what you're building and how you want people to feel when they experience it.</p>
+
+        <form class="studio-form" id="studioForm" action="https://formspree.io/f/mbdejokw" method="POST">
+          <input type="hidden" name="_next" value="https://pinkwebstudio.com/enter-the-studio/?sent=1" />
+
+          <div class="studio-field">
+            <label class="studio-field-label" for="f-brand-name">Brand Name</label>
+            <input class="studio-input" id="f-brand-name" type="text" name="brand_name" placeholder="What is the name of your business or brand?" required />
+          </div>
+
+          <div class="studio-field">
+            <label class="studio-field-label">Brand Type</label>
+            <input type="hidden" name="brand_type" id="f-brand-type" value="" />
+            <div class="studio-select-wrap">
+              <div class="studio-dropdown" id="brandTypeDropdown">
+                <div class="studio-dropdown-trigger" id="brandTypeTrigger">
+                  <span id="brandTypeLabel">Select your industry</span>
+                  <span class="studio-dropdown-arrow"></span>
+                </div>
+                <div class="studio-dropdown-list">
+                  <div class="studio-dropdown-option" data-value="Luxury Hospitality">Luxury Hospitality</div>
+                  <div class="studio-dropdown-option" data-value="Medical Aesthetics">Medical Aesthetics</div>
+                  <div class="studio-dropdown-option" data-value="Interior Design">Interior Design</div>
+                  <div class="studio-dropdown-option" data-value="Real Estate">Real Estate</div>
+                  <div class="studio-dropdown-option" data-value="Private Membership">Private Membership</div>
+                  <div class="studio-dropdown-option" data-value="Lifestyle Brand">Lifestyle Brand</div>
+                  <div class="studio-dropdown-option" data-value="Professional Services">Professional Services</div>
+                  <div class="studio-dropdown-option" data-value="Other">Other</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="studio-field">
+            <label class="studio-field-label" for="f-about">Tell me about your business</label>
+            <textarea class="studio-input studio-textarea" id="f-about" name="about_business" placeholder="What do you do, and what makes your business different?"></textarea>
+          </div>
+
+          <div class="studio-field">
+            <label class="studio-field-label" for="f-why-now">Why now?</label>
+            <textarea class="studio-input studio-textarea" id="f-why-now" name="why_now" placeholder="What made you decide it's time for a new website or redesign?"></textarea>
+          </div>
+
+          <div class="studio-field">
+            <label class="studio-field-label" for="f-feeling">How should people feel?</label>
+            <textarea class="studio-input studio-textarea" id="f-feeling" name="how_people_feel" placeholder="When someone visits your website, what feeling should they leave with?"></textarea>
+          </div>
+
+          <div class="studio-field">
+            <label class="studio-field-label" for="f-not-working">What isn't working today?</label>
+            <textarea class="studio-input studio-textarea" id="f-not-working" name="what_isnt_working" placeholder="If you already have a website, what feels missing? If this is a new brand, what are you hoping to avoid?"></textarea>
+          </div>
+
+          <div class="studio-field">
+            <label class="studio-field-label" for="f-anything-else">Anything else you'd like me to know?</label>
+            <textarea class="studio-input studio-textarea" id="f-anything-else" name="anything_else" placeholder="Share anything that will help me understand your vision before we meet."></textarea>
+          </div>
+
+          <hr class="studio-divider" />
+
+          <div class="studio-field">
+            <label class="studio-field-label" for="f-name">Your Name</label>
+            <input class="studio-input" id="f-name" type="text" name="name" placeholder="Your full name" required />
+          </div>
+
+          <div class="studio-field">
+            <label class="studio-field-label" for="f-email">Email Address</label>
+            <input class="studio-input" id="f-email" type="email" name="email" placeholder="Where should I reach you?" required />
+          </div>
+
+          <button class="studio-submit" type="submit" id="studioSubmit">Send Inquiry ↗&#xFE0E;</button>
+          <p class="studio-success" id="studioSuccess">Sent. I'll be in touch.</p>
+        </form>
+      </div>
+
+    </div>
+
+    <script>
+      const nav = document.getElementById("mainNav");
+      const bar = document.getElementById("scrollBar");
+      window.addEventListener("scroll", () => {
+        nav.classList.toggle("scrolled", window.scrollY > 20);
+        if (bar) bar.style.width = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100) + "%";
+      }, { passive: true });
+      const ham = document.getElementById("navHam");
+      const mob = document.getElementById("mobileNav");
+      ham.addEventListener("click", () => {
+        const open = ham.classList.toggle("open");
+        mob.classList.toggle("open", open);
+        ham.setAttribute("aria-expanded", open);
+        mob.setAttribute("aria-hidden", !open);
+      });
+      mob.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
+        ham.classList.remove("open"); mob.classList.remove("open");
+      }));
+
+      /* Custom dropdown */
+      (function() {
+        const dropdown = document.getElementById("brandTypeDropdown");
+        const trigger  = document.getElementById("brandTypeTrigger");
+        const label    = document.getElementById("brandTypeLabel");
+        const hidden   = document.getElementById("f-brand-type");
+        const options  = dropdown.querySelectorAll(".studio-dropdown-option");
+
+        trigger.addEventListener("click", () => {
+          dropdown.classList.toggle("open");
+        });
+
+        options.forEach(opt => {
+          opt.addEventListener("click", () => {
+            const val = opt.dataset.value;
+            hidden.value = val;
+            label.textContent = val;
+            trigger.classList.add("selected");
+            options.forEach(o => o.classList.remove("active"));
+            opt.classList.add("active");
+            dropdown.classList.remove("open");
+          });
+        });
+
+        document.addEventListener("click", (e) => {
+          if (!dropdown.contains(e.target)) dropdown.classList.remove("open");
+        });
+      })();
+
+      /* Rotate images */
+      (function() {
+        const layers = document.querySelectorAll("#studioImgPane .studio-img-layer");
+        let cur = 0;
+        setInterval(() => {
+          layers[cur].classList.remove("active");
+          cur = (cur + 1) % layers.length;
+          layers[cur].classList.add("active");
+        }, 3500);
+      })();
+
+      /* Form submission */
+      const form = document.getElementById("studioForm");
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const btn = document.getElementById("studioSubmit");
+        btn.textContent = "Sending…";
+        btn.disabled = true;
+        try {
+          const res = await fetch(form.action, { method: "POST", body: new FormData(form), headers: { Accept: "application/json" } });
+          if (res.ok) {
+            form.reset();
+            btn.style.display = "none";
+            document.getElementById("studioSuccess").style.display = "block";
+          } else {
+            btn.textContent = "Try again ↗";
+            btn.disabled = false;
+          }
+        } catch {
+          btn.textContent = "Try again ↗";
+          btn.disabled = false;
+        }
+      });
+
+      if (new URLSearchParams(window.location.search).get("sent") === "1") {
+        document.getElementById("studioForm").style.display = "none";
+        document.getElementById("studioSuccess").style.display = "block";
+      }
+    </script>
+  </body>
+</html>

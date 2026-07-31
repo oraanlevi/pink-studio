@@ -1,0 +1,720 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pink Web Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Poppins:wght@300;400;500&family=Parisienne&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+    <style>
+      .page-header {
+        padding: 64px 48px 52px;
+        border-bottom: 1px solid var(--rule);
+        text-align: center;
+        background: var(--bg);
+      }
+      .page-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(28px, 4vw, 48px);
+        font-weight: 300;
+        color: var(--ink);
+        letter-spacing: -1px;
+        line-height: 1;
+      }
+
+      /* ── Horizontal drag gallery ── */
+      .proj-outer {
+        position: relative;
+        border-bottom: 1px solid var(--rule);
+      }
+      .proj-track {
+        display: flex;
+        overflow-x: scroll;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        cursor: grab;
+        height: 75vh;
+        gap: 40px;
+        padding: 40px;
+        scroll-padding-left: 40px;
+        user-select: none;
+        -webkit-user-select: none;
+        background: url('/assets/marble.png') center/cover no-repeat;
+      }
+      .proj-track::-webkit-scrollbar { display: none; }
+      .proj-track.is-dragging { cursor: grabbing; }
+      .proj-panel {
+        flex-shrink: 0;
+        width: 88vw;
+        height: 100%;
+        scroll-snap-align: start;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .proj-panel-bg {
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-position: center;
+        filter: brightness(0.82);
+      }
+      .proj-progress {
+        position: absolute;
+        bottom: 28px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 10;
+        display: flex;
+        gap: 8px;
+        align-items: center;
+      }
+      .proj-dot {
+        width: 3px;
+        height: 3px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.18);
+        transition: background 400ms, transform 400ms;
+        cursor: pointer;
+      }
+      .proj-dot.active {
+        background: rgba(255,255,255,0.55);
+        transform: scale(1.3);
+      }
+      .proj-drag-hint {
+        position: absolute;
+        bottom: 32px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 10;
+        font-size: 9px;
+        font-weight: 500;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.55);
+        pointer-events: none;
+        transition: opacity 800ms ease;
+        white-space: nowrap;
+      }
+      .proj-drag-hint.hidden { opacity: 0; }
+
+      .project-glass {
+        position: relative;
+        z-index: 2;
+        background: #F6F0F1;
+        border: none;
+        border-radius: 1px;
+        padding: 40px 44px 44px;
+        width: 380px;
+        display: block;
+        text-decoration: none;
+        color: inherit;
+        cursor: pointer;
+        transition: transform 400ms cubic-bezier(.16,1,.3,1), box-shadow 400ms;
+        box-shadow:
+          0 0 0 1px rgba(26,25,23,.07),
+          0 0 0 10px #F6F0F1,
+          0 0 0 11px rgba(26,25,23,.06),
+          0 20px 56px rgba(0,0,0,0.16);
+      }
+      .project-glass:hover {
+        transform: translateY(-4px);
+        box-shadow:
+          0 0 0 1px rgba(26,25,23,.07),
+          0 0 0 10px #F6F0F1,
+          0 0 0 11px rgba(26,25,23,.06),
+          0 28px 64px rgba(0,0,0,0.2);
+      }
+      .project-label {
+        font-size: 10px;
+        font-weight: 500;
+        letter-spacing: 3.5px;
+        text-transform: uppercase;
+        color: rgba(26,25,23,.6);
+        display: block;
+        margin-bottom: 12px;
+      }
+      .project-name {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(36px, 4vw, 62px);
+        font-weight: 300;
+        color: var(--ink);
+        letter-spacing: -1px;
+        line-height: .95;
+        margin-bottom: 18px;
+        display: block;
+      }
+      .project-desc {
+        font-family: "EB Garamond", Georgia, serif;
+        font-size: 15px;
+        font-weight: 400;
+        font-style: normal;
+        color: rgba(26,25,23,.7);
+        line-height: 1.6;
+        display: block;
+        margin-bottom: 20px;
+      }
+      .project-link {
+        font-size: 10px;
+        font-weight: 500;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: rgba(26,25,23,.7);
+        transition: color 280ms, letter-spacing 320ms;
+        display: inline-block;
+      }
+      .project-glass:hover .project-link { color: var(--ink); letter-spacing: 4px; }
+
+      /* Panel counter */
+      .proj-counter {
+        position: absolute;
+        top: 28px;
+        right: 32px;
+        z-index: 10;
+        font-size: 9px;
+        font-weight: 400;
+        letter-spacing: 3px;
+        color: rgba(255,255,255,0.4);
+      }
+
+      .bottom-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        overflow: hidden;
+      }
+      .client-section {
+        padding: 56px 64px 64px;
+        background: linear-gradient(rgba(224,185,190,0.45), rgba(224,185,190,0.45)), url('/assets/marble.png') center/cover no-repeat;
+        border-right: 1px solid rgba(255,255,255,0.5);
+        display: flex;
+        flex-direction: column;
+      }
+      .client-heading {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(32px, 3.5vw, 56px);
+        font-weight: 600;
+        font-style: italic;
+        color: var(--ink);
+        letter-spacing: -.2px;
+        line-height: 1.2;
+        margin-bottom: 32px;
+        display: block;
+        min-height: 1.2em;
+      }
+      a.be-next {
+        display: block;
+        transition: opacity 300ms;
+      }
+      a.be-next:hover { opacity: 0.45; }
+      .be-next {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(28px, 3.2vw, 48px);
+        font-weight: 300;
+        font-style: italic;
+        color: var(--ink);
+        letter-spacing: -.5px;
+        margin-top: auto;
+        text-align: center;
+        line-height: 1;
+      }
+      .client-list { display: flex; flex-direction: column; }
+      .client-row {
+        display: grid;
+        grid-template-columns: 1fr auto auto;
+        align-items: center;
+        gap: 24px;
+        padding: 28px 0;
+        border-bottom: 1px solid rgba(26,25,23,.1);
+        text-decoration: none;
+        color: inherit;
+        position: relative;
+        overflow: hidden;
+        transition: background 400ms;
+      }
+      .client-list .client-row:first-child { border-top: 1px solid rgba(26,25,23,.1); }
+      .client-row::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: rgba(255,255,255,0.28);
+        opacity: 0;
+        transition: opacity 400ms cubic-bezier(.16,1,.3,1);
+      }
+      .client-row:hover::before { opacity: 1; }
+      .client-name {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(26px, 2.6vw, 40px);
+        font-weight: 300;
+        color: var(--ink);
+        letter-spacing: -.4px;
+        line-height: 1;
+        display: block;
+        transition: transform 500ms cubic-bezier(.16,1,.3,1);
+        position: relative;
+      }
+      .client-row:hover .client-name { transform: translateX(10px); }
+      .client-cat {
+        font-size: 7px;
+        font-weight: 500;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: rgba(26,25,23,.35);
+        white-space: nowrap;
+        position: relative;
+      }
+      .client-arrow {
+        font-size: 12px;
+        color: rgba(26,25,23,.25);
+        flex-shrink: 0;
+        position: relative;
+        transition: color 350ms, transform 400ms cubic-bezier(.16,1,.3,1);
+        font-style: normal;
+      }
+      .client-row:hover .client-arrow { color: rgba(26,25,23,.6); transform: translate(2px, -2px); }
+      @keyframes blink { 50% { opacity: 0; } }
+
+      .mobile-marble-strip { display: none; }
+
+      /* ── Who We Work With ── */
+      .who-panel {
+        position: relative;
+        min-height: 560px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-top: 1px solid var(--rule);
+        overflow: hidden;
+      }
+      .who-panel-bg {
+        position: absolute;
+        inset: 0;
+        background: url('/assets/whoweworkwith.png') center / cover no-repeat;
+      }
+      .who-panel-content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        padding: 80px 48px;
+      }
+      .who-label {
+        font-size: 9px;
+        font-weight: 500;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        color: var(--ink-2);
+        display: block;
+        margin-bottom: 48px;
+        opacity: 0;
+        transition: opacity 1200ms cubic-bezier(.16,1,.3,1);
+      }
+      .who-label.who-in { opacity: 1; }
+      .who-list {
+        list-style: none;
+      }
+      .who-list li {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(22px, 2.4vw, 36px);
+        font-weight: 300;
+        font-style: italic;
+        color: var(--ink);
+        line-height: 1;
+        padding: 16px 0;
+        border-bottom: 1px solid rgba(26,25,23,.12);
+        letter-spacing: -.2px;
+        opacity: 0;
+        transform: translateY(10px);
+        transition: opacity 1100ms cubic-bezier(.16,1,.3,1),
+                    transform 1100ms cubic-bezier(.16,1,.3,1);
+      }
+      .who-list li:first-child { border-top: 1px solid rgba(26,25,23,.12); }
+      .who-list li:last-child { border-bottom: 1px solid rgba(26,25,23,.12); }
+      .who-list li.who-in { opacity: 1; transform: translateY(0); }
+
+      /* ── Mobile ── */
+      @media (max-width: 860px) {
+        .page-header { padding: 40px 24px 32px; }
+
+        /* Mobile: native swipe, smaller panel height */
+        .proj-track { gap: 0; padding: 0; height: 66vw; min-height: 260px; cursor: default; }
+        .proj-panel { width: 100vw; scroll-snap-align: start; }
+        .project-glass { margin: 0 20px; padding: 20px 22px 22px; max-width: calc(100% - 40px); box-shadow: 0 8px 40px rgba(0,0,0,0.22); }
+        .proj-panel-bg { filter: brightness(0.65); }
+        .project-label { font-size: 10px; }
+        .project-name { font-size: clamp(22px, 5.5vw, 32px); }
+        .project-desc { font-size: 13px; }
+        .project-link { font-size: 11px; }
+        .proj-drag-hint { display: none; }
+        .proj-counter { display: none; }
+        .mobile-marble-strip { display: block; height: 60px; background: url('/assets/marble.png') center/cover no-repeat; border-bottom: 1px solid var(--rule); }
+        .proj-progress { bottom: 18px; gap: 6px; }
+        .proj-dot { width: 2px; height: 2px; background: rgba(255,255,255,0.12); }
+        .proj-dot.active { background: rgba(255,255,255,0.42); transform: scale(1.2); }
+
+        .bottom-grid { grid-template-columns: 1fr; }
+        .client-section { border-right: none; border-bottom: 1px solid var(--rule); padding: 48px 24px 56px; }
+        .client-row { gap: 12px; padding: 22px 0; grid-template-columns: 1fr auto; }
+        .client-cat { display: none; }
+        .project-link { display: block; font-size: 10px; margin-top: 12px; letter-spacing: 2.5px; }
+        .client-heading { font-size: clamp(36px, 9vw, 52px); margin-bottom: 24px; }
+        .be-next { font-size: clamp(32px, 8vw, 52px); margin-top: 24px; }
+        .who-panel { min-height: 420px; }
+        .who-panel-content { padding: 56px 32px; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="scroll-bar" id="scrollBar"></div>
+
+    <nav class="nav" id="mainNav">
+      <div class="nav-links">
+        <a href="/work" class="active">Work</a>
+        <a href="/about">About</a>
+        <a href="/connect">Contact</a>
+      </div>
+      <a class="nav-brand" href="/">Pink Web Studio</a>
+      <div class="nav-end"><a href="/connect">Work with me</a></div>
+      <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+    <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+      <a href="/work">Work</a>
+      <a href="/about">About</a>
+      <a href="/connect">Contact</a>
+    </div>
+
+    <header class="page-header reveal">
+      <h1 class="page-title">Work</h1>
+    </header>
+
+    <!-- Horizontal drag gallery -->
+    <div class="proj-outer" id="projOuter">
+      <div class="proj-track" id="projTrack">
+
+        <article class="proj-panel" id="proj0">
+          <div class="proj-panel-bg" style="background: linear-gradient(135deg, #2E2418, #1E1710); filter: none;"></div>
+          <span class="proj-counter">01 / 05</span>
+          <a class="project-glass" href="/forma">
+            <span class="project-label">Personal Product</span>
+            <span class="project-name">Forma</span>
+            <span class="project-desc">An operations platform for interior designers, conceived, designed, and built from the ground up.</span>
+            <span class="project-link">Case Study ↗&#xFE0E;</span>
+          </a>
+        </article>
+
+        <article class="proj-panel" id="proj1">
+          <div class="proj-panel-bg" style="background-image:url('/assets/stone.png')"></div>
+          <span class="proj-counter">02 / 05</span>
+          <a class="project-glass" href="/west-and-stone">
+            <span class="project-label">Editorial Concept</span>
+            <span class="project-name">West &amp; Stone</span>
+            <span class="project-desc">Brand identity, copy, and website for a luxury real estate concept.</span>
+            <span class="project-link">Case Study ↗&#xFE0E;</span>
+          </a>
+        </article>
+
+        <article class="proj-panel" id="proj2">
+          <div class="proj-panel-bg" style="background-image:url('/assets/loup.png')"></div>
+          <span class="proj-counter">03 / 05</span>
+          <a class="project-glass" href="/le-loup">
+            <span class="project-label">Editorial Concept</span>
+            <span class="project-name">Le Loup</span>
+            <span class="project-desc">Brand identity and website for an invitation-only members club.</span>
+            <span class="project-link">Case Study ↗&#xFE0E;</span>
+          </a>
+        </article>
+
+        <article class="proj-panel" id="proj3">
+          <div class="proj-panel-bg" style="background-image:url('/assets/spa.png')"></div>
+          <span class="proj-counter">04 / 05</span>
+          <a class="project-glass" href="/celeste">
+            <span class="project-label">Editorial Concept</span>
+            <span class="project-name">Céleste Med Spa</span>
+            <span class="project-desc">Brand identity and website for a luxury medical aesthetics studio.</span>
+            <span class="project-link">Case Study ↗&#xFE0E;</span>
+          </a>
+        </article>
+
+        <article class="proj-panel" id="proj4">
+          <div class="proj-panel-bg" style="background-image:url('/assets/resort.png')"></div>
+          <span class="proj-counter">05 / 05</span>
+          <a class="project-glass" href="/june-house">
+            <span class="project-label">Editorial Concept</span>
+            <span class="project-name">June House</span>
+            <span class="project-desc">Brand identity and website for an interior design studio.</span>
+            <span class="project-link">Case Study ↗&#xFE0E;</span>
+          </a>
+        </article>
+
+      </div>
+
+      <!-- Progress dots -->
+      <div class="proj-progress" id="projProgress">
+        <span class="proj-dot active" data-i="0"></span>
+        <span class="proj-dot" data-i="1"></span>
+        <span class="proj-dot" data-i="2"></span>
+        <span class="proj-dot" data-i="3"></span>
+        <span class="proj-dot" data-i="4"></span>
+      </div>
+
+      <!-- Drag hint -->
+      <div class="proj-drag-hint" id="projHint">← Drag to explore →</div>
+    </div>
+
+    <!-- Mobile marble divider -->
+    <div class="mobile-marble-strip"></div>
+
+    <!-- Philosophy -->
+    <section class="philosophy-section">
+      <div class="philosophy-img"></div>
+      <div class="philosophy-text reveal">
+        <p class="philosophy-body">We believe the best websites aren't built in a day. They're the result of listening carefully, designing deliberately, and caring about every detail that the visitor will never consciously notice but will always feel.</p>
+      </div>
+    </section>
+
+    <div class="bottom-grid">
+
+      <div class="client-section" id="clientSection">
+        <span class="client-heading" id="liveHeading"></span>
+        <div class="client-list" id="clientList">
+
+          <a class="client-row" href="https://santamonicaprimarycare.com" target="_blank" rel="noopener">
+            <span class="client-name">Santa Monica Primary Care</span>
+            <span class="client-cat">Healthcare</span>
+            <span class="client-arrow">↗&#xFE0E;</span>
+          </a>
+          <a class="client-row" href="https://shabonla.myshopify.com" target="_blank" rel="noopener">
+            <span class="client-name">Shabon LA</span>
+            <span class="client-cat">E-Commerce</span>
+            <span class="client-arrow">↗&#xFE0E;</span>
+          </a>
+          <a class="client-row" href="https://twiceuponus.com" target="_blank" rel="noopener">
+            <span class="client-name">Twice Upon Us</span>
+            <span class="client-cat">Platform</span>
+            <span class="client-arrow">↗&#xFE0E;</span>
+          </a>
+          <a class="client-row" href="https://drbretsky.com" target="_blank" rel="noopener">
+            <span class="client-name">Dr. Bretsky</span>
+            <span class="client-cat">Healthcare</span>
+            <span class="client-arrow">↗&#xFE0E;</span>
+          </a>
+          <a class="client-row" href="https://www.doctoritaly24.it/it/" target="_blank" rel="noopener">
+            <span class="client-name">Doctor Italy 24</span>
+            <span class="client-cat">International</span>
+            <span class="client-arrow">↗&#xFE0E;</span>
+          </a>
+
+        </div>
+        <a class="be-next" href="/connect">Be next.</a>
+      </div>
+
+      <div class="who-panel">
+        <div class="who-panel-bg"></div>
+        <div class="who-panel-content">
+          <span class="who-label">Who We Work With</span>
+          <ul class="who-list">
+            <li>Luxury Hospitality</li>
+            <li>Medical Aesthetics</li>
+            <li>Residential Interiors</li>
+            <li>Private Membership</li>
+            <li>Founder-Led Brands</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <footer class="site-footer">
+      <div class="footer-brand-wrap">
+        <span class="footer-brand">Pink Web Studio</span>
+        <span class="footer-brand-sub">Los Angeles &middot; Currently Booking</span>
+      </div>
+      <div class="footer-social">
+        <div class="footer-social-icons">
+          <a href="https://instagram.com/oraanlevi" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/oraan-levi-898a89200/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+        </div>
+        <a href="mailto:studio@pinkwebstudio.com" class="footer-email" style="white-space:nowrap">studio@pinkwebstudio.com</a>
+      </div>
+    </footer>
+
+    <script>
+      // ── Nav scroll + scroll bar ──
+      const nav = document.getElementById("mainNav");
+      const bar = document.getElementById("scrollBar");
+      window.addEventListener("scroll", () => {
+        nav.classList.toggle("scrolled", window.scrollY > 20);
+        if (bar) bar.style.width = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100) + "%";
+      }, { passive: true });
+
+      // ── Mobile nav ──
+      const ham = document.getElementById("navHam");
+      const mob = document.getElementById("mobileNav");
+      ham.addEventListener("click", () => {
+        const open = ham.classList.toggle("open");
+        mob.classList.toggle("open", open);
+        ham.setAttribute("aria-expanded", open);
+        mob.setAttribute("aria-hidden", !open);
+      });
+      mob.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
+        ham.classList.remove("open"); mob.classList.remove("open");
+      }));
+
+      // ── General reveal ──
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("visible"); io.unobserve(e.target); } });
+      }, { threshold: 0.05, rootMargin: "0px 0px -48px 0px" });
+      document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+
+      // ── Horizontal drag gallery ──
+      const track  = document.getElementById("projTrack");
+      const dots   = document.querySelectorAll(".proj-dot");
+      const hint   = document.getElementById("projHint");
+      const panels = Array.from(track.querySelectorAll(".proj-panel"));
+
+      function getActiveIndex() {
+        let best = 0, bestDist = Infinity;
+        panels.forEach((p, i) => {
+          const dist = Math.abs(p.getBoundingClientRect().left);
+          if (dist < bestDist) { bestDist = dist; best = i; }
+        });
+        return best;
+      }
+      function updateDots(idx) {
+        dots.forEach((d, i) => d.classList.toggle("active", i === idx));
+      }
+      track.addEventListener("scroll", () => updateDots(getActiveIndex()), { passive: true });
+
+      let hintHidden = false;
+      function hideHint() {
+        if (hintHidden) return;
+        hintHidden = true;
+        hint.classList.add("hidden");
+      }
+      track.addEventListener("scroll", hideHint, { once: true, passive: true });
+
+      // ── Mouse drag (clean snap) ──
+      let isDown = false, startX = 0, startScroll = 0, didDrag = false;
+
+      function snapToNearest(dragDelta) {
+        const currentIdx = getActiveIndex();
+        let target;
+        if (dragDelta > 40 && currentIdx > 0) {
+          target = panels[currentIdx - 1];
+        } else if (dragDelta < -40 && currentIdx < panels.length - 1) {
+          target = panels[currentIdx + 1];
+        } else {
+          let best = panels[0], bestDist = Infinity;
+          panels.forEach(p => {
+            const dist = Math.abs(p.getBoundingClientRect().left);
+            if (dist < bestDist) { bestDist = dist; best = p; }
+          });
+          target = best;
+        }
+        track.scrollTo({ left: target.offsetLeft, behavior: "smooth" });
+      }
+
+      track.addEventListener("mousedown", e => {
+        isDown = true; didDrag = false;
+        startX = e.clientX; startScroll = track.scrollLeft;
+        track.style.scrollSnapType = "none";
+        track.classList.add("is-dragging");
+      });
+      window.addEventListener("mousemove", e => {
+        if (!isDown) return;
+        e.preventDefault();
+        const delta = e.clientX - startX;
+        if (Math.abs(delta) > 4) didDrag = true;
+        track.scrollLeft = startScroll - delta;
+        if (didDrag) hideHint();
+      });
+      window.addEventListener("mouseup", e => {
+        if (!isDown) return;
+        isDown = false;
+        track.classList.remove("is-dragging");
+        const dragDelta = e.clientX - startX;
+        setTimeout(() => { track.style.scrollSnapType = ""; }, 500);
+        snapToNearest(dragDelta);
+      });
+      track.addEventListener("click", e => {
+        if (didDrag) { e.stopPropagation(); didDrag = false; }
+      }, true);
+
+      // Dot clicks
+      dots.forEach(dot => {
+        dot.addEventListener("click", () => {
+          const i = +dot.dataset.i;
+          track.scrollTo({ left: i * track.clientWidth, behavior: "smooth" });
+        });
+      });
+
+      // ── Live Work typewriter ──
+      const liveHeading = document.getElementById("liveHeading");
+      const clientList  = document.getElementById("clientList");
+      const liveText    = "Live Work.";
+      let liveTyped = "", liveTimer = null;
+      const clientRows  = Array.from(clientList.querySelectorAll(".client-row"));
+
+      // Prepare rows for staggered entrance
+      clientRows.forEach(row => {
+        row.style.opacity = "0";
+        row.style.transform = "translateY(8px)";
+        row.style.transition = "opacity 700ms cubic-bezier(.16,1,.3,1), transform 700ms cubic-bezier(.16,1,.3,1)";
+      });
+
+      function typeLive() {
+        if (liveTyped.length < liveText.length) {
+          liveTyped += liveText[liveTyped.length];
+          liveHeading.innerHTML = liveTyped + '<span style="display:inline-block;width:2px;height:.8em;background:var(--ink);margin-left:3px;vertical-align:middle;animation:blink 900ms step-end infinite;"></span>';
+          liveTimer = setTimeout(typeLive, 65 + Math.random() * 28);
+        } else {
+          liveHeading.textContent = liveText;
+          clientRows.forEach((row, i) => {
+            setTimeout(() => {
+              row.style.opacity = "1";
+              row.style.transform = "translateY(0)";
+            }, 300 + i * 110);
+          });
+        }
+      }
+
+      const liveIO = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting && liveTyped.length === 0) {
+            setTimeout(typeLive, 200);
+            liveIO.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.2 });
+      liveIO.observe(document.getElementById("clientSection"));
+
+      // ── Who We Work With staggered reveal ──
+      const whoPanel = document.querySelector(".who-panel");
+      const whoLabel = document.querySelector(".who-label");
+      const whoItems = document.querySelectorAll(".who-list li");
+      let whoStarted = false;
+
+      const whoIO = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (!e.isIntersecting || whoStarted) return;
+          whoStarted = true;
+          setTimeout(() => whoLabel.classList.add("who-in"), 200);
+          whoItems.forEach((li, i) => {
+            setTimeout(() => li.classList.add("who-in"), 800 + i * 260);
+          });
+          whoIO.unobserve(e.target);
+        });
+      }, { threshold: 0.2 });
+      if (whoPanel) whoIO.observe(whoPanel);
+    </script>
+  </body>
+</html>

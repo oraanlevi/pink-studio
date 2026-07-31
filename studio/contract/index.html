@@ -1,0 +1,1162 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Studio — Contract Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet" />
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      html { -webkit-font-smoothing: antialiased; }
+
+      body {
+        background: #EDD8D8;
+        font-family: "Poppins", sans-serif;
+        font-weight: 300;
+        color: #1a1917;
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* ── Studio toolbar ── */
+      .studio-bar {
+        background: rgba(255,255,255,0.5);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        padding: 0 48px;
+        height: 72px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-shrink: 0;
+        z-index: 100;
+      }
+      .studio-bar-left { display: flex; flex-direction: column; gap: 3px; }
+      .studio-bar-brand {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 15px;
+        font-weight: 400;
+        letter-spacing: 6px;
+        text-transform: uppercase;
+        color: #1a1917;
+      }
+      .studio-bar-sub {
+        font-size: 8px;
+        font-weight: 500;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: #C4878A;
+      }
+      .btn-pdf {
+        font-family: "Poppins", sans-serif;
+        font-size: 9px;
+        font-weight: 500;
+        letter-spacing: 3.5px;
+        text-transform: uppercase;
+        color: white;
+        background: #1a1917;
+        border: none;
+        padding: 14px 32px;
+        cursor: pointer;
+        transition: opacity 220ms;
+      }
+      .btn-pdf:hover { opacity: .75; }
+
+      /* ── Split layout ── */
+      .split-layout {
+        display: flex;
+        flex: 1;
+        overflow: hidden;
+      }
+
+      /* ── Form Panel ── */
+      .form-panel {
+        width: 348px;
+        flex-shrink: 0;
+        overflow-y: auto;
+        background: rgba(255,255,255,0.46);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border-right: 1px solid rgba(196,135,138,0.15);
+        padding: 36px 28px 88px;
+      }
+      .form-panel::-webkit-scrollbar { width: 3px; }
+      .form-panel::-webkit-scrollbar-track { background: transparent; }
+      .form-panel::-webkit-scrollbar-thumb { background: rgba(196,135,138,0.3); border-radius: 2px; }
+
+      .form-section { margin-bottom: 34px; }
+      .form-section-title {
+        font-size: 9px;
+        font-weight: 500;
+        letter-spacing: 3.5px;
+        text-transform: uppercase;
+        color: #C4878A;
+        display: block;
+        margin-bottom: 18px;
+        padding-bottom: 9px;
+        border-bottom: 1px solid rgba(196,135,138,0.2);
+      }
+      .form-group { margin-bottom: 20px; }
+      .form-label {
+        display: block;
+        font-size: 10px;
+        font-weight: 500;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #1a1917;
+        margin-bottom: 7px;
+      }
+      .form-input,
+      .form-textarea {
+        width: 100%;
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid rgba(196,135,138,0.22);
+        padding: 5px 0 7px;
+        font-family: "Poppins", sans-serif;
+        font-size: 13px;
+        font-weight: 300;
+        color: #1a1917;
+        outline: none;
+        transition: border-color 180ms;
+        border-radius: 0;
+        -webkit-appearance: none;
+        appearance: none;
+      }
+      .form-input::placeholder,
+      .form-textarea::placeholder { color: rgba(26,25,23,0.22); }
+      .form-input:focus,
+      .form-textarea:focus { border-bottom-color: #C4878A; }
+      .form-textarea {
+        resize: none;
+        min-height: 72px;
+        line-height: 1.65;
+        padding-top: 4px;
+        overflow: hidden;
+      }
+      .form-textarea.tall { min-height: 96px; }
+
+      /* Deliverables */
+      .deliverable-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 6px;
+      }
+      .deliverable-row .form-input { flex: 1; }
+      .btn-remove {
+        flex-shrink: 0;
+        width: 22px;
+        height: 22px;
+        background: none;
+        border: 1px solid rgba(196,135,138,0.28);
+        color: #C4878A;
+        font-size: 15px;
+        line-height: 1;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 160ms, color 160ms, border-color 160ms;
+        padding-bottom: 1px;
+      }
+      .btn-remove:hover { background: #C4878A; color: white; border-color: #C4878A; }
+      .btn-add-deliverable {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+        width: 100%;
+        margin-top: 10px;
+        padding: 9px 14px;
+        font-size: 9px;
+        font-weight: 500;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        color: #C4878A;
+        background: none;
+        border: 1px dashed rgba(196,135,138,0.35);
+        cursor: pointer;
+        transition: border-color 160ms, background 160ms;
+        font-family: "Poppins", sans-serif;
+      }
+      .btn-add-deliverable:hover { border-color: #C4878A; background: rgba(196,135,138,0.05); }
+
+      .autocalc-hint {
+        margin-top: 8px;
+        font-size: 11px;
+        font-weight: 400;
+        color: #1a1917;
+        letter-spacing: 0.3px;
+      }
+      .autocalc-hint span { font-weight: 500; color: #C4878A; }
+
+      /* ── Preview Panel ── */
+      .preview-panel {
+        flex: 1;
+        overflow-y: auto;
+        padding: 48px 32px 88px;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+      }
+      .preview-panel::-webkit-scrollbar { width: 3px; }
+      .preview-panel::-webkit-scrollbar-track { background: transparent; }
+      .preview-panel::-webkit-scrollbar-thumb { background: rgba(196,135,138,0.3); border-radius: 2px; }
+
+      /* ── Contract Document ── */
+      .contract {
+        width: 794px;
+        flex-shrink: 0;
+        box-shadow: 0 12px 64px rgba(26,25,23,0.12);
+      }
+
+      /* ── Cover Page ── */
+      .con-cover {
+        background: #F3E4E4;
+        padding: 64px 72px 60px;
+        min-height: 920px;
+        display: flex;
+        flex-direction: column;
+        page-break-after: always;
+      }
+      .con-cover-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: auto;
+      }
+      .con-cover-brand {
+        font-family: "Poppins", sans-serif;
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 7px;
+        text-transform: uppercase;
+        color: #C4878A;
+      }
+      .con-cover-type {
+        font-size: 10px;
+        font-weight: 500;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: #C4878A;
+      }
+
+      .con-cover-center {
+        text-align: center;
+        padding: 60px 0 52px;
+      }
+      .con-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 54px;
+        font-weight: 300;
+        color: #1a1917;
+        line-height: 1.1;
+        letter-spacing: -.5px;
+        margin-bottom: 24px;
+      }
+      .con-cover-rule {
+        height: 1px;
+        background: rgba(196,135,138,0.3);
+        width: 60px;
+        margin: 0 auto 32px;
+      }
+      .con-for-label {
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        color: #C4878A;
+        margin-bottom: 16px;
+      }
+      .con-client-name {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 44px;
+        font-weight: 300;
+        color: #1a1917;
+        line-height: 1.0;
+        letter-spacing: -.5px;
+        margin-bottom: 10px;
+        word-break: break-word;
+      }
+      .con-business-name {
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: #1a1917;
+      }
+
+      .con-cover-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        padding-top: 44px;
+        border-top: 1px solid rgba(196,135,138,0.22);
+      }
+      .con-prepared-label {
+        font-size: 10px;
+        font-weight: 500;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: #C4878A;
+        margin-bottom: 10px;
+      }
+      .con-prepared-name {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 28px;
+        font-weight: 400;
+        color: #1a1917;
+        letter-spacing: .2px;
+        margin-bottom: 4px;
+      }
+      .con-prepared-title {
+        font-size: 11px;
+        font-weight: 400;
+        letter-spacing: .5px;
+        color: #1a1917;
+      }
+
+      .con-cover-meta { text-align: right; }
+      .con-meta-row {
+        display: flex;
+        gap: 18px;
+        justify-content: flex-end;
+        margin-bottom: 8px;
+      }
+      .con-meta-row:last-child { margin-bottom: 0; }
+      .con-meta-label {
+        font-size: 10px;
+        font-weight: 500;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #C4878A;
+      }
+      .con-meta-value {
+        font-size: 13px;
+        font-weight: 300;
+        color: #1a1917;
+        letter-spacing: .3px;
+        min-width: 90px;
+        text-align: right;
+      }
+
+      /* ── Content ── */
+      .con-content {
+        background: #FDFAF7;
+        padding: 72px 72px 68px;
+      }
+
+      .con-section {
+        margin-bottom: 48px;
+        page-break-inside: avoid;
+      }
+      .con-section:last-child { margin-bottom: 0; }
+
+      .con-section-header {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        margin-bottom: 24px;
+      }
+      .con-section-label {
+        font-size: 10px;
+        font-weight: 500;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: #C4878A;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+      .con-section-rule {
+        flex: 1;
+        height: 1px;
+        background: #EDCDD0;
+      }
+
+      /* Body text */
+      .con-body {
+        font-size: 13px;
+        font-weight: 300;
+        color: #1a1917;
+        line-height: 1.9;
+      }
+      .con-body p { margin-bottom: 14px; }
+      .con-body p:last-child { margin-bottom: 0; }
+      .con-body strong { font-weight: 500; }
+
+      /* Scope list */
+      .con-scope-list { list-style: none; margin-top: 18px; }
+      .con-scope-item {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 13px 0;
+        border-bottom: 1px solid rgba(196,135,138,0.1);
+        font-size: 13px;
+        font-weight: 300;
+        color: #1a1917;
+      }
+      .con-scope-item:first-child { border-top: 1px solid rgba(196,135,138,0.1); }
+      .con-scope-item::before {
+        content: '';
+        display: block;
+        width: 4px;
+        height: 4px;
+        background: #C4878A;
+        border-radius: 50%;
+        flex-shrink: 0;
+      }
+
+      /* Payment */
+      .con-payment { border-top: 1px solid rgba(196,135,138,0.12); }
+      .con-pay-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        padding: 16px 0;
+        border-bottom: 1px solid rgba(196,135,138,0.12);
+        page-break-inside: avoid;
+      }
+      .con-pay-row.grand-total {
+        border-bottom: none;
+        border-top: 2px solid #EDCDD0;
+        padding-top: 20px;
+        margin-top: 4px;
+      }
+      .con-pay-label {
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #1a1917;
+      }
+      .con-pay-row.grand-total .con-pay-label {
+        font-size: 12px;
+        letter-spacing: 2.5px;
+      }
+      .con-pay-amount {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 28px;
+        font-weight: 300;
+        color: #1a1917;
+        letter-spacing: -.2px;
+      }
+      .con-pay-row.grand-total .con-pay-amount {
+        font-size: 44px;
+      }
+      .con-pay-note {
+        margin-top: 20px;
+        padding: 18px 22px;
+        background: #F5EAEA;
+        font-size: 11px;
+        font-weight: 300;
+        color: #1a1917;
+        line-height: 1.85;
+        font-style: italic;
+      }
+
+      /* Additional terms */
+      .con-terms-box {
+        background: #F5EAEA;
+        padding: 22px 26px;
+      }
+      .con-terms-text {
+        font-size: 13px;
+        font-weight: 300;
+        color: #1a1917;
+        line-height: 1.9;
+        white-space: pre-wrap;
+      }
+
+      /* Signatures */
+      .con-sig-intro {
+        font-size: 13px;
+        font-weight: 300;
+        color: #1a1917;
+        line-height: 1.9;
+        margin-bottom: 44px;
+      }
+      .con-signatures {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 52px;
+        page-break-inside: avoid;
+      }
+      .con-sig-party-label {
+        font-size: 10px;
+        font-weight: 500;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: #C4878A;
+        margin-bottom: 32px;
+      }
+      .con-sig-field { margin-bottom: 32px; }
+      .con-sig-line {
+        height: 44px;
+        border-bottom: 1px solid #1a1917;
+        margin-bottom: 8px;
+      }
+      .con-sig-field-label {
+        font-size: 9px;
+        font-weight: 500;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        color: #1a1917;
+      }
+      .con-sig-identity { margin-top: 4px; }
+      .con-sig-name {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 18px;
+        font-weight: 400;
+        color: #1a1917;
+        margin-bottom: 2px;
+      }
+      .con-sig-role {
+        font-size: 10px;
+        font-weight: 300;
+        color: #1a1917;
+        letter-spacing: .5px;
+      }
+
+      /* ── Footer ── */
+      .con-footer {
+        background: #EFE2E2;
+        padding: 30px 72px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        page-break-inside: avoid;
+      }
+      .con-footer-monogram {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 16px;
+        font-weight: 400;
+        letter-spacing: 5px;
+        color: #C4878A;
+      }
+      .con-footer-right {
+        text-align: right;
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+      }
+      .con-footer-name {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 22px;
+        font-weight: 400;
+        color: #1a1917;
+        letter-spacing: .2px;
+        line-height: 1;
+      }
+      .con-footer-title {
+        font-size: 10px;
+        font-weight: 500;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        color: #1a1917;
+      }
+      .con-footer-email {
+        font-size: 13px;
+        font-weight: 400;
+        color: #1a1917;
+      }
+
+      @media (max-width: 900px) {
+        body { height: auto; overflow-x: hidden; overflow-y: auto; }
+
+        .studio-bar { padding: 0 20px; height: 60px; position: sticky; top: 0; }
+        .studio-bar-brand { font-size: 11px; letter-spacing: 4px; }
+        .studio-bar-sub { display: none; }
+        .btn-pdf { font-size: 8px; letter-spacing: 2px; padding: 10px 16px; }
+
+        .split-layout { flex-direction: column; height: auto; overflow: visible; }
+
+        .form-panel {
+          width: 100%;
+          height: auto;
+          max-height: none;
+          overflow-y: visible;
+          border-right: none;
+          border-bottom: 1px solid rgba(196,135,138,0.15);
+          padding: 28px 20px 40px;
+        }
+        .form-panel::-webkit-scrollbar { display: none; }
+
+        .preview-panel { flex: none; height: auto; overflow: visible; padding: 28px 12px 64px; }
+
+        .contract { width: 100%; }
+
+        .con-cover { padding: 36px 24px 36px; min-height: 480px; }
+        .con-cover-center { padding: 44px 0 40px; }
+        .con-title { font-size: 38px; }
+        .con-client-name { font-size: 36px; }
+        .con-business-name { font-size: 9px; }
+        .con-cover-bottom { flex-direction: column; gap: 20px; align-items: flex-start; }
+        .con-cover-meta { text-align: left; }
+        .con-meta-row { justify-content: flex-start; }
+        .con-meta-value { text-align: left; min-width: auto; }
+
+        .con-content { padding: 44px 24px 44px; }
+        .con-section { margin-bottom: 40px; }
+
+        .con-pay-row { flex-wrap: wrap; gap: 4px; }
+        .con-pay-row.grand-total .con-pay-amount { font-size: 36px; }
+
+        .con-signatures { grid-template-columns: 1fr; gap: 40px; }
+
+        .con-footer { padding: 24px 24px; }
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- Studio toolbar -->
+    <div class="studio-bar">
+      <div class="studio-bar-left">
+        <span class="studio-bar-brand">Pink Web Studio</span>
+        <span class="studio-bar-sub">Contract Generator — Studio</span>
+      </div>
+      <button class="btn-pdf" onclick="generatePDF()">Generate PDF</button>
+    </div>
+
+    <div class="split-layout">
+
+      <!-- ── Left: Form Panel ── -->
+      <div class="form-panel">
+
+        <div class="form-section">
+          <span class="form-section-title">Contract</span>
+          <div class="form-group">
+            <label class="form-label" for="f-number">Contract Number</label>
+            <input class="form-input" id="f-number" type="text" placeholder="PWS-C001" autocomplete="off" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="f-date">Contract Date</label>
+            <input class="form-input" id="f-date" type="text" placeholder="June 22, 2026" autocomplete="off" />
+          </div>
+        </div>
+
+        <div class="form-section">
+          <span class="form-section-title">Client</span>
+          <div class="form-group">
+            <label class="form-label" for="f-client">Client Name</label>
+            <input class="form-input" id="f-client" type="text" placeholder="Sarah Johnson" autocomplete="off" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="f-business">Business Name</label>
+            <input class="form-input" id="f-business" type="text" placeholder="Bloom Pilates Studio" autocomplete="off" />
+          </div>
+        </div>
+
+        <div class="form-section">
+          <span class="form-section-title">Project</span>
+          <div class="form-group">
+            <label class="form-label" for="f-project">Project Name</label>
+            <input class="form-input" id="f-project" type="text" placeholder="Brand Website Design" autocomplete="off" />
+          </div>
+        </div>
+
+        <div class="form-section">
+          <span class="form-section-title">Scope of Work</span>
+          <div id="deliverables-form"></div>
+          <button class="btn-add-deliverable" onclick="addDeliverable()">+ Add Deliverable</button>
+        </div>
+
+        <div class="form-section">
+          <span class="form-section-title">Timeline</span>
+          <div class="form-group">
+            <textarea class="form-textarea tall" id="f-timeline" placeholder="e.g. 4–6 weeks from project kickoff. Week 1–2: Strategy & Design. Week 3–4: Development. Week 5–6: Review & Launch."></textarea>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <span class="form-section-title">Payment</span>
+          <div class="form-group">
+            <label class="form-label" for="f-total">Project Total</label>
+            <input class="form-input" id="f-total" type="text" placeholder="$3,500.00" autocomplete="off" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="f-deposit">Deposit Amount</label>
+            <input class="form-input" id="f-deposit" type="text" placeholder="$1,750.00" autocomplete="off" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="f-final">Final Payment</label>
+            <input class="form-input" id="f-final" type="text" placeholder="Auto-calculated" autocomplete="off" />
+            <div class="autocalc-hint" id="autocalc-hint" style="display:none;">
+              Calculated: <span id="autocalc-val">—</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <span class="form-section-title">Revisions</span>
+          <div class="form-group">
+            <label class="form-label" for="f-revisions">Number of Revision Rounds</label>
+            <input class="form-input" id="f-revisions" type="text" placeholder="2" autocomplete="off" />
+          </div>
+        </div>
+
+        <div class="form-section">
+          <span class="form-section-title">Additional Terms</span>
+          <div class="form-group">
+            <textarea class="form-textarea tall" id="f-terms" placeholder="Any additional terms or custom clauses for this client..."></textarea>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ── Right: Preview Panel ── -->
+      <div class="preview-panel">
+        <div class="contract" id="contract">
+
+          <!-- Cover Page -->
+          <div class="con-cover">
+            <div class="con-cover-top">
+              <div class="con-cover-brand">Pink Web Studio</div>
+              <div class="con-cover-type">Agreement</div>
+            </div>
+
+            <div class="con-cover-center">
+              <div class="con-title">Website Design<br>Agreement</div>
+              <div class="con-cover-rule"></div>
+              <div class="con-for-label">Prepared For</div>
+              <div class="con-client-name" id="p-client">Client Name</div>
+              <div class="con-business-name" id="p-business">Business Name</div>
+            </div>
+
+            <div class="con-cover-bottom">
+              <div>
+                <div class="con-prepared-label">Prepared By</div>
+                <div class="con-prepared-name">Oraan Levi</div>
+                <div class="con-prepared-title">Founder, Pink Web Studio</div>
+              </div>
+              <div class="con-cover-meta">
+                <div class="con-meta-row">
+                  <span class="con-meta-label">Contract</span>
+                  <span class="con-meta-value" id="p-number">PWS-C001</span>
+                </div>
+                <div class="con-meta-row">
+                  <span class="con-meta-label">Date</span>
+                  <span class="con-meta-value" id="p-date">June 22, 2026</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Content -->
+          <div class="con-content">
+
+            <!-- 1. Parties -->
+            <div class="con-section">
+              <div class="con-section-header">
+                <span class="con-section-label">Parties</span>
+                <div class="con-section-rule"></div>
+              </div>
+              <div class="con-body">
+                <p>This Website Design Agreement ("Agreement") is entered into as of <strong id="p-date-inline">June 22, 2026</strong> between <strong>Pink Web Studio</strong> ("Designer") and <strong id="p-client-inline">Client Name</strong> of <strong id="p-business-inline">Business Name</strong> ("Client").</p>
+                <p>This Agreement sets forth the terms and conditions under which Pink Web Studio will design and develop a custom website for the Client's project, <strong id="p-project-inline">Project Name</strong>.</p>
+              </div>
+            </div>
+
+            <!-- 2. Scope of Work -->
+            <div class="con-section">
+              <div class="con-section-header">
+                <span class="con-section-label">Scope of Work</span>
+                <div class="con-section-rule"></div>
+              </div>
+              <div class="con-body">
+                <p>Pink Web Studio agrees to design and develop a custom website for the Client. The following deliverables are included within the scope of this Agreement:</p>
+              </div>
+              <ul class="con-scope-list" id="p-scope-list"></ul>
+            </div>
+
+            <!-- 3. Timeline -->
+            <div class="con-section">
+              <div class="con-section-header">
+                <span class="con-section-label">Timeline</span>
+                <div class="con-section-rule"></div>
+              </div>
+              <div class="con-body">
+                <p id="p-timeline">Project timeline details will appear here as you type.</p>
+                <p>All timelines are contingent upon the timely delivery of client-provided content, assets, approvals, and feedback. Delays caused by the Client may result in a revised project schedule and may incur additional fees.</p>
+              </div>
+            </div>
+
+            <!-- 4. Payment Terms -->
+            <div class="con-section">
+              <div class="con-section-header">
+                <span class="con-section-label">Payment Terms</span>
+                <div class="con-section-rule"></div>
+              </div>
+              <div class="con-payment">
+                <div class="con-pay-row">
+                  <span class="con-pay-label">Deposit — Due Upon Signing</span>
+                  <span class="con-pay-amount" id="p-deposit">—</span>
+                </div>
+                <div class="con-pay-row">
+                  <span class="con-pay-label">Final Payment — Due Upon Completion</span>
+                  <span class="con-pay-amount" id="p-final">—</span>
+                </div>
+                <div class="con-pay-row grand-total">
+                  <span class="con-pay-label">Project Total</span>
+                  <span class="con-pay-amount" id="p-total">—</span>
+                </div>
+              </div>
+              <div class="con-pay-note">
+                Work will not commence until the deposit has been received. The final payment is due upon project completion, prior to site launch and file delivery. All fees are non-negotiable once this Agreement has been signed.
+              </div>
+            </div>
+
+            <!-- 5. Revisions -->
+            <div class="con-section">
+              <div class="con-section-header">
+                <span class="con-section-label">Revisions</span>
+                <div class="con-section-rule"></div>
+              </div>
+              <div class="con-body">
+                <p><span id="p-revisions-word">Two</span> round<span id="p-revisions-plural">s</span> of revisions are included within the scope of this Agreement. A revision is defined as a set of minor changes consolidated into a single round of feedback. Additional revisions requested beyond the agreed amount will be billed at the studio's standard hourly rate and require a separate written agreement.</p>
+              </div>
+            </div>
+
+            <!-- 6. Client Responsibilities -->
+            <div class="con-section">
+              <div class="con-section-header">
+                <span class="con-section-label">Client Responsibilities</span>
+                <div class="con-section-rule"></div>
+              </div>
+              <div class="con-body">
+                <p>The Client agrees to provide all necessary content, copy, images, brand assets, and any other materials required for project completion in a timely manner. The Client is responsible for reviewing deliverables and providing clear, consolidated feedback at each stage of the project. Delays caused by late content delivery or unresponsiveness may result in a revised project timeline and may incur additional fees.</p>
+              </div>
+            </div>
+
+            <!-- 7. Ownership -->
+            <div class="con-section">
+              <div class="con-section-header">
+                <span class="con-section-label">Ownership</span>
+                <div class="con-section-rule"></div>
+              </div>
+              <div class="con-body">
+                <p>All custom design work, code, and deliverables created under this Agreement remain the intellectual property of Pink Web Studio until final payment has been received in full. Upon receipt of final payment, full ownership of the completed website and all associated deliverables is transferred to the Client. Pink Web Studio reserves the right to display the completed work as part of its portfolio and marketing materials.</p>
+              </div>
+            </div>
+
+            <!-- 8. Cancellation -->
+            <div class="con-section">
+              <div class="con-section-header">
+                <span class="con-section-label">Cancellation</span>
+                <div class="con-section-rule"></div>
+              </div>
+              <div class="con-body">
+                <p>Either party may terminate this Agreement with written notice. The deposit is non-refundable under all circumstances. Any work completed prior to cancellation is billable and must be paid in full before any project files, designs, or assets are released to the Client.</p>
+              </div>
+            </div>
+
+            <!-- 9. Additional Terms (conditional) -->
+            <div class="con-section" id="p-terms-section" style="display:none;">
+              <div class="con-section-header">
+                <span class="con-section-label">Additional Terms</span>
+                <div class="con-section-rule"></div>
+              </div>
+              <div class="con-terms-box">
+                <div class="con-terms-text" id="p-terms"></div>
+              </div>
+            </div>
+
+            <!-- 10. Signatures -->
+            <div class="con-section">
+              <div class="con-section-header">
+                <span class="con-section-label">Signatures</span>
+                <div class="con-section-rule"></div>
+              </div>
+              <p class="con-sig-intro">By signing below, both parties acknowledge that they have read, understood, and agree to all terms and conditions set forth in this Agreement.</p>
+              <div class="con-signatures">
+
+                <div>
+                  <div class="con-sig-party-label">Client</div>
+                  <div class="con-sig-field">
+                    <div class="con-sig-line"></div>
+                    <div class="con-sig-field-label">Signature</div>
+                  </div>
+                  <div class="con-sig-field">
+                    <div class="con-sig-line"></div>
+                    <div class="con-sig-field-label">Date</div>
+                  </div>
+                  <div class="con-sig-identity">
+                    <div class="con-sig-name" id="p-client-sig">Client Name</div>
+                    <div class="con-sig-role" id="p-business-sig">Business Name</div>
+                  </div>
+                </div>
+
+                <div>
+                  <div class="con-sig-party-label">Pink Web Studio</div>
+                  <div class="con-sig-field">
+                    <div class="con-sig-line"></div>
+                    <div class="con-sig-field-label">Signature</div>
+                  </div>
+                  <div class="con-sig-field">
+                    <div class="con-sig-line"></div>
+                    <div class="con-sig-field-label">Date</div>
+                  </div>
+                  <div class="con-sig-identity">
+                    <div class="con-sig-name">Oraan Levi</div>
+                    <div class="con-sig-role">Founder, Pink Web Studio</div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Footer -->
+          <div class="con-footer">
+            <span class="con-footer-monogram">P / W / S</span>
+            <div class="con-footer-right">
+              <span class="con-footer-name">Oraan Levi</span>
+              <span class="con-footer-title">Founder, Pink Web Studio</span>
+              <span class="con-footer-email">studio@pinkwebstudio.com</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <script src="https://unpkg.com/html2pdf.js@0.10.1/dist/html2pdf.bundle.min.js"></script>
+    <script>
+      // ── Deliverables ──
+      const deliverables = [
+        'Website Strategy',
+        'Custom Design',
+        'Development',
+        'Mobile Optimization',
+        'Basic SEO Setup',
+        'Launch Support'
+      ];
+
+      function esc(str) {
+        return String(str)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      }
+
+      function renderDeliverables() {
+        const form = document.getElementById('deliverables-form');
+        form.innerHTML = deliverables.map((d, i) => `
+          <div class="deliverable-row">
+            <input class="form-input" type="text" value="${esc(d)}"
+                   oninput="updateDeliverable(${i}, this.value)"
+                   placeholder="Deliverable" autocomplete="off" />
+            <button class="btn-remove" onclick="removeDeliverable(${i})" title="Remove">×</button>
+          </div>
+        `).join('');
+
+        const list = document.getElementById('p-scope-list');
+        list.innerHTML = deliverables
+          .filter(d => d.trim())
+          .map(d => `<li class="con-scope-item">${esc(d)}</li>`)
+          .join('');
+      }
+
+      function addDeliverable() {
+        deliverables.push('');
+        renderDeliverables();
+        const rows = document.querySelectorAll('.deliverable-row .form-input');
+        if (rows.length) rows[rows.length - 1].focus();
+      }
+
+      function removeDeliverable(i) {
+        deliverables.splice(i, 1);
+        renderDeliverables();
+      }
+
+      function updateDeliverable(i, val) {
+        deliverables[i] = val;
+        const items = document.querySelectorAll('#p-scope-list li');
+        const filled = deliverables.filter(d => d.trim());
+        if (items.length !== filled.length) {
+          renderDeliverables();
+        } else {
+          const fi = deliverables.slice(0, i + 1).filter(d => d.trim()).length - 1;
+          if (val.trim() && items[fi]) items[fi].textContent = val;
+          else renderDeliverables();
+        }
+      }
+
+      // ── Field sync (supports multiple preview targets) ──
+      function bindField(inputId, previewIds, placeholder) {
+        const input = document.getElementById(inputId);
+        if (!input) return;
+        const ids = Array.isArray(previewIds) ? previewIds : [previewIds];
+        input.addEventListener('input', () => {
+          ids.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.textContent = input.value || placeholder || '';
+          });
+        });
+        if (input.tagName === 'TEXTAREA') {
+          input.addEventListener('input', () => {
+            input.style.height = 'auto';
+            input.style.height = input.scrollHeight + 'px';
+          });
+        }
+      }
+
+      // ── Currency ──
+      function parseMoney(str) {
+        return parseFloat(String(str).replace(/[^0-9.]/g, '')) || 0;
+      }
+      function formatMoney(n) {
+        if (!n) return '—';
+        return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      }
+
+      function updatePayment() {
+        const total   = parseMoney(document.getElementById('f-total').value);
+        const deposit = parseMoney(document.getElementById('f-deposit').value);
+        const finalField = document.getElementById('f-final');
+        const manualFinal = parseMoney(finalField.value);
+
+        // Auto-calc final payment if field is empty
+        let finalAmt = manualFinal;
+        const hint = document.getElementById('autocalc-hint');
+        if (!finalField.value.trim() && (total || deposit)) {
+          finalAmt = total - deposit;
+          hint.style.display = finalAmt ? 'block' : 'none';
+          document.getElementById('autocalc-val').textContent = formatMoney(finalAmt);
+        } else {
+          hint.style.display = 'none';
+        }
+
+        document.getElementById('p-total').textContent   = total     ? formatMoney(total)     : '—';
+        document.getElementById('p-deposit').textContent = deposit   ? formatMoney(deposit)   : '—';
+        document.getElementById('p-final').textContent   = finalAmt  ? formatMoney(finalAmt)  : '—';
+      }
+
+      // ── Revisions ──
+      const numWords = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten'];
+
+      function updateRevisions() {
+        const val = document.getElementById('f-revisions').value.trim();
+        const wordEl   = document.getElementById('p-revisions-word');
+        const pluralEl = document.getElementById('p-revisions-plural');
+        const n = parseInt(val, 10);
+
+        if (!val || isNaN(n)) {
+          wordEl.textContent   = 'Two';
+          pluralEl.textContent = 's';
+        } else {
+          wordEl.textContent   = (n >= 1 && n <= 10) ? numWords[n] : String(n);
+          pluralEl.textContent = n === 1 ? '' : 's';
+        }
+      }
+
+      // ── Additional terms ──
+      function updateTerms() {
+        const val     = document.getElementById('f-terms').value.trim();
+        const section = document.getElementById('p-terms-section');
+        const text    = document.getElementById('p-terms');
+        if (val) { text.textContent = val; section.style.display = 'block'; }
+        else { section.style.display = 'none'; }
+      }
+
+      // ── Init ──
+      function init() {
+        renderDeliverables();
+
+        bindField('f-client',  ['p-client',  'p-client-inline',  'p-client-sig'],  'Client Name');
+        bindField('f-business',['p-business','p-business-inline','p-business-sig'],'Business Name');
+        bindField('f-project', ['p-project-inline'], 'Project Name');
+        bindField('f-number',  ['p-number'],  'PWS-C001');
+        bindField('f-date',    ['p-date', 'p-date-inline'], 'June 22, 2026');
+
+        // Timeline (updates a paragraph, not a span)
+        document.getElementById('f-timeline').addEventListener('input', function() {
+          document.getElementById('p-timeline').textContent =
+            this.value || 'Project timeline details will appear here as you type.';
+          this.style.height = 'auto';
+          this.style.height = this.scrollHeight + 'px';
+        });
+
+        // Payment
+        ['f-total', 'f-deposit', 'f-final'].forEach(id =>
+          document.getElementById(id).addEventListener('input', updatePayment)
+        );
+
+        // Revisions
+        document.getElementById('f-revisions').addEventListener('input', updateRevisions);
+
+        // Terms
+        document.getElementById('f-terms').addEventListener('input', function() {
+          this.style.height = 'auto';
+          this.style.height = this.scrollHeight + 'px';
+          updateTerms();
+        });
+
+        // Auto-resize all remaining textareas
+        document.querySelectorAll('.form-textarea').forEach(ta => {
+          ta.addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = this.scrollHeight + 'px';
+          });
+        });
+      }
+
+      // ── PDF Export ──
+      function generatePDF() {
+        if (document.activeElement) document.activeElement.blur();
+
+        const num      = document.getElementById('f-number').value.trim() || 'contract';
+        const filename = `pinkwebstudio-${num}.pdf`;
+
+        // Clone outside overflow containers so html2canvas captures the full document
+        const original = document.getElementById('contract');
+        const clone    = original.cloneNode(true);
+        const staging  = document.createElement('div');
+        staging.style.cssText = 'position:absolute;left:-9999px;top:0;width:794px;pointer-events:none;';
+        staging.appendChild(clone);
+
+        document.body.style.overflow = 'visible';
+        document.body.appendChild(staging);
+
+        const opt = {
+          margin: [18, 0, 18, 0],
+          filename,
+          image: { type: 'jpeg', quality: 0.99 },
+          html2canvas: {
+            scale: 2,
+            useCORS: true,
+            backgroundColor: '#F3E4E4',
+            letterRendering: true,
+            scrollX: 0,
+            scrollY: 0,
+          },
+          jsPDF: {
+            unit: 'mm',
+            format: 'a4',
+            orientation: 'portrait'
+          }
+        };
+
+        html2pdf()
+          .set(opt)
+          .from(clone)
+          .save()
+          .then(() => {
+            document.body.removeChild(staging);
+            document.body.style.overflow = 'hidden';
+          });
+      }
+
+      init();
+    </script>
+  </body>
+</html>

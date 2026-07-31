@@ -1,0 +1,175 @@
+/* ================================
+   Shared Service Page Styles
+   ================================ */
+
+.svc-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 18px 24px;
+  border-bottom: 1px solid var(--border);
+  width: 100%;
+  transition: color 200ms;
+}
+.svc-back:hover { color: var(--gold); }
+
+/* Hero */
+.svc-hero {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 80px 24px 70px;
+  border-bottom: 1px solid var(--border);
+}
+.svc-hero-label {
+  display: block;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 18px;
+}
+.svc-hero h1 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(36px, 7vw, 68px);
+  font-weight: 700;
+  font-style: normal;
+  letter-spacing: -1.5px;
+  color: var(--cream);
+  white-space: normal;
+  margin-bottom: 22px;
+  line-height: 1.05;
+}
+.svc-hero p {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.8;
+  max-width: 52ch;
+}
+
+/* Body grid */
+.svc-body {
+  max-width: var(--max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  border-bottom: 1px solid var(--border);
+}
+.svc-col {
+  padding: 52px 40px;
+  background: var(--bg-card);
+}
+.svc-col + .svc-col {
+  border-left: 1px solid var(--border);
+}
+.svc-col h3 {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 28px;
+}
+.svc-col p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.85;
+}
+
+/* Includes list */
+.svc-includes {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--border);
+}
+.svc-includes li {
+  font-size: 14px;
+  color: var(--cream);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+}
+.svc-includes li::before {
+  content: "✦";
+  color: var(--gold);
+  font-size: 9px;
+  flex-shrink: 0;
+}
+
+/* Who it's for */
+.svc-who {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 60px 24px;
+  border-bottom: 1px solid var(--border);
+}
+.svc-who h3 {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 24px;
+}
+.svc-who-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  border: 1px solid var(--border);
+}
+.svc-who-card {
+  background: var(--bg-card);
+  padding: 28px 26px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--cream);
+  transition: background 250ms;
+}
+.svc-who-card:hover { background: rgba(201,169,110,.05); }
+
+/* CTA */
+.svc-cta {
+  background: var(--bg-alt);
+  border-top: 1px solid var(--border);
+  text-align: center;
+  padding: 80px 24px;
+}
+.svc-cta h2 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(28px, 5vw, 48px);
+  font-weight: 700;
+  color: var(--cream);
+  margin: 12px 0 14px;
+  letter-spacing: -.5px;
+  line-height: 1.1;
+}
+.svc-cta h2 em { font-style: italic; color: var(--gold); }
+.svc-cta p {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 32px;
+  letter-spacing: .5px;
+}
+.svc-cta-btns {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .svc-body { grid-template-columns: 1fr; }
+  .svc-col + .svc-col { border-left: none; border-top: 1px solid var(--border); }
+  .svc-who-grid { grid-template-columns: 1fr; }
+  .svc-col { padding: 36px 24px; }
+}

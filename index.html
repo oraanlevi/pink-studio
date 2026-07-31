@@ -3,261 +3,658 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Oraan — Pink Studio</title>
-
-    <!-- Fonts -->
+    <title>Pink Web Studio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&family=Parisienne&display=swap"
-      rel="stylesheet"
-    />
-
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Poppins:wght@300;400;500&family=Parisienne&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
+    <style>
+
+      /* ── Homepage-only background ── */
+      body { background: var(--bg); }
+
+      /* ── Nav: fixed, invisible until past the hero ── */
+      .nav {
+        position: fixed;
+        width: 100%;
+        background: var(--bg);
+        border-bottom-color: var(--rule);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 600ms ease;
+      }
+      .nav.scrolled {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      /* ── Hero: full-viewport editorial poster ── */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        padding: 9vh 72px 52px;
+        border-bottom: 1px solid var(--rule);
+      }
+
+      .hero-content { flex: 1; }
+
+      .hero-headline {
+        font-family: "Cormorant Garamond", serif;
+        font-weight: 300;
+        line-height: 1.02;
+        color: var(--ink);
+        opacity: 0;
+        animation: heroFade 1.8s cubic-bezier(.16,1,.3,1) .1s forwards;
+      }
+
+      /* Each line is its own typographic object */
+      .hl-line { display: block; }
+
+      /* "Creative direction," — wide, dominant, anchors top-left */
+      .hl-1 {
+        font-size: clamp(40px, 8.4vw, 140px);
+        letter-spacing: -1px;
+      }
+
+      /* "visual identity," — small, floated right, reads as a caption to line 1 */
+      .hl-2 {
+        font-size: clamp(16px, 2.6vw, 44px);
+        margin-left: 44%;
+        margin-top: 0.18em;
+        font-style: italic;
+        letter-spacing: 0;
+      }
+
+      /* "and custom websites" — medium bridge line, slightly indented */
+      .hl-3 {
+        font-size: clamp(26px, 4.6vw, 78px);
+        margin-left: 7%;
+        margin-top: 0.7em;
+        letter-spacing: -.5px;
+      }
+
+      /* "for businesses" — small, left, sets up the pivot */
+      .hl-4 {
+        font-size: clamp(13px, 2vw, 34px);
+        margin-top: 0.9em;
+        letter-spacing: .5px;
+        opacity: .55;
+      }
+
+      /* "entering" — the poster anchor. One word at full scale. */
+      .hl-5 {
+        font-size: clamp(56px, 13.5vw, 224px);
+        font-style: italic;
+        line-height: 0.94;
+        margin-top: 0.02em;
+        letter-spacing: -2px;
+      }
+
+      /* "their next chapter." — small, right-aligned, the eye sweeps right */
+      .hl-6 {
+        font-size: clamp(14px, 2.2vw, 38px);
+        text-align: right;
+        margin-top: 0.3em;
+        letter-spacing: .2px;
+        opacity: .7;
+      }
+
+      /* ── Hero colophon ── */
+      .hero-colophon {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        align-items: end;
+        padding-top: 48px;
+        opacity: 0;
+        animation: heroFade .8s cubic-bezier(.16,1,.3,1) 1.1s forwards;
+      }
+
+      .hc-left,
+      .hc-center,
+      .hc-right {
+        font-family: "Poppins", sans-serif;
+        font-size: 11px;
+        font-weight: 400;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: rgba(26,25,23,.52);
+        line-height: 2.1;
+      }
+      .hc-center { text-align: center; }
+      .hc-right  { text-align: right; }
+
+      .hc-right a {
+        color: inherit;
+        text-decoration: none;
+        display: block;
+        transition: color 200ms;
+      }
+      .hc-right a:hover { color: var(--ink); }
+
+      @keyframes heroFade {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+      }
+
+      /* ── Work Grid ── */
+      .work-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        border-bottom: 1px solid var(--rule);
+      }
+
+      .wg-item {
+        position: relative;
+        overflow: hidden;
+        display: block;
+        aspect-ratio: 4 / 3;
+        border-bottom: 1px solid var(--rule);
+      }
+      .wg-item:nth-child(odd)  { border-right: 1px solid var(--rule); }
+      .wg-item:nth-child(3),
+      .wg-item:nth-child(4)    { border-bottom: none; }
+
+      .wg-img {
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-position: center;
+        transition: transform 1.4s cubic-bezier(.16,1,.3,1);
+      }
+      .wg-item:hover .wg-img { transform: scale(1.04); }
+
+      .wg-label {
+        position: absolute;
+        bottom: 0; left: 0; right: 0;
+        padding: 80px 36px 30px;
+        background: linear-gradient(to bottom, transparent, rgba(16,14,12,.62));
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+
+      .wg-name {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(20px, 2.2vw, 32px);
+        font-weight: 300;
+        color: #fff;
+        letter-spacing: -.2px;
+        line-height: 1;
+      }
+
+      .wg-cat {
+        font-family: "Poppins", sans-serif;
+        font-size: 9px;
+        font-weight: 400;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        color: rgba(255,255,255,.55);
+      }
+
+      .wg-arrow {
+        font-size: 11px;
+        color: rgba(255,255,255,.5);
+        margin-top: 8px;
+        display: inline-block;
+        transform: translateY(4px);
+        opacity: 0;
+        transition: opacity .4s cubic-bezier(.16,1,.3,1), transform .4s cubic-bezier(.16,1,.3,1);
+      }
+      .wg-item:hover .wg-arrow { opacity: 1; transform: translateY(0); }
+
+      .work-view-all {
+        display: flex;
+        justify-content: center;
+        padding: 28px 36px;
+        border-bottom: 1px solid var(--rule);
+      }
+      .work-view-all a {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 15px;
+        font-weight: 400;
+        letter-spacing: 7px;
+        text-transform: uppercase;
+        color: var(--ink);
+        transition: opacity 250ms;
+      }
+      .work-view-all a:hover { opacity: .5; }
+
+      /* ── Services ── */
+      .services-section {
+        background: url('assets/marble.png') center/cover no-repeat;
+        border-bottom: 1px solid rgba(180,130,125,.3);
+        padding: 120px 64px 140px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .services-label {
+        font-size: 16px;
+        font-weight: 500;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        color: var(--ink);
+        display: block;
+        margin-bottom: 32px;
+      }
+      .services-body {
+        font-family: "Poppins", sans-serif;
+        font-size: 22px;
+        font-weight: 300;
+        color: var(--ink);
+        line-height: 2.2;
+        max-width: 56ch;
+        letter-spacing: .1px;
+      }
+
+      /* ── Live Work ── */
+      .live-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        border-bottom: 1px solid var(--rule);
+      }
+      .live-left {
+        padding: 80px 72px;
+        background: url('assets/marble.png') center/cover no-repeat;
+        border-right: 1px solid rgba(255,255,255,0.4);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 36px;
+      }
+      .live-heading {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(32px, 3.5vw, 56px);
+        font-weight: 300;
+        font-style: italic;
+        color: var(--ink);
+        letter-spacing: -.3px;
+        line-height: 1.05;
+        display: block;
+      }
+      .live-right {
+        padding: 80px 72px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .live-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 18px 20px;
+        border: 1px solid transparent;
+        border-bottom-color: var(--rule);
+        text-decoration: none;
+        color: inherit;
+        transition: border-color 300ms, background 300ms, padding 300ms cubic-bezier(.16,1,.3,1);
+        margin-bottom: -1px;
+      }
+      .live-row:first-child { border-top-color: var(--rule); }
+      .live-row:hover { border-color: var(--ink); background: rgba(255,255,255,0.55); padding-left: 28px; padding-right: 28px; }
+      .live-row-name { font-family: "Cormorant Garamond", serif; font-size: clamp(17px, 1.6vw, 22px); font-weight: 300; color: var(--ink); }
+      .live-row-cat { font-size: 7.5px; font-weight: 500; letter-spacing: 2.5px; text-transform: uppercase; color: var(--ink-3); }
+      .live-row-arrow { font-size: 11px; color: var(--ink-3); flex-shrink: 0; transition: transform 300ms cubic-bezier(.16,1,.3,1), color 300ms; }
+      .live-row:hover .live-row-arrow { transform: translate(3px, -3px); color: var(--ink); }
+
+      /* ── Enter the Studio Section ── */
+      .studio-section {
+        display: grid;
+        grid-template-columns: 55% 45%;
+        min-height: 100vh;
+        border-top: 1px solid var(--rule);
+        background: var(--bg);
+      }
+
+      .ss-img-pane { position: relative; overflow: hidden; }
+      .ss-img-layer {
+        position: absolute; inset: 0;
+        background-size: cover; background-position: center;
+        opacity: 0;
+        transition: opacity 1.4s cubic-bezier(.16,1,.3,1);
+      }
+      .ss-img-layer.ss-img-active { opacity: 1; }
+
+      /* Left: editorial poster pane */
+      .ss-form-pane {
+        position: relative;
+        border-right: 1px solid var(--rule);
+        overflow: hidden;
+      }
+
+      /* Each element is independently placed */
+      .ss-idle-eyebrow {
+        position: absolute;
+        top: 52px;
+        left: 72px;
+        font-family: "Poppins", sans-serif;
+        font-size: 9px;
+        font-weight: 400;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        color: var(--ink-3);
+      }
+
+      /* "Welcome." — the focal word */
+      .ss-idle-headline {
+        position: absolute;
+        top: 38%;
+        left: 72px;
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(64px, 11vw, 178px);
+        font-weight: 300;
+        font-style: italic;
+        color: var(--ink);
+        line-height: 0.95;
+        letter-spacing: -3px;
+        margin: 0;
+        white-space: nowrap;
+      }
+
+      /* Body — small, right-aligned, lower quadrant */
+      .ss-idle-desc {
+        position: absolute;
+        bottom: 22%;
+        right: 72px;
+        text-align: right;
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(15px, 1.35vw, 20px);
+        font-weight: 300;
+        font-style: italic;
+        color: var(--ink-2);
+        line-height: 1.75;
+        max-width: 26ch;
+        margin: 0;
+      }
+
+      /* CTA — small, absolute bottom-left */
+      .ss-cta {
+        position: absolute;
+        bottom: 52px;
+        left: 72px;
+        font-family: "Poppins", sans-serif;
+        font-size: 9px;
+        font-weight: 400;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: var(--ink);
+        text-decoration: none;
+        transition: letter-spacing 400ms, color 300ms;
+      }
+      .ss-cta:hover { letter-spacing: 6px; color: var(--ink-2); }
+
+      @media (max-width: 860px) {
+        .studio-section { grid-template-columns: 1fr; min-height: auto; }
+        /* Welcome section — mobile recomposition */
+        .ss-form-pane { min-height: 72vw; display: flex; flex-direction: column; padding: 36px 28px 40px; border-right: none; border-bottom: none; order: 1; }
+        .ss-idle-eyebrow { position: static; }
+        .ss-idle-headline { position: static; font-size: clamp(72px, 22vw, 120px); letter-spacing: -3px; white-space: nowrap; line-height: 0.95; margin-top: 0.15em; }
+        .ss-idle-desc { position: static; text-align: right; font-size: clamp(14px, 3.8vw, 18px); max-width: 22ch; line-height: 1.65; margin-top: 0.55em; margin-left: auto; }
+        .ss-cta { position: static; margin-top: auto; padding-top: 28px; }
+        .ss-img-pane { min-height: 66vw; order: 2; border-top: 1px solid var(--rule); }
+      }
+
+
+      /* ── Image Strip ── */
+      .img-strip {
+        overflow-x: scroll;
+        overflow-y: hidden;
+        border-top: 1px solid var(--rule);
+        border-bottom: 1px solid var(--rule);
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+        cursor: grab;
+      }
+      .img-strip::-webkit-scrollbar { display: none; }
+      .img-strip:active { cursor: grabbing; }
+      .img-strip-track { display: flex; width: max-content; }
+      .img-strip-item {
+        flex-shrink: 0;
+        width: 520px;
+        height: 380px;
+        overflow: hidden;
+        border-right: 1px solid var(--rule);
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 1s cubic-bezier(.16,1,.3,1), transform 1s cubic-bezier(.16,1,.3,1);
+      }
+      .img-strip-item.popped { opacity: 1; transform: translateY(0); }
+      .img-strip-item img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+
+
+      /* ── Mobile ── */
+      @media (max-width: 860px) {
+
+        /* Hero */
+        .nav { position: fixed; }
+        .hero { padding: 72px 24px 40px; min-height: auto; }
+        .hero-content { flex: 0 0 auto; }
+        .hero-colophon { margin-top: 40px; }
+        /* Hero recomposition — not a scaled-down desktop, a rebuilt mobile canvas */
+        .hl-1 { font-size: clamp(36px, 10vw, 72px); }
+        .hl-2 { font-size: clamp(14px, 3.5vw, 22px); margin-left: 0; margin-top: 0.3em; text-align: right; }
+        .hl-3 { font-size: clamp(22px, 6vw, 44px); margin-left: 3%; margin-top: 0.65em; }
+        .hl-4 { font-size: clamp(12px, 3vw, 20px); margin-top: 0.8em; }
+        .hl-5 { font-size: clamp(68px, 20vw, 108px); letter-spacing: -2px; }
+        .hl-6 { font-size: clamp(16px, 4vw, 26px); text-align: right; margin-top: 0.4em; }
+        .hero-colophon { grid-template-columns: 1fr 1fr; font-size: 10px; letter-spacing: 3px; }
+        .hc-center { display: none; }
+
+        /* Work Grid */
+        .work-grid { grid-template-columns: 1fr; }
+        .wg-item:nth-child(odd)  { border-right: none; }
+        .wg-item:nth-child(3),
+        .wg-item:nth-child(4) { border-bottom: 1px solid var(--rule); }
+        .wg-item:last-child { border-bottom: none; }
+        .wg-arrow { opacity: 1; transform: translateY(0); }
+
+        /* Why We Exist */
+        .services-section { padding: 64px 28px 72px; }
+        .services-body { font-size: 17px; line-height: 1.9; }
+        .hide-mobile { display: none; }
+
+        /* Live Work — show both columns stacked, keep client list visible */
+        .live-section { grid-template-columns: 1fr; }
+        .live-left { padding: 56px 28px 64px; border-right: none; border-bottom: 1px solid var(--rule); }
+        .live-right { padding: 48px 28px 64px; display: flex; align-items: flex-start; }
+        .live-row-cat { display: block; }
+        .live-row { padding: 16px 0; }
+        .live-row-name { font-size: clamp(16px, 4vw, 20px); }
+
+        /* Enter the Studio */
+        .marble-strip { display: none; }
+
+      }
+    </style>
   </head>
+  <body>
+    <div class="scroll-bar" id="scrollBar"></div>
 
-  <body class="preload">
-    <!-- Soft floating sparkles -->
-    <div class="sparkle-layer" aria-hidden="true"></div>
-<!-- Jewelry Box Intro Overlay -->
-<div id="introOverlay" class="intro-overlay">
-  <div class="intro-card">
-
-    <div class="jewelry-box">
-      <div class="jewel-lid"></div>
-      <div class="jewel-base">
-        <div class="jewel-glow"></div>
-        <div class="jewel-gem"></div>
+    <nav class="nav" id="mainNav">
+      <a class="nav-brand" href="/">Pink Web Studio</a>
+      <div class="nav-links">
+        <a href="/work">Work</a>
+        <a href="/about">About</a>
+        <a href="/connect">Contact</a>
+        <a href="/connect">Work with me</a>
       </div>
+      <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+    <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+      <a href="/work">Work</a>
+      <a href="/about">About</a>
+      <a href="/connect">Contact</a>
     </div>
 
-    <p class="intro-kicker">a little gift for you 💗</p>
-    <p class="intro-sub">Click to open</p>
-
-    <button id="openStudioBtn" class="btn intro-btn">
-      Open ✨
-    </button>
-
-    <button id="skipIntroBtn" class="intro-skip">
-      skip next time
-    </button>
-
-  </div>
-</div>
-
-
-
-<header class="hero video-hero">
-    <!-- Background Video -->
-<video class="hero-video" autoplay muted loop playsinline>
-  <source src="assets/hero.mp4" type="video/mp4" />
-</video>
-
-      <nav class="topbar reveal delay-1">
-        <div class="brand">
-          <span class="brand-mark">✦</span>
-          <span class="brand-name">Oraan Studio</span>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1 class="hero-headline">
+          <span class="hl-line hl-1">Creative direction,</span>
+          <span class="hl-line hl-2">visual identity,</span>
+          <span class="hl-line hl-3">and custom websites</span>
+          <span class="hl-line hl-4">for businesses</span>
+          <span class="hl-line hl-5">entering</span>
+          <span class="hl-line hl-6">their next chapter.</span>
+        </h1>
+      </div>
+      <div class="hero-colophon">
+        <div class="hc-left">
+          Pink Web Studio<br>
+          LA, CA
         </div>
-
-        <div class="nav-links">
-          <a href="#studio">Studio</a>
-          <a href="#gallery">Gallery</a>
-          <a href="#links">Links</a>
-          <a class="btn btn-small" href="#contact">Say hi</a>
+        <div class="hc-center">
+          From Concept<br>
+          Through Code<br>
+          To Launch
         </div>
-      </nav>
-
-      <section class="hero-inner reveal delay-2">
-        <p class="kicker">💋 Welcome</p>
-        <h1>Pink Studio</h1>
-        <p class="sub">
-          I’m <strong>Oraan</strong> creative developer & brand builder.
-          <span class="sub-soft">Soft luxury. Sharp execution.</span>
-        </p>
-
-        <div class="hero-actions">
-          <a class="btn" href="#studio">Enter my studio</a>
-          <a class="btn btn-ghost" href="#links">My links</a>
+        <div class="hc-right">
+          <a href="/work">Work</a>
+          <a href="/about">About</a>
+          <a href="/connect">Contact</a>
+          <a href="/connect">Work With Me</a>
         </div>
+      </div>
+    </section>
 
-            <div class="polaroid-caption">
-              <span class="caption">designer • dev • dreamy</span>
-            </div>
-          </div>
-      </section>
-    </header>
-
-    <main>
-      <!-- Dollhouse Rooms -->
-      <section id="studio" class="section reveal delay-1">
-        <div class="section-head">
-          <h2>Enter the dollhouse</h2>
+    <!-- Work Grid -->
+    <section class="work-grid">
+      <a class="wg-item" href="/west-and-stone">
+        <div class="wg-img" style="background-image:url('assets/stone.png')"></div>
+        <div class="wg-label">
+          <span class="wg-name">West &amp; Stone</span>
+          <span class="wg-cat">Luxury Real Estate</span>
+          <span class="wg-arrow">↗&#xFE0E;</span>
         </div>
+      </a>
+      <a class="wg-item" href="/le-loup">
+        <div class="wg-img" style="background-image:url('assets/loup.png')"></div>
+        <div class="wg-label">
+          <span class="wg-name">Le Loup</span>
+          <span class="wg-cat">Private Members Club</span>
+          <span class="wg-arrow">↗&#xFE0E;</span>
+        </div>
+      </a>
+      <a class="wg-item" href="/celeste">
+        <div class="wg-img" style="background-image:url('assets/spa.png')"></div>
+        <div class="wg-label">
+          <span class="wg-name">Céleste Med Spa</span>
+          <span class="wg-cat">Medical Aesthetics</span>
+          <span class="wg-arrow">↗&#xFE0E;</span>
+        </div>
+      </a>
+      <a class="wg-item" href="/june-house">
+        <div class="wg-img" style="background-image:url('assets/resort.png')"></div>
+        <div class="wg-label">
+          <span class="wg-name">June House</span>
+          <span class="wg-cat">Interior Design Studio</span>
+          <span class="wg-arrow">↗&#xFE0E;</span>
+        </div>
+      </a>
+    </section>
+    <div class="work-view-all">
+      <a href="/work">View all work ↗&#xFE0E;</a>
+    </div>
 
-        <div class="rooms">
-          <a class="room" href="#links">
-            <div class="room-icon">🪞</div>
-            <div>
-              <h3>Vanity</h3>
-              <p>All my links + socials</p>
-            </div>
-            <span class="room-tag">open door →</span>
+    <!-- Services -->
+    <section class="services-section">
+      <span class="services-label reveal">Why we exist</span>
+      <p class="services-body reveal d1">I design like I'm creating a place, not a page.</p>
+      <p class="services-body reveal d2" style="margin-top:24px;">I believe a website should feel like stepping into a space that's been thoughtfully designed. Every detail matters, even the ones people don't consciously notice.</p>
+      <p class="services-body reveal d3" style="margin-top:24px;">That's why I design and build everything myself, from the first idea to the final line of code, so every decision works together as one experience.</p>
+      <p class="services-body reveal d4" style="margin-top:24px;">The goal isn't just to make something beautiful.</p>
+      <p class="services-body reveal d5" style="margin-top:16px;">It's to create something people remember.</p>
+    </section>
+
+    <!-- Enter the Studio -->
+    <section class="studio-section" id="studioSection">
+
+      <!-- Left: Editorial poster -->
+      <div class="ss-form-pane">
+        <span class="ss-idle-eyebrow">The Studio</span>
+        <h2 class="ss-idle-headline">Welcome.</h2>
+        <p class="ss-idle-desc">Every project begins<br>with a conversation.</p>
+        <a class="ss-cta" href="/connect">Enter the Studio ↗&#xFE0E;</a>
+      </div>
+
+      <!-- Right: auto-rotating images -->
+      <div class="ss-img-pane" id="ssImgPane">
+        <div class="ss-img-layer ss-img-active" style="background-image:url('assets/gym.png')"></div>
+        <div class="ss-img-layer" style="background-image:url('assets/fashion.png')"></div>
+        <div class="ss-img-layer" style="background-image:url('assets/fashionoutside.png')"></div>
+        <div class="ss-img-layer" style="background-image:url('assets/resort.png')"></div>
+        <div class="ss-img-layer" style="background-image:url('assets/mall.png')"></div>
+        <div class="ss-img-layer" style="background-image:url('assets/marble.png')"></div>
+      </div>
+
+    </section>
+
+    <!-- Marble strip -->
+    <div class="reveal" style="height:180px;background:url('assets/marble.png') center/cover no-repeat;border-bottom:1px solid var(--rule);"></div>
+
+    <footer class="site-footer">
+      <div class="footer-brand-wrap">
+        <span class="footer-brand">Pink Web Studio</span>
+        <span class="footer-brand-sub">Los Angeles &middot; Currently Booking</span>
+      </div>
+      <div class="footer-social">
+        <div class="footer-social-icons">
+          <a href="https://instagram.com/oraanlevi" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor" stroke="none"/></svg>
           </a>
-
-          <a class="room" href="#projects">
-            <div class="room-icon">🧁</div>
-            <div>
-              <h3>Kitchen</h3>
-              <p>What I’m cooking up</p>
-            </div>
-            <span class="room-tag">peek →</span>
-          </a>
-
-          <a class="room" href="#about">
-            <div class="room-icon">🧵</div>
-            <div>
-              <h3>Closet</h3>
-              <p>About + skills</p>
-            </div>
-            <span class="room-tag">try on →</span>
-          </a>
-
-          <a class="room" href="#gallery">
-            <div class="room-icon">📸</div>
-            <div>
-              <h3>Photo Wall</h3>
-              <p>My pics & vibes</p>
-            </div>
-            <span class="room-tag">tap →</span>
-          </a>
-
-          <a class="room" href="#contact">
-            <div class="room-icon">💌</div>
-            <div>
-              <h3>Desk</h3>
-              <p>Contact me</p>
-            </div>
-            <span class="room-tag">write →</span>
+          <a href="https://www.linkedin.com/in/oraan-levi-898a89200/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
           </a>
         </div>
-      </section>
-
-      <!-- Projects -->
-      <section id="projects" class="section section-alt reveal delay-2">
-        <div class="section-head">
-          <h2>Kitchen</h2>
-        </div>
-
-        <div class="cards">
-          <article class="card">
-            <h3>Once Upon You</h3>
-            <p>Custom coloring books + brand storytelling.</p>
-            <a class="text-link" href="#links">View link →</a>
-          </article>
-
-          <article class="card">
-            <h3>Web builds</h3>
-            <p>Shopify + custom sites with clean UI.</p>
-            <a class="text-link" href="#contact">Work with me →</a>
-          </article>
-
-          <article class="card">
-            <h3>Studio experiments</h3>
-            <p>Little mini apps, landing pages, cute components.</p>
-            <a class="text-link" href="#gallery">See vibes →</a>
-          </article>
-        </div>
-      </section>
-
-      <!-- About -->
-      <section id="about" class="section reveal delay-3">
-        <div class="section-head">
-          <h2>Closet</h2>
-          <p class="section-sub">short, sweet, and useful.</p>
-        </div>
-
-        <div class="about-grid">
-          <div class="about-box">
-            <h3>Hi, I’m Oraan 💗</h3>
-            <p>
-              I build playful, digital experiences that still feel premium. I love
-              turning ideas into clean, clickable reality.
-            </p>
-            <div class="chips">
-              <span class="chip">HTML</span>
-              <span class="chip">CSS</span>
-              <span class="chip">JavaScript</span>
-              <span class="chip">Shopify</span>
-              <span class="chip">Branding</span>
-            </div>
-          </div>
-
-          <div class="about-box">
-            <h3>Quick facts</h3>
-            <ul class="pretty-list">
-              <li>Based in the US ✨</li>
-              <li>Passionate Coder ✨</li>
-              <li>Vintage Shopper ✨</li>
-              <li>Events! ✨</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <!-- Gallery -->
-      <section id="gallery" class="section section-alt reveal delay-4">
-        <div class="section-head">
-          <h2>Photo Wall</h2>
-          <p class="section-sub"></p>
-        </div>
-
-        <div class="gallery">
-          <div class="photo tilt-left" style="background-image:url('assets/g1.jpg')"></div>
-          <div class="photo tilt-right" style="background-image:url('assets/g2.jpg')"></div>
-          <div class="photo tilt-left" style="background-image:url('assets/g3.jpg')"></div>
-          <div class="photo tilt-right" style="background-image:url('assets/g4.jpg')"></div>
-        </div>
-      </section>
-
-      <!-- Links -->
-      <section id="links" class="section reveal delay-4">
-        <div class="section-head">
-          <h2>Vanity</h2>
-          <p class="section-sub">All the cute ways to find me.</p>
-        </div>
-
-        <div class="link-grid">
-          <a class="link-card" href="https://instagram.com/oraanlevi" target="_blank" rel="noreferrer">Instagram</a>
-          <a class="link-card" href="https://shabonla.myshopify.com" target="_blank" rel="noreferrer">Shop</a>
-          <a class="link-card" href="https://www.insidr.app" target="_blank" rel="noreferrer">Insidr</a>
-        </div>
-      </section>
-
-      <!-- Contact -->
-      <section id="contact" class="section section-alt reveal delay-5">
-        <div class="section-head">
-          <h2>Desk</h2>
-          <p class="section-sub">Send a message</p>
-        </div>
-
-        <div class="contact-box">
-          <p class="contact-line">
-            <span class="script">Say hi:</span>
-            <a class="text-link" href="mailto:oraanlevi1@gmail.com">oraanlevi1@gmail.com</a>
-          </p>
-
-          <p class="tiny"></p>
-        </div>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <p>
-        <span class="script">made with</span> 💗
-        <span class="script">in my studio</span>
-      </p>
+        <a href="mailto:studio@pinkwebstudio.com" class="footer-email">studio@pinkwebstudio.com</a>
+      </div>
     </footer>
 
-    <script src="script.js"></script>
+
+    <script>
+      const nav = document.getElementById("mainNav");
+      const bar = document.getElementById("scrollBar");
+      const hero = document.querySelector(".hero");
+      window.addEventListener("scroll", () => {
+        const threshold = hero ? hero.offsetHeight - 60 : window.innerHeight;
+        nav.classList.toggle("scrolled", window.scrollY > threshold);
+        if (bar) bar.style.width = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100) + "%";
+      }, { passive: true });
+
+      const ham = document.getElementById("navHam");
+      const mob = document.getElementById("mobileNav");
+      ham.addEventListener("click", () => {
+        const open = ham.classList.toggle("open");
+        mob.classList.toggle("open", open);
+        ham.setAttribute("aria-expanded", open);
+        mob.setAttribute("aria-hidden", !open);
+      });
+      mob.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
+        ham.classList.remove("open"); mob.classList.remove("open");
+      }));
+
+      /* Reveal */
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("visible"); io.unobserve(e.target); } });
+      }, { threshold: 0.05, rootMargin: "0px 0px -48px 0px" });
+      document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+
+      /* Rotate studio images */
+      (function() {
+        const layers = document.querySelectorAll("#ssImgPane .ss-img-layer");
+        if (!layers.length) return;
+        let cur = 0;
+        setInterval(() => {
+          layers[cur].classList.remove("ss-img-active");
+          cur = (cur + 1) % layers.length;
+          layers[cur].classList.add("ss-img-active");
+        }, 3500);
+      })();
+    </script>
   </body>
 </html>
