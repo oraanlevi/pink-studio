@@ -2,12 +2,13 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/assets/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>West &amp; Stone · Pink Web Studio</title>
+    <title>West &amp; Stone · Case Study · Pink</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Poppins:wght@300;400;500&family=Parisienne&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@300;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
     <style>
       :root {
         --bg: #EAE4DC;
@@ -18,7 +19,6 @@
       }
       body { background: var(--bg); }
 
-      /* ── Split Hero ── */
       .project-hero {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -36,10 +36,9 @@
       }
       .hero-top { display: flex; flex-direction: column; }
       .hero-title {
-        font-family: "Cormorant Garamond", serif;
-        font-size: clamp(60px, 9vw, 116px);
-        font-weight: 300;
-        font-style: normal;
+        font-family: "Oswald", "Impact", sans-serif;
+        font-size: clamp(48px, 7vw, 96px);
+        font-weight: 700;
         color: var(--ink);
         line-height: .92;
         letter-spacing: -2px;
@@ -47,78 +46,61 @@
         display: block;
       }
       .hero-tag {
-        font-family: "Poppins", sans-serif;
-        font-size: 13px;
-        font-weight: 500;
+        font-family: "Bebas Neue", "Impact", sans-serif;
+        font-size: 16px;
         letter-spacing: 4px;
         text-transform: uppercase;
         color: var(--ink-2);
         display: block;
         margin-bottom: 20px;
       }
-      .hero-cursor {
-        display: inline-block;
-        width: 2px;
-        height: .8em;
-        background: var(--ink);
-        margin-left: 4px;
-        vertical-align: middle;
-        animation: blink 900ms step-end infinite;
-      }
-      @keyframes blink { 50% { opacity: 0; } }
       .hero-desc {
-        font-size: 20px;
-        font-style: normal;
+        font-family: "Oswald", "Impact", sans-serif;
+        font-weight: 300;
+        font-size: 28px;
         color: var(--ink-2);
         line-height: 1.6;
-        white-space: nowrap;
         margin-bottom: 36px;
       }
       .hero-concept {
-        font-family: "Poppins", sans-serif;
-        font-size: 13px;
-        font-weight: 500;
+        font-family: "Bebas Neue", "Impact", sans-serif;
+        font-size: 16px;
         letter-spacing: 4px;
         text-transform: uppercase;
         color: var(--ink-2);
         display: block;
         margin-bottom: 64px;
       }
-      .hero-bottom { display: flex; flex-direction: column; gap: 16px; }
+      .hero-bottom { display: flex; flex-direction: row; gap: 28px; flex-wrap: wrap; justify-content: center; align-items: center; }
       .hero-link {
-        font-family: "Poppins", sans-serif;
-        font-size: 16px;
-        font-weight: 400;
-        letter-spacing: 1.5px;
+        font-family: "Oswald", "Impact", sans-serif;
+        font-size: 13px;
+        font-weight: 300;
+        letter-spacing: 3.5px;
         text-transform: uppercase;
         color: var(--ink);
+        text-decoration: none;
         transition: opacity 250ms;
         display: inline-block;
       }
       .hero-link:hover { opacity: .4; }
-      .hero-right {
-        position: relative;
-        overflow: hidden;
-      }
+      .hero-link--live { color: #C9607A; font-size: 15px; font-weight: 700; }
+      .hero-right { position: relative; overflow: hidden; }
       .hero-right-bg {
         position: absolute;
         inset: 0;
-        background: url('assets/stone.png') center/cover no-repeat;
+        background: url('/assets/stone.png') center/cover no-repeat;
         animation: slowZoom 18s ease-in-out infinite alternate;
       }
-      @keyframes slowZoom {
-        from { transform: scale(1.04); }
-        to   { transform: scale(1); }
-      }
+      @keyframes slowZoom { from { transform: scale(1.04); } to { transform: scale(1); } }
 
-      /* ── Editorial Cards ── */
       .cards-row {
         display: grid;
         grid-template-columns: 1fr 1fr;
         border-bottom: 1px solid var(--rule);
       }
       .ed-card {
-        padding: 96px 56px 96px;
+        padding: 96px 56px;
         border-right: 1px solid var(--rule);
         display: flex;
         flex-direction: column;
@@ -137,38 +119,64 @@
         justify-content: center;
       }
       .ed-card-label {
-        font-family: "Poppins", sans-serif;
-        font-size: 12px;
-        font-weight: 400;
+        font-family: "Oswald", "Impact", sans-serif;
+        font-size: 20px;
+        font-weight: 300;
         letter-spacing: 5px;
         text-transform: uppercase;
         color: var(--ink);
         display: block;
         margin-bottom: 36px;
       }
+      .ed-card--full .ed-card-label { font-size: 16px; letter-spacing: 6px; }
       .ed-card-lead {
-        font-family: "Poppins", sans-serif;
-        font-size: 24px;
+        font-family: "Oswald", "Impact", sans-serif;
+        font-size: 20px;
         font-weight: 300;
-        font-style: normal;
-        color: var(--ink);
-        line-height: 1.6;
-        letter-spacing: -.1px;
+        color: #4A4744;
+        line-height: 1.65;
+        letter-spacing: 2px;
         max-width: 36ch;
         margin-bottom: 0;
       }
-      .ed-card--full .ed-card-label {
-        font-size: 16px;
-        letter-spacing: 6px;
-      }
-      .ed-card--full .ed-card-lead {
-        font-size: 24px;
-        font-style: normal;
-        white-space: normal;
-        max-width: 52ch;
-        margin-bottom: 0;
-      }
+      .ed-card--full .ed-card-lead { max-width: 52ch; }
 
+      .p-video-section {
+        border-bottom: 1px solid var(--rule);
+        padding: 72px 64px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+      }
+      .p-video-heading {
+        font-family: "Bebas Neue", "Impact", sans-serif;
+        font-size: clamp(24px, 2.5vw, 40px);
+        color: var(--ink);
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        text-align: center;
+      }
+      .p-video-wrap {
+        width: 100%;
+        max-width: 1000px;
+        aspect-ratio: 16/9;
+        background: var(--ink);
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+      }
+      .p-video-wrap video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+      .p-play-btn { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 2; transition: opacity 300ms; }
+      .p-play-circle { width: 64px; height: 64px; border: 1px solid rgba(255,255,255,.35); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: border-color 250ms, transform 250ms; }
+      .p-video-wrap:hover .p-play-circle { border-color: rgba(255,255,255,.7); transform: scale(1.08); }
+      .p-video-wrap.playing .p-play-btn { opacity: 0; pointer-events: none; }
+      .p-next { padding: 64px; display: flex; align-items: center; justify-content: space-between; text-decoration: none; border-bottom: 1px solid var(--rule); transition: background 180ms; }
+      .p-next:hover { background: rgba(26,25,23,.025); }
+      .p-next-label { font-family: "Bebas Neue", "Impact", sans-serif; font-size: 12px; letter-spacing: 5px; text-transform: uppercase; color: var(--ink-3); display: block; margin-bottom: 10px; }
+      .p-next-name { font-family: "Oswald", "Impact", sans-serif; font-weight: 700; font-size: clamp(28px, 3vw, 48px); color: var(--ink); letter-spacing: -1px; display: block; }
+      .p-next-arrow { font-size: 28px; color: var(--ink-3); transition: transform 220ms ease, color 220ms; }
+      .p-next:hover .p-next-arrow { transform: translateX(6px); color: var(--ink); }
 
       @media (max-width: 860px) {
         .project-hero { grid-template-columns: 1fr; min-height: auto; }
@@ -177,8 +185,10 @@
         .cards-row { grid-template-columns: 1fr; }
         .ed-card { border-right: none; border-bottom: 1px solid var(--rule); padding: 64px 24px 72px; }
         .ed-card:last-child { border-bottom: none; }
-        .ed-card--full { padding: 64px 24px 80px; text-align: center; align-items: center; }
+        .ed-card--full { padding: 64px 24px 80px; }
         .ed-card-lead { max-width: 100%; }
+        .p-video-section { padding: 48px 24px; }
+        .p-next { padding: 40px 24px; }
       }
     </style>
   </head>
@@ -187,34 +197,37 @@
 
     <nav class="nav" id="mainNav">
       <div class="nav-links">
-        <a href="/work">Work</a>
-        <a href="/about">About</a>
-        <a href="/connect">Contact</a>
+        <a href="/work/">Work</a>
+        <a href="/services/">Services</a>
+        <a href="/products/">Products</a>
+        <a href="/studio/">Studio</a>
       </div>
-      <a class="nav-brand" href="/">Pink Web Studio</a>
-      <div class="nav-end"><a href="/connect">Work with me</a></div>
+      <a class="nav-brand" href="/">Pink</a>
+      <div class="nav-end"><a href="/contact/">Start a Project</a></div>
       <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </nav>
     <div class="mobile-nav" id="mobileNav" aria-hidden="true">
-      <a href="/work">Work</a>
-      <a href="/about">About</a>
-      <a href="/connect">Contact</a>
+      <a href="/work/">Work</a>
+      <a href="/services/">Services</a>
+      <a href="/products/">Products</a>
+      <a href="/studio/">Studio</a>
+      <a href="/contact/">Start a Project</a>
     </div>
 
     <div class="project-hero">
       <div class="hero-left reveal">
         <div class="hero-top">
-          <span class="hero-title" id="heroTitle"></span>
-          <span class="hero-tag">Luxury Real Estate</span>
           <p class="hero-desc">Private, architectural, deliberate.</p>
+          <span class="hero-title">West &amp; Stone</span>
+          <span class="hero-tag">Home Goods &amp; Interior Objects</span>
           <span class="hero-concept">Editorial Concept</span>
         </div>
         <div class="hero-bottom">
-          <a class="hero-link" href="https://pinkwebstudio.com/west-and-stone/" target="_blank" rel="noopener">View Live ↗&#xFE0E;</a>
-          <a class="hero-link" href="/work">Back to Work ↗&#xFE0E;</a>
-          <a class="hero-link" href="/connect">Start a New Project ↗&#xFE0E;</a>
+          <a class="hero-link hero-link--live" href="https://pinkwebstudio.com/west-and-stone/" target="_blank" rel="noopener">View Live →</a>
+          <a class="hero-link" href="/work/">Back to Work →</a>
+          <a class="hero-link" href="/contact/">Start a New Project →</a>
         </div>
       </div>
       <a class="hero-right" href="https://pinkwebstudio.com/west-and-stone/" target="_blank" rel="noopener" style="cursor:pointer;">
@@ -222,22 +235,34 @@
       </a>
     </div>
 
-    <!-- Editorial Cards -->
     <div class="cards-row">
       <div class="ed-card reveal">
         <span class="ed-card-label">The Challenge</span>
-        <p class="ed-card-lead">Design a luxury real estate brand that feels private instead of promotional. I wanted West and Stone to feel like a trusted advisor rather than a website filled with listings. The idea was that visitors weren't finding the firm through advertising. They were discovering it because they had already been introduced to James West. The website needed to reinforce that feeling by presenting the firm's philosophy before its properties.</p>
+        <p class="ed-card-lead">Design a luxury brand that feels like a trusted advisor rather than a listing site. Visitors weren't finding West &amp; Stone through advertising. They were being introduced. The website needed to reinforce that feeling from the first second.</p>
       </div>
       <div class="ed-card reveal">
         <span class="ed-card-label">The Approach</span>
-        <p class="ed-card-lead">Design every page like a private showing. I wanted every page to feel calm, intentional, and architectural. Large photography, generous white space, and restrained typography allow each property to speak for itself without distraction. I intentionally left out prices because the experience wasn't meant to feel transactional. It was meant to feel personal.</p>
+        <p class="ed-card-lead">Design every page like a private showing. Large photography, generous white space, and restrained typography allow each piece to speak for itself. No prices. No noise. The experience was meant to feel personal, not transactional.</p>
       </div>
     </div>
 
     <div class="ed-card--full reveal">
       <span class="ed-card-label">The Outcome</span>
-      <p class="ed-card-lead">A website that feels like access. Instead of feeling like another luxury real estate website, the experience creates the feeling of being invited into a private network. Visitors aren't simply browsing homes. They're being introduced to opportunities they wouldn't normally find, making the website feel more like a relationship than a marketplace.</p>
+      <p class="ed-card-lead">A website that feels like access. Instead of feeling like another brand site, the experience creates the feeling of being invited in. Visitors aren't simply browsing. They're being introduced to something they wouldn't normally find.</p>
     </div>
+
+    <div class="p-video-section reveal">
+      <span class="p-video-heading">See it in motion.</span>
+      <div class="p-video-wrap" id="pVideoWrap">
+        <video src="/assets/weststonespeeds.mov" muted playsinline id="pVideo"></video>
+        <div class="p-play-btn"><div class="p-play-circle"><svg width="18" height="18" viewBox="0 0 24 24" fill="rgba(255,255,255,.7)"><polygon points="6,3 20,12 6,21"/></svg></div></div>
+      </div>
+    </div>
+
+    <a class="p-next reveal" href="/celeste.html">
+      <div><span class="p-next-label">Next Project</span><span class="p-next-name">Celeste</span></div>
+      <span class="p-next-arrow">→</span>
+    </a>
 
     <footer class="site-footer">
       <div class="footer-brand-wrap">
@@ -276,20 +301,13 @@
         ham.classList.remove("open"); mob.classList.remove("open");
       }));
 
-      // Typewriter
-      const titleEl = document.getElementById("heroTitle");
-      const fullText = "West & Stone";
-      let typed = "", ti = 0;
-      function typeTitle() {
-        if (ti < fullText.length) {
-          typed += fullText[ti++];
-          titleEl.innerHTML = typed + '<span class="hero-cursor"></span>';
-          setTimeout(typeTitle, 90 + Math.random() * 50);
-        } else {
-          titleEl.textContent = fullText;
-        }
-      }
-      setTimeout(typeTitle, 400);
+      const pVideoWrap = document.getElementById("pVideoWrap");
+      const pVideo = document.getElementById("pVideo");
+      pVideoWrap.addEventListener("click", () => {
+        if (pVideo.paused) { pVideo.play(); pVideoWrap.classList.add("playing"); }
+        else { pVideo.pause(); pVideoWrap.classList.remove("playing"); }
+      });
+
 
       const io = new IntersectionObserver(entries => {
         entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("visible"); io.unobserve(e.target); } });

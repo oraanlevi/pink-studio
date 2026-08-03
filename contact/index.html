@@ -1,0 +1,648 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/assets/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Start a Project · Pink</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@300;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+    <style>
+
+      /* ── Hero ── */
+      .contact-hero {
+        position: relative;
+        height: 82vh;
+        overflow: hidden;
+      }
+      .contact-hero-img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 30%;
+        opacity: 0.72;
+      }
+      .contact-hero-content {
+        position: relative;
+        z-index: 1;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 0 56px 48px;
+      }
+      .contact-eyebrow {
+        font-family: "Oswald", "Bebas Neue", "Impact", sans-serif;
+        font-weight: 300;
+        font-size: clamp(48px, 10.5vw, 135px);
+        text-transform: uppercase;
+        letter-spacing: -2px;
+        color: var(--ink-3);
+        line-height: 0.9;
+        display: block;
+        margin-bottom: 8px;
+        opacity: 0;
+        transform: translateY(32px);
+        transition: opacity 900ms cubic-bezier(.16,1,.3,1), transform 900ms cubic-bezier(.16,1,.3,1);
+      }
+      .contact-headline {
+        font-family: "Oswald", "Bebas Neue", "Impact", sans-serif;
+        font-weight: 700;
+        font-size: clamp(48px, 10.5vw, 135px);
+        text-transform: uppercase;
+        letter-spacing: -2px;
+        color: var(--ink);
+        line-height: 0.9;
+        margin: 0 0 24px;
+        opacity: 0;
+        transform: translateY(32px);
+        transition: opacity 900ms cubic-bezier(.16,1,.3,1), transform 900ms cubic-bezier(.16,1,.3,1);
+      }
+      .contact-hero-email {
+        font-family: "Bebas Neue", "Impact", sans-serif;
+        font-size: 40px;
+        letter-spacing: 1px;
+        color: var(--ink);
+        text-decoration: none;
+        display: block;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 700ms cubic-bezier(.16,1,.3,1), transform 700ms cubic-bezier(.16,1,.3,1);
+      }
+      .contact-hero-email:hover { opacity: .55 !important; }
+      .contact-eyebrow.in  { opacity: 1; transform: none; }
+      .contact-headline.in { opacity: 1; transform: none; }
+      .contact-hero-email.in { opacity: 1; transform: none; }
+
+      /* ── Paths ── */
+      .contact-paths {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding: 72px 56px 64px;
+        gap: 80px;
+      }
+
+      .path-call {
+        display: block;
+        text-decoration: none;
+      }
+
+      .path-form {
+        padding: 0;
+      }
+
+      .path-label {
+        font-family: "Oswald", "Impact", sans-serif;
+        font-size: 22px;
+        color: var(--ink-3);
+        display: block;
+        margin-bottom: 24px;
+        letter-spacing: 0;
+        text-transform: none;
+      }
+      .path-heading {
+        font-family: "Oswald", "Impact", sans-serif;
+        font-size: clamp(22px, 2.4vw, 36px);
+        color: var(--ink);
+        line-height: 1;
+        display: block;
+        margin-bottom: 10px;
+      }
+      .path-cta {
+        font-family: "Oswald", "Impact", sans-serif;
+        font-size: 22px;
+        color: var(--ink-2);
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: color 220ms;
+      }
+      .path-call:hover .path-cta { color: var(--ink); }
+      .path-cta-arrow { transition: transform 220ms ease; display: inline-block; }
+      .path-call:hover .path-cta-arrow { transform: translateX(4px); }
+
+      /* Form */
+      .form-field { margin-bottom: 20px; }
+      .form-field textarea {
+        width: 100%;
+        background: transparent;
+        border: 2px solid var(--ink-2);
+        padding: 16px;
+        font-family: "Bebas Neue", "Impact", sans-serif;
+        font-size: 13px;
+        color: var(--ink);
+        outline: none;
+        resize: none;
+        min-height: 160px;
+        transition: border-color 300ms;
+        -webkit-appearance: none;
+        border-radius: 8px;
+        display: block;
+      }
+      .form-field textarea:focus { border-color: var(--ink); }
+
+      .form-submit {
+        background: none;
+        border: none;
+        font-family: "Oswald", "Impact", sans-serif;
+        font-size: 22px;
+        color: var(--ink-2);
+        cursor: pointer;
+        padding: 0;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: color 220ms;
+        margin-top: 8px;
+      }
+      .form-submit:hover { color: var(--ink); }
+      .form-submit .btn-arrow { transition: transform 220ms ease; display: inline-block; }
+      .form-submit:hover .btn-arrow { transform: translateX(4px); }
+
+      #contactSuccess {
+        display: none;
+        font-family: "Oswald", "Impact", sans-serif;
+        font-size: 24px;
+        color: var(--ink-2);
+        margin-top: 16px;
+      }
+
+      /* ── Direct ── */
+      .contact-direct {
+        padding: 0 56px 72px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .contact-direct-label {
+        font-family: "Bebas Neue", "Impact", sans-serif;
+        font-size: 9px;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: var(--ink-3);
+      }
+      .contact-direct-email {
+        font-family: "Bebas Neue", "Impact", sans-serif;
+        font-size: 14px;
+        color: var(--ink);
+        text-decoration: none;
+        letter-spacing: .3px;
+        transition: opacity 220ms;
+      }
+      .contact-direct-email:hover { opacity: .5; }
+
+      /* ── Pricing ── */
+      .contact-pricing {
+        padding: 72px 56px 64px;
+        border-top: 1px solid var(--rule);
+      }
+      .pricing-label {
+        font-family: "Bebas Neue", "Impact", sans-serif;
+        font-size: 16px;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: #e8a0b0;
+        display: block;
+        margin-bottom: 32px;
+      }
+      .pricing-items {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0;
+      }
+      .pricing-item {
+        border-right: 1px solid var(--rule);
+        padding-right: 40px;
+        padding-left: 0;
+      }
+      .pricing-item:first-child { padding-left: 0; }
+      .pricing-item:last-child { border-right: none; padding-left: 40px; }
+      .pricing-item:not(:first-child):not(:last-child) { padding-left: 40px; }
+      .pricing-name {
+        font-family: "Bebas Neue", "Impact", sans-serif;
+        font-size: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #e8a0b0;
+        display: block;
+        margin-bottom: 10px;
+      }
+      .pricing-amount {
+        font-family: "Oswald", "Impact", sans-serif;
+        font-weight: 300;
+        font-size: clamp(24px, 2.8vw, 42px);
+        color: var(--ink);
+        letter-spacing: -1px;
+        display: block;
+      }
+
+      /* ── Process ── */
+      .contact-process {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        border-bottom: 1px solid var(--rule);
+      }
+      .process-step {
+        padding: 56px 56px 52px;
+        border-right: 1px solid var(--rule);
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+      .process-step:last-child { border-right: none; }
+      .process-num {
+        font-family: "Bebas Neue", "Impact", sans-serif;
+        font-size: 9px;
+        letter-spacing: 4px;
+        color: var(--ink-3);
+      }
+      .process-text {
+        font-family: "Oswald", "Impact", sans-serif;
+        font-weight: 300;
+        font-size: clamp(20px, 2vw, 30px);
+        color: var(--ink);
+        letter-spacing: -0.5px;
+        line-height: 1;
+      }
+
+      /* ── Showcase ── */
+      .contact-showcase {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        min-height: 520px;
+        border-top: 1px solid var(--rule);
+      }
+      .showcase-left {
+        padding: 72px 56px;
+        border-right: 1px solid var(--rule);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 28px;
+      }
+      .showcase-quote-text {
+        font-family: "Oswald", "Impact", sans-serif;
+        font-weight: 300;
+        font-size: clamp(20px, 2.2vw, 32px);
+        color: var(--ink);
+        line-height: 1.3;
+        letter-spacing: -0.5px;
+        display: block;
+      }
+      .showcase-quote-name {
+        font-family: "Oswald", "Impact", sans-serif;
+        font-weight: 300;
+        font-size: 20px;
+        letter-spacing: 2px;
+        color: #f2a7be;
+      }
+      .showcase-right {
+        position: relative;
+        overflow: hidden;
+        min-height: 520px;
+      }
+      .showcase-frame {
+        position: absolute;
+        width: 54%;
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.04);
+        opacity: 0.72;
+        transition: opacity 480ms ease, transform 480ms ease, box-shadow 480ms ease;
+        cursor: default;
+      }
+      .showcase-frame:hover {
+        opacity: 1;
+        transform: scale(1.04) !important;
+        box-shadow: 0 12px 48px rgba(0,0,0,0.13), 0 2px 8px rgba(0,0,0,0.06);
+        z-index: 10 !important;
+      }
+      .showcase-right:has(.showcase-frame:hover) .showcase-frame:not(:hover) { opacity: 0.38; }
+      .frame-chrome {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        padding: 8px 12px;
+        border-bottom: 1px solid #eee;
+        background: #f7f7f5;
+        border-radius: 6px 6px 0 0;
+      }
+      .frame-dot {
+        width: 7px; height: 7px;
+        border-radius: 50%;
+        background: #ddd;
+        flex-shrink: 0;
+      }
+      .frame-url {
+        flex: 1;
+        height: 14px;
+        background: #e8e8e6;
+        border-radius: 3px;
+        margin-left: 6px;
+      }
+      .frame-img {
+        width: 100%;
+        display: block;
+        aspect-ratio: 16/10;
+        object-fit: cover;
+        object-position: top center;
+        border-radius: 0 0 5px 5px;
+      }
+      .showcase-frame:nth-child(1) { top: 8%;  left: 5%;  z-index: 4; transform: rotate(-1.5deg); }
+      .showcase-frame:nth-child(2) { top: 22%; left: 34%; z-index: 3; transform: rotate(1deg); }
+      .showcase-frame:nth-child(3) { top: 44%; left: 10%; z-index: 2; transform: rotate(0.5deg); }
+      .showcase-frame:nth-child(4) { top: 54%; left: 37%; z-index: 1; transform: rotate(-0.8deg); }
+
+      /* ── Payments FAQ ── */
+      .contact-faq {
+        border-top: 1px solid var(--rule);
+        padding: 72px 56px 64px;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+      .faq-item {
+        padding: 40px 0;
+        border-bottom: 1px solid var(--rule);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+        align-items: start;
+      }
+      .faq-item:first-child { padding-top: 0; }
+      .faq-item:last-child { border-bottom: none; padding-bottom: 0; }
+      .faq-q {
+        font-family: "Oswald", "Impact", sans-serif;
+        font-weight: 300;
+        font-size: clamp(18px, 2vw, 28px);
+        color: var(--ink-2);
+        letter-spacing: -0.3px;
+      }
+      .faq-a {
+        font-family: "Oswald", "Impact", sans-serif;
+        font-weight: 300;
+        font-size: clamp(18px, 2vw, 28px);
+        color: var(--ink);
+        letter-spacing: -0.3px;
+        line-height: 1.4;
+      }
+
+      .leave-review-link {
+        font-family: "Oswald", "Impact", sans-serif;
+        font-weight: 300;
+        font-size: 22px;
+        letter-spacing: 1px;
+        color: #f2a7be;
+        text-decoration: none;
+        display: block;
+        margin-top: 32px;
+        text-align: right;
+        transition: opacity 220ms;
+      }
+      .leave-review-link:hover { opacity: .6; }
+
+      /* ── Mobile ── */
+      @media (max-width: 860px) {
+        .contact-hero { height: 44vw; }
+        .contact-hero-content { padding: 0 24px 36px; }
+        .contact-paths { grid-template-columns: 1fr; }
+        .contact-paths { padding: 48px 24px 48px; gap: 56px; }
+        .contact-direct { padding: 0 24px 56px; }
+        .contact-pricing { padding: 48px 24px 40px; }
+        .pricing-items { grid-template-columns: 1fr 1fr; gap: 28px; }
+        .pricing-item { border-right: none; padding: 0; }
+        .pricing-item:last-child { padding-left: 0; }
+        .contact-showcase { grid-template-columns: 1fr; }
+        .showcase-left { border-right: none; border-bottom: 1px solid var(--rule); padding: 48px 24px; }
+        .showcase-right { display: none; }
+        .contact-faq { padding: 48px 24px; }
+        .faq-item { grid-template-columns: 1fr; gap: 12px; }
+        .contact-process { grid-template-columns: 1fr; }
+        .process-step { border-right: none; border-bottom: 1px solid var(--rule); padding: 36px 24px; }
+        .process-step:last-child { border-bottom: none; }
+        .contact-direct { padding: 28px 24px; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="scroll-bar" id="scrollBar"></div>
+
+    <nav class="nav" id="mainNav">
+      <div class="nav-links">
+        <a href="/work/">Work</a>
+        <a href="/services/">Services</a>
+        <a href="/products/">Products</a>
+        <a href="/studio/">Studio</a>
+      </div>
+      <a class="nav-brand" href="/">Pink</a>
+      <div class="nav-end"><a href="/contact/" class="active">Start a Project</a></div>
+      <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+    <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+      <a href="/work/">Work</a>
+      <a href="/services/">Services</a>
+      <a href="/products/">Products</a>
+      <a href="/studio/">Studio</a>
+      <a href="/contact/" class="active">Start a Project</a>
+    </div>
+
+    <!-- Hero -->
+    <div class="contact-hero reveal">
+      <img class="contact-hero-img" src="/assets/contact.png" alt="" />
+      <div class="contact-hero-content">
+        <span class="contact-eyebrow">Pink Web Studio</span>
+        <h1 class="contact-headline">Start a Project.</h1>
+        <a class="contact-hero-email" href="mailto:studio@pinkwebstudio.com">studio@pinkwebstudio.com</a>
+      </div>
+    </div>
+
+    <!-- Showcase + Availability + Quote -->
+    <div class="contact-showcase">
+      <div class="showcase-left reveal">
+        <span class="showcase-quote-text"><span style="color:#f2a7be; font-size:1.5em; vertical-align:-0.2em;">"</span>Working with Pink was the best decision we made for our brand. The site launched on time, looked incredible, and our clients noticed immediately<span style="color:#f2a7be; font-size:1.5em; vertical-align:-0.2em;">"</span></span>
+        <span class="showcase-quote-name">— Dr. B</span>
+
+        <span class="showcase-quote-text" style="margin-top: 36px;"><span style="color:#f2a7be; font-size:1.5em; vertical-align:-0.2em;">"</span>Honestly she killed it. I messaged her with all my ideas and she was so quick to add to the site. She understood the vision<span style="color:#f2a7be; font-size:1.5em; vertical-align:-0.2em;">"</span></span>
+        <span class="showcase-quote-name">— Mike C</span>
+
+        <a href="#send-message" class="leave-review-link">Leave a review →</a>
+      </div>
+      <div class="showcase-right reveal d2">
+        <div class="showcase-frame">
+          <div class="frame-chrome"><span class="frame-dot"></span><span class="frame-dot"></span><span class="frame-dot"></span><span class="frame-url"></span></div>
+          <img class="frame-img" src="/assets/footerwest.png" alt="" />
+        </div>
+        <div class="showcase-frame">
+          <div class="frame-chrome"><span class="frame-dot"></span><span class="frame-dot"></span><span class="frame-dot"></span><span class="frame-url"></span></div>
+          <img class="frame-img" src="/assets/celesteprogresss.png" alt="" />
+        </div>
+        <div class="showcase-frame">
+          <div class="frame-chrome"><span class="frame-dot"></span><span class="frame-dot"></span><span class="frame-dot"></span><span class="frame-url"></span></div>
+          <img class="frame-img" src="/assets/followupceleste.png" alt="" />
+        </div>
+        <div class="showcase-frame">
+          <div class="frame-chrome"><span class="frame-dot"></span><span class="frame-dot"></span><span class="frame-dot"></span><span class="frame-url"></span></div>
+          <img class="frame-img" src="/assets/pinkbefore.png" alt="" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Pricing anchor -->
+    <div class="contact-pricing reveal">
+      <span class="pricing-label">Starting from</span>
+      <div class="pricing-items">
+        <div class="pricing-item">
+          <span class="pricing-name">Website Audit</span>
+          <span class="pricing-amount">$200</span>
+        </div>
+        <div class="pricing-item">
+          <span class="pricing-name">Website Refresh</span>
+          <span class="pricing-amount">$1,250</span>
+        </div>
+        <div class="pricing-item">
+          <span class="pricing-name">Signature Website</span>
+          <span class="pricing-amount">$3,000</span>
+        </div>
+        <div class="pricing-item">
+          <span class="pricing-name">Website Care</span>
+          <span class="pricing-amount">$250 / mo</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Payments FAQ -->
+    <div class="contact-faq">
+      <div class="faq-item reveal">
+        <span class="faq-q">Do I pay upfront?</span>
+        <span class="faq-a">Yes.<br>50% to begin.<br>50% at launch.</span>
+      </div>
+      <div class="faq-item reveal">
+        <span class="faq-q">How do I pay?</span>
+        <span class="faq-a">Zelle, Stripe, or Revolut.<br>I'll send an invoice with everything you need.</span>
+      </div>
+      <div class="faq-item reveal">
+        <span class="faq-q">When do we start?</span>
+        <span class="faq-a">Usually within a week.</span>
+      </div>
+    </div>
+
+    <!-- Two Paths -->
+    <div class="contact-paths">
+
+      <a class="path-call" href="https://calendly.com/oraanlevi1/30min" target="_blank" rel="noopener">
+        <span class="path-label reveal">15–30 min conversation</span>
+        <span class="path-heading reveal d1">Book a Discovery Call</span>
+        <span class="path-cta reveal d2">Schedule on Calendly <span class="path-cta-arrow">→</span></span>
+      </a>
+
+      <div class="path-form" id="send-message">
+        <span class="path-heading reveal">Send a Message</span>
+        <span class="path-label reveal d1">Back within 48 hours</span>
+        <form id="contactForm" action="https://formspree.io/f/mbdejokw" method="POST">
+          <input type="hidden" name="_next" value="https://pinkwebstudio.com/contact?sent=1" />
+          <div class="form-field reveal d2">
+            <textarea name="message" required></textarea>
+          </div>
+          <button type="submit" id="contactSubmit" class="form-submit reveal d3">Send Message <span class="btn-arrow">→</span></button>
+          <p id="contactSuccess">Sent. I'll be in touch.</p>
+        </form>
+      </div>
+
+    </div>
+
+    <footer class="site-footer">
+      <div class="footer-brand-wrap">
+        <span class="footer-brand">Pink Web Studio</span>
+        <span class="footer-brand-sub">Los Angeles &middot; Currently Booking</span>
+      </div>
+      <div class="footer-social">
+        <div class="footer-social-icons">
+          <a href="https://instagram.com/oraanlevi" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/oraan-levi-898a89200/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+        </div>
+        <a href="mailto:studio@pinkwebstudio.com" class="footer-email">studio@pinkwebstudio.com</a>
+      </div>
+    </footer>
+
+    <script>
+      const nav = document.getElementById("mainNav");
+      const bar = document.getElementById("scrollBar");
+      window.addEventListener("scroll", () => {
+        nav.classList.toggle("scrolled", window.scrollY > 20);
+        if (bar) bar.style.width = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100) + "%";
+      }, { passive: true });
+
+      const ham = document.getElementById("navHam");
+      const mob = document.getElementById("mobileNav");
+      ham.addEventListener("click", () => {
+        const open = ham.classList.toggle("open");
+        mob.classList.toggle("open", open);
+        ham.setAttribute("aria-expanded", open);
+        mob.setAttribute("aria-hidden", !open);
+      });
+      mob.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
+        ham.classList.remove("open");
+        mob.classList.remove("open");
+      }));
+
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("visible"); io.unobserve(e.target); } });
+      }, { threshold: 0.04 });
+      document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+
+      // Hero text entrance
+      const eyebrow  = document.querySelector(".contact-eyebrow");
+      const headline = document.querySelector(".contact-headline");
+      const email    = document.querySelector(".contact-hero-email");
+      setTimeout(() => eyebrow.classList.add("in"),  120);
+      setTimeout(() => headline.classList.add("in"), 340);
+      setTimeout(() => email.classList.add("in"),    580);
+
+      if (new URLSearchParams(window.location.search).get("sent") === "1") {
+        document.querySelectorAll(".form-field").forEach(el => el.style.display = "none");
+        const btn = document.getElementById("contactSubmit");
+        if (btn) btn.style.display = "none";
+        document.getElementById("contactSuccess").style.display = "block";
+      }
+
+      const contactForm = document.getElementById("contactForm");
+      if (contactForm) {
+        contactForm.addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const btn = document.getElementById("contactSubmit");
+          btn.textContent = "Sending…";
+          btn.disabled = true;
+          try {
+            const res = await fetch(contactForm.action, {
+              method: "POST",
+              body: new FormData(contactForm),
+              headers: { Accept: "application/json" }
+            });
+            if (res.ok) {
+              contactForm.querySelectorAll(".form-field").forEach(el => el.style.display = "none");
+              btn.style.display = "none";
+              document.getElementById("contactSuccess").style.display = "block";
+            } else {
+              btn.textContent = "Send →";
+              btn.disabled = false;
+            }
+          } catch {
+            btn.textContent = "Send →";
+            btn.disabled = false;
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

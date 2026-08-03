@@ -2,12 +2,13 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About · Pink Web Studio</title>
+    <link rel="icon" type="image/png" href="/assets/favicon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About · Pink Web</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Poppins:wght@300;400;500&family=Parisienne&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
     <style>
 
       /* ── Full-viewport horizontal slide (all screens) ── */
@@ -60,7 +61,7 @@
         border-right: 1px solid var(--rule);
       }
       .opening-label {
-        font-family: "Poppins", sans-serif;
+        font-family: "Bebas Neue", "Impact", sans-serif;
         font-size: 9px;
         font-weight: 400;
         letter-spacing: 4px;
@@ -70,10 +71,10 @@
         margin-bottom: 48px;
       }
       .opening-text {
-        font-family: "Cormorant Garamond", serif;
+        font-family: "Bebas Neue", "Impact", sans-serif;
         font-size: clamp(44px, 6.2vw, 100px);
-        font-weight: 300;
-        font-style: italic;
+        font-weight: 400;
+
         color: var(--ink);
         line-height: 1.1;
         letter-spacing: -.5px;
@@ -83,7 +84,7 @@
         position: absolute;
         bottom: 44px;
         right: 52px;
-        font-family: "Poppins", sans-serif;
+        font-family: "Bebas Neue", "Impact", sans-serif;
         font-size: 9px;
         font-weight: 400;
         letter-spacing: 4px;
@@ -118,7 +119,7 @@
       }
       .letter-col::-webkit-scrollbar { display: none; }
       .letter-eyebrow {
-        font-family: "Poppins", sans-serif;
+        font-family: "Bebas Neue", "Impact", sans-serif;
         font-size: 9px;
         font-weight: 400;
         letter-spacing: 4px;
@@ -129,7 +130,7 @@
       }
       .letter-p {
         font-size: 17px;
-        font-weight: 300;
+        font-weight: 400;
         color: var(--ink);
         line-height: 1.85;
         letter-spacing: .1px;
@@ -165,7 +166,7 @@
         overflow: hidden;
         box-shadow:
           0 0 0 1px rgba(26,25,23,.06),
-          0 0 0 14px #F6F0F1,
+          0 0 0 14px #FAFAF8,
           0 0 0 15px rgba(26,25,23,.05),
           0 28px 64px rgba(0,0,0,0.13);
       }
@@ -185,7 +186,7 @@
       }
       .sig-name {
         font-size: 16px;
-        font-weight: 500;
+        font-weight: 400;
         letter-spacing: 6px;
         text-transform: uppercase;
         color: var(--ink);
@@ -194,7 +195,7 @@
       }
       .sig-role {
         font-size: 10px;
-        font-weight: 300;
+        font-weight: 400;
         letter-spacing: 3.5px;
         text-transform: uppercase;
         color: var(--ink-3);
@@ -202,10 +203,10 @@
         margin-bottom: 36px;
       }
       .founder-quote {
-        font-family: "Cormorant Garamond", serif;
+        font-family: "Bebas Neue", "Impact", sans-serif;
         font-size: clamp(18px, 1.9vw, 27px);
-        font-weight: 300;
-        font-style: italic;
+        font-weight: 400;
+
         color: var(--ink-2);
         line-height: 1.85;
         max-width: 44ch;
@@ -236,7 +237,7 @@
         cursor: pointer;
         width: 52px;
         height: 120px;
-        font-family: "Poppins", sans-serif;
+        font-family: "Bebas Neue", "Impact", sans-serif;
         font-size: 8px;
         font-weight: 400;
         letter-spacing: 3px;
@@ -384,7 +385,7 @@
           bottom: 0;
         }
         .pnm-btn {
-          font-family: "Poppins", sans-serif;
+          font-family: "Bebas Neue", "Impact", sans-serif;
           font-size: 9px;
           font-weight: 400;
           letter-spacing: 4px;
@@ -430,21 +431,23 @@
     <div class="scroll-bar" id="scrollBar"></div>
 
     <nav class="nav" id="mainNav">
-      <a class="nav-brand" href="/">Pink Web Studio</a>
       <div class="nav-links">
-        <a href="/work">Work</a>
+        <a href="/services/">Services</a>
+        <a href="/work/">Work</a>
         <a href="/about" class="active">About</a>
-        <a href="/connect">Contact</a>
-        <a href="/connect">Work with me</a>
+        <a href="/contact/">Contact</a>
       </div>
+      <a class="nav-brand" href="/">Pink Web Studio</a>
+      <div class="nav-end"><a href="/contact/">Work with me</a></div>
       <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </nav>
     <div class="mobile-nav" id="mobileNav" aria-hidden="true">
-      <a href="/work">Work</a>
+      <a href="/services/">Services</a>
+      <a href="/work/">Work</a>
       <a href="/about">About</a>
-      <a href="/connect">Contact</a>
+      <a href="/contact/">Contact</a>
     </div>
 
     <div class="about-track" id="aboutTrack">
@@ -469,7 +472,7 @@
           <p class="letter-p">If you're reading this, you probably already know whether we're a good fit.</p>
         </div>
         <div class="letter-img">
-          <img src="assets/office.png" alt="Pink Web Studio" />
+          <img src="/assets/office.png" alt="Pink Web Studio" />
         </div>
         <div class="panel-nav-mobile">
           <button class="pnm-btn pnm-btn--back" data-chapter="0" aria-label="Previous chapter">Back</button>
@@ -480,7 +483,7 @@
       <!-- Panel 3: Founder -->
       <section class="about-panel panel-founder">
         <div class="founder-img">
-          <img src="assets/oraan.jpg" alt="Oraan Levi" />
+          <img src="/assets/oraan.jpg" alt="Oraan Levi" />
         </div>
         <div class="founder-text">
           <span class="sig-name">Oraan Levi</span>

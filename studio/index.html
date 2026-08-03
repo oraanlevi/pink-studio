@@ -1,624 +1,256 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Studio — Invoice Generator</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet" />
-    <style>
-      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-      html { -webkit-font-smoothing: antialiased; }
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="/assets/favicon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Studio · Pink</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@700&family=Parisienne&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+  <style>
 
-      body {
-        background: #EDD8D8;
-        font-family: "Poppins", sans-serif;
-        font-weight: 300;
-        min-height: 100vh;
-        color: #1a1917;
-      }
+    /* ── Studio layout ── */
+    .studio {
+      display: grid;
+      grid-template-columns: 420px 1fr;
+      min-height: calc(100vh - var(--nav-h));
+      border-bottom: 1px solid var(--rule);
+    }
 
-      /* ── Studio toolbar ── */
-      .studio-bar {
-        background: rgba(255,255,255,0.5);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-        padding: 0 48px;
-        height: 72px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        position: sticky;
-        top: 0;
-        z-index: 100;
-      }
-      .studio-bar-left { display: flex; flex-direction: column; gap: 3px; }
-      .studio-bar-brand {
-        font-family: "Cormorant Garamond", serif;
-        font-size: 15px;
-        font-weight: 400;
-        letter-spacing: 6px;
-        text-transform: uppercase;
-        color: #1a1917;
-      }
-      .studio-bar-sub {
-        font-size: 8px;
-        font-weight: 500;
-        letter-spacing: 3px;
-        text-transform: uppercase;
-        color: #C4878A;
-      }
-      .btn-pdf {
-        font-family: "Poppins", sans-serif;
-        font-size: 9px;
-        font-weight: 500;
-        letter-spacing: 3.5px;
-        text-transform: uppercase;
-        color: white;
-        background: #1a1917;
-        border: none;
-        padding: 14px 32px;
-        cursor: pointer;
-        transition: background 220ms, opacity 220ms;
-      }
-      .btn-pdf:hover { opacity: .75; }
+    /* Left — portrait */
+    .studio-portrait {
+      border-right: 1px solid var(--rule);
+      overflow: hidden;
+      position: relative;
+      min-height: 520px;
+    }
+    .studio-portrait img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      filter: grayscale(100%) contrast(1.05) brightness(1.02);
+    }
 
-      /* ── Page wrapper ── */
-      .page-wrapper {
-        padding: 56px 24px 88px;
-        display: flex;
-        justify-content: center;
-      }
+    /* Right — statement */
+    .studio-text {
+      padding: 72px 72px 72px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 40px;
+    }
 
-      /* ── Invoice card ── */
-      .invoice {
-        width: 794px;
-        background: #FDFAF7;
-        padding: 52px 60px 48px;
-      }
+    .studio-eyebrow {
+      display: block;
+      font-family: "Bebas Neue", "Impact", sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--ink-3);
+    }
 
-      /* ── Invoice header ── */
-      .inv-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        margin-bottom: 28px;
-      }
-      .inv-brand {
-        font-family: "Poppins", sans-serif;
-        font-size: 10px;
-        font-weight: 500;
-        letter-spacing: 7px;
-        text-transform: uppercase;
-        color: #C4878A;
-      }
-      .inv-word {
-        font-family: "Poppins", sans-serif;
-        font-size: 9px;
-        font-weight: 400;
-        letter-spacing: 5px;
-        text-transform: uppercase;
-        color: rgba(196,135,138,0.6);
-      }
+    .studio-name {
+      display: block;
+      font-family: "Parisienne", cursive;
+      font-weight: 400;
+      font-size: clamp(28px, 3.5vw, 48px);
+      color: var(--ink);
+      line-height: 1.1;
+      letter-spacing: 0;
+    }
 
-      .inv-rule {
-        height: 1px;
-        background: #EDCDD0;
-        margin-bottom: 32px;
-      }
+    .studio-title {
+      display: block;
+      font-family: "Bebas Neue", "Impact", sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      margin-top: 14px;
+    }
 
-      /* ── Top section ── */
-      .inv-top {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 40px;
-        margin-bottom: 36px;
-      }
+    .studio-body {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .studio-body p {
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: clamp(17px, 1.6vw, 22px);
+      font-weight: 400;
+      line-height: 1.8;
+      color: #555;
+    }
 
-      .inv-section-label {
-        font-size: 7.5px;
-        font-weight: 500;
-        letter-spacing: 3px;
-        text-transform: uppercase;
-        color: #C4878A;
-        display: block;
-        margin-bottom: 12px;
-      }
+    .studio-links {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 8px;
+    }
+    .studio-link {
+      font-family: "Bebas Neue", "Impact", sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+      transition: opacity 250ms;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .studio-link:hover { opacity: .45; }
 
-      /* Billed to */
-      .inv-client-name {
-        font-family: "Cormorant Garamond", serif;
-        font-size: 38px;
-        font-weight: 300;
-        color: #1a1917;
-        line-height: 1.05;
-        letter-spacing: -.3px;
-        display: block;
-        margin-bottom: 5px;
-        min-width: 1px;
-      }
-      .inv-company-name {
-        font-size: 7.5px;
-        font-weight: 500;
-        letter-spacing: 2.5px;
-        text-transform: uppercase;
-        color: rgba(26,25,23,0.3);
-        display: block;
-        margin-bottom: 20px;
-        min-width: 1px;
-      }
-      .inv-contact { display: flex; flex-direction: column; gap: 7px; }
-      .inv-contact-row {
-        display: flex;
-        align-items: center;
-        gap: 9px;
-        font-size: 10px;
-        font-weight: 400;
-        color: rgba(26,25,23,0.55);
-        line-height: 1;
-      }
-      .inv-contact-icon {
-        color: #C4878A;
-        font-size: 10px;
-        width: 13px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-      }
+    .studio-contact-link {
+      color: #555;
+      text-decoration: none;
+      transition: color 220ms ease;
+    }
+    .studio-contact-link:hover { color: #f2a7be; }
+    .studio-link-arrow { transition: transform 220ms ease; }
+    .studio-link:hover .studio-link-arrow { transform: translateX(3px); }
 
-      /* Invoice details table */
-      .inv-details table { width: 100%; border-collapse: collapse; }
-      .inv-details td {
-        padding: 8px 0;
-        font-size: 10px;
-        border-bottom: 1px solid rgba(196,135,138,0.12);
-        vertical-align: top;
-        line-height: 1.3;
-      }
-      .inv-details td:first-child {
-        font-size: 7.5px;
-        font-weight: 500;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        color: rgba(26,25,23,0.35);
-        width: 42%;
-        padding-top: 10px;
-      }
-      .inv-details td:last-child {
-        font-weight: 300;
-        color: #1a1917;
-        text-align: right;
-        min-width: 1px;
-      }
-      .inv-details tr:last-child td { border-bottom: none; }
+    /* ── Capabilities strip ── */
+    .studio-caps {
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      align-items: stretch;
+    }
+    .studio-cap {
+      flex: 1;
+      padding: 36px 56px;
+      border-right: 1px solid var(--rule);
+    }
+    .studio-cap:last-child { border-right: none; }
+    .studio-cap-label {
+      display: block;
+      font-family: "Bebas Neue", "Impact", sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      margin-bottom: 14px;
+    }
+    .studio-cap-name {
+      display: block;
+      font-family: "Inter", system-ui, sans-serif;
+      font-weight: 700;
+      font-size: clamp(18px, 1.8vw, 26px);
+      color: var(--ink);
+      line-height: 1.2;
+      letter-spacing: -0.2px;
+    }
 
-      /* ── Line items ── */
-      .inv-items-header {
-        display: grid;
-        grid-template-columns: 1fr auto;
-        padding: 9px 14px;
-        background: #F5EAEA;
-      }
-      .inv-items-header span {
-        font-size: 7.5px;
-        font-weight: 500;
-        letter-spacing: 2.5px;
-        text-transform: uppercase;
-        color: #C4878A;
-      }
-      .inv-item {
-        display: grid;
-        grid-template-columns: 1fr auto;
-        padding: 13px 14px;
-        border-bottom: 1px solid rgba(196,135,138,0.1);
-        gap: 24px;
-        align-items: center;
-      }
-      .inv-item-desc {
-        font-size: 10.5px;
-        font-weight: 300;
-        color: #1a1917;
-        line-height: 1.4;
-        min-width: 1px;
-      }
-      .inv-item-amount {
-        font-size: 10.5px;
-        font-weight: 300;
-        color: #1a1917;
-        text-align: right;
-        white-space: nowrap;
-        min-width: 1px;
-      }
+    /* ── Mobile ── */
+    @media (max-width: 860px) {
+      .studio { grid-template-columns: 1fr; min-height: auto; }
+      .studio-portrait { min-height: 60vw; border-right: none; border-bottom: 1px solid var(--rule); }
+      .studio-text { padding: 56px 24px; gap: 32px; }
+      .studio-caps { flex-direction: column; }
+      .studio-cap { border-right: none; border-bottom: 1px solid var(--rule); padding: 28px 24px; }
+      .studio-cap:last-child { border-bottom: none; }
+    }
 
-      /* ── Totals ── */
-      .inv-totals {
-        background: #F5EAEA;
-        padding: 14px 14px 14px;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        gap: 0;
-        margin-bottom: 32px;
-      }
-      .inv-subtotal-row {
-        display: flex;
-        align-items: baseline;
-        gap: 40px;
-        padding: 6px 0;
-      }
-      .inv-subtotal-label {
-        font-size: 8px;
-        font-weight: 500;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        color: rgba(26,25,23,0.38);
-      }
-      .inv-subtotal-amount {
-        font-size: 11px;
-        font-weight: 300;
-        color: #1a1917;
-        min-width: 1px;
-        text-align: right;
-        min-width: 90px;
-      }
-      .inv-total-row {
-        display: flex;
-        align-items: baseline;
-        gap: 40px;
-        border-top: 1px solid rgba(196,135,138,0.2);
-        padding-top: 10px;
-        margin-top: 6px;
-      }
-      .inv-total-label {
-        font-size: 9px;
-        font-weight: 500;
-        letter-spacing: 2.5px;
-        text-transform: uppercase;
-        color: #1a1917;
-      }
-      .inv-total-amount {
-        font-family: "Cormorant Garamond", serif;
-        font-size: 30px;
-        font-weight: 400;
-        color: #1a1917;
-        letter-spacing: -.3px;
-        line-height: 1;
-        min-width: 1px;
-        text-align: right;
-        min-width: 90px;
-      }
+  </style>
+</head>
+<body>
 
-      /* ── Payment info + notes ── */
-      .inv-lower {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 32px;
-        background: #F0E3E3;
-        padding: 24px 20px;
-        margin-bottom: 32px;
-      }
-      .inv-payment-note {
-        font-size: 9.5px;
-        font-weight: 400;
-        color: rgba(26,25,23,0.55);
-        line-height: 1.7;
-        display: block;
-        margin-bottom: 14px;
-        min-width: 1px;
-      }
-      .inv-payment-methods { display: flex; flex-direction: column; gap: 9px; }
-      .inv-method-row {
-        display: flex;
-        align-items: baseline;
-        gap: 8px;
-      }
-      .inv-method-icon {
-        color: #C4878A;
-        font-size: 8px;
-        flex-shrink: 0;
-        width: 10px;
-      }
-      .inv-method-label {
-        font-size: 7.5px;
-        font-weight: 500;
-        letter-spacing: 1.5px;
-        text-transform: uppercase;
-        color: rgba(26,25,23,0.35);
-        min-width: 70px;
-        flex-shrink: 0;
-      }
-      .inv-method-value {
-        font-size: 9.5px;
-        font-weight: 400;
-        color: #1a1917;
-        min-width: 1px;
-      }
-      .inv-notes-text {
-        font-size: 9.5px;
-        font-weight: 400;
-        color: rgba(26,25,23,0.55);
-        line-height: 1.8;
-        display: block;
-        min-width: 1px;
-      }
+  <nav class="nav" id="mainNav">
+    <div class="nav-links">
+      <a href="/work/">Work</a>
+      <a href="/services/">Services</a>
+      <a href="/products/">Products</a>
+      <a href="/studio/" class="active">About Studio</a>
+    </div>
+    <a class="nav-brand" href="/">Pink</a>
+    <div class="nav-end"><a href="/contact/">Start a Project</a></div>
+    <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+    <a href="/work/">Work</a>
+    <a href="/services/">Services</a>
+    <a href="/products/">Products</a>
+    <a href="/studio/" class="active">About Studio</a>
+    <a href="/contact/">Start a Project</a>
+  </div>
 
-      /* ── Thank you ── */
-      .inv-thankyou {
-        text-align: center;
-        font-family: "Cormorant Garamond", serif;
-        font-size: 34px;
-        font-weight: 300;
-        letter-spacing: 2px;
-        color: #1a1917;
-        margin-bottom: 28px;
-        min-width: 1px;
-        line-height: 1.4;
-      }
+  <div class="studio reveal">
 
-      /* ── Bottom bar ── */
-      .inv-bottom-rule { height: 1px; background: #EDCDD0; margin-bottom: 20px; }
-      .inv-bottom {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-      }
-      .inv-monogram {
-        font-family: "Cormorant Garamond", serif;
-        font-size: 12px;
-        font-weight: 400;
-        letter-spacing: 5px;
-        color: #C4878A;
-      }
-      .inv-sig {
-        text-align: right;
-        display: flex;
-        flex-direction: column;
-        gap: 3px;
-      }
-      .inv-sig-name {
-        font-family: "Cormorant Garamond", serif;
-        font-size: 16px;
-        font-weight: 400;
-        color: #1a1917;
-        letter-spacing: .2px;
-        line-height: 1;
-        display: block;
-        min-width: 1px;
-      }
-      .inv-sig-title {
-        font-size: 7px;
-        font-weight: 500;
-        letter-spacing: 2.5px;
-        text-transform: uppercase;
-        color: rgba(26,25,23,0.35);
-        display: block;
-      }
-      .inv-sig-email {
-        font-size: 9px;
-        font-weight: 400;
-        color: rgba(26,25,23,0.45);
-        display: block;
-        min-width: 1px;
-      }
-
-      /* ── Contenteditable ── */
-      [contenteditable] {
-        outline: none;
-        cursor: text;
-        border-bottom: 1px dashed transparent;
-        transition: border-color 180ms;
-      }
-      [contenteditable]:hover { border-bottom-color: rgba(196,135,138,0.4); }
-      [contenteditable]:focus { border-bottom-color: #C4878A; }
-
-      /* Hide dashed borders during PDF export */
-      body.exporting [contenteditable],
-      body.exporting [contenteditable]:hover,
-      body.exporting [contenteditable]:focus {
-        border-bottom-color: transparent !important;
-      }
-
-      @media (max-width: 768px) {
-        .studio-bar { padding: 0 20px; height: 60px; }
-        .studio-bar-brand { font-size: 11px; letter-spacing: 4px; }
-        .studio-bar-sub { display: none; }
-        .btn-pdf { font-size: 8px; letter-spacing: 2px; padding: 10px 16px; }
-
-        .page-wrapper { padding: 28px 16px 56px; }
-        .invoice { width: 100%; padding: 36px 24px 32px; }
-
-        .inv-top { grid-template-columns: 1fr; gap: 28px; }
-        .inv-lower { grid-template-columns: 1fr; gap: 20px; }
-        .inv-client-name { font-size: 28px; }
-        .inv-total-amount { font-size: 22px; }
-        .inv-bottom { flex-direction: column; align-items: flex-start; gap: 16px; }
-      }
-    </style>
-  </head>
-  <body>
-
-    <!-- Studio toolbar -->
-    <div class="studio-bar">
-      <div class="studio-bar-left">
-        <span class="studio-bar-brand">Pink Web Studio</span>
-        <span class="studio-bar-sub">Invoice Generator — Studio</span>
-      </div>
-      <button class="btn-pdf" onclick="generatePDF()">Generate PDF</button>
+    <div class="studio-portrait">
+      <img src="/assets/oraan.png" alt="Oraan Levi" />
     </div>
 
-    <!-- Page -->
-    <div class="page-wrapper">
-      <div class="invoice" id="invoice">
-
-        <!-- Header -->
-        <div class="inv-header">
-          <span class="inv-brand">Pink Web Studio</span>
-          <span class="inv-word">Invoice</span>
-        </div>
-
-        <div class="inv-rule"></div>
-
-        <!-- Top: Billed To + Invoice Details -->
-        <div class="inv-top">
-
-          <div class="inv-billed">
-            <span class="inv-section-label">Billed To</span>
-            <span class="inv-client-name" contenteditable>Client Name</span>
-            <span class="inv-company-name" contenteditable>Company Name</span>
-            <div class="inv-contact">
-              <div class="inv-contact-row">
-                <span class="inv-contact-icon">✉</span>
-                <span contenteditable>client@email.com</span>
-              </div>
-              <div class="inv-contact-row">
-                <span class="inv-contact-icon">☏</span>
-                <span contenteditable>(555) 555-5555</span>
-              </div>
-              <div class="inv-contact-row">
-                <span class="inv-contact-icon">◎</span>
-                <span contenteditable>City, State</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="inv-details">
-            <span class="inv-section-label">Invoice Details</span>
-            <table>
-              <tr>
-                <td>Invoice Number</td>
-                <td contenteditable>PWS-001</td>
-              </tr>
-              <tr>
-                <td>Invoice Date</td>
-                <td contenteditable>June 20, 2026</td>
-              </tr>
-              <tr>
-                <td>Due Date</td>
-                <td contenteditable>July 4, 2026</td>
-              </tr>
-              <tr>
-                <td>Project</td>
-                <td contenteditable>Website Design</td>
-              </tr>
-            </table>
-          </div>
-
-        </div>
-
-        <!-- Line Items -->
-        <div class="inv-items-header">
-          <span>Description</span>
-          <span>Amount</span>
-        </div>
-        <div class="inv-item">
-          <span class="inv-item-desc" contenteditable>Website Design &amp; Development Deposit (50%)</span>
-          <span class="inv-item-amount" contenteditable>$1,250.00</span>
-        </div>
-        <div class="inv-item" style="border-bottom:none;">
-          <span class="inv-item-desc" contenteditable>Additional Services</span>
-          <span class="inv-item-amount" contenteditable>$0.00</span>
-        </div>
-
-        <!-- Totals -->
-        <div class="inv-totals">
-          <div class="inv-subtotal-row">
-            <span class="inv-subtotal-label">Subtotal</span>
-            <span class="inv-subtotal-amount" contenteditable>$1,250.00</span>
-          </div>
-          <div class="inv-total-row">
-            <span class="inv-total-label">Total</span>
-            <span class="inv-total-amount" contenteditable>$1,250.00</span>
-          </div>
-        </div>
-
-        <!-- Payment Info + Note -->
-        <div class="inv-lower">
-          <div class="inv-payment">
-            <span class="inv-section-label">Payment Information</span>
-            <span class="inv-payment-note" contenteditable>Payment is due upon receipt. Thank you!</span>
-            <div class="inv-payment-methods">
-              <div class="inv-method-row">
-                <span class="inv-method-icon">◆</span>
-                <span class="inv-method-label">Zelle</span>
-                <span class="inv-method-value" contenteditable>studio@pinkwebstudio.com</span>
-              </div>
-              <div class="inv-method-row">
-                <span class="inv-method-icon">◆</span>
-                <span class="inv-method-label">Venmo</span>
-                <span class="inv-method-value" contenteditable>@pinkwebstudio</span>
-              </div>
-              <div class="inv-method-row">
-                <span class="inv-method-icon">◆</span>
-                <span class="inv-method-label">Bank Transfer</span>
-                <span class="inv-method-value" contenteditable>Available upon request</span>
-              </div>
-            </div>
-          </div>
-          <div class="inv-notes">
-            <span class="inv-section-label">Note</span>
-            <span class="inv-notes-text" contenteditable>A 50% deposit is required before project work begins. Project starts within 5 business days of receiving the deposit. Option to pay in full is also accepted. Final files and website launch will be delivered upon receipt of the remaining balance.</span>
-          </div>
-        </div>
-
-        <!-- Thank you -->
-        <div class="inv-thankyou" contenteditable>Thank you!</div>
-
-        <!-- Bottom -->
-        <div class="inv-bottom-rule"></div>
-        <div class="inv-bottom">
-          <span class="inv-monogram">P / W / S</span>
-          <div class="inv-sig">
-            <span class="inv-sig-name" contenteditable>Oraan Levi</span>
-            <span class="inv-sig-title">Founder, The Pink Web Studio</span>
-            <span class="inv-sig-email" contenteditable>studio@pinkwebstudio.com</span>
-          </div>
-        </div>
-
+    <div class="studio-text">
+      <div>
+        <span class="studio-eyebrow">Studio</span>
+        <span class="studio-name">Oraan Levi</span>
+        <span class="studio-title">Designer &amp; Builder</span>
+      </div>
+      <div class="studio-body">
+        <p>Pink is a digital product studio.</p>
+        <p>I started Pink Web Studio because I felt there was a growing lack of intention online. Too many websites were trying to do more, say more, and show more. The brands that inspired me most did the opposite. They understood that every detail mattered.</p>
+        <p><a href="/connect" class="studio-contact-link">Message me if you have any questions.</a></p>
       </div>
     </div>
 
-    <script src="https://unpkg.com/html2pdf.js@0.10.1/dist/html2pdf.bundle.min.js"></script>
-    <script>
-      function generatePDF() {
-        // Blur any focused element so focus ring doesn't appear
-        if (document.activeElement) document.activeElement.blur();
+  </div>
 
-        document.body.classList.add("exporting");
 
-        // Read invoice number for filename
-        const invNum = document.querySelector(".inv-details td[contenteditable]");
-        const num = invNum ? invNum.innerText.trim() : "invoice";
-        const filename = `pinkwebstudio-${num}.pdf`;
+  <footer class="site-footer">
+    <div class="footer-brand-wrap">
+      <span class="footer-brand">Pink Web Studio</span>
+      <span class="footer-brand-sub">Los Angeles &middot; Currently Booking</span>
+    </div>
+    <div class="footer-social">
+      <div class="footer-social-icons">
+        <a href="https://instagram.com/oraanlevi" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/oraan-levi-898a89200/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+      </div>
+      <a href="mailto:studio@pinkwebstudio.com" class="footer-email">studio@pinkwebstudio.com</a>
+    </div>
+  </footer>
 
-        const element = document.getElementById("invoice");
+  <script>
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
 
-        const opt = {
-          margin: 0,
-          filename,
-          image: { type: "jpeg", quality: 0.99 },
-          html2canvas: {
-            scale: 2,
-            useCORS: true,
-            backgroundColor: "#FDFAF7",
-            letterRendering: true
-          },
-          jsPDF: {
-            unit: "mm",
-            format: "a4",
-            orientation: "portrait"
-          }
-        };
+    const ham = document.getElementById('navHam');
+    const mob = document.getElementById('mobileNav');
+    ham.addEventListener('click', () => {
+      const open = ham.classList.toggle('open');
+      mob.classList.toggle('open', open);
+      ham.setAttribute('aria-expanded', open);
+      mob.setAttribute('aria-hidden', !open);
+    });
+    mob.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      ham.classList.remove('open');
+      mob.classList.remove('open');
+    }));
 
-        html2pdf()
-          .set(opt)
-          .from(element)
-          .save()
-          .then(() => {
-            document.body.classList.remove("exporting");
-          });
-      }
-    </script>
-  </body>
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.06 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
+
+</body>
 </html>

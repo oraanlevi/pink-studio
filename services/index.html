@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="/assets/favicon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services · Pink</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+  <style>
+
+    /* ── Page header ── */
+    .page-head {
+      padding: 72px 72px 64px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .page-eyebrow {
+      display: block;
+      font-family: "Bebas Neue", "Impact", sans-serif;
+      font-size: 20px;
+      font-weight: 400;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      margin-bottom: 20px;
+    }
+    .page-headline {
+      display: block;
+      font-family: "Bebas Neue", "Impact", sans-serif;
+      font-weight: 400;
+      font-size: clamp(32px, 3.8vw, 56px);
+      color: var(--ink);
+      line-height: 1.0;
+      letter-spacing: -0.5px;
+    }
+
+    /* ── Grid ── */
+    .service-grid-wrap {
+      padding: 64px 72px 80px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    /* ── Card ── */
+    .service-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 480px;
+      border: 1px solid var(--rule);
+      transition:
+        transform 500ms cubic-bezier(.16,1,.3,1),
+        box-shadow 500ms cubic-bezier(.16,1,.3,1),
+        opacity 320ms ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 64px rgba(26,25,23,.07);
+    }
+
+    /* Sibling dimming */
+    .service-grid:has(.service-card:hover) .service-card:not(:hover) {
+      opacity: 0.5;
+    }
+
+    /* Marble background */
+    .service-card-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.13;
+      pointer-events: none;
+      user-select: none;
+      transition: opacity 600ms ease;
+    }
+    .service-card:hover .service-card-bg {
+      opacity: 0.28;
+      transition: opacity 600ms ease;
+    }
+    .service-card:not(:hover) .service-card-bg {
+      opacity: 0.13;
+      transition: opacity 800ms ease;
+    }
+
+    /* Content layer */
+    .service-card-content {
+      position: relative;
+      z-index: 1;
+      padding: 44px 44px 40px;
+      min-height: 480px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    /* ── Top: name + supporting line ── */
+    .service-card-top {
+      margin-bottom: 36px;
+    }
+
+    .service-card-name {
+      display: block;
+      font-family: "Bebas Neue", "Impact", sans-serif;
+      font-weight: 400;
+      font-size: 40px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #707070;
+      line-height: 0.97;
+      margin-bottom: 14px;
+      transition: color 300ms ease;
+    }
+    .service-card:hover .service-card-name { color: #1a1917; }
+
+    .service-card-sub {
+      display: block;
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      font-size: 15px;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      text-transform: none;
+      color: #555;
+      line-height: 1.5;
+    }
+
+    /* ── Details (staggered reveal) ── */
+    .service-card-details {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* Each child staggers in */
+    .service-card-details > * {
+      opacity: 0;
+      transform: translateY(7px);
+      transition:
+        opacity 380ms ease,
+        transform 380ms cubic-bezier(.16,1,.3,1);
+    }
+    .service-card:hover .service-card-details > *:nth-child(1) {
+      opacity: 1; transform: none;
+      transition-delay: 30ms;
+    }
+    .service-card:hover .service-card-details > *:nth-child(2) {
+      opacity: 1; transform: none;
+      transition-delay: 100ms;
+    }
+    .service-card:hover .service-card-details > *:nth-child(3) {
+      opacity: 1; transform: none;
+      transition-delay: 170ms;
+    }
+
+    /* Rule above details */
+    .detail-rule {
+      width: 100%;
+      height: 1px;
+      background: var(--rule);
+    }
+
+    .detail-fields {
+      display: flex;
+      gap: 36px;
+    }
+    .detail-field-label {
+      display: block;
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #777;
+      margin-bottom: 6px;
+    }
+    .detail-field-value {
+      display: block;
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      font-size: 17px;
+      font-weight: 400;
+      letter-spacing: normal;
+      color: #222;
+    }
+
+    .detail-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: normal;
+      color: #222;
+      text-decoration: none;
+      transition: color 220ms ease;
+    }
+    .detail-link:hover { opacity: 0.65; }
+    .detail-link-arrow { transition: transform 220ms ease; }
+    .detail-link:hover .detail-link-arrow { transform: translateX(3px); }
+
+    /* ── Footer note ── */
+    .services-note {
+      padding: 48px 72px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .services-note p {
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: 15px;
+      font-weight: 400;
+      letter-spacing: 2px;
+      color: var(--ink-3);
+      line-height: 1.8;
+      text-align: center;
+    }
+    .services-note a {
+      color: #f2a7be;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: rgba(242,167,190,.3);
+      transition: color 220ms;
+    }
+    .services-note a:hover { color: #e87da0; }
+    .services-note p:hover { color: var(--ink); transition: color 250ms; }
+    .services-note p:hover a { color: #f2a7be; }
+
+    /* ── Mobile ── */
+    @media (max-width: 860px) {
+      .page-head { padding: 48px 24px 40px; }
+      .service-grid-wrap { padding: 36px 24px 48px; }
+      .service-grid { grid-template-columns: 1fr; gap: 16px; }
+      .service-card { min-height: auto; }
+      .service-card-content { min-height: auto; padding: 36px 28px 32px; }
+      .service-card:hover { transform: none; box-shadow: none; }
+      .service-card-details > * { opacity: 1; transform: none; }
+      .service-card-bg { opacity: 0.22; }
+      .services-note { padding: 36px 24px; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <nav class="nav" id="mainNav">
+    <div class="nav-links">
+      <a href="/work/">Work</a>
+      <a href="/services/" class="active">Services</a>
+      <a href="/products/">Products</a>
+      <a href="/studio/">Studio</a>
+    </div>
+    <a class="nav-brand" href="/">Pink</a>
+    <div class="nav-end"><a href="/contact/">Start a Project</a></div>
+    <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+    <a href="/work/">Work</a>
+    <a href="/services/" class="active">Services</a>
+    <a href="/products/">Products</a>
+    <a href="/studio/">Studio</a>
+    <a href="/contact/">Start a Project</a>
+  </div>
+
+  <div class="page-head reveal">
+    <span class="page-eyebrow">Services</span>
+    <span class="page-headline">What do you need?</span>
+  </div>
+
+  <div class="service-grid-wrap reveal">
+    <div class="service-grid">
+
+      <div class="service-card">
+        <img class="service-card-bg" src="/assets/marble.png" alt="" />
+        <div class="service-card-content">
+          <div class="service-card-top">
+            <span class="service-card-name">Signature<br>Website</span>
+            <span class="service-card-sub">Built from scratch, for you.</span>
+          </div>
+          <div class="service-card-details">
+            <div class="detail-rule"></div>
+            <div class="detail-fields">
+              <div>
+                <span class="detail-field-label">Investment</span>
+                <span class="detail-field-value">From $3,000</span>
+              </div>
+              <div>
+                <span class="detail-field-label">Timeline</span>
+                <span class="detail-field-value">3 wks–1 mo</span>
+              </div>
+            </div>
+            <a class="detail-link" href="/services/signature">View details <span class="detail-link-arrow">→</span></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <img class="service-card-bg" src="/assets/marble.png" alt="" />
+        <div class="service-card-content">
+          <div class="service-card-top">
+            <span class="service-card-name">Website<br>Refresh</span>
+            <span class="service-card-sub">Your site, elevated.</span>
+          </div>
+          <div class="service-card-details">
+            <div class="detail-rule"></div>
+            <div class="detail-fields">
+              <div>
+                <span class="detail-field-label">Investment</span>
+                <span class="detail-field-value">$1,250</span>
+              </div>
+              <div>
+                <span class="detail-field-label">Timeline</span>
+                <span class="detail-field-value">2–3 weeks</span>
+              </div>
+            </div>
+            <a class="detail-link" href="/services/refresh">View details <span class="detail-link-arrow">→</span></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <img class="service-card-bg" src="/assets/marble.png" alt="" />
+        <div class="service-card-content">
+          <div class="service-card-top">
+            <span class="service-card-name">Website<br>Audit</span>
+            <span class="service-card-sub">Know exactly what to fix.</span>
+          </div>
+          <div class="service-card-details">
+            <div class="detail-rule"></div>
+            <div class="detail-fields">
+              <div>
+                <span class="detail-field-label">Investment</span>
+                <span class="detail-field-value">$200</span>
+              </div>
+              <div>
+                <span class="detail-field-label">Timeline</span>
+                <span class="detail-field-value">3–5 days</span>
+              </div>
+            </div>
+            <a class="detail-link" href="/services/audit">View details <span class="detail-link-arrow">→</span></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <img class="service-card-bg" src="/assets/marble.png" alt="" />
+        <div class="service-card-content">
+          <div class="service-card-top">
+            <span class="service-card-name">Website<br>Care</span>
+            <span class="service-card-sub">Always on. Always maintained.</span>
+          </div>
+          <div class="service-card-details">
+            <div class="detail-rule"></div>
+            <div class="detail-fields">
+              <div>
+                <span class="detail-field-label">Investment</span>
+                <span class="detail-field-value">$250 / mo</span>
+              </div>
+              <div>
+                <span class="detail-field-label">Timeline</span>
+                <span class="detail-field-value">Ongoing</span>
+              </div>
+            </div>
+            <a class="detail-link" href="/services/care">View details <span class="detail-link-arrow">→</span></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <img class="service-card-bg" src="/assets/marble.png" alt="" />
+        <div class="service-card-content">
+          <div class="service-card-top">
+            <span class="service-card-name">Internal<br>Systems</span>
+            <span class="service-card-sub">Tools that work the way you do.</span>
+          </div>
+          <div class="service-card-details">
+            <div class="detail-rule"></div>
+            <div class="detail-fields">
+              <div>
+                <span class="detail-field-label">Investment</span>
+                <span class="detail-field-value">Custom</span>
+              </div>
+              <div>
+                <span class="detail-field-label">Timeline</span>
+                <span class="detail-field-value">Varies</span>
+              </div>
+            </div>
+            <a class="detail-link" href="/contact/">Start a conversation <span class="detail-link-arrow">→</span></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <img class="service-card-bg" src="/assets/marble.png" alt="" />
+        <div class="service-card-content">
+          <div class="service-card-top">
+            <span class="service-card-name">Landing<br>Pages</span>
+            <span class="service-card-sub">One page. One goal.</span>
+          </div>
+          <div class="service-card-details">
+            <div class="detail-rule"></div>
+            <div class="detail-fields">
+              <div>
+                <span class="detail-field-label">Investment</span>
+                <span class="detail-field-value">Custom</span>
+              </div>
+              <div>
+                <span class="detail-field-label">Timeline</span>
+                <span class="detail-field-value">1–2 weeks</span>
+              </div>
+            </div>
+            <a class="detail-link" href="/contact/">Start a conversation <span class="detail-link-arrow">→</span></a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="services-note reveal">
+    <p>Not sure which fits? <a href="/contact/">Send a message</a> all projects begin with a conversation.</p>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-brand-wrap">
+      <span class="footer-brand">Pink Web Studio</span>
+      <span class="footer-brand-sub">Los Angeles &middot; Currently Booking</span>
+    </div>
+    <div class="footer-social">
+      <div class="footer-social-icons">
+        <a href="https://instagram.com/oraanlevi" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/oraan-levi-898a89200/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+      </div>
+      <a href="mailto:studio@pinkwebstudio.com" class="footer-email">studio@pinkwebstudio.com</a>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
+
+    const ham = document.getElementById('navHam');
+    const mob = document.getElementById('mobileNav');
+    ham.addEventListener('click', () => {
+      const open = ham.classList.toggle('open');
+      mob.classList.toggle('open', open);
+      ham.setAttribute('aria-expanded', open);
+      mob.setAttribute('aria-hidden', !open);
+    });
+    mob.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      ham.classList.remove('open');
+      mob.classList.remove('open');
+    }));
+
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.06 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
+
+</body>
+</html>

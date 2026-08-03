@@ -1,0 +1,501 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/assets/favicon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Investment · Pink Web Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+    <style>
+
+      /* ── Page Header ── */
+      .page-header {
+        padding: 80px 56px 64px;
+        border-bottom: 1px solid var(--rule);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: end;
+        gap: 48px;
+      }
+      .page-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(40px, 6vw, 80px);
+        font-weight: 300;
+        color: var(--ink);
+        letter-spacing: -2px;
+        line-height: .92;
+      }
+      .page-desc {
+        font-family: "Poppins", sans-serif;
+        font-size: 13px;
+        font-weight: 300;
+        color: var(--ink-2);
+        line-height: 1.85;
+        max-width: 38ch;
+      }
+
+      /* ── Comparison Table ── */
+      .comparison-section {
+        border-bottom: 1px solid var(--rule);
+      }
+      .comparison-label {
+        padding: 48px 56px 32px;
+        font-family: "Poppins", sans-serif;
+        font-size: 10px;
+        font-weight: 500;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: var(--ink-3);
+        display: block;
+      }
+      .comparison-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      .comparison-table thead tr {
+        border-bottom: 1px solid var(--rule);
+      }
+      .comparison-table th {
+        padding: 20px 56px 20px;
+        font-family: "Poppins", sans-serif;
+        font-size: 9px;
+        font-weight: 500;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--ink-3);
+        text-align: left;
+      }
+      .comparison-table th:not(:first-child) { text-align: right; }
+      .comparison-table tbody tr {
+        border-bottom: 1px solid var(--rule);
+        transition: background 250ms;
+      }
+      .comparison-table tbody tr:hover { background: rgba(26,25,23,.02); }
+      .comparison-table td {
+        padding: 32px 56px;
+        vertical-align: middle;
+      }
+      .comparison-table td:not(:first-child) {
+        text-align: right;
+        font-family: "Poppins", sans-serif;
+        font-size: 12px;
+        font-weight: 300;
+        color: var(--ink-2);
+        white-space: nowrap;
+      }
+      .service-cell-name {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(20px, 2.2vw, 30px);
+        font-weight: 300;
+        color: var(--ink);
+        letter-spacing: -.2px;
+        display: block;
+      }
+      .service-cell-link {
+        font-family: "Poppins", sans-serif;
+        font-size: 9px;
+        font-weight: 400;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--ink-3);
+        text-decoration: none;
+        display: inline-block;
+        margin-top: 6px;
+        transition: color 250ms;
+      }
+      .service-cell-link:hover { color: var(--ink-2); }
+      .price-cell {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(18px, 2vw, 26px);
+        font-weight: 300;
+        color: var(--ink);
+        letter-spacing: -.3px;
+      }
+
+      /* ── Payment Section ── */
+      .payment-section {
+        display: grid;
+        grid-template-columns: 220px 1fr;
+        border-bottom: 1px solid var(--rule);
+      }
+      .section-label-col {
+        padding: 64px 48px 64px 56px;
+        border-right: 1px solid var(--rule);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+      }
+      .section-label {
+        font-family: "Poppins", sans-serif;
+        font-size: 10px;
+        font-weight: 500;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: var(--ink-2);
+        display: block;
+      }
+      .section-content {
+        padding: 64px 56px 72px;
+      }
+      .payment-steps {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+      .payment-step {
+        display: grid;
+        grid-template-columns: 32px 1fr;
+        gap: 24px;
+        align-items: start;
+        padding: 24px 0;
+        border-bottom: 1px solid var(--rule);
+      }
+      .payment-step:first-child { border-top: 1px solid var(--rule); }
+      .payment-step-num {
+        font-family: "Poppins", sans-serif;
+        font-size: 9px;
+        font-weight: 400;
+        letter-spacing: 2px;
+        color: var(--ink-3);
+        padding-top: 4px;
+      }
+      .payment-step-name {
+        font-family: "Poppins", sans-serif;
+        font-size: 13px;
+        font-weight: 400;
+        color: var(--ink);
+        display: block;
+        margin-bottom: 4px;
+      }
+      .payment-step-desc {
+        font-family: "Poppins", sans-serif;
+        font-size: 12px;
+        font-weight: 300;
+        color: var(--ink-2);
+        line-height: 1.7;
+      }
+
+      /* ── FAQ ── */
+      .faq-section {
+        display: grid;
+        grid-template-columns: 220px 1fr;
+        border-bottom: 1px solid var(--rule);
+      }
+      .faq-list { display: flex; flex-direction: column; }
+      .faq-item { border-bottom: 1px solid var(--rule); }
+      .faq-item:first-child { border-top: 1px solid var(--rule); }
+      .faq-question {
+        width: 100%;
+        background: none;
+        border: none;
+        padding: 24px 0;
+        font-family: "Poppins", sans-serif;
+        font-size: 13px;
+        font-weight: 400;
+        color: var(--ink);
+        text-align: left;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        transition: color 250ms;
+      }
+      .faq-question:hover { color: var(--ink-2); }
+      .faq-icon {
+        flex-shrink: 0;
+        font-size: 18px;
+        font-weight: 300;
+        color: var(--ink-3);
+        transition: transform 300ms cubic-bezier(.16,1,.3,1), color 250ms;
+        line-height: 1;
+      }
+      .faq-item.open .faq-icon { transform: rotate(45deg); color: var(--ink-2); }
+      .faq-answer {
+        display: none;
+        padding: 0 0 28px;
+        font-family: "Poppins", sans-serif;
+        font-size: 13px;
+        font-weight: 300;
+        color: var(--ink-2);
+        line-height: 1.85;
+        max-width: 56ch;
+      }
+      .faq-item.open .faq-answer { display: block; }
+
+      /* ── CTA ── */
+      .cta-section {
+        padding: 80px 56px 96px;
+        border-bottom: 1px solid var(--rule);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 48px;
+      }
+      .cta-heading {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(28px, 3.5vw, 48px);
+        font-weight: 300;
+        font-style: italic;
+        color: var(--ink);
+        letter-spacing: -.3px;
+      }
+      .cta-links {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        flex-shrink: 0;
+      }
+      .cta-link {
+        font-family: "Poppins", sans-serif;
+        font-size: 10px;
+        font-weight: 500;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--ink);
+        text-decoration: none;
+        border-bottom: 1px solid var(--ink);
+        padding-bottom: 3px;
+        white-space: nowrap;
+        transition: opacity 250ms;
+      }
+      .cta-link:hover { opacity: .45; }
+      .cta-link--secondary {
+        font-weight: 300;
+        color: var(--ink-2);
+        border-bottom-color: var(--rule);
+      }
+
+      /* ── Mobile ── */
+      @media (max-width: 860px) {
+        .page-header { grid-template-columns: 1fr; padding: 48px 24px 40px; gap: 20px; }
+        .comparison-label { padding: 40px 24px 20px; }
+        .comparison-table th,
+        .comparison-table td { padding: 20px 24px; }
+        .comparison-table th:nth-child(3),
+        .comparison-table td:nth-child(3) { display: none; }
+        .payment-section { grid-template-columns: 1fr; }
+        .faq-section { grid-template-columns: 1fr; }
+        .section-label-col { padding: 40px 24px 20px; border-right: none; }
+        .section-content { padding: 0 24px 48px; }
+        .cta-section { flex-direction: column; align-items: flex-start; padding: 56px 24px 72px; gap: 28px; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="scroll-bar" id="scrollBar"></div>
+
+    <nav class="nav" id="mainNav">
+      <div class="nav-links">
+        <a href="/services/">Services</a>
+        <a href="/work/">Work</a>
+        <a href="/about">About</a>
+        <a href="/contact/">Contact</a>
+      </div>
+      <a class="nav-brand" href="/">Pink Web Studio</a>
+      <div class="nav-end"><a href="/contact/">Work with me</a></div>
+      <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+    <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+      <a href="/services/">Services</a>
+      <a href="/work/">Work</a>
+      <a href="/about">About</a>
+      <a href="/contact/">Contact</a>
+    </div>
+
+    <header class="page-header reveal">
+      <h1 class="page-title">Investment</h1>
+      <p class="page-desc"><!-- Intro copy TBD — frame as "Investment," not "Pricing." --></p>
+    </header>
+
+    <!-- Comparison Table -->
+    <div class="comparison-section">
+      <span class="comparison-label">Services at a Glance</span>
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Service</th>
+            <th>Starting Price</th>
+            <th>Typical Timeline</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="reveal">
+            <td>
+              <span class="service-cell-name">Signature Website</span>
+              <a class="service-cell-link" href="/services/signature">View service ↗&#xFE0E;</a>
+            </td>
+            <td><span class="price-cell">$4,000</span></td>
+            <td><!-- TBD --></td>
+          </tr>
+          <tr class="reveal">
+            <td>
+              <span class="service-cell-name">Website Refresh</span>
+              <a class="service-cell-link" href="/contact/">Inquire ↗&#xFE0E;</a>
+            </td>
+            <td><span class="price-cell">$2,000</span></td>
+            <td><!-- TBD --></td>
+          </tr>
+          <tr class="reveal">
+            <td>
+              <span class="service-cell-name">Website Audit</span>
+              <a class="service-cell-link" href="/services/audit">View service ↗&#xFE0E;</a>
+            </td>
+            <td><span class="price-cell">$199</span></td>
+            <td><!-- TBD --></td>
+          </tr>
+          <tr class="reveal">
+            <td>
+              <span class="service-cell-name">Website Care</span>
+              <a class="service-cell-link" href="/services/care">View service ↗&#xFE0E;</a>
+            </td>
+            <td><span class="price-cell">$250 / mo</span></td>
+            <td>Ongoing</td>
+          </tr>
+          <tr class="reveal">
+            <td>
+              <span class="service-cell-name">Landing Page</span>
+              <a class="service-cell-link" href="/contact/">Inquire ↗&#xFE0E;</a>
+            </td>
+            <td><span class="price-cell">Upon inquiry</span></td>
+            <td><!-- TBD --></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Payment Structure -->
+    <div class="payment-section reveal">
+      <div class="section-label-col">
+        <span class="section-label">How Payment Works</span>
+      </div>
+      <div class="section-content">
+        <div class="payment-steps">
+          <div class="payment-step">
+            <span class="payment-step-num">01</span>
+            <div>
+              <span class="payment-step-name">Discovery Call</span>
+              <span class="payment-step-desc"><!-- Description TBD --></span>
+            </div>
+          </div>
+          <div class="payment-step">
+            <span class="payment-step-num">02</span>
+            <div>
+              <span class="payment-step-name">Proposal &amp; Deposit</span>
+              <span class="payment-step-desc"><!-- Description TBD — deposit amount, how collected via Square --></span>
+            </div>
+          </div>
+          <div class="payment-step">
+            <span class="payment-step-num">03</span>
+            <div>
+              <span class="payment-step-name">Milestones</span>
+              <span class="payment-step-desc"><!-- Description TBD — milestone payment schedule --></span>
+            </div>
+          </div>
+          <div class="payment-step">
+            <span class="payment-step-num">04</span>
+            <div>
+              <span class="payment-step-name">Final Payment &amp; Launch</span>
+              <span class="payment-step-desc"><!-- Description TBD --></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq-section reveal">
+      <div class="section-label-col">
+        <span class="section-label">FAQ</span>
+      </div>
+      <div class="section-content">
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-question">Why does a custom website cost what it does?<span class="faq-icon">+</span></button>
+            <div class="faq-answer"><!-- Answer TBD --></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">What's the difference between a Signature Website and a Refresh?<span class="faq-icon">+</span></button>
+            <div class="faq-answer"><!-- Answer TBD --></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">Do you offer payment plans?<span class="faq-icon">+</span></button>
+            <div class="faq-answer"><!-- Answer TBD --></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">What's not included in the price?<span class="faq-icon">+</span></button>
+            <div class="faq-answer"><!-- Answer TBD --></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">How do I know which service is right for me?<span class="faq-icon">+</span></button>
+            <div class="faq-answer"><!-- Answer TBD --></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-section reveal">
+      <span class="cta-heading">Ready to talk through your project?</span>
+      <div class="cta-links">
+        <a class="cta-link" href="https://calendly.com/oraanlevi1/30min" target="_blank" rel="noopener">Book a discovery call ↗&#xFE0E;</a>
+        <a class="cta-link cta-link--secondary" href="/contact/">Send a note ↗&#xFE0E;</a>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <div class="footer-brand-wrap">
+        <span class="footer-brand">Pink Web Studio</span>
+        <span class="footer-brand-sub">Los Angeles &middot; Currently Booking</span>
+      </div>
+      <div class="footer-social">
+        <div class="footer-social-icons">
+          <a href="https://instagram.com/oraanlevi" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/oraan-levi-898a89200/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+        </div>
+        <a href="mailto:studio@pinkwebstudio.com" class="footer-email">studio@pinkwebstudio.com</a>
+      </div>
+    </footer>
+
+    <script>
+      const nav = document.getElementById("mainNav");
+      const bar = document.getElementById("scrollBar");
+      window.addEventListener("scroll", () => {
+        nav.classList.toggle("scrolled", window.scrollY > 20);
+        if (bar) bar.style.width = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100) + "%";
+      }, { passive: true });
+      const ham = document.getElementById("navHam");
+      const mob = document.getElementById("mobileNav");
+      ham.addEventListener("click", () => {
+        const open = ham.classList.toggle("open");
+        mob.classList.toggle("open", open);
+        ham.setAttribute("aria-expanded", open);
+        mob.setAttribute("aria-hidden", !open);
+      });
+      mob.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
+        ham.classList.remove("open"); mob.classList.remove("open");
+      }));
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("visible"); io.unobserve(e.target); } });
+      }, { threshold: 0.05, rootMargin: "0px 0px -48px 0px" });
+      document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+      document.querySelectorAll(".faq-question").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const item = btn.closest(".faq-item");
+          const wasOpen = item.classList.contains("open");
+          document.querySelectorAll(".faq-item").forEach(i => i.classList.remove("open"));
+          if (!wasOpen) item.classList.add("open");
+        });
+      });
+    </script>
+  </body>
+</html>

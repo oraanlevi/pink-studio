@@ -1,0 +1,898 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="/assets/favicon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Website Care · Pink Web Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@700&family=Rouge+Script&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+  <style>
+
+    /* ── Hero ── */
+    .sp-hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      overflow: hidden;
+      border-bottom: 1px solid var(--rule);
+    }
+    .sp-hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('/assets/marble.png') center / cover no-repeat;
+      transform: scale(1.04);
+      animation: heroZoom 20s ease-in-out infinite alternate;
+    }
+    @keyframes heroZoom {
+      from { transform: scale(1.04); }
+      to   { transform: scale(1.00); }
+    }
+    .sp-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(250,250,248,0.97) 0%,
+        rgba(250,250,248,0.80) 35%,
+        rgba(250,250,248,0.20) 65%,
+        rgba(250,250,248,0.00) 100%
+      );
+    }
+    .sp-hero-inner {
+      position: relative;
+      z-index: 1;
+      padding: 0 72px 80px;
+      display: flex;
+      flex-direction: column;
+      gap: 36px;
+    }
+    .sp-hero-title {
+      font-family: "Inter", system-ui, sans-serif;
+      font-weight: 700;
+      font-size: clamp(72px, 10vw, 140px);
+      line-height: 0.88;
+      letter-spacing: -3px;
+      color: var(--ink);
+    }
+    .sp-hero-bottom {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 40px;
+    }
+    .sp-hero-stats { display: flex; gap: 56px; }
+    .sp-stat { display: flex; flex-direction: column; gap: 6px; }
+    .sp-stat-label {
+      font-family: "Bebas Neue", "Impact", sans-serif;
+      font-size: 13px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--ink-3);
+    }
+    .sp-stat-value {
+      font-family: "Inter", system-ui, sans-serif;
+      font-weight: 700;
+      font-size: 22px;
+      color: var(--ink);
+      line-height: 1;
+    }
+    .sp-hero-cta {
+      font-family: "Rouge Script", cursive;
+      font-size: 28px;
+      letter-spacing: 3px;
+      text-transform: none;
+      color: var(--ink);
+      text-decoration: none;
+      transition: opacity 250ms;
+      white-space: nowrap;
+      flex-shrink: 0;
+      align-self: flex-end;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .sp-hero-cta .btn-arrow {
+      font-family: system-ui, sans-serif;
+      font-size: 16px;
+      letter-spacing: 0;
+    }
+    .sp-hero-cta:hover { opacity: .45; }
+
+    /* ── Thesis ── */
+    .thesis {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 1px solid var(--rule);
+      min-height: 560px;
+    }
+    .thesis-left {
+      padding: 88px 64px 80px 72px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .thesis-statement {
+      font-family: "Inter", system-ui, sans-serif;
+      font-weight: 700;
+      font-size: clamp(28px, 3.6vw, 52px);
+      color: var(--ink);
+      line-height: 1.12;
+      letter-spacing: -0.4px;
+      max-width: 22ch;
+      display: block;
+      margin-bottom: 40px;
+    }
+    .thesis-body {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      max-width: 52ch;
+    }
+    .thesis-body p {
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: 16px;
+      color: #555;
+      line-height: 1.8;
+    }
+    .thesis-showcase {
+      position: relative;
+      overflow: hidden;
+    }
+    .showcase-frame {
+      position: absolute;
+      width: 54%;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.04);
+      opacity: 0.72;
+      transition: opacity 480ms ease, transform 480ms ease, box-shadow 480ms ease, z-index 0ms;
+      cursor: default;
+    }
+    .showcase-frame:hover {
+      opacity: 1;
+      transform: scale(1.04) !important;
+      box-shadow: 0 12px 48px rgba(0,0,0,0.13), 0 2px 8px rgba(0,0,0,0.06);
+      z-index: 10 !important;
+    }
+    .thesis-showcase:has(.showcase-frame:hover) .showcase-frame:not(:hover) {
+      opacity: 0.38;
+    }
+    .frame-chrome {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 8px 12px;
+      border-bottom: 1px solid #eee;
+      background: #f7f7f5;
+      border-radius: 6px 6px 0 0;
+    }
+    .frame-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #ddd;
+      flex-shrink: 0;
+    }
+    .frame-url {
+      flex: 1;
+      height: 14px;
+      background: #e8e8e6;
+      border-radius: 3px;
+      margin-left: 6px;
+    }
+    .frame-img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+      object-position: top center;
+      border-radius: 0 0 5px 5px;
+    }
+    .showcase-frame:nth-child(1) { top: 10%; left: 6%; z-index: 4; transform: rotate(-1.5deg); }
+    .showcase-frame:nth-child(2) { top: 22%; left: 34%; z-index: 3; transform: rotate(1deg); }
+    .showcase-frame:nth-child(3) { top: 42%; left: 12%; z-index: 2; transform: rotate(0.5deg); }
+    .showcase-frame:nth-child(4) { top: 52%; left: 38%; z-index: 1; transform: rotate(-0.8deg); }
+
+    @media (max-width: 860px) {
+      .thesis { grid-template-columns: 1fr; min-height: auto; }
+      .thesis-left { padding: 56px 24px 48px; border-right: none; border-bottom: 1px solid var(--rule); }
+      .thesis-showcase { display: none; }
+    }
+
+    /* ── Argument ── */
+    .argument { border-bottom: 1px solid var(--rule); }
+    .argument-band {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      align-items: start;
+      gap: 48px;
+      padding: 52px 72px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .argument-band:last-child { border-bottom: none; }
+    .argument-label {
+      font-family: "Rouge Script", cursive;
+      font-size: 34px;
+      letter-spacing: 0;
+      text-transform: none;
+      color: #444;
+      padding-top: 0;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .argument-content { display: flex; flex-direction: column; gap: 16px; }
+    .argument-heading {
+      font-family: "Inter", system-ui, sans-serif;
+      font-weight: 700;
+      font-size: clamp(18px, 2vw, 26px);
+      color: var(--ink);
+      line-height: 1.2;
+      letter-spacing: -0.2px;
+      display: block;
+      max-width: 32ch;
+    }
+    .argument-body {
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: 16px;
+      color: #555;
+      line-height: 1.75;
+      max-width: 56ch;
+    }
+
+    /* ── Section shell ── */
+    .sp-section { border-bottom: 1px solid var(--rule); }
+    .sp-section--last { border-bottom: none; }
+    .sp-section-head {
+      padding: 48px 72px 32px;
+      border-bottom: 1px solid var(--rule);
+      text-align: center;
+    }
+    .sp-section-label {
+      font-family: "Rouge Script", cursive;
+      font-size: 40px;
+      letter-spacing: 0;
+      text-transform: none;
+      color: #000;
+    }
+
+    /* ── What's Included — 4 phase cards ── */
+    .included-grid { display: grid; grid-template-columns: 1fr 1fr; }
+    .included-card {
+      padding: 52px 56px 60px;
+      border-right: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+    }
+    .included-card:nth-child(even) { border-right: none; }
+    .included-card:nth-last-child(-n+2) { border-bottom: none; }
+    .included-card-num {
+      font-family: "Rouge Script", cursive;
+      font-size: 30px;
+      letter-spacing: 0;
+      text-transform: none;
+      color: #000;
+      display: block;
+      margin-bottom: 16px;
+    }
+    .included-card-name {
+      font-family: "Inter", system-ui, sans-serif;
+      font-weight: 700;
+      font-size: clamp(22px, 2.2vw, 30px);
+      color: var(--ink);
+      display: block;
+      line-height: 1.1;
+      letter-spacing: -0.2px;
+      margin-bottom: 20px;
+    }
+    .included-card-desc {
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: 15px;
+      color: #666;
+      line-height: 1.75;
+    }
+    .included-card-items {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .included-card-item {
+      font-family: "Inter", system-ui, sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #000;
+      padding: 10px 0;
+      border-top: 1px solid var(--rule);
+    }
+
+    /* ── Process ── */
+    .process-timeline-wrap {
+      height: 1px;
+      background: var(--rule);
+      position: relative;
+      overflow: hidden;
+    }
+    .process-timeline-fill {
+      position: absolute;
+      left: 0; top: 0;
+      height: 100%;
+      width: 0;
+      background: var(--ink);
+      transition: width 400ms cubic-bezier(.16,1,.3,1);
+    }
+    .process-row { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .process-step {
+      padding: 56px 48px 64px;
+      border-right: 1px solid var(--rule);
+    }
+    .process-step:last-child { border-right: none; }
+    .process-num {
+      font-family: "Rouge Script", cursive;
+      font-size: 22px;
+      letter-spacing: 2px;
+      color: #444;
+      display: block;
+      margin-bottom: 24px;
+    }
+    .process-label {
+      font-family: "Inter", system-ui, sans-serif;
+      font-weight: 700;
+      font-size: 32px;
+      color: var(--ink);
+      display: block;
+      letter-spacing: -0.3px;
+      margin-bottom: 20px;
+    }
+    .process-body {
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: 15px;
+      color: #666;
+      line-height: 1.75;
+    }
+    .process-body + .process-body { margin-top: 20px; }
+
+    /* ── Investment ── */
+    .investment-main {
+      padding: 64px 72px;
+      display: flex;
+      align-items: center;
+      gap: 64px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .investment-stat { display: flex; flex-direction: column; gap: 8px; }
+    .investment-stat-label {
+      font-family: "Bebas Neue", "Impact", sans-serif;
+      font-size: 13px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--ink-3);
+    }
+    .investment-amount {
+      font-family: "Inter", system-ui, sans-serif;
+      font-weight: 700;
+      font-size: 48px;
+      color: var(--ink);
+      line-height: .88;
+      letter-spacing: -2.5px;
+    }
+    .investment-divider { width: 1px; height: 80px; background: var(--rule); flex-shrink: 0; }
+    .investment-cta {
+      margin-left: auto;
+      font-family: "Bebas Neue", "Impact", sans-serif;
+      font-size: 16px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+      transition: opacity 250ms;
+      white-space: nowrap;
+    }
+    .investment-cta:hover { opacity: .45; }
+    .investment-note {
+      padding: 28px 72px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .investment-note p {
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: 14px;
+      color: var(--ink-3);
+      line-height: 1.6;
+    }
+
+    /* ── FAQ ── */
+    .sp-section-body { padding: 0 72px 72px; }
+    .faq-list { display: flex; flex-direction: column; }
+    .faq-item { border-bottom: 1px solid var(--rule); }
+    .faq-item:first-child { border-top: 1px solid var(--rule); }
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 32px 0;
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--ink);
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      transition: color 250ms;
+    }
+    .faq-question:hover { color: #555; }
+    .faq-icon {
+      flex-shrink: 0;
+      font-size: 20px;
+      font-weight: 300;
+      color: var(--ink-3);
+      transition: transform 300ms cubic-bezier(.16,1,.3,1), color 250ms;
+      line-height: 1;
+    }
+    .faq-item.open .faq-icon { transform: rotate(45deg); color: var(--ink-2); }
+    .faq-answer {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 380ms cubic-bezier(.16,1,.3,1);
+    }
+    .faq-answer-inner { overflow: hidden; }
+    .faq-item.open .faq-answer { grid-template-rows: 1fr; }
+    .faq-answer-inner p {
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: 16px;
+      color: #666;
+      line-height: 1.8;
+      padding-bottom: 32px;
+      max-width: 60ch;
+    }
+
+    /* ── Final CTA ── */
+    .sp-cta {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 320px;
+    }
+    .sp-cta-left {
+      padding: 88px 72px;
+      display: flex;
+      align-items: center;
+    }
+    .sp-cta-headline {
+      font-family: "Inter", system-ui, sans-serif;
+      font-weight: 700;
+      font-size: clamp(32px, 4vw, 56px);
+      color: var(--ink);
+      line-height: 1.05;
+      letter-spacing: -0.5px;
+    }
+    .sp-cta-right {
+      padding: 88px 72px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 32px;
+    }
+    .sp-cta-sub {
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: 16px;
+      color: #777;
+      line-height: 1.7;
+    }
+    .sp-cta-links { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
+    .sp-cta-btn {
+      font-family: "Rouge Script", cursive;
+      font-size: 28px;
+      letter-spacing: 3px;
+      text-transform: none;
+      color: #000;
+      text-decoration: none;
+      transition: opacity 250ms;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .sp-cta-btn .btn-arrow {
+      font-family: system-ui, sans-serif;
+      font-size: 16px;
+      letter-spacing: 0;
+    }
+    .sp-cta-btn:hover { opacity: .45; }
+    .sp-cta-btn--secondary { color: #000; }
+
+    /* ── Breadcrumb ── */
+    .sp-breadcrumb { padding: 20px 72px; border-bottom: 1px solid var(--rule); }
+    .sp-breadcrumb a {
+      font-family: "Bebas Neue", "Impact", sans-serif;
+      font-size: 13px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      text-decoration: none;
+      transition: color 200ms;
+    }
+    .sp-breadcrumb a:hover { color: var(--ink-2); }
+
+    /* ── Mobile ── */
+    @media (max-width: 860px) {
+      .sp-hero { min-height: 100svh; }
+      .sp-hero-inner { padding: 0 24px 56px; gap: 28px; }
+      .sp-hero-title { font-size: clamp(52px, 12vw, 80px); letter-spacing: -2px; }
+      .sp-hero-bottom { flex-direction: column; align-items: flex-start; gap: 24px; }
+      .argument-band { grid-template-columns: 1fr; gap: 20px; padding: 40px 24px; }
+      .sp-section-head { padding: 36px 24px 24px; }
+      .sp-section-body { padding: 0 24px 48px; }
+      .included-grid { grid-template-columns: 1fr; }
+      .included-card { border-right: none !important; padding: 40px 24px 48px; }
+      .included-card:nth-last-child(-n+2) { border-bottom: 1px solid var(--rule); }
+      .included-card:last-child { border-bottom: none; }
+      .process-row { grid-template-columns: 1fr; }
+      .process-step { border-right: none !important; border-bottom: 1px solid var(--rule); padding: 40px 24px 48px; }
+      .process-step:last-child { border-bottom: none; }
+      .investment-main { flex-direction: column; align-items: flex-start; padding: 40px 24px; gap: 32px; }
+      .investment-divider { display: none; }
+      .investment-cta { margin-left: 0; }
+      .investment-note { padding: 24px; }
+      .sp-cta { grid-template-columns: 1fr; min-height: auto; }
+      .sp-cta-left, .sp-cta-right { padding: 48px 24px; }
+      .sp-cta-left { padding-bottom: 0; }
+      .sp-breadcrumb { padding: 18px 24px; }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="scroll-bar" id="scrollBar"></div>
+
+  <nav class="nav" id="mainNav">
+    <div class="nav-links">
+      <a href="/work/">Work</a>
+      <a href="/services/" class="active">Services</a>
+      <a href="/products/">Products</a>
+      <a href="/studio/">Studio</a>
+    </div>
+    <a class="nav-brand" href="/">Pink</a>
+    <div class="nav-end"><a href="/contact/">Start a Project</a></div>
+    <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+    <a href="/work/">Work</a>
+    <a href="/services/" class="active">Services</a>
+    <a href="/products/">Products</a>
+    <a href="/studio/">Studio</a>
+    <a href="/contact/">Start a Project</a>
+  </div>
+
+  <!-- Breadcrumb -->
+  <div class="sp-breadcrumb">
+    <a href="/services/">&larr; Services</a>
+  </div>
+
+  <!-- Hero -->
+  <section class="sp-hero">
+    <div class="sp-hero-bg"></div>
+    <div class="sp-hero-overlay"></div>
+    <div class="sp-hero-inner">
+      <h1 class="sp-hero-title">Website<br>Care</h1>
+      <div class="sp-hero-bottom">
+        <div class="sp-hero-stats">
+          <div class="sp-stat">
+            <span class="sp-stat-label">Monthly</span>
+            <span class="sp-stat-value">$250</span>
+          </div>
+          <div class="sp-stat">
+            <span class="sp-stat-label">Commitment</span>
+            <span class="sp-stat-value">Cancel anytime</span>
+          </div>
+        </div>
+        <a href="https://calendly.com/oraanlevi1/30min" class="sp-hero-cta">Book a Call <span class="btn-arrow">&rarr;</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Thesis -->
+  <section class="thesis">
+    <div class="thesis-left">
+      <span class="thesis-statement">Your website doesn't maintain itself. Now it doesn't have to.</span>
+      <div class="thesis-body">
+        <p>You're not a developer. You shouldn't have to be. This is for business owners who want their site to stay accurate, fast, and current.</p>
+        <p>Website Care is an ongoing relationship. I handle the updates, edits, and small changes that keep your site performing. You stay focused on your business.</p>
+      </div>
+    </div>
+    <div class="thesis-showcase">
+      <div class="showcase-frame">
+        <div class="frame-chrome">
+          <span class="frame-dot"></span><span class="frame-dot"></span><span class="frame-dot"></span>
+          <span class="frame-url"></span>
+        </div>
+        <img class="frame-img" src="/assets/clientportal.png" alt="" />
+      </div>
+      <div class="showcase-frame">
+        <div class="frame-chrome">
+          <span class="frame-dot"></span><span class="frame-dot"></span><span class="frame-dot"></span>
+          <span class="frame-url"></span>
+        </div>
+        <img class="frame-img" src="/assets/junesnip.png" alt="" />
+      </div>
+      <div class="showcase-frame">
+        <div class="frame-chrome">
+          <span class="frame-dot"></span><span class="frame-dot"></span><span class="frame-dot"></span>
+          <span class="frame-url"></span>
+        </div>
+        <img class="frame-img" src="/assets/cel.png" alt="" />
+      </div>
+      <div class="showcase-frame">
+        <div class="frame-chrome">
+          <span class="frame-dot"></span><span class="frame-dot"></span><span class="frame-dot"></span>
+          <span class="frame-url"></span>
+        </div>
+        <img class="frame-img" src="/assets/moodboard.png" alt="" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Argument -->
+  <section class="argument">
+    <div class="argument-band">
+      <span class="argument-label">Who This Is For</span>
+      <div class="argument-content">
+        <span class="argument-heading">Brands that want their website maintained by someone who actually knows it.</span>
+        <p class="argument-body">You have a business to run. Chasing down developers for small changes, noticing broken links weeks after they appeared, or watching your site go stale — none of that should be your job.</p>
+      </div>
+    </div>
+    <div class="argument-band">
+      <span class="argument-label">The Problem</span>
+      <div class="argument-content">
+        <span class="argument-heading">A site that isn't actively maintained slowly becomes a liability.</span>
+        <p class="argument-body">Content goes stale. Links break. New offerings get added in the wrong place, or not at all. A site you're embarrassed to send people to is costing you more than you think.</p>
+      </div>
+    </div>
+    <div class="argument-band">
+      <span class="argument-label">The Approach</span>
+      <div class="argument-content">
+        <span class="argument-heading">Monthly attention from someone who knows your site and what it's trying to do.</span>
+        <p class="argument-body">I handle the updates, edits, and small changes that keep your site accurate and performing. You hear from me every month. You don't have to chase.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- What's Included -->
+  <section class="sp-section">
+    <div class="sp-section-head">
+      <span class="sp-section-label">What's Included</span>
+    </div>
+    <div class="included-grid">
+      <div class="included-card">
+        <span class="included-card-num">Content</span>
+        <span class="included-card-name">Updates &amp; Edits</span>
+        <p class="included-card-desc">New service offerings, updated bios, pricing changes, seasonal copy. Any text or images that need to reflect where your business is today.</p>
+        <div class="included-card-items">
+          <div class="included-card-item">Content Updates</div>
+          <div class="included-card-item">Image Replacements</div>
+          <div class="included-card-item">Text Edits</div>
+        </div>
+      </div>
+      <div class="included-card">
+        <span class="included-card-num">Maintain</span>
+        <span class="included-card-name">Bug Fixes &amp; Upkeep</span>
+        <p class="included-card-desc">Broken links, layout issues on certain devices, form errors — caught and fixed before they cost you visitors or credibility.</p>
+        <div class="included-card-items">
+          <div class="included-card-item">Bug Fixes</div>
+          <div class="included-card-item">Monthly Maintenance</div>
+        </div>
+      </div>
+      <div class="included-card">
+        <span class="included-card-num">Monitor</span>
+        <span class="included-card-name">Performance Checks</span>
+        <p class="included-card-desc">Load speed, mobile behavior, and general site health reviewed monthly so small issues don't become costly ones.</p>
+        <div class="included-card-items">
+          <div class="included-card-item">Performance Checks</div>
+          <div class="included-card-item">Monthly Website Review</div>
+        </div>
+      </div>
+      <div class="included-card">
+        <span class="included-card-num">Support</span>
+        <span class="included-card-name">Priority Access</span>
+        <p class="included-card-desc">You're not in a queue. Care clients get a direct line — email, voice memo, screenshot, whatever works. You hear back the same day.</p>
+        <div class="included-card-items">
+          <div class="included-card-item">Priority Email Support</div>
+          <div class="included-card-item">Same-Day Response</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="sp-section">
+    <div class="sp-section-head">
+      <span class="sp-section-label">How It Works</span>
+    </div>
+    <div class="process-timeline-wrap">
+      <div class="process-timeline-fill" id="processTimelineFill"></div>
+    </div>
+    <div class="process-row" id="processRow">
+      <div class="process-step">
+        <span class="process-num">01</span>
+        <span class="process-label">Onboarding</span>
+        <p class="process-body">We start with a brief conversation about your site and how it's currently managed.<br>I get access to your files and document what's where.</p>
+        <p class="process-body">We're ready to go within the first week.</p>
+      </div>
+      <div class="process-step">
+        <span class="process-num">02</span>
+        <span class="process-label">Monthly</span>
+        <p class="process-body">Each month I review your site, make any requested changes, and let you know if anything needs attention.<br>You hear from me.</p>
+        <p class="process-body">You don't have to chase.</p>
+      </div>
+      <div class="process-step">
+        <span class="process-num">03</span>
+        <span class="process-label">On-Demand</span>
+        <p class="process-body">Between scheduled reviews, you can send requests as they come up.<br>Text, email, a voice memo — whatever works.</p>
+        <p class="process-body">I handle it.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Investment -->
+  <section class="sp-section">
+    <div class="investment-main">
+      <div class="investment-stat">
+        <span class="investment-stat-label">Monthly Retainer</span>
+        <span class="investment-amount">$250/mo</span>
+      </div>
+      <div class="investment-divider"></div>
+      <div class="investment-stat">
+        <span class="investment-stat-label">Commitment</span>
+        <span class="investment-amount">Cancel anytime</span>
+      </div>
+      <a href="https://calendly.com/oraanlevi1/30min" class="investment-cta">Book a Call &rarr;</a>
+    </div>
+    <div class="investment-note">
+      <p>Website Care is month-to-month with no contracts and no lock-in periods. Cancel anytime. Onboarding takes one week.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="sp-section">
+    <div class="sp-section-head">
+      <span class="sp-section-label">Questions</span>
+    </div>
+    <div class="sp-section-body">
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question">
+            What's included in Website Care each month?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              <p>Content updates, copy edits, image swaps, structural adjustments, and general upkeep. Each month covers what your site actually needs — nothing is off-limits within reason.</p>
+            </div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            Do I need to have a Pink Web Studio site to enroll?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              <p>No. Website Care is available to any business with an existing site. The onboarding process is how I get familiar with your setup, regardless of who built it.</p>
+            </div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            How do I request updates or changes?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              <p>Email is fine. So is a voice memo, a screenshot with a note, or a simple text. The format doesn't matter — I'll work from whatever you send.</p>
+            </div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            Can I cancel at any time?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              <p>Yes. Website Care is month-to-month with no contracts and no notice periods. If your needs change, you can cancel anytime.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="sp-cta">
+    <div class="sp-cta-left">
+      <span class="sp-cta-headline">Ready to stop thinking about your website?</span>
+    </div>
+    <div class="sp-cta-right">
+      <p class="sp-cta-sub">Every project starts with a conversation.</p>
+      <div class="sp-cta-links">
+        <a href="https://calendly.com/oraanlevi1/30min" class="sp-cta-btn">Book a Call <span class="btn-arrow">&rarr;</span></a>
+        <a href="/connect" class="sp-cta-btn sp-cta-btn--secondary">Send a Message <span class="btn-arrow">&rarr;</span></a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-brand-wrap">
+      <span class="footer-brand">Pink Web Studio</span>
+      <span class="footer-brand-sub">Los Angeles &middot; Currently Booking</span>
+    </div>
+    <div class="footer-social">
+      <div class="footer-social-icons">
+        <a href="https://instagram.com/oraanlevi" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/oraan-levi-898a89200/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+      </div>
+      <a href="mailto:studio@pinkwebstudio.com" class="footer-email">studio@pinkwebstudio.com</a>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('mainNav');
+    const bar = document.getElementById('scrollBar');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+      if (bar) bar.style.width = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100) + '%';
+    }, { passive: true });
+
+    const ham = document.getElementById('navHam');
+    const mob = document.getElementById('mobileNav');
+    ham.addEventListener('click', () => {
+      const open = ham.classList.toggle('open');
+      mob.classList.toggle('open', open);
+      ham.setAttribute('aria-expanded', open);
+      mob.setAttribute('aria-hidden', !open);
+    });
+    mob.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      ham.classList.remove('open');
+      mob.classList.remove('open');
+    }));
+
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.04, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    const processRow = document.getElementById('processRow');
+    const timelineFill = document.getElementById('processTimelineFill');
+    if (processRow && timelineFill) {
+      const steps = processRow.querySelectorAll('.process-step');
+      steps.forEach((step, i) => {
+        step.addEventListener('mouseenter', () => {
+          timelineFill.style.width = ((i + 1) / steps.length * 100) + '%';
+        });
+      });
+      processRow.addEventListener('mouseleave', () => { timelineFill.style.width = '0'; });
+    }
+
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const wasOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!wasOpen) item.classList.add('open');
+      });
+    });
+  </script>
+</body>
+</html>

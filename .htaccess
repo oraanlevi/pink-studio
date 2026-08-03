@@ -17,3 +17,7 @@ RewriteRule ^index\.html$ / [R=301,L]
 # ── Phase 0: Retired pages ──
 # /enter-the-studio is retired. Target /connect exists and is live.
 Redirect 301 /enter-the-studio /connect
+
+# ── Phase 1: Retired pages ──
+# /connect is retired. Target /contact (contact/index.html) is now live.
+Redirect 301 /connect /contact

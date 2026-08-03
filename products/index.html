@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="/assets/favicon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Products · Pink</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+  <style>
+
+    /* ── Page header ── */
+    .page-head {
+      padding: 72px 72px 56px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .page-eyebrow {
+      display: block;
+      font-family: "Bebas Neue", "Impact", sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      margin-bottom: 20px;
+    }
+    .page-headline {
+      display: block;
+      font-family: "Bebas Neue", "Impact", sans-serif;
+
+      font-weight: 400;
+      font-size: clamp(37px, 3.8vw, 61px);
+      color: var(--ink);
+      line-height: 1.0;
+      letter-spacing: -0.5px;
+    }
+    .page-sub {
+      display: block;
+      font-family: "Bebas Neue", "Impact", sans-serif;
+      font-size: 20px;
+      font-weight: 400;
+      letter-spacing: 1.5px;
+      color: var(--ink-3);
+      margin-top: 16px;
+      line-height: 1.8;
+    }
+
+    /* ── Product rows ── */
+    .product-list {
+      border-bottom: 1px solid var(--rule);
+    }
+    .product-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 72px;
+      height: 80px;
+      border-bottom: 1px solid var(--rule);
+      text-decoration: none;
+      transition: background 180ms ease;
+    }
+    .product-row:last-child { border-bottom: none; }
+    .product-row:not(.product-row--soon):hover {
+      background: rgba(26,25,23,.025);
+    }
+
+    .product-row-left {
+      display: flex;
+      align-items: baseline;
+      gap: 28px;
+    }
+    .product-row-name {
+      font-family: "Bebas Neue", "Impact", sans-serif;
+
+      font-weight: 400;
+      font-size: clamp(23px, 2vw, 31px);
+      color: var(--ink-2);
+      transition: color 180ms ease;
+    }
+    .product-row:not(.product-row--soon):hover .product-row-name { color: var(--ink); }
+
+    .product-row-desc {
+      font-family: "Bebas Neue", "Impact", sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 1.5px;
+      color: var(--ink-3);
+      display: none;
+    }
+
+    .product-row-right {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    .product-row-status {
+      font-family: "Bebas Neue", "Impact", sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      transition: color 180ms ease;
+    }
+    .product-row:not(.product-row--soon):hover .product-row-status { color: var(--ink-2); }
+
+    .product-row-arrow {
+      font-family: "Bebas Neue", "Impact", sans-serif;
+      font-size: 15px;
+      color: var(--ink-3);
+      transition: color 180ms ease, transform 180ms ease;
+    }
+    .product-row:not(.product-row--soon):hover .product-row-arrow {
+      color: var(--ink);
+      transform: translateX(3px);
+    }
+
+    /* Soon state */
+    .product-row--soon { cursor: default; }
+    .product-row--soon .product-row-name {
+      color: var(--ink-3);
+      font-style: normal;
+    }
+
+    /* Soon badge */
+    .soon-badge {
+      font-family: "Bebas Neue", "Impact", sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      border: 1px solid var(--rule);
+      padding: 4px 10px;
+    }
+
+    /* ── Notify section ── */
+    .products-notify {
+      padding: 48px 72px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .products-notify p {
+      font-family: "Bebas Neue", "Impact", sans-serif;
+      font-size: 40px;
+      font-weight: 400;
+      letter-spacing: 1.5px;
+      color: var(--ink-3);
+      line-height: 1.4;
+      text-align: center;
+    }
+    .products-notify a {
+      color: var(--ink-2);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: var(--rule);
+      transition: color 220ms;
+    }
+    .products-notify a:hover { color: var(--ink); }
+
+    @media (min-width: 960px) {
+      .product-row-desc { display: block; }
+    }
+
+    @media (max-width: 860px) {
+      .page-head { padding: 48px 24px 40px; }
+      .product-row { padding: 0 24px; height: 72px; }
+      .products-notify { padding: 36px 24px; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <nav class="nav" id="mainNav">
+    <div class="nav-links">
+      <a href="/work/">Work</a>
+      <a href="/services/">Services</a>
+      <a href="/products/" class="active">Products</a>
+      <a href="/studio/">Studio</a>
+    </div>
+    <a class="nav-brand" href="/">Pink</a>
+    <div class="nav-end"><a href="/contact/">Start a Project</a></div>
+    <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+    <a href="/work/">Work</a>
+    <a href="/services/">Services</a>
+    <a href="/products/" class="active">Products</a>
+    <a href="/studio/">Studio</a>
+    <a href="/contact/">Start a Project</a>
+  </div>
+
+  <div class="page-head reveal">
+    <span class="page-eyebrow">Products</span>
+    <span class="page-headline">Browse what's available.</span>
+    <span class="page-sub">Ready-made templates, kits, and resources — designed to the same standard as custom work.</span>
+  </div>
+
+  <div class="product-list">
+
+    <div class="product-row product-row--soon reveal">
+      <div class="product-row-left">
+        <span class="product-row-name">Website Templates</span>
+        <span class="product-row-desc">Full-site templates for creative businesses</span>
+      </div>
+      <div class="product-row-right">
+        <span class="soon-badge">Coming Soon</span>
+      </div>
+    </div>
+
+    <div class="product-row product-row--soon reveal d1">
+      <div class="product-row-left">
+        <span class="product-row-name">Landing Page Templates</span>
+        <span class="product-row-desc">Single-page templates for launches and campaigns</span>
+      </div>
+      <div class="product-row-right">
+        <span class="soon-badge">Coming Soon</span>
+      </div>
+    </div>
+
+    <div class="product-row product-row--soon reveal d2">
+      <div class="product-row-left">
+        <span class="product-row-name">UI Kits</span>
+        <span class="product-row-desc">Component libraries for designers and developers</span>
+      </div>
+      <div class="product-row-right">
+        <span class="soon-badge">Coming Soon</span>
+      </div>
+    </div>
+
+    <div class="product-row product-row--soon reveal d3">
+      <div class="product-row-left">
+        <span class="product-row-name">Resources</span>
+        <span class="product-row-desc">Guides, checklists, and references</span>
+      </div>
+      <div class="product-row-right">
+        <span class="soon-badge">Coming Soon</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="products-notify reveal">
+    <p>Products launch this year. <a href="mailto:studio@pinkwebstudio.com">Send an email</a> to be notified when they're available.</p>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-brand-wrap">
+      <span class="footer-brand">Pink Web Studio</span>
+      <span class="footer-brand-sub">Los Angeles &middot; Currently Booking</span>
+    </div>
+    <div class="footer-social">
+      <div class="footer-social-icons">
+        <a href="https://instagram.com/oraanlevi" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/oraan-levi-898a89200/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+      </div>
+      <a href="mailto:studio@pinkwebstudio.com" class="footer-email">studio@pinkwebstudio.com</a>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
+
+    const ham = document.getElementById('navHam');
+    const mob = document.getElementById('mobileNav');
+    ham.addEventListener('click', () => {
+      const open = ham.classList.toggle('open');
+      mob.classList.toggle('open', open);
+      ham.setAttribute('aria-expanded', open);
+      mob.setAttribute('aria-hidden', !open);
+    });
+    mob.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      ham.classList.remove('open');
+      mob.classList.remove('open');
+    }));
+
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -32px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
+
+</body>
+</html>

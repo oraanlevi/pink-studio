@@ -1,720 +1,708 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pink Web Studio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Poppins:wght@300;400;500&family=Parisienne&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/styles.css" />
-    <style>
-      .page-header {
-        padding: 64px 48px 52px;
-        border-bottom: 1px solid var(--rule);
-        text-align: center;
-        background: var(--bg);
-      }
-      .page-title {
-        font-family: "Cormorant Garamond", serif;
-        font-size: clamp(28px, 4vw, 48px);
-        font-weight: 300;
-        color: var(--ink);
-        letter-spacing: -1px;
-        line-height: 1;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="/assets/favicon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Work · Pink</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@700&family=Pliant&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+  <style>
 
-      /* ── Horizontal drag gallery ── */
-      .proj-outer {
-        position: relative;
-        border-bottom: 1px solid var(--rule);
-      }
-      .proj-track {
-        display: flex;
-        overflow-x: scroll;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-        cursor: grab;
-        height: 75vh;
-        gap: 40px;
-        padding: 40px;
-        scroll-padding-left: 40px;
-        user-select: none;
-        -webkit-user-select: none;
-        background: url('/assets/marble.png') center/cover no-repeat;
-      }
-      .proj-track::-webkit-scrollbar { display: none; }
-      .proj-track.is-dragging { cursor: grabbing; }
-      .proj-panel {
-        flex-shrink: 0;
-        width: 88vw;
-        height: 100%;
-        scroll-snap-align: start;
-        position: relative;
-        overflow: hidden;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .proj-panel-bg {
-        position: absolute;
-        inset: 0;
-        background-size: cover;
-        background-position: center;
-        filter: brightness(0.82);
-      }
-      .proj-progress {
-        position: absolute;
-        bottom: 28px;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 10;
-        display: flex;
-        gap: 8px;
-        align-items: center;
-      }
-      .proj-dot {
-        width: 3px;
-        height: 3px;
-        border-radius: 50%;
-        background: rgba(255,255,255,0.18);
-        transition: background 400ms, transform 400ms;
-        cursor: pointer;
-      }
-      .proj-dot.active {
-        background: rgba(255,255,255,0.55);
-        transform: scale(1.3);
-      }
-      .proj-drag-hint {
-        position: absolute;
-        bottom: 32px;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 10;
-        font-size: 9px;
-        font-weight: 500;
-        letter-spacing: 4px;
-        text-transform: uppercase;
-        color: rgba(255,255,255,0.55);
-        pointer-events: none;
-        transition: opacity 800ms ease;
-        white-space: nowrap;
-      }
-      .proj-drag-hint.hidden { opacity: 0; }
+    /* ── Page header ── */
+    .page-head {
+      padding: 88px 72px 64px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .page-eyebrow {
+      display: block;
+      font-family: "Bebas Neue", "Impact", sans-serif;
+      font-size: 8px;
+      font-weight: 400;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      margin-bottom: 20px;
+    }
+    .page-headline {
+      display: block;
+      font-family: "Oswald", "Bebas Neue", "Impact", sans-serif;
+      font-weight: 700;
+      font-size: clamp(30px, 10.5vw, 135px);
+      text-transform: uppercase;
+      letter-spacing: -2px;
+      color: var(--ink);
+      line-height: 0.9;
+    }
 
-      .project-glass {
-        position: relative;
-        z-index: 2;
-        background: #F6F0F1;
-        border: none;
-        border-radius: 1px;
-        padding: 40px 44px 44px;
-        width: 380px;
-        display: block;
-        text-decoration: none;
-        color: inherit;
-        cursor: pointer;
-        transition: transform 400ms cubic-bezier(.16,1,.3,1), box-shadow 400ms;
-        box-shadow:
-          0 0 0 1px rgba(26,25,23,.07),
-          0 0 0 10px #F6F0F1,
-          0 0 0 11px rgba(26,25,23,.06),
-          0 20px 56px rgba(0,0,0,0.16);
-      }
-      .project-glass:hover {
-        transform: translateY(-4px);
-        box-shadow:
-          0 0 0 1px rgba(26,25,23,.07),
-          0 0 0 10px #F6F0F1,
-          0 0 0 11px rgba(26,25,23,.06),
-          0 28px 64px rgba(0,0,0,0.2);
-      }
-      .project-label {
-        font-size: 10px;
-        font-weight: 500;
-        letter-spacing: 3.5px;
-        text-transform: uppercase;
-        color: rgba(26,25,23,.6);
-        display: block;
-        margin-bottom: 12px;
-      }
-      .project-name {
-        font-family: "Cormorant Garamond", serif;
-        font-size: clamp(36px, 4vw, 62px);
-        font-weight: 300;
-        color: var(--ink);
-        letter-spacing: -1px;
-        line-height: .95;
-        margin-bottom: 18px;
-        display: block;
-      }
-      .project-desc {
-        font-family: "EB Garamond", Georgia, serif;
-        font-size: 15px;
-        font-weight: 400;
-        font-style: normal;
-        color: rgba(26,25,23,.7);
-        line-height: 1.6;
-        display: block;
-        margin-bottom: 20px;
-      }
-      .project-link {
-        font-size: 10px;
-        font-weight: 500;
-        letter-spacing: 3px;
-        text-transform: uppercase;
-        color: rgba(26,25,23,.7);
-        transition: color 280ms, letter-spacing 320ms;
-        display: inline-block;
-      }
-      .project-glass:hover .project-link { color: var(--ink); letter-spacing: 4px; }
+    /* ── Grid ── */
+    .work-grid-wrap {
+      padding: 64px 72px 80px;
+      border-bottom: 1px solid var(--rule);
+    }
 
-      /* Panel counter */
-      .proj-counter {
-        position: absolute;
-        top: 28px;
-        right: 32px;
-        z-index: 10;
-        font-size: 9px;
-        font-weight: 400;
-        letter-spacing: 3px;
-        color: rgba(255,255,255,0.4);
-      }
+    .work-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
 
-      .bottom-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        overflow: hidden;
-      }
-      .client-section {
-        padding: 56px 64px 64px;
-        background: linear-gradient(rgba(224,185,190,0.45), rgba(224,185,190,0.45)), url('/assets/marble.png') center/cover no-repeat;
-        border-right: 1px solid rgba(255,255,255,0.5);
-        display: flex;
-        flex-direction: column;
-      }
-      .client-heading {
-        font-family: "Cormorant Garamond", serif;
-        font-size: clamp(32px, 3.5vw, 56px);
-        font-weight: 600;
-        font-style: italic;
-        color: var(--ink);
-        letter-spacing: -.2px;
-        line-height: 1.2;
-        margin-bottom: 32px;
-        display: block;
-        min-height: 1.2em;
-      }
-      a.be-next {
-        display: block;
-        transition: opacity 300ms;
-      }
-      a.be-next:hover { opacity: 0.45; }
-      .be-next {
-        font-family: "Cormorant Garamond", serif;
-        font-size: clamp(28px, 3.2vw, 48px);
-        font-weight: 300;
-        font-style: italic;
-        color: var(--ink);
-        letter-spacing: -.5px;
-        margin-top: auto;
-        text-align: center;
-        line-height: 1;
-      }
-      .client-list { display: flex; flex-direction: column; }
-      .client-row {
-        display: grid;
-        grid-template-columns: 1fr auto auto;
-        align-items: center;
-        gap: 24px;
-        padding: 28px 0;
-        border-bottom: 1px solid rgba(26,25,23,.1);
-        text-decoration: none;
-        color: inherit;
-        position: relative;
-        overflow: hidden;
-        transition: background 400ms;
-      }
-      .client-list .client-row:first-child { border-top: 1px solid rgba(26,25,23,.1); }
-      .client-row::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: rgba(255,255,255,0.28);
-        opacity: 0;
-        transition: opacity 400ms cubic-bezier(.16,1,.3,1);
-      }
-      .client-row:hover::before { opacity: 1; }
-      .client-name {
-        font-family: "Cormorant Garamond", serif;
-        font-size: clamp(26px, 2.6vw, 40px);
-        font-weight: 300;
-        color: var(--ink);
-        letter-spacing: -.4px;
-        line-height: 1;
-        display: block;
-        transition: transform 500ms cubic-bezier(.16,1,.3,1);
-        position: relative;
-      }
-      .client-row:hover .client-name { transform: translateX(10px); }
-      .client-cat {
-        font-size: 7px;
-        font-weight: 500;
-        letter-spacing: 4px;
-        text-transform: uppercase;
-        color: rgba(26,25,23,.35);
-        white-space: nowrap;
-        position: relative;
-      }
-      .client-arrow {
-        font-size: 12px;
-        color: rgba(26,25,23,.25);
-        flex-shrink: 0;
-        position: relative;
-        transition: color 350ms, transform 400ms cubic-bezier(.16,1,.3,1);
-        font-style: normal;
-      }
-      .client-row:hover .client-arrow { color: rgba(26,25,23,.6); transform: translate(2px, -2px); }
-      @keyframes blink { 50% { opacity: 0; } }
+    /* ── Card ── */
+    .work-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 340px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: #0e0e0e;
+      transition:
+        transform 500ms cubic-bezier(.16,1,.3,1),
+        box-shadow 500ms cubic-bezier(.16,1,.3,1),
+        opacity 360ms ease,
+        filter 360ms ease;
+    }
 
-      .mobile-marble-strip { display: none; }
+    /* Feature card — full width, taller */
+    .work-card--feature {
+      grid-column: 1 / -1;
+      min-height: 420px;
+    }
 
-      /* ── Who We Work With ── */
-      .who-panel {
-        position: relative;
-        min-height: 560px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-top: 1px solid var(--rule);
-        overflow: hidden;
-      }
-      .who-panel-bg {
-        position: absolute;
-        inset: 0;
-        background: url('/assets/whoweworkwith.png') center / cover no-repeat;
-      }
-      .who-panel-content {
-        position: relative;
-        z-index: 2;
-        text-align: center;
-        padding: 80px 48px;
-      }
-      .who-label {
-        font-size: 9px;
-        font-weight: 500;
-        letter-spacing: 5px;
-        text-transform: uppercase;
-        color: var(--ink-2);
-        display: block;
-        margin-bottom: 48px;
-        opacity: 0;
-        transition: opacity 1200ms cubic-bezier(.16,1,.3,1);
-      }
-      .who-label.who-in { opacity: 1; }
-      .who-list {
-        list-style: none;
-      }
-      .who-list li {
-        font-family: "Cormorant Garamond", serif;
-        font-size: clamp(22px, 2.4vw, 36px);
-        font-weight: 300;
-        font-style: italic;
-        color: var(--ink);
-        line-height: 1;
-        padding: 16px 0;
-        border-bottom: 1px solid rgba(26,25,23,.12);
-        letter-spacing: -.2px;
-        opacity: 0;
-        transform: translateY(10px);
-        transition: opacity 1100ms cubic-bezier(.16,1,.3,1),
-                    transform 1100ms cubic-bezier(.16,1,.3,1);
-      }
-      .who-list li:first-child { border-top: 1px solid rgba(26,25,23,.12); }
-      .who-list li:last-child { border-bottom: 1px solid rgba(26,25,23,.12); }
-      .who-list li.who-in { opacity: 1; transform: translateY(0); }
+    /* FORMA — video background, centered */
+    .work-card--forma {
+      background: #080503;
+      border-color: transparent;
+    }
+    .work-card--forma .work-card-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.6;
+      z-index: 0;
+    }
+    /* Darker overlay for FORMA so text stays legible */
+    .work-card--forma::after {
+      background: linear-gradient(to bottom, rgba(4,2,1,0.45) 0%, rgba(4,2,1,0.75) 100%) !important;
+      z-index: 1 !important;
+    }
+    .work-card--forma .work-card-content {
+      z-index: 2;
+    }
+    .work-card--forma .work-card-content {
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .work-card--forma .work-card-name {
+      font-size: 80px;
+      letter-spacing: -1px;
+      color: rgba(255,255,255,0.9);
+    }
+    .work-card--forma .work-card-type { color: rgba(255,255,255,0.55); }
+    .work-card--forma .work-card-details { align-items: center; }
+    .work-card--forma .work-card-desc { color: rgba(255,255,255,0.6); text-align: center; }
+    .work-card--forma .work-card-link { color: rgba(255,255,255,0.85); }
+    .work-card--forma .work-card-link--secondary { color: rgba(255,255,255,0.45); }
 
-      /* ── Mobile ── */
-      @media (max-width: 860px) {
-        .page-header { padding: 40px 24px 32px; }
+    .work-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 64px rgba(26,25,23,.07);
+    }
+    .work-card--feature:hover {
+      transform: translateY(-4px);
+    }
 
-        /* Mobile: native swipe, smaller panel height */
-        .proj-track { gap: 0; padding: 0; height: 66vw; min-height: 260px; cursor: default; }
-        .proj-panel { width: 100vw; scroll-snap-align: start; }
-        .project-glass { margin: 0 20px; padding: 20px 22px 22px; max-width: calc(100% - 40px); box-shadow: 0 8px 40px rgba(0,0,0,0.22); }
-        .proj-panel-bg { filter: brightness(0.65); }
-        .project-label { font-size: 10px; }
-        .project-name { font-size: clamp(22px, 5.5vw, 32px); }
-        .project-desc { font-size: 13px; }
-        .project-link { font-size: 11px; }
-        .proj-drag-hint { display: none; }
-        .proj-counter { display: none; }
-        .mobile-marble-strip { display: block; height: 60px; background: url('/assets/marble.png') center/cover no-repeat; border-bottom: 1px solid var(--rule); }
-        .proj-progress { bottom: 18px; gap: 6px; }
-        .proj-dot { width: 2px; height: 2px; background: rgba(255,255,255,0.12); }
-        .proj-dot.active { background: rgba(255,255,255,0.42); transform: scale(1.2); }
 
-        .bottom-grid { grid-template-columns: 1fr; }
-        .client-section { border-right: none; border-bottom: 1px solid var(--rule); padding: 48px 24px 56px; }
-        .client-row { gap: 12px; padding: 22px 0; grid-template-columns: 1fr auto; }
-        .client-cat { display: none; }
-        .project-link { display: block; font-size: 10px; margin-top: 12px; letter-spacing: 2.5px; }
-        .client-heading { font-size: clamp(36px, 9vw, 52px); margin-bottom: 24px; }
-        .be-next { font-size: clamp(32px, 8vw, 52px); margin-top: 24px; }
-        .who-panel { min-height: 420px; }
-        .who-panel-content { padding: 56px 32px; }
-      }
-    </style>
-  </head>
-  <body>
-    <div class="scroll-bar" id="scrollBar"></div>
+    /* Gradient overlay — lightens at rest, darkens on hover */
+    .work-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.6) 100%);
+      opacity: 1;
+      transition: background 500ms ease;
+      pointer-events: none;
+    }
+    .work-card:hover::after {
+      background: linear-gradient(to bottom, rgba(20,16,12,0.45) 0%, rgba(20,16,12,0.92) 100%);
+    }
 
-    <nav class="nav" id="mainNav">
-      <div class="nav-links">
-        <a href="/work" class="active">Work</a>
-        <a href="/about">About</a>
-        <a href="/connect">Contact</a>
-      </div>
-      <a class="nav-brand" href="/">Pink Web Studio</a>
-      <div class="nav-end"><a href="/connect">Work with me</a></div>
-      <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </nav>
-    <div class="mobile-nav" id="mobileNav" aria-hidden="true">
-      <a href="/work">Work</a>
-      <a href="/about">About</a>
-      <a href="/connect">Contact</a>
+    /* Project image background */
+    .work-card-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.5;
+      pointer-events: none;
+      user-select: none;
+      transition: opacity 500ms ease;
+    }
+    .work-card:hover .work-card-bg { opacity: 0.68; }
+
+    /* Content layer */
+    .work-card-content {
+      position: relative;
+      z-index: 1;
+      padding: 44px 44px 40px;
+      min-height: 420px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+    .work-card--feature .work-card-content {
+      min-height: 540px;
+    }
+
+    /* ── Top: name + type ── */
+    .work-card-top {
+      margin-bottom: 36px;
+    }
+
+    .work-card-name {
+      display: block;
+      font-family: "Bebas Neue", "Impact", sans-serif;
+      font-weight: 400;
+      font-size: 34px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #fff;
+      line-height: 0.97;
+      margin-bottom: 14px;
+    }
+    .work-card--feature .work-card-name { font-size: 64px; letter-spacing: -1px; }
+
+    .work-card-type {
+      display: block;
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      font-size: 15px;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      text-transform: none;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.5;
+    }
+
+    /* ── Details (staggered reveal) ── */
+    .work-card-details {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .work-card-details > * {
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 400ms ease, transform 400ms cubic-bezier(.16,1,.3,1);
+    }
+    .work-card:hover .work-card-details > *:nth-child(1) {
+      opacity: 1; transform: none; transition-delay: 40ms;
+    }
+    .work-card:hover .work-card-details > *:nth-child(2) {
+      opacity: 1; transform: none; transition-delay: 120ms;
+    }
+
+    .work-card-desc {
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      font-size: 15px;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.6;
+      max-width: 42ch;
+    }
+
+    .work-card-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .work-card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: normal;
+      color: #fff;
+      text-decoration: none;
+      transition: opacity 220ms ease;
+    }
+    .work-card-link:hover { opacity: 0.6; }
+    .work-card-link--secondary { color: rgba(255,255,255,0.5); }
+    .work-card-link-arrow { transition: transform 220ms ease; }
+    .work-card-link:hover .work-card-link-arrow { transform: translateX(3px); }
+
+    /* ── West & Stone hover video ── */
+    .work-card--westone .work-card-bg--video,
+    .work-card--leloup .work-card-bg--video,
+    .work-card--celeste .work-card-bg--video,
+    .work-card--junehouse .work-card-bg--video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      pointer-events: none;
+      user-select: none;
+      transition: opacity 500ms ease;
+    }
+    .work-card--westone:hover .work-card-bg--video,
+    .work-card--leloup:hover .work-card-bg--video,
+    .work-card--celeste:hover .work-card-bg--video,
+    .work-card--junehouse:hover .work-card-bg--video { opacity: 0.68; }
+    .work-card--westone:hover .work-card-bg--still,
+    .work-card--leloup:hover .work-card-bg--still,
+    .work-card--celeste:hover .work-card-bg--still,
+    .work-card--junehouse:hover .work-card-bg--still { opacity: 0; }
+
+    /* ── Live Work section ── */
+    .live-section {
+      border-bottom: 1px solid var(--rule);
+    }
+    .live-head {
+      padding: 56px 72px 40px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .live-eyebrow {
+      display: block;
+      font-family: "Bebas Neue", "Impact", sans-serif;
+      font-size: 17px;
+      font-weight: 400;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      margin-bottom: 14px;
+    }
+    .live-headline {
+      display: block;
+      font-family: "Bebas Neue", "Impact", sans-serif;
+      font-weight: 400;
+      font-size: clamp(28px, 3.5vw, 52px);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--ink);
+      line-height: 1.0;
+    }
+
+    /* Live item — accordion */
+    .live-item {
+      border-bottom: 1px solid var(--rule);
+    }
+    .live-item:last-child { border-bottom: none; }
+
+    .live-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 72px;
+      height: 72px;
+      cursor: pointer;
+      transition: background 180ms ease;
+      user-select: none;
+    }
+    .live-row:hover { background: rgba(26,25,23,.025); }
+    .live-item.open .live-row { background: rgba(26,25,23,.02); }
+
+    .live-row-left {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .live-row-name {
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      color: #555;
+      transition: color 180ms ease;
+    }
+    .live-row:hover .live-row-name,
+    .live-item.open .live-row-name { color: #222; }
+
+    .live-row-see {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      color: #555;
+      text-decoration: none;
+      opacity: 0;
+      transition: opacity 200ms ease, color 200ms ease;
+      position: relative;
+      z-index: 2;
+    }
+    .live-row:hover .live-row-see { opacity: 1; }
+    .live-row-see:hover { color: #222; }
+
+    .live-row-arrow {
+      font-size: 12px;
+      color: #bbb;
+      transition: color 180ms ease, transform 300ms ease;
+      display: inline-block;
+    }
+    .live-row:hover .live-row-arrow { color: #888; }
+    .live-item.open .live-row-arrow { transform: rotate(90deg); color: #555; }
+
+    /* Drawer */
+    .live-drawer {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 380ms cubic-bezier(.16,1,.3,1);
+    }
+    .live-item.open .live-drawer { grid-template-rows: 1fr; }
+    .live-drawer-inner { overflow: hidden; }
+    .live-drawer-content {
+      padding: 24px 72px 28px;
+      border-top: 1px solid var(--rule);
+    }
+    .live-drawer-desc {
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: #777;
+      line-height: 1.6;
+      max-width: 52ch;
+    }
+
+    /* Be next */
+    .live-be-next {
+      padding: 40px 72px;
+      border-top: 1px solid var(--rule);
+    }
+    .live-be-next a {
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      font-size: 15px;
+      font-weight: 400;
+      color: #aaa;
+      text-decoration: none;
+      font-style: italic;
+      transition: color 220ms ease;
+    }
+    .live-be-next a:hover { color: #222; }
+
+    /* ── Mobile ── */
+    @media (max-width: 860px) {
+      .page-head { padding: 48px 24px 40px; }
+      .work-grid-wrap { padding: 36px 24px 48px; }
+      .work-grid { grid-template-columns: 1fr; gap: 16px; }
+      .work-card { min-height: auto; }
+      .work-card--feature { min-height: auto; grid-column: auto; }
+      .work-card-content { min-height: auto; padding: 36px 28px 32px; }
+      .work-card--feature .work-card-content { min-height: auto; }
+      .work-card--feature .work-card-name { font-size: 44px; letter-spacing: 0px; }
+      .work-card:hover { transform: none; box-shadow: none; }
+      .work-card-details > * { opacity: 1; transform: none; }
+      .work-card-bg { opacity: 0.18; }
+      .live-head { padding: 40px 24px 28px; }
+      .live-row { padding: 0 24px; }
+    }
+
+    @media (min-width: 960px) {
+      .live-row-url { display: block; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <nav class="nav" id="mainNav">
+    <div class="nav-links">
+      <a href="/work/" class="active">Work</a>
+      <a href="/services/">Services</a>
+      <a href="/products/">Products</a>
+      <a href="/studio/">Studio</a>
     </div>
+    <a class="nav-brand" href="/">Pink</a>
+    <div class="nav-end"><a href="/contact/">Start a Project</a></div>
+    <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+    <a href="/work/" class="active">Work</a>
+    <a href="/services/">Services</a>
+    <a href="/products/">Products</a>
+    <a href="/studio/">Studio</a>
+    <a href="/contact/">Start a Project</a>
+  </div>
 
-    <header class="page-header reveal">
-      <h1 class="page-title">Work</h1>
-    </header>
+  <div class="page-head reveal">
+    <span class="page-headline">Selected Projects.</span>
+  </div>
 
-    <!-- Horizontal drag gallery -->
-    <div class="proj-outer" id="projOuter">
-      <div class="proj-track" id="projTrack">
+  <div class="work-grid-wrap reveal">
+    <div class="work-grid">
 
-        <article class="proj-panel" id="proj0">
-          <div class="proj-panel-bg" style="background: linear-gradient(135deg, #2E2418, #1E1710); filter: none;"></div>
-          <span class="proj-counter">01 / 05</span>
-          <a class="project-glass" href="/forma">
-            <span class="project-label">Personal Product</span>
-            <span class="project-name">Forma</span>
-            <span class="project-desc">An operations platform for interior designers, conceived, designed, and built from the ground up.</span>
-            <span class="project-link">Case Study ↗&#xFE0E;</span>
-          </a>
-        </article>
-
-        <article class="proj-panel" id="proj1">
-          <div class="proj-panel-bg" style="background-image:url('/assets/stone.png')"></div>
-          <span class="proj-counter">02 / 05</span>
-          <a class="project-glass" href="/west-and-stone">
-            <span class="project-label">Editorial Concept</span>
-            <span class="project-name">West &amp; Stone</span>
-            <span class="project-desc">Brand identity, copy, and website for a luxury real estate concept.</span>
-            <span class="project-link">Case Study ↗&#xFE0E;</span>
-          </a>
-        </article>
-
-        <article class="proj-panel" id="proj2">
-          <div class="proj-panel-bg" style="background-image:url('/assets/loup.png')"></div>
-          <span class="proj-counter">03 / 05</span>
-          <a class="project-glass" href="/le-loup">
-            <span class="project-label">Editorial Concept</span>
-            <span class="project-name">Le Loup</span>
-            <span class="project-desc">Brand identity and website for an invitation-only members club.</span>
-            <span class="project-link">Case Study ↗&#xFE0E;</span>
-          </a>
-        </article>
-
-        <article class="proj-panel" id="proj3">
-          <div class="proj-panel-bg" style="background-image:url('/assets/spa.png')"></div>
-          <span class="proj-counter">04 / 05</span>
-          <a class="project-glass" href="/celeste">
-            <span class="project-label">Editorial Concept</span>
-            <span class="project-name">Céleste Med Spa</span>
-            <span class="project-desc">Brand identity and website for a luxury medical aesthetics studio.</span>
-            <span class="project-link">Case Study ↗&#xFE0E;</span>
-          </a>
-        </article>
-
-        <article class="proj-panel" id="proj4">
-          <div class="proj-panel-bg" style="background-image:url('/assets/resort.png')"></div>
-          <span class="proj-counter">05 / 05</span>
-          <a class="project-glass" href="/june-house">
-            <span class="project-label">Editorial Concept</span>
-            <span class="project-name">June House</span>
-            <span class="project-desc">Brand identity and website for an interior design studio.</span>
-            <span class="project-link">Case Study ↗&#xFE0E;</span>
-          </a>
-        </article>
-
-      </div>
-
-      <!-- Progress dots -->
-      <div class="proj-progress" id="projProgress">
-        <span class="proj-dot active" data-i="0"></span>
-        <span class="proj-dot" data-i="1"></span>
-        <span class="proj-dot" data-i="2"></span>
-        <span class="proj-dot" data-i="3"></span>
-        <span class="proj-dot" data-i="4"></span>
-      </div>
-
-      <!-- Drag hint -->
-      <div class="proj-drag-hint" id="projHint">← Drag to explore →</div>
-    </div>
-
-    <!-- Mobile marble divider -->
-    <div class="mobile-marble-strip"></div>
-
-    <!-- Philosophy -->
-    <section class="philosophy-section">
-      <div class="philosophy-img"></div>
-      <div class="philosophy-text reveal">
-        <p class="philosophy-body">We believe the best websites aren't built in a day. They're the result of listening carefully, designing deliberately, and caring about every detail that the visitor will never consciously notice but will always feel.</p>
-      </div>
-    </section>
-
-    <div class="bottom-grid">
-
-      <div class="client-section" id="clientSection">
-        <span class="client-heading" id="liveHeading"></span>
-        <div class="client-list" id="clientList">
-
-          <a class="client-row" href="https://santamonicaprimarycare.com" target="_blank" rel="noopener">
-            <span class="client-name">Santa Monica Primary Care</span>
-            <span class="client-cat">Healthcare</span>
-            <span class="client-arrow">↗&#xFE0E;</span>
-          </a>
-          <a class="client-row" href="https://shabonla.myshopify.com" target="_blank" rel="noopener">
-            <span class="client-name">Shabon LA</span>
-            <span class="client-cat">E-Commerce</span>
-            <span class="client-arrow">↗&#xFE0E;</span>
-          </a>
-          <a class="client-row" href="https://twiceuponus.com" target="_blank" rel="noopener">
-            <span class="client-name">Twice Upon Us</span>
-            <span class="client-cat">Platform</span>
-            <span class="client-arrow">↗&#xFE0E;</span>
-          </a>
-          <a class="client-row" href="https://drbretsky.com" target="_blank" rel="noopener">
-            <span class="client-name">Dr. Bretsky</span>
-            <span class="client-cat">Healthcare</span>
-            <span class="client-arrow">↗&#xFE0E;</span>
-          </a>
-          <a class="client-row" href="https://www.doctoritaly24.it/it/" target="_blank" rel="noopener">
-            <span class="client-name">Doctor Italy 24</span>
-            <span class="client-cat">International</span>
-            <span class="client-arrow">↗&#xFE0E;</span>
-          </a>
-
-        </div>
-        <a class="be-next" href="/connect">Be next.</a>
-      </div>
-
-      <div class="who-panel">
-        <div class="who-panel-bg"></div>
-        <div class="who-panel-content">
-          <span class="who-label">Who We Work With</span>
-          <ul class="who-list">
-            <li>Luxury Hospitality</li>
-            <li>Medical Aesthetics</li>
-            <li>Residential Interiors</li>
-            <li>Private Membership</li>
-            <li>Founder-Led Brands</li>
-          </ul>
+      <!-- FORMA — feature -->
+      <div class="work-card work-card--feature work-card--forma">
+        <video class="work-card-video" id="formaVideo" autoplay muted loop playsinline>
+          <source src="/assets/formaspeeds.mp4" type="video/mp4" />
+        </video>
+        <div class="work-card-content">
+          <div class="work-card-top">
+            <span class="work-card-name">FORMA</span>
+            <span class="work-card-type">Software. Interior design operations platform.</span>
+          </div>
+          <div class="work-card-details">
+            <p class="work-card-desc">Full stack platform for interior designers. Project management, mood boards, client approvals, and procurement. Built from scratch.</p>
+            <div class="work-card-links">
+              <a class="work-card-link" href="/forma.html">Case study <span class="work-card-link-arrow">→</span></a>
+              <a class="work-card-link work-card-link--secondary" href="https://forma-rho-nine.vercel.app" target="_blank" rel="noopener">Visit site ↗</a>
+            </div>
+          </div>
         </div>
       </div>
 
+      <!-- Le Loup -->
+      <div class="work-card work-card--leloup" onmouseenter="wsVideoPlay(this)" onmouseleave="wsVideoPause(this)">
+        <img class="work-card-bg work-card-bg--still" src="/assets/loup.png" alt="" />
+        <video class="work-card-bg work-card-bg--video" src="/assets/loupspeed.mov" muted loop playsinline preload="none"></video>
+        <div class="work-card-content">
+          <div class="work-card-top">
+            <span class="work-card-name">Le Loup</span>
+            <span class="work-card-type">Website. French inspired restaurant.</span>
+          </div>
+          <div class="work-card-details">
+            <p class="work-card-desc">Brand identity and website for a French inspired restaurant. Editorial photography, custom menu design, and reservations integration.</p>
+            <div class="work-card-links">
+              <a class="work-card-link" href="/le-loup.html">Case study <span class="work-card-link-arrow">→</span></a>
+              <a class="work-card-link work-card-link--secondary" href="https://pinkwebstudio.com/le-loup/" target="_blank" rel="noopener">Visit site ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- West & Stone -->
+      <div class="work-card work-card--westone" onmouseenter="wsVideoPlay(this)" onmouseleave="wsVideoPause(this)">
+        <img class="work-card-bg work-card-bg--still" src="/assets/stone.png" alt="" />
+        <video class="work-card-bg work-card-bg--video" src="/assets/weststonespeeds.mov" muted loop playsinline preload="none"></video>
+        <div class="work-card-content">
+          <div class="work-card-top">
+            <span class="work-card-name">West &amp; Stone</span>
+            <span class="work-card-type">Website. Home goods and interior objects.</span>
+          </div>
+          <div class="work-card-details">
+            <p class="work-card-desc">Brand website for a home goods studio. Editorial product photography, collection pages, and a refined shopping experience.</p>
+            <div class="work-card-links">
+              <a class="work-card-link" href="/west-and-stone.html">Case study <span class="work-card-link-arrow">→</span></a>
+              <a class="work-card-link work-card-link--secondary" href="https://pinkwebstudio.com/west-and-stone/" target="_blank" rel="noopener">Visit site ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Celeste -->
+      <div class="work-card work-card--celeste" onmouseenter="wsVideoPlay(this)" onmouseleave="wsVideoPause(this)">
+        <img class="work-card-bg work-card-bg--still" src="/assets/cel.png" alt="" />
+        <video class="work-card-bg work-card-bg--video" src="/assets/speedceleste.mov" muted loop playsinline preload="none"></video>
+        <div class="work-card-content">
+          <div class="work-card-top">
+            <span class="work-card-name">Celeste</span>
+            <span class="work-card-type">Website. Luxury aesthetics clinic.</span>
+          </div>
+          <div class="work-card-details">
+            <p class="work-card-desc">Clean, elevated design for a luxury aesthetics clinic. Online booking, service menus, and before-and-after galleries.</p>
+            <div class="work-card-links">
+              <a class="work-card-link" href="/celeste.html">Case study <span class="work-card-link-arrow">→</span></a>
+              <a class="work-card-link work-card-link--secondary" href="https://pinkwebstudio.com/celeste-aesthetics/" target="_blank" rel="noopener">Visit site ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- June House -->
+      <div class="work-card work-card--junehouse" onmouseenter="wsVideoPlay(this)" onmouseleave="wsVideoPause(this)">
+        <img class="work-card-bg work-card-bg--still" src="/assets/fashion.png" alt="" />
+        <video class="work-card-bg work-card-bg--video" src="/assets/speedjune.mov" muted loop playsinline preload="none"></video>
+        <div class="work-card-content">
+          <div class="work-card-top">
+            <span class="work-card-name">June House</span>
+            <span class="work-card-type">Website. Fashion brand and lookbook.</span>
+          </div>
+          <div class="work-card-details">
+            <p class="work-card-desc">Fashion brand website with editorial photography, seasonal collections, and a lookbook style browsing experience.</p>
+            <div class="work-card-links">
+              <a class="work-card-link" href="/june-house.html">Case study <span class="work-card-link-arrow">→</span></a>
+              <a class="work-card-link work-card-link--secondary" href="https://pinkwebstudio.com/june-house/" target="_blank" rel="noopener">Visit site ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Live Work -->
+  <div class="live-section reveal">
+    <div class="live-head">
+      <span class="live-eyebrow">Live Work</span>
+      <span class="live-headline">See it in the wild.</span>
     </div>
 
-    <footer class="site-footer">
-      <div class="footer-brand-wrap">
-        <span class="footer-brand">Pink Web Studio</span>
-        <span class="footer-brand-sub">Los Angeles &middot; Currently Booking</span>
-      </div>
-      <div class="footer-social">
-        <div class="footer-social-icons">
-          <a href="https://instagram.com/oraanlevi" target="_blank" rel="noopener" aria-label="Instagram">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor" stroke="none"/></svg>
-          </a>
-          <a href="https://www.linkedin.com/in/oraan-levi-898a89200/" target="_blank" rel="noopener" aria-label="LinkedIn">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-          </a>
+    <div class="live-item">
+      <div class="live-row" onclick="toggleLive(this)">
+        <div class="live-row-left">
+          <span class="live-row-name">Santa Monica Primary Care</span>
+          <a class="live-row-see" href="https://santamonicaprimarycare.com" target="_blank" rel="noopener" onclick="event.stopPropagation()">See more ↗</a>
         </div>
-        <a href="mailto:studio@pinkwebstudio.com" class="footer-email" style="white-space:nowrap">studio@pinkwebstudio.com</a>
       </div>
-    </footer>
+      <div class="live-drawer"><div class="live-drawer-inner">
+        <div class="live-drawer-content">
+          <p class="live-drawer-desc">Healthcare website for a primary care clinic in Santa Monica. Clean, trustworthy design built to convert new patients and clearly communicate services.</p>
+        </div>
+      </div></div>
+    </div>
 
-    <script>
-      // ── Nav scroll + scroll bar ──
-      const nav = document.getElementById("mainNav");
-      const bar = document.getElementById("scrollBar");
-      window.addEventListener("scroll", () => {
-        nav.classList.toggle("scrolled", window.scrollY > 20);
-        if (bar) bar.style.width = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100) + "%";
-      }, { passive: true });
+    <div class="live-item">
+      <div class="live-row" onclick="toggleLive(this)">
+        <div class="live-row-left">
+          <span class="live-row-name">Right Choice Locksmith Dallas</span>
+          <a class="live-row-see" href="https://rightchoicelocksmithdallas.com" target="_blank" rel="noopener" onclick="event.stopPropagation()">See more ↗</a>
+        </div>
+      </div>
+      <div class="live-drawer"><div class="live-drawer-inner">
+        <div class="live-drawer-content">
+          <p class="live-drawer-desc">Service business website for a locksmith in Dallas. Built for local SEO, fast load times, and clear calls to action for emergency service calls.</p>
+        </div>
+      </div></div>
+    </div>
 
-      // ── Mobile nav ──
-      const ham = document.getElementById("navHam");
-      const mob = document.getElementById("mobileNav");
-      ham.addEventListener("click", () => {
-        const open = ham.classList.toggle("open");
-        mob.classList.toggle("open", open);
-        ham.setAttribute("aria-expanded", open);
-        mob.setAttribute("aria-hidden", !open);
+    <div class="live-item">
+      <div class="live-row" onclick="toggleLive(this)">
+        <div class="live-row-left">
+          <span class="live-row-name">Shabon LA</span>
+          <a class="live-row-see" href="https://shabonla.myshopify.com" target="_blank" rel="noopener" onclick="event.stopPropagation()">See more ↗</a>
+        </div>
+      </div>
+      <div class="live-drawer"><div class="live-drawer-inner">
+        <div class="live-drawer-content">
+          <p class="live-drawer-desc">E-commerce experience for a Los Angeles beauty brand on Shopify. Elevated product presentation with a clean, editorial shopping experience.</p>
+        </div>
+      </div></div>
+    </div>
+
+    <div class="live-item">
+      <div class="live-row" onclick="toggleLive(this)">
+        <div class="live-row-left">
+          <span class="live-row-name">Twice Upon Us</span>
+          <a class="live-row-see" href="https://twiceuponus.com" target="_blank" rel="noopener" onclick="event.stopPropagation()">See more ↗</a>
+        </div>
+      </div>
+      <div class="live-drawer"><div class="live-drawer-inner">
+        <div class="live-drawer-content">
+          <p class="live-drawer-desc">Platform website with a focus on clear user flows, intuitive navigation, and a design system built to scale with the product.</p>
+        </div>
+      </div></div>
+    </div>
+
+    <div class="live-item">
+      <div class="live-row" onclick="toggleLive(this)">
+        <div class="live-row-left">
+          <span class="live-row-name">Dr. Bretsky</span>
+          <a class="live-row-see" href="https://drbretsky.com" target="_blank" rel="noopener" onclick="event.stopPropagation()">See more ↗</a>
+        </div>
+      </div>
+      <div class="live-drawer"><div class="live-drawer-inner">
+        <div class="live-drawer-content">
+          <p class="live-drawer-desc">Medical practice website with a professional, approachable aesthetic. Built to establish trust and guide patients through services and booking.</p>
+        </div>
+      </div></div>
+    </div>
+
+    <div class="live-item">
+      <div class="live-row" onclick="toggleLive(this)">
+        <div class="live-row-left">
+          <span class="live-row-name">Doctor Italy 24</span>
+          <a class="live-row-see" href="https://www.doctoritaly24.it/en/" target="_blank" rel="noopener" onclick="event.stopPropagation()">See more ↗</a>
+        </div>
+      </div>
+      <div class="live-drawer"><div class="live-drawer-inner">
+        <div class="live-drawer-content">
+          <p class="live-drawer-desc">International medical platform serving English-speaking patients across Italy. Multilingual design built for clarity, trust, and global accessibility.</p>
+        </div>
+      </div></div>
+    </div>
+
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-brand-wrap">
+      <span class="footer-brand">Pink Web Studio</span>
+      <span class="footer-brand-sub">Los Angeles &middot; Currently Booking</span>
+    </div>
+    <div class="footer-social">
+      <div class="footer-social-icons">
+        <a href="https://instagram.com/oraanlevi" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/oraan-levi-898a89200/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+      </div>
+      <a href="mailto:studio@pinkwebstudio.com" class="footer-email">studio@pinkwebstudio.com</a>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
+
+    const ham = document.getElementById('navHam');
+    const mob = document.getElementById('mobileNav');
+    ham.addEventListener('click', () => {
+      const open = ham.classList.toggle('open');
+      mob.classList.toggle('open', open);
+      ham.setAttribute('aria-expanded', open);
+      mob.setAttribute('aria-hidden', !open);
+    });
+    mob.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      ham.classList.remove('open');
+      mob.classList.remove('open');
+    }));
+
+    /* ── Live Work accordion ── */
+    function toggleLive(row) {
+      const item = row.closest('.live-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.live-item.open').forEach(el => el.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
+
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
       });
-      mob.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
-        ham.classList.remove("open"); mob.classList.remove("open");
-      }));
+    }, { threshold: 0.06 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-      // ── General reveal ──
-      const io = new IntersectionObserver(entries => {
-        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("visible"); io.unobserve(e.target); } });
-      }, { threshold: 0.05, rootMargin: "0px 0px -48px 0px" });
-      document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+    /* ── West & Stone hover video ── */
+    function wsVideoPlay(card) {
+      const vid = card.querySelector('.work-card-bg--video');
+      if (vid) vid.play().catch(() => {});
+    }
+    function wsVideoPause(card) {
+      const vid = card.querySelector('.work-card-bg--video');
+      if (vid) { vid.pause(); vid.currentTime = 0; }
+    }
 
-      // ── Horizontal drag gallery ──
-      const track  = document.getElementById("projTrack");
-      const dots   = document.querySelectorAll(".proj-dot");
-      const hint   = document.getElementById("projHint");
-      const panels = Array.from(track.querySelectorAll(".proj-panel"));
+    /* ── FORMA video: play after 2s, loop forever ── */
+    const formaVideo = document.getElementById('formaVideo');
+    if (formaVideo) {
+      setTimeout(() => formaVideo.play().catch(() => {}), 2000);
+    }
+  </script>
 
-      function getActiveIndex() {
-        let best = 0, bestDist = Infinity;
-        panels.forEach((p, i) => {
-          const dist = Math.abs(p.getBoundingClientRect().left);
-          if (dist < bestDist) { bestDist = dist; best = i; }
-        });
-        return best;
-      }
-      function updateDots(idx) {
-        dots.forEach((d, i) => d.classList.toggle("active", i === idx));
-      }
-      track.addEventListener("scroll", () => updateDots(getActiveIndex()), { passive: true });
-
-      let hintHidden = false;
-      function hideHint() {
-        if (hintHidden) return;
-        hintHidden = true;
-        hint.classList.add("hidden");
-      }
-      track.addEventListener("scroll", hideHint, { once: true, passive: true });
-
-      // ── Mouse drag (clean snap) ──
-      let isDown = false, startX = 0, startScroll = 0, didDrag = false;
-
-      function snapToNearest(dragDelta) {
-        const currentIdx = getActiveIndex();
-        let target;
-        if (dragDelta > 40 && currentIdx > 0) {
-          target = panels[currentIdx - 1];
-        } else if (dragDelta < -40 && currentIdx < panels.length - 1) {
-          target = panels[currentIdx + 1];
-        } else {
-          let best = panels[0], bestDist = Infinity;
-          panels.forEach(p => {
-            const dist = Math.abs(p.getBoundingClientRect().left);
-            if (dist < bestDist) { bestDist = dist; best = p; }
-          });
-          target = best;
-        }
-        track.scrollTo({ left: target.offsetLeft, behavior: "smooth" });
-      }
-
-      track.addEventListener("mousedown", e => {
-        isDown = true; didDrag = false;
-        startX = e.clientX; startScroll = track.scrollLeft;
-        track.style.scrollSnapType = "none";
-        track.classList.add("is-dragging");
-      });
-      window.addEventListener("mousemove", e => {
-        if (!isDown) return;
-        e.preventDefault();
-        const delta = e.clientX - startX;
-        if (Math.abs(delta) > 4) didDrag = true;
-        track.scrollLeft = startScroll - delta;
-        if (didDrag) hideHint();
-      });
-      window.addEventListener("mouseup", e => {
-        if (!isDown) return;
-        isDown = false;
-        track.classList.remove("is-dragging");
-        const dragDelta = e.clientX - startX;
-        setTimeout(() => { track.style.scrollSnapType = ""; }, 500);
-        snapToNearest(dragDelta);
-      });
-      track.addEventListener("click", e => {
-        if (didDrag) { e.stopPropagation(); didDrag = false; }
-      }, true);
-
-      // Dot clicks
-      dots.forEach(dot => {
-        dot.addEventListener("click", () => {
-          const i = +dot.dataset.i;
-          track.scrollTo({ left: i * track.clientWidth, behavior: "smooth" });
-        });
-      });
-
-      // ── Live Work typewriter ──
-      const liveHeading = document.getElementById("liveHeading");
-      const clientList  = document.getElementById("clientList");
-      const liveText    = "Live Work.";
-      let liveTyped = "", liveTimer = null;
-      const clientRows  = Array.from(clientList.querySelectorAll(".client-row"));
-
-      // Prepare rows for staggered entrance
-      clientRows.forEach(row => {
-        row.style.opacity = "0";
-        row.style.transform = "translateY(8px)";
-        row.style.transition = "opacity 700ms cubic-bezier(.16,1,.3,1), transform 700ms cubic-bezier(.16,1,.3,1)";
-      });
-
-      function typeLive() {
-        if (liveTyped.length < liveText.length) {
-          liveTyped += liveText[liveTyped.length];
-          liveHeading.innerHTML = liveTyped + '<span style="display:inline-block;width:2px;height:.8em;background:var(--ink);margin-left:3px;vertical-align:middle;animation:blink 900ms step-end infinite;"></span>';
-          liveTimer = setTimeout(typeLive, 65 + Math.random() * 28);
-        } else {
-          liveHeading.textContent = liveText;
-          clientRows.forEach((row, i) => {
-            setTimeout(() => {
-              row.style.opacity = "1";
-              row.style.transform = "translateY(0)";
-            }, 300 + i * 110);
-          });
-        }
-      }
-
-      const liveIO = new IntersectionObserver(entries => {
-        entries.forEach(e => {
-          if (e.isIntersecting && liveTyped.length === 0) {
-            setTimeout(typeLive, 200);
-            liveIO.unobserve(e.target);
-          }
-        });
-      }, { threshold: 0.2 });
-      liveIO.observe(document.getElementById("clientSection"));
-
-      // ── Who We Work With staggered reveal ──
-      const whoPanel = document.querySelector(".who-panel");
-      const whoLabel = document.querySelector(".who-label");
-      const whoItems = document.querySelectorAll(".who-list li");
-      let whoStarted = false;
-
-      const whoIO = new IntersectionObserver(entries => {
-        entries.forEach(e => {
-          if (!e.isIntersecting || whoStarted) return;
-          whoStarted = true;
-          setTimeout(() => whoLabel.classList.add("who-in"), 200);
-          whoItems.forEach((li, i) => {
-            setTimeout(() => li.classList.add("who-in"), 800 + i * 260);
-          });
-          whoIO.unobserve(e.target);
-        });
-      }, { threshold: 0.2 });
-      if (whoPanel) whoIO.observe(whoPanel);
-    </script>
-  </body>
+</body>
 </html>
