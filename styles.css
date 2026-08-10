@@ -240,12 +240,29 @@ img { display: block; max-width: 100%; }
 /* ── Responsive ── */
 @media (max-width: 860px) {
   :root { --nav-h: 56px; }
-  .nav { padding: 0 24px; }
+  .nav { padding: 0 24px; background: rgba(255,255,255,0.95); }
   .nav-links { display: none; }
   .nav-end { display: none; }
   .nav-ham { display: flex; }
   .mobile-nav { display: flex; }
   .mobile-nav a { padding: 18px 24px; }
-  .site-footer { height: auto; padding: 36px 24px; flex-direction: column; gap: 28px; align-items: flex-start; }
-  .footer-social { align-items: flex-start; }
+  .site-footer {
+    height: auto;
+    padding: 24px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px 0;
+    align-items: center;
+  }
+  .footer-brand-wrap { flex: 1 1 50%; }
+  .footer-brand { font-size: 12px; letter-spacing: 4px; }
+  .footer-brand-sub { font-size: 10px; letter-spacing: 2px; margin-top: 5px; }
+  .footer-social {
+    flex: 1 1 50%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 16px;
+  }
+  .footer-email { font-size: 11px; letter-spacing: 1px; text-transform: none; }
 }

@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/png" href="/assets/favicon.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Website Care · Pink Web Studio</title>
+  <title>Monthly Website Support · Pink Web Studio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@700&family=Rouge+Script&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/styles.css" />
   <style>
 
@@ -82,9 +82,10 @@
       line-height: 1;
     }
     .sp-hero-cta {
-      font-family: "Rouge Script", cursive;
-      font-size: 28px;
-      letter-spacing: 3px;
+      font-family: "Inter", system-ui, sans-serif;
+      font-weight: 400;
+      font-size: 15px;
+      letter-spacing: 1.5px;
       text-transform: none;
       color: var(--ink);
       text-decoration: none;
@@ -136,7 +137,7 @@
     .thesis-body p {
       font-family: system-ui, -apple-system, sans-serif;
       font-size: 16px;
-      color: #555;
+      color: #222;
       line-height: 1.8;
     }
     .thesis-showcase {
@@ -207,43 +208,18 @@
 
     /* ── Argument ── */
     .argument { border-bottom: 1px solid var(--rule); }
-    .argument-band {
-      display: grid;
-      grid-template-columns: 220px 1fr;
-      align-items: start;
-      gap: 48px;
-      padding: 52px 72px;
-      border-bottom: 1px solid var(--rule);
+    .argument-intro {
+      padding: 64px 72px;
+      max-width: 780px;
     }
-    .argument-band:last-child { border-bottom: none; }
-    .argument-label {
-      font-family: "Rouge Script", cursive;
-      font-size: 34px;
-      letter-spacing: 0;
-      text-transform: none;
-      color: #444;
-      padding-top: 0;
-      line-height: 1;
-      white-space: nowrap;
-    }
-    .argument-content { display: flex; flex-direction: column; gap: 16px; }
-    .argument-heading {
-      font-family: "Inter", system-ui, sans-serif;
-      font-weight: 700;
-      font-size: clamp(18px, 2vw, 26px);
-      color: var(--ink);
-      line-height: 1.2;
-      letter-spacing: -0.2px;
-      display: block;
-      max-width: 32ch;
-    }
-    .argument-body {
+    .argument-intro p {
       font-family: system-ui, -apple-system, sans-serif;
-      font-size: 16px;
-      color: #555;
-      line-height: 1.75;
-      max-width: 56ch;
+      font-size: 17px;
+      color: #222;
+      line-height: 1.85;
+      max-width: 62ch;
     }
+    .argument-intro p + p { margin-top: 22px; }
 
     /* ── Section shell ── */
     .sp-section { border-bottom: 1px solid var(--rule); }
@@ -254,9 +230,10 @@
       text-align: center;
     }
     .sp-section-label {
-      font-family: "Rouge Script", cursive;
-      font-size: 40px;
-      letter-spacing: 0;
+      font-family: "Inter", system-ui, sans-serif;
+      font-weight: 400;
+      font-size: 20px;
+      letter-spacing: 0.5px;
       text-transform: none;
       color: #000;
     }
@@ -271,11 +248,12 @@
     .included-card:nth-child(even) { border-right: none; }
     .included-card:nth-last-child(-n+2) { border-bottom: none; }
     .included-card-num {
-      font-family: "Rouge Script", cursive;
-      font-size: 30px;
-      letter-spacing: 0;
-      text-transform: none;
-      color: #000;
+      font-family: "Inter", system-ui, sans-serif;
+      font-weight: 400;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #888;
       display: block;
       margin-bottom: 16px;
     }
@@ -292,7 +270,7 @@
     .included-card-desc {
       font-family: system-ui, -apple-system, sans-serif;
       font-size: 15px;
-      color: #666;
+      color: #333;
       line-height: 1.75;
     }
     .included-card-items {
@@ -334,10 +312,12 @@
     }
     .process-step:last-child { border-right: none; }
     .process-num {
-      font-family: "Rouge Script", cursive;
-      font-size: 22px;
-      letter-spacing: 2px;
-      color: #444;
+      font-family: "Inter", system-ui, sans-serif;
+      font-weight: 400;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #888;
       display: block;
       margin-bottom: 24px;
     }
@@ -353,7 +333,7 @@
     .process-body {
       font-family: system-ui, -apple-system, sans-serif;
       font-size: 15px;
-      color: #666;
+      color: #333;
       line-height: 1.75;
     }
     .process-body + .process-body { margin-top: 20px; }
@@ -428,7 +408,7 @@
       gap: 24px;
       transition: color 250ms;
     }
-    .faq-question:hover { color: #555; }
+    .faq-question:hover { color: #222; }
     .faq-icon {
       flex-shrink: 0;
       font-size: 20px;
@@ -448,7 +428,7 @@
     .faq-answer-inner p {
       font-family: system-ui, -apple-system, sans-serif;
       font-size: 16px;
-      color: #666;
+      color: #333;
       line-height: 1.8;
       padding-bottom: 32px;
       max-width: 60ch;
@@ -483,14 +463,15 @@
     .sp-cta-sub {
       font-family: system-ui, -apple-system, sans-serif;
       font-size: 16px;
-      color: #777;
+      color: #444;
       line-height: 1.7;
     }
     .sp-cta-links { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
     .sp-cta-btn {
-      font-family: "Rouge Script", cursive;
-      font-size: 28px;
-      letter-spacing: 3px;
+      font-family: "Inter", system-ui, sans-serif;
+      font-weight: 400;
+      font-size: 15px;
+      letter-spacing: 1.5px;
       text-transform: none;
       color: #000;
       text-decoration: none;
@@ -526,7 +507,7 @@
       .sp-hero-inner { padding: 0 24px 56px; gap: 28px; }
       .sp-hero-title { font-size: clamp(52px, 12vw, 80px); letter-spacing: -2px; }
       .sp-hero-bottom { flex-direction: column; align-items: flex-start; gap: 24px; }
-      .argument-band { grid-template-columns: 1fr; gap: 20px; padding: 40px 24px; }
+      .argument-intro { padding: 40px 24px; }
       .sp-section-head { padding: 36px 24px 24px; }
       .sp-section-body { padding: 0 24px 48px; }
       .included-grid { grid-template-columns: 1fr; }
@@ -582,12 +563,12 @@
     <div class="sp-hero-bg"></div>
     <div class="sp-hero-overlay"></div>
     <div class="sp-hero-inner">
-      <h1 class="sp-hero-title">Website<br>Care</h1>
+      <h1 class="sp-hero-title">Monthly<br>Website Support</h1>
       <div class="sp-hero-bottom">
         <div class="sp-hero-stats">
           <div class="sp-stat">
             <span class="sp-stat-label">Monthly</span>
-            <span class="sp-stat-value">$250</span>
+            <span class="sp-stat-value">$250/mo</span>
           </div>
           <div class="sp-stat">
             <span class="sp-stat-label">Commitment</span>
@@ -604,8 +585,8 @@
     <div class="thesis-left">
       <span class="thesis-statement">Your website doesn't maintain itself. Now it doesn't have to.</span>
       <div class="thesis-body">
-        <p>You're not a developer. You shouldn't have to be. This is for business owners who want their site to stay accurate, fast, and current.</p>
-        <p>Website Care is an ongoing relationship. I handle the updates, edits, and small changes that keep your site performing. You stay focused on your business.</p>
+        <p>Monthly Website Support is for businesses that don't want to manage their own website. Whether you don't have an in-house developer, you want an ongoing relationship with someone who knows your site, or you need regular updates handled without chasing anyone down. This is the plan for that.</p>
+        <p>I handle the updates. You stay focused on your business.</p>
       </div>
     </div>
     <div class="thesis-showcase">
@@ -640,28 +621,11 @@
     </div>
   </section>
 
-  <!-- Argument -->
+  <!-- Introduction -->
   <section class="argument">
-    <div class="argument-band">
-      <span class="argument-label">Who This Is For</span>
-      <div class="argument-content">
-        <span class="argument-heading">Brands that want their website maintained by someone who actually knows it.</span>
-        <p class="argument-body">You have a business to run. Chasing down developers for small changes, noticing broken links weeks after they appeared, or watching your site go stale — none of that should be your job.</p>
-      </div>
-    </div>
-    <div class="argument-band">
-      <span class="argument-label">The Problem</span>
-      <div class="argument-content">
-        <span class="argument-heading">A site that isn't actively maintained slowly becomes a liability.</span>
-        <p class="argument-body">Content goes stale. Links break. New offerings get added in the wrong place, or not at all. A site you're embarrassed to send people to is costing you more than you think.</p>
-      </div>
-    </div>
-    <div class="argument-band">
-      <span class="argument-label">The Approach</span>
-      <div class="argument-content">
-        <span class="argument-heading">Monthly attention from someone who knows your site and what it's trying to do.</span>
-        <p class="argument-body">I handle the updates, edits, and small changes that keep your site accurate and performing. You hear from me every month. You don't have to chase.</p>
-      </div>
+    <div class="argument-intro">
+      <p>For businesses that don't want to manage their own website. No in-house developer. No interest in logging into a CMS. No time to remember whether the pricing page still says the right thing.</p>
+      <p>A site that isn't actively maintained slowly becomes a liability. Content goes stale, links break, new offerings get added in the wrong place, or not at all. I handle the updates, edits, and small changes that keep your site accurate and performing. You hear back within one business day. You don't have to chase.</p>
     </div>
   </section>
 
@@ -673,39 +637,71 @@
     <div class="included-grid">
       <div class="included-card">
         <span class="included-card-num">Content</span>
-        <span class="included-card-name">Updates &amp; Edits</span>
-        <p class="included-card-desc">New service offerings, updated bios, pricing changes, seasonal copy. Any text or images that need to reflect where your business is today.</p>
+        <span class="included-card-name">Monthly Updates &amp; Edits</span>
+        <p class="included-card-desc">The ongoing updates that keep your site accurate and current. Anything that needs to reflect where the business is today, handled as part of the monthly relationship.</p>
         <div class="included-card-items">
-          <div class="included-card-item">Content Updates</div>
-          <div class="included-card-item">Image Replacements</div>
           <div class="included-card-item">Text Edits</div>
+          <div class="included-card-item">Image Replacements</div>
+          <div class="included-card-item">Pricing &amp; Services Updates</div>
+          <div class="included-card-item">Publishing Blog Posts</div>
+          <div class="included-card-item">Adding Testimonials</div>
+          <div class="included-card-item">Seasonal Content Updates</div>
+          <div class="included-card-item">Small Layout Adjustments</div>
         </div>
       </div>
       <div class="included-card">
-        <span class="included-card-num">Maintain</span>
-        <span class="included-card-name">Bug Fixes &amp; Upkeep</span>
-        <p class="included-card-desc">Broken links, layout issues on certain devices, form errors — caught and fixed before they cost you visitors or credibility.</p>
+        <span class="included-card-num">Upkeep</span>
+        <span class="included-card-name">Routine Website Health</span>
+        <p class="included-card-desc">Routine checks to catch anything that has broken or drifted since last month. Pink builds custom and static sites. Broad platform-specific promises don't apply to every client, so this covers what actually matters.</p>
         <div class="included-card-items">
-          <div class="included-card-item">Bug Fixes</div>
-          <div class="included-card-item">Monthly Maintenance</div>
+          <div class="included-card-item">Broken Link Fixes</div>
+          <div class="included-card-item">Contact Form Testing</div>
+          <div class="included-card-item">Performance Check-Ins</div>
+          <div class="included-card-item">General Website Health Reviews</div>
         </div>
       </div>
       <div class="included-card">
-        <span class="included-card-num">Monitor</span>
-        <span class="included-card-name">Performance Checks</span>
-        <p class="included-card-desc">Load speed, mobile behavior, and general site health reviewed monthly so small issues don't become costly ones.</p>
+        <span class="included-card-num">SEO</span>
+        <span class="included-card-name">On-Page Improvements</span>
+        <p class="included-card-desc">Ongoing on-page SEO improvements and recommendations. This is not a backlink campaign, a keyword strategy, or a ranking guarantee. It's maintaining and improving what's already there. The kind of SEO that compounds quietly over time.</p>
         <div class="included-card-items">
-          <div class="included-card-item">Performance Checks</div>
-          <div class="included-card-item">Monthly Website Review</div>
+          <div class="included-card-item">On-Page SEO Improvements</div>
+          <div class="included-card-item">SEO Recommendations</div>
+          <div class="included-card-item">Title &amp; Heading Checks</div>
+          <div class="included-card-item">Content Optimization Notes</div>
         </div>
       </div>
       <div class="included-card">
-        <span class="included-card-num">Support</span>
-        <span class="included-card-name">Priority Access</span>
-        <p class="included-card-desc">You're not in a queue. Care clients get a direct line — email, voice memo, screenshot, whatever works. You hear back the same day.</p>
+        <span class="included-card-num">Response</span>
+        <span class="included-card-name">Priority Support</span>
+        <p class="included-card-desc">You're not in a queue. Send requests by email, voice memo, or screenshot. Whatever's easiest. Emergency issues are prioritized during business hours.</p>
         <div class="included-card-items">
-          <div class="included-card-item">Priority Email Support</div>
-          <div class="included-card-item">Same-Day Response</div>
+          <div class="included-card-item">Within One Business Day</div>
+          <div class="included-card-item">Emergency Issues Prioritized</div>
+          <div class="included-card-item">Email, Voice Memo, or Screenshot</div>
+        </div>
+      </div>
+      <div class="included-card">
+        <span class="included-card-num">Clarity</span>
+        <span class="included-card-name">Not Included</span>
+        <p class="included-card-desc">Larger work is scoped and handled as a separate project. Monthly Website Support is for ongoing maintenance, not new builds, redesigns, or significant feature development.</p>
+        <div class="included-card-items">
+          <div class="included-card-item">New Website Builds</div>
+          <div class="included-card-item">Full Redesigns</div>
+          <div class="included-card-item">Brand Identity &amp; Logo Design</div>
+          <div class="included-card-item">Full Copywriting</div>
+          <div class="included-card-item">Large Feature Development</div>
+          <div class="included-card-item">Third-Party Automations</div>
+          <div class="included-card-item">New Integrations Requiring Significant Development</div>
+        </div>
+      </div>
+      <div class="included-card">
+        <span class="included-card-num">Eligibility</span>
+        <span class="included-card-name">Who Can Enroll</span>
+        <p class="included-card-desc">Monthly Website Support is available only for websites built by Pink, or for websites that have first gone through a Pink onboarding review. It's not possible to maintain a site well without knowing it thoroughly. This protects the quality of care for every client.</p>
+        <div class="included-card-items">
+          <div class="included-card-item">Pink-Built Websites</div>
+          <div class="included-card-item">Websites After Pink Onboarding Review</div>
         </div>
       </div>
     </div>
@@ -735,7 +731,7 @@
       <div class="process-step">
         <span class="process-num">03</span>
         <span class="process-label">On-Demand</span>
-        <p class="process-body">Between scheduled reviews, you can send requests as they come up.<br>Text, email, a voice memo — whatever works.</p>
+        <p class="process-body">Between scheduled reviews, you can send requests as they come up.<br>Text, email, or a voice memo. Whatever works.</p>
         <p class="process-body">I handle it.</p>
       </div>
     </div>
@@ -756,25 +752,25 @@
       <a href="https://calendly.com/oraanlevi1/30min" class="investment-cta">Book a Call &rarr;</a>
     </div>
     <div class="investment-note">
-      <p>Website Care is month-to-month with no contracts and no lock-in periods. Cancel anytime. Onboarding takes one week.</p>
+      <p>Monthly Website Support is month-to-month with no contracts and no lock-in periods. Cancel anytime. Available only for websites built by Pink, or for websites that have first gone through a Pink onboarding review.</p>
     </div>
   </section>
 
   <!-- FAQ -->
   <section class="sp-section">
     <div class="sp-section-head">
-      <span class="sp-section-label">Questions</span>
+      <span class="sp-section-label">questions</span>
     </div>
     <div class="sp-section-body">
       <div class="faq-list">
         <div class="faq-item">
           <button class="faq-question">
-            What's included in Website Care each month?
+            What's included in Monthly Website Support each month?
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              <p>Content updates, copy edits, image swaps, structural adjustments, and general upkeep. Each month covers what your site actually needs — nothing is off-limits within reason.</p>
+              <p>Monthly support for text edits, image replacements, pricing and services updates, blog posts, testimonials, seasonal content changes, small layout adjustments, broken link fixes, contact form testing, performance check-ins, general website health reviews, and ongoing on-page SEO improvements. Larger work is handled as a separate project.</p>
             </div>
           </div>
         </div>
@@ -785,7 +781,7 @@
           </button>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              <p>No. Website Care is available to any business with an existing site. The onboarding process is how I get familiar with your setup, regardless of who built it.</p>
+              <p>Monthly Website Support is available only for websites built by Pink, or for websites that have first gone through a Pink onboarding review. This ensures the site is properly understood before any ongoing maintenance begins. It's what makes the care actually good.</p>
             </div>
           </div>
         </div>
@@ -796,7 +792,7 @@
           </button>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              <p>Email is fine. So is a voice memo, a screenshot with a note, or a simple text. The format doesn't matter — I'll work from whatever you send.</p>
+              <p>Email is fine. So is a voice memo or a screenshot with a note. Whatever's easiest. Responses within one business day. Emergency issues are prioritized during business hours.</p>
             </div>
           </div>
         </div>
@@ -807,7 +803,7 @@
           </button>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              <p>Yes. Website Care is month-to-month with no contracts and no notice periods. If your needs change, you can cancel anytime.</p>
+              <p>Yes. Monthly Website Support is month-to-month with no contracts and no notice periods. If your needs change, you can cancel anytime.</p>
             </div>
           </div>
         </div>
@@ -824,7 +820,7 @@
       <p class="sp-cta-sub">Every project starts with a conversation.</p>
       <div class="sp-cta-links">
         <a href="https://calendly.com/oraanlevi1/30min" class="sp-cta-btn">Book a Call <span class="btn-arrow">&rarr;</span></a>
-        <a href="/connect" class="sp-cta-btn sp-cta-btn--secondary">Send a Message <span class="btn-arrow">&rarr;</span></a>
+        <a href="/contact/" class="sp-cta-btn sp-cta-btn--secondary">Send a Message <span class="btn-arrow">&rarr;</span></a>
       </div>
     </div>
   </section>

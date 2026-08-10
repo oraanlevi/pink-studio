@@ -210,14 +210,16 @@
       .p-next:hover .p-next-arrow { transform: translateX(6px); color: var(--ink); }
 
       @media (max-width: 860px) {
+        body { background: #fff; }
         .project-hero { grid-template-columns: 1fr; min-height: auto; }
         .hero-left { padding: 48px 24px 56px; border-right: none; border-bottom: 1px solid var(--rule); }
         .hero-right { min-height: 56vw; }
+        .hero-desc { white-space: normal; font-size: 20px; }
         .cards-row { grid-template-columns: 1fr; }
-        .ed-card { border-right: none; border-bottom: 1px solid var(--rule); padding: 64px 24px 72px; }
+        .ed-card { border-right: none; border-bottom: 1px solid var(--rule); padding: 56px 24px 64px; }
         .ed-card:last-child { border-bottom: none; }
-        .ed-card--full { padding: 64px 24px 80px; text-align: center; align-items: center; }
-        .ed-card-lead { max-width: 100%; }
+        .ed-card--full { padding: 56px 24px 72px; text-align: center; align-items: center; }
+        .ed-card-lead { max-width: 100%; font-size: 17px; letter-spacing: 1px; }
         .ed-card-body { max-width: 100%; }
         .p-video-section { padding: 48px 24px; }
         .p-next { padding: 40px 24px; }

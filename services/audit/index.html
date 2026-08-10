@@ -7,7 +7,7 @@
   <title>Website Audit · Pink Web Studio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@700&family=Rouge+Script&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/styles.css" />
   <style>
 
@@ -82,9 +82,10 @@
       line-height: 1;
     }
     .sp-hero-cta {
-      font-family: "Rouge Script", cursive;
-      font-size: 28px;
-      letter-spacing: 3px;
+      font-family: "Inter", system-ui, sans-serif;
+      font-weight: 400;
+      font-size: 15px;
+      letter-spacing: 1.5px;
       text-transform: none;
       color: var(--ink);
       text-decoration: none;
@@ -136,7 +137,7 @@
     .thesis-body p {
       font-family: system-ui, -apple-system, sans-serif;
       font-size: 16px;
-      color: #555;
+      color: #222;
       line-height: 1.8;
     }
     .thesis-showcase {
@@ -207,43 +208,18 @@
 
     /* ── Argument ── */
     .argument { border-bottom: 1px solid var(--rule); }
-    .argument-band {
-      display: grid;
-      grid-template-columns: 220px 1fr;
-      align-items: start;
-      gap: 48px;
-      padding: 52px 72px;
-      border-bottom: 1px solid var(--rule);
+    .argument-intro {
+      padding: 64px 72px;
+      max-width: 780px;
     }
-    .argument-band:last-child { border-bottom: none; }
-    .argument-label {
-      font-family: "Rouge Script", cursive;
-      font-size: 34px;
-      letter-spacing: 0;
-      text-transform: none;
-      color: #444;
-      padding-top: 0;
-      line-height: 1;
-      white-space: nowrap;
-    }
-    .argument-content { display: flex; flex-direction: column; gap: 16px; }
-    .argument-heading {
-      font-family: "Inter", system-ui, sans-serif;
-      font-weight: 700;
-      font-size: clamp(18px, 2vw, 26px);
-      color: var(--ink);
-      line-height: 1.2;
-      letter-spacing: -0.2px;
-      display: block;
-      max-width: 32ch;
-    }
-    .argument-body {
+    .argument-intro p {
       font-family: system-ui, -apple-system, sans-serif;
-      font-size: 16px;
-      color: #555;
-      line-height: 1.75;
-      max-width: 56ch;
+      font-size: 17px;
+      color: #222;
+      line-height: 1.85;
+      max-width: 62ch;
     }
+    .argument-intro p + p { margin-top: 22px; }
 
     /* ── Section shell ── */
     .sp-section { border-bottom: 1px solid var(--rule); }
@@ -254,9 +230,10 @@
       text-align: center;
     }
     .sp-section-label {
-      font-family: "Rouge Script", cursive;
-      font-size: 40px;
-      letter-spacing: 0;
+      font-family: "Inter", system-ui, sans-serif;
+      font-weight: 400;
+      font-size: 20px;
+      letter-spacing: 0.5px;
       text-transform: none;
       color: #000;
     }
@@ -271,11 +248,12 @@
     .included-card:nth-child(even) { border-right: none; }
     .included-card:nth-last-child(-n+2) { border-bottom: none; }
     .included-card-num {
-      font-family: "Rouge Script", cursive;
-      font-size: 30px;
-      letter-spacing: 0;
-      text-transform: none;
-      color: #000;
+      font-family: "Inter", system-ui, sans-serif;
+      font-weight: 400;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #888;
       display: block;
       margin-bottom: 16px;
     }
@@ -292,7 +270,7 @@
     .included-card-desc {
       font-family: system-ui, -apple-system, sans-serif;
       font-size: 15px;
-      color: #666;
+      color: #333;
       line-height: 1.75;
     }
     .included-card-items {
@@ -334,10 +312,12 @@
     }
     .process-step:last-child { border-right: none; }
     .process-num {
-      font-family: "Rouge Script", cursive;
-      font-size: 22px;
-      letter-spacing: 2px;
-      color: #444;
+      font-family: "Inter", system-ui, sans-serif;
+      font-weight: 400;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #888;
       display: block;
       margin-bottom: 24px;
     }
@@ -353,7 +333,7 @@
     .process-body {
       font-family: system-ui, -apple-system, sans-serif;
       font-size: 15px;
-      color: #666;
+      color: #333;
       line-height: 1.75;
     }
     .process-body + .process-body { margin-top: 20px; }
@@ -428,7 +408,7 @@
       gap: 24px;
       transition: color 250ms;
     }
-    .faq-question:hover { color: #555; }
+    .faq-question:hover { color: #222; }
     .faq-icon {
       flex-shrink: 0;
       font-size: 20px;
@@ -448,7 +428,7 @@
     .faq-answer-inner p {
       font-family: system-ui, -apple-system, sans-serif;
       font-size: 16px;
-      color: #666;
+      color: #333;
       line-height: 1.8;
       padding-bottom: 32px;
       max-width: 60ch;
@@ -483,14 +463,15 @@
     .sp-cta-sub {
       font-family: system-ui, -apple-system, sans-serif;
       font-size: 16px;
-      color: #777;
+      color: #444;
       line-height: 1.7;
     }
     .sp-cta-links { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
     .sp-cta-btn {
-      font-family: "Rouge Script", cursive;
-      font-size: 28px;
-      letter-spacing: 3px;
+      font-family: "Inter", system-ui, sans-serif;
+      font-weight: 400;
+      font-size: 15px;
+      letter-spacing: 1.5px;
       text-transform: none;
       color: #000;
       text-decoration: none;
@@ -526,7 +507,7 @@
       .sp-hero-inner { padding: 0 24px 56px; gap: 28px; }
       .sp-hero-title { font-size: clamp(52px, 12vw, 80px); letter-spacing: -2px; }
       .sp-hero-bottom { flex-direction: column; align-items: flex-start; gap: 24px; }
-      .argument-band { grid-template-columns: 1fr; gap: 20px; padding: 40px 24px; }
+      .argument-intro { padding: 40px 24px; }
       .sp-section-head { padding: 36px 24px 24px; }
       .sp-section-body { padding: 0 24px 48px; }
       .included-grid { grid-template-columns: 1fr; }
@@ -586,8 +567,8 @@
       <div class="sp-hero-bottom">
         <div class="sp-hero-stats">
           <div class="sp-stat">
-            <span class="sp-stat-label">Investment</span>
-            <span class="sp-stat-value">$200</span>
+            <span class="sp-stat-label">Flat Fee</span>
+            <span class="sp-stat-value">$199</span>
           </div>
           <div class="sp-stat">
             <span class="sp-stat-label">Timeline</span>
@@ -602,10 +583,10 @@
   <!-- Thesis -->
   <section class="thesis">
     <div class="thesis-left">
-      <span class="thesis-statement">Something isn't working. You just don't know exactly what yet.</span>
+      <span class="thesis-statement">A professional second opinion on your website.</span>
       <div class="thesis-body">
-        <p>You have a site. It gets traffic. But something in the back of your mind says it could be doing more.</p>
-        <p>The audit gives you a clear, honest look at what's actually happening so you can act on the right things instead of guessing.</p>
+        <p>Website Audit is for businesses that want an honest, outside perspective on their site. Whether your website isn't converting, feels outdated, or you've simply spent a lot of time and money on it. This audit helps you understand what's working, what isn't, and where the biggest opportunities for improvement are.</p>
+        <p>You walk away with a clear picture and a prioritized list of what to address first.</p>
       </div>
     </div>
     <div class="thesis-showcase">
@@ -640,28 +621,11 @@
     </div>
   </section>
 
-  <!-- Argument -->
+  <!-- Introduction -->
   <section class="argument">
-    <div class="argument-band">
-      <span class="argument-label">Who This Is For</span>
-      <div class="argument-content">
-        <span class="argument-heading">Business owners who sense something isn't converting, but aren't sure what.</span>
-        <p class="argument-body">You've been living inside your site for months or years. That makes it nearly impossible to see it the way a stranger does. That distance is exactly what the audit provides.</p>
-      </div>
-    </div>
-    <div class="argument-band">
-      <span class="argument-label">The Problem</span>
-      <div class="argument-content">
-        <span class="argument-heading">It might be the first impression. The message. The structure. Or something smaller.</span>
-        <p class="argument-body">Most business owners assume the issue is visual. Often it's structural — a hierarchy problem, a missing call to action, a page that loses people before they've even read it. The audit finds it.</p>
-      </div>
-    </div>
-    <div class="argument-band">
-      <span class="argument-label">The Approach</span>
-      <div class="argument-content">
-        <span class="argument-heading">A professional review with specific, actionable recommendations.</span>
-        <p class="argument-body">I look at your site the way a new visitor would, then go deeper. Messaging clarity, visual hierarchy, conversion flow, mobile experience — everything that shapes whether someone stays or leaves.</p>
-      </div>
+    <div class="argument-intro">
+      <p>For businesses that want an honest outside perspective on their site: whether it isn't converting, feels outdated, or you've spent time and money on it and aren't sure it's working. Most business owners sense something is off before they can name it.</p>
+      <p>The audit finds it. Not with automated tools or generic checklists. A professional eye and honest observations tied to real reasons. No backend access required. Just a careful, considered evaluation of the public-facing experience: the thing that actually determines whether someone stays or leaves.</p>
     </div>
   </section>
 
@@ -672,39 +636,73 @@
     </div>
     <div class="included-grid">
       <div class="included-card">
-        <span class="included-card-num">Observe</span>
-        <span class="included-card-name">First Impression Review</span>
-        <p class="included-card-desc">Every page evaluated through the lens of a first-time visitor — first impression, flow, and clarity. UX and navigation analysis included.</p>
+        <span class="included-card-num">User Experience</span>
+        <span class="included-card-name">UX Review</span>
+        <p class="included-card-desc">A thorough review of how the site actually feels to use: navigation, flow, and whether visitors can find what they need without friction. Mobile experience and accessibility observations included.</p>
         <div class="included-card-items">
-          <div class="included-card-item">Complete Website Review</div>
-          <div class="included-card-item">UX &amp; Navigation Analysis</div>
+          <div class="included-card-item">UX Review</div>
+          <div class="included-card-item">Navigation Review</div>
+          <div class="included-card-item">Mobile Experience</div>
+          <div class="included-card-item">Accessibility Observations</div>
         </div>
       </div>
       <div class="included-card">
-        <span class="included-card-num">Assess</span>
-        <span class="included-card-name">Design &amp; Mobile</span>
-        <p class="included-card-desc">Visual hierarchy, typography, spacing, and whether the design supports your message. Plus how your site performs on phone — layout, touch targets, load behavior.</p>
+        <span class="included-card-num">Design</span>
+        <span class="included-card-name">Visual Design Review</span>
+        <p class="included-card-desc">How the site looks and whether its visual decisions support its message. Typography, layout, spacing, content hierarchy, and whether calls to action land where they should.</p>
         <div class="included-card-items">
-          <div class="included-card-item">Design Feedback</div>
-          <div class="included-card-item">Mobile Responsiveness Review</div>
+          <div class="included-card-item">Visual Design Review</div>
+          <div class="included-card-item">Typography</div>
+          <div class="included-card-item">Layout &amp; Spacing</div>
+          <div class="included-card-item">Content Hierarchy</div>
+          <div class="included-card-item">CTA Placement</div>
         </div>
       </div>
       <div class="included-card">
-        <span class="included-card-num">Analyse</span>
-        <span class="included-card-name">Performance &amp; SEO</span>
-        <p class="included-card-desc">Speed, load weight, and anything causing friction before someone even sees your content. Title tags, meta descriptions, and heading structure reviewed.</p>
+        <span class="included-card-num">Performance</span>
+        <span class="included-card-name">Performance Observations</span>
+        <p class="included-card-desc">Observations on how the site performs from the outside: loading behavior, oversized imagery, visual loading issues, and obvious usability problems. This is not a Lighthouse report.</p>
         <div class="included-card-items">
-          <div class="included-card-item">Performance Observations</div>
-          <div class="included-card-item">Basic SEO Review</div>
+          <div class="included-card-item">Load Behavior</div>
+          <div class="included-card-item">Image Observations</div>
+          <div class="included-card-item">Visual Loading Issues</div>
+          <div class="included-card-item">Usability Observations</div>
         </div>
       </div>
       <div class="included-card">
-        <span class="included-card-num">Report</span>
-        <span class="included-card-name">Action Plan &amp; Deliverable</span>
-        <p class="included-card-desc">A ranked list of what to fix first so you're not overwhelmed, just focused. Everything documented in a written PDF with clear explanations.</p>
+        <span class="included-card-num">Technical</span>
+        <span class="included-card-name">Technical Website Observations</span>
+        <p class="included-card-desc">What can be reasonably evaluated from the public-facing site. No backend access required. This covers what search engines and browsers see from the outside. Not a technical SEO audit.</p>
         <div class="included-card-items">
-          <div class="included-card-item">Prioritized Action Plan</div>
+          <div class="included-card-item">Page Titles</div>
+          <div class="included-card-item">Meta Descriptions</div>
+          <div class="included-card-item">Heading Hierarchy</div>
+          <div class="included-card-item">Indexability Observations</div>
+          <div class="included-card-item">General Best Practices</div>
+        </div>
+      </div>
+      <div class="included-card">
+        <span class="included-card-num">Deliverable</span>
+        <span class="included-card-name">PDF &amp; Loom Walkthrough</span>
+        <p class="included-card-desc">Everything captured in a structured written report and a personal Loom walkthrough. The Loom takes you through the findings page by page. More useful than reading a document on its own.</p>
+        <div class="included-card-items">
           <div class="included-card-item">Written PDF Report</div>
+          <div class="included-card-item">Loom Video Walkthrough</div>
+          <div class="included-card-item">Prioritized Recommendations</div>
+        </div>
+      </div>
+      <div class="included-card">
+        <span class="included-card-num">Clarity</span>
+        <span class="included-card-name">Not Included</span>
+        <p class="included-card-desc">The audit is an evaluation, not an implementation. Any changes to your website are a separate engagement. The audit gives you a clear brief. What you do with it is up to you.</p>
+        <div class="included-card-items">
+          <div class="included-card-item">Website Changes</div>
+          <div class="included-card-item">Development Work</div>
+          <div class="included-card-item">Copywriting</div>
+          <div class="included-card-item">Technical Code Review</div>
+          <div class="included-card-item">Backend Analysis</div>
+          <div class="included-card-item">Keyword Research</div>
+          <div class="included-card-item">SEO Strategy</div>
         </div>
       </div>
     </div>
@@ -728,13 +726,13 @@
       <div class="process-step">
         <span class="process-num">02</span>
         <span class="process-label">Review</span>
-        <p class="process-body">I go through your site thoroughly — messaging, structure, visuals, and conversion flow.<br>From the perspective of someone who has never heard of your business before.</p>
+        <p class="process-body">I go through your site carefully across four areas: user experience, design, performance observations, and technical website observations.<br>From the perspective of someone who has never heard of your business before.</p>
         <p class="process-body">Every observation is tied to a reason.</p>
       </div>
       <div class="process-step">
         <span class="process-num">03</span>
         <span class="process-label">Receive</span>
-        <p class="process-body">You receive a written report with specific, prioritized recommendations.<br>What the issue is, why it matters, and what to do about it.</p>
+        <p class="process-body">You receive a written PDF report with prioritized recommendations, plus a personal Loom walkthrough that takes you through the findings page by page.<br>What the issue is, why it matters, and what to do about it.</p>
         <p class="process-body">You walk away knowing exactly where to focus first.</p>
       </div>
     </div>
@@ -745,7 +743,7 @@
     <div class="investment-main">
       <div class="investment-stat">
         <span class="investment-stat-label">Flat Fee</span>
-        <span class="investment-amount">$200</span>
+        <span class="investment-amount">$199</span>
       </div>
       <div class="investment-divider"></div>
       <div class="investment-stat">
@@ -755,14 +753,14 @@
       <a href="https://calendly.com/oraanlevi1/30min" class="investment-cta">Book Your Audit &rarr;</a>
     </div>
     <div class="investment-note">
-      <p>No backend access required. The audit is based entirely on what a visitor sees. Payment is collected online before the review begins.</p>
+      <p>No backend access required. The audit is based entirely on the public-facing experience of your website. Designed for websites of reasonable size. Larger sites are quoted separately. Payment is collected before the review begins.</p>
     </div>
   </section>
 
   <!-- FAQ -->
   <section class="sp-section">
     <div class="sp-section-head">
-      <span class="sp-section-label">Questions</span>
+      <span class="sp-section-label">questions</span>
     </div>
     <div class="sp-section-body">
       <div class="faq-list">
@@ -773,7 +771,7 @@
           </button>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              <p>Your full site, evaluated through the lens of a first-time visitor. First impression and messaging clarity, visual hierarchy and design decisions, navigation and page structure, mobile experience, and conversion flow — everything that shapes whether someone stays or goes.</p>
+              <p>Your site evaluated across four areas: user experience (UX, navigation, mobile, accessibility), design (visual design, typography, layout, content hierarchy, CTA placement), performance observations (load behavior, imagery, usability), and technical website observations (page titles, meta descriptions, heading hierarchy, indexability). These are honest, professional observations, not automated reports.</p>
             </div>
           </div>
         </div>
@@ -784,7 +782,7 @@
           </button>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              <p>A written PDF report with prioritized recommendations. Each finding explains what the issue is, why it matters, and what to do about it. You'll walk away knowing exactly where to focus first.</p>
+              <p>A written PDF report with prioritized recommendations, and a personal Loom video walkthrough that takes you through the findings page by page. The Loom makes it significantly more useful than a document alone. You can see exactly what I'm looking at and hear the reasoning behind each observation.</p>
             </div>
           </div>
         </div>
@@ -795,7 +793,7 @@
           </button>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              <p>No. The audit is based entirely on what a visitor sees — the public-facing experience. You don't need to share credentials or logins of any kind.</p>
+              <p>No. The audit is based entirely on what a visitor sees: the public-facing experience. You don't need to share credentials or logins of any kind.</p>
             </div>
           </div>
         </div>
@@ -806,7 +804,7 @@
           </button>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              <p>Yes. Many clients use the audit as a first step — a way to understand what needs to change before committing to a larger project. It's a natural starting point, and it means any future work begins with a clear brief already in hand.</p>
+              <p>Yes. Many clients use the audit as a first step: a way to understand what needs to change before committing to a larger project. It's a natural starting point, and it means any future work begins with a clear brief already in hand.</p>
             </div>
           </div>
         </div>
@@ -823,7 +821,7 @@
       <p class="sp-cta-sub">Every project starts with a conversation.</p>
       <div class="sp-cta-links">
         <a href="https://calendly.com/oraanlevi1/30min" class="sp-cta-btn">Book Your Audit <span class="btn-arrow">&rarr;</span></a>
-        <a href="/connect" class="sp-cta-btn sp-cta-btn--secondary">Send a Message <span class="btn-arrow">&rarr;</span></a>
+        <a href="/contact/" class="sp-cta-btn sp-cta-btn--secondary">Send a Message <span class="btn-arrow">&rarr;</span></a>
       </div>
     </div>
   </section>

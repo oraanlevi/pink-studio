@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/assets/favicon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>West &amp; Stone · Case Study · Pink</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>June House · Pink Web</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@300;700&display=swap" rel="stylesheet" />
@@ -19,6 +19,7 @@
       }
       body { background: var(--bg); }
 
+      /* ── Split Hero ── */
       .project-hero {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -37,8 +38,9 @@
       .hero-top { display: flex; flex-direction: column; }
       .hero-title {
         font-family: "Oswald", "Impact", sans-serif;
-        font-size: clamp(48px, 7vw, 96px);
+        font-size: clamp(60px, 9vw, 116px);
         font-weight: 700;
+        font-style: normal;
         color: var(--ink);
         line-height: .92;
         letter-spacing: -2px;
@@ -48,6 +50,7 @@
       .hero-tag {
         font-family: "Bebas Neue", "Impact", sans-serif;
         font-size: 16px;
+        font-weight: 400;
         letter-spacing: 4px;
         text-transform: uppercase;
         color: var(--ink-2);
@@ -55,16 +58,17 @@
         margin-bottom: 20px;
       }
       .hero-desc {
-        font-family: "Oswald", "Impact", sans-serif;
-        font-weight: 300;
         font-size: 28px;
+        font-style: normal;
         color: var(--ink-2);
         line-height: 1.6;
+        white-space: nowrap;
         margin-bottom: 36px;
       }
       .hero-concept {
         font-family: "Bebas Neue", "Impact", sans-serif;
         font-size: 16px;
+        font-weight: 400;
         letter-spacing: 4px;
         text-transform: uppercase;
         color: var(--ink-2);
@@ -85,22 +89,29 @@
       }
       .hero-link:hover { opacity: .4; }
       .hero-link--live { color: #C9607A; font-size: 15px; font-weight: 700; }
-      .hero-right { position: relative; overflow: hidden; }
+      .hero-right {
+        position: relative;
+        overflow: hidden;
+      }
       .hero-right-bg {
         position: absolute;
         inset: 0;
-        background: url('/assets/stone.png') center/cover no-repeat;
+        background: url('/assets/resort.png') center/cover no-repeat;
         animation: slowZoom 18s ease-in-out infinite alternate;
       }
-      @keyframes slowZoom { from { transform: scale(1.04); } to { transform: scale(1); } }
+      @keyframes slowZoom {
+        from { transform: scale(1.04); }
+        to   { transform: scale(1); }
+      }
 
+      /* ── Editorial Cards ── */
       .cards-row {
         display: grid;
         grid-template-columns: 1fr 1fr;
         border-bottom: 1px solid var(--rule);
       }
       .ed-card {
-        padding: 96px 56px;
+        padding: 96px 56px 96px;
         border-right: 1px solid var(--rule);
         display: flex;
         flex-direction: column;
@@ -128,18 +139,76 @@
         display: block;
         margin-bottom: 36px;
       }
-      .ed-card--full .ed-card-label { font-size: 16px; letter-spacing: 6px; }
       .ed-card-lead {
         font-family: "Oswald", "Impact", sans-serif;
         font-size: 20px;
         font-weight: 300;
+        font-style: normal;
         color: #4A4744;
         line-height: 1.65;
         letter-spacing: 2px;
         max-width: 36ch;
         margin-bottom: 0;
       }
-      .ed-card--full .ed-card-lead { max-width: 52ch; }
+      .ed-card--full .ed-card-label {
+        font-size: 16px;
+        letter-spacing: 6px;
+      }
+      .ed-card--full .ed-card-lead {
+        font-size: 24px;
+        font-style: normal;
+        white-space: normal;
+        max-width: 52ch;
+        margin-bottom: 0;
+      }
+
+      /* ── Browser frames ── */
+      .j-frames {
+        position: relative;
+        height: 480px;
+        border-bottom: 1px solid var(--rule);
+        overflow: hidden;
+      }
+      .j-frame {
+        position: absolute;
+        width: 46%;
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        box-shadow: 0 4px 24px rgba(0,0,0,.08), 0 1px 4px rgba(0,0,0,.04);
+        opacity: 0.8;
+        transition: opacity 480ms ease, transform 480ms ease, box-shadow 480ms ease;
+        cursor: default;
+      }
+      .j-frame:hover {
+        opacity: 1;
+        transform: scale(1.05) !important;
+        box-shadow: 0 12px 48px rgba(0,0,0,.13), 0 2px 8px rgba(0,0,0,.06);
+        z-index: 10 !important;
+      }
+      .j-frames:has(.j-frame:hover) .j-frame:not(:hover) { opacity: 0.3; }
+      .j-frame-chrome {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        padding: 8px 12px;
+        border-bottom: 1px solid #eee;
+        background: #f7f7f5;
+        border-radius: 6px 6px 0 0;
+      }
+      .j-frame-dot { width: 7px; height: 7px; border-radius: 50%; background: #ddd; flex-shrink: 0; }
+      .j-frame-url { flex: 1; height: 14px; background: #e8e8e6; border-radius: 3px; margin-left: 6px; }
+      .j-frame-img {
+        width: 100%;
+        display: block;
+        aspect-ratio: 16/10;
+        object-fit: cover;
+        object-position: top center;
+        border-radius: 0 0 5px 5px;
+      }
+      .j-frames .j-frame:nth-child(1) { top: 8%;  left: 5%;  z-index: 2; transform: rotate(-1.8deg); }
+      .j-frames .j-frame:nth-child(2) { top: 16%; left: 40%; z-index: 1; transform: rotate(1.4deg); }
+      @media (max-width: 860px) { .j-frames { height: 320px; } }
 
       .p-video-section {
         border-bottom: 1px solid var(--rule);
@@ -183,7 +252,7 @@
         .project-hero { grid-template-columns: 1fr; min-height: auto; }
         .hero-left { padding: 48px 24px 56px; border-right: none; border-bottom: 1px solid var(--rule); }
         .hero-right { min-height: 56vw; }
-        .hero-desc { font-size: 20px; }
+        .hero-desc { white-space: normal; font-size: 20px; }
         .cards-row { grid-template-columns: 1fr; }
         .ed-card { border-right: none; border-bottom: 1px solid var(--rule); padding: 56px 24px 64px; }
         .ed-card:last-child { border-bottom: none; }
@@ -221,48 +290,59 @@
     <div class="project-hero">
       <div class="hero-left reveal">
         <div class="hero-top">
-          <p class="hero-desc">Private, architectural, deliberate.</p>
-          <span class="hero-title">West &amp; Stone</span>
-          <span class="hero-tag">Home Goods &amp; Interior Objects</span>
+          <p class="hero-desc">Timeless, collected, quietly considered.</p>
+          <span class="hero-title">June House</span>
+          <span class="hero-tag">Interior Design Studio</span>
           <span class="hero-concept">Editorial Concept</span>
         </div>
         <div class="hero-bottom">
-          <a class="hero-link hero-link--live" href="https://pinkwebstudio.com/west-and-stone/" target="_blank" rel="noopener">View Live →</a>
+          <a class="hero-link hero-link--live" href="https://pinkwebstudio.com/june-house/" target="_blank" rel="noopener">View Live →</a>
           <a class="hero-link" href="/work/">Back to Work →</a>
           <a class="hero-link" href="/contact/">Start a New Project →</a>
         </div>
       </div>
-      <a class="hero-right" href="https://pinkwebstudio.com/west-and-stone/" target="_blank" rel="noopener" style="cursor:pointer;">
+      <a class="hero-right" href="https://pinkwebstudio.com/june-house/" target="_blank" rel="noopener" style="cursor:pointer;">
         <div class="hero-right-bg"></div>
       </a>
     </div>
 
+    <!-- Editorial Cards -->
     <div class="cards-row">
       <div class="ed-card reveal">
         <span class="ed-card-label">The Challenge</span>
-        <p class="ed-card-lead">Design a luxury brand that feels like a trusted advisor rather than a listing site. Visitors weren't finding West &amp; Stone through advertising. They were being introduced. The website needed to reinforce that feeling from the first second.</p>
+        <p class="ed-card-lead">Design an interior design studio that feels timeless instead of trend-driven. I wanted June House to feel like a studio that creates homes people can live in for decades, not spaces designed around short-lived trends. The challenge was communicating warmth, craftsmanship, and quiet luxury without making the experience feel overly styled.</p>
       </div>
       <div class="ed-card reveal">
         <span class="ed-card-label">The Approach</span>
-        <p class="ed-card-lead">Design every page like a private showing. Large photography, generous white space, and restrained typography allow each piece to speak for itself. No prices. No noise. The experience was meant to feel personal, not transactional.</p>
+        <p class="ed-card-lead">Let the materials tell the story. I designed every page to feel like walking through a beautifully collected home. Natural textures, architectural photography, generous white space, and restrained typography allow every project to breathe. Rather than filling the website with decoration, I wanted each detail to feel intentional and carefully considered.</p>
       </div>
     </div>
 
     <div class="ed-card--full reveal">
       <span class="ed-card-label">The Outcome</span>
-      <p class="ed-card-lead">A website that feels like access. Instead of feeling like another brand site, the experience creates the feeling of being invited in. Visitors aren't simply browsing. They're being introduced to something they wouldn't normally find.</p>
+      <p class="ed-card-lead">A website that feels like stepping inside the home before it's even built. The experience encourages visitors to slow down and imagine how they want their own home to feel. Instead of showcasing beautiful interiors alone, the website communicates the studio's philosophy and the experience of working with them.</p>
+    </div>
+
+    <div class="j-frames reveal">
+      <div class="j-frame">
+        <div class="j-frame-chrome"><span class="j-frame-dot"></span><span class="j-frame-dot"></span><span class="j-frame-dot"></span><span class="j-frame-url"></span></div>
+        <img class="j-frame-img" src="/assets/june1.png" alt="June House" />
+      </div>
+      <div class="j-frame">
+        <div class="j-frame-chrome"><span class="j-frame-dot"></span><span class="j-frame-dot"></span><span class="j-frame-dot"></span><span class="j-frame-url"></span></div>
+        <img class="j-frame-img" src="/assets/june2.png" alt="June House" />
+      </div>
     </div>
 
     <div class="p-video-section reveal">
       <span class="p-video-heading">See it in motion.</span>
       <div class="p-video-wrap" id="pVideoWrap">
-        <video src="/assets/weststonespeeds.mov" muted playsinline id="pVideo"></video>
+        <video src="/assets/speedjune.mov" muted playsinline id="pVideo"></video>
         <div class="p-play-btn"><div class="p-play-circle"><svg width="18" height="18" viewBox="0 0 24 24" fill="rgba(255,255,255,.7)"><polygon points="6,3 20,12 6,21"/></svg></div></div>
       </div>
     </div>
-
-    <a class="p-next reveal" href="/celeste.html">
-      <div><span class="p-next-label">Next Project</span><span class="p-next-name">Celeste</span></div>
+    <a class="p-next reveal" href="/forma/">
+      <div><span class="p-next-label">Next Project</span><span class="p-next-name">Forma</span></div>
       <span class="p-next-arrow">→</span>
     </a>
 
@@ -309,7 +389,6 @@
         if (pVideo.paused) { pVideo.play(); pVideoWrap.classList.add("playing"); }
         else { pVideo.pause(); pVideoWrap.classList.remove("playing"); }
       });
-
 
       const io = new IntersectionObserver(entries => {
         entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("visible"); io.unobserve(e.target); } });

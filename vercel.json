@@ -1,0 +1,18 @@
+{
+  "redirects": [
+    { "source": "/enter-the-studio", "destination": "/contact/", "permanent": true },
+    { "source": "/connect",          "destination": "/contact/", "permanent": true },
+    { "source": "/celeste.html",     "destination": "/celeste/", "permanent": true },
+    { "source": "/forma.html",       "destination": "/forma/",   "permanent": true },
+    { "source": "/june-house.html",  "destination": "/june-house/", "permanent": true },
+    { "source": "/le-loup.html",     "destination": "/le-loup/", "permanent": true },
+    { "source": "/west-and-stone.html", "destination": "/west-and-stone/", "permanent": true },
+    { "source": "/about.html",       "destination": "/about/",   "permanent": true },
+    { "source": "/services/branding.html",       "destination": "/services/", "permanent": true },
+    { "source": "/services/custom-design.html",  "destination": "/services/", "permanent": true },
+    { "source": "/services/development.html",    "destination": "/services/", "permanent": true },
+    { "source": "/services/landing-pages.html",  "destination": "/services/", "permanent": true },
+    { "source": "/services/maintenance.html",    "destination": "/services/", "permanent": true },
+    { "source": "/services/shopify.html",        "destination": "/services/", "permanent": true }
+  ]
+}

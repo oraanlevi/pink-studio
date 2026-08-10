@@ -7,7 +7,7 @@
   <title>Website Refresh · Pink Web Studio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@700&family=Rouge+Script&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/styles.css" />
   <style>
 
@@ -82,9 +82,10 @@
       line-height: 1;
     }
     .sp-hero-cta {
-      font-family: "Rouge Script", cursive;
-      font-size: 28px;
-      letter-spacing: 3px;
+      font-family: "Inter", system-ui, sans-serif;
+      font-weight: 400;
+      font-size: 15px;
+      letter-spacing: 1.5px;
       text-transform: none;
       color: var(--ink);
       text-decoration: none;
@@ -136,7 +137,7 @@
     .thesis-body p {
       font-family: system-ui, -apple-system, sans-serif;
       font-size: 16px;
-      color: #555;
+      color: #222;
       line-height: 1.8;
     }
     .thesis-showcase {
@@ -207,43 +208,18 @@
 
     /* ── Argument ── */
     .argument { border-bottom: 1px solid var(--rule); }
-    .argument-band {
-      display: grid;
-      grid-template-columns: 220px 1fr;
-      align-items: start;
-      gap: 48px;
-      padding: 52px 72px;
-      border-bottom: 1px solid var(--rule);
+    .argument-intro {
+      padding: 64px 72px;
+      max-width: 780px;
     }
-    .argument-band:last-child { border-bottom: none; }
-    .argument-label {
-      font-family: "Rouge Script", cursive;
-      font-size: 34px;
-      letter-spacing: 0;
-      text-transform: none;
-      color: #444;
-      padding-top: 0;
-      line-height: 1;
-      white-space: nowrap;
-    }
-    .argument-content { display: flex; flex-direction: column; gap: 16px; }
-    .argument-heading {
-      font-family: "Inter", system-ui, sans-serif;
-      font-weight: 700;
-      font-size: clamp(18px, 2vw, 26px);
-      color: var(--ink);
-      line-height: 1.2;
-      letter-spacing: -0.2px;
-      display: block;
-      max-width: 32ch;
-    }
-    .argument-body {
+    .argument-intro p {
       font-family: system-ui, -apple-system, sans-serif;
-      font-size: 16px;
-      color: #555;
-      line-height: 1.75;
-      max-width: 56ch;
+      font-size: 17px;
+      color: #222;
+      line-height: 1.85;
+      max-width: 62ch;
     }
+    .argument-intro p + p { margin-top: 22px; }
 
     /* ── Section shell ── */
     .sp-section { border-bottom: 1px solid var(--rule); }
@@ -254,9 +230,10 @@
       text-align: center;
     }
     .sp-section-label {
-      font-family: "Rouge Script", cursive;
-      font-size: 40px;
-      letter-spacing: 0;
+      font-family: "Inter", system-ui, sans-serif;
+      font-weight: 400;
+      font-size: 20px;
+      letter-spacing: 0.5px;
       text-transform: none;
       color: #000;
     }
@@ -271,11 +248,12 @@
     .included-card:nth-child(even) { border-right: none; }
     .included-card:nth-last-child(-n+2) { border-bottom: none; }
     .included-card-num {
-      font-family: "Rouge Script", cursive;
-      font-size: 30px;
-      letter-spacing: 0;
-      text-transform: none;
-      color: #000;
+      font-family: "Inter", system-ui, sans-serif;
+      font-weight: 400;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #888;
       display: block;
       margin-bottom: 16px;
     }
@@ -292,7 +270,7 @@
     .included-card-desc {
       font-family: system-ui, -apple-system, sans-serif;
       font-size: 15px;
-      color: #666;
+      color: #333;
       line-height: 1.75;
     }
     .included-card-items {
@@ -334,10 +312,12 @@
     }
     .process-step:last-child { border-right: none; }
     .process-num {
-      font-family: "Rouge Script", cursive;
-      font-size: 22px;
-      letter-spacing: 2px;
-      color: #444;
+      font-family: "Inter", system-ui, sans-serif;
+      font-weight: 400;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #888;
       display: block;
       margin-bottom: 24px;
     }
@@ -353,7 +333,7 @@
     .process-body {
       font-family: system-ui, -apple-system, sans-serif;
       font-size: 15px;
-      color: #666;
+      color: #333;
       line-height: 1.75;
     }
     .process-body + .process-body { margin-top: 20px; }
@@ -428,7 +408,7 @@
       gap: 24px;
       transition: color 250ms;
     }
-    .faq-question:hover { color: #555; }
+    .faq-question:hover { color: #222; }
     .faq-icon {
       flex-shrink: 0;
       font-size: 20px;
@@ -448,7 +428,7 @@
     .faq-answer-inner p {
       font-family: system-ui, -apple-system, sans-serif;
       font-size: 16px;
-      color: #666;
+      color: #333;
       line-height: 1.8;
       padding-bottom: 32px;
       max-width: 60ch;
@@ -483,14 +463,15 @@
     .sp-cta-sub {
       font-family: system-ui, -apple-system, sans-serif;
       font-size: 16px;
-      color: #777;
+      color: #444;
       line-height: 1.7;
     }
     .sp-cta-links { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
     .sp-cta-btn {
-      font-family: "Rouge Script", cursive;
-      font-size: 28px;
-      letter-spacing: 3px;
+      font-family: "Inter", system-ui, sans-serif;
+      font-weight: 400;
+      font-size: 15px;
+      letter-spacing: 1.5px;
       text-transform: none;
       color: #000;
       text-decoration: none;
@@ -526,7 +507,7 @@
       .sp-hero-inner { padding: 0 24px 56px; gap: 28px; }
       .sp-hero-title { font-size: clamp(52px, 12vw, 80px); letter-spacing: -2px; }
       .sp-hero-bottom { flex-direction: column; align-items: flex-start; gap: 24px; }
-      .argument-band { grid-template-columns: 1fr; gap: 20px; padding: 40px 24px; }
+      .argument-intro { padding: 40px 24px; }
       .sp-section-head { padding: 36px 24px 24px; }
       .sp-section-body { padding: 0 24px 48px; }
       .included-grid { grid-template-columns: 1fr; }
@@ -586,12 +567,12 @@
       <div class="sp-hero-bottom">
         <div class="sp-hero-stats">
           <div class="sp-stat">
-            <span class="sp-stat-label">Investment</span>
+            <span class="sp-stat-label">Starting at</span>
             <span class="sp-stat-value">$1,250</span>
           </div>
           <div class="sp-stat">
             <span class="sp-stat-label">Timeline</span>
-            <span class="sp-stat-value">2 to 3 wks</span>
+            <span class="sp-stat-value">Up to 4 weeks</span>
           </div>
         </div>
         <a href="https://calendly.com/oraanlevi1/30min" class="sp-hero-cta">Book a Call <span class="btn-arrow">&rarr;</span></a>
@@ -602,10 +583,10 @@
   <!-- Thesis -->
   <section class="thesis">
     <div class="thesis-left">
-      <span class="thesis-statement">Your site exists. It's just not landing the way it should.</span>
+      <span class="thesis-statement">You don't need a new website. You need your current one to work properly.</span>
       <div class="thesis-body">
-        <p>You don't need to start from scratch. You need someone to look at what you have and make it work better.</p>
-        <p>If your foundation is sound but your site doesn't feel polished, professional, or on-brand, a Refresh is the faster path.</p>
+        <p>A Website Refresh is for businesses with an existing live site that has grown alongside the business, but the website hasn't kept up. The platform is there. The content is there. What's missing is the refinement.</p>
+        <p>This isn't a rebuild. It's a thoughtful optimization. We identify exactly what needs to change and implement only those improvements. Nothing more, nothing less.</p>
       </div>
     </div>
     <div class="thesis-showcase">
@@ -640,28 +621,11 @@
     </div>
   </section>
 
-  <!-- Argument -->
+  <!-- Introduction -->
   <section class="argument">
-    <div class="argument-band">
-      <span class="argument-label">Who This Is For</span>
-      <div class="argument-content">
-        <span class="argument-heading">Businesses with an existing site that isn't quite right.</span>
-        <p class="argument-body">Not broken, just not landing the way it should. If the foundation is sound but the experience feels dated, off-brand, or unconvincing, a Refresh is the faster, more focused path.</p>
-      </div>
-    </div>
-    <div class="argument-band">
-      <span class="argument-label">The Problem</span>
-      <div class="argument-content">
-        <span class="argument-heading">Your site exists. But it's not doing the job you need it to do.</span>
-        <p class="argument-body">Maybe it looked fine when you launched it. Maybe it was built quickly and you've been meaning to fix it. Visitors arrive and something isn't clicking — the hierarchy is off, the layout feels dated, or it just doesn't reflect the quality of your actual work.</p>
-      </div>
-    </div>
-    <div class="argument-band">
-      <span class="argument-label">The Approach</span>
-      <div class="argument-content">
-        <span class="argument-heading">A focused redesign. Keep what works. Fix what doesn't.</span>
-        <p class="argument-body">No starting from scratch, no rebuilding from the ground up. Just the specific improvements your site needs to start performing the way it should.</p>
-      </div>
+    <div class="argument-intro">
+      <p>A Refresh is not for businesses starting from scratch. It's for founders and teams with a live website that has drifted behind the business. The site exists, the content is there, but something has shifted and the site hasn't followed. Maybe it was built quickly and never properly finished. Maybe the business has grown and the website hasn't kept up.</p>
+      <p>Visitors arrive to something that feels slightly off. Not broken, just not quite right. Every Refresh begins with a collaborative review of what you have. We agree on the improvements before anything changes. Only the work that actually matters gets done.</p>
     </div>
   </section>
 
@@ -672,39 +636,52 @@
     </div>
     <div class="included-grid">
       <div class="included-card">
-        <span class="included-card-num">Analyse</span>
-        <span class="included-card-name">Review &amp; Assessment</span>
-        <p class="included-card-desc">We go through your existing site together and identify exactly what needs to change. You'll know the full plan before any work begins.</p>
+        <span class="included-card-num">Review</span>
+        <span class="included-card-name">Collaborative Assessment</span>
+        <p class="included-card-desc">Every Refresh begins with a structured review of the existing website. Together we identify what's working, what no longer reflects the business, what should be removed, and what should be added. Nothing changes until the plan is agreed.</p>
         <div class="included-card-items">
-          <div class="included-card-item">Homepage Redesign</div>
-          <div class="included-card-item">Navigation Improvements</div>
+          <div class="included-card-item">What's Working</div>
+          <div class="included-card-item">What's No Longer Relevant</div>
+          <div class="included-card-item">Gaps &amp; Opportunities</div>
+          <div class="included-card-item">Agreed Improvement Plan</div>
         </div>
       </div>
       <div class="included-card">
-        <span class="included-card-num">Design</span>
-        <span class="included-card-name">Layouts &amp; Typography</span>
-        <p class="included-card-desc">Tightened spacing, cleaner type choices, and layouts that guide visitors to the right next step. Nothing is finalized until it feels right.</p>
+        <span class="included-card-num">Refine</span>
+        <span class="included-card-name">Possible Improvements</span>
+        <p class="included-card-desc">Based on the review, we implement only the improvements the site actually needs. Every Refresh is scoped to your specific project. The list below reflects what's possible, not what's always included.</p>
         <div class="included-card-items">
-          <div class="included-card-item">Updated Layouts</div>
-          <div class="included-card-item">Mobile Optimization</div>
+          <div class="included-card-item">Typography &amp; Layout</div>
+          <div class="included-card-item">Mobile &amp; Responsive</div>
+          <div class="included-card-item">Navigation</div>
+          <div class="included-card-item">New Sections</div>
+          <div class="included-card-item">Image Replacement</div>
+          <div class="included-card-item">Motion &amp; Interactions</div>
+          <div class="included-card-item">Accessibility</div>
         </div>
       </div>
       <div class="included-card">
-        <span class="included-card-num">Build</span>
-        <span class="included-card-name">Performance &amp; SEO</span>
-        <p class="included-card-desc">Image optimization, code cleanup, and fixes for anything causing unnecessary friction. Title tags, meta descriptions, and heading structure updated.</p>
+        <span class="included-card-num">Relaunch</span>
+        <span class="included-card-name">QA &amp; Publish</span>
+        <p class="included-card-desc">Once the improvements are approved, the updated site is tested across devices and browsers and published. Domain connection is handled if required. Two weeks of post-launch support follow.</p>
         <div class="included-card-items">
-          <div class="included-card-item">Performance Improvements</div>
-          <div class="included-card-item">Basic SEO Updates</div>
+          <div class="included-card-item">Final QA &amp; Testing</div>
+          <div class="included-card-item">Cross-Device Testing</div>
+          <div class="included-card-item">Publish Updates</div>
+          <div class="included-card-item">Domain Connection if Required</div>
+          <div class="included-card-item">Two Weeks Post-Launch Support</div>
         </div>
       </div>
       <div class="included-card">
-        <span class="included-card-num">Launch</span>
-        <span class="included-card-name">Revisions &amp; Relaunch</span>
-        <p class="included-card-desc">Two rounds of revisions so you can review and refine before anything goes live. Full launch coordination plus two weeks of post-launch support.</p>
+        <span class="included-card-num">Clarity</span>
+        <span class="included-card-name">Not Included</span>
+        <p class="included-card-desc">A Refresh improves an existing website. It is not a rebuild, a rebrand, or a platform migration. New e-commerce functionality can be scoped separately if the project calls for it.</p>
         <div class="included-card-items">
-          <div class="included-card-item">Two Revision Rounds</div>
-          <div class="included-card-item">Launch &amp; Support</div>
+          <div class="included-card-item">New Website Builds</div>
+          <div class="included-card-item">Brand Identity &amp; Logo Design</div>
+          <div class="included-card-item">Full Copywriting</div>
+          <div class="included-card-item">CMS Migrations</div>
+          <div class="included-card-item">New E-Commerce Functionality</div>
         </div>
       </div>
     </div>
@@ -722,20 +699,20 @@
       <div class="process-step">
         <span class="process-num">01</span>
         <span class="process-label">Review</span>
-        <p class="process-body">We go through your existing site together and identify exactly what needs to change.<br>You'll know the full plan before any work begins.</p>
-        <p class="process-body">Nothing gets touched until we agree on what it should become.</p>
+        <p class="process-body">Every Refresh begins with a collaborative review of the existing website. Together we go through what's working, what no longer reflects the business, what should be removed, and what should be added.<br>We also look at why the current site isn't performing as well as it could: whether that's a layout issue, a messaging issue, or something technical.</p>
+        <p class="process-body">Nothing changes until we agree on the plan.</p>
       </div>
       <div class="process-step">
         <span class="process-num">02</span>
         <span class="process-label">Refine</span>
-        <p class="process-body">I redesign the key pages with improved layouts, typography, and hierarchy.<br>You review, we adjust.</p>
-        <p class="process-body">Nothing is finalized until it feels right.</p>
+        <p class="process-body">Based on the review, we implement the agreed improvements. The scope varies by project. A Refresh might involve typography, layout refinements, mobile optimization, navigation improvements, new sections, image replacement, motion and interactions, or accessibility work.<br>Only the work your site actually needs.</p>
+        <p class="process-body">Nothing extra. Nothing missed.</p>
       </div>
       <div class="process-step">
         <span class="process-num">03</span>
         <span class="process-label">Relaunch</span>
-        <p class="process-body">Your refreshed site goes live — tested across devices, optimized for performance.<br>Two weeks of post-launch support follow.</p>
-        <p class="process-body">Ready to represent your brand properly.</p>
+        <p class="process-body">Once the improvements are approved, the updated site is tested across devices and browsers and published.<br>Domain connection is handled if required. Two weeks of post-launch support follow.</p>
+        <p class="process-body">Ready to represent the business properly.</p>
       </div>
     </div>
   </section>
@@ -744,25 +721,25 @@
   <section class="sp-section">
     <div class="investment-main">
       <div class="investment-stat">
-        <span class="investment-stat-label">Flat Fee</span>
+        <span class="investment-stat-label">Starting at</span>
         <span class="investment-amount">$1,250</span>
       </div>
       <div class="investment-divider"></div>
       <div class="investment-stat">
         <span class="investment-stat-label">Timeline</span>
-        <span class="investment-amount">2 to 3 wks</span>
+        <span class="investment-amount">Up to 4 weeks</span>
       </div>
       <a href="https://calendly.com/oraanlevi1/30min" class="investment-cta">Book a Call &rarr;</a>
     </div>
     <div class="investment-note">
-      <p>Scope is confirmed in the discovery conversation before any work begins. Payment is collected via invoice or Square link. No surprises, no hidden fees.</p>
+      <p>Every Refresh is custom scoped after the initial review based on the improvements the site actually needs. The starting price reflects a focused engagement for an existing small-to-medium website, typically six primary pages or fewer. The final scope and investment are confirmed before any work begins. Payment is collected via invoice or Square link. No surprises, no hidden fees.</p>
     </div>
   </section>
 
   <!-- FAQ -->
   <section class="sp-section">
     <div class="sp-section-head">
-      <span class="sp-section-label">Questions</span>
+      <span class="sp-section-label">questions</span>
     </div>
     <div class="sp-section-body">
       <div class="faq-list">
@@ -773,7 +750,7 @@
           </button>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              <p>A Refresh works with your existing site's foundation. If the structure is sound but the experience needs improvement, a Refresh is the faster, more focused path. A Signature Website starts from scratch — it's the right choice when the foundation itself needs to change.</p>
+              <p>They solve different problems. A Signature Website is for building something new: when you need a site designed and built from scratch around your brand. A Website Refresh is for improving what you already have: when you have a live site that needs to evolve alongside the business. The two packages don't compete. They serve different moments.</p>
             </div>
           </div>
         </div>
@@ -784,7 +761,7 @@
           </button>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              <p>The scope is defined before we begin. Most Refreshes focus on the homepage and the most-visited pages. We'll agree on exactly what's included in the proposal before any work starts.</p>
+              <p>The Website Refresh is designed for existing small-to-medium websites, typically around six primary pages or fewer. Every project is custom scoped after the initial review. The proposal defines exactly which pages and improvements are included before any work begins.</p>
             </div>
           </div>
         </div>
@@ -795,7 +772,7 @@
           </button>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              <p>Access to your current site, your brand assets if you have them, and a clear sense of what isn't working. If you've already done a Website Audit, even better — we'll have a head start.</p>
+              <p>Access to your current site, your brand assets if you have them, and a clear sense of what isn't working. If you've already done a Website Audit, even better. We'll have a head start.</p>
             </div>
           </div>
         </div>
@@ -806,7 +783,7 @@
           </button>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              <p>Two weeks of complimentary post-launch support for crucial fixes. After that, Website Care is available if you'd like ongoing attention for your site.</p>
+              <p>Two weeks of complimentary post-launch support for crucial fixes. After that, Monthly Website Support is available if you'd like ongoing attention for your site.</p>
             </div>
           </div>
         </div>
@@ -817,13 +794,13 @@
   <!-- Final CTA -->
   <section class="sp-cta">
     <div class="sp-cta-left">
-      <span class="sp-cta-headline">Ready to make your site work the way it should?</span>
+      <span class="sp-cta-headline">Ready to improve what you already have?</span>
     </div>
     <div class="sp-cta-right">
       <p class="sp-cta-sub">Every project starts with a conversation.</p>
       <div class="sp-cta-links">
         <a href="https://calendly.com/oraanlevi1/30min" class="sp-cta-btn">Book a Call <span class="btn-arrow">&rarr;</span></a>
-        <a href="/connect" class="sp-cta-btn sp-cta-btn--secondary">Send a Message <span class="btn-arrow">&rarr;</span></a>
+        <a href="/contact/" class="sp-cta-btn sp-cta-btn--secondary">Send a Message <span class="btn-arrow">&rarr;</span></a>
       </div>
     </div>
   </section>

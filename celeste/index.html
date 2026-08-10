@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/assets/favicon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>West &amp; Stone · Case Study · Pink</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Céleste Med Spa · Case Study · Pink</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@300;700&display=swap" rel="stylesheet" />
@@ -19,6 +19,7 @@
       }
       body { background: var(--bg); }
 
+      /* ── Split Hero ── */
       .project-hero {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -37,8 +38,9 @@
       .hero-top { display: flex; flex-direction: column; }
       .hero-title {
         font-family: "Oswald", "Impact", sans-serif;
-        font-size: clamp(48px, 7vw, 96px);
+        font-size: clamp(60px, 9vw, 116px);
         font-weight: 700;
+        font-style: normal;
         color: var(--ink);
         line-height: .92;
         letter-spacing: -2px;
@@ -48,6 +50,7 @@
       .hero-tag {
         font-family: "Bebas Neue", "Impact", sans-serif;
         font-size: 16px;
+        font-weight: 400;
         letter-spacing: 4px;
         text-transform: uppercase;
         color: var(--ink-2);
@@ -55,16 +58,17 @@
         margin-bottom: 20px;
       }
       .hero-desc {
-        font-family: "Oswald", "Impact", sans-serif;
-        font-weight: 300;
         font-size: 28px;
+        font-style: normal;
         color: var(--ink-2);
         line-height: 1.6;
+        white-space: nowrap;
         margin-bottom: 36px;
       }
       .hero-concept {
         font-family: "Bebas Neue", "Impact", sans-serif;
         font-size: 16px;
+        font-weight: 400;
         letter-spacing: 4px;
         text-transform: uppercase;
         color: var(--ink-2);
@@ -85,22 +89,29 @@
       }
       .hero-link:hover { opacity: .4; }
       .hero-link--live { color: #C9607A; font-size: 15px; font-weight: 700; }
-      .hero-right { position: relative; overflow: hidden; }
+      .hero-right {
+        position: relative;
+        overflow: hidden;
+      }
       .hero-right-bg {
         position: absolute;
         inset: 0;
-        background: url('/assets/stone.png') center/cover no-repeat;
+        background: url('/assets/spa.png') center/cover no-repeat;
         animation: slowZoom 18s ease-in-out infinite alternate;
       }
-      @keyframes slowZoom { from { transform: scale(1.04); } to { transform: scale(1); } }
+      @keyframes slowZoom {
+        from { transform: scale(1.04); }
+        to   { transform: scale(1); }
+      }
 
+      /* ── Editorial Cards ── */
       .cards-row {
         display: grid;
         grid-template-columns: 1fr 1fr;
         border-bottom: 1px solid var(--rule);
       }
       .ed-card {
-        padding: 96px 56px;
+        padding: 96px 56px 96px;
         border-right: 1px solid var(--rule);
         display: flex;
         flex-direction: column;
@@ -128,18 +139,28 @@
         display: block;
         margin-bottom: 36px;
       }
-      .ed-card--full .ed-card-label { font-size: 16px; letter-spacing: 6px; }
       .ed-card-lead {
         font-family: "Oswald", "Impact", sans-serif;
         font-size: 20px;
         font-weight: 300;
+        font-style: normal;
         color: #4A4744;
         line-height: 1.65;
         letter-spacing: 2px;
         max-width: 36ch;
         margin-bottom: 0;
       }
-      .ed-card--full .ed-card-lead { max-width: 52ch; }
+      .ed-card--full .ed-card-label {
+        font-size: 16px;
+        letter-spacing: 6px;
+      }
+      .ed-card--full .ed-card-lead {
+        font-size: 24px;
+        font-style: normal;
+        white-space: normal;
+        max-width: 52ch;
+        margin-bottom: 0;
+      }
 
       .p-video-section {
         border-bottom: 1px solid var(--rule);
@@ -183,7 +204,7 @@
         .project-hero { grid-template-columns: 1fr; min-height: auto; }
         .hero-left { padding: 48px 24px 56px; border-right: none; border-bottom: 1px solid var(--rule); }
         .hero-right { min-height: 56vw; }
-        .hero-desc { font-size: 20px; }
+        .hero-desc { white-space: normal; font-size: 20px; }
         .cards-row { grid-template-columns: 1fr; }
         .ed-card { border-right: none; border-bottom: 1px solid var(--rule); padding: 56px 24px 64px; }
         .ed-card:last-child { border-bottom: none; }
@@ -221,48 +242,48 @@
     <div class="project-hero">
       <div class="hero-left reveal">
         <div class="hero-top">
-          <p class="hero-desc">Private, architectural, deliberate.</p>
-          <span class="hero-title">West &amp; Stone</span>
-          <span class="hero-tag">Home Goods &amp; Interior Objects</span>
+          <p class="hero-desc">Calm, trusted, quietly elegant.</p>
+          <span class="hero-title">Céleste</span>
+          <span class="hero-tag">Medical Aesthetics</span>
           <span class="hero-concept">Editorial Concept</span>
         </div>
         <div class="hero-bottom">
-          <a class="hero-link hero-link--live" href="https://pinkwebstudio.com/west-and-stone/" target="_blank" rel="noopener">View Live →</a>
+          <a class="hero-link hero-link--live" href="https://pinkwebstudio.com/celeste-aesthetics/" target="_blank" rel="noopener">View Live →</a>
           <a class="hero-link" href="/work/">Back to Work →</a>
           <a class="hero-link" href="/contact/">Start a New Project →</a>
         </div>
       </div>
-      <a class="hero-right" href="https://pinkwebstudio.com/west-and-stone/" target="_blank" rel="noopener" style="cursor:pointer;">
+      <a class="hero-right" href="https://pinkwebstudio.com/celeste-aesthetics/" target="_blank" rel="noopener" style="cursor:pointer;">
         <div class="hero-right-bg"></div>
       </a>
     </div>
 
+    <!-- Editorial Cards -->
     <div class="cards-row">
       <div class="ed-card reveal">
         <span class="ed-card-label">The Challenge</span>
-        <p class="ed-card-lead">Design a luxury brand that feels like a trusted advisor rather than a listing site. Visitors weren't finding West &amp; Stone through advertising. They were being introduced. The website needed to reinforce that feeling from the first second.</p>
+        <p class="ed-card-lead">Design a medical aesthetics brand that feels genuinely trustworthy instead of clinical or overstyled. Céleste's clients aren't looking for the loudest name in the room. They want to feel taken care of. The website needed to communicate quiet expertise and calm confidence from the moment someone lands on it.</p>
       </div>
       <div class="ed-card reveal">
         <span class="ed-card-label">The Approach</span>
-        <p class="ed-card-lead">Design every page like a private showing. Large photography, generous white space, and restrained typography allow each piece to speak for itself. No prices. No noise. The experience was meant to feel personal, not transactional.</p>
+        <p class="ed-card-lead">Let warmth do the heavy lifting. I built the experience around soft light, considered typography, and a pace that never rushes the visitor. Every section was designed to feel like a private consultation rather than a booking page. Reassuring, unhurried, and personal.</p>
       </div>
     </div>
 
     <div class="ed-card--full reveal">
       <span class="ed-card-label">The Outcome</span>
-      <p class="ed-card-lead">A website that feels like access. Instead of feeling like another brand site, the experience creates the feeling of being invited in. Visitors aren't simply browsing. They're being introduced to something they wouldn't normally find.</p>
+      <p class="ed-card-lead">A website that earns trust before a word is read. Visitors arrive and immediately feel the care that goes into Céleste's work. The experience doesn't sell. It welcomes. Which is exactly the feeling that turns a first visit into a loyal client relationship.</p>
     </div>
 
     <div class="p-video-section reveal">
       <span class="p-video-heading">See it in motion.</span>
       <div class="p-video-wrap" id="pVideoWrap">
-        <video src="/assets/weststonespeeds.mov" muted playsinline id="pVideo"></video>
+        <video src="/assets/speedceleste.mov" muted playsinline id="pVideo"></video>
         <div class="p-play-btn"><div class="p-play-circle"><svg width="18" height="18" viewBox="0 0 24 24" fill="rgba(255,255,255,.7)"><polygon points="6,3 20,12 6,21"/></svg></div></div>
       </div>
     </div>
-
-    <a class="p-next reveal" href="/celeste.html">
-      <div><span class="p-next-label">Next Project</span><span class="p-next-name">Celeste</span></div>
+    <a class="p-next reveal" href="/june-house/">
+      <div><span class="p-next-label">Next Project</span><span class="p-next-name">June House</span></div>
       <span class="p-next-arrow">→</span>
     </a>
 
@@ -309,7 +330,6 @@
         if (pVideo.paused) { pVideo.play(); pVideoWrap.classList.add("playing"); }
         else { pVideo.pause(); pVideoWrap.classList.remove("playing"); }
       });
-
 
       const io = new IntersectionObserver(entries => {
         entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("visible"); io.unobserve(e.target); } });

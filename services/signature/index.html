@@ -7,7 +7,7 @@
   <title>Signature Website · Pink Web Studio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@700&family=Rouge+Script&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/styles.css" />
   <style>
 
@@ -82,9 +82,10 @@
       line-height: 1;
     }
     .sp-hero-cta {
-      font-family: "Cookie", cursive;
-      font-size: 24px;
-      letter-spacing: 3px;
+      font-family: "Inter", system-ui, sans-serif;
+      font-weight: 400;
+      font-size: 15px;
+      letter-spacing: 1.5px;
       text-transform: none;
       color: var(--ink);
       text-decoration: none;
@@ -136,7 +137,7 @@
     .thesis-body p {
       font-family: system-ui, -apple-system, sans-serif;
       font-size: 16px;
-      color: #555;
+      color: #222;
       line-height: 1.8;
     }
 
@@ -233,43 +234,18 @@
     .argument {
       border-bottom: 1px solid var(--rule);
     }
-    .argument-band {
-      display: grid;
-      grid-template-columns: 220px 1fr;
-      align-items: start;
-      gap: 48px;
-      padding: 52px 72px;
-      border-bottom: 1px solid var(--rule);
+    .argument-intro {
+      padding: 64px 72px;
+      max-width: 780px;
     }
-    .argument-band:last-child { border-bottom: none; }
-    .argument-label {
-      font-family: "Cookie", cursive;
-      font-size: 30px;
-      letter-spacing: 0;
-      text-transform: none;
-      color: #444;
-      padding-top: 0;
-      line-height: 1;
-      white-space: nowrap;
-    }
-    .argument-content { display: flex; flex-direction: column; gap: 16px; }
-    .argument-heading {
-      font-family: "Inter", system-ui, sans-serif;
-      font-weight: 700;
-      font-size: clamp(18px, 2vw, 26px);
-      color: var(--ink);
-      line-height: 1.2;
-      letter-spacing: -0.2px;
-      display: block;
-      max-width: 32ch;
-    }
-    .argument-body {
+    .argument-intro p {
       font-family: system-ui, -apple-system, sans-serif;
-      font-size: 16px;
-      color: #555;
-      line-height: 1.75;
-      max-width: 56ch;
+      font-size: 17px;
+      color: #222;
+      line-height: 1.85;
+      max-width: 62ch;
     }
+    .argument-intro p + p { margin-top: 22px; }
 
     /* ── Section shell ── */
     .sp-section { border-bottom: 1px solid var(--rule); }
@@ -280,9 +256,10 @@
       text-align: center;
     }
     .sp-section-label {
-      font-family: "Cookie", cursive;
-      font-size: 36px;
-      letter-spacing: 0;
+      font-family: "Inter", system-ui, sans-serif;
+      font-weight: 400;
+      font-size: 20px;
+      letter-spacing: 0.5px;
       text-transform: none;
       color: #000;
     }
@@ -300,11 +277,12 @@
     .included-card:nth-child(even) { border-right: none; }
     .included-card:nth-last-child(-n+2) { border-bottom: none; }
     .included-card-num {
-      font-family: "Cookie", cursive;
-      font-size: 26px;
-      letter-spacing: 0;
-      text-transform: none;
-      color: #000;
+      font-family: "Inter", system-ui, sans-serif;
+      font-weight: 400;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #888;
       display: block;
       margin-bottom: 16px;
     }
@@ -321,7 +299,7 @@
     .included-card-desc {
       font-family: system-ui, -apple-system, sans-serif;
       font-size: 15px;
-      color: #666;
+      color: #333;
       line-height: 1.75;
     }
     .included-card-items {
@@ -363,10 +341,12 @@
     }
     .process-step:last-child { border-right: none; }
     .process-num {
-      font-family: "Cookie", cursive;
-      font-size: 18px;
-      letter-spacing: 2px;
-      color: #444;
+      font-family: "Inter", system-ui, sans-serif;
+      font-weight: 400;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #888;
       display: block;
       margin-bottom: 24px;
     }
@@ -382,7 +362,7 @@
     .process-body {
       font-family: system-ui, -apple-system, sans-serif;
       font-size: 15px;
-      color: #666;
+      color: #333;
       line-height: 1.75;
     }
     .process-body + .process-body { margin-top: 20px; }
@@ -458,7 +438,7 @@
       gap: 24px;
       transition: color 250ms;
     }
-    .faq-question:hover { color: #555; }
+    .faq-question:hover { color: #222; }
     .faq-icon {
       flex-shrink: 0;
       font-size: 20px;
@@ -478,7 +458,7 @@
     .faq-answer-inner p {
       font-family: system-ui, -apple-system, sans-serif;
       font-size: 16px;
-      color: #666;
+      color: #333;
       line-height: 1.8;
       padding-bottom: 32px;
       max-width: 60ch;
@@ -517,14 +497,15 @@
     .sp-cta-sub {
       font-family: system-ui, -apple-system, sans-serif;
       font-size: 16px;
-      color: #777;
+      color: #444;
       line-height: 1.7;
     }
     .sp-cta-links { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
     .sp-cta-btn {
-      font-family: "Cookie", cursive;
-      font-size: 24px;
-      letter-spacing: 3px;
+      font-family: "Inter", system-ui, sans-serif;
+      font-weight: 400;
+      font-size: 15px;
+      letter-spacing: 1.5px;
       text-transform: none;
       color: #000;
       text-decoration: none;
@@ -560,7 +541,7 @@
       .sp-hero-inner { padding: 0 24px 56px; gap: 28px; }
       .sp-hero-title { font-size: clamp(52px, 12vw, 80px); letter-spacing: -2px; }
       .sp-hero-bottom { flex-direction: column; align-items: flex-start; gap: 24px; }
-      .argument-band { grid-template-columns: 1fr; gap: 20px; padding: 40px 24px; }
+      .argument-intro { padding: 40px 24px; }
       .sp-section-head { padding: 36px 24px 24px; }
       .sp-section-body { padding: 0 24px 48px; }
       .included-grid { grid-template-columns: 1fr; }
@@ -620,7 +601,7 @@
       <div class="sp-hero-bottom">
         <div class="sp-hero-stats">
           <div class="sp-stat">
-            <span class="sp-stat-label">Starting At</span>
+            <span class="sp-stat-label">Starting from</span>
             <span class="sp-stat-value">$3,000</span>
           </div>
           <div class="sp-stat">
@@ -674,28 +655,11 @@
     </div>
   </section>
 
-  <!-- § 3 · Argument -->
+  <!-- § 3 · Introduction -->
   <div class="argument reveal">
-    <div class="argument-band">
-      <span class="argument-label">Who This Is For</span>
-      <div class="argument-content">
-        <span class="argument-heading">Founders and creative businesses ready to be taken seriously online.</span>
-        <p class="argument-body">You've outgrown a template. Or a freelancer who did their best. Or something you built in a weekend that somehow became the face of your business. This is for brands where the work has gotten better. The website needs to reflect that.</p>
-      </div>
-    </div>
-    <div class="argument-band">
-      <span class="argument-label">The Problem</span>
-      <div class="argument-content">
-        <span class="argument-heading">Your brand has a point of view. Your website doesn't reflect it.</span>
-        <p class="argument-body">Visitors arrive and something isn't landing. The hierarchy is off. The message is vague. The design doesn't match the quality of the actual work. You've been meaning to fix it. This is how.</p>
-      </div>
-    </div>
-    <div class="argument-band">
-      <span class="argument-label">The Approach</span>
-      <div class="argument-content">
-        <span class="argument-heading">A website designed around your brand. Not borrowed from a template.</span>
-        <p class="argument-body">We start by understanding who you are and who you're trying to reach. Every page, every line, every detail is built around that. The result is a site that feels like you. Only more so.</p>
-      </div>
+    <div class="argument-intro">
+      <p>This is for founders and creative businesses that have outgrown what they started with: a template, a freelancer, something built in a weekend that somehow became the face of the brand. The work has gotten better. The website needs to reflect that.</p>
+      <p>Visitors arrive and something isn't landing. The hierarchy is off. The message is vague. The design doesn't match the quality of what's actually being offered. We start by understanding who you are and who you're trying to reach. Every page, every detail is built around that. The result is a site that feels like you. Only more so.</p>
     </div>
   </div>
 
@@ -709,21 +673,24 @@
       <div class="included-card">
         <span class="included-card-num">Direction</span>
         <span class="included-card-name">Strategy &amp; Discovery</span>
-        <p class="included-card-desc">We begin by understanding your brand, your clients, and what you need the site to do. Before a pixel is placed, we have a clear brief, so every decision that follows has a reason.</p>
+        <p class="included-card-desc">We begin by understanding your brand, your clients, and what you need the site to do. Brand Direction is a collaborative process. We refine how your existing brand translates to the web: typography, colour, layout, imagery, and visual tone. This is not a logo or full identity service.</p>
         <div class="included-card-items">
-          <span class="included-card-item">Creative Brief</span>
-          <span class="included-card-item">Brand Direction</span>
+          <span class="included-card-item">Discovery &amp; Strategy Session</span>
           <span class="included-card-item">Site Architecture</span>
+          <span class="included-card-item">Content Planning</span>
+          <span class="included-card-item">Collaborative Brand Direction</span>
         </div>
       </div>
 
       <div class="included-card">
         <span class="included-card-num">Design</span>
         <span class="included-card-name">Custom Website Design</span>
-        <p class="included-card-desc">Every layout, typeface choice, and detail is designed specifically for your brand. Nothing is templated, nothing is borrowed. Desktop and mobile designed together, not one adapted from the other.</p>
+        <p class="included-card-desc">Every layout, typeface choice, and detail is designed specifically for your brand. Nothing is templated, nothing is borrowed. Desktop and mobile designed together, not one adapted from the other. Motion and interaction design included where appropriate.</p>
         <div class="included-card-items">
           <span class="included-card-item">Full Site Design</span>
           <span class="included-card-item">Desktop &amp; Mobile</span>
+          <span class="included-card-item">Responsive Layouts</span>
+          <span class="included-card-item">Motion &amp; Interaction Design</span>
           <span class="included-card-item">Two Revision Rounds</span>
         </div>
       </div>
@@ -731,22 +698,52 @@
       <div class="included-card">
         <span class="included-card-num">Build</span>
         <span class="included-card-name">Development &amp; Setup</span>
-        <p class="included-card-desc">Clean, fast code built to perform. No bloated page builders, no unnecessary dependencies. Forms configured, SEO foundation laid, everything working from day one.</p>
+        <p class="included-card-desc">Clean, fast code built to perform. No bloated page builders, no unnecessary dependencies. Technical SEO is handled in full, not as an afterthought. Forms configured and everything working from day one.</p>
         <div class="included-card-items">
-          <span class="included-card-item">Website Development</span>
-          <span class="included-card-item">Contact Form Setup</span>
-          <span class="included-card-item">Basic On-Page SEO</span>
+          <span class="included-card-item">Custom Development</span>
+          <span class="included-card-item">Contact Form</span>
+          <span class="included-card-item">Technical SEO Setup</span>
+          <span class="included-card-item">Cross-Browser &amp; Device Testing</span>
         </div>
       </div>
 
       <div class="included-card">
         <span class="included-card-num">Launch</span>
         <span class="included-card-name">Launch &amp; Beyond</span>
-        <p class="included-card-desc">Full launch coordination: domain connection, pre-launch checks across every device, and going live when everything is exactly right. Two weeks of post-launch support included after you go live.</p>
+        <p class="included-card-desc">Full launch coordination from domain connection to going live. Your site is verified across every device and browser before anything is published. Analytics and Search Console set up so you can see how the site performs from day one.</p>
         <div class="included-card-items">
-          <span class="included-card-item">Domain &amp; Launch</span>
-          <span class="included-card-item">Cross-Device Testing</span>
+          <span class="included-card-item">Domain Connection</span>
+          <span class="included-card-item">Hosting Deployment</span>
+          <span class="included-card-item">Final QA &amp; Testing</span>
+          <span class="included-card-item">Google Analytics Setup</span>
+          <span class="included-card-item">Google Search Console Setup</span>
+          <span class="included-card-item">Website Walkthrough</span>
           <span class="included-card-item">Two Weeks Post-Launch Support</span>
+        </div>
+      </div>
+
+      <div class="included-card">
+        <span class="included-card-num">Add-Ons</span>
+        <span class="included-card-name">Available When Required</span>
+        <p class="included-card-desc">Some projects require functionality beyond the core package. These are not included as standard, but are available when the project calls for them. Each is scoped and priced individually during the proposal conversation.</p>
+        <div class="included-card-items">
+          <span class="included-card-item">E-Commerce</span>
+          <span class="included-card-item">Membership Functionality</span>
+          <span class="included-card-item">Booking Systems</span>
+          <span class="included-card-item">Custom CMS</span>
+          <span class="included-card-item">Third-Party Integrations</span>
+        </div>
+      </div>
+
+      <div class="included-card">
+        <span class="included-card-num">Clarity</span>
+        <span class="included-card-name">Not Included</span>
+        <p class="included-card-desc">Clients provide a first draft of their copy. Pink refines it for clarity, hierarchy, and how it reads on the web. Full copywriting from scratch is not included. Stock image sourcing is included within reason. Professional photography is not.</p>
+        <div class="included-card-items">
+          <span class="included-card-item">Logo Design</span>
+          <span class="included-card-item">Professional Photography</span>
+          <span class="included-card-item">Full Copywriting</span>
+          <span class="included-card-item">Third-Party Automations</span>
         </div>
       </div>
 
@@ -790,7 +787,7 @@
     </div>
     <div class="investment-main">
       <div class="investment-stat">
-        <span class="investment-stat-label">Starting At</span>
+        <span class="investment-stat-label">Starting from</span>
         <span class="investment-amount">$3,000</span>
       </div>
       <div class="investment-divider"></div>
@@ -801,14 +798,14 @@
       <a class="investment-cta" href="https://calendly.com/oraanlevi1/30min" target="_blank" rel="noopener">Book a Call ↗&#xFE0E;</a>
     </div>
     <div class="investment-note">
-      <p>Final pricing is scoped during the discovery conversation and confirmed before any work begins. Payment is collected via invoice or Square link. No surprises, no hidden fees.</p>
+      <p>Every project is custom scoped before work begins. The proposal defines the pages, functionality, timeline, and deliverables based on your business goals, so you know exactly what you're getting before anything starts. Payment is collected via invoice or Square link. No surprises, no hidden fees. Every website is built with strong technical SEO foundations. Search rankings, traffic, and business results cannot be guaranteed.</p>
     </div>
   </section>
 
   <!-- § 7 · Questions -->
   <section class="sp-section sp-section--last reveal">
     <div class="sp-section-head">
-      <span class="sp-section-label">Questions</span>
+      <span class="sp-section-label">questions</span>
     </div>
     <div class="sp-section-body">
       <div class="faq-list">
@@ -818,11 +815,23 @@
         </div>
         <div class="faq-item">
           <button class="faq-question">What happens after the site launches? <span class="faq-icon">+</span></button>
-          <div class="faq-answer"><div class="faq-answer-inner"><p>Two weeks of complimentary post-launch support are included, so if anything needs a fix or adjustment after you go live, it's covered. After that, Website Care is available as an ongoing monthly plan if you'd like continued attention for your site.</p></div></div>
+          <div class="faq-answer"><div class="faq-answer-inner"><p>Two weeks of complimentary post-launch support are included, so if anything needs a fix or adjustment after you go live, it's covered. After that, Monthly Website Support is available as an ongoing plan if you'd like continued attention for your site.</p></div></div>
         </div>
         <div class="faq-item">
           <button class="faq-question">What do you need from me to get started? <span class="faq-icon">+</span></button>
           <div class="faq-answer"><div class="faq-answer-inner"><p>Your brand assets if you have them: logo, fonts, colors. A sense of what you love and what you're moving away from. Any content we'll be using, or clarity on what needs to be written or sourced. We walk through all of this together on the first call. Nothing is expected in advance.</p></div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">Does Pink write the copy? <span class="faq-icon">+</span></button>
+          <div class="faq-answer"><div class="faq-answer-inner"><p>Not from scratch. Clients provide a first draft. It doesn't need to be polished, just a starting point. Pink refines it for clarity, hierarchy, and how it reads on the web. If you need full copywriting from the ground up, that's a separate engagement and can be discussed during the proposal conversation.</p></div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">Is photography included? <span class="faq-icon">+</span></button>
+          <div class="faq-answer"><div class="faq-answer-inner"><p>Stock image sourcing is included within reason. If your project calls for a handful of carefully selected images, that's handled. Professional photography is not included. If your brand relies heavily on original imagery, we'll discuss what you have and what might need to be shot before the project begins.</p></div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">How many pages are included? <span class="faq-icon">+</span></button>
+          <div class="faq-answer"><div class="faq-answer-inner"><p>There's no fixed page count. Every project is scoped individually based on what your business actually needs. The proposal will define the exact pages, sections, and deliverables before anything begins. Most Signature projects range from four to eight pages, but this varies depending on your goals and content.</p></div></div>
         </div>
       </div>
     </div>
@@ -837,7 +846,7 @@
       <p class="sp-cta-sub">Every project starts with a conversation.</p>
       <div class="sp-cta-links">
         <a class="sp-cta-btn" href="https://calendly.com/oraanlevi1/30min" target="_blank" rel="noopener">Book a Call <span class="btn-arrow">→</span></a>
-        <a class="sp-cta-btn sp-cta-btn--secondary" href="/connect">Send a Message <span class="btn-arrow">→</span></a>
+        <a class="sp-cta-btn sp-cta-btn--secondary" href="/contact/">Send a Message <span class="btn-arrow">→</span></a>
       </div>
     </div>
   </section>

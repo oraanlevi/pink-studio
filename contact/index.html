@@ -408,22 +408,65 @@
 
       /* ── Mobile ── */
       @media (max-width: 860px) {
-        .contact-hero { height: 44vw; }
-        .contact-hero-content { padding: 0 24px 36px; }
-        .contact-paths { grid-template-columns: 1fr; }
-        .contact-paths { padding: 48px 24px 48px; gap: 56px; }
-        .contact-direct { padding: 0 24px 56px; }
-        .contact-pricing { padding: 48px 24px 40px; }
-        .pricing-items { grid-template-columns: 1fr 1fr; gap: 28px; }
-        .pricing-item { border-right: none; padding: 0; }
-        .pricing-item:last-child { padding-left: 0; }
+        /* Hero — full and impactful like desktop */
+        .contact-hero { height: 80vh; min-height: 480px; }
+        .contact-hero-content { padding: 0 24px 44px; }
+        .contact-eyebrow { letter-spacing: -1px; }
+        .contact-headline { letter-spacing: -1px; margin-bottom: 14px; }
+        .contact-hero-email { font-size: clamp(14px, 4vw, 20px); letter-spacing: 0.5px; }
+
+        /* Showcase — quotes tighter, frames hidden */
         .contact-showcase { grid-template-columns: 1fr; }
-        .showcase-left { border-right: none; border-bottom: 1px solid var(--rule); padding: 48px 24px; }
+        .showcase-left {
+          border-right: none;
+          border-bottom: 1px solid var(--rule);
+          padding: 40px 24px 32px;
+          gap: 0;
+        }
+        .showcase-quote-text {
+          font-size: clamp(17px, 4.5vw, 22px);
+          line-height: 1.5;
+        }
+        .showcase-quote-text span[style] { font-size: 1.1em; }
+        .showcase-quote-name { font-size: 16px; margin-bottom: 28px; display: block; }
         .showcase-right { display: none; }
-        .contact-faq { padding: 48px 24px; }
-        .faq-item { grid-template-columns: 1fr; gap: 12px; }
+        .leave-review-link { font-size: 16px; margin-top: 20px; }
+
+        /* Pricing — single column, name + price inline per row */
+        .contact-pricing { padding: 40px 24px 36px; }
+        .pricing-items { grid-template-columns: 1fr; gap: 0; }
+        .pricing-item {
+          border-right: none;
+          border-bottom: 1px solid var(--rule);
+          padding: 20px 0;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+        .pricing-item:last-child { border-bottom: none; padding-bottom: 0; }
+        .pricing-item:first-child { padding-top: 0; }
+        .pricing-name { margin-bottom: 0; font-size: 13px; }
+        .pricing-amount { font-size: clamp(22px, 5vw, 30px); letter-spacing: -0.5px; }
+
+        /* FAQ */
+        .contact-faq { padding: 40px 24px; }
+        .faq-item { grid-template-columns: 1fr; gap: 8px; }
+        .faq-q { color: var(--ink-3); font-size: 15px; }
+        .faq-a { font-size: clamp(18px, 5vw, 24px); }
+
+        /* Paths */
+        .contact-paths { grid-template-columns: 1fr; padding: 0; gap: 0; }
+        .path-call { padding: 44px 24px; border-bottom: 1px solid var(--rule); }
+        .path-heading { font-size: clamp(26px, 7vw, 36px); }
+        .path-label { font-size: 17px; }
+        .path-cta { font-size: 17px; }
+        .path-form { padding: 44px 24px; }
+        .form-field textarea { min-height: 130px; font-size: 16px; }
+        .form-submit { font-size: 20px; padding: 14px 0; width: 100%; justify-content: center; border-top: 1px solid var(--rule); margin-top: 16px; }
+
+        /* Process + Direct */
         .contact-process { grid-template-columns: 1fr; }
-        .process-step { border-right: none; border-bottom: 1px solid var(--rule); padding: 36px 24px; }
+        .process-step { border-right: none; border-bottom: 1px solid var(--rule); padding: 32px 24px; }
         .process-step:last-child { border-bottom: none; }
         .contact-direct { padding: 28px 24px; }
       }
@@ -511,7 +554,7 @@
           <span class="pricing-amount">$3,000</span>
         </div>
         <div class="pricing-item">
-          <span class="pricing-name">Website Care</span>
+          <span class="pricing-name">Monthly Website Support</span>
           <span class="pricing-amount">$250 / mo</span>
         </div>
       </div>

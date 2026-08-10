@@ -240,7 +240,7 @@
     .work-card-link-arrow { transition: transform 220ms ease; }
     .work-card-link:hover .work-card-link-arrow { transform: translateX(3px); }
 
-    /* ── West & Stone hover video ── */
+    /* ── Project card hover/scroll video ── */
     .work-card--westone .work-card-bg--video,
     .work-card--leloup .work-card-bg--video,
     .work-card--celeste .work-card-bg--video,
@@ -258,11 +258,13 @@
     .work-card--westone:hover .work-card-bg--video,
     .work-card--leloup:hover .work-card-bg--video,
     .work-card--celeste:hover .work-card-bg--video,
-    .work-card--junehouse:hover .work-card-bg--video { opacity: 0.68; }
+    .work-card--junehouse:hover .work-card-bg--video,
+    .work-card.card-playing .work-card-bg--video { opacity: 0.68; }
     .work-card--westone:hover .work-card-bg--still,
     .work-card--leloup:hover .work-card-bg--still,
     .work-card--celeste:hover .work-card-bg--still,
-    .work-card--junehouse:hover .work-card-bg--still { opacity: 0; }
+    .work-card--junehouse:hover .work-card-bg--still,
+    .work-card.card-playing .work-card-bg--still { opacity: 0; }
 
     /* ── Live Work section ── */
     .live-section {
@@ -456,7 +458,7 @@
           <div class="work-card-details">
             <p class="work-card-desc">Full stack platform for interior designers. Project management, mood boards, client approvals, and procurement. Built from scratch.</p>
             <div class="work-card-links">
-              <a class="work-card-link" href="/forma.html">Case study <span class="work-card-link-arrow">→</span></a>
+              <a class="work-card-link" href="/forma/">Case study <span class="work-card-link-arrow">→</span></a>
               <a class="work-card-link work-card-link--secondary" href="https://forma-rho-nine.vercel.app" target="_blank" rel="noopener">Visit site ↗</a>
             </div>
           </div>
@@ -475,7 +477,7 @@
           <div class="work-card-details">
             <p class="work-card-desc">Brand identity and website for a French inspired restaurant. Editorial photography, custom menu design, and reservations integration.</p>
             <div class="work-card-links">
-              <a class="work-card-link" href="/le-loup.html">Case study <span class="work-card-link-arrow">→</span></a>
+              <a class="work-card-link" href="/le-loup/">Case study <span class="work-card-link-arrow">→</span></a>
               <a class="work-card-link work-card-link--secondary" href="https://pinkwebstudio.com/le-loup/" target="_blank" rel="noopener">Visit site ↗</a>
             </div>
           </div>
@@ -494,7 +496,7 @@
           <div class="work-card-details">
             <p class="work-card-desc">Brand website for a home goods studio. Editorial product photography, collection pages, and a refined shopping experience.</p>
             <div class="work-card-links">
-              <a class="work-card-link" href="/west-and-stone.html">Case study <span class="work-card-link-arrow">→</span></a>
+              <a class="work-card-link" href="/west-and-stone/">Case study <span class="work-card-link-arrow">→</span></a>
               <a class="work-card-link work-card-link--secondary" href="https://pinkwebstudio.com/west-and-stone/" target="_blank" rel="noopener">Visit site ↗</a>
             </div>
           </div>
@@ -513,7 +515,7 @@
           <div class="work-card-details">
             <p class="work-card-desc">Clean, elevated design for a luxury aesthetics clinic. Online booking, service menus, and before-and-after galleries.</p>
             <div class="work-card-links">
-              <a class="work-card-link" href="/celeste.html">Case study <span class="work-card-link-arrow">→</span></a>
+              <a class="work-card-link" href="/celeste/">Case study <span class="work-card-link-arrow">→</span></a>
               <a class="work-card-link work-card-link--secondary" href="https://pinkwebstudio.com/celeste-aesthetics/" target="_blank" rel="noopener">Visit site ↗</a>
             </div>
           </div>
@@ -532,7 +534,7 @@
           <div class="work-card-details">
             <p class="work-card-desc">Fashion brand website with editorial photography, seasonal collections, and a lookbook style browsing experience.</p>
             <div class="work-card-links">
-              <a class="work-card-link" href="/june-house.html">Case study <span class="work-card-link-arrow">→</span></a>
+              <a class="work-card-link" href="/june-house/">Case study <span class="work-card-link-arrow">→</span></a>
               <a class="work-card-link work-card-link--secondary" href="https://pinkwebstudio.com/june-house/" target="_blank" rel="noopener">Visit site ↗</a>
             </div>
           </div>
@@ -687,7 +689,7 @@
     }, { threshold: 0.06 });
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-    /* ── West & Stone hover video ── */
+    /* ── Desktop hover video ── */
     function wsVideoPlay(card) {
       const vid = card.querySelector('.work-card-bg--video');
       if (vid) vid.play().catch(() => {});
@@ -695,6 +697,27 @@
     function wsVideoPause(card) {
       const vid = card.querySelector('.work-card-bg--video');
       if (vid) { vid.pause(); vid.currentTime = 0; }
+    }
+
+    /* ── Mobile: play video when card scrolls into view ── */
+    if (window.matchMedia('(max-width: 860px)').matches) {
+      const cardObserver = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          const vid = e.target.querySelector('.work-card-bg--video');
+          if (!vid) return;
+          if (e.isIntersecting) {
+            e.target.classList.add('card-playing');
+            vid.play().catch(() => {});
+          } else {
+            e.target.classList.remove('card-playing');
+            vid.pause();
+            vid.currentTime = 0;
+          }
+        });
+      }, { threshold: 0.5 });
+
+      document.querySelectorAll('.work-card--leloup, .work-card--westone, .work-card--celeste, .work-card--junehouse')
+        .forEach(card => cardObserver.observe(card));
     }
 
     /* ── FORMA video: play after 2s, loop forever ── */

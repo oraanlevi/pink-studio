@@ -206,6 +206,22 @@
     .detail-link-arrow { transition: transform 220ms ease; }
     .detail-link:hover .detail-link-arrow { transform: translateX(3px); }
 
+    /* ── Custom Solutions (full-width card) ── */
+    .service-card--full {
+      grid-column: 1 / -1;
+      min-height: auto;
+    }
+    .service-card--full .service-card-content {
+      min-height: auto;
+    }
+    .service-card-body {
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      font-size: 15px;
+      color: #555;
+      line-height: 1.75;
+      max-width: 64ch;
+    }
+
     /* ── Footer note ── */
     .services-note {
       padding: 48px 72px;
@@ -289,7 +305,7 @@
             <div class="detail-fields">
               <div>
                 <span class="detail-field-label">Investment</span>
-                <span class="detail-field-value">From $3,000</span>
+                <span class="detail-field-value">Starting from $3,000</span>
               </div>
               <div>
                 <span class="detail-field-label">Timeline</span>
@@ -313,7 +329,7 @@
             <div class="detail-fields">
               <div>
                 <span class="detail-field-label">Investment</span>
-                <span class="detail-field-value">$1,250</span>
+                <span class="detail-field-value">Starting at $1,250</span>
               </div>
               <div>
                 <span class="detail-field-label">Timeline</span>
@@ -337,7 +353,7 @@
             <div class="detail-fields">
               <div>
                 <span class="detail-field-label">Investment</span>
-                <span class="detail-field-value">$200</span>
+                <span class="detail-field-value">$199</span>
               </div>
               <div>
                 <span class="detail-field-label">Timeline</span>
@@ -353,8 +369,8 @@
         <img class="service-card-bg" src="/assets/marble.png" alt="" />
         <div class="service-card-content">
           <div class="service-card-top">
-            <span class="service-card-name">Website<br>Care</span>
-            <span class="service-card-sub">Always on. Always maintained.</span>
+            <span class="service-card-name">Monthly<br>Website Support</span>
+            <span class="service-card-sub">Ongoing support, handled.</span>
           </div>
           <div class="service-card-details">
             <div class="detail-rule"></div>
@@ -373,49 +389,16 @@
         </div>
       </div>
 
-      <div class="service-card">
+      <div class="service-card service-card--full">
         <img class="service-card-bg" src="/assets/marble.png" alt="" />
         <div class="service-card-content">
           <div class="service-card-top">
-            <span class="service-card-name">Internal<br>Systems</span>
-            <span class="service-card-sub">Tools that work the way you do.</span>
+            <span class="service-card-name">Custom Solutions</span>
+            <span class="service-card-sub">Not every project fits into a package.</span>
           </div>
           <div class="service-card-details">
             <div class="detail-rule"></div>
-            <div class="detail-fields">
-              <div>
-                <span class="detail-field-label">Investment</span>
-                <span class="detail-field-value">Custom</span>
-              </div>
-              <div>
-                <span class="detail-field-label">Timeline</span>
-                <span class="detail-field-value">Varies</span>
-              </div>
-            </div>
-            <a class="detail-link" href="/contact/">Start a conversation <span class="detail-link-arrow">→</span></a>
-          </div>
-        </div>
-      </div>
-
-      <div class="service-card">
-        <img class="service-card-bg" src="/assets/marble.png" alt="" />
-        <div class="service-card-content">
-          <div class="service-card-top">
-            <span class="service-card-name">Landing<br>Pages</span>
-            <span class="service-card-sub">One page. One goal.</span>
-          </div>
-          <div class="service-card-details">
-            <div class="detail-rule"></div>
-            <div class="detail-fields">
-              <div>
-                <span class="detail-field-label">Investment</span>
-                <span class="detail-field-value">Custom</span>
-              </div>
-              <div>
-                <span class="detail-field-label">Timeline</span>
-                <span class="detail-field-value">1–2 weeks</span>
-              </div>
-            </div>
+            <p class="service-card-body">If you're building something beyond a traditional website: an internal tool, client portal, custom workflow, or digital product. I'd love to hear about it. Every custom project begins with a conversation to understand your goals before defining the scope.</p>
             <a class="detail-link" href="/contact/">Start a conversation <span class="detail-link-arrow">→</span></a>
           </div>
         </div>
@@ -425,7 +408,7 @@
   </div>
 
   <div class="services-note reveal">
-    <p>Not sure which fits? <a href="/contact/">Send a message</a> all projects begin with a conversation.</p>
+    <p>All projects begin with a conversation. <a href="/contact/">Send a message.</a></p>
   </div>
 
   <footer class="site-footer">
