@@ -7,7 +7,7 @@
   <title>Pink — Digital Product Studio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/styles.css" />
   <style>
 
@@ -216,6 +216,196 @@
       .lobby-bg-img { display: none; }
     }
 
+    /* ── Mobile homepage ── */
+    .mobile-home { display: none; }
+
+    @keyframes mh-marquee-scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    @media (max-width: 860px) {
+      .lobby { display: none; }
+      .mobile-home {
+        display: block;
+        padding: calc(var(--nav-h) + 32px) 24px 48px;
+      }
+
+      /* Hero */
+      .mh-hero { margin-bottom: 24px; }
+      .mh-headline {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 40px;
+        font-weight: 400;
+        line-height: 1.1;
+        color: var(--ink);
+        margin: 0 0 10px;
+      }
+      .mh-subhead {
+        font-family: 'Poppins', sans-serif;
+        font-size: 13px;
+        font-weight: 300;
+        color: var(--ink-2);
+        margin: 0 0 28px;
+      }
+      .mh-ctas { display: flex; flex-direction: column; gap: 10px; }
+      .mh-cta {
+        display: block;
+        text-align: center;
+        padding: 14px 24px;
+        border-radius: 999px;
+        font-family: 'Poppins', sans-serif;
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        text-decoration: none;
+      }
+      .mh-cta--filled { background: #D4537E; color: #fff; }
+      .mh-cta--ghost  { border: 1px solid var(--ink); color: var(--ink); }
+
+      /* Nav link cards */
+      .mh-links {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 32px;
+      }
+      .mh-link-card {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 20px;
+        border-radius: 12px;
+        border: 1px solid var(--rule);
+        text-decoration: none;
+        color: var(--ink);
+        font-family: 'Poppins', sans-serif;
+        font-size: 15px;
+        font-weight: 400;
+      }
+      .mh-link-arrow { color: var(--ink-3); }
+
+      /* Marquee */
+      .mh-marquee-wrap {
+        border-top: 1px solid var(--rule);
+        border-bottom: 1px solid var(--rule);
+        overflow: hidden;
+        padding: 12px 0;
+        margin: 0 -24px 40px;
+      }
+      .mh-marquee {
+        display: flex;
+        width: max-content;
+        animation: mh-marquee-scroll 20s linear infinite;
+      }
+      .mh-marquee-track {
+        font-family: 'Cormorant Garamond', serif;
+        font-style: italic;
+        font-size: 16px;
+        color: var(--ink-2);
+        white-space: nowrap;
+      }
+
+      /* Sections */
+      .mh-section { margin-bottom: 40px; }
+      .mh-section-label {
+        display: block;
+        font-family: 'Poppins', sans-serif;
+        font-size: 10px;
+        font-weight: 500;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--ink-2);
+        margin-bottom: 6px;
+      }
+      .mh-section-headline {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 30px;
+        font-weight: 400;
+        line-height: 1.1;
+        color: var(--ink);
+        margin: 0 0 16px;
+      }
+
+      /* Cards */
+      .mh-card {
+        border-radius: 12px;
+        border: 1px solid var(--rule);
+        padding: 20px;
+        margin-bottom: 12px;
+      }
+      .mh-card--pink { border-color: #D4537E; }
+      .mh-card-name {
+        display: block;
+        font-family: 'Poppins', sans-serif;
+        font-size: 15px;
+        font-weight: 500;
+        color: var(--ink);
+        margin-bottom: 4px;
+      }
+      .mh-card-sub {
+        display: block;
+        font-family: 'Poppins', sans-serif;
+        font-size: 12px;
+        color: var(--ink-2);
+        margin-bottom: 16px;
+      }
+      .mh-card-meta { display: flex; gap: 24px; margin-bottom: 16px; }
+      .mh-card-field { display: flex; flex-direction: column; gap: 3px; }
+      .mh-card-field-label {
+        font-family: 'Poppins', sans-serif;
+        font-size: 9px;
+        font-weight: 500;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--ink-2);
+      }
+      .mh-card-field-value {
+        font-family: 'Poppins', sans-serif;
+        font-size: 13px;
+        color: var(--ink);
+      }
+      .mh-card-cta {
+        display: block;
+        text-align: center;
+        padding: 12px;
+        background: #D4537E;
+        color: #fff;
+        border-radius: 999px;
+        font-family: 'Poppins', sans-serif;
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        text-decoration: none;
+      }
+      .mh-card-desc {
+        font-family: 'Poppins', sans-serif;
+        font-size: 12px;
+        color: var(--ink-2);
+        line-height: 1.6;
+        margin: 0 0 14px;
+      }
+      .mh-card-links { display: flex; gap: 20px; }
+      .mh-card-link {
+        font-family: 'Poppins', sans-serif;
+        font-size: 12px;
+        color: var(--ink);
+        text-decoration: none;
+      }
+
+      /* See all */
+      .mh-see-all {
+        display: block;
+        text-align: center;
+        font-family: 'Poppins', sans-serif;
+        font-size: 12px;
+        color: var(--ink-2);
+        text-decoration: none;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -239,6 +429,80 @@
     <a href="/products/">Products</a>
     <a href="/studio/">Studio</a>
     <a href="/contact/" class="mobile-nav-cta">Start a Project</a>
+  </div>
+
+  <!-- Mobile homepage layout (mobile only — .lobby hidden via CSS) -->
+  <div class="mobile-home">
+
+    <!-- Hero -->
+    <section class="mh-hero">
+      <h1 class="mh-headline">Digital product<br>studio.</h1>
+      <p class="mh-subhead">Websites. Software. Products.</p>
+      <div class="mh-ctas">
+        <a href="/contact/" class="mh-cta mh-cta--filled">Start a project</a>
+        <a href="/work/"    class="mh-cta mh-cta--ghost">See our work</a>
+      </div>
+    </section>
+
+    <!-- Section link cards -->
+    <nav class="mh-links" aria-label="Site sections">
+      <a href="/services/" class="mh-link-card">
+        <span>Services</span><span class="mh-link-arrow">→</span>
+      </a>
+      <a href="/products/" class="mh-link-card">
+        <span>Products</span><span class="mh-link-arrow">→</span>
+      </a>
+      <a href="/work/" class="mh-link-card">
+        <span>Work</span><span class="mh-link-arrow">→</span>
+      </a>
+    </nav>
+
+    <!-- Marquee -->
+    <div class="mh-marquee-wrap" aria-hidden="true">
+      <div class="mh-marquee">
+        <span class="mh-marquee-track">Websites&nbsp;&middot;&nbsp;Products&nbsp;&middot;&nbsp;Software&nbsp;&middot;&nbsp;Websites&nbsp;&middot;&nbsp;Products&nbsp;&middot;&nbsp;Software&nbsp;&middot;&nbsp;</span>
+        <span class="mh-marquee-track">Websites&nbsp;&middot;&nbsp;Products&nbsp;&middot;&nbsp;Software&nbsp;&middot;&nbsp;Websites&nbsp;&middot;&nbsp;Products&nbsp;&middot;&nbsp;Software&nbsp;&middot;&nbsp;</span>
+      </div>
+    </div>
+
+    <!-- Services preview -->
+    <section class="mh-section">
+      <span class="mh-section-label">Services</span>
+      <h2 class="mh-section-headline">What do you need?</h2>
+      <div class="mh-card mh-card--pink">
+        <span class="mh-card-name">Signature website</span>
+        <span class="mh-card-sub">Built from scratch, for you.</span>
+        <div class="mh-card-meta">
+          <div class="mh-card-field">
+            <span class="mh-card-field-label">Investment</span>
+            <span class="mh-card-field-value">From $3,000</span>
+          </div>
+          <div class="mh-card-field">
+            <span class="mh-card-field-label">Timeline</span>
+            <span class="mh-card-field-value">3 wks–1 mo</span>
+          </div>
+        </div>
+        <a href="/services/signature" class="mh-card-cta">View details</a>
+      </div>
+      <a href="/services/" class="mh-see-all">See all services →</a>
+    </section>
+
+    <!-- Work preview -->
+    <section class="mh-section">
+      <span class="mh-section-label">Selected Work</span>
+      <h2 class="mh-section-headline">Recent projects.</h2>
+      <div class="mh-card mh-card--pink">
+        <span class="mh-card-name">Forma</span>
+        <span class="mh-card-sub">Software &middot; Interior design operations</span>
+        <p class="mh-card-desc">Full stack platform for interior designers. Project management, mood boards, client approvals, and procurement. Built from scratch.</p>
+        <div class="mh-card-links">
+          <a href="/forma/" class="mh-card-link">Case study →</a>
+          <a href="https://forma-rho-nine.vercel.app/early-access" class="mh-card-link" target="_blank" rel="noopener">Visit site ↗</a>
+        </div>
+      </div>
+      <a href="/work/" class="mh-see-all">See all work →</a>
+    </section>
+
   </div>
 
   <!-- Editorial background images — revealed on hover -->
