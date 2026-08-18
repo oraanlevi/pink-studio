@@ -225,6 +225,9 @@
     }
 
     @media (max-width: 860px) {
+      /* Force 4-line hero: PINK / DIGITAL / PRODUCT / STUDIO */
+      .lp-w { display: block; }
+
       /* Restore lobby, trim height, hide floating labels */
       .lobby { min-height: auto; }
       .lobby-inner { padding: calc(var(--nav-h) + 28px) 24px 28px; gap: 20px; }
@@ -450,7 +453,7 @@
 
       <div class="lobby-hero">
         <span class="lobby-name">Pink</span>
-        <span class="lobby-position">Digital Product Studio</span>
+        <span class="lobby-position"><span class="lp-w">Digital</span> <span class="lp-w">Product</span> <span class="lp-w">Studio</span></span>
         <span class="lobby-tagline">Websites. Software. Products.</span>
       </div>
 
