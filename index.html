@@ -225,66 +225,75 @@
     }
 
     @media (max-width: 860px) {
-      .lobby { display: none; }
-      .mobile-home {
-        display: block;
-        padding: calc(var(--nav-h) + 32px) 24px 48px;
-      }
+      /* Restore lobby, trim height, hide floating labels */
+      .lobby { min-height: auto; }
+      .lobby-inner { padding: calc(var(--nav-h) + 28px) 24px 28px; gap: 20px; }
+      .lobby-labels { display: none; }
 
-      /* Hero */
-      .mh-hero { margin-bottom: 24px; }
-      .mh-headline {
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 40px;
-        font-weight: 400;
-        line-height: 1.1;
-        color: var(--ink);
-        margin: 0 0 10px;
-      }
-      .mh-subhead {
-        font-family: 'Poppins', sans-serif;
-        font-size: 13px;
-        font-weight: 300;
-        color: var(--ink-2);
-        margin: 0 0 28px;
-      }
-      .mh-ctas { display: flex; flex-direction: column; gap: 10px; }
-      .mh-cta {
-        display: block;
-        text-align: center;
-        padding: 14px 24px;
-        border-radius: 999px;
-        font-family: 'Poppins', sans-serif;
-        font-size: 12px;
-        font-weight: 500;
-        letter-spacing: 0.07em;
-        text-transform: uppercase;
-        text-decoration: none;
-      }
-      .mh-cta--filled { background: #D4537E; color: #fff; }
-      .mh-cta--ghost  { border: 1px solid var(--ink); color: var(--ink); }
+      /* Mobile home follows lobby */
+      .mobile-home { display: block; padding: 0 24px 48px; }
 
-      /* Nav link cards */
-      .mh-links {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-        margin-bottom: 32px;
-      }
+      /* Link cards: card bg, uppercase, no border, no arrow */
+      .mh-links { display: flex; flex-direction: column; gap: 8px; margin-bottom: 32px; }
       .mh-link-card {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        display: block;
         padding: 16px 20px;
         border-radius: 12px;
-        border: 1px solid var(--rule);
+        background: rgba(26, 25, 23, 0.07);
         text-decoration: none;
         color: var(--ink);
-        font-family: 'Poppins', sans-serif;
-        font-size: 15px;
-        font-weight: 400;
+        font-family: "Bebas Neue", "Impact", sans-serif;
+        font-size: 20px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
       }
-      .mh-link-arrow { color: var(--ink-3); }
+
+      /* Recent Work */
+      .mh-recent-label {
+        display: block;
+        font-family: 'Poppins', sans-serif;
+        font-size: 10px;
+        font-weight: 500;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--ink-2);
+        margin-bottom: 10px;
+      }
+      .mh-recent-card {
+        display: block;
+        position: relative;
+        border-radius: 12px;
+        overflow: hidden;
+        background: #1e1e1e url('/assets/dashboardforma.png') center top / cover no-repeat;
+        min-height: 160px;
+        text-decoration: none;
+        margin-bottom: 32px;
+      }
+      .mh-recent-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to bottom, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.72) 100%);
+      }
+      .mh-recent-content {
+        position: absolute;
+        bottom: 16px;
+        left: 16px;
+        right: 16px;
+      }
+      .mh-recent-name {
+        display: block;
+        font-family: 'Poppins', sans-serif;
+        font-size: 16px;
+        font-weight: 500;
+        color: #fff;
+        margin-bottom: 2px;
+      }
+      .mh-recent-desc {
+        display: block;
+        font-family: 'Poppins', sans-serif;
+        font-size: 12px;
+        color: rgba(255,255,255,0.6);
+      }
 
       /* Marquee */
       .mh-marquee-wrap {
@@ -307,7 +316,7 @@
         white-space: nowrap;
       }
 
-      /* Sections */
+      /* Services section */
       .mh-section { margin-bottom: 40px; }
       .mh-section-label {
         display: block;
@@ -320,22 +329,20 @@
         margin-bottom: 6px;
       }
       .mh-section-headline {
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 30px;
+        font-family: 'Poppins', sans-serif;
+        font-size: 22px;
         font-weight: 400;
-        line-height: 1.1;
         color: var(--ink);
         margin: 0 0 16px;
       }
 
-      /* Cards */
+      /* Service card */
       .mh-card {
         border-radius: 12px;
-        border: 1px solid var(--rule);
+        border: 2px solid #D4537E;
         padding: 20px;
         margin-bottom: 12px;
       }
-      .mh-card--pink { border-color: #D4537E; }
       .mh-card-name {
         display: block;
         font-family: 'Poppins', sans-serif;
@@ -380,22 +387,6 @@
         text-transform: uppercase;
         text-decoration: none;
       }
-      .mh-card-desc {
-        font-family: 'Poppins', sans-serif;
-        font-size: 12px;
-        color: var(--ink-2);
-        line-height: 1.6;
-        margin: 0 0 14px;
-      }
-      .mh-card-links { display: flex; gap: 20px; }
-      .mh-card-link {
-        font-family: 'Poppins', sans-serif;
-        font-size: 12px;
-        color: var(--ink);
-        text-decoration: none;
-      }
-
-      /* See all */
       .mh-see-all {
         display: block;
         text-align: center;
@@ -446,37 +437,32 @@
     <a href="/contact/" class="mobile-nav-cta">Start a Project</a>
   </div>
 
-  <!-- Mobile homepage layout (mobile only — .lobby hidden via CSS) -->
+  <!-- Mobile homepage layout (mobile only — .lobby-labels hidden via CSS) -->
   <div class="mobile-home">
-
-    <!-- Hero -->
-    <section class="mh-hero">
-      <h1 class="mh-headline">Digital product<br>studio.</h1>
-      <p class="mh-subhead">Websites. Software. Products.</p>
-      <div class="mh-ctas">
-        <a href="/contact/" class="mh-cta mh-cta--filled">Start a project</a>
-        <a href="/work/"    class="mh-cta mh-cta--ghost">See our work</a>
-      </div>
-    </section>
 
     <!-- Section link cards -->
     <nav class="mh-links" aria-label="Site sections">
-      <a href="/services/" class="mh-link-card">
-        <span>Services</span><span class="mh-link-arrow">→</span>
-      </a>
-      <a href="/products/" class="mh-link-card">
-        <span>Products</span><span class="mh-link-arrow">→</span>
-      </a>
-      <a href="/work/" class="mh-link-card">
-        <span>Work</span><span class="mh-link-arrow">→</span>
-      </a>
+      <a href="/services/" class="mh-link-card">Services</a>
+      <a href="/products/" class="mh-link-card">Products</a>
+      <a href="/work/"     class="mh-link-card">Work</a>
+      <a href="https://forma-rho-nine.vercel.app/early-access" class="mh-link-card" target="_blank" rel="noopener">Forma</a>
     </nav>
+
+    <!-- Recent Work -->
+    <span class="mh-recent-label">Recent Work</span>
+    <a href="/forma/" class="mh-recent-card">
+      <div class="mh-recent-overlay"></div>
+      <div class="mh-recent-content">
+        <span class="mh-recent-name">Forma</span>
+        <span class="mh-recent-desc">Interior design operations software</span>
+      </div>
+    </a>
 
     <!-- Marquee -->
     <div class="mh-marquee-wrap" aria-hidden="true">
       <div class="mh-marquee">
-        <span class="mh-marquee-track">Websites&nbsp;&middot;&nbsp;Products&nbsp;&middot;&nbsp;Software&nbsp;&middot;&nbsp;Websites&nbsp;&middot;&nbsp;Products&nbsp;&middot;&nbsp;Software&nbsp;&middot;&nbsp;</span>
-        <span class="mh-marquee-track">Websites&nbsp;&middot;&nbsp;Products&nbsp;&middot;&nbsp;Software&nbsp;&middot;&nbsp;Websites&nbsp;&middot;&nbsp;Products&nbsp;&middot;&nbsp;Software&nbsp;&middot;&nbsp;</span>
+        <span class="mh-marquee-track">Websites&nbsp;&middot;&nbsp;Software&nbsp;&middot;&nbsp;Products&nbsp;&middot;&nbsp;Websites&nbsp;&middot;&nbsp;Software&nbsp;&middot;&nbsp;Products&nbsp;&middot;&nbsp;</span>
+        <span class="mh-marquee-track">Websites&nbsp;&middot;&nbsp;Software&nbsp;&middot;&nbsp;Products&nbsp;&middot;&nbsp;Websites&nbsp;&middot;&nbsp;Software&nbsp;&middot;&nbsp;Products&nbsp;&middot;&nbsp;</span>
       </div>
     </div>
 
@@ -484,7 +470,7 @@
     <section class="mh-section">
       <span class="mh-section-label">Services</span>
       <h2 class="mh-section-headline">What do you need?</h2>
-      <div class="mh-card mh-card--pink">
+      <div class="mh-card">
         <span class="mh-card-name">Signature website</span>
         <span class="mh-card-sub">Built from scratch, for you.</span>
         <div class="mh-card-meta">
@@ -500,22 +486,6 @@
         <a href="/services/signature" class="mh-card-cta">View details</a>
       </div>
       <a href="/services/" class="mh-see-all">See all services →</a>
-    </section>
-
-    <!-- Work preview -->
-    <section class="mh-section">
-      <span class="mh-section-label">Selected Work</span>
-      <h2 class="mh-section-headline">Recent projects.</h2>
-      <div class="mh-card mh-card--pink">
-        <span class="mh-card-name">Forma</span>
-        <span class="mh-card-sub">Software &middot; Interior design operations</span>
-        <p class="mh-card-desc">Full stack platform for interior designers. Project management, mood boards, client approvals, and procurement. Built from scratch.</p>
-        <div class="mh-card-links">
-          <a href="/forma/" class="mh-card-link">Case study →</a>
-          <a href="https://forma-rho-nine.vercel.app/early-access" class="mh-card-link" target="_blank" rel="noopener">Visit site ↗</a>
-        </div>
-      </div>
-      <a href="/work/" class="mh-see-all">See all work →</a>
     </section>
 
   </div>
