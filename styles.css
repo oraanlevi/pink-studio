@@ -246,6 +246,19 @@ img { display: block; max-width: 100%; }
   .nav-ham { display: flex; }
   .mobile-nav { display: flex; }
   .mobile-nav a { padding: 18px 24px; }
+  .mobile-nav-cta {
+    margin: 32px 24px 24px !important;
+    padding: 16px 24px !important;
+    background: #D4537E !important;
+    color: #fff !important;
+    border-radius: 999px !important;
+    border-bottom: none !important;
+    text-align: center !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    font-weight: 500 !important;
+  }
+  .mobile-nav-cta:hover { color: #fff !important; opacity: 0.9; }
   .site-footer {
     height: auto;
     padding: 24px;
