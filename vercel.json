@@ -1,4 +1,5 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "redirects": [
     { "source": "/enter-the-studio", "destination": "/contact/", "permanent": true },
     { "source": "/connect",          "destination": "/contact/", "permanent": true },
