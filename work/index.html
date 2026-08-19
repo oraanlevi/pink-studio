@@ -7,7 +7,7 @@
   <title>Work · Pink</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@700&family=Pliant&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Oswald:wght@700&family=Poppins:wght@300;400;500&family=Pliant&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/styles.css" />
   <style>
 
@@ -394,19 +394,142 @@
 
     /* ── Mobile ── */
     @media (max-width: 860px) {
-      .page-head { padding: 48px 24px 40px; }
-      .work-grid-wrap { padding: 36px 24px 48px; }
-      .work-grid { grid-template-columns: 1fr; gap: 16px; }
-      .work-card { min-height: auto; }
+      /* Page header */
+      .page-head { padding: 40px 24px 28px; border-bottom: none; }
+      .page-eyebrow { display: none; }
+      .page-headline {
+        font-family: 'Poppins', system-ui, sans-serif;
+        font-size: 28px;
+        font-weight: 400;
+        text-transform: none;
+        letter-spacing: -0.5px;
+        line-height: 1.2;
+        color: var(--ink);
+      }
+
+      /* Grid */
+      .work-grid-wrap { padding: 0 24px 12px; border-bottom: none; }
+      .work-grid { grid-template-columns: 1fr; gap: 12px; }
+
+      /* Cards — convert to light design */
+      .work-card {
+        min-height: auto;
+        background: #fff;
+        border: 2px solid #D4537E !important;
+        border-radius: 12px;
+        overflow: hidden;
+      }
       .work-card--feature { min-height: auto; grid-column: auto; }
-      .work-card-content { min-height: auto; padding: 36px 28px 32px; }
-      .work-card--feature .work-card-content { min-height: auto; }
-      .work-card--feature .work-card-name { font-size: 44px; letter-spacing: 0px; }
+      .work-card::after { display: none; }
+      .work-card-bg { display: none; }
+      .work-card-video { display: none; }
       .work-card:hover { transform: none; box-shadow: none; }
+
+      /* Card content */
+      .work-card-content {
+        position: relative;
+        z-index: 1;
+        min-height: auto;
+        padding: 20px 20px 20px;
+        background: transparent;
+      }
+      .work-card--feature .work-card-content { min-height: auto; }
+      .work-card--forma .work-card-content {
+        align-items: flex-start;
+        justify-content: flex-start;
+        text-align: left;
+      }
+      .work-card--forma .work-card-details { align-items: flex-start; }
+
+      /* Top section */
+      .work-card-top { margin-bottom: 10px; }
+
+      /* Names */
+      .work-card-name {
+        font-family: 'Poppins', system-ui, sans-serif;
+        font-size: 18px;
+        font-weight: 500;
+        text-transform: none;
+        letter-spacing: -0.2px;
+        color: var(--ink);
+        line-height: 1.2;
+        margin-bottom: 4px;
+      }
+      .work-card--feature .work-card-name { font-size: 18px; letter-spacing: -0.2px; }
+      .work-card--forma .work-card-name { font-size: 18px; letter-spacing: -0.2px; color: var(--ink); }
+
+      /* Types */
+      .work-card-type {
+        font-family: 'Poppins', system-ui, sans-serif;
+        font-size: 12px;
+        color: var(--ink-2);
+      }
+      .work-card--forma .work-card-type { color: var(--ink-2); }
+
+      /* Details — always visible */
       .work-card-details > * { opacity: 1; transform: none; }
-      .work-card-bg { opacity: 0.18; }
-      .live-head { padding: 40px 24px 28px; }
-      .live-row { padding: 0 24px; }
+      .work-card-details { gap: 12px; }
+
+      /* Descriptions */
+      .work-card-desc {
+        font-family: 'Poppins', system-ui, sans-serif;
+        font-size: 13px;
+        color: var(--ink-2);
+        line-height: 1.6;
+        max-width: none;
+      }
+      .work-card--forma .work-card-desc { color: var(--ink-2); text-align: left; }
+
+      /* Links */
+      .work-card-links { gap: 16px; }
+      .work-card-link {
+        font-family: 'Poppins', system-ui, sans-serif;
+        font-size: 13px;
+        font-weight: 500;
+        color: #D4537E;
+      }
+      .work-card-link:hover { opacity: 1; }
+      .work-card-link--secondary { color: #D4537E; opacity: 0.7; }
+      .work-card--forma .work-card-link { color: #D4537E; }
+      .work-card--forma .work-card-link--secondary { color: #D4537E; }
+
+      /* CTA */
+      .work-cta-mobile {
+        margin: 20px 24px 32px;
+      }
+      .work-cta-mobile a {
+        display: block;
+        width: 100%;
+        padding: 16px 24px;
+        background: #D4537E;
+        color: #fff;
+        border-radius: 999px;
+        text-align: center;
+        font-family: 'Poppins', system-ui, sans-serif;
+        font-size: 13px;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        text-decoration: none;
+      }
+
+      /* Live section — not shown on mobile */
+      .live-section { display: none; }
+
+      /* Footer wordmark */
+      .footer-wordmark-work {
+        display: block;
+        width: 100%;
+        text-align: center;
+        font-family: 'Cormorant Garamond', serif;
+        font-style: italic;
+        font-weight: 300;
+        font-size: 72px;
+        color: var(--ink-3);
+        line-height: 1;
+        padding-top: 12px;
+        letter-spacing: -1px;
+      }
     }
 
     @media (min-width: 960px) {
@@ -544,6 +667,11 @@
     </div>
   </div>
 
+  <!-- Mobile CTA -->
+  <div class="work-cta-mobile">
+    <a href="/contact/">Start a Project</a>
+  </div>
+
   <!-- Live Work -->
   <div class="live-section reveal">
     <div class="live-head">
@@ -654,6 +782,7 @@
       <a href="mailto:studio@pinkwebstudio.com" class="footer-email">studio@pinkwebstudio.com</a>
     </div>
   </footer>
+  <span class="footer-wordmark-work" aria-hidden="true">Pink</span>
 
   <script>
     const nav = document.getElementById('mainNav');
