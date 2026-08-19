@@ -339,6 +339,14 @@
       /* Tapping a card selects it (pink border + filled button) */
       .service-card--selected { border: 2px solid #D4537E; }
 
+      /* Disable the aggressive hover-based sibling dimming on mobile */
+      .service-grid:has(.service-card:hover) .service-card:not(:hover) { opacity: 1; }
+
+      /* Subtle dim on unselected cards when one is selected */
+      .service-grid:has(.service-card--selected) .service-card:not(.service-card--selected) {
+        opacity: 0.88;
+      }
+
       /* Custom solutions body text */
       .service-card-body {
         font-family: 'Poppins', sans-serif;
