@@ -313,11 +313,9 @@
       .detail-field-label { font-family: 'Poppins', sans-serif; font-size: 9px; }
       .detail-field-value { font-family: 'Poppins', sans-serif; font-size: 13px; }
 
-      /* Stretched link: entire card tappable */
-      .service-card-content { position: static; }
+      /* Pill button */
       .detail-link {
         display: block;
-        position: relative;
         text-align: center;
         padding: 12px 16px;
         border-radius: 999px;
@@ -330,17 +328,16 @@
         color: var(--ink);
         text-decoration: none;
       }
-      .detail-link::after {
-        content: '';
-        position: absolute;
-        inset: -500px -20px -20px;
-      }
-      .service-card--featured .detail-link {
+      .service-card--featured .detail-link,
+      .service-card--selected .detail-link {
         background: #D4537E;
         border-color: #D4537E;
         color: #fff;
       }
       .detail-link-arrow { display: none; }
+
+      /* Tapping a card selects it (pink border + filled button) */
+      .service-card--selected { border: 2px solid #D4537E; }
 
       /* Custom solutions body text */
       .service-card-body {
@@ -562,6 +559,18 @@
       });
     }, { threshold: 0.06 });
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    /* Mobile card selection: tap to highlight, then tap View Details to navigate */
+    if (window.matchMedia('(max-width: 860px)').matches) {
+      const cards = document.querySelectorAll('.service-card');
+      cards.forEach(card => {
+        card.addEventListener('click', function(e) {
+          if (e.target.closest('.detail-link')) return; /* let the link handle itself */
+          cards.forEach(c => c.classList.remove('service-card--selected'));
+          this.classList.add('service-card--selected');
+        });
+      });
+    }
   </script>
 
 </body>
