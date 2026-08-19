@@ -7,7 +7,7 @@
     <title>Forma · Case Study · Pink</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@300;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Oswald:wght@300;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/styles.css" />
     <style>
 
@@ -414,30 +414,243 @@
 
       /* ── Mobile ── */
       @media (max-width: 860px) {
-        body { background: #fff; }
-        .f-hero { padding: 48px 24px 56px; }
-        .f-eyebrow { font-size: 11px; letter-spacing: 3px; white-space: nowrap; }
-        .f-hero-title { letter-spacing: -2px; }
-        .f-duo { grid-template-columns: 1fr; }
-        .f-duo-panel { padding: 48px 24px; }
-        .f-lifecycle { grid-template-columns: 1fr; gap: 24px; padding: 40px 24px; text-align: center; }
-        .f-lifecycle-label { text-align: center; }
-        .f-lifecycle-nodes { flex-direction: column; align-items: center; }
-        .f-node-arrow { transform: rotate(90deg); }
-        .f-frames { height: 380px; }
-        .f-frame { width: 62%; }
-        .f-modules { grid-template-columns: 1fr; gap: 24px; padding: 40px 24px; }
-        .f-modules-label { text-align: center; }
-        .f-module-list { grid-template-columns: 1fr; }
-        .f-module-item:nth-child(even) { border-right: none; }
-        .f-module-item:nth-last-child(-n+2) { border-bottom: 1px solid var(--rule); }
-        .f-module-item:last-child { border-bottom: none; }
-        .f-stack { grid-template-columns: 1fr; gap: 24px; padding: 40px 24px; }
-        .f-stack-label { text-align: center; }
-        .f-stack-label br, .f-lifecycle-label br, .f-modules-label br { display: none; }
+        body { background: var(--bg); }
+
+        /* Hero */
+        .f-hero {
+          min-height: auto;
+          padding: 40px 24px 36px;
+          border-bottom: none;
+          text-align: center;
+        }
+        .f-eyebrow {
+          font-family: 'Poppins', system-ui, sans-serif;
+          font-size: 10px;
+          letter-spacing: 3px;
+          white-space: nowrap;
+          margin-bottom: 16px;
+        }
+        .f-hero-title {
+          font-family: 'Poppins', system-ui, sans-serif;
+          font-weight: 700;
+          font-size: 64px;
+          letter-spacing: -3px;
+          line-height: 0.95;
+          margin-bottom: 16px;
+          text-transform: none;
+        }
+        .f-hero-sub {
+          font-family: 'Cormorant Garamond', serif;
+          font-style: italic;
+          font-weight: 300;
+          font-size: 21px;
+          letter-spacing: 0;
+          margin-bottom: 28px;
+        }
+        .f-btn {
+          background: transparent;
+          color: #D4537E;
+          border: 1.5px solid #D4537E;
+          border-radius: 999px;
+          padding: 14px 32px;
+          font-family: 'Poppins', system-ui, sans-serif;
+          font-size: 13px;
+          letter-spacing: 0.06em;
+          font-weight: 500;
+          text-transform: uppercase;
+        }
+        .f-btn:hover { opacity: 1; transform: none; }
+        .f-demo-login {
+          font-family: 'Poppins', system-ui, sans-serif;
+          font-size: 11px;
+          letter-spacing: 0;
+          margin-top: 14px;
+        }
+
+        /* Browser frames */
+        .f-frames { height: 240px; }
+        .f-frame { width: 68%; }
+        .f-frames--b { display: none; }
+
+        /* Why / Result */
+        .f-duo { grid-template-columns: 1fr; border-bottom: none; }
+        .f-duo-panel { padding: 40px 24px; }
+        .f-panel-heading {
+          font-family: 'Poppins', system-ui, sans-serif;
+          font-size: 24px;
+          font-weight: 500;
+          letter-spacing: -0.5px;
+          line-height: 1.1;
+          margin-bottom: 16px;
+        }
+        .f-panel-body {
+          font-family: 'Poppins', system-ui, sans-serif;
+          font-size: 14px;
+          font-weight: 300;
+          line-height: 1.75;
+          letter-spacing: 0;
+          max-width: none;
+        }
+
+        /* Process (lifecycle) */
+        .f-lifecycle {
+          grid-template-columns: 1fr;
+          gap: 20px;
+          padding: 40px 24px;
+          text-align: center;
+          border-bottom: none;
+        }
+        .f-lifecycle-label {
+          font-family: 'Poppins', system-ui, sans-serif;
+          font-size: 10px;
+          font-weight: 400;
+          letter-spacing: 3px;
+          text-transform: uppercase;
+          color: var(--ink-3);
+          text-align: center;
+          line-height: 1;
+        }
+        .f-lifecycle-label br { display: none; }
+        .f-lifecycle-nodes { flex-direction: column; align-items: center; gap: 0; }
+        .f-node {
+          font-family: 'Poppins', system-ui, sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          letter-spacing: 0;
+          text-transform: none;
+          padding: 10px 28px;
+          border-radius: 999px;
+        }
+        .f-node:last-child {
+          background: #D4537E;
+          color: #fff;
+          border-color: #D4537E;
+        }
+        .f-node-arrow { transform: rotate(90deg); padding: 4px 0; }
+
+        /* What's inside */
+        .f-modules {
+          grid-template-columns: 1fr;
+          gap: 16px;
+          padding: 40px 24px;
+          border-bottom: none;
+        }
+        .f-modules-label {
+          font-family: 'Poppins', system-ui, sans-serif;
+          font-size: 24px;
+          font-weight: 400;
+          letter-spacing: -0.5px;
+          text-align: left;
+          line-height: 1.2;
+        }
+        .f-modules-label br { display: none; }
+        .f-module-list {
+          display: flex;
+          flex-direction: column;
+          border: none;
+          gap: 8px;
+        }
+        .f-module-item {
+          border: 1px solid var(--rule) !important;
+          border-radius: 8px;
+          padding: 18px 20px;
+        }
+        .f-module-name {
+          font-family: 'Poppins', system-ui, sans-serif;
+          font-size: 15px;
+          font-weight: 400;
+          letter-spacing: 0;
+          text-transform: none;
+          color: var(--ink);
+          margin-bottom: 4px;
+        }
+        .f-module-desc {
+          font-family: 'Poppins', system-ui, sans-serif;
+          font-size: 10px;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          color: var(--ink-3);
+        }
+
+        /* Built on */
+        .f-stack {
+          grid-template-columns: 1fr;
+          gap: 16px;
+          padding: 40px 24px;
+          border-bottom: none;
+        }
+        .f-stack-label {
+          font-family: 'Poppins', system-ui, sans-serif;
+          font-size: 24px;
+          font-weight: 400;
+          letter-spacing: -0.5px;
+          text-align: left;
+          line-height: 1.2;
+        }
+        .f-stack-label br { display: none; }
         .f-stack-grid { grid-template-columns: 1fr 1fr; }
-        .f-video-section { padding: 48px 24px; }
-        .f-next { padding: 40px 24px; }
+        .f-stack-tech {
+          font-family: 'Poppins', system-ui, sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          letter-spacing: 0;
+        }
+        .f-stack-desc {
+          font-family: 'Poppins', system-ui, sans-serif;
+          font-size: 10px;
+          letter-spacing: 0;
+          text-transform: none;
+          line-height: 1.5;
+        }
+
+        /* Video */
+        .f-video-section { padding: 40px 24px; gap: 20px; border-bottom: none; }
+        .f-video-heading {
+          font-family: 'Cormorant Garamond', serif;
+          font-style: italic;
+          font-weight: 300;
+          font-size: 32px;
+          letter-spacing: -0.5px;
+        }
+        .f-video-wrap { border-radius: 12px; }
+
+        /* Next project — pink bordered card */
+        .f-next {
+          margin: 0 24px 32px;
+          padding: 24px;
+          border: 2px solid #D4537E;
+          border-radius: 12px;
+        }
+        .f-next:hover { background: transparent; }
+        .f-next-label {
+          font-family: 'Poppins', system-ui, sans-serif;
+          font-size: 10px;
+          letter-spacing: 3px;
+          margin-bottom: 8px;
+        }
+        .f-next-name {
+          font-family: 'Poppins', system-ui, sans-serif;
+          font-size: 24px;
+          font-weight: 500;
+          letter-spacing: -0.5px;
+          color: var(--ink);
+        }
+        .f-next-arrow { color: #D4537E; font-size: 20px; }
+
+        /* Footer wordmark */
+        .footer-wordmark-forma {
+          display: block;
+          width: 100%;
+          text-align: center;
+          font-family: 'Cormorant Garamond', serif;
+          font-style: italic;
+          font-weight: 300;
+          font-size: 72px;
+          color: var(--ink-3);
+          line-height: 1;
+          padding-top: 12px;
+          letter-spacing: -1px;
+        }
       }
     </style>
   </head>
@@ -646,7 +859,7 @@
     </div>
 
     <!-- Next project -->
-    <a class="f-next reveal" href="/le-loup/">
+    <a class="f-next reveal" href="/le-loup/" style="display:flex;">
       <div>
         <span class="f-next-label">Next Project</span>
         <span class="f-next-name">Le Loup</span>
@@ -671,6 +884,7 @@
         <a href="mailto:studio@pinkwebstudio.com" class="footer-email">studio@pinkwebstudio.com</a>
       </div>
     </footer>
+    <span class="footer-wordmark-forma" aria-hidden="true">Pink</span>
 
     <script>
       const nav = document.getElementById("mainNav");
