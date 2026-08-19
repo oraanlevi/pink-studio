@@ -181,7 +181,7 @@ img { display: block; max-width: 100%; }
 
 .mobile-nav a {
   display: block;
-  padding: 13px 24px;
+  padding: 20px 24px;
   font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
   font-size: 16px;
   font-weight: 400;
@@ -294,10 +294,10 @@ img { display: block; max-width: 100%; }
   .nav-links { display: none; }
   .nav-end { display: none; }
   .nav-ham { display: flex; }
-  .mobile-nav { display: flex; height: auto; max-height: 100vh; }
+  .mobile-nav { display: flex; height: 100vh; }
   .nav-scrim { display: block; }
   .mobile-nav-cta {
-    margin: 16px 24px 24px !important;
+    margin: auto 24px 32px !important;
     padding: 16px 24px !important;
     background: #D4537E !important;
     color: #fff !important;
