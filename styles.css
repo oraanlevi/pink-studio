@@ -2,7 +2,7 @@
    Pink Web Studio — Design System
    Font: Bebas Neue (Google Fonts)
    ============================================================ */
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;600&display=swap');
 
 :root {
   --bg:    #FAFAF8;
@@ -311,21 +311,40 @@ img { display: block; max-width: 100%; }
   .mobile-nav-cta:hover { color: #fff !important; opacity: 0.9; }
   .site-footer {
     height: auto;
-    padding: 24px;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 8px 0;
-    align-items: center;
-  }
-  .footer-brand-wrap { flex: 1 1 50%; }
-  .footer-brand { font-size: 12px; letter-spacing: 4px; }
-  .footer-brand-sub { font-size: 10px; letter-spacing: 2px; margin-top: 5px; }
-  .footer-social {
-    flex: 1 1 50%;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-end;
+    padding: 28px 24px 32px;
+    flex-direction: column;
+    align-items: flex-start;
     gap: 16px;
   }
-  .footer-email { font-size: 11px; letter-spacing: 1px; text-transform: none; }
+  .footer-brand-wrap { flex: none; width: 100%; }
+  .footer-brand {
+    font-family: 'Poppins', system-ui, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .footer-brand-sub {
+    font-family: 'Poppins', system-ui, sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0;
+    color: var(--ink-2);
+    margin-top: 3px;
+  }
+  .footer-social {
+    flex: none;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 16px;
+  }
+  .footer-email {
+    font-family: 'Poppins', system-ui, sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0;
+    color: var(--ink-2);
+    text-transform: none;
+  }
 }
