@@ -297,7 +297,7 @@ img { display: block; max-width: 100%; }
   .mobile-nav { display: flex; height: 100vh; }
   .nav-scrim { display: block; }
   .mobile-nav-cta {
-    margin: auto 24px 32px !important;
+    margin: 32px 24px 24px !important;
     padding: 16px 24px !important;
     background: #D4537E !important;
     color: #fff !important;
