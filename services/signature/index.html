@@ -7,7 +7,7 @@
   <title>Signature Website · Pink Web Studio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Inter:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/styles.css" />
   <style>
 
@@ -535,31 +535,260 @@
     }
     .sp-breadcrumb a:hover { color: var(--ink-2); }
 
-    /* ── Mobile ── */
+    /* Mobile-only elements — hidden on desktop */
+    .sp-m-eyebrow, .sp-m-headline { display: none; }
+    .sp-m-pricing-row { display: none; }
+    .sp-m-img-break { display: none; }
+    .sp-m-card-img { display: none; }
+    .sp-m-invest-label { display: none; }
+    .sp-m-invest-cta { display: none; }
+
+    /* ── Mobile redesign ── */
     @media (max-width: 860px) {
-      .sp-hero { min-height: 100svh; }
-      .sp-hero-inner { padding: 0 24px 56px; gap: 28px; }
-      .sp-hero-title { font-size: clamp(52px, 12vw, 80px); letter-spacing: -2px; }
-      .sp-hero-bottom { flex-direction: column; align-items: flex-start; gap: 24px; }
-      .argument-intro { padding: 40px 24px; }
-      .sp-section-head { padding: 36px 24px 24px; }
-      .sp-section-body { padding: 0 24px 48px; }
-      .included-grid { grid-template-columns: 1fr; }
-      .included-card { border-right: none !important; padding: 40px 24px 48px; }
-      .included-card:nth-last-child(-n+2) { border-bottom: 1px solid var(--rule); }
-      .included-card:last-child { border-bottom: none; }
-      .process-row { grid-template-columns: 1fr; }
-      .process-step { border-right: none !important; border-bottom: 1px solid var(--rule); padding: 40px 24px 48px; }
-      .process-step:last-child { border-bottom: none; }
-      .investment-main { flex-direction: column; align-items: flex-start; padding: 40px 24px; gap: 32px; }
-      .investment-divider { display: none; }
-      .investment-cta { margin-left: 0; }
-      .investment-note { padding: 24px; }
-      .sp-cta { grid-template-columns: 1fr; min-height: auto; }
-      .sp-cta-divider { width: 100%; height: 1px; }
-      .sp-cta-left, .sp-cta-right { padding: 48px 24px; }
-      .sp-cta-left { padding-bottom: 0; }
       .sp-breadcrumb { padding: 18px 24px; }
+
+      /* Hero — dark rounded card */
+      .sp-hero {
+        min-height: 280px;
+        border-radius: 12px;
+        margin: 12px;
+        border-bottom: none;
+        overflow: hidden;
+      }
+      .sp-hero-bg {
+        background-image: url('/assets/marble.png');
+        filter: brightness(0.55);
+        animation: none;
+      }
+      .sp-hero-overlay {
+        background: linear-gradient(to top,
+          rgba(0,0,0,.82) 0%,
+          rgba(0,0,0,.28) 55%,
+          rgba(0,0,0,0) 100%);
+      }
+      .sp-hero-inner {
+        min-height: 280px;
+        padding: 0 20px 24px;
+        gap: 6px;
+        justify-content: flex-end;
+      }
+      .sp-hero-title { display: none; }
+      .sp-hero-bottom { display: none; }
+      .sp-m-eyebrow {
+        display: block;
+        font-family: 'Poppins', system-ui, sans-serif;
+        font-size: 10px;
+        font-weight: 400;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: rgba(255,255,255,.55);
+        margin-bottom: 4px;
+      }
+      .sp-m-headline {
+        display: block;
+        font-family: 'Cormorant Garamond', serif;
+        font-style: italic;
+        font-weight: 300;
+        font-size: 36px;
+        color: #fff;
+        line-height: 1.15;
+        letter-spacing: -0.5px;
+      }
+
+      /* Pricing row */
+      .sp-m-pricing-row {
+        display: flex;
+        align-items: center;
+        padding: 14px 24px;
+        gap: 16px;
+        border-bottom: 1px solid var(--rule);
+      }
+      .sp-m-price-block { display: flex; flex-direction: column; gap: 2px; }
+      .sp-m-price-label {
+        font-family: 'Poppins', system-ui, sans-serif;
+        font-size: 9px;
+        font-weight: 400;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--ink-3);
+      }
+      .sp-m-price-val {
+        font-family: 'Poppins', system-ui, sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--ink);
+      }
+      .sp-m-price-divider {
+        width: 1px;
+        height: 28px;
+        background: var(--rule);
+        flex-shrink: 0;
+      }
+      .sp-m-book-link {
+        margin-left: auto;
+        font-family: 'Poppins', system-ui, sans-serif;
+        font-size: 13px;
+        color: #D4537E;
+        text-decoration: none;
+        white-space: nowrap;
+      }
+
+      /* Pull-quote */
+      .thesis { grid-template-columns: 1fr; min-height: auto; border-bottom: none; }
+      .thesis-left { padding: 32px 24px 20px; border-bottom: none; }
+      .thesis-statement {
+        font-family: 'Cormorant Garamond', serif;
+        font-style: italic;
+        font-weight: 300;
+        font-size: 26px;
+        letter-spacing: -0.3px;
+        line-height: 1.4;
+        color: var(--ink);
+        margin-bottom: 0;
+        max-width: none;
+      }
+      .thesis-body { display: none; }
+      .thesis-showcase { display: none; }
+
+      /* Image break */
+      .sp-m-img-break { display: block; padding: 0 24px 28px; }
+      .sp-m-img-break img {
+        width: 100%;
+        border-radius: 12px;
+        aspect-ratio: 4/3;
+        object-fit: cover;
+        object-position: top center;
+        display: block;
+      }
+
+      /* Argument — hidden */
+      .argument { display: none; }
+
+      /* What's Included */
+      .sp-section-head { padding: 24px 24px 0; text-align: left; border-bottom: none; }
+      .sp-section-label {
+        font-family: 'Cormorant Garamond', serif;
+        font-style: italic;
+        font-weight: 300;
+        font-size: 28px;
+        letter-spacing: -0.3px;
+        color: var(--ink);
+      }
+      .included-grid { grid-template-columns: 1fr; display: flex; flex-direction: column; }
+      .included-card {
+        border-right: none !important;
+        border-bottom: 1px solid var(--rule) !important;
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .included-card:last-child { border-bottom: none !important; }
+      .sp-m-card-img {
+        display: block;
+        width: 100%;
+        height: 130px;
+        background: rgba(26,25,23,.06);
+        border-radius: 10px;
+        flex-shrink: 0;
+      }
+      .included-card-num {
+        font-family: 'Poppins', system-ui, sans-serif;
+        font-size: 10px;
+        font-weight: 400;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #D4537E;
+        margin-bottom: 0;
+      }
+      .included-card-name {
+        font-family: 'Poppins', system-ui, sans-serif;
+        font-size: 17px;
+        font-weight: 600;
+        letter-spacing: -0.3px;
+        color: var(--ink);
+        margin-bottom: 0;
+      }
+      .included-card-desc {
+        font-family: 'Poppins', system-ui, sans-serif;
+        font-size: 13px;
+        font-weight: 300;
+        line-height: 1.65;
+        color: var(--ink-2);
+      }
+      .included-card-items { margin-top: 4px; gap: 0; }
+      .included-card-item {
+        font-family: 'Poppins', system-ui, sans-serif;
+        font-size: 12px;
+        font-weight: 400;
+        letter-spacing: 0;
+        text-transform: none;
+        color: var(--ink-2);
+        padding: 6px 0;
+        border-top: 1px solid var(--rule);
+      }
+
+      /* Process section — hidden */
+      .sp-section:has(.process-row) { display: none; }
+
+      /* Investment card */
+      .sp-section:has(.investment-main) > .sp-section-head { display: none; }
+      .investment-main {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 24px;
+        gap: 6px;
+        border: none;
+        background: rgba(26,25,23,.04);
+        border-radius: 12px;
+        margin: 24px 24px 0;
+      }
+      .sp-m-invest-label {
+        display: block;
+        font-family: 'Poppins', system-ui, sans-serif;
+        font-size: 10px;
+        font-weight: 400;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--ink-3);
+        margin-bottom: 4px;
+      }
+      .investment-stat-label { display: none; }
+      .investment-amount {
+        font-family: 'Cormorant Garamond', serif;
+        font-weight: 300;
+        font-size: 48px;
+        letter-spacing: -1px;
+        line-height: 1;
+      }
+      .investment-stat:last-of-type { display: none; }
+      .investment-divider { display: none; }
+      .investment-cta { display: none; }
+      .investment-note { display: none; }
+      .sp-m-invest-cta {
+        display: block;
+        width: 100%;
+        padding: 15px 24px;
+        background: #D4537E;
+        color: #fff;
+        border-radius: 999px;
+        text-align: center;
+        font-family: 'Poppins', system-ui, sans-serif;
+        font-size: 13px;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        text-decoration: none;
+        margin-top: 14px;
+      }
+
+      /* FAQ */
+      .sp-section-body { padding: 0 24px 32px; }
+      .faq-question { padding: 18px 0; font-size: 15px; }
+      .faq-answer-inner p { font-size: 14px; padding-bottom: 20px; }
+
+      /* Final CTA — hidden */
+      .sp-cta { display: none; }
     }
 
   </style>
@@ -597,6 +826,8 @@
     <div class="sp-hero-bg"></div>
     <div class="sp-hero-overlay"></div>
     <div class="sp-hero-inner reveal">
+      <span class="sp-m-eyebrow">Service · Signature Website</span>
+      <span class="sp-m-headline">Built from<br>scratch, for you.</span>
       <div class="sp-hero-title">Signature<br>Website</div>
       <div class="sp-hero-bottom">
         <div class="sp-hero-stats">
@@ -613,6 +844,19 @@
       </div>
     </div>
   </section>
+
+  <div class="sp-m-pricing-row">
+    <span class="sp-m-price-block">
+      <span class="sp-m-price-label">From</span>
+      <span class="sp-m-price-val">$3,000</span>
+    </span>
+    <span class="sp-m-price-divider"></span>
+    <span class="sp-m-price-block">
+      <span class="sp-m-price-label">Timeline</span>
+      <span class="sp-m-price-val">3 wks–1 mo</span>
+    </span>
+    <a class="sp-m-book-link" href="https://calendly.com/oraanlevi1/30min" target="_blank" rel="noopener">Book a call ↗</a>
+  </div>
 
   <!-- § 2 · Thesis -->
   <section class="thesis reveal">
@@ -655,6 +899,10 @@
     </div>
   </section>
 
+  <div class="sp-m-img-break">
+    <img src="/assets/cel.png" alt="" />
+  </div>
+
   <!-- § 3 · Introduction -->
   <div class="argument reveal">
     <div class="argument-intro">
@@ -666,12 +914,13 @@
   <!-- § 4 · What's Included -->
   <section class="sp-section reveal">
     <div class="sp-section-head">
-      <span class="sp-section-label">What's Included</span>
+      <span class="sp-section-label">What's included.</span>
     </div>
     <div class="included-grid">
 
       <div class="included-card">
-        <span class="included-card-num">Direction</span>
+        <div class="sp-m-card-img"></div>
+        <span class="included-card-num">01 · Direction</span>
         <span class="included-card-name">Strategy &amp; Discovery</span>
         <p class="included-card-desc">We begin by understanding your brand, your clients, and what you need the site to do. Brand Direction is a collaborative process. We refine how your existing brand translates to the web: typography, colour, layout, imagery, and visual tone. This is not a logo or full identity service.</p>
         <div class="included-card-items">
@@ -683,7 +932,8 @@
       </div>
 
       <div class="included-card">
-        <span class="included-card-num">Design</span>
+        <div class="sp-m-card-img"></div>
+        <span class="included-card-num">02 · Design</span>
         <span class="included-card-name">Custom Website Design</span>
         <p class="included-card-desc">Every layout, typeface choice, and detail is designed specifically for your brand. Nothing is templated, nothing is borrowed. Desktop and mobile designed together, not one adapted from the other. Motion and interaction design included where appropriate.</p>
         <div class="included-card-items">
@@ -696,7 +946,8 @@
       </div>
 
       <div class="included-card">
-        <span class="included-card-num">Build</span>
+        <div class="sp-m-card-img"></div>
+        <span class="included-card-num">03 · Build</span>
         <span class="included-card-name">Development &amp; Setup</span>
         <p class="included-card-desc">Clean, fast code built to perform. No bloated page builders, no unnecessary dependencies. Technical SEO is handled in full, not as an afterthought. Forms configured and everything working from day one.</p>
         <div class="included-card-items">
@@ -708,7 +959,8 @@
       </div>
 
       <div class="included-card">
-        <span class="included-card-num">Launch</span>
+        <div class="sp-m-card-img"></div>
+        <span class="included-card-num">04 · Launch</span>
         <span class="included-card-name">Launch &amp; Beyond</span>
         <p class="included-card-desc">Full launch coordination from domain connection to going live. Your site is verified across every device and browser before anything is published. Analytics and Search Console set up so you can see how the site performs from day one.</p>
         <div class="included-card-items">
@@ -723,7 +975,8 @@
       </div>
 
       <div class="included-card">
-        <span class="included-card-num">Add-Ons</span>
+        <div class="sp-m-card-img"></div>
+        <span class="included-card-num">05 · Add-Ons</span>
         <span class="included-card-name">Available When Required</span>
         <p class="included-card-desc">Some projects require functionality beyond the core package. These are not included as standard, but are available when the project calls for them. Each is scoped and priced individually during the proposal conversation.</p>
         <div class="included-card-items">
@@ -736,7 +989,8 @@
       </div>
 
       <div class="included-card">
-        <span class="included-card-num">Clarity</span>
+        <div class="sp-m-card-img"></div>
+        <span class="included-card-num">06 · Clarity</span>
         <span class="included-card-name">Not Included</span>
         <p class="included-card-desc">Clients provide a first draft of their copy. Pink refines it for clarity, hierarchy, and how it reads on the web. Full copywriting from scratch is not included. Stock image sourcing is included within reason. Professional photography is not.</p>
         <div class="included-card-items">
@@ -786,6 +1040,7 @@
       <span class="sp-section-label">Investment</span>
     </div>
     <div class="investment-main">
+      <span class="sp-m-invest-label">Investment</span>
       <div class="investment-stat">
         <span class="investment-stat-label">Starting from</span>
         <span class="investment-amount">$3,000</span>
@@ -796,6 +1051,7 @@
         <span class="investment-amount">3 wks to 1 mo</span>
       </div>
       <a class="investment-cta" href="https://calendly.com/oraanlevi1/30min" target="_blank" rel="noopener">Book a Call ↗&#xFE0E;</a>
+      <a class="sp-m-invest-cta" href="https://calendly.com/oraanlevi1/30min" target="_blank" rel="noopener">Book a call ↗</a>
     </div>
     <div class="investment-note">
       <p>Every project is custom scoped before work begins. The proposal defines the pages, functionality, timeline, and deliverables based on your business goals, so you know exactly what you're getting before anything starts. Payment is collected via invoice or Square link. No surprises, no hidden fees. Every website is built with strong technical SEO foundations. Search rankings, traffic, and business results cannot be guaranteed.</p>
