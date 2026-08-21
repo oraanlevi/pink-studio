@@ -536,7 +536,8 @@
     .sp-breadcrumb a:hover { color: var(--ink-2); }
 
     /* Mobile-only elements — hidden on desktop */
-    .sp-m-eyebrow, .sp-m-headline { display: none; }
+    .sp-m-eyebrow, .sp-m-headline, .sp-m-title { display: none; }
+    .sp-m-desc-short { display: none; }
     .sp-m-pricing-row { display: none; }
     .sp-m-img-break { display: none; }
     .sp-m-card-img { display: none; }
@@ -584,6 +585,16 @@
         color: rgba(255,255,255,.55);
         margin-bottom: 4px;
       }
+      .sp-m-title {
+        display: block;
+        font-family: 'Poppins', system-ui, sans-serif;
+        font-size: 30px;
+        font-weight: 600;
+        color: #fff;
+        letter-spacing: -0.5px;
+        line-height: 1.1;
+        margin-bottom: 2px;
+      }
       .sp-m-headline {
         display: block;
         font-family: 'Cormorant Garamond', serif;
@@ -594,6 +605,8 @@
         line-height: 1.15;
         letter-spacing: -0.5px;
       }
+      .sp-m-desc-short { display: block; }
+      .sp-m-desc-long { display: none; }
 
       /* Pricing row */
       .sp-m-pricing-row {
@@ -716,7 +729,7 @@
         line-height: 1.65;
         color: var(--ink-2);
       }
-      .included-card-items { margin-top: 4px; gap: 0; }
+      .included-card-items { display: none; }
       .included-card-item {
         font-family: 'Poppins', system-ui, sans-serif;
         font-size: 12px;
@@ -827,6 +840,7 @@
     <div class="sp-hero-overlay"></div>
     <div class="sp-hero-inner reveal">
       <span class="sp-m-eyebrow">Service · Signature Website</span>
+      <span class="sp-m-title">Signature Website</span>
       <span class="sp-m-headline">Built from<br>scratch, for you.</span>
       <div class="sp-hero-title">Signature<br>Website</div>
       <div class="sp-hero-bottom">
@@ -900,7 +914,7 @@
   </section>
 
   <div class="sp-m-img-break">
-    <img src="/assets/cel.png" alt="" />
+    <div style="width:100%;aspect-ratio:4/3;border-radius:12px;background:rgba(26,25,23,.06);"></div>
   </div>
 
   <!-- § 3 · Introduction -->
@@ -922,7 +936,7 @@
         <div class="sp-m-card-img"></div>
         <span class="included-card-num">01 · Direction</span>
         <span class="included-card-name">Strategy &amp; Discovery</span>
-        <p class="included-card-desc">We begin by understanding your brand, your clients, and what you need the site to do. Brand Direction is a collaborative process. We refine how your existing brand translates to the web: typography, colour, layout, imagery, and visual tone. This is not a logo or full identity service.</p>
+        <p class="included-card-desc"><span class="sp-m-desc-long">We begin by understanding your brand, your clients, and what you need the site to do. Brand Direction is a collaborative process. We refine how your existing brand translates to the web: typography, colour, layout, imagery, and visual tone. This is not a logo or full identity service.</span><span class="sp-m-desc-short">Brand direction, typography, layout, and visual tone — refined collaboratively before anything is built.</span></p>
         <div class="included-card-items">
           <span class="included-card-item">Discovery &amp; Strategy Session</span>
           <span class="included-card-item">Site Architecture</span>
@@ -935,7 +949,7 @@
         <div class="sp-m-card-img"></div>
         <span class="included-card-num">02 · Design</span>
         <span class="included-card-name">Custom Website Design</span>
-        <p class="included-card-desc">Every layout, typeface choice, and detail is designed specifically for your brand. Nothing is templated, nothing is borrowed. Desktop and mobile designed together, not one adapted from the other. Motion and interaction design included where appropriate.</p>
+        <p class="included-card-desc"><span class="sp-m-desc-long">Every layout, typeface choice, and detail is designed specifically for your brand. Nothing is templated, nothing is borrowed. Desktop and mobile designed together, not one adapted from the other. Motion and interaction design included where appropriate.</span><span class="sp-m-desc-short">Every layout, typeface, and detail designed specifically for your brand — desktop and mobile built together, with motion and interaction included.</span></p>
         <div class="included-card-items">
           <span class="included-card-item">Full Site Design</span>
           <span class="included-card-item">Desktop &amp; Mobile</span>
@@ -949,7 +963,7 @@
         <div class="sp-m-card-img"></div>
         <span class="included-card-num">03 · Build</span>
         <span class="included-card-name">Development &amp; Setup</span>
-        <p class="included-card-desc">Clean, fast code built to perform. No bloated page builders, no unnecessary dependencies. Technical SEO is handled in full, not as an afterthought. Forms configured and everything working from day one.</p>
+        <p class="included-card-desc"><span class="sp-m-desc-long">Clean, fast code built to perform. No bloated page builders, no unnecessary dependencies. Technical SEO is handled in full, not as an afterthought. Forms configured and everything working from day one.</span><span class="sp-m-desc-short">Clean, fast code. No bloated builders. Technical SEO, forms, and cross-device testing handled in full from day one.</span></p>
         <div class="included-card-items">
           <span class="included-card-item">Custom Development</span>
           <span class="included-card-item">Contact Form</span>
@@ -962,7 +976,7 @@
         <div class="sp-m-card-img"></div>
         <span class="included-card-num">04 · Launch</span>
         <span class="included-card-name">Launch &amp; Beyond</span>
-        <p class="included-card-desc">Full launch coordination from domain connection to going live. Your site is verified across every device and browser before anything is published. Analytics and Search Console set up so you can see how the site performs from day one.</p>
+        <p class="included-card-desc"><span class="sp-m-desc-long">Full launch coordination from domain connection to going live. Your site is verified across every device and browser before anything is published. Analytics and Search Console set up so you can see how the site performs from day one.</span><span class="sp-m-desc-short">Full launch coordination — domain, hosting, QA across every device, plus Analytics and Search Console setup immediately on launch.</span></p>
         <div class="included-card-items">
           <span class="included-card-item">Domain Connection</span>
           <span class="included-card-item">Hosting Deployment</span>
@@ -978,7 +992,7 @@
         <div class="sp-m-card-img"></div>
         <span class="included-card-num">05 · Add-Ons</span>
         <span class="included-card-name">Available When Required</span>
-        <p class="included-card-desc">Some projects require functionality beyond the core package. These are not included as standard, but are available when the project calls for them. Each is scoped and priced individually during the proposal conversation.</p>
+        <p class="included-card-desc"><span class="sp-m-desc-long">Some projects require functionality beyond the core package. These are not included as standard, but are available when the project calls for them. Each is scoped and priced individually during the proposal conversation.</span><span class="sp-m-desc-short">E-commerce, memberships, booking systems, custom CMS, and third-party integrations — available when the project calls for them, scoped individually.</span></p>
         <div class="included-card-items">
           <span class="included-card-item">E-Commerce</span>
           <span class="included-card-item">Membership Functionality</span>
@@ -992,7 +1006,7 @@
         <div class="sp-m-card-img"></div>
         <span class="included-card-num">06 · Clarity</span>
         <span class="included-card-name">Not Included</span>
-        <p class="included-card-desc">Clients provide a first draft of their copy. Pink refines it for clarity, hierarchy, and how it reads on the web. Full copywriting from scratch is not included. Stock image sourcing is included within reason. Professional photography is not.</p>
+        <p class="included-card-desc"><span class="sp-m-desc-long">Clients provide a first draft of their copy. Pink refines it for clarity, hierarchy, and how it reads on the web. Full copywriting from scratch is not included. Stock image sourcing is included within reason. Professional photography is not.</span><span class="sp-m-desc-short">You provide a first draft of copy — Pink refines it for the web. Full copywriting, professional photography, and logo design are not included.</span></p>
         <div class="included-card-items">
           <span class="included-card-item">Logo Design</span>
           <span class="included-card-item">Professional Photography</span>
