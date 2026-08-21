@@ -501,6 +501,9 @@
     }
     .sp-breadcrumb a:hover { color: var(--ink-2); }
 
+    /* Mobile-only elements — hidden on desktop */
+    .sp-m-toggle, .sp-m-toggle-less { display: none; }
+
     /* ── Mobile ── */
     @media (max-width: 860px) {
       .sp-hero { min-height: 100svh; }
@@ -511,7 +514,7 @@
       .sp-section-head { padding: 36px 24px 24px; }
       .sp-section-body { padding: 0 24px 48px; }
       .included-grid { grid-template-columns: 1fr; }
-      .included-card { border-right: none !important; padding: 40px 24px 48px; }
+      .included-card { border-right: none !important; padding: 40px 24px 32px; }
       .included-card:nth-last-child(-n+2) { border-bottom: 1px solid var(--rule); }
       .included-card:last-child { border-bottom: none; }
       .process-row { grid-template-columns: 1fr; }
@@ -525,6 +528,42 @@
       .sp-cta-left, .sp-cta-right { padding: 48px 24px; }
       .sp-cta-left { padding-bottom: 0; }
       .sp-breadcrumb { padding: 18px 24px; }
+
+      /* Card expand / collapse */
+      .sp-m-expand-panel {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 380ms cubic-bezier(.16,1,.3,1);
+      }
+      .included-card.sp-expanded .sp-m-expand-panel { max-height: 500px; }
+      .sp-m-toggle {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        background: none;
+        border: none;
+        padding: 6px 0 2px;
+        font-family: 'Poppins', system-ui, sans-serif;
+        font-size: 13px;
+        font-weight: 500;
+        color: #D4537E;
+        cursor: pointer;
+      }
+      .included-card.sp-expanded .sp-m-toggle { display: none; }
+      .sp-m-toggle-less {
+        display: none;
+        align-items: center;
+        gap: 5px;
+        background: none;
+        border: none;
+        padding: 12px 0 4px;
+        font-family: 'Poppins', system-ui, sans-serif;
+        font-size: 13px;
+        font-weight: 500;
+        color: #D4537E;
+        cursor: pointer;
+      }
+      .included-card.sp-expanded .sp-m-toggle-less { display: inline-flex; }
     }
 
   </style>
@@ -639,69 +678,93 @@
         <span class="included-card-num">Content</span>
         <span class="included-card-name">Monthly Updates &amp; Edits</span>
         <p class="included-card-desc">The ongoing updates that keep your site accurate and current. Anything that needs to reflect where the business is today, handled as part of the monthly relationship.</p>
-        <div class="included-card-items">
-          <div class="included-card-item">Text Edits</div>
-          <div class="included-card-item">Image Replacements</div>
-          <div class="included-card-item">Pricing &amp; Services Updates</div>
-          <div class="included-card-item">Publishing Blog Posts</div>
-          <div class="included-card-item">Adding Testimonials</div>
-          <div class="included-card-item">Seasonal Content Updates</div>
-          <div class="included-card-item">Small Layout Adjustments</div>
+        <button class="sp-m-toggle" aria-expanded="false">Read more <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,4 6,8 10,4"/></svg></button>
+        <div class="sp-m-expand-panel">
+          <div class="included-card-items">
+            <div class="included-card-item">Text Edits</div>
+            <div class="included-card-item">Image Replacements</div>
+            <div class="included-card-item">Pricing &amp; Services Updates</div>
+            <div class="included-card-item">Publishing Blog Posts</div>
+            <div class="included-card-item">Adding Testimonials</div>
+            <div class="included-card-item">Seasonal Content Updates</div>
+            <div class="included-card-item">Small Layout Adjustments</div>
+          </div>
+          <button class="sp-m-toggle-less">Show less <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,8 6,4 10,8"/></svg></button>
         </div>
       </div>
       <div class="included-card">
         <span class="included-card-num">Upkeep</span>
         <span class="included-card-name">Routine Website Health</span>
         <p class="included-card-desc">Routine checks to catch anything that has broken or drifted since last month. Pink builds custom and static sites. Broad platform-specific promises don't apply to every client, so this covers what actually matters.</p>
-        <div class="included-card-items">
-          <div class="included-card-item">Broken Link Fixes</div>
-          <div class="included-card-item">Contact Form Testing</div>
-          <div class="included-card-item">Performance Check-Ins</div>
-          <div class="included-card-item">General Website Health Reviews</div>
+        <button class="sp-m-toggle" aria-expanded="false">Read more <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,4 6,8 10,4"/></svg></button>
+        <div class="sp-m-expand-panel">
+          <div class="included-card-items">
+            <div class="included-card-item">Broken Link Fixes</div>
+            <div class="included-card-item">Contact Form Testing</div>
+            <div class="included-card-item">Performance Check-Ins</div>
+            <div class="included-card-item">General Website Health Reviews</div>
+          </div>
+          <button class="sp-m-toggle-less">Show less <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,8 6,4 10,8"/></svg></button>
         </div>
       </div>
       <div class="included-card">
         <span class="included-card-num">SEO</span>
         <span class="included-card-name">On-Page Improvements</span>
         <p class="included-card-desc">Ongoing on-page SEO improvements and recommendations. This is not a backlink campaign, a keyword strategy, or a ranking guarantee. It's maintaining and improving what's already there. The kind of SEO that compounds quietly over time.</p>
-        <div class="included-card-items">
-          <div class="included-card-item">On-Page SEO Improvements</div>
-          <div class="included-card-item">SEO Recommendations</div>
-          <div class="included-card-item">Title &amp; Heading Checks</div>
-          <div class="included-card-item">Content Optimization Notes</div>
+        <button class="sp-m-toggle" aria-expanded="false">Read more <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,4 6,8 10,4"/></svg></button>
+        <div class="sp-m-expand-panel">
+          <div class="included-card-items">
+            <div class="included-card-item">On-Page SEO Improvements</div>
+            <div class="included-card-item">SEO Recommendations</div>
+            <div class="included-card-item">Title &amp; Heading Checks</div>
+            <div class="included-card-item">Content Optimization Notes</div>
+          </div>
+          <button class="sp-m-toggle-less">Show less <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,8 6,4 10,8"/></svg></button>
         </div>
       </div>
       <div class="included-card">
         <span class="included-card-num">Response</span>
         <span class="included-card-name">Priority Support</span>
         <p class="included-card-desc">You're not in a queue. Send requests by email, voice memo, or screenshot. Whatever's easiest. Emergency issues are prioritized during business hours.</p>
-        <div class="included-card-items">
-          <div class="included-card-item">Within One Business Day</div>
-          <div class="included-card-item">Emergency Issues Prioritized</div>
-          <div class="included-card-item">Email, Voice Memo, or Screenshot</div>
+        <button class="sp-m-toggle" aria-expanded="false">Read more <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,4 6,8 10,4"/></svg></button>
+        <div class="sp-m-expand-panel">
+          <div class="included-card-items">
+            <div class="included-card-item">Within One Business Day</div>
+            <div class="included-card-item">Emergency Issues Prioritized</div>
+            <div class="included-card-item">Email, Voice Memo, or Screenshot</div>
+          </div>
+          <button class="sp-m-toggle-less">Show less <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,8 6,4 10,8"/></svg></button>
         </div>
       </div>
       <div class="included-card">
         <span class="included-card-num">Clarity</span>
         <span class="included-card-name">Not Included</span>
         <p class="included-card-desc">Larger work is scoped and handled as a separate project. Monthly Website Support is for ongoing maintenance, not new builds, redesigns, or significant feature development.</p>
-        <div class="included-card-items">
-          <div class="included-card-item">New Website Builds</div>
-          <div class="included-card-item">Full Redesigns</div>
-          <div class="included-card-item">Brand Identity &amp; Logo Design</div>
-          <div class="included-card-item">Full Copywriting</div>
-          <div class="included-card-item">Large Feature Development</div>
-          <div class="included-card-item">Third-Party Automations</div>
-          <div class="included-card-item">New Integrations Requiring Significant Development</div>
+        <button class="sp-m-toggle" aria-expanded="false">Read more <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,4 6,8 10,4"/></svg></button>
+        <div class="sp-m-expand-panel">
+          <div class="included-card-items">
+            <div class="included-card-item">New Website Builds</div>
+            <div class="included-card-item">Full Redesigns</div>
+            <div class="included-card-item">Brand Identity &amp; Logo Design</div>
+            <div class="included-card-item">Full Copywriting</div>
+            <div class="included-card-item">Large Feature Development</div>
+            <div class="included-card-item">Third-Party Automations</div>
+            <div class="included-card-item">New Integrations Requiring Significant Development</div>
+          </div>
+          <button class="sp-m-toggle-less">Show less <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,8 6,4 10,8"/></svg></button>
         </div>
       </div>
       <div class="included-card">
         <span class="included-card-num">Eligibility</span>
         <span class="included-card-name">Who Can Enroll</span>
         <p class="included-card-desc">Monthly Website Support is available only for websites built by Pink, or for websites that have first gone through a Pink onboarding review. It's not possible to maintain a site well without knowing it thoroughly. This protects the quality of care for every client.</p>
-        <div class="included-card-items">
-          <div class="included-card-item">Pink-Built Websites</div>
-          <div class="included-card-item">Websites After Pink Onboarding Review</div>
+        <button class="sp-m-toggle" aria-expanded="false">Read more <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,4 6,8 10,4"/></svg></button>
+        <div class="sp-m-expand-panel">
+          <div class="included-card-items">
+            <div class="included-card-item">Pink-Built Websites</div>
+            <div class="included-card-item">Websites After Pink Onboarding Review</div>
+          </div>
+          <button class="sp-m-toggle-less">Show less <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,8 6,4 10,8"/></svg></button>
         </div>
       </div>
     </div>
@@ -892,6 +955,21 @@
       });
       processRow.addEventListener('mouseleave', () => { timelineFill.style.width = '0'; });
     }
+
+    /* Card expand / collapse */
+    document.querySelectorAll('.included-card').forEach(card => {
+      const toggle = card.querySelector('.sp-m-toggle');
+      const less   = card.querySelector('.sp-m-toggle-less');
+      if (!toggle) return;
+      toggle.addEventListener('click', () => {
+        card.classList.add('sp-expanded');
+        toggle.setAttribute('aria-expanded', 'true');
+      });
+      less?.addEventListener('click', () => {
+        card.classList.remove('sp-expanded');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
 
     document.querySelectorAll('.faq-question').forEach(btn => {
       btn.addEventListener('click', () => {

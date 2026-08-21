@@ -501,6 +501,9 @@
     }
     .sp-breadcrumb a:hover { color: var(--ink-2); }
 
+    /* Mobile-only elements — hidden on desktop */
+    .sp-m-toggle, .sp-m-toggle-less { display: none; }
+
     /* ── Mobile ── */
     @media (max-width: 860px) {
       .sp-hero { min-height: 100svh; }
@@ -511,7 +514,7 @@
       .sp-section-head { padding: 36px 24px 24px; }
       .sp-section-body { padding: 0 24px 48px; }
       .included-grid { grid-template-columns: 1fr; }
-      .included-card { border-right: none !important; padding: 40px 24px 48px; }
+      .included-card { border-right: none !important; padding: 40px 24px 32px; }
       .included-card:nth-last-child(-n+2) { border-bottom: 1px solid var(--rule); }
       .included-card:last-child { border-bottom: none; }
       .process-row { grid-template-columns: 1fr; }
@@ -525,6 +528,42 @@
       .sp-cta-left, .sp-cta-right { padding: 48px 24px; }
       .sp-cta-left { padding-bottom: 0; }
       .sp-breadcrumb { padding: 18px 24px; }
+
+      /* Card expand / collapse */
+      .sp-m-expand-panel {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 380ms cubic-bezier(.16,1,.3,1);
+      }
+      .included-card.sp-expanded .sp-m-expand-panel { max-height: 500px; }
+      .sp-m-toggle {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        background: none;
+        border: none;
+        padding: 6px 0 2px;
+        font-family: 'Poppins', system-ui, sans-serif;
+        font-size: 13px;
+        font-weight: 500;
+        color: #D4537E;
+        cursor: pointer;
+      }
+      .included-card.sp-expanded .sp-m-toggle { display: none; }
+      .sp-m-toggle-less {
+        display: none;
+        align-items: center;
+        gap: 5px;
+        background: none;
+        border: none;
+        padding: 12px 0 4px;
+        font-family: 'Poppins', system-ui, sans-serif;
+        font-size: 13px;
+        font-weight: 500;
+        color: #D4537E;
+        cursor: pointer;
+      }
+      .included-card.sp-expanded .sp-m-toggle-less { display: inline-flex; }
     }
 
   </style>
@@ -639,49 +678,65 @@
         <span class="included-card-num">Review</span>
         <span class="included-card-name">Collaborative Assessment</span>
         <p class="included-card-desc">Every Refresh begins with a structured review of the existing website. Together we identify what's working, what no longer reflects the business, what should be removed, and what should be added. Nothing changes until the plan is agreed.</p>
-        <div class="included-card-items">
-          <div class="included-card-item">What's Working</div>
-          <div class="included-card-item">What's No Longer Relevant</div>
-          <div class="included-card-item">Gaps &amp; Opportunities</div>
-          <div class="included-card-item">Agreed Improvement Plan</div>
+        <button class="sp-m-toggle" aria-expanded="false">Read more <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,4 6,8 10,4"/></svg></button>
+        <div class="sp-m-expand-panel">
+          <div class="included-card-items">
+            <div class="included-card-item">What's Working</div>
+            <div class="included-card-item">What's No Longer Relevant</div>
+            <div class="included-card-item">Gaps &amp; Opportunities</div>
+            <div class="included-card-item">Agreed Improvement Plan</div>
+          </div>
+          <button class="sp-m-toggle-less">Show less <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,8 6,4 10,8"/></svg></button>
         </div>
       </div>
       <div class="included-card">
         <span class="included-card-num">Refine</span>
         <span class="included-card-name">Possible Improvements</span>
         <p class="included-card-desc">Based on the review, we implement only the improvements the site actually needs. Every Refresh is scoped to your specific project. The list below reflects what's possible, not what's always included.</p>
-        <div class="included-card-items">
-          <div class="included-card-item">Typography &amp; Layout</div>
-          <div class="included-card-item">Mobile &amp; Responsive</div>
-          <div class="included-card-item">Navigation</div>
-          <div class="included-card-item">New Sections</div>
-          <div class="included-card-item">Image Replacement</div>
-          <div class="included-card-item">Motion &amp; Interactions</div>
-          <div class="included-card-item">Accessibility</div>
+        <button class="sp-m-toggle" aria-expanded="false">Read more <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,4 6,8 10,4"/></svg></button>
+        <div class="sp-m-expand-panel">
+          <div class="included-card-items">
+            <div class="included-card-item">Typography &amp; Layout</div>
+            <div class="included-card-item">Mobile &amp; Responsive</div>
+            <div class="included-card-item">Navigation</div>
+            <div class="included-card-item">New Sections</div>
+            <div class="included-card-item">Image Replacement</div>
+            <div class="included-card-item">Motion &amp; Interactions</div>
+            <div class="included-card-item">Accessibility</div>
+          </div>
+          <button class="sp-m-toggle-less">Show less <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,8 6,4 10,8"/></svg></button>
         </div>
       </div>
       <div class="included-card">
         <span class="included-card-num">Relaunch</span>
         <span class="included-card-name">QA &amp; Publish</span>
         <p class="included-card-desc">Once the improvements are approved, the updated site is tested across devices and browsers and published. Domain connection is handled if required. Two weeks of post-launch support follow.</p>
-        <div class="included-card-items">
-          <div class="included-card-item">Final QA &amp; Testing</div>
-          <div class="included-card-item">Cross-Device Testing</div>
-          <div class="included-card-item">Publish Updates</div>
-          <div class="included-card-item">Domain Connection if Required</div>
-          <div class="included-card-item">Two Weeks Post-Launch Support</div>
+        <button class="sp-m-toggle" aria-expanded="false">Read more <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,4 6,8 10,4"/></svg></button>
+        <div class="sp-m-expand-panel">
+          <div class="included-card-items">
+            <div class="included-card-item">Final QA &amp; Testing</div>
+            <div class="included-card-item">Cross-Device Testing</div>
+            <div class="included-card-item">Publish Updates</div>
+            <div class="included-card-item">Domain Connection if Required</div>
+            <div class="included-card-item">Two Weeks Post-Launch Support</div>
+          </div>
+          <button class="sp-m-toggle-less">Show less <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,8 6,4 10,8"/></svg></button>
         </div>
       </div>
       <div class="included-card">
         <span class="included-card-num">Clarity</span>
         <span class="included-card-name">Not Included</span>
         <p class="included-card-desc">A Refresh improves an existing website. It is not a rebuild, a rebrand, or a platform migration. New e-commerce functionality can be scoped separately if the project calls for it.</p>
-        <div class="included-card-items">
-          <div class="included-card-item">New Website Builds</div>
-          <div class="included-card-item">Brand Identity &amp; Logo Design</div>
-          <div class="included-card-item">Full Copywriting</div>
-          <div class="included-card-item">CMS Migrations</div>
-          <div class="included-card-item">New E-Commerce Functionality</div>
+        <button class="sp-m-toggle" aria-expanded="false">Read more <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,4 6,8 10,4"/></svg></button>
+        <div class="sp-m-expand-panel">
+          <div class="included-card-items">
+            <div class="included-card-item">New Website Builds</div>
+            <div class="included-card-item">Brand Identity &amp; Logo Design</div>
+            <div class="included-card-item">Full Copywriting</div>
+            <div class="included-card-item">CMS Migrations</div>
+            <div class="included-card-item">New E-Commerce Functionality</div>
+          </div>
+          <button class="sp-m-toggle-less">Show less <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,8 6,4 10,8"/></svg></button>
         </div>
       </div>
     </div>
@@ -872,6 +927,21 @@
       });
       processRow.addEventListener('mouseleave', () => { timelineFill.style.width = '0'; });
     }
+
+    /* Card expand / collapse */
+    document.querySelectorAll('.included-card').forEach(card => {
+      const toggle = card.querySelector('.sp-m-toggle');
+      const less   = card.querySelector('.sp-m-toggle-less');
+      if (!toggle) return;
+      toggle.addEventListener('click', () => {
+        card.classList.add('sp-expanded');
+        toggle.setAttribute('aria-expanded', 'true');
+      });
+      less?.addEventListener('click', () => {
+        card.classList.remove('sp-expanded');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
 
     document.querySelectorAll('.faq-question').forEach(btn => {
       btn.addEventListener('click', () => {
