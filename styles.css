@@ -149,20 +149,14 @@ img { display: block; max-width: 100%; }
 .mobile-nav-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   padding: 0 20px;
   height: var(--nav-h);
   border-bottom: 1px solid var(--rule);
   flex-shrink: 0;
 }
 .mobile-nav-brand {
-  font-family: "Bebas Neue", "Impact", sans-serif;
-  font-size: 18px;
-  font-weight: 400;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: var(--ink);
-  text-decoration: none;
+  display: none;
 }
 .mobile-nav-close {
   background: none;
