@@ -514,9 +514,10 @@
       .sp-section-head { padding: 36px 24px 24px; }
       .sp-section-body { padding: 0 24px 48px; }
       .included-grid { grid-template-columns: 1fr; }
-      .included-card { border-right: none !important; padding: 40px 24px 32px; }
-      .included-card:nth-last-child(-n+2) { border-bottom: 1px solid var(--rule); }
-      .included-card:last-child { border-bottom: none; }
+      .included-card { border-right: none !important; border-bottom: none !important; border-top: 1px solid var(--ink); padding: 24px; display: flex; flex-direction: column; gap: 8px; }
+      .included-card-num { font-family: 'Poppins', system-ui, sans-serif; font-size: 10px; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; color: #D4537E; margin-bottom: 0; }
+      .included-card-name { font-family: 'Poppins', system-ui, sans-serif; font-size: 20px; font-weight: 700; letter-spacing: -0.3px; margin-bottom: 0; }
+      .included-card-desc { font-family: 'Poppins', system-ui, sans-serif; font-size: 13px; font-weight: 300; line-height: 1.65; color: #6b6660; }
       .process-row { grid-template-columns: 1fr; }
       .process-step { border-right: none !important; border-bottom: 1px solid var(--rule); padding: 40px 24px 48px; }
       .process-step:last-child { border-bottom: none; }
@@ -539,28 +540,34 @@
       .sp-m-toggle {
         display: inline-flex;
         align-items: center;
-        gap: 5px;
+        gap: 0;
         background: none;
         border: none;
         padding: 6px 0 2px;
         font-family: 'Poppins', system-ui, sans-serif;
         font-size: 13px;
-        font-weight: 500;
+        font-weight: 400;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
         color: #D4537E;
+        text-decoration: none;
         cursor: pointer;
       }
       .included-card.sp-expanded .sp-m-toggle { display: none; }
       .sp-m-toggle-less {
         display: none;
         align-items: center;
-        gap: 5px;
+        gap: 0;
         background: none;
         border: none;
         padding: 12px 0 4px;
         font-family: 'Poppins', system-ui, sans-serif;
         font-size: 13px;
-        font-weight: 500;
+        font-weight: 400;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
         color: #D4537E;
+        text-decoration: none;
         cursor: pointer;
       }
       .included-card.sp-expanded .sp-m-toggle-less { display: inline-flex; }
@@ -678,7 +685,7 @@
         <span class="included-card-num">User Experience</span>
         <span class="included-card-name">UX Review</span>
         <p class="included-card-desc">A thorough review of how the site actually feels to use: navigation, flow, and whether visitors can find what they need without friction. Mobile experience and accessibility observations included.</p>
-        <button class="sp-m-toggle" aria-expanded="false">Read more <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,4 6,8 10,4"/></svg></button>
+        <button class="sp-m-toggle" aria-expanded="false">Read more</button>
         <div class="sp-m-expand-panel">
           <div class="included-card-items">
             <div class="included-card-item">UX Review</div>
@@ -686,14 +693,14 @@
             <div class="included-card-item">Mobile Experience</div>
             <div class="included-card-item">Accessibility Observations</div>
           </div>
-          <button class="sp-m-toggle-less">Show less <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,8 6,4 10,8"/></svg></button>
+          <button class="sp-m-toggle-less">Show less</button>
         </div>
       </div>
       <div class="included-card">
         <span class="included-card-num">Design</span>
         <span class="included-card-name">Visual Design Review</span>
         <p class="included-card-desc">How the site looks and whether its visual decisions support its message. Typography, layout, spacing, content hierarchy, and whether calls to action land where they should.</p>
-        <button class="sp-m-toggle" aria-expanded="false">Read more <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,4 6,8 10,4"/></svg></button>
+        <button class="sp-m-toggle" aria-expanded="false">Read more</button>
         <div class="sp-m-expand-panel">
           <div class="included-card-items">
             <div class="included-card-item">Visual Design Review</div>
@@ -702,14 +709,14 @@
             <div class="included-card-item">Content Hierarchy</div>
             <div class="included-card-item">CTA Placement</div>
           </div>
-          <button class="sp-m-toggle-less">Show less <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,8 6,4 10,8"/></svg></button>
+          <button class="sp-m-toggle-less">Show less</button>
         </div>
       </div>
       <div class="included-card">
         <span class="included-card-num">Performance</span>
         <span class="included-card-name">Performance Observations</span>
         <p class="included-card-desc">Observations on how the site performs from the outside: loading behavior, oversized imagery, visual loading issues, and obvious usability problems. This is not a Lighthouse report.</p>
-        <button class="sp-m-toggle" aria-expanded="false">Read more <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,4 6,8 10,4"/></svg></button>
+        <button class="sp-m-toggle" aria-expanded="false">Read more</button>
         <div class="sp-m-expand-panel">
           <div class="included-card-items">
             <div class="included-card-item">Load Behavior</div>
@@ -717,14 +724,14 @@
             <div class="included-card-item">Visual Loading Issues</div>
             <div class="included-card-item">Usability Observations</div>
           </div>
-          <button class="sp-m-toggle-less">Show less <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,8 6,4 10,8"/></svg></button>
+          <button class="sp-m-toggle-less">Show less</button>
         </div>
       </div>
       <div class="included-card">
         <span class="included-card-num">Technical</span>
         <span class="included-card-name">Technical Website Observations</span>
         <p class="included-card-desc">What can be reasonably evaluated from the public-facing site. No backend access required. This covers what search engines and browsers see from the outside. Not a technical SEO audit.</p>
-        <button class="sp-m-toggle" aria-expanded="false">Read more <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,4 6,8 10,4"/></svg></button>
+        <button class="sp-m-toggle" aria-expanded="false">Read more</button>
         <div class="sp-m-expand-panel">
           <div class="included-card-items">
             <div class="included-card-item">Page Titles</div>
@@ -733,28 +740,28 @@
             <div class="included-card-item">Indexability Observations</div>
             <div class="included-card-item">General Best Practices</div>
           </div>
-          <button class="sp-m-toggle-less">Show less <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,8 6,4 10,8"/></svg></button>
+          <button class="sp-m-toggle-less">Show less</button>
         </div>
       </div>
       <div class="included-card">
         <span class="included-card-num">Deliverable</span>
         <span class="included-card-name">PDF &amp; Loom Walkthrough</span>
         <p class="included-card-desc">Everything captured in a structured written report and a personal Loom walkthrough. The Loom takes you through the findings page by page. More useful than reading a document on its own.</p>
-        <button class="sp-m-toggle" aria-expanded="false">Read more <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,4 6,8 10,4"/></svg></button>
+        <button class="sp-m-toggle" aria-expanded="false">Read more</button>
         <div class="sp-m-expand-panel">
           <div class="included-card-items">
             <div class="included-card-item">Written PDF Report</div>
             <div class="included-card-item">Loom Video Walkthrough</div>
             <div class="included-card-item">Prioritized Recommendations</div>
           </div>
-          <button class="sp-m-toggle-less">Show less <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,8 6,4 10,8"/></svg></button>
+          <button class="sp-m-toggle-less">Show less</button>
         </div>
       </div>
       <div class="included-card">
         <span class="included-card-num">Clarity</span>
         <span class="included-card-name">Not Included</span>
         <p class="included-card-desc">The audit is an evaluation, not an implementation. Any changes to your website are a separate engagement. The audit gives you a clear brief. What you do with it is up to you.</p>
-        <button class="sp-m-toggle" aria-expanded="false">Read more <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,4 6,8 10,4"/></svg></button>
+        <button class="sp-m-toggle" aria-expanded="false">Read more</button>
         <div class="sp-m-expand-panel">
           <div class="included-card-items">
             <div class="included-card-item">Website Changes</div>
@@ -765,7 +772,7 @@
             <div class="included-card-item">Keyword Research</div>
             <div class="included-card-item">SEO Strategy</div>
           </div>
-          <button class="sp-m-toggle-less">Show less <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,8 6,4 10,8"/></svg></button>
+          <button class="sp-m-toggle-less">Show less</button>
         </div>
       </div>
     </div>
