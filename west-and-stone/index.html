@@ -298,7 +298,7 @@
       document.body.appendChild(scrim);
       const navHeader = document.createElement('div');
       navHeader.className = 'mobile-nav-header';
-      navHeader.innerHTML = '<a class="mobile-nav-brand" href="/">Pink</a><button class="mobile-nav-close" id="navClose" aria-label="Close menu">&#215;</button>';
+      navHeader.innerHTML = '<button class="mobile-nav-close" id="navClose" aria-label="Close menu">&#215;</button>';
       mob.insertBefore(navHeader, mob.firstChild);
       function openNav() {
         ham.classList.add('open'); mob.classList.add('open'); scrim.classList.add('open');
