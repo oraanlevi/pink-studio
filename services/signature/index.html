@@ -691,34 +691,27 @@
       .included-grid { grid-template-columns: 1fr; display: flex; flex-direction: column; }
       .included-card {
         border-right: none !important;
-        border-bottom: 1px solid var(--rule) !important;
+        border-bottom: none !important;
+        border-top: 1px solid var(--ink);
         padding: 24px;
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: 8px;
       }
-      .included-card:last-child { border-bottom: none !important; }
-      .sp-m-card-img {
-        display: block;
-        width: 100%;
-        height: 130px;
-        background: rgba(26,25,23,.06);
-        border-radius: 10px;
-        flex-shrink: 0;
-      }
+      .sp-m-card-img { display: none; }
       .included-card-num {
         font-family: 'Poppins', system-ui, sans-serif;
         font-size: 10px;
         font-weight: 400;
-        letter-spacing: 2px;
+        letter-spacing: 0.2em;
         text-transform: uppercase;
         color: #D4537E;
         margin-bottom: 0;
       }
       .included-card-name {
         font-family: 'Poppins', system-ui, sans-serif;
-        font-size: 17px;
-        font-weight: 600;
+        font-size: 20px;
+        font-weight: 700;
         letter-spacing: -0.3px;
         color: var(--ink);
         margin-bottom: 0;
@@ -728,7 +721,7 @@
         font-size: 13px;
         font-weight: 300;
         line-height: 1.65;
-        color: var(--ink-2);
+        color: #6b6660;
       }
       /* Expand panel — max-height set per card via inline override to keep transition snappy */
       .sp-m-expand-panel {
@@ -742,14 +735,20 @@
       .sp-m-toggle {
         display: inline-flex;
         align-items: center;
-        gap: 5px;
+        gap: 0;
         background: none;
         border: none;
         padding: 6px 0 2px;
         font-family: 'Poppins', system-ui, sans-serif;
         font-size: 13px;
-        font-weight: 500;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
         color: #D4537E;
+        text-decoration: underline;
+        text-decoration-color: #D4537E;
+        text-decoration-thickness: 1.5px;
+        text-underline-offset: 3px;
         cursor: pointer;
       }
       .included-card.sp-expanded .sp-m-toggle { display: none; }
@@ -762,14 +761,20 @@
       .sp-m-toggle-less {
         display: none;
         align-items: center;
-        gap: 5px;
+        gap: 0;
         background: none;
         border: none;
         padding: 12px 0 4px;
         font-family: 'Poppins', system-ui, sans-serif;
         font-size: 13px;
-        font-weight: 500;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
         color: #D4537E;
+        text-decoration: underline;
+        text-decoration-color: #D4537E;
+        text-decoration-thickness: 1.5px;
+        text-underline-offset: 3px;
         cursor: pointer;
       }
       .included-card.sp-expanded .sp-m-toggle-less { display: inline-flex; }
@@ -979,10 +984,10 @@
 
       <div class="included-card">
         <div class="sp-m-card-img"></div>
-        <span class="included-card-num">01 · Direction</span>
+        <span class="included-card-num">Direction</span>
         <span class="included-card-name">Strategy &amp; Discovery</span>
         <p class="included-card-desc"><span class="sp-m-desc-long">We begin by understanding your brand, your clients, and what you need the site to do. Brand Direction is a collaborative process. We refine how your existing brand translates to the web: typography, colour, layout, imagery, and visual tone. This is not a logo or full identity service.</span><span class="sp-m-desc-short">Brand direction, typography, layout, and visual tone — refined collaboratively before anything is built.</span></p>
-        <button class="sp-m-toggle" aria-expanded="false">Read more <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,4 6,8 10,4"/></svg></button>
+        <button class="sp-m-toggle" aria-expanded="false">Read more</button>
         <div class="sp-m-expand-panel">
           <div class="included-card-items">
             <span class="included-card-item">Discovery &amp; Strategy Session</span>
@@ -990,16 +995,16 @@
             <span class="included-card-item">Content Planning</span>
             <span class="included-card-item">Collaborative Brand Direction</span>
           </div>
-          <button class="sp-m-toggle-less">Show less <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,8 6,4 10,8"/></svg></button>
+          <button class="sp-m-toggle-less">Show less</button>
         </div>
       </div>
 
       <div class="included-card">
         <div class="sp-m-card-img"></div>
-        <span class="included-card-num">02 · Design</span>
+        <span class="included-card-num">Design</span>
         <span class="included-card-name">Custom Website Design</span>
         <p class="included-card-desc"><span class="sp-m-desc-long">Every layout, typeface choice, and detail is designed specifically for your brand. Nothing is templated, nothing is borrowed. Desktop and mobile designed together, not one adapted from the other. Motion and interaction design included where appropriate.</span><span class="sp-m-desc-short">Every layout, typeface, and detail designed specifically for your brand — desktop and mobile built together, with motion and interaction included.</span></p>
-        <button class="sp-m-toggle" aria-expanded="false">Read more <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,4 6,8 10,4"/></svg></button>
+        <button class="sp-m-toggle" aria-expanded="false">Read more</button>
         <div class="sp-m-expand-panel">
           <div class="included-card-items">
             <span class="included-card-item">Full Site Design</span>
@@ -1008,16 +1013,16 @@
             <span class="included-card-item">Motion &amp; Interaction Design</span>
             <span class="included-card-item">Two Revision Rounds</span>
           </div>
-          <button class="sp-m-toggle-less">Show less <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,8 6,4 10,8"/></svg></button>
+          <button class="sp-m-toggle-less">Show less</button>
         </div>
       </div>
 
       <div class="included-card">
         <div class="sp-m-card-img"></div>
-        <span class="included-card-num">03 · Build</span>
+        <span class="included-card-num">Build</span>
         <span class="included-card-name">Development &amp; Setup</span>
         <p class="included-card-desc"><span class="sp-m-desc-long">Clean, fast code built to perform. No bloated page builders, no unnecessary dependencies. Technical SEO is handled in full, not as an afterthought. Forms configured and everything working from day one.</span><span class="sp-m-desc-short">Clean, fast code. No bloated builders. Technical SEO, forms, and cross-device testing handled in full from day one.</span></p>
-        <button class="sp-m-toggle" aria-expanded="false">Read more <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,4 6,8 10,4"/></svg></button>
+        <button class="sp-m-toggle" aria-expanded="false">Read more</button>
         <div class="sp-m-expand-panel">
           <div class="included-card-items">
             <span class="included-card-item">Custom Development</span>
@@ -1025,16 +1030,16 @@
             <span class="included-card-item">Technical SEO Setup</span>
             <span class="included-card-item">Cross-Browser &amp; Device Testing</span>
           </div>
-          <button class="sp-m-toggle-less">Show less <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,8 6,4 10,8"/></svg></button>
+          <button class="sp-m-toggle-less">Show less</button>
         </div>
       </div>
 
       <div class="included-card">
         <div class="sp-m-card-img"></div>
-        <span class="included-card-num">04 · Launch</span>
+        <span class="included-card-num">Launch</span>
         <span class="included-card-name">Launch &amp; Beyond</span>
         <p class="included-card-desc"><span class="sp-m-desc-long">Full launch coordination from domain connection to going live. Your site is verified across every device and browser before anything is published. Analytics and Search Console set up so you can see how the site performs from day one.</span><span class="sp-m-desc-short">Full launch coordination — domain, hosting, QA across every device, plus Analytics and Search Console setup immediately on launch.</span></p>
-        <button class="sp-m-toggle" aria-expanded="false">Read more <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,4 6,8 10,4"/></svg></button>
+        <button class="sp-m-toggle" aria-expanded="false">Read more</button>
         <div class="sp-m-expand-panel">
           <div class="included-card-items">
             <span class="included-card-item">Domain Connection</span>
@@ -1045,16 +1050,16 @@
             <span class="included-card-item">Website Walkthrough</span>
             <span class="included-card-item">Two Weeks Post-Launch Support</span>
           </div>
-          <button class="sp-m-toggle-less">Show less <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,8 6,4 10,8"/></svg></button>
+          <button class="sp-m-toggle-less">Show less</button>
         </div>
       </div>
 
       <div class="included-card">
         <div class="sp-m-card-img"></div>
-        <span class="included-card-num">05 · Add-Ons</span>
+        <span class="included-card-num">Add-Ons</span>
         <span class="included-card-name">Available When Required</span>
         <p class="included-card-desc"><span class="sp-m-desc-long">Some projects require functionality beyond the core package. These are not included as standard, but are available when the project calls for them. Each is scoped and priced individually during the proposal conversation.</span><span class="sp-m-desc-short">E-commerce, memberships, booking systems, custom CMS, and third-party integrations — available when the project calls for them, scoped individually.</span></p>
-        <button class="sp-m-toggle" aria-expanded="false">Read more <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,4 6,8 10,4"/></svg></button>
+        <button class="sp-m-toggle" aria-expanded="false">Read more</button>
         <div class="sp-m-expand-panel">
           <div class="included-card-items">
             <span class="included-card-item">E-Commerce</span>
@@ -1063,16 +1068,16 @@
             <span class="included-card-item">Custom CMS</span>
             <span class="included-card-item">Third-Party Integrations</span>
           </div>
-          <button class="sp-m-toggle-less">Show less <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,8 6,4 10,8"/></svg></button>
+          <button class="sp-m-toggle-less">Show less</button>
         </div>
       </div>
 
       <div class="included-card">
         <div class="sp-m-card-img"></div>
-        <span class="included-card-num">06 · Clarity</span>
+        <span class="included-card-num">Clarity</span>
         <span class="included-card-name">Not Included</span>
         <p class="included-card-desc"><span class="sp-m-desc-long">Clients provide a first draft of their copy. Pink refines it for clarity, hierarchy, and how it reads on the web. Full copywriting from scratch is not included. Stock image sourcing is included within reason. Professional photography is not.</span><span class="sp-m-desc-short">You provide a first draft of copy — Pink refines it for the web. Full copywriting, professional photography, and logo design are not included.</span></p>
-        <button class="sp-m-toggle" aria-expanded="false">Read more <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,4 6,8 10,4"/></svg></button>
+        <button class="sp-m-toggle" aria-expanded="false">Read more</button>
         <div class="sp-m-expand-panel">
           <div class="included-card-items">
             <span class="included-card-item">Logo Design</span>
@@ -1080,7 +1085,7 @@
             <span class="included-card-item">Full Copywriting</span>
             <span class="included-card-item">Third-Party Automations</span>
           </div>
-          <button class="sp-m-toggle-less">Show less <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,8 6,4 10,8"/></svg></button>
+          <button class="sp-m-toggle-less">Show less</button>
         </div>
       </div>
 
