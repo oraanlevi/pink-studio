@@ -415,9 +415,13 @@
       .work-card {
         min-height: auto;
         background: #fff;
-        border: 2px solid #D4537E !important;
+        border: 1px solid var(--rule) !important;
         border-radius: 12px;
         overflow: hidden;
+        transition: border-color 200ms ease;
+      }
+      .work-card.is-selected {
+        border: 2px solid #D4537E !important;
       }
       .work-card--feature { min-height: auto; grid-column: auto; }
       .work-card::after { display: none; }
@@ -849,6 +853,17 @@
     const formaVideo = document.getElementById('formaVideo');
     if (formaVideo) {
       setTimeout(() => formaVideo.play().catch(() => {}), 2000);
+    }
+
+    /* ── Mobile card tap selection ── */
+    if (window.matchMedia('(max-width: 860px)').matches) {
+      document.querySelectorAll('.work-card').forEach(card => {
+        card.addEventListener('click', () => {
+          const alreadySelected = card.classList.contains('is-selected');
+          document.querySelectorAll('.work-card').forEach(c => c.classList.remove('is-selected'));
+          if (!alreadySelected) card.classList.add('is-selected');
+        });
+      });
     }
   </script>
 
