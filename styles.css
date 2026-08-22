@@ -348,3 +348,22 @@ img { display: block; max-width: 100%; }
     text-transform: none;
   }
 }
+
+/* ── Scroll Reveal ── */
+/* Initial hidden state is only applied when JS has loaded (.js on <html>).
+   If the script fails, [data-reveal] elements remain fully visible. */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 500ms ease-out, transform 500ms ease-out;
+}
+.js [data-reveal].is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .js [data-reveal] {
+    transform: none;
+    transition: opacity 200ms ease-out;
+  }
+}
