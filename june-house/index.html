@@ -7,7 +7,7 @@
     <title>June House · Pink Web</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@300;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Oswald:wght@300;700&family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/styles.css" />
     <style>
       :root {
@@ -247,19 +247,196 @@
       .p-next-arrow { font-size: 28px; color: var(--ink-3); transition: transform 220ms ease, color 220ms; }
       .p-next:hover .p-next-arrow { transform: translateX(6px); color: var(--ink); }
 
+      /* Mobile-only elements — hidden on desktop */
+      .m-hero, .m-link-row, .m-mood-img { display: none; }
+
       @media (max-width: 860px) {
-        body { background: #fff; }
-        .project-hero { grid-template-columns: 1fr; min-height: auto; }
-        .hero-left { padding: 48px 24px 56px; border-right: none; border-bottom: 1px solid var(--rule); }
-        .hero-right { min-height: 56vw; }
-        .hero-desc { white-space: normal; font-size: 20px; }
-        .cards-row { grid-template-columns: 1fr; }
-        .ed-card { border-right: none; border-bottom: 1px solid var(--rule); padding: 56px 24px 64px; }
-        .ed-card:last-child { border-bottom: none; }
-        .ed-card--full { padding: 56px 24px 72px; text-align: center; align-items: center; }
-        .ed-card-lead { max-width: 100%; font-size: 17px; letter-spacing: 1px; }
-        .p-video-section { padding: 48px 24px; }
-        .p-next { padding: 40px 24px; }
+        body { background: #FAFAF8; }
+
+        /* Hide desktop hero panels */
+        .project-hero { display: block; border-bottom: none; min-height: 0; }
+        .hero-left, .hero-right { display: none; }
+
+        /* ── Mobile hero card ── */
+        .m-hero {
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          margin: 12px;
+          border-radius: 12px;
+          overflow: hidden;
+          position: relative;
+          min-height: 280px;
+        }
+        .m-hero-bg {
+          position: absolute;
+          inset: 0;
+          background: url('/assets/resort.png') center/cover no-repeat;
+        }
+        .m-hero-scrim {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(to top, rgba(0,0,0,.75) 0%, rgba(0,0,0,0) 55%);
+        }
+        .m-hero-content {
+          position: relative;
+          z-index: 1;
+          padding: 20px 20px 24px;
+        }
+        .m-hero-eyebrow {
+          font-family: 'Poppins', system-ui, sans-serif;
+          font-size: 10px;
+          font-weight: 400;
+          letter-spacing: 0.18em;
+          text-transform: uppercase;
+          color: rgba(255,255,255,.65);
+          display: block;
+          margin-bottom: 8px;
+        }
+        .m-hero-title {
+          font-family: 'Poppins', system-ui, sans-serif;
+          font-size: 32px;
+          font-weight: 700;
+          color: #fff;
+          display: block;
+          line-height: 1.05;
+          letter-spacing: -0.3px;
+          margin-bottom: 8px;
+        }
+        .m-hero-tagline {
+          font-family: 'Cormorant Garamond', Georgia, serif;
+          font-size: 17px;
+          font-style: italic;
+          font-weight: 300;
+          color: rgba(255,255,255,.80);
+          display: block;
+          line-height: 1.4;
+        }
+
+        /* ── Link row ── */
+        .m-link-row {
+          display: flex;
+          align-items: center;
+          gap: 20px;
+          padding: 14px 24px;
+          border-bottom: 1px solid var(--rule);
+        }
+        .m-link-live {
+          font-family: 'Poppins', system-ui, sans-serif;
+          font-size: 13px;
+          font-weight: 500;
+          color: #993556;
+          text-decoration: none;
+        }
+        .m-link-back {
+          font-family: 'Poppins', system-ui, sans-serif;
+          font-size: 13px;
+          font-weight: 400;
+          color: var(--ink-2);
+          text-decoration: none;
+        }
+
+        /* ── Narrative sections ── */
+        .cards-row { display: block; border-bottom: none; }
+        .ed-card {
+          border-right: none;
+          border-bottom: none;
+          padding: 40px 24px 32px;
+          text-align: center;
+          align-items: center;
+        }
+        .ed-card-label {
+          font-family: 'Poppins', system-ui, sans-serif;
+          font-size: 11px;
+          font-weight: 400;
+          letter-spacing: 0.2em;
+          text-transform: uppercase;
+          color: #993556;
+          margin-bottom: 16px;
+        }
+        .ed-card-lead {
+          font-family: 'Poppins', system-ui, sans-serif;
+          font-size: 14px;
+          font-weight: 300;
+          line-height: 1.75;
+          color: var(--ink-2);
+          letter-spacing: 0;
+          max-width: 100%;
+        }
+        .ed-card--full {
+          padding: 40px 24px 48px;
+          border-bottom: none;
+          text-align: center;
+          align-items: center;
+        }
+        .ed-card--full .ed-card-label {
+          font-family: 'Poppins', system-ui, sans-serif;
+          font-size: 11px;
+          font-weight: 400;
+          letter-spacing: 0.2em;
+          color: #993556;
+          margin-bottom: 16px;
+        }
+        .ed-card--full .ed-card-lead {
+          font-family: 'Poppins', system-ui, sans-serif;
+          font-size: 14px;
+          font-weight: 300;
+          line-height: 1.75;
+          letter-spacing: 0;
+          color: var(--ink-2);
+          max-width: 100%;
+        }
+
+        /* ── Mood image (between Challenge and Approach) ── */
+        .m-mood-img {
+          display: block;
+          margin: 8px 24px 0;
+          border-radius: 12px;
+          overflow: hidden;
+          aspect-ratio: 16/9;
+          background: url('/assets/junesnip.png') center/cover no-repeat;
+        }
+
+        /* ── Browser frames ── */
+        .j-frames { display: none; }
+
+        /* ── Video section ── */
+        .p-video-section { padding: 40px 24px 48px; border-bottom: 1px solid var(--rule); }
+        .p-video-heading {
+          font-family: 'Cormorant Garamond', Georgia, serif;
+          font-size: 28px;
+          font-style: italic;
+          font-weight: 300;
+          letter-spacing: 0;
+          text-transform: none;
+          color: var(--ink);
+        }
+        .p-video-wrap { border-radius: 12px; }
+
+        /* ── Next project card ── */
+        .p-next {
+          margin: 24px;
+          padding: 20px 24px;
+          border: 2px solid #D4537E;
+          border-radius: 12px;
+          border-bottom: 2px solid #D4537E;
+        }
+        .p-next-label {
+          font-family: 'Poppins', system-ui, sans-serif;
+          font-size: 10px;
+          font-weight: 400;
+          letter-spacing: 0.2em;
+          color: var(--ink-3);
+          margin-bottom: 6px;
+        }
+        .p-next-name {
+          font-family: 'Poppins', system-ui, sans-serif;
+          font-size: 22px;
+          font-weight: 700;
+          letter-spacing: -0.2px;
+          color: var(--ink);
+        }
+        .p-next-arrow { color: #D4537E; font-size: 20px; }
       }
     </style>
   </head>
@@ -303,6 +480,23 @@
       <a class="hero-right" href="https://june-house.pinkwebstudio.com" target="_blank" rel="noopener" style="cursor:pointer;">
         <div class="hero-right-bg"></div>
       </a>
+
+      <!-- Mobile hero (hidden on desktop) -->
+      <div class="m-hero" data-reveal>
+        <div class="m-hero-bg"></div>
+        <div class="m-hero-scrim"></div>
+        <div class="m-hero-content">
+          <span class="m-hero-eyebrow">Website · Interior Design Studio</span>
+          <span class="m-hero-title">June House</span>
+          <span class="m-hero-tagline">Timeless, collected, quietly considered.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile link row (hidden on desktop) -->
+    <div class="m-link-row">
+      <a class="m-link-live" href="https://june-house.pinkwebstudio.com" target="_blank" rel="noopener">View live ↗</a>
+      <a class="m-link-back" href="/work/">← Back to work</a>
     </div>
 
     <!-- Editorial Cards -->
@@ -311,6 +505,8 @@
         <span class="ed-card-label">The Challenge</span>
         <p class="ed-card-lead">Design an interior design studio that feels timeless instead of trend-driven. I wanted June House to feel like a studio that creates homes people can live in for decades, not spaces designed around short-lived trends. The challenge was communicating warmth, craftsmanship, and quiet luxury without making the experience feel overly styled.</p>
       </div>
+      <!-- Mood image — mobile only, hidden on desktop -->
+      <div class="m-mood-img" aria-hidden="true"></div>
       <div class="ed-card reveal">
         <span class="ed-card-label">The Approach</span>
         <p class="ed-card-lead">Let the materials tell the story. I designed every page to feel like walking through a beautifully collected home. Natural textures, architectural photography, generous white space, and restrained typography allow every project to breathe. Rather than filling the website with decoration, I wanted each detail to feel intentional and carefully considered.</p>
@@ -407,5 +603,6 @@
       }, { threshold: 0.05, rootMargin: "0px 0px -48px 0px" });
       document.querySelectorAll(".reveal").forEach(el => io.observe(el));
     </script>
+    <script src="/js/scroll-reveal.js" defer></script>
   </body>
 </html>
