@@ -677,6 +677,29 @@
         line-height: 1.65;
         color: var(--ink-2);
       }
+      .sp-m-item-list {
+        list-style: none;
+        margin: 10px 0 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+      }
+      .sp-m-item-list li {
+        font-family: 'Poppins', system-ui, sans-serif;
+        font-size: 12px;
+        font-weight: 300;
+        line-height: 1.5;
+        color: var(--ink-2);
+        padding-left: 14px;
+        position: relative;
+      }
+      .sp-m-item-list li::before {
+        content: '·';
+        position: absolute;
+        left: 0;
+        color: #D4537E;
+      }
       .sp-m-toggle { display: none; }
       .sp-m-toggle-less { display: none; }
       .sp-m-expand-panel { display: none; }
@@ -879,7 +902,13 @@
         <div class="sp-m-card-img"></div>
         <span class="included-card-num">Direction</span>
         <span class="included-card-name">Strategy &amp; Discovery</span>
-        <p class="included-card-desc"><span class="sp-m-desc-long">We begin by understanding your brand, your clients, and what you need the site to do. Brand Direction is a collaborative process. We refine how your existing brand translates to the web: typography, colour, layout, imagery, and visual tone. This is not a logo or full identity service.</span><span class="sp-m-desc-short">Starts with a discovery and strategy session, then covers site architecture, content planning, and collaborative brand direction — refining how your brand translates across typography, layout, and visual tone.</span></p>
+        <p class="included-card-desc">We start by understanding your brand, your clients, and what you need the site to do.</p>
+        <ul class="sp-m-item-list">
+          <li>Discovery &amp; Strategy Session</li>
+          <li>Site Architecture</li>
+          <li>Content Planning</li>
+          <li>Collaborative Brand Direction</li>
+        </ul>
         <button class="sp-m-toggle" aria-expanded="false">Read more</button>
         <div class="sp-m-expand-panel">
           <div class="included-card-items">
@@ -897,7 +926,14 @@
         <div class="sp-m-card-img"></div>
         <span class="included-card-num">Design</span>
         <span class="included-card-name">Custom Website Design</span>
-        <p class="included-card-desc"><span class="sp-m-desc-long">Every layout, typeface choice, and detail is designed specifically for your brand. Nothing is templated, nothing is borrowed. Desktop and mobile designed together, not one adapted from the other. Motion and interaction design included where appropriate.</span><span class="sp-m-desc-short">Every layout, typeface, and detail designed specifically for your brand — desktop and mobile built together, motion and interaction included, with two rounds of revisions.</span></p>
+        <p class="included-card-desc">Every layout, typeface, and detail designed specifically for your brand. Nothing templated, nothing borrowed.</p>
+        <ul class="sp-m-item-list">
+          <li>Full Site Design</li>
+          <li>Desktop &amp; Mobile</li>
+          <li>Responsive Layouts</li>
+          <li>Motion &amp; Interaction Design</li>
+          <li>Two Revision Rounds</li>
+        </ul>
         <button class="sp-m-toggle" aria-expanded="false">Read more</button>
         <div class="sp-m-expand-panel">
           <div class="included-card-items">
@@ -916,7 +952,13 @@
         <div class="sp-m-card-img"></div>
         <span class="included-card-num">Build</span>
         <span class="included-card-name">Development &amp; Setup</span>
-        <p class="included-card-desc"><span class="sp-m-desc-long">Clean, fast code built to perform. No bloated page builders, no unnecessary dependencies. Technical SEO is handled in full, not as an afterthought. Forms configured and everything working from day one.</span><span class="sp-m-desc-short">Clean, fast custom code — no bloated builders. Technical SEO, contact form setup, and cross-browser and device testing all handled from day one.</span></p>
+        <p class="included-card-desc">Clean, fast code built to perform. No bloated builders, no unnecessary dependencies.</p>
+        <ul class="sp-m-item-list">
+          <li>Custom Development</li>
+          <li>Contact Form</li>
+          <li>Technical SEO Setup</li>
+          <li>Cross-Browser &amp; Device Testing</li>
+        </ul>
         <button class="sp-m-toggle" aria-expanded="false">Read more</button>
         <div class="sp-m-expand-panel">
           <div class="included-card-items">
@@ -934,7 +976,16 @@
         <div class="sp-m-card-img"></div>
         <span class="included-card-num">Launch</span>
         <span class="included-card-name">Launch &amp; Beyond</span>
-        <p class="included-card-desc"><span class="sp-m-desc-long">Full launch coordination from domain connection to going live. Your site is verified across every device and browser before anything is published. Analytics and Search Console set up so you can see how the site performs from day one.</span><span class="sp-m-desc-short">Full launch coordination — domain connection, hosting deployment, QA across every device and browser, Analytics and Search Console setup, a website walkthrough, and two weeks of post-launch support.</span></p>
+        <p class="included-card-desc">Full launch coordination, from domain connection to going live.</p>
+        <ul class="sp-m-item-list">
+          <li>Domain Connection</li>
+          <li>Hosting Deployment</li>
+          <li>Final QA &amp; Testing</li>
+          <li>Google Analytics Setup</li>
+          <li>Google Search Console Setup</li>
+          <li>Website Walkthrough</li>
+          <li>Two Weeks Post-Launch Support</li>
+        </ul>
         <button class="sp-m-toggle" aria-expanded="false">Read more</button>
         <div class="sp-m-expand-panel">
           <div class="included-card-items">
@@ -974,7 +1025,13 @@
         <div class="sp-m-card-img"></div>
         <span class="included-card-num">Clarity</span>
         <span class="included-card-name">Not Included</span>
-        <p class="included-card-desc"><span class="sp-m-desc-long">Clients provide a first draft of their copy. Pink refines it for clarity, hierarchy, and how it reads on the web. Full copywriting from scratch is not included. Stock image sourcing is included within reason. Professional photography is not.</span><span class="sp-m-desc-short">You provide a first draft of copy — Pink refines it for the web. Full copywriting, professional photography, logo design, and third-party automations are not included.</span></p>
+        <p class="included-card-desc">You provide a first draft of copy — Pink refines it for the web. These are not included:</p>
+        <ul class="sp-m-item-list">
+          <li>Logo Design</li>
+          <li>Professional Photography</li>
+          <li>Full Copywriting</li>
+          <li>Third-Party Automations</li>
+        </ul>
         <button class="sp-m-toggle" aria-expanded="false">Read more</button>
         <div class="sp-m-expand-panel">
           <div class="included-card-items">
