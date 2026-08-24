@@ -273,79 +273,78 @@
         line-height: 1.2;
       }
 
-      /* Cards */
+      /* Typography-led list — no card containers */
+      .service-grid      { gap: 0; }
       .service-card {
         min-height: auto;
-        border-radius: 12px;
-        border: 1px solid var(--rule);
+        border: none;
+        border-top: 1px solid var(--rule);
+        border-radius: 0;
+        background: transparent;
+        overflow: visible;
       }
-      .service-card--featured { border: 2px solid #D4537E; }
-      .service-card:hover      { transform: none; box-shadow: none; }
-      .service-card-bg         { display: none; }
-      .service-card-content    { min-height: auto; padding: 20px; }
-      .service-card-top        { margin-bottom: 16px; }
-      .service-card-details    { gap: 12px; }
+      .service-card:last-child  { border-bottom: 1px solid var(--rule); }
+      .service-card--featured,
+      .service-card--selected   { border: none; border-top: 1px solid var(--rule); }
+      .service-card:hover       { transform: none; box-shadow: none; }
+      .service-card-bg          { display: none; }
+      .service-card-content     { min-height: auto; padding: 24px 0; background: transparent; }
+      .service-card--full .service-card-content { padding: 24px 0; }
+      .service-card-top         { margin-bottom: 12px; }
+      .service-card-details     { gap: 10px; }
       .service-card-details > * { opacity: 1; transform: none; }
+      .detail-rule              { display: none; }
 
-      /* Card name: Poppins mixed case, one line */
+      /* Service name — large Cormorant Garamond italic */
       .service-card-name {
-        font-family: 'Poppins', sans-serif;
-        font-size: 15px;
-        font-weight: 500;
+        font-family: 'Cormorant Garamond', Georgia, serif;
+        font-style: italic;
+        font-weight: 300;
+        font-size: 36px;
         text-transform: none;
-        letter-spacing: normal;
+        letter-spacing: -0.3px;
         color: var(--ink);
-        line-height: 1.3;
-        margin-bottom: 4px;
+        line-height: 1.1;
+        margin-bottom: 6px;
       }
       .service-card-name br { display: none; }
       .service-card:hover .service-card-name { color: var(--ink); }
+      .service-card-sub { display: none; }
 
-      /* Card sub */
-      .service-card-sub {
+      /* Pricing row */
+      .detail-fields { display: flex; flex-direction: row; gap: 20px; align-items: baseline; }
+      .detail-field-label {
         font-family: 'Poppins', sans-serif;
-        font-size: 12px;
+        font-size: 9px;
+        font-weight: 500;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--ink-3);
+        margin-bottom: 0;
+      }
+      .detail-field-value {
+        font-family: 'Poppins', sans-serif;
+        font-size: 13px;
+        font-weight: 300;
         color: var(--ink-2);
       }
 
-      /* Pricing fields */
-      .detail-fields      { gap: 24px; }
-      .detail-field-label { font-family: 'Poppins', sans-serif; font-size: 9px; }
-      .detail-field-value { font-family: 'Poppins', sans-serif; font-size: 13px; }
-
-      /* Pill button */
+      /* View details — pink underlined link */
       .detail-link {
-        display: block;
-        text-align: center;
-        padding: 12px 16px;
-        border-radius: 999px;
-        border: 1px solid var(--ink-3);
+        display: inline;
         font-family: 'Poppins', sans-serif;
-        font-size: 11px;
-        font-weight: 500;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        color: var(--ink);
-        text-decoration: none;
-      }
-      .service-card--featured .detail-link,
-      .service-card--selected .detail-link {
-        background: #D4537E;
-        border-color: #D4537E;
-        color: #fff;
+        font-size: 12px;
+        font-weight: 400;
+        color: #D4537E;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        text-decoration-color: rgba(212,83,126,0.4);
+        padding: 0;
+        border: none;
+        background: transparent;
       }
       .detail-link-arrow { display: none; }
-
-      /* Tapping a card selects it (pink border + filled button) */
-      .service-card--selected { border: 2px solid #D4537E; }
-
-      /* Disable the aggressive hover-based sibling dimming on mobile */
       .service-grid:has(.service-card:hover) .service-card:not(:hover) { opacity: 1; }
-
-      /* Subtle dim on unselected cards when one is selected */
-      .service-grid:has(.service-card--selected) .service-card:not(.service-card--selected) {
-        opacity: 0.88;
-      }
 
       /* Custom solutions body text */
       .service-card-body {
@@ -390,7 +389,7 @@
   <div class="service-grid-wrap reveal">
     <div class="service-grid">
 
-      <div class="service-card service-card--featured">
+      <div class="service-card">
         <img class="service-card-bg" src="/assets/marble.png" alt="" />
         <div class="service-card-content">
           <div class="service-card-top">
@@ -564,17 +563,6 @@
     }, { threshold: 0.06 });
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-    /* Mobile card selection: tap to highlight, then tap View Details to navigate */
-    if (window.matchMedia('(max-width: 860px)').matches) {
-      const cards = document.querySelectorAll('.service-card');
-      cards.forEach(card => {
-        card.addEventListener('click', function(e) {
-          if (e.target.closest('.detail-link')) return; /* let the link handle itself */
-          cards.forEach(c => c.classList.remove('service-card--selected'));
-          this.classList.add('service-card--selected');
-        });
-      });
-    }
   </script>
 
 </body>
