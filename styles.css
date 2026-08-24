@@ -284,10 +284,10 @@ img { display: block; max-width: 100%; }
 /* ── Responsive ── */
 @media (max-width: 860px) {
   :root { --nav-h: 56px; }
-  .nav { padding: 0 24px; background: rgba(255,255,255,0.95); }
+  .nav { padding: 0 24px; background: rgba(255,255,255,0.95); justify-content: center; position: relative; }
   .nav-links { display: none; }
   .nav-end { display: none; }
-  .nav-ham { display: flex; }
+  .nav-ham { display: flex; position: absolute; right: 24px; top: 50%; transform: translateY(-50%); }
   .mobile-nav { display: flex; height: 100vh; }
   .nav-scrim { display: block; }
   .mobile-nav-cta {
