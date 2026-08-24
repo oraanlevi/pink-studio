@@ -7,7 +7,7 @@
   <title>Website Refresh · Pink Web Studio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/styles.css" />
   <style>
 
@@ -502,75 +502,72 @@
     .sp-breadcrumb a:hover { color: var(--ink-2); }
 
     /* Mobile-only elements — hidden on desktop */
+    .sp-m-eyebrow, .sp-m-headline, .sp-m-pricing-row, .sp-m-invest-cta, .sp-m-item-list,
     .sp-m-toggle, .sp-m-toggle-less { display: none; }
 
     /* ── Mobile ── */
     @media (max-width: 860px) {
-      .sp-hero { min-height: 100svh; }
-      .sp-hero-inner { padding: 0 24px 56px; gap: 28px; }
-      .sp-hero-title { font-size: clamp(52px, 12vw, 80px); letter-spacing: -2px; }
-      .sp-hero-bottom { flex-direction: column; align-items: flex-start; gap: 24px; }
-      .argument-intro { padding: 40px 24px; }
-      .sp-section-head { padding: 36px 24px 24px; }
-      .sp-section-body { padding: 0 24px 48px; }
+      /* Hero */
+      .sp-hero { min-height: auto; overflow: visible; border-bottom: none; background: #FAFAF8; }
+      .sp-hero-bg, .sp-hero-overlay { display: none; }
+      .sp-hero-inner { padding: 32px 24px 0; gap: 0; }
+      .sp-hero-title { display: none; }
+      .sp-hero-bottom { display: none; }
+
+      /* Mobile eyebrow / headline */
+      .sp-m-eyebrow { display: block; font-family: 'Poppins', system-ui, sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: #993556; margin-bottom: 16px; }
+      .sp-m-headline { display: block; font-family: 'Poppins', system-ui, sans-serif; font-weight: 700; font-size: 36px; color: var(--ink); line-height: 1.08; letter-spacing: -0.6px; margin-bottom: 28px; }
+
+      /* Pricing row */
+      .sp-m-pricing-row { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; padding: 0 24px 32px; border-bottom: 1px solid var(--rule); }
+      .sp-m-price { font-family: 'Poppins', system-ui, sans-serif; font-size: 22px; font-weight: 700; color: var(--ink); letter-spacing: -0.5px; }
+      .sp-m-timeline { font-family: 'Poppins', system-ui, sans-serif; font-size: 13px; font-weight: 300; color: var(--ink-2); }
+      .sp-m-book-link { font-family: 'Poppins', system-ui, sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #993556; margin-left: auto; text-decoration: none; }
+
+      /* Hide thesis & argument */
+      .thesis, .argument { display: none; }
+
+      /* Section head */
+      .sp-section-head { display: none; }
+
+      /* Included cards */
       .included-grid { grid-template-columns: 1fr; }
-      .included-card { border-right: none !important; border-bottom: none !important; border-top: 1px solid var(--ink); padding: 24px; display: flex; flex-direction: column; gap: 8px; }
-      .included-card-num { font-family: 'Poppins', system-ui, sans-serif; font-size: 10px; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; color: #D4537E; margin-bottom: 0; }
-      .included-card-name { font-family: 'Poppins', system-ui, sans-serif; font-size: 20px; font-weight: 700; letter-spacing: -0.3px; margin-bottom: 0; }
-      .included-card-desc { font-family: 'Poppins', system-ui, sans-serif; font-size: 13px; font-weight: 300; line-height: 1.65; color: #6b6660; }
+      .included-card { border-right: none !important; border-bottom: none !important; border-top: 1px solid var(--rule); padding: 24px 24px 40px; display: flex; flex-direction: column; gap: 6px; }
+      .included-card-num { font-family: 'Poppins', system-ui, sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: #993556; margin-bottom: 4px; }
+      .included-card-name { font-family: 'Poppins', system-ui, sans-serif; font-size: 18px; font-weight: 700; letter-spacing: -0.3px; margin-bottom: 6px; line-height: 1.2; }
+      .included-card-desc { font-family: 'Poppins', system-ui, sans-serif; font-size: 12px; font-weight: 300; line-height: 1.6; color: var(--ink-2); }
+      .sp-m-toggle, .sp-m-toggle-less { display: none; }
+      .sp-m-expand-panel { display: none; }
+
+      /* Deliverable list */
+      .sp-m-item-list { display: flex; flex-direction: column; list-style: none; margin: 10px 0 0; padding: 0; gap: 3px; }
+      .sp-m-item-list li { font-family: 'Poppins', system-ui, sans-serif; font-size: 12px; font-weight: 300; line-height: 1.5; color: var(--ink-2); padding-left: 14px; position: relative; }
+      .sp-m-item-list li::before { content: '·'; position: absolute; left: 0; color: #D4537E; }
+
+      /* Process */
       .process-row { grid-template-columns: 1fr; }
       .process-step { border-right: none !important; border-bottom: 1px solid var(--rule); padding: 40px 24px 48px; }
       .process-step:last-child { border-bottom: none; }
-      .investment-main { flex-direction: column; align-items: flex-start; padding: 40px 24px; gap: 32px; }
+
+      /* Investment */
+      .investment-main { flex-direction: column; align-items: center; text-align: center; padding: 64px 24px 48px; gap: 12px; border-bottom: none; }
+      .investment-stat-label { font-family: 'Poppins', system-ui, sans-serif; font-size: 10px; letter-spacing: 0.15em; }
+      .investment-amount { font-family: 'Cormorant Garamond', Georgia, serif; font-style: normal; font-weight: 300; font-size: 68px; letter-spacing: -1px; line-height: 1; }
       .investment-divider { display: none; }
-      .investment-cta { margin-left: 0; }
-      .investment-note { padding: 24px; }
+      .investment-cta { display: none; }
+      .investment-note { padding: 0 24px 24px; border-bottom: none; }
+      .sp-m-invest-cta { display: block; width: 100%; padding: 20px 24px; background: #D4537E; color: #fff; font-family: 'Poppins', system-ui, sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; text-align: center; text-decoration: none; border-bottom: 1px solid var(--rule); }
+
+      /* FAQ */
+      .sp-section-body { padding: 0 24px 48px; }
+
+      /* Final CTA */
       .sp-cta { grid-template-columns: 1fr; min-height: auto; }
       .sp-cta-left, .sp-cta-right { padding: 48px 24px; }
       .sp-cta-left { padding-bottom: 0; }
-      .sp-breadcrumb { padding: 18px 24px; }
 
-      /* Card expand / collapse */
-      .sp-m-expand-panel {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 380ms cubic-bezier(.16,1,.3,1);
-      }
-      .included-card.sp-expanded .sp-m-expand-panel { max-height: 500px; }
-      .sp-m-toggle {
-        display: inline-flex;
-        align-items: center;
-        gap: 0;
-        background: none;
-        border: none;
-        padding: 6px 0 2px;
-        font-family: 'Poppins', system-ui, sans-serif;
-        font-size: 13px;
-        font-weight: 400;
-        letter-spacing: 0.05em;
-        text-transform: uppercase;
-        color: #D4537E;
-        text-decoration: none;
-        cursor: pointer;
-      }
-      .included-card.sp-expanded .sp-m-toggle { display: none; }
-      .sp-m-toggle-less {
-        display: none;
-        align-items: center;
-        gap: 0;
-        background: none;
-        border: none;
-        padding: 12px 0 4px;
-        font-family: 'Poppins', system-ui, sans-serif;
-        font-size: 13px;
-        font-weight: 400;
-        letter-spacing: 0.05em;
-        text-transform: uppercase;
-        color: #D4537E;
-        text-decoration: none;
-        cursor: pointer;
-      }
-      .included-card.sp-expanded .sp-m-toggle-less { display: inline-flex; }
+      /* Breadcrumb */
+      .sp-breadcrumb { padding: 18px 24px; }
     }
 
   </style>
@@ -609,6 +606,8 @@
     <div class="sp-hero-bg"></div>
     <div class="sp-hero-overlay"></div>
     <div class="sp-hero-inner">
+      <span class="sp-m-eyebrow">Service · Website Refresh</span>
+      <span class="sp-m-headline">You don't need a new website. You need your current one to work.</span>
       <h1 class="sp-hero-title">Website<br>Refresh</h1>
       <div class="sp-hero-bottom">
         <div class="sp-hero-stats">
@@ -622,6 +621,11 @@
           </div>
         </div>
         <a href="https://calendly.com/oraanlevi1/30min" class="sp-hero-cta">Book a Call <span class="btn-arrow">&rarr;</span></a>
+      </div>
+      <div class="sp-m-pricing-row">
+        <span class="sp-m-price">$2,000</span>
+        <span class="sp-m-timeline">· Up to 4 weeks</span>
+        <a href="https://calendly.com/oraanlevi1/30min" class="sp-m-book-link">Book a Call ↗</a>
       </div>
     </div>
   </section>
@@ -684,7 +688,13 @@
       <div class="included-card">
         <span class="included-card-num">Review</span>
         <span class="included-card-name">Collaborative Assessment</span>
-        <p class="included-card-desc">Every Refresh begins with a structured review of the existing website. Together we identify what's working, what no longer reflects the business, what should be removed, and what should be added. Nothing changes until the plan is agreed.</p>
+        <p class="included-card-desc">Every Refresh begins with a structured review of the existing website. Nothing changes until the plan is agreed.</p>
+        <ul class="sp-m-item-list">
+          <li>What's Working</li>
+          <li>What's No Longer Relevant</li>
+          <li>Gaps &amp; Opportunities</li>
+          <li>Agreed Improvement Plan</li>
+        </ul>
         <button class="sp-m-toggle" aria-expanded="false">Read more</button>
         <div class="sp-m-expand-panel">
           <div class="included-card-items">
@@ -699,7 +709,16 @@
       <div class="included-card">
         <span class="included-card-num">Refine</span>
         <span class="included-card-name">Possible Improvements</span>
-        <p class="included-card-desc">Based on the review, we implement only the improvements the site actually needs. Every Refresh is scoped to your specific project. The list below reflects what's possible, not what's always included.</p>
+        <p class="included-card-desc">Based on the review, we implement only the improvements the site actually needs. Scope varies by project.</p>
+        <ul class="sp-m-item-list">
+          <li>Typography &amp; Layout</li>
+          <li>Mobile &amp; Responsive</li>
+          <li>Navigation</li>
+          <li>New Sections</li>
+          <li>Image Replacement</li>
+          <li>Motion &amp; Interactions</li>
+          <li>Accessibility</li>
+        </ul>
         <button class="sp-m-toggle" aria-expanded="false">Read more</button>
         <div class="sp-m-expand-panel">
           <div class="included-card-items">
@@ -717,7 +736,14 @@
       <div class="included-card">
         <span class="included-card-num">Relaunch</span>
         <span class="included-card-name">QA &amp; Publish</span>
-        <p class="included-card-desc">Once the improvements are approved, the updated site is tested across devices and browsers and published. Domain connection is handled if required. Two weeks of post-launch support follow.</p>
+        <p class="included-card-desc">Once improvements are approved, the updated site is tested and published. Two weeks of post-launch support follow.</p>
+        <ul class="sp-m-item-list">
+          <li>Final QA &amp; Testing</li>
+          <li>Cross-Device Testing</li>
+          <li>Publish Updates</li>
+          <li>Domain Connection if Required</li>
+          <li>Two Weeks Post-Launch Support</li>
+        </ul>
         <button class="sp-m-toggle" aria-expanded="false">Read more</button>
         <div class="sp-m-expand-panel">
           <div class="included-card-items">
@@ -733,7 +759,14 @@
       <div class="included-card">
         <span class="included-card-num">Clarity</span>
         <span class="included-card-name">Not Included</span>
-        <p class="included-card-desc">A Refresh improves an existing website. It is not a rebuild, a rebrand, or a platform migration. New e-commerce functionality can be scoped separately if the project calls for it.</p>
+        <p class="included-card-desc">A Refresh improves an existing website. It is not a rebuild, a rebrand, or a platform migration. These are not included:</p>
+        <ul class="sp-m-item-list">
+          <li>New Website Builds</li>
+          <li>Brand Identity &amp; Logo Design</li>
+          <li>Full Copywriting</li>
+          <li>CMS Migrations</li>
+          <li>New E-Commerce Functionality</li>
+        </ul>
         <button class="sp-m-toggle" aria-expanded="false">Read more</button>
         <div class="sp-m-expand-panel">
           <div class="included-card-items">
@@ -796,6 +829,7 @@
     <div class="investment-note">
       <p>Every Refresh is custom scoped after the initial review based on the improvements the site actually needs. The starting price reflects a focused engagement for an existing small-to-medium website, typically six primary pages or fewer. The final scope and investment are confirmed before any work begins. Payment is collected via invoice or Square link. No surprises, no hidden fees.</p>
     </div>
+    <a href="https://calendly.com/oraanlevi1/30min" class="sp-m-invest-cta">BOOK A CALL ↗</a>
   </section>
 
   <!-- FAQ -->
@@ -959,5 +993,6 @@
       });
     });
   </script>
+  <script src="/js/scroll-reveal.js" defer></script>
 </body>
 </html>
