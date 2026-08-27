@@ -180,71 +180,101 @@
         height: auto;
       }
 
-      /* Make Verde Yours pitch */
+      /* ── Make Verde Yours — editorial pitch ── */
       .verde-pitch {
         background: #141412;
-        padding: 128px 72px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
+        display: grid;
+        grid-template-columns: 1fr 300px;
+        overflow: hidden;
       }
-      .verde-pitch-inner {
-        max-width: 620px;
+      .vp-m-img { display: none; }
+      .vp-left {
+        padding: 112px 64px 112px 96px;
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
       }
-      .verde-pitch-label {
+      .vp-label {
         font-family: "Bebas Neue", "Impact", sans-serif;
-        font-size: 16px;
-        font-weight: 400;
-        letter-spacing: 4px;
+        font-size: 12px;
+        letter-spacing: 6px;
         text-transform: uppercase;
         color: #D4537E;
         display: block;
-        margin-bottom: 28px;
+        margin-bottom: 44px;
       }
-      .verde-pitch-heading {
+      .vp-heading {
         font-family: "Oswald", "Impact", sans-serif;
-        font-size: clamp(48px, 6vw, 80px);
+        font-size: clamp(80px, 10vw, 128px);
         font-weight: 700;
         color: #fff;
-        line-height: .96;
-        letter-spacing: -1px;
-        margin: 0 0 32px;
+        line-height: 0.88;
+        letter-spacing: -2px;
+        text-transform: uppercase;
+        margin: 0 0 36px;
       }
-      .verde-pitch-sub {
-        font-family: "Oswald", "Impact", sans-serif;
-        font-size: 22px;
+      .vp-rule {
+        width: 48px;
+        height: 1px;
+        background: #D4537E;
+        margin-bottom: 28px;
+        flex-shrink: 0;
+      }
+      .vp-sub {
+        font-family: 'Poppins', system-ui, sans-serif;
+        font-size: 14px;
+        font-style: italic;
         font-weight: 300;
-        letter-spacing: 2px;
-        color: rgba(255,255,255,.55);
-        margin: 0 0 28px;
-        line-height: 1.5;
+        color: rgba(255,255,255,.48);
+        margin-bottom: 20px;
+        line-height: 1.65;
       }
-      .verde-pitch-body {
+      .vp-body {
         font-family: 'Poppins', system-ui, sans-serif;
         font-size: 13px;
         font-weight: 300;
-        color: rgba(255,255,255,.40);
-        line-height: 1.85;
-        margin: 0 0 48px;
-        max-width: 42ch;
+        color: rgba(255,255,255,.33);
+        line-height: 1.9;
+        max-width: 38ch;
+        margin-bottom: 52px;
       }
-      .verde-pitch-cta {
+      .vp-tags { display: none; }
+      .vp-cta {
         font-family: "Oswald", "Impact", sans-serif;
-        font-size: 14px;
+        font-size: 12px;
         font-weight: 300;
-        letter-spacing: 3.5px;
+        letter-spacing: 4px;
         text-transform: uppercase;
         text-decoration: none;
-        color: #fff;
-        border: 1px solid rgba(255,255,255,.2);
-        padding: 16px 40px;
-        transition: background 220ms, border-color 220ms;
+        color: rgba(255,255,255,.60);
+        transition: color 220ms;
       }
-      .verde-pitch-cta:hover { background: #D4537E; border-color: #D4537E; }
+      .vp-cta:hover { color: #D4537E; }
+      .vp-right {
+        display: flex;
+        flex-direction: column;
+      }
+      .vp-img {
+        flex: 1;
+        background: url('/assets/verde-hover.png') center top / cover no-repeat;
+        min-height: 300px;
+      }
+      .vp-tags--right {
+        padding: 24px 32px 24px 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+        align-items: flex-end;
+      }
+      .vp-tags--right span,
+      .vp-tags span {
+        font-family: 'Poppins', system-ui, sans-serif;
+        font-size: 10px;
+        font-weight: 400;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,.18);
+      }
 
       /* Next */
       .p-next { padding: 64px; display: flex; align-items: center; justify-content: space-between; text-decoration: none; border-bottom: 1px solid var(--rule); transition: background 180ms; }
@@ -416,11 +446,35 @@
         }
         .p-img-wrap { border-radius: 12px; }
 
-        /* Make Verde Yours mobile */
-        .verde-pitch { padding: 72px 24px; }
-        .verde-pitch-heading { font-size: 44px; }
-        .verde-pitch-sub { font-size: 18px; letter-spacing: 1px; }
-        .verde-pitch-cta { width: 100%; text-align: center; padding: 16px 24px; display: block; }
+        /* Make Verde Yours — mobile editorial */
+        .verde-pitch {
+          display: block;
+          position: relative;
+          overflow: hidden;
+          padding: 0;
+        }
+        .vp-m-img {
+          display: block;
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: 44%;
+          height: 210px;
+          background: url('/assets/verde-hover.png') center top / cover no-repeat;
+        }
+        .vp-right { display: none; }
+        .vp-left {
+          padding: 52px 24px 60px 24px;
+          position: relative;
+          z-index: 1;
+        }
+        .vp-label { font-size: 11px; letter-spacing: 5px; margin-bottom: 32px; }
+        .vp-heading { font-size: 60px; letter-spacing: -1.5px; margin-bottom: 28px; }
+        .vp-rule { width: 36px; margin-bottom: 20px; }
+        .vp-sub { font-size: 13px; margin-bottom: 16px; }
+        .vp-body { font-size: 13px; max-width: 100%; margin-bottom: 28px; }
+        .vp-tags { display: flex; flex-direction: column; gap: 6px; margin-bottom: 36px; }
+        .vp-cta { font-size: 12px; letter-spacing: 3px; padding: 12px 0; display: inline-block; }
 
         /* Next project card */
         .p-next {
@@ -543,12 +597,27 @@
 
     <!-- Make Verde Yours -->
     <div class="verde-pitch" data-reveal>
-      <div class="verde-pitch-inner">
-        <span class="verde-pitch-label">Pink Template · 01</span>
-        <h2 class="verde-pitch-heading">Make Verde Yours</h2>
-        <p class="verde-pitch-sub">Launching a skincare brand with one hero product?</p>
-        <p class="verde-pitch-body">VERDE is available as a semi-custom website experience. Your brand, imagery, product and story. Built and launched by Pink Web Studio.</p>
-        <a class="verde-pitch-cta" href="/contact/?ref=verde-template">Inquire about VERDE →</a>
+      <div class="vp-m-img" aria-hidden="true"></div>
+      <div class="vp-left">
+        <span class="vp-label">Pink Template · 01</span>
+        <h2 class="vp-heading">Make Verde<br>Yours</h2>
+        <div class="vp-rule"></div>
+        <p class="vp-sub">Launching a skincare brand with one hero product?</p>
+        <p class="vp-body">VERDE is available as a semi-custom website experience. Your brand, imagery, product and story. Built and launched by Pink Web Studio.</p>
+        <div class="vp-tags">
+          <span>Skincare / Beauty</span>
+          <span>Editorial Commerce</span>
+          <span>Semi-Custom</span>
+        </div>
+        <a class="vp-cta" href="/contact/?ref=verde-template">Inquire about Verde →</a>
+      </div>
+      <div class="vp-right">
+        <div class="vp-img"></div>
+        <div class="vp-tags--right">
+          <span>Skincare / Beauty</span>
+          <span>Editorial Commerce</span>
+          <span>Semi-Custom</span>
+        </div>
       </div>
     </div>
 
