@@ -7,7 +7,7 @@
     <title>Verde · Pink Web</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Oswald:wght@300;700&family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/styles.css" />
     <style>
       :root {
@@ -19,7 +19,7 @@
       }
       body { background: var(--bg); }
 
-      /* ── Split Hero ── */
+      /* Split Hero */
       .project-hero {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -37,41 +37,38 @@
       }
       .hero-top { display: flex; flex-direction: column; }
       .hero-tag {
-        font-family: 'Poppins', system-ui, sans-serif;
-        font-size: 11px;
+        font-family: "Bebas Neue", "Impact", sans-serif;
+        font-size: 16px;
         font-weight: 400;
-        letter-spacing: 0.22em;
+        letter-spacing: 4px;
         text-transform: uppercase;
         color: var(--ink-2);
         display: block;
-        margin-bottom: 24px;
+        margin-bottom: 20px;
       }
       .hero-title {
-        font-family: 'Cormorant Garamond', Georgia, serif;
-        font-size: clamp(72px, 11vw, 140px);
-        font-weight: 300;
-        font-style: italic;
+        font-family: "Oswald", "Impact", sans-serif;
+        font-size: clamp(60px, 9vw, 116px);
+        font-weight: 700;
         color: var(--ink);
-        line-height: .88;
+        line-height: .92;
         letter-spacing: -2px;
-        margin-bottom: 28px;
+        margin-bottom: 40px;
         display: block;
       }
       .hero-desc {
-        font-family: 'Poppins', system-ui, sans-serif;
-        font-size: 12px;
-        font-weight: 300;
-        letter-spacing: 0.1em;
+        font-size: 18px;
+        font-style: normal;
         color: var(--ink-2);
-        line-height: 1.7;
-        margin-bottom: 52px;
+        line-height: 1.6;
+        margin-bottom: 36px;
       }
       .hero-bottom { display: flex; flex-direction: row; gap: 28px; flex-wrap: wrap; justify-content: center; align-items: center; }
       .hero-link {
-        font-family: 'Poppins', system-ui, sans-serif;
-        font-size: 12px;
-        font-weight: 400;
-        letter-spacing: 0.12em;
+        font-family: "Oswald", "Impact", sans-serif;
+        font-size: 13px;
+        font-weight: 300;
+        letter-spacing: 3.5px;
         text-transform: uppercase;
         color: var(--ink);
         text-decoration: none;
@@ -79,7 +76,7 @@
         display: inline-block;
       }
       .hero-link:hover { opacity: .4; }
-      .hero-link--live { color: #993556; font-weight: 500; }
+      .hero-link--live { color: #C9607A; font-size: 15px; font-weight: 700; }
       .hero-right {
         position: relative;
         overflow: hidden;
@@ -95,14 +92,14 @@
         to   { transform: scale(1); }
       }
 
-      /* ── Editorial Cards ── */
+      /* Editorial Cards */
       .cards-row {
         display: grid;
         grid-template-columns: 1fr 1fr;
         border-bottom: 1px solid var(--rule);
       }
       .ed-card {
-        padding: 96px 56px;
+        padding: 96px 56px 96px;
         border-right: 1px solid var(--rule);
         display: flex;
         flex-direction: column;
@@ -121,41 +118,39 @@
         justify-content: center;
       }
       .ed-card-label {
-        font-family: 'Poppins', system-ui, sans-serif;
-        font-size: 11px;
-        font-weight: 400;
-        letter-spacing: 0.22em;
+        font-family: "Oswald", "Impact", sans-serif;
+        font-size: 20px;
+        font-weight: 300;
+        letter-spacing: 5px;
         text-transform: uppercase;
-        color: var(--ink-3);
+        color: var(--ink);
         display: block;
-        margin-bottom: 32px;
+        margin-bottom: 36px;
       }
       .ed-card-lead {
-        font-family: 'Cormorant Garamond', Georgia, serif;
-        font-size: 22px;
+        font-family: "Oswald", "Impact", sans-serif;
+        font-size: 20px;
         font-weight: 300;
-        font-style: italic;
-        color: var(--ink-2);
+        font-style: normal;
+        color: #4A4744;
         line-height: 1.65;
-        letter-spacing: 0;
-        max-width: 34ch;
+        letter-spacing: 2px;
+        max-width: 36ch;
         margin-bottom: 0;
       }
-      .ed-card-body {
-        font-family: 'Poppins', system-ui, sans-serif;
-        font-size: 13px;
-        font-weight: 300;
-        color: var(--ink-2);
-        line-height: 1.9;
-        max-width: 36ch;
-        text-align: center;
+      .ed-card--full .ed-card-label {
+        font-size: 16px;
+        letter-spacing: 6px;
       }
       .ed-card--full .ed-card-lead {
-        font-size: 32px;
-        max-width: 48ch;
+        font-size: 30px;
+        font-style: normal;
+        white-space: normal;
+        max-width: 52ch;
+        margin-bottom: 0;
       }
 
-      /* ── Screenshot section ── */
+      /* Screenshot section */
       .p-img-section {
         border-bottom: 1px solid var(--rule);
         padding: 72px 64px;
@@ -165,11 +160,11 @@
         gap: 40px;
       }
       .p-img-heading {
-        font-family: 'Cormorant Garamond', Georgia, serif;
+        font-family: "Bebas Neue", "Impact", sans-serif;
         font-size: clamp(24px, 2.5vw, 40px);
-        font-style: italic;
-        font-weight: 300;
         color: var(--ink);
+        letter-spacing: 4px;
+        text-transform: uppercase;
         text-align: center;
       }
       .p-img-wrap {
@@ -185,31 +180,7 @@
         height: auto;
       }
 
-      /* ── Template CTA section ── */
-      .ed-card-ctas {
-        display: flex;
-        gap: 24px;
-        margin-top: 48px;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-      }
-      .ed-card-cta {
-        font-family: 'Poppins', system-ui, sans-serif;
-        font-size: 12px;
-        font-weight: 500;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        text-decoration: none;
-        padding: 14px 32px;
-        border-radius: 2px;
-        transition: opacity 220ms;
-      }
-      .ed-card-cta:hover { opacity: .7; }
-      .ed-card-cta--primary { background: #D4537E; color: #fff; }
-      .ed-card-cta--secondary { color: var(--ink); border: 1px solid var(--rule); }
-
-      /* ── Make Verde Yours pitch ── */
+      /* Make Verde Yours pitch */
       .verde-pitch {
         background: #141412;
         padding: 128px 72px;
@@ -225,30 +196,29 @@
         align-items: center;
       }
       .verde-pitch-label {
-        font-family: 'Poppins', system-ui, sans-serif;
-        font-size: 10px;
-        font-weight: 500;
-        letter-spacing: 0.26em;
+        font-family: "Bebas Neue", "Impact", sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        letter-spacing: 4px;
         text-transform: uppercase;
         color: #D4537E;
         display: block;
         margin-bottom: 28px;
       }
       .verde-pitch-heading {
-        font-family: 'Cormorant Garamond', Georgia, serif;
+        font-family: "Oswald", "Impact", sans-serif;
         font-size: clamp(48px, 6vw, 80px);
-        font-weight: 300;
-        font-style: italic;
+        font-weight: 700;
         color: #fff;
-        line-height: 1.0;
+        line-height: .96;
         letter-spacing: -1px;
         margin: 0 0 32px;
       }
       .verde-pitch-sub {
-        font-family: 'Cormorant Garamond', Georgia, serif;
+        font-family: "Oswald", "Impact", sans-serif;
         font-size: 22px;
-        font-style: italic;
         font-weight: 300;
+        letter-spacing: 2px;
         color: rgba(255,255,255,.55);
         margin: 0 0 28px;
         line-height: 1.5;
@@ -263,29 +233,28 @@
         max-width: 42ch;
       }
       .verde-pitch-cta {
-        font-family: 'Poppins', system-ui, sans-serif;
-        font-size: 12px;
-        font-weight: 500;
-        letter-spacing: 0.16em;
+        font-family: "Oswald", "Impact", sans-serif;
+        font-size: 14px;
+        font-weight: 300;
+        letter-spacing: 3.5px;
         text-transform: uppercase;
         text-decoration: none;
         color: #fff;
         border: 1px solid rgba(255,255,255,.2);
         padding: 16px 40px;
-        border-radius: 2px;
         transition: background 220ms, border-color 220ms;
       }
       .verde-pitch-cta:hover { background: #D4537E; border-color: #D4537E; }
 
-      /* ── Next ── */
+      /* Next */
       .p-next { padding: 64px; display: flex; align-items: center; justify-content: space-between; text-decoration: none; border-bottom: 1px solid var(--rule); transition: background 180ms; }
-      .p-next:hover { background: rgba(26,24,23,.025); }
-      .p-next-label { font-family: 'Poppins', system-ui, sans-serif; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-3); display: block; margin-bottom: 10px; }
-      .p-next-name { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 300; font-style: italic; font-size: clamp(32px, 3.5vw, 56px); color: var(--ink); letter-spacing: -1px; display: block; }
+      .p-next:hover { background: rgba(26,25,23,.025); }
+      .p-next-label { font-family: "Bebas Neue", "Impact", sans-serif; font-size: 12px; letter-spacing: 5px; text-transform: uppercase; color: var(--ink-3); display: block; margin-bottom: 10px; }
+      .p-next-name { font-family: "Oswald", "Impact", sans-serif; font-weight: 700; font-size: clamp(28px, 3vw, 48px); color: var(--ink); letter-spacing: -1px; display: block; }
       .p-next-arrow { font-size: 28px; color: var(--ink-3); transition: transform 220ms ease, color 220ms; }
       .p-next:hover .p-next-arrow { transform: translateX(6px); color: var(--ink); }
 
-      /* Mobile-only elements — hidden on desktop */
+      /* Mobile-only elements hidden on desktop */
       .m-hero, .m-link-row, .m-mood-img { display: none; }
 
       @media (max-width: 860px) {
@@ -294,7 +263,7 @@
         .project-hero { display: block; border-bottom: none; min-height: 0; }
         .hero-left, .hero-right { display: none; }
 
-        /* ── Mobile hero card ── */
+        /* Mobile hero card */
         .m-hero {
           display: flex;
           flex-direction: column;
@@ -331,27 +300,26 @@
           margin-bottom: 8px;
         }
         .m-hero-title {
-          font-family: 'Cormorant Garamond', Georgia, serif;
-          font-size: 44px;
-          font-weight: 300;
-          font-style: italic;
+          font-family: 'Poppins', system-ui, sans-serif;
+          font-size: 32px;
+          font-weight: 700;
           color: #fff;
           display: block;
-          line-height: 1.0;
-          letter-spacing: -1px;
+          line-height: 1.05;
+          letter-spacing: -0.3px;
           margin-bottom: 8px;
         }
         .m-hero-tagline {
-          font-family: 'Poppins', system-ui, sans-serif;
-          font-size: 11px;
+          font-family: 'Cormorant Garamond', Georgia, serif;
+          font-size: 17px;
+          font-style: italic;
           font-weight: 300;
-          color: rgba(255,255,255,.70);
+          color: rgba(255,255,255,.80);
           display: block;
-          line-height: 1.5;
-          letter-spacing: 0.04em;
+          line-height: 1.4;
         }
 
-        /* ── Link row ── */
+        /* Link row */
         .m-link-row {
           display: flex;
           align-items: center;
@@ -374,7 +342,7 @@
           text-decoration: none;
         }
 
-        /* ── Narrative sections ── */
+        /* Narrative sections */
         .cards-row { display: block; border-bottom: none; }
         .ed-card {
           border-right: none;
@@ -384,18 +352,21 @@
           align-items: center;
         }
         .ed-card-label {
-          font-size: 10px;
+          font-family: 'Poppins', system-ui, sans-serif;
+          font-size: 11px;
+          font-weight: 400;
           letter-spacing: 0.2em;
+          text-transform: uppercase;
           color: #993556;
           margin-bottom: 16px;
         }
         .ed-card-lead {
-          font-size: 17px;
-          font-family: 'Cormorant Garamond', Georgia, serif;
-          font-style: italic;
+          font-family: 'Poppins', system-ui, sans-serif;
+          font-size: 14px;
           font-weight: 300;
-          line-height: 1.65;
+          line-height: 1.75;
           color: var(--ink-2);
+          letter-spacing: 0;
           max-width: 100%;
         }
         .ed-card--full {
@@ -405,22 +376,24 @@
           align-items: center;
         }
         .ed-card--full .ed-card-label {
-          font-size: 10px;
+          font-family: 'Poppins', system-ui, sans-serif;
+          font-size: 11px;
+          font-weight: 400;
           letter-spacing: 0.2em;
           color: #993556;
           margin-bottom: 16px;
         }
         .ed-card--full .ed-card-lead {
-          font-size: 17px;
-          font-family: 'Cormorant Garamond', Georgia, serif;
-          font-style: italic;
+          font-family: 'Poppins', system-ui, sans-serif;
+          font-size: 14px;
           font-weight: 300;
-          line-height: 1.65;
+          line-height: 1.75;
+          letter-spacing: 0;
           color: var(--ink-2);
           max-width: 100%;
         }
 
-        /* ── Mood image ── */
+        /* Mood image */
         .m-mood-img {
           display: block;
           margin: 8px 24px 0;
@@ -430,31 +403,26 @@
           background: url('/assets/verde-hover.png') center/cover no-repeat;
         }
 
-        /* ── Screenshot section ── */
+        /* Screenshot section */
         .p-img-section { padding: 40px 24px 48px; border-bottom: 1px solid var(--rule); }
         .p-img-heading {
-          font-size: 24px;
           font-family: 'Cormorant Garamond', Georgia, serif;
+          font-size: 28px;
           font-style: italic;
           font-weight: 300;
-          color: var(--ink);
-          text-align: center;
           letter-spacing: 0;
           text-transform: none;
+          color: var(--ink);
         }
         .p-img-wrap { border-radius: 12px; }
 
-        /* ── Template CTAs on mobile ── */
-        .ed-card-ctas { flex-direction: column; gap: 12px; margin-top: 32px; width: 100%; }
-        .ed-card-cta { width: 100%; text-align: center; padding: 15px 24px; }
-
-        /* ── Make Verde Yours — mobile ── */
+        /* Make Verde Yours mobile */
         .verde-pitch { padding: 72px 24px; }
         .verde-pitch-heading { font-size: 44px; }
-        .verde-pitch-sub { font-size: 18px; }
-        .verde-pitch-cta { width: 100%; text-align: center; padding: 16px 24px; }
+        .verde-pitch-sub { font-size: 18px; letter-spacing: 1px; }
+        .verde-pitch-cta { width: 100%; text-align: center; padding: 16px 24px; display: block; }
 
-        /* ── Next project card ── */
+        /* Next project card */
         .p-next {
           margin: 24px;
           padding: 20px 24px;
@@ -471,11 +439,10 @@
           margin-bottom: 6px;
         }
         .p-next-name {
-          font-family: 'Cormorant Garamond', Georgia, serif;
-          font-size: 28px;
-          font-style: italic;
-          font-weight: 300;
-          letter-spacing: -0.5px;
+          font-family: 'Poppins', system-ui, sans-serif;
+          font-size: 22px;
+          font-weight: 700;
+          letter-spacing: -0.2px;
           color: var(--ink);
         }
         .p-next-arrow { color: #D4537E; font-size: 20px; }
@@ -514,7 +481,7 @@
           <p class="hero-desc">An editorial commerce experience built around a single formula.<br>Slow, considered, and campaign-led from the first scroll.</p>
         </div>
         <div class="hero-bottom">
-          <a class="hero-link hero-link--live" href="https://verde-skincare.vercel.app/" target="_blank" rel="noopener noreferrer">View Live ↗</a>
+          <a class="hero-link hero-link--live" href="https://verde-skincare.vercel.app/" target="_blank" rel="noopener noreferrer">View Live →</a>
           <a class="hero-link" href="/work/">Back to Work →</a>
         </div>
       </div>
@@ -544,20 +511,20 @@
     <div class="cards-row">
       <div class="ed-card" data-reveal>
         <span class="ed-card-label">Concept</span>
-        <p class="ed-card-lead">Most skincare websites try to say everything. Verde says one thing: this formula is worth your attention. The project started as a question — what does a skincare brand look like when it's edited down to only what matters? No grid of products. No cluttered navigation. One product. One story. One clear reason to buy.</p>
+        <p class="ed-card-lead">Most skincare websites try to say everything. Verde says one thing: this formula is worth your attention. The project started as a question: what does a skincare brand look like when it's edited down to only what matters? No grid of products. No cluttered navigation. One product. One story. One clear reason to buy.</p>
       </div>
       <!-- Mood image — mobile only -->
       <div class="m-mood-img" aria-hidden="true"></div>
       <div class="ed-card" data-reveal>
         <span class="ed-card-label">Creative Direction</span>
-        <p class="ed-card-lead">The visual language was built to feel like a magazine, not a store. Campaign photography leads. Typography recedes. Negative space does the heavy lifting. The palette — warm whites, deep forest tones, quiet blush — was chosen to feel like a morning ritual rather than a product launch. Nothing should feel urgent. Everything should feel intentional.</p>
+        <p class="ed-card-lead">The visual language was built to feel like a magazine, not a store. Campaign photography leads. Typography recedes. Negative space does the heavy lifting. The palette of warm whites, deep forest tones and quiet blush was chosen to feel like a morning ritual rather than a product launch. Nothing should feel urgent. Everything should feel intentional.</p>
       </div>
     </div>
 
     <!-- Design System -->
     <div class="ed-card--full" data-reveal>
       <span class="ed-card-label">Design System</span>
-      <p class="ed-card-lead">Two typefaces. A single accent color. Spacing rules strict enough to feel considered but loose enough to breathe. The design system for Verde was built to scale — adaptable to any founder who wants the same editorial restraint for their own brand, without starting from scratch.</p>
+      <p class="ed-card-lead">Two typefaces. A single accent color. Spacing rules strict enough to feel considered but loose enough to breathe. The design system for Verde was built to scale, adaptable to any founder who wants the same editorial restraint for their own brand, without starting from scratch.</p>
     </div>
 
     <!-- Screenshot -->
@@ -571,7 +538,7 @@
     <!-- Digital Experience -->
     <div class="ed-card--full" data-reveal>
       <span class="ed-card-label">Digital Experience</span>
-      <p class="ed-card-lead">The site moves the way the brand feels — unhurried. Sections reveal on scroll without drama. The path to purchase is short and uncluttered. Hero to product to checkout in three steps, because every extra click is a reason to leave. Verde was designed to convert without ever feeling like it's selling.</p>
+      <p class="ed-card-lead">The site moves the way the brand feels. Unhurried. Sections reveal on scroll without drama. The path to purchase is short and uncluttered. Hero to product to checkout in three steps, because every extra click is a reason to leave. Verde was designed to convert without ever feeling like it's selling.</p>
     </div>
 
     <!-- Make Verde Yours -->
@@ -580,7 +547,7 @@
         <span class="verde-pitch-label">Pink Template · 01</span>
         <h2 class="verde-pitch-heading">Make Verde Yours</h2>
         <p class="verde-pitch-sub">Launching a skincare brand with one hero product?</p>
-        <p class="verde-pitch-body">VERDE is available as a semi-custom website experience. Your brand, imagery, product and story — built and launched by Pink Web Studio.</p>
+        <p class="verde-pitch-body">VERDE is available as a semi-custom website experience. Your brand, imagery, product and story. Built and launched by Pink Web Studio.</p>
         <a class="verde-pitch-cta" href="/contact/?ref=verde-template">Inquire about VERDE →</a>
       </div>
     </div>
