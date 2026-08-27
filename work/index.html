@@ -266,6 +266,18 @@
     .work-card--junehouse:hover .work-card-bg--still,
     .work-card.card-playing .work-card-bg--still { opacity: 0; }
 
+    /* ── Template label ── */
+    .work-card-template-label {
+      display: block;
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.32);
+      margin-top: 6px;
+    }
+
     /* ── Live Work section ── */
     .live-section {
       border-bottom: 1px solid var(--rule);
@@ -484,6 +496,9 @@
       }
       .work-card--forma .work-card-desc { color: var(--ink-2); text-align: left; }
 
+      /* Template label */
+      .work-card-template-label { color: var(--ink-3); font-size: 10px; }
+
       /* Links */
       .work-card-links { gap: 16px; }
       .work-card-link {
@@ -572,6 +587,24 @@
             <div class="work-card-links">
               <a class="work-card-link" href="/forma/">Case study <span class="work-card-link-arrow">→</span></a>
               <a class="work-card-link work-card-link--secondary" href="https://forma-rho-nine.vercel.app/early-access" target="_blank" rel="noopener">Visit site ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VERDE -->
+      <div class="work-card work-card--verde">
+        <img class="work-card-bg work-card-bg--still" src="/assets/verde.png" alt="" />
+        <div class="work-card-content">
+          <div class="work-card-top">
+            <span class="work-card-name">Verde</span>
+            <span class="work-card-type">Website. Skincare &amp; Beauty.<span class="work-card-template-label">Pink Template / 01</span></span>
+          </div>
+          <div class="work-card-details">
+            <p class="work-card-desc">An editorial commerce experience built around a single skincare formula — combining campaign storytelling, product discovery, and a focused path to purchase.</p>
+            <div class="work-card-links">
+              <a class="work-card-link" href="https://verde-skincare.vercel.app/" target="_blank" rel="noopener">View Live <span class="work-card-link-arrow">↗</span></a>
+              <a class="work-card-link work-card-link--secondary" href="/contact/?ref=verde-template">Use This Template →</a>
             </div>
           </div>
         </div>

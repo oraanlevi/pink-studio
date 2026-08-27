@@ -362,6 +362,31 @@
       .faq-heading-mobile { display: none; }
       .mobile-start-cta-wrap { display: none; }
 
+      /* Verde template inquiry context */
+      .verde-context {
+        display: none;
+        border-left: 2px solid #D4537E;
+        padding: 10px 16px;
+        margin-bottom: 24px;
+      }
+      .verde-context-label {
+        display: block;
+        font-family: 'Poppins', system-ui, sans-serif;
+        font-size: 10px;
+        font-weight: 500;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--ink-3);
+        margin-bottom: 3px;
+      }
+      .verde-context-name {
+        display: block;
+        font-family: 'Poppins', system-ui, sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        color: var(--ink);
+      }
+
       /* ── Payments FAQ ── */
       .contact-faq {
         border-top: 1px solid var(--rule);
@@ -747,6 +772,10 @@
       <div class="path-form" id="send-message">
         <span class="path-heading reveal">Send a Message</span>
         <span class="path-label reveal d1">Back within 48 hours</span>
+        <div class="verde-context" id="verdeContext">
+          <span class="verde-context-label">Inquiring about</span>
+          <span class="verde-context-name">VERDE — Pink Template 01</span>
+        </div>
         <form id="contactForm" action="https://formspree.io/f/mbdejokw" method="POST">
           <input type="hidden" name="_next" value="https://pinkwebstudio.com/contact?sent=1" />
           <div class="form-field reveal d2">
@@ -822,6 +851,20 @@
       setTimeout(() => eyebrow.classList.add("in"),  120);
       setTimeout(() => headline.classList.add("in"), 340);
       setTimeout(() => email.classList.add("in"),    580);
+
+      // Verde template inquiry context
+      if (new URLSearchParams(window.location.search).get('ref') === 'verde-template') {
+        const ctx = document.getElementById('verdeContext');
+        if (ctx) ctx.style.display = 'block';
+        const form = document.getElementById('contactForm');
+        if (form) {
+          const hidden = document.createElement('input');
+          hidden.type = 'hidden';
+          hidden.name = 'ref';
+          hidden.value = 'VERDE — Pink Template 01';
+          form.appendChild(hidden);
+        }
+      }
 
       if (new URLSearchParams(window.location.search).get("sent") === "1") {
         document.querySelectorAll(".form-field").forEach(el => el.style.display = "none");
