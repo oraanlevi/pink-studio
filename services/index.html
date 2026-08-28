@@ -7,212 +7,185 @@
   <title>Services · Pink</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/styles.css" />
   <style>
 
     /* ── Page header ── */
-    .page-head {
-      padding: 72px 72px 64px;
-      border-bottom: 1px solid var(--rule);
+    .sg-header {
+      padding: 52px 32px 24px;
     }
-    .page-eyebrow {
-      display: block;
-      font-family: 'Poppins', sans-serif;
+    .sg-eyebrow {
+      font-family: 'Bebas Neue', sans-serif;
       font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 3px;
+      letter-spacing: 4px;
       text-transform: uppercase;
       color: var(--ink-3);
-      margin-bottom: 14px;
-    }
-    .page-headline {
-      display: block;
-      font-family: 'Poppins', sans-serif;
-      font-weight: 400;
-      font-size: clamp(28px, 3vw, 44px);
-      color: var(--ink);
-      line-height: 1.15;
-      letter-spacing: -0.5px;
     }
 
-    /* ── Service list ── */
-    .service-list {
-      border-bottom: 1px solid var(--rule);
-    }
-
-    .service-row {
-      display: grid;
-      grid-template-columns: 1fr 160px 160px 140px;
-      align-items: center;
-      padding: 28px 72px;
-      border-bottom: 1px solid var(--rule);
-      text-decoration: none;
-      transition: background 180ms ease;
-      gap: 24px;
-    }
-    .service-row:last-child { border-bottom: none; }
-    .service-row:hover { background: rgba(26,25,23,.025); }
-
-    .service-row-name {
-      display: block;
-      font-family: 'Poppins', sans-serif;
-      font-size: clamp(18px, 1.6vw, 24px);
-      font-weight: 400;
-      color: var(--ink);
-      letter-spacing: -0.3px;
-      transition: color 200ms;
-    }
-    .service-row:hover .service-row-name { color: #D4537E; }
-
-    .service-row-sub {
-      display: block;
-      font-family: 'Poppins', sans-serif;
-      font-size: 12px;
-      font-weight: 300;
-      color: var(--ink-3);
-      margin-top: 8px;
-    }
-
-    .service-row-meta {
+    /* ── Gallery wrap ── */
+    .sg-wrap {
+      padding: 0 20px 20px;
       display: flex;
       flex-direction: column;
-      gap: 2px;
-    }
-    .service-row-label {
-      font-family: 'Poppins', sans-serif;
-      font-size: 9px;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--ink-3);
-    }
-    .service-row-value {
-      font-family: 'Poppins', sans-serif;
-      font-size: 14px;
-      font-weight: 300;
-      color: var(--ink-2);
+      gap: 12px;
     }
 
-    .service-row-arrow {
-      font-size: 18px;
-      color: var(--ink-3);
-      text-align: right;
-      transition: transform 260ms ease, color 220ms;
-    }
-    .service-row:hover .service-row-arrow { color: var(--ink); }
-    .sv-item.open .service-row-arrow { transform: rotate(90deg); color: var(--ink); }
-
-    /* ── Accordion drawer ── */
-    .service-row {
+    /* ── Cards ── */
+    .sg-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
       cursor: pointer;
-      background: none;
-      border: none;
+    }
+    .sg-card img {
       width: 100%;
-      text-align: left;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 600ms ease, filter 500ms ease;
+    }
+    .sg-card:hover img { transform: scale(1.02); }
+    .sg-card.open img {
+      transform: scale(1.03);
+      filter: brightness(0.38);
     }
 
-    .sv-drawer {
-      display: grid;
-      grid-template-rows: 0fr;
-      transition: grid-template-rows 480ms cubic-bezier(.16,1,.3,1);
-    }
-    .sv-item.open .sv-drawer { grid-template-rows: 1fr; }
-    .sv-drawer-inner { overflow: hidden; }
+    /* Hero card */
+    .sg-hero { aspect-ratio: 16 / 8; }
 
-    .sv-drawer-content {
+    /* Grid */
+    .sg-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      border-top: 1px solid var(--rule);
+      gap: 12px;
     }
-    .sv-drawer-left {
-      padding: 48px 72px 56px;
-      border-right: 1px solid var(--rule);
-    }
-    .sv-drawer-desc {
+    .sg-card--grid { aspect-ratio: 3 / 4; }
+
+    /* ── Label ── */
+    .sg-label {
+      position: absolute;
+      bottom: 22px;
+      left: 24px;
       font-family: 'Poppins', sans-serif;
-      font-size: 15px;
-      font-weight: 300;
-      color: var(--ink-2);
-      line-height: 1.7;
-      margin: 0 0 32px;
-      max-width: 44ch;
+      font-size: 12px;
+      font-weight: 400;
+      color: rgba(255,255,255,.88);
+      letter-spacing: 0.01em;
+      transition: color 220ms, opacity 300ms;
+      pointer-events: none;
+      z-index: 1;
     }
-    .sv-drawer-label {
-      font-family: 'Poppins', sans-serif;
-      font-size: 9px;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--ink-3);
-      margin: 0 0 12px;
-    }
-    .sv-drawer-list {
-      list-style: none;
-      margin: 0 0 40px;
-      padding: 0;
+    .sg-card.open .sg-label { opacity: 0; }
+
+    /* ── Detail overlay ── */
+    .sg-detail {
+      position: absolute;
+      inset: 0;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      justify-content: flex-end;
+      padding: 28px 28px 32px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 400ms ease;
     }
-    .sv-drawer-list li {
+    .sg-card.open .sg-detail {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .sg-close {
+      position: absolute;
+      top: 18px;
+      right: 20px;
+      background: none;
+      border: none;
+      color: rgba(255,255,255,.6);
+      font-size: 22px;
+      line-height: 1;
+      cursor: pointer;
+      padding: 4px 8px;
+      transition: color 180ms;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 300;
+    }
+    .sg-close:hover { color: white; }
+
+    .sg-detail-name {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(18px, 2.2vw, 26px);
+      font-weight: 400;
+      color: white;
+      margin: 0 0 4px;
+    }
+    .sg-detail-sub {
       font-family: 'Poppins', sans-serif;
       font-size: 13px;
       font-weight: 300;
-      color: var(--ink-2);
+      color: rgba(255,255,255,.55);
+      margin: 0 0 18px;
+      font-style: italic;
+    }
+    .sg-detail-meta {
+      font-family: 'Poppins', sans-serif;
+      font-size: 10px;
+      font-weight: 400;
+      color: rgba(255,255,255,.45);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin: 0 0 14px;
+    }
+    .sg-detail-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .sg-detail-list li {
+      font-family: 'Poppins', sans-serif;
+      font-size: 12px;
+      font-weight: 300;
+      color: rgba(255,255,255,.68);
       padding-left: 14px;
       position: relative;
     }
-    .sv-drawer-list li::before {
+    .sg-detail-list li::before {
       content: '–';
       position: absolute;
       left: 0;
-      color: var(--ink-3);
+      color: rgba(255,255,255,.3);
     }
-    .sv-drawer-cta {
+    .sg-detail-cta {
       display: inline-block;
       font-family: 'Poppins', sans-serif;
       font-size: 13px;
       font-weight: 500;
-      color: var(--ink);
+      color: white;
       text-decoration: none;
       transition: opacity 180ms;
     }
-    .sv-drawer-cta:hover { opacity: 0.5; }
+    .sg-detail-cta:hover { opacity: 0.55; }
 
-    .sv-drawer-right {
-      position: relative;
-      overflow: hidden;
-      min-height: 320px;
-    }
-    .sv-drawer-right img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 600ms ease;
-    }
-    .sv-item.open .sv-drawer-right img { transform: scale(1.03); }
-
-    /* Custom solutions — full-width note row */
-    .service-note-row {
-      padding: 40px 72px;
-      border-top: 1px solid var(--rule);
+    /* ── Footer note ── */
+    .sg-note {
+      padding: 40px 32px 48px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 48px;
+      gap: 24px;
+      border-top: 1px solid var(--rule);
+      margin-top: 8px;
     }
-    .service-note-text {
+    .sg-note span {
       font-family: 'Poppins', sans-serif;
       font-size: 13px;
       font-weight: 300;
       color: var(--ink-3);
-      line-height: 1.7;
-      max-width: 52ch;
     }
-    .service-note-link {
+    .sg-note a {
       font-family: 'Poppins', sans-serif;
       font-size: 13px;
       font-weight: 500;
@@ -221,37 +194,24 @@
       white-space: nowrap;
       transition: opacity 200ms;
     }
-    .service-note-link:hover { opacity: 0.5; }
+    .sg-note a:hover { opacity: 0.45; }
 
     /* ── Mobile ── */
     @media (max-width: 860px) {
-      .page-head { padding: 48px 24px 32px; border-bottom: none; }
-      .page-headline { font-size: 26px; }
-
-      .service-row {
-        grid-template-columns: 1fr auto;
-        grid-template-rows: auto auto;
-        padding: 20px 24px;
-        min-height: auto;
-        gap: 0;
-      }
-      .service-row-name { font-size: 17px; grid-column: 1; grid-row: 1; }
-      .service-row-sub  { font-size: 11px; grid-column: 1; grid-row: 2; margin-top: 4px; }
-      .service-row-arrow { grid-column: 2; grid-row: 1 / 3; align-self: center; font-size: 16px; }
-      .service-row-meta { display: none; }
-
-      .service-note-row {
+      .sg-header { padding: 40px 16px 16px; }
+      .sg-wrap { padding: 0 12px 12px; gap: 8px; }
+      .sg-hero { aspect-ratio: 4 / 3; }
+      .sg-grid { gap: 8px; }
+      .sg-card--grid { aspect-ratio: 3 / 4; }
+      .sg-detail { padding: 20px 18px 24px; }
+      .sg-detail-name { font-size: 16px; }
+      .sg-detail-list { margin-bottom: 18px; }
+      .sg-note {
         flex-direction: column;
         align-items: flex-start;
-        gap: 16px;
-        padding: 28px 24px;
+        gap: 12px;
+        padding: 32px 20px 40px;
       }
-      .service-note-text { font-size: 12px; max-width: none; }
-
-      .sv-drawer-content { grid-template-columns: 1fr; }
-      .sv-drawer-right { order: -1; min-height: 200px; }
-      .sv-drawer-left { padding: 32px 24px 40px; border-right: none; border-top: 1px solid var(--rule); }
-      .sv-drawer-desc { font-size: 13px; }
     }
 
   </style>
@@ -277,171 +237,116 @@
     <a href="/contact/" class="mobile-nav-cta">Start a Project</a>
   </div>
 
-  <div class="page-head reveal">
-    <span class="page-eyebrow">Services</span>
-    <span class="page-headline">How can we help?</span>
+  <div class="sg-header reveal">
+    <span class="sg-eyebrow">Services</span>
   </div>
 
-  <div class="service-list reveal">
+  <div class="sg-wrap">
 
-    <div class="sv-item">
-      <button class="service-row" onclick="toggleService(this)">
-        <div>
-          <span class="service-row-name">Signature Website</span>
-          <span class="service-row-sub">Built from scratch, for you.</span>
-        </div>
-        <div class="service-row-meta">
-          <span class="service-row-label">Investment</span>
-          <span class="service-row-value">From $4,000</span>
-        </div>
-        <div class="service-row-meta">
-          <span class="service-row-label">Timeline</span>
-          <span class="service-row-value">3 wks – 1 mo</span>
-        </div>
-        <span class="service-row-arrow">→</span>
-      </button>
-      <div class="sv-drawer">
-        <div class="sv-drawer-inner">
-          <div class="sv-drawer-content">
-            <div class="sv-drawer-left">
-              <p class="sv-drawer-desc">A fully custom website designed and built around your brand. Strategy, design, and development — handled end to end.</p>
-              <p class="sv-drawer-label">What's included</p>
-              <ul class="sv-drawer-list">
-                <li>Custom design system</li>
-                <li>Responsive build</li>
-                <li>CMS integration</li>
-                <li>2 revision rounds</li>
-                <li>Launch support</li>
-              </ul>
-              <a class="sv-drawer-cta" href="/contact/">Start a project →</a>
-            </div>
-            <div class="sv-drawer-right">
-              <img src="/assets/loup.png" alt="Le Loup project" />
-            </div>
-          </div>
-        </div>
+    <!-- Hero — Signature Website -->
+    <div class="sg-card sg-hero reveal">
+      <img src="/assets/loup.png" alt="Signature Website" />
+      <span class="sg-label">Signature Website</span>
+      <div class="sg-detail">
+        <button class="sg-close" aria-label="Close">×</button>
+        <p class="sg-detail-name">Signature Website</p>
+        <p class="sg-detail-sub">Built from scratch, for you.</p>
+        <p class="sg-detail-meta">From $4,000 &nbsp;·&nbsp; 3–4 weeks</p>
+        <ul class="sg-detail-list">
+          <li>Custom design system</li>
+          <li>Responsive build</li>
+          <li>CMS integration</li>
+          <li>2 revision rounds</li>
+          <li>Launch support</li>
+        </ul>
+        <a class="sg-detail-cta" href="/contact/">Start a Project →</a>
       </div>
     </div>
 
-    <div class="sv-item">
-      <button class="service-row" onclick="toggleService(this)">
-        <div>
-          <span class="service-row-name">Website Refresh</span>
-          <span class="service-row-sub">Your site, elevated.</span>
-        </div>
-        <div class="service-row-meta">
-          <span class="service-row-label">Investment</span>
-          <span class="service-row-value">From $2,000</span>
-        </div>
-        <div class="service-row-meta">
-          <span class="service-row-label">Timeline</span>
-          <span class="service-row-value">2 – 3 weeks</span>
-        </div>
-        <span class="service-row-arrow">→</span>
-      </button>
-      <div class="sv-drawer">
-        <div class="sv-drawer-inner">
-          <div class="sv-drawer-content">
-            <div class="sv-drawer-left">
-              <p class="sv-drawer-desc">Your existing site, made to work harder. New visuals, tightened copy, better structure — without starting over.</p>
-              <p class="sv-drawer-label">What's included</p>
-              <ul class="sv-drawer-list">
-                <li>Design audit</li>
-                <li>Visual refresh</li>
-                <li>Mobile optimization</li>
-                <li>Performance pass</li>
-                <li>1 revision round</li>
-              </ul>
-              <a class="sv-drawer-cta" href="/contact/">Start a project →</a>
-            </div>
-            <div class="sv-drawer-right">
-              <img src="/assets/stone.png" alt="West & Stone project" />
-            </div>
-          </div>
+    <!-- Grid -->
+    <div class="sg-grid reveal">
+
+      <!-- Website Refresh -->
+      <div class="sg-card sg-card--grid">
+        <img src="/assets/stone.png" alt="Website Refresh" />
+        <span class="sg-label">Website Refresh</span>
+        <div class="sg-detail">
+          <button class="sg-close" aria-label="Close">×</button>
+          <p class="sg-detail-name">Website Refresh</p>
+          <p class="sg-detail-sub">Your site, elevated.</p>
+          <p class="sg-detail-meta">From $2,000 &nbsp;·&nbsp; 2–3 weeks</p>
+          <ul class="sg-detail-list">
+            <li>Design audit</li>
+            <li>Visual refresh</li>
+            <li>Mobile optimization</li>
+            <li>Performance pass</li>
+          </ul>
+          <a class="sg-detail-cta" href="/contact/">Start a Project →</a>
         </div>
       </div>
-    </div>
 
-    <div class="sv-item">
-      <button class="service-row" onclick="toggleService(this)">
-        <div>
-          <span class="service-row-name">Website Audit</span>
-          <span class="service-row-sub">Know exactly what to fix.</span>
-        </div>
-        <div class="service-row-meta">
-          <span class="service-row-label">Investment</span>
-          <span class="service-row-value">$199</span>
-        </div>
-        <div class="service-row-meta">
-          <span class="service-row-label">Timeline</span>
-          <span class="service-row-value">3 – 5 days</span>
-        </div>
-        <span class="service-row-arrow">→</span>
-      </button>
-      <div class="sv-drawer">
-        <div class="sv-drawer-inner">
-          <div class="sv-drawer-content">
-            <div class="sv-drawer-left">
-              <p class="sv-drawer-desc">A detailed review of what's holding your site back — with a clear, prioritized action plan you can hand to any developer.</p>
-              <p class="sv-drawer-label">What's included</p>
-              <ul class="sv-drawer-list">
-                <li>UX + design review</li>
-                <li>Performance check</li>
-                <li>Written report</li>
-                <li>Priority recommendations</li>
-              </ul>
-              <a class="sv-drawer-cta" href="/contact/">Book an audit →</a>
-            </div>
-            <div class="sv-drawer-right">
-              <img src="/assets/cel.png" alt="Celeste project" />
-            </div>
-          </div>
+      <!-- Website Audit -->
+      <div class="sg-card sg-card--grid">
+        <img src="/assets/cel.png" alt="Website Audit" />
+        <span class="sg-label">Website Audit</span>
+        <div class="sg-detail">
+          <button class="sg-close" aria-label="Close">×</button>
+          <p class="sg-detail-name">Website Audit</p>
+          <p class="sg-detail-sub">Know exactly what to fix.</p>
+          <p class="sg-detail-meta">$199 &nbsp;·&nbsp; 3–5 days</p>
+          <ul class="sg-detail-list">
+            <li>UX + design review</li>
+            <li>Performance check</li>
+            <li>Written report</li>
+            <li>Priority recommendations</li>
+          </ul>
+          <a class="sg-detail-cta" href="/contact/">Book an Audit →</a>
         </div>
       </div>
-    </div>
 
-    <div class="sv-item" style="border-bottom: none;">
-      <button class="service-row" onclick="toggleService(this)">
-        <div>
-          <span class="service-row-name">Monthly Support</span>
-          <span class="service-row-sub">Ongoing care, handled.</span>
-        </div>
-        <div class="service-row-meta">
-          <span class="service-row-label">Investment</span>
-          <span class="service-row-value">$250 / mo</span>
-        </div>
-        <div class="service-row-meta">
-          <span class="service-row-label">Timeline</span>
-          <span class="service-row-value">Ongoing</span>
-        </div>
-        <span class="service-row-arrow">→</span>
-      </button>
-      <div class="sv-drawer">
-        <div class="sv-drawer-inner">
-          <div class="sv-drawer-content">
-            <div class="sv-drawer-left">
-              <p class="sv-drawer-desc">Ongoing updates and improvements, so your site stays current without the back-and-forth. Cancel anytime.</p>
-              <p class="sv-drawer-label">What's included</p>
-              <ul class="sv-drawer-list">
-                <li>Monthly update hours</li>
-                <li>Priority turnaround</li>
-                <li>Content updates</li>
-                <li>No long-term contracts</li>
-              </ul>
-              <a class="sv-drawer-cta" href="/contact/">Get started →</a>
-            </div>
-            <div class="sv-drawer-right">
-              <img src="/assets/formahero.png" alt="Forma project" />
-            </div>
-          </div>
+      <!-- Monthly Support -->
+      <div class="sg-card sg-card--grid">
+        <img src="/assets/formahero.png" alt="Monthly Support" />
+        <span class="sg-label">Monthly Support</span>
+        <div class="sg-detail">
+          <button class="sg-close" aria-label="Close">×</button>
+          <p class="sg-detail-name">Monthly Support</p>
+          <p class="sg-detail-sub">Ongoing care, handled.</p>
+          <p class="sg-detail-meta">$250 / mo &nbsp;·&nbsp; Ongoing</p>
+          <ul class="sg-detail-list">
+            <li>Monthly update hours</li>
+            <li>Priority turnaround</li>
+            <li>Content updates</li>
+            <li>No contracts</li>
+          </ul>
+          <a class="sg-detail-cta" href="/contact/">Get Started →</a>
         </div>
       </div>
-    </div>
 
-    <div class="service-note-row">
-      <p class="service-note-text">Building something beyond a traditional website — a tool, portal, or custom product? Every custom project starts with a conversation.</p>
-      <a class="service-note-link" href="/contact/">Let's talk →</a>
+      <!-- Custom Solutions -->
+      <div class="sg-card sg-card--grid">
+        <img src="/assets/verde-hover.png" alt="Custom Solutions" />
+        <span class="sg-label">Custom Solutions</span>
+        <div class="sg-detail">
+          <button class="sg-close" aria-label="Close">×</button>
+          <p class="sg-detail-name">Custom Solutions</p>
+          <p class="sg-detail-sub">Something beyond a website.</p>
+          <p class="sg-detail-meta">Custom pricing</p>
+          <ul class="sg-detail-list">
+            <li>Tools &amp; portals</li>
+            <li>Custom products</li>
+            <li>Starts with a conversation</li>
+          </ul>
+          <a class="sg-detail-cta" href="/contact/">Let's Talk →</a>
+        </div>
+      </div>
+
     </div>
+  </div>
+
+  <div class="sg-note">
+    <span>Not sure where to start?</span>
+    <a href="/contact/">Let's figure it out →</a>
   </div>
 
   <footer class="site-footer">
@@ -463,14 +368,15 @@
   </footer>
 
   <script>
+    // Nav scroll
     const nav = document.getElementById('mainNav');
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 20);
     }, { passive: true });
 
+    // Sidebar nav
     const ham = document.getElementById('navHam');
     const mob = document.getElementById('mobileNav');
-    // Sidebar nav
     const scrim = document.createElement('div');
     scrim.className = 'nav-scrim';
     document.body.appendChild(scrim);
@@ -493,20 +399,30 @@
     document.getElementById('navClose')?.addEventListener('click', closeNav);
     mob.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
 
-    function toggleService(btn) {
-      const item = btn.closest('.sv-item');
-      const isOpen = item.classList.contains('open');
-      document.querySelectorAll('.sv-item.open').forEach(el => el.classList.remove('open'));
-      if (!isOpen) item.classList.add('open');
-    }
+    // Card gallery
+    document.querySelectorAll('.sg-card').forEach(card => {
+      card.addEventListener('click', function(e) {
+        if (e.target.closest('.sg-close') || e.target.closest('.sg-detail-cta')) return;
+        const isOpen = this.classList.contains('open');
+        document.querySelectorAll('.sg-card.open').forEach(c => c.classList.remove('open'));
+        if (!isOpen) this.classList.add('open');
+      });
+    });
 
+    document.querySelectorAll('.sg-close').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        this.closest('.sg-card').classList.remove('open');
+      });
+    });
+
+    // Reveal on scroll
     const io = new IntersectionObserver(entries => {
       entries.forEach(e => {
         if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
       });
     }, { threshold: 0.06 });
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
   </script>
 
 </body>
