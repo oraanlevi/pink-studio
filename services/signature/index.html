@@ -7,7 +7,7 @@
   <title>Signature Website · Pink Web Studio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Oswald:wght@400;700&family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Oswald:wght@700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/styles.css" />
   <style>
 
@@ -35,21 +35,23 @@
     .sp-hero-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(
-        to top,
-        rgba(250,250,248,0.97) 0%,
-        rgba(250,250,248,0.80) 35%,
-        rgba(250,250,248,0.20) 65%,
-        rgba(250,250,248,0.00) 100%
-      );
+      background: linear-gradient(to top, rgba(250,250,248,0.97) 0%, rgba(250,250,248,0.80) 35%, rgba(250,250,248,0.10) 70%, rgba(250,250,248,0.00) 100%);
     }
+    .sp-hero-img { display: none; }
     .sp-hero-inner {
       position: relative;
       z-index: 1;
       padding: 0 72px 80px;
       display: flex;
       flex-direction: column;
-      gap: 36px;
+      gap: 32px;
+    }
+    .sp-hero-eyebrow {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--ink-3);
     }
     .sp-hero-title {
       font-family: 'Oswald', sans-serif;
@@ -68,8 +70,8 @@
     .sp-hero-stats { display: flex; gap: 56px; }
     .sp-stat { display: flex; flex-direction: column; gap: 6px; }
     .sp-stat-label {
-      font-family: "Bebas Neue", "Impact", sans-serif;
-      font-size: 13px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 11px;
       letter-spacing: 4px;
       text-transform: uppercase;
       color: var(--ink-3);
@@ -83,218 +85,90 @@
     }
     .sp-hero-cta {
       font-family: 'Poppins', sans-serif;
-      font-weight: 400;
-      font-size: 15px;
-      letter-spacing: 1.5px;
-      text-transform: none;
+      font-size: 13px;
+      font-weight: 500;
       color: var(--ink);
       text-decoration: none;
       transition: opacity 250ms;
       white-space: nowrap;
-      flex-shrink: 0;
       align-self: flex-end;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
     }
-    .sp-hero-cta .btn-arrow {
-      font-family: system-ui, sans-serif;
-      font-size: 16px;
-      letter-spacing: 0;
-    }
-    .sp-hero-cta:hover { opacity: .45; }
+    .sp-hero-cta:hover { opacity: 0.45; }
 
-    /* ── Thesis ── */
-    .thesis {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      border-bottom: 1px solid var(--rule);
-      min-height: 560px;
+    /* ── Breadcrumb ── */
+    .sp-breadcrumb { padding: 20px 72px; border-bottom: 1px solid var(--rule); }
+    .sp-breadcrumb a {
+      font-family: 'Poppins', sans-serif;
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 0.06em;
+      color: var(--ink-3);
+      text-decoration: none;
+      transition: color 200ms;
     }
-    .thesis-left {
-      padding: 88px 64px 80px 72px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    .thesis-statement {
-      font-family: "Inter", system-ui, sans-serif;
-      font-weight: 700;
-      font-size: clamp(28px, 3.6vw, 52px);
-      color: var(--ink);
-      line-height: 1.12;
-      letter-spacing: -0.4px;
-      max-width: 22ch;
-      display: block;
-      margin-bottom: 40px;
-    }
-    .thesis-body {
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-      max-width: 52ch;
-    }
-    .thesis-body p {
-      font-family: system-ui, -apple-system, sans-serif;
-      font-size: 16px;
-      color: #222;
-      line-height: 1.8;
-    }
-
-    /* ── Thesis showcase ── */
-    .thesis-showcase {
-      overflow: hidden;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      padding: 28px 28px 28px 0;
-      align-content: center;
-    }
-    .showcase-frame {
-      position: relative;
-      width: 100%;
-      background: #fff;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.04);
-      opacity: 0.82;
-      transition: opacity 400ms ease, transform 400ms ease, box-shadow 400ms ease;
-      cursor: default;
-    }
-    .showcase-frame:hover {
-      opacity: 1;
-      transform: scale(1.03);
-      box-shadow: 0 12px 48px rgba(0,0,0,0.13), 0 2px 8px rgba(0,0,0,0.06);
-    }
-    .thesis-showcase:has(.showcase-frame:hover) .showcase-frame:not(:hover) {
-      opacity: 0.35;
-    }
-    .frame-chrome {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      padding: 8px 12px;
-      border-bottom: 1px solid #eee;
-      background: #f7f7f5;
-      border-radius: 6px 6px 0 0;
-    }
-    .frame-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #ddd;
-      flex-shrink: 0;
-    }
-    .frame-url {
-      flex: 1;
-      height: 14px;
-      background: #e8e8e6;
-      border-radius: 3px;
-      margin-left: 6px;
-    }
-    .frame-img {
-      width: 100%;
-      display: block;
-      aspect-ratio: 16/10;
-      object-fit: cover;
-      object-position: top center;
-      border-radius: 0 0 5px 5px;
-    }
-
-    @media (max-width: 860px) {
-      .thesis { grid-template-columns: 1fr; min-height: auto; }
-      .thesis-left { padding: 56px 24px 48px; border-right: none; border-bottom: 1px solid var(--rule); }
-      .thesis-showcase { display: none; }
-    }
-
-    /* ── Argument ── */
-    .argument {
-      border-bottom: 1px solid var(--rule);
-    }
-    .argument-intro {
-      padding: 64px 72px;
-      max-width: 780px;
-    }
-    .argument-intro p {
-      font-family: system-ui, -apple-system, sans-serif;
-      font-size: 17px;
-      color: #222;
-      line-height: 1.85;
-      max-width: 62ch;
-    }
-    .argument-intro p + p { margin-top: 22px; }
+    .sp-breadcrumb a:hover { color: var(--ink-2); }
 
     /* ── Section shell ── */
     .sp-section { border-bottom: 1px solid var(--rule); }
-    .sp-section--last { border-bottom: none; }
-    .sp-section-head {
-      padding: 48px 72px 32px;
-      border-bottom: 1px solid var(--rule);
-      text-align: center;
-    }
+    .sp-section-head { padding: 48px 72px 40px; border-bottom: 1px solid var(--rule); }
     .sp-section-label {
-      font-family: "Inter", system-ui, sans-serif;
-      font-weight: 400;
-      font-size: 20px;
-      letter-spacing: 0.5px;
-      text-transform: none;
-      color: #000;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--ink-3);
     }
 
-    /* ── What's Included — 4 phase cards ── */
-    .included-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-    }
+    /* ── What's Included ── */
+    .included-grid { display: grid; grid-template-columns: 1fr 1fr; }
     .included-card {
-      padding: 52px 56px 60px;
+      padding: 48px 56px 56px;
       border-right: 1px solid var(--rule);
       border-bottom: 1px solid var(--rule);
     }
     .included-card:nth-child(even) { border-right: none; }
     .included-card:nth-last-child(-n+2) { border-bottom: none; }
+    .included-card:last-child { border-bottom: none; }
     .included-card-num {
-      font-family: "Inter", system-ui, sans-serif;
-      font-weight: 400;
-      font-size: 11px;
-      letter-spacing: 3px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 10px;
+      letter-spacing: 4px;
       text-transform: uppercase;
-      color: #888;
+      color: var(--ink-3);
       display: block;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
     .included-card-name {
-      font-family: "Inter", system-ui, sans-serif;
-      font-weight: 700;
-      font-size: clamp(22px, 2.2vw, 30px);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500;
+      font-size: clamp(17px, 1.6vw, 22px);
       color: var(--ink);
       display: block;
-      line-height: 1.1;
-      letter-spacing: -0.2px;
-      margin-bottom: 20px;
+      line-height: 1.2;
+      margin-bottom: 14px;
     }
     .included-card-desc {
-      font-family: system-ui, -apple-system, sans-serif;
-      font-size: 15px;
-      color: #333;
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--ink-2);
       line-height: 1.75;
+      margin: 0 0 20px;
     }
     .included-card-items {
-      margin-top: 20px;
       display: flex;
       flex-direction: column;
       gap: 0;
     }
     .included-card-item {
-      font-family: "Inter", system-ui, sans-serif;
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: #000;
-      padding: 10px 0;
+      font-family: 'Poppins', sans-serif;
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--ink-3);
+      padding: 7px 0;
       border-top: 1px solid var(--rule);
     }
+    .included-card-item::before { content: '— '; }
 
     /* ── Process ── */
     .process-timeline-wrap {
@@ -312,100 +186,156 @@
       transition: width 400ms cubic-bezier(.16,1,.3,1);
     }
     .process-row { display: grid; grid-template-columns: repeat(3, 1fr); }
-    .process-step {
-      padding: 56px 48px 64px;
-      border-right: 1px solid var(--rule);
-    }
+    .process-step { padding: 52px 48px 60px; border-right: 1px solid var(--rule); }
     .process-step:last-child { border-right: none; }
     .process-num {
-      font-family: "Inter", system-ui, sans-serif;
-      font-weight: 400;
-      font-size: 11px;
-      letter-spacing: 3px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 10px;
+      letter-spacing: 4px;
       text-transform: uppercase;
-      color: #888;
+      color: var(--ink-3);
       display: block;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
     .process-label {
-      font-family: "Inter", system-ui, sans-serif;
+      font-family: 'Oswald', sans-serif;
       font-weight: 700;
-      font-size: 32px;
+      font-size: 28px;
       color: var(--ink);
       display: block;
       letter-spacing: -0.3px;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
     .process-body {
-      font-family: system-ui, -apple-system, sans-serif;
-      font-size: 15px;
-      color: #333;
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--ink-2);
       line-height: 1.75;
     }
-    .process-body + .process-body { margin-top: 20px; }
+    .process-body + .process-body { margin-top: 14px; }
+
+    /* ── Project Proof ── */
+    .sp-proof {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 1px solid var(--rule);
+      min-height: 420px;
+    }
+    .sp-proof-image {
+      overflow: hidden;
+      border-right: 1px solid var(--rule);
+    }
+    .sp-proof-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 600ms ease;
+    }
+    .sp-proof:hover .sp-proof-image img { transform: scale(1.02); }
+    .sp-proof-text {
+      padding: 56px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .sp-proof-eyebrow {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      display: block;
+      margin-bottom: 16px;
+    }
+    .sp-proof-name {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: clamp(36px, 4.5vw, 60px);
+      color: var(--ink);
+      display: block;
+      line-height: 0.88;
+      letter-spacing: -1px;
+      margin-bottom: 24px;
+    }
+    .sp-proof-desc {
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--ink-2);
+      line-height: 1.75;
+      margin: 0 0 32px;
+      max-width: 40ch;
+    }
+    .sp-proof-link {
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink);
+      text-decoration: none;
+      transition: opacity 200ms;
+      display: inline-block;
+    }
+    .sp-proof-link:hover { opacity: 0.45; }
 
     /* ── Investment ── */
-    .investment-main {
-      padding: 64px 72px;
+    .sp-investment {
       display: flex;
       align-items: center;
       gap: 64px;
+      padding: 72px 72px;
       border-bottom: 1px solid var(--rule);
     }
-    .investment-stat { display: flex; flex-direction: column; gap: 8px; }
-    .investment-stat-label {
-      font-family: "Bebas Neue", "Impact", sans-serif;
-      font-size: 13px;
+    .sp-investment-stat { display: flex; flex-direction: column; gap: 8px; }
+    .sp-investment-label {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 10px;
       letter-spacing: 4px;
       text-transform: uppercase;
       color: var(--ink-3);
     }
-    .investment-amount {
-      font-family: "Inter", system-ui, sans-serif;
+    .sp-investment-value {
+      font-family: 'Oswald', sans-serif;
       font-weight: 700;
-      font-size: 48px;
+      font-size: 52px;
       color: var(--ink);
-      line-height: .88;
-      letter-spacing: -2.5px;
+      line-height: 0.88;
+      letter-spacing: -2px;
     }
-    .investment-divider { width: 1px; height: 80px; background: var(--rule); flex-shrink: 0; }
-    .investment-cta {
+    .sp-investment-divider { width: 1px; height: 72px; background: var(--rule); flex-shrink: 0; }
+    .sp-investment-note {
+      font-family: 'Poppins', sans-serif;
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--ink-3);
+      line-height: 1.65;
+      max-width: 44ch;
+    }
+    .sp-investment-cta {
       margin-left: auto;
-      font-family: "Bebas Neue", "Impact", sans-serif;
-      font-size: 16px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
       color: var(--ink);
       text-decoration: none;
       transition: opacity 250ms;
       white-space: nowrap;
     }
-    .investment-cta:hover { opacity: .45; }
-
-    .investment-note {
-      padding: 28px 72px;
-      border-bottom: 1px solid var(--rule);
-    }
-    .investment-note p {
-      font-family: system-ui, -apple-system, sans-serif;
-      font-size: 14px;
-      color: var(--ink-3);
-      line-height: 1.6;
-    }
+    .sp-investment-cta:hover { opacity: 0.45; }
 
     /* ── FAQ ── */
-    .sp-section-body { padding: 0 72px 72px; }
-    .faq-list { display: flex; flex-direction: column; }
+    .sp-faq { padding: 0 72px 72px; }
     .faq-item { border-bottom: 1px solid var(--rule); }
-    .faq-item:first-child { border-top: 1px solid var(--rule); }
+    .faq-item:first-child { border-top: 1px solid var(--rule); margin-top: 48px; }
     .faq-question {
       width: 100%;
       background: none;
       border: none;
-      padding: 32px 0;
-      font-family: system-ui, -apple-system, sans-serif;
-      font-size: 16px;
-      font-weight: 500;
+      padding: 28px 0;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
       color: var(--ink);
       text-align: left;
       cursor: pointer;
@@ -415,16 +345,15 @@
       gap: 24px;
       transition: color 250ms;
     }
-    .faq-question:hover { color: #222; }
     .faq-icon {
       flex-shrink: 0;
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 300;
       color: var(--ink-3);
-      transition: transform 300ms cubic-bezier(.16,1,.3,1), color 250ms;
+      transition: transform 300ms cubic-bezier(.16,1,.3,1);
       line-height: 1;
     }
-    .faq-item.open .faq-icon { transform: rotate(45deg); color: var(--ink-2); }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
     .faq-answer {
       display: grid;
       grid-template-rows: 0fr;
@@ -433,11 +362,12 @@
     .faq-answer-inner { overflow: hidden; }
     .faq-item.open .faq-answer { grid-template-rows: 1fr; }
     .faq-answer-inner p {
-      font-family: system-ui, -apple-system, sans-serif;
-      font-size: 16px;
-      color: #333;
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--ink-2);
       line-height: 1.8;
-      padding-bottom: 32px;
+      padding-bottom: 28px;
       max-width: 60ch;
     }
 
@@ -445,297 +375,91 @@
     .sp-cta {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      min-height: 320px;
+      min-height: 240px;
     }
     .sp-cta-left {
-      padding: 88px 72px;
+      padding: 72px 72px;
       display: flex;
       align-items: center;
+      border-right: 1px solid var(--rule);
     }
     .sp-cta-headline {
-      font-family: "Inter", system-ui, sans-serif;
+      font-family: 'Oswald', sans-serif;
       font-weight: 700;
-      font-size: clamp(32px, 4vw, 56px);
+      font-size: clamp(28px, 3.5vw, 48px);
       color: var(--ink);
-      line-height: 1.05;
+      line-height: 1.0;
       letter-spacing: -0.5px;
     }
-    .sp-cta-divider {
-      background: var(--rule);
-      align-self: stretch;
-    }
     .sp-cta-right {
-      padding: 88px 72px;
+      padding: 72px 72px;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      gap: 32px;
+      gap: 14px;
     }
-    .sp-cta-sub {
-      font-family: system-ui, -apple-system, sans-serif;
-      font-size: 16px;
-      color: #444;
-      line-height: 1.7;
-    }
-    .sp-cta-links { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
     .sp-cta-btn {
-      font-family: "Inter", system-ui, sans-serif;
-      font-weight: 400;
-      font-size: 15px;
-      letter-spacing: 1.5px;
-      text-transform: none;
-      color: #000;
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink);
       text-decoration: none;
       transition: opacity 250ms;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
+      display: inline-block;
     }
-    .sp-cta-btn .btn-arrow {
-      font-family: system-ui, sans-serif;
-      font-size: 16px;
-      letter-spacing: 0;
-    }
-    .sp-cta-btn:hover { opacity: .45; }
-    .sp-cta-btn--secondary { color: #000; }
+    .sp-cta-btn:hover { opacity: 0.45; }
+    .sp-cta-btn--secondary { font-weight: 300; color: var(--ink-3); }
 
-    /* ── Breadcrumb ── */
-    .sp-breadcrumb { padding: 20px 72px; border-bottom: 1px solid var(--rule); }
-    .sp-breadcrumb a {
-      font-family: "Bebas Neue", "Impact", sans-serif;
-      font-size: 13px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--ink-3);
-      text-decoration: none;
-      transition: color 200ms;
-    }
-    .sp-breadcrumb a:hover { color: var(--ink-2); }
-
-    /* Mobile-only elements — hidden on desktop */
-    .sp-m-eyebrow, .sp-m-headline, .sp-m-title { display: none; }
-    .sp-m-desc-short { display: none; }
-    .sp-m-toggle, .sp-m-toggle-less { display: none; }
-    .sp-m-pricing-row { display: none; }
-    .sp-m-img-break { display: none; }
-    .sp-m-card-img { display: none; }
-    .sp-m-invest-label { display: none; }
-    .sp-m-invest-cta { display: none; }
-
-    /* ── Mobile redesign ── */
+    /* ── Mobile ── */
     @media (max-width: 860px) {
-      .sp-breadcrumb { padding: 18px 24px; }
-
-      /* Hero — plain background, typographic */
-      .sp-hero { min-height: auto; border-radius: 0; margin: 0; border-bottom: none; overflow: visible; background: #FAFAF8; }
-      .sp-hero-bg { display: none; }
-      .sp-hero-overlay { display: none; }
-      .sp-hero-inner {
-        min-height: auto;
-        padding: 40px 24px 0;
-        gap: 0;
-        justify-content: flex-start;
-      }
-      .sp-hero-title { display: none; }
-      .sp-hero-bottom { display: none; }
-      .sp-m-eyebrow {
-        display: block;
-        font-family: 'Poppins', system-ui, sans-serif;
-        font-size: 13px;
-        font-weight: 500;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-        color: #D4537E;
-        margin-bottom: 16px;
-      }
-      .sp-m-title { display: none; }
-      .sp-m-headline {
-        display: block;
-        font-family: 'Poppins', system-ui, sans-serif;
-        font-style: normal;
-        font-weight: 700;
-        font-size: 36px;
-        color: var(--ink);
-        line-height: 1.08;
-        letter-spacing: -0.6px;
-        margin-bottom: 28px;
-      }
-      .sp-m-desc-short { display: inline; }
-      .sp-m-desc-long { display: none; }
-
-      /* Pricing row — plain inline text */
-      .sp-m-pricing-row {
-        display: flex;
-        align-items: baseline;
-        gap: 16px;
-        padding: 0 24px 32px;
-        border-bottom: 1px solid var(--rule);
-      }
-      .sp-m-price-block { display: flex; align-items: baseline; gap: 4px; }
-      .sp-m-price-label {
-        font-family: 'Poppins', system-ui, sans-serif;
-        font-size: 13px;
-        font-weight: 400;
-        letter-spacing: 0;
-        text-transform: none;
-        color: var(--ink-2);
-        margin-bottom: 0;
-      }
-      .sp-m-price-val {
-        font-family: 'Poppins', system-ui, sans-serif;
-        font-size: 13px;
-        font-weight: 400;
-        color: var(--ink);
-      }
-      .sp-m-price-divider { display: none; }
-      .sp-m-timeline-block { display: none; }
-      .sp-m-book-link {
-        font-family: 'Poppins', system-ui, sans-serif;
-        font-size: 13px;
-        color: #D4537E;
-        text-decoration: none;
-        margin-left: auto;
-      }
-
-      /* Hide thesis and image break */
-      .thesis { display: none; }
-      .sp-m-img-break { display: none; }
-
-      /* Argument — hidden */
-      .argument { display: none; }
-
-      /* What's Included — typographic list */
-      .sp-section:has(.included-grid) .sp-section-head { display: none; }
-      .included-grid { display: flex; flex-direction: column; }
-      .included-card {
-        border-right: none !important;
-        border-bottom: none !important;
-        border-top: 1px solid var(--rule);
-        padding: 24px 24px 40px;
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-        overflow: visible;
-      }
-      .sp-m-ghost-num { display: none; }
-      .sp-m-card-img { display: none; }
-      .included-card-num {
-        font-family: 'Poppins', system-ui, sans-serif;
-        font-size: 10px;
-        font-weight: 500;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-        color: #D4537E;
-        margin-bottom: 4px;
-      }
-      .included-card-name {
-        font-family: 'Poppins', system-ui, sans-serif;
-        font-size: 19px;
-        font-weight: 700;
-        letter-spacing: -0.2px;
-        color: var(--ink);
-        margin-bottom: 0;
-      }
-      .included-card-desc {
-        font-family: 'Poppins', system-ui, sans-serif;
-        font-size: 13px;
-        font-weight: 300;
-        line-height: 1.65;
-        color: var(--ink-2);
-      }
-      .sp-m-item-list {
-        list-style: none;
-        margin: 10px 0 0;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-        gap: 3px;
-      }
-      .sp-m-item-list li {
-        font-family: 'Poppins', system-ui, sans-serif;
-        font-size: 12px;
-        font-weight: 300;
-        line-height: 1.5;
-        color: var(--ink-2);
-        padding-left: 14px;
-        position: relative;
-      }
-      .sp-m-item-list li::before {
-        content: '·';
-        position: absolute;
-        left: 0;
-        color: #D4537E;
-      }
-      .sp-m-toggle { display: none; }
-      .sp-m-toggle-less { display: none; }
-      .sp-m-expand-panel { display: none; }
-      .included-card-item { display: none; }
-
-      /* Process section — hidden */
-      .sp-section:has(.process-row) { display: none; }
-
-      /* Investment — standalone typographic moment */
-      .sp-section:has(.investment-main) > .sp-section-head { display: none; }
-      .investment-main {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding: 64px 24px 48px;
-        gap: 12px;
-        border: none;
-        background: transparent;
-        border-radius: 0;
-        margin: 0;
-      }
-      .sp-m-invest-label {
-        display: block;
-        font-family: 'Poppins', system-ui, sans-serif;
-        font-size: 10px;
-        font-weight: 400;
-        letter-spacing: 0.18em;
-        text-transform: uppercase;
-        color: var(--ink-3);
-        margin-bottom: 4px;
-      }
-      .investment-stat-label { display: none; }
-      .investment-amount {
-        font-family: 'Cormorant Garamond', Georgia, serif;
-        font-style: normal;
-        font-weight: 300;
-        font-size: 68px;
-        letter-spacing: -1px;
-        line-height: 1;
-        color: var(--ink);
-        font-variant-numeric: lining-nums;
-      }
-      .investment-stat:last-of-type { display: none; }
-      .investment-divider { display: none; }
-      .investment-cta { display: none; }
-      .investment-note { display: none; }
-      /* CTA — full-bleed square block (sits outside investment-main in HTML) */
-      .sp-m-invest-cta {
+      .sp-hero { min-height: auto; }
+      .sp-hero-bg, .sp-hero-overlay { display: none; }
+      .sp-hero-img {
         display: block;
         width: 100%;
-        padding: 20px 24px;
-        background: #D4537E;
-        color: #fff;
-        border-radius: 0;
-        text-align: center;
-        font-family: 'Poppins', system-ui, sans-serif;
-        font-size: 12px;
-        font-weight: 500;
-        letter-spacing: 0.18em;
-        text-transform: uppercase;
-        text-decoration: none;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+        object-position: center;
       }
+      .sp-hero-inner { position: static; padding: 32px 24px 40px; gap: 16px; }
+      .sp-hero-title { font-size: clamp(52px, 14vw, 80px); }
+      .sp-hero-bottom { flex-direction: column; align-items: flex-start; gap: 20px; }
+      .sp-hero-stats { gap: 28px; }
+      .sp-hero-cta { align-self: flex-start; }
 
-      /* FAQ */
-      .sp-section-body { padding: 0 24px 32px; }
-      .faq-question { padding: 18px 0; font-size: 15px; }
-      .faq-answer-inner p { font-size: 14px; padding-bottom: 20px; }
+      .sp-breadcrumb { padding: 18px 24px; }
+      .sp-section-head { padding: 36px 24px 28px; }
 
-      /* Final CTA — hidden */
-      .sp-cta { display: none; }
+      .included-grid { grid-template-columns: 1fr; }
+      .included-card {
+        border-right: none !important;
+        border-bottom: 1px solid var(--rule) !important;
+        padding: 32px 24px 40px;
+      }
+      .included-card:last-child { border-bottom: none !important; }
+
+      .process-timeline-wrap { display: none; }
+      .process-row { grid-template-columns: 1fr; }
+      .process-step { border-right: none; border-bottom: 1px solid var(--rule); padding: 32px 24px 40px; }
+      .process-step:last-child { border-bottom: none; }
+
+      .sp-proof { grid-template-columns: 1fr; min-height: auto; }
+      .sp-proof-image { border-right: none; border-bottom: 1px solid var(--rule); min-height: 220px; }
+      .sp-proof-image img { height: 220px; }
+      .sp-proof-text { padding: 36px 24px 48px; }
+      .sp-proof-name { font-size: clamp(36px, 10vw, 52px); }
+
+      .sp-investment { flex-direction: column; align-items: flex-start; padding: 48px 24px; gap: 24px; }
+      .sp-investment-divider { width: 32px; height: 1px; }
+      .sp-investment-cta { margin-left: 0; }
+      .sp-investment-note { max-width: none; }
+
+      .sp-faq { padding: 0 24px 48px; }
+      .faq-question { padding: 22px 0; }
+
+      .sp-cta { grid-template-columns: 1fr; min-height: auto; }
+      .sp-cta-left { padding: 48px 24px 32px; border-right: none; border-bottom: 1px solid var(--rule); }
+      .sp-cta-right { padding: 32px 24px 56px; }
     }
 
   </style>
@@ -766,14 +490,13 @@
     <a href="/services/">← All Services</a>
   </div>
 
-  <!-- § 1 · Hero -->
-  <section class="sp-hero">
+  <!-- Hero -->
+  <section class="sp-hero reveal">
     <div class="sp-hero-bg"></div>
     <div class="sp-hero-overlay"></div>
-    <div class="sp-hero-inner reveal">
-      <span class="sp-m-eyebrow">Service · Signature Website</span>
-      <span class="sp-m-title">Signature Website</span>
-      <span class="sp-m-headline">The website you've been waiting to have. One website. Done right.</span>
+    <img class="sp-hero-img" src="/assets/laptopvibe.png" alt="Signature Website" />
+    <div class="sp-hero-inner">
+      <span class="sp-hero-eyebrow">Service</span>
       <div class="sp-hero-title">Signature<br>Website</div>
       <div class="sp-hero-bottom">
         <div class="sp-hero-stats">
@@ -783,235 +506,64 @@
           </div>
           <div class="sp-stat">
             <span class="sp-stat-label">Timeline</span>
-            <span class="sp-stat-value">3 wks to 1 mo</span>
+            <span class="sp-stat-value">3–4 weeks</span>
           </div>
         </div>
-        <a class="sp-hero-cta" href="https://calendly.com/oraanlevi1/30min" target="_blank" rel="noopener">Book a Call <span class="btn-arrow">↗</span></a>
+        <a class="sp-hero-cta" href="https://calendly.com/oraanlevi1/30min" target="_blank" rel="noopener">Book a Call ↗</a>
       </div>
     </div>
   </section>
 
-  <div class="sp-m-pricing-row">
-    <span class="sp-m-price-block">
-      <span class="sp-m-price-label">From</span>
-      <span class="sp-m-price-val">$4,000</span>
-    </span>
-    <span class="sp-m-price-divider"></span>
-    <span class="sp-m-price-block sp-m-timeline-block">
-      <span class="sp-m-price-label">Timeline</span>
-      <span class="sp-m-price-val">3 wks–1 mo</span>
-    </span>
-    <a class="sp-m-book-link" href="https://calendly.com/oraanlevi1/30min" target="_blank" rel="noopener">Book a call ↗</a>
-  </div>
-
-  <!-- § 2 · Thesis -->
-  <section class="thesis reveal">
-    <div class="thesis-left">
-      <span class="thesis-statement">You've built something real. Your website hasn't caught up yet.</span>
-      <div class="thesis-body">
-        <p>This is for founders and creative businesses entering a new chapter: raising prices, attracting better clients, or simply feeling proud to send someone to your URL.</p>
-        <p>The gap between what you offer and what visitors see is costing you. Not in a dramatic way. In the quiet way that compounds.</p>
-      </div>
-    </div>
-    <div class="thesis-showcase">
-      <div class="showcase-frame">
-        <div class="frame-chrome">
-          <span class="frame-dot"></span><span class="frame-dot"></span><span class="frame-dot"></span>
-          <span class="frame-url"></span>
-        </div>
-        <img class="frame-img" src="/assets/clientportal.png" alt="" />
-      </div>
-      <div class="showcase-frame">
-        <div class="frame-chrome">
-          <span class="frame-dot"></span><span class="frame-dot"></span><span class="frame-dot"></span>
-          <span class="frame-url"></span>
-        </div>
-        <img class="frame-img" src="/assets/junesnip.png" alt="" />
-      </div>
-      <div class="showcase-frame">
-        <div class="frame-chrome">
-          <span class="frame-dot"></span><span class="frame-dot"></span><span class="frame-dot"></span>
-          <span class="frame-url"></span>
-        </div>
-        <img class="frame-img" src="/assets/cel.png" alt="" />
-      </div>
-      <div class="showcase-frame">
-        <div class="frame-chrome">
-          <span class="frame-dot"></span><span class="frame-dot"></span><span class="frame-dot"></span>
-          <span class="frame-url"></span>
-        </div>
-        <img class="frame-img" src="/assets/moodboard.png" alt="" />
-      </div>
-    </div>
-  </section>
-
-
-  <!-- § 3 · Introduction -->
-  <div class="argument reveal">
-    <div class="argument-intro">
-      <p>This is for founders and creative businesses that have outgrown what they started with: a template, a freelancer, something built in a weekend that somehow became the face of the brand. The work has gotten better. The website needs to reflect that.</p>
-      <p>Visitors arrive and something isn't landing. The hierarchy is off. The message is vague. The design doesn't match the quality of what's actually being offered. We start by understanding who you are and who you're trying to reach. Every page, every detail is built around that. The result is a site that feels like you. Only more so.</p>
-    </div>
-  </div>
-
-  <!-- § 4 · What's Included -->
+  <!-- What's Included -->
   <section class="sp-section reveal">
     <div class="sp-section-head">
-      <span class="sp-section-label">What's included.</span>
+      <span class="sp-section-label">What's Included</span>
     </div>
     <div class="included-grid">
-
-      <div class="included-card" data-reveal>
-        <span class="sp-m-ghost-num">01</span>
-        <div class="sp-m-card-img"></div>
-        <span class="included-card-num">Direction</span>
+      <div class="included-card">
+        <span class="included-card-num">01 / Direction</span>
         <span class="included-card-name">Strategy &amp; Discovery</span>
-        <p class="included-card-desc">We start by understanding your brand, your clients, and what you need the site to do.</p>
-        <ul class="sp-m-item-list">
-          <li>Discovery &amp; Strategy Session</li>
-          <li>Site Architecture</li>
-          <li>Content Planning</li>
-          <li>Collaborative Brand Direction</li>
-        </ul>
-        <button class="sp-m-toggle" aria-expanded="false">Read more</button>
-        <div class="sp-m-expand-panel">
-          <div class="included-card-items">
-            <span class="included-card-item">Discovery &amp; Strategy Session</span>
-            <span class="included-card-item">Site Architecture</span>
-            <span class="included-card-item">Content Planning</span>
-            <span class="included-card-item">Collaborative Brand Direction</span>
-          </div>
-          <button class="sp-m-toggle-less">Show less</button>
+        <p class="included-card-desc">We start by understanding your brand, your clients, and what you need the site to do. Nothing is built until we agree on a clear direction.</p>
+        <div class="included-card-items">
+          <span class="included-card-item">Discovery &amp; Strategy Session</span>
+          <span class="included-card-item">Site Architecture</span>
+          <span class="included-card-item">Content Planning</span>
         </div>
       </div>
-
-      <div class="included-card" data-reveal>
-        <span class="sp-m-ghost-num">02</span>
-        <div class="sp-m-card-img"></div>
-        <span class="included-card-num">Design</span>
+      <div class="included-card">
+        <span class="included-card-num">02 / Design</span>
         <span class="included-card-name">Custom Website Design</span>
-        <p class="included-card-desc">Every layout, typeface, and detail designed specifically for your brand. Nothing templated, nothing borrowed.</p>
-        <ul class="sp-m-item-list">
-          <li>Full Site Design</li>
-          <li>Desktop &amp; Mobile</li>
-          <li>Responsive Layouts</li>
-          <li>Motion &amp; Interaction Design</li>
-          <li>Two Revision Rounds</li>
-        </ul>
-        <button class="sp-m-toggle" aria-expanded="false">Read more</button>
-        <div class="sp-m-expand-panel">
-          <div class="included-card-items">
-            <span class="included-card-item">Full Site Design</span>
-            <span class="included-card-item">Desktop &amp; Mobile</span>
-            <span class="included-card-item">Responsive Layouts</span>
-            <span class="included-card-item">Motion &amp; Interaction Design</span>
-            <span class="included-card-item">Two Revision Rounds</span>
-          </div>
-          <button class="sp-m-toggle-less">Show less</button>
+        <p class="included-card-desc">Every layout, typeface, and detail designed specifically for your brand. Nothing templated, nothing borrowed. Two rounds of revisions included.</p>
+        <div class="included-card-items">
+          <span class="included-card-item">Full Site Design</span>
+          <span class="included-card-item">Desktop &amp; Mobile</span>
+          <span class="included-card-item">Motion &amp; Interactions</span>
         </div>
       </div>
-
-      <div class="included-card" data-reveal>
-        <span class="sp-m-ghost-num">03</span>
-        <div class="sp-m-card-img"></div>
-        <span class="included-card-num">Build</span>
+      <div class="included-card">
+        <span class="included-card-num">03 / Build</span>
         <span class="included-card-name">Development &amp; Setup</span>
-        <p class="included-card-desc">Clean, fast code built to perform. No bloated builders, no unnecessary dependencies.</p>
-        <ul class="sp-m-item-list">
-          <li>Custom Development</li>
-          <li>Contact Form</li>
-          <li>Technical SEO Setup</li>
-          <li>Cross-Browser &amp; Device Testing</li>
-        </ul>
-        <button class="sp-m-toggle" aria-expanded="false">Read more</button>
-        <div class="sp-m-expand-panel">
-          <div class="included-card-items">
-            <span class="included-card-item">Custom Development</span>
-            <span class="included-card-item">Contact Form</span>
-            <span class="included-card-item">Technical SEO Setup</span>
-            <span class="included-card-item">Cross-Browser &amp; Device Testing</span>
-          </div>
-          <button class="sp-m-toggle-less">Show less</button>
+        <p class="included-card-desc">Clean, fast code built to perform. No bloated builders, no unnecessary dependencies. Tested across all devices and browsers.</p>
+        <div class="included-card-items">
+          <span class="included-card-item">Custom Development</span>
+          <span class="included-card-item">Contact Form</span>
+          <span class="included-card-item">Technical SEO Setup</span>
         </div>
       </div>
-
-      <div class="included-card" data-reveal>
-        <span class="sp-m-ghost-num">04</span>
-        <div class="sp-m-card-img"></div>
-        <span class="included-card-num">Launch</span>
-        <span class="included-card-name">Launch &amp; Beyond</span>
-        <p class="included-card-desc">Full launch coordination, from domain connection to going live.</p>
-        <ul class="sp-m-item-list">
-          <li>Domain Connection</li>
-          <li>Hosting Deployment</li>
-          <li>Final QA &amp; Testing</li>
-          <li>Google Analytics Setup</li>
-          <li>Google Search Console Setup</li>
-          <li>Website Walkthrough</li>
-          <li>Two Weeks Post-Launch Support</li>
-        </ul>
-        <button class="sp-m-toggle" aria-expanded="false">Read more</button>
-        <div class="sp-m-expand-panel">
-          <div class="included-card-items">
-            <span class="included-card-item">Domain Connection</span>
-            <span class="included-card-item">Hosting Deployment</span>
-            <span class="included-card-item">Final QA &amp; Testing</span>
-            <span class="included-card-item">Google Analytics Setup</span>
-            <span class="included-card-item">Google Search Console Setup</span>
-            <span class="included-card-item">Website Walkthrough</span>
-            <span class="included-card-item">Two Weeks Post-Launch Support</span>
-          </div>
-          <button class="sp-m-toggle-less">Show less</button>
+      <div class="included-card">
+        <span class="included-card-num">04 / Launch</span>
+        <span class="included-card-name">Launch &amp; Post-Launch</span>
+        <p class="included-card-desc">Full launch coordination — domain, hosting, analytics. Two weeks of post-launch support included. Logo design and professional photography are not included.</p>
+        <div class="included-card-items">
+          <span class="included-card-item">Domain &amp; Hosting Deployment</span>
+          <span class="included-card-item">Analytics Setup</span>
+          <span class="included-card-item">Two Weeks Support</span>
         </div>
       </div>
-
-      <div class="included-card" data-reveal>
-        <span class="sp-m-ghost-num">05</span>
-        <div class="sp-m-card-img"></div>
-        <span class="included-card-num">Add-Ons</span>
-        <span class="included-card-name">Available When Required</span>
-        <p class="included-card-desc"><span class="sp-m-desc-long">Some projects require functionality beyond the core package. These are not included as standard, but are available when the project calls for them. Each is scoped and priced individually during the proposal conversation.</span><span class="sp-m-desc-short">E-commerce, memberships, booking systems, custom CMS, and third-party integrations — available when the project calls for them, scoped individually.</span></p>
-        <button class="sp-m-toggle" aria-expanded="false">Read more</button>
-        <div class="sp-m-expand-panel">
-          <div class="included-card-items">
-            <span class="included-card-item">E-Commerce</span>
-            <span class="included-card-item">Membership Functionality</span>
-            <span class="included-card-item">Booking Systems</span>
-            <span class="included-card-item">Custom CMS</span>
-            <span class="included-card-item">Third-Party Integrations</span>
-          </div>
-          <button class="sp-m-toggle-less">Show less</button>
-        </div>
-      </div>
-
-      <div class="included-card" data-reveal>
-        <span class="sp-m-ghost-num">06</span>
-        <div class="sp-m-card-img"></div>
-        <span class="included-card-num">Clarity</span>
-        <span class="included-card-name">Not Included</span>
-        <p class="included-card-desc">You provide a first draft of copy — Pink refines it for the web. These are not included:</p>
-        <ul class="sp-m-item-list">
-          <li>Logo Design</li>
-          <li>Professional Photography</li>
-          <li>Full Copywriting</li>
-          <li>Third-Party Automations</li>
-        </ul>
-        <button class="sp-m-toggle" aria-expanded="false">Read more</button>
-        <div class="sp-m-expand-panel">
-          <div class="included-card-items">
-            <span class="included-card-item">Logo Design</span>
-            <span class="included-card-item">Professional Photography</span>
-            <span class="included-card-item">Full Copywriting</span>
-            <span class="included-card-item">Third-Party Automations</span>
-          </div>
-          <button class="sp-m-toggle-less">Show less</button>
-        </div>
-      </div>
-
     </div>
   </section>
 
-  <!-- § 5 · Process -->
+  <!-- Process -->
   <section class="sp-section reveal">
     <div class="sp-section-head">
       <span class="sp-section-label">How It Works</span>
@@ -1021,96 +573,87 @@
     </div>
     <div class="process-row" id="processRow">
       <div class="process-step">
-        <span class="process-num">Step 1</span>
+        <span class="process-num">01</span>
         <span class="process-label">Discovery</span>
-        <p class="process-body">We spend time getting to know your brand, your clients, and your goals.<br>You fill in a creative brief.<br>We talk through what you love, what you're moving away from, and what success looks like.</p>
+        <p class="process-body">We spend time getting to know your brand, your clients, and your goals. You fill in a creative brief. We talk through what you love, what you're moving away from, and what success looks like.</p>
         <p class="process-body">Nothing begins until we both know exactly where we're going.</p>
       </div>
       <div class="process-step">
-        <span class="process-num">Step 2</span>
-        <span class="process-label">Design</span>
-        <p class="process-body">I build your site in full: design, copy structure, and development, with your brand at the center.<br>You'll review at each milestone and refine until it feels exactly right.<br>Two rounds of revisions are included.</p>
+        <span class="process-num">02</span>
+        <span class="process-label">Design &amp; Build</span>
+        <p class="process-body">I build your site in full — design, copy structure, and development, with your brand at the center. You review at each milestone and refine until it feels exactly right.</p>
         <p class="process-body">We don't ship until you're proud of it.</p>
       </div>
       <div class="process-step">
-        <span class="process-num">Step 3</span>
+        <span class="process-num">03</span>
         <span class="process-label">Launch</span>
-        <p class="process-body">Once you've approved every detail, we go live.<br>Your site is tested across devices and browsers before anything is published.<br>Two weeks of post-launch support follow.</p>
-        <p class="process-body">If anything needs attention after you're live, it's handled.</p>
+        <p class="process-body">Once you've approved every detail, we go live. Your site is tested across devices and browsers before anything is published. Two weeks of post-launch support follow.</p>
+        <p class="process-body">If anything needs attention after launch, it's handled.</p>
       </div>
     </div>
   </section>
 
-  <!-- § 6 · Investment -->
+  <!-- Project Proof -->
+  <section class="sp-proof reveal">
+    <div class="sp-proof-image">
+      <img src="/assets/loup.png" alt="Le Loup" />
+    </div>
+    <div class="sp-proof-text">
+      <span class="sp-proof-eyebrow">In Practice</span>
+      <span class="sp-proof-name">Le Loup</span>
+      <p class="sp-proof-desc">A fully custom website designed and built from scratch for a Los Angeles restaurant — editorial photography, considered typography, clean code.</p>
+      <a class="sp-proof-link" href="/le-loup/">View Case Study →</a>
+    </div>
+  </section>
+
+  <!-- Investment -->
+  <section class="sp-section reveal">
+    <div class="sp-investment">
+      <div class="sp-investment-stat">
+        <span class="sp-investment-label">Starting from</span>
+        <span class="sp-investment-value">$4,000</span>
+      </div>
+      <div class="sp-investment-divider"></div>
+      <div class="sp-investment-stat">
+        <span class="sp-investment-label">Timeline</span>
+        <span class="sp-investment-value">3–4 wks</span>
+      </div>
+      <p class="sp-investment-note">Scoped individually before work begins. No surprises, no hidden fees.</p>
+      <a class="sp-investment-cta" href="https://calendly.com/oraanlevi1/30min" target="_blank" rel="noopener">Book a Call ↗</a>
+    </div>
+  </section>
+
+  <!-- FAQ -->
   <section class="sp-section reveal">
     <div class="sp-section-head">
-      <span class="sp-section-label">Investment</span>
+      <span class="sp-section-label">Questions</span>
     </div>
-    <div class="investment-main">
-      <span class="sp-m-invest-label">Investment</span>
-      <div class="investment-stat">
-        <span class="investment-stat-label">Starting from</span>
-        <span class="investment-amount">$4,000</span>
-      </div>
-      <div class="investment-divider"></div>
-      <div class="investment-stat">
-        <span class="investment-stat-label">Timeline</span>
-        <span class="investment-amount">3 wks to 1 mo</span>
-      </div>
-      <a class="investment-cta" href="https://calendly.com/oraanlevi1/30min" target="_blank" rel="noopener">Book a Call ↗&#xFE0E;</a>
-    </div>
-    <a class="sp-m-invest-cta" href="https://calendly.com/oraanlevi1/30min" target="_blank" rel="noopener">BOOK A CALL ↗</a>
-    <div class="investment-note">
-      <p>Every project is custom scoped before work begins. The proposal defines the pages, functionality, timeline, and deliverables based on your business goals, so you know exactly what you're getting before anything starts. Payment is collected via invoice or Square link. No surprises, no hidden fees. Every website is built with strong technical SEO foundations. Search rankings, traffic, and business results cannot be guaranteed.</p>
-    </div>
-  </section>
-
-  <!-- § 7 · Questions -->
-  <section class="sp-section sp-section--last reveal">
-    <div class="sp-section-head">
-      <span class="sp-section-label">questions</span>
-    </div>
-    <div class="sp-section-body">
+    <div class="sp-faq">
       <div class="faq-list">
         <div class="faq-item">
           <button class="faq-question">How does the process work, start to finish? <span class="faq-icon">+</span></button>
-          <div class="faq-answer"><div class="faq-answer-inner"><p>We start with a call. From there, you fill in a creative brief and I put together a proposal based on what your project actually needs. Once approved, we move through Discovery, Design, and Launch. You're involved at each phase: reviewing, refining, approving, but never overwhelmed by it. The whole process runs three weeks to one month depending on scope and your availability.</p></div></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question">What happens after the site launches? <span class="faq-icon">+</span></button>
-          <div class="faq-answer"><div class="faq-answer-inner"><p>Two weeks of complimentary post-launch support are included, so if anything needs a fix or adjustment after you go live, it's covered. After that, Monthly Website Support is available as an ongoing plan if you'd like continued attention for your site.</p></div></div>
+          <div class="faq-answer"><div class="faq-answer-inner"><p>We start with a call. You fill in a creative brief and I put together a proposal based on what your project needs. Once approved, we move through Discovery, Design, and Launch. You're involved at each phase — reviewing, refining, approving — but never overwhelmed. The whole process runs three to four weeks depending on scope and your availability.</p></div></div>
         </div>
         <div class="faq-item">
           <button class="faq-question">What do you need from me to get started? <span class="faq-icon">+</span></button>
-          <div class="faq-answer"><div class="faq-answer-inner"><p>Your brand assets if you have them: logo, fonts, colors. A sense of what you love and what you're moving away from. Any content we'll be using, or clarity on what needs to be written or sourced. We walk through all of this together on the first call. Nothing is expected in advance.</p></div></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question">Does Pink write the copy? <span class="faq-icon">+</span></button>
-          <div class="faq-answer"><div class="faq-answer-inner"><p>Not from scratch. Clients provide a first draft. It doesn't need to be polished, just a starting point. Pink refines it for clarity, hierarchy, and how it reads on the web. If you need full copywriting from the ground up, that's a separate engagement and can be discussed during the proposal conversation.</p></div></div>
+          <div class="faq-answer"><div class="faq-answer-inner"><p>Your brand assets if you have them — logo, fonts, colors. A sense of what you love and what you're moving away from. A first draft of copy, which doesn't need to be polished. We walk through all of this together on the first call. Nothing is expected in advance.</p></div></div>
         </div>
         <div class="faq-item">
           <button class="faq-question">Is photography included? <span class="faq-icon">+</span></button>
-          <div class="faq-answer"><div class="faq-answer-inner"><p>Stock image sourcing is included within reason. If your project calls for a handful of carefully selected images, that's handled. Professional photography is not included. If your brand relies heavily on original imagery, we'll discuss what you have and what might need to be shot before the project begins.</p></div></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question">How many pages are included? <span class="faq-icon">+</span></button>
-          <div class="faq-answer"><div class="faq-answer-inner"><p>There's no fixed page count. Every project is scoped individually based on what your business actually needs. The proposal will define the exact pages, sections, and deliverables before anything begins. Most Signature projects range from four to eight pages, but this varies depending on your goals and content.</p></div></div>
+          <div class="faq-answer"><div class="faq-answer-inner"><p>Stock image sourcing within reason is included. Professional photography is not. If your brand relies heavily on original imagery, we'll discuss what you have and what might need to be shot before the project begins.</p></div></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- § 8 · Final CTA -->
+  <!-- Final CTA -->
   <section class="sp-cta reveal">
     <div class="sp-cta-left">
-      <p class="sp-cta-headline">Ready to begin?</p>
+      <span class="sp-cta-headline">Ready to begin?</span>
     </div>
     <div class="sp-cta-right">
-      <p class="sp-cta-sub">Every project starts with a conversation.</p>
-      <div class="sp-cta-links">
-        <a class="sp-cta-btn" href="https://calendly.com/oraanlevi1/30min" target="_blank" rel="noopener">Book a Call <span class="btn-arrow">→</span></a>
-        <a class="sp-cta-btn sp-cta-btn--secondary" href="/contact/">Send a Message <span class="btn-arrow">→</span></a>
-      </div>
+      <a class="sp-cta-btn" href="https://calendly.com/oraanlevi1/30min" target="_blank" rel="noopener">Book a Call ↗</a>
+      <a class="sp-cta-btn sp-cta-btn--secondary" href="/contact/">Send a Message →</a>
     </div>
   </section>
 
@@ -1133,16 +676,15 @@
   </footer>
 
   <script>
-    const nav = document.getElementById("mainNav");
-    const bar = document.getElementById("scrollBar");
-    window.addEventListener("scroll", () => {
-      nav.classList.toggle("scrolled", window.scrollY > 20);
-      if (bar) bar.style.width = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100) + "%";
+    const nav = document.getElementById('mainNav');
+    const bar = document.getElementById('scrollBar');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+      if (bar) bar.style.width = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100) + '%';
     }, { passive: true });
 
-    const ham = document.getElementById("navHam");
-    const mob = document.getElementById("mobileNav");
-    // Sidebar nav
+    const ham = document.getElementById('navHam');
+    const mob = document.getElementById('mobileNav');
     const scrim = document.createElement('div');
     scrim.className = 'nav-scrim';
     document.body.appendChild(scrim);
@@ -1150,67 +692,35 @@
     navHeader.className = 'mobile-nav-header';
     navHeader.innerHTML = '<button class="mobile-nav-close" id="navClose" aria-label="Close menu">&#215;</button>';
     mob.insertBefore(navHeader, mob.firstChild);
-    function openNav() {
-      ham.classList.add('open'); mob.classList.add('open'); scrim.classList.add('open');
-      ham.setAttribute('aria-expanded', 'true'); mob.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-    }
-    function closeNav() {
-      ham.classList.remove('open'); mob.classList.remove('open'); scrim.classList.remove('open');
-      ham.setAttribute('aria-expanded', 'false'); mob.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
-    }
-    ham.addEventListener('click', () => { mob.classList.contains('open') ? closeNav() : openNav(); });
+    function openNav() { ham.classList.add('open'); mob.classList.add('open'); scrim.classList.add('open'); ham.setAttribute('aria-expanded','true'); mob.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+    function closeNav() { ham.classList.remove('open'); mob.classList.remove('open'); scrim.classList.remove('open'); ham.setAttribute('aria-expanded','false'); mob.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+    ham.addEventListener('click', () => mob.classList.contains('open') ? closeNav() : openNav());
     scrim.addEventListener('click', closeNav);
     document.getElementById('navClose')?.addEventListener('click', closeNav);
     mob.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
 
-    /* Reveal on scroll */
-    const io = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add("visible"); io.unobserve(e.target); }
-      });
-    }, { threshold: 0.04, rootMargin: "0px 0px -40px 0px" });
-    document.querySelectorAll(".reveal").forEach(el => io.observe(el));
-
-    /* Process timeline fill */
-    const processRow = document.getElementById("processRow");
-    const timelineFill = document.getElementById("processTimelineFill");
+    const processRow = document.getElementById('processRow');
+    const timelineFill = document.getElementById('processTimelineFill');
     if (processRow && timelineFill) {
-      const steps = processRow.querySelectorAll(".process-step");
-      steps.forEach((step, i) => {
-        step.addEventListener("mouseenter", () => {
-          timelineFill.style.width = ((i + 1) / steps.length * 100) + "%";
-        });
+      processRow.querySelectorAll('.process-step').forEach((step, i, arr) => {
+        step.addEventListener('mouseenter', () => { timelineFill.style.width = ((i+1)/arr.length*100)+'%'; });
       });
-      processRow.addEventListener("mouseleave", () => { timelineFill.style.width = "0"; });
+      processRow.addEventListener('mouseleave', () => { timelineFill.style.width = '0'; });
     }
 
-    /* Card expand / collapse */
-    document.querySelectorAll('.included-card').forEach(card => {
-      const toggle = card.querySelector('.sp-m-toggle');
-      const less   = card.querySelector('.sp-m-toggle-less');
-      if (!toggle) return;
-      toggle.addEventListener('click', () => {
-        card.classList.add('sp-expanded');
-        toggle.setAttribute('aria-expanded', 'true');
-      });
-      less?.addEventListener('click', () => {
-        card.classList.remove('sp-expanded');
-        toggle.setAttribute('aria-expanded', 'false');
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const wasOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!wasOpen) item.classList.add('open');
       });
     });
 
-    /* FAQ accordion */
-    document.querySelectorAll(".faq-question").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const item = btn.closest(".faq-item");
-        const wasOpen = item.classList.contains("open");
-        document.querySelectorAll(".faq-item").forEach(i => i.classList.remove("open"));
-        if (!wasOpen) item.classList.add("open");
-      });
-    });
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.04, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
   </script>
-  <script src="/js/scroll-reveal.js" defer></script>
 </body>
 </html>
