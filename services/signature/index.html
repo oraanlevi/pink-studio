@@ -7,7 +7,7 @@
   <title>Signature Website · Pink Web Studio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Inter:wght@400;700&family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Oswald:wght@400;700&family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/styles.css" />
   <style>
 
@@ -24,7 +24,7 @@
     .sp-hero-bg {
       position: absolute;
       inset: 0;
-      background: url('/assets/marble.png') center / cover no-repeat;
+      background: url('/assets/laptopvibe.png') center / cover no-repeat;
       transform: scale(1.04);
       animation: heroZoom 20s ease-in-out infinite alternate;
     }
@@ -52,11 +52,11 @@
       gap: 36px;
     }
     .sp-hero-title {
-      font-family: "Inter", system-ui, sans-serif;
+      font-family: 'Oswald', sans-serif;
       font-weight: 700;
       font-size: clamp(72px, 10vw, 140px);
       line-height: 0.88;
-      letter-spacing: -3px;
+      letter-spacing: -1px;
       color: var(--ink);
     }
     .sp-hero-bottom {
@@ -75,14 +75,14 @@
       color: var(--ink-3);
     }
     .sp-stat-value {
-      font-family: "Inter", system-ui, sans-serif;
+      font-family: 'Oswald', sans-serif;
       font-weight: 700;
       font-size: 22px;
       color: var(--ink);
       line-height: 1;
     }
     .sp-hero-cta {
-      font-family: "Inter", system-ui, sans-serif;
+      font-family: 'Poppins', sans-serif;
       font-weight: 400;
       font-size: 15px;
       letter-spacing: 1.5px;
@@ -143,28 +143,31 @@
 
     /* ── Thesis showcase ── */
     .thesis-showcase {
-      position: relative;
       overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      padding: 28px 28px 28px 0;
+      align-content: center;
     }
     .showcase-frame {
-      position: absolute;
-      width: 54%;
+      position: relative;
+      width: 100%;
       background: #fff;
       border: 1px solid #ddd;
       border-radius: 6px;
       box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.04);
-      opacity: 0.72;
-      transition: opacity 480ms ease, transform 480ms ease, box-shadow 480ms ease, z-index 0ms;
+      opacity: 0.82;
+      transition: opacity 400ms ease, transform 400ms ease, box-shadow 400ms ease;
       cursor: default;
     }
     .showcase-frame:hover {
       opacity: 1;
-      transform: scale(1.04) !important;
+      transform: scale(1.03);
       box-shadow: 0 12px 48px rgba(0,0,0,0.13), 0 2px 8px rgba(0,0,0,0.06);
-      z-index: 10 !important;
     }
     .thesis-showcase:has(.showcase-frame:hover) .showcase-frame:not(:hover) {
-      opacity: 0.38;
+      opacity: 0.35;
     }
     .frame-chrome {
       display: flex;
@@ -196,32 +199,6 @@
       object-fit: cover;
       object-position: top center;
       border-radius: 0 0 5px 5px;
-    }
-
-    /* Frame positions — staggered editorial */
-    .showcase-frame:nth-child(1) {
-      top: 10%;
-      left: 6%;
-      z-index: 4;
-      transform: rotate(-1.5deg);
-    }
-    .showcase-frame:nth-child(2) {
-      top: 22%;
-      left: 34%;
-      z-index: 3;
-      transform: rotate(1deg);
-    }
-    .showcase-frame:nth-child(3) {
-      top: 42%;
-      left: 12%;
-      z-index: 2;
-      transform: rotate(0.5deg);
-    }
-    .showcase-frame:nth-child(4) {
-      top: 52%;
-      left: 38%;
-      z-index: 1;
-      transform: rotate(-0.8deg);
     }
 
     @media (max-width: 860px) {
@@ -568,7 +545,7 @@
         font-weight: 500;
         letter-spacing: 0.2em;
         text-transform: uppercase;
-        color: #993556;
+        color: #D4537E;
         margin-bottom: 16px;
       }
       .sp-m-title { display: none; }
@@ -615,7 +592,7 @@
       .sp-m-book-link {
         font-family: 'Poppins', system-ui, sans-serif;
         font-size: 13px;
-        color: #993556;
+        color: #D4537E;
         text-decoration: none;
         margin-left: auto;
       }
@@ -648,7 +625,7 @@
         font-weight: 500;
         letter-spacing: 0.2em;
         text-transform: uppercase;
-        color: #993556;
+        color: #D4537E;
         margin-bottom: 4px;
       }
       .included-card-name {
