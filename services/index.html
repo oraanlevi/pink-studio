@@ -52,7 +52,7 @@
     }
 
     /* Hero card */
-    .sg-hero { aspect-ratio: 16 / 8; }
+    .sg-hero { aspect-ratio: 16 / 6; }
 
     /* Grid */
     .sg-grid {
@@ -60,7 +60,7 @@
       grid-template-columns: 1fr 1fr;
       gap: 12px;
     }
-    .sg-card--grid { aspect-ratio: 3 / 4; }
+    .sg-card--grid { aspect-ratio: 4 / 3; }
 
     /* ── Label ── */
     .sg-label {
@@ -134,30 +134,9 @@
       color: rgba(255,255,255,.45);
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      margin: 0 0 14px;
+      margin: 0 0 22px;
     }
-    .sg-detail-list {
-      list-style: none;
-      padding: 0;
-      margin: 0 0 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-    }
-    .sg-detail-list li {
-      font-family: 'Poppins', sans-serif;
-      font-size: 12px;
-      font-weight: 300;
-      color: rgba(255,255,255,.68);
-      padding-left: 14px;
-      position: relative;
-    }
-    .sg-detail-list li::before {
-      content: '–';
-      position: absolute;
-      left: 0;
-      color: rgba(255,255,255,.3);
-    }
+    .sg-detail-list { display: none; }
     .sg-detail-cta {
       display: inline-block;
       font-family: 'Poppins', sans-serif;
@@ -214,7 +193,7 @@
       .sg-wrap { padding: 0 12px 12px; gap: 8px; }
       .sg-hero { aspect-ratio: 4 / 3; }
       .sg-grid { gap: 8px; }
-      .sg-card--grid { aspect-ratio: 3 / 4; }
+      .sg-card--grid { aspect-ratio: 4 / 3; }
       .sg-detail { padding: 20px 18px 24px; }
       .sg-detail-name { font-size: 16px; }
       .sg-detail-list { display: none; }
@@ -266,13 +245,6 @@
         <p class="sg-detail-name">Signature Website</p>
         <p class="sg-detail-sub">Built from scratch, for you.</p>
         <p class="sg-detail-meta">From $4,000 &nbsp;·&nbsp; 3–4 weeks</p>
-        <ul class="sg-detail-list">
-          <li>Custom design system</li>
-          <li>Responsive build</li>
-          <li>CMS integration</li>
-          <li>2 revision rounds</li>
-          <li>Launch support</li>
-        </ul>
         <a class="sg-detail-cta" href="/contact/">Start a Project →</a>
         <a class="sg-detail-link" href="/services/signature/">Full details →</a>
       </div>
@@ -290,12 +262,6 @@
           <p class="sg-detail-name">Website Refresh</p>
           <p class="sg-detail-sub">Your site, elevated.</p>
           <p class="sg-detail-meta">From $2,000 &nbsp;·&nbsp; 2–3 weeks</p>
-          <ul class="sg-detail-list">
-            <li>Design audit</li>
-            <li>Visual refresh</li>
-            <li>Mobile optimization</li>
-            <li>Performance pass</li>
-          </ul>
           <a class="sg-detail-cta" href="/contact/">Start a Project →</a>
           <a class="sg-detail-link" href="/services/refresh/">Full details →</a>
         </div>
@@ -310,12 +276,6 @@
           <p class="sg-detail-name">Website Audit</p>
           <p class="sg-detail-sub">Know exactly what to fix.</p>
           <p class="sg-detail-meta">$199 &nbsp;·&nbsp; 3–5 days</p>
-          <ul class="sg-detail-list">
-            <li>UX + design review</li>
-            <li>Performance check</li>
-            <li>Written report</li>
-            <li>Priority recommendations</li>
-          </ul>
           <a class="sg-detail-cta" href="/contact/">Book an Audit →</a>
           <a class="sg-detail-link" href="/services/audit/">Full details →</a>
         </div>
@@ -330,12 +290,6 @@
           <p class="sg-detail-name">Monthly Support</p>
           <p class="sg-detail-sub">Ongoing care, handled.</p>
           <p class="sg-detail-meta">$250 / mo &nbsp;·&nbsp; Ongoing</p>
-          <ul class="sg-detail-list">
-            <li>Monthly update hours</li>
-            <li>Priority turnaround</li>
-            <li>Content updates</li>
-            <li>No contracts</li>
-          </ul>
           <a class="sg-detail-cta" href="/contact/">Get Started →</a>
           <a class="sg-detail-link" href="/services/care/">Full details →</a>
         </div>
@@ -350,11 +304,6 @@
           <p class="sg-detail-name">Custom Solutions</p>
           <p class="sg-detail-sub">Something beyond a website.</p>
           <p class="sg-detail-meta">Custom pricing</p>
-          <ul class="sg-detail-list">
-            <li>Tools &amp; portals</li>
-            <li>Custom products</li>
-            <li>Starts with a conversation</li>
-          </ul>
           <a class="sg-detail-cta" href="/contact/">Let's Talk →</a>
         </div>
       </div>
