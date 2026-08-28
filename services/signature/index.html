@@ -119,122 +119,103 @@
       color: var(--ink-3);
     }
 
-    /* ── What's Included ── */
-    .included-grid { display: grid; grid-template-columns: 1fr 1fr; }
-    .included-card {
+    /* ── What's Included — editorial rows ── */
+    .inc-row {
+      display: grid;
+      grid-template-columns: 120px 1fr 300px;
+      align-items: stretch;
+      border-bottom: 1px solid var(--rule);
       position: relative;
       overflow: hidden;
-      padding: 48px 56px 56px;
-      border-right: 1px solid var(--rule);
-      border-bottom: 1px solid var(--rule);
-      transition: background 480ms cubic-bezier(.16,1,.3,1);
-      cursor: default;
+      transition: background 380ms ease;
     }
-    .included-card:nth-child(even) { border-right: none; }
-    .included-card:nth-last-child(-n+2) { border-bottom: none; }
-    .included-card:last-child { border-bottom: none; }
+    .inc-row:last-child { border-bottom: none; }
 
-    /* Pink left accent bar */
-    .included-card::before {
+    /* Pink sweep line along bottom */
+    .inc-row::after {
       content: '';
       position: absolute;
-      left: 0; top: 0;
-      width: 2px;
-      height: 0;
+      left: 0; bottom: 0;
+      height: 2px;
+      width: 0;
       background: #D4537E;
-      transition: height 480ms cubic-bezier(.16,1,.3,1);
+      transition: width 500ms cubic-bezier(.16,1,.3,1);
     }
-    .included-card:hover::before { height: 100%; }
+    .inc-row:hover::after { width: 100%; }
+    .inc-row:hover { background: rgba(212,83,126,0.028); }
 
-    /* Giant watermark number */
-    .included-card-watermark {
-      position: absolute;
-      bottom: -16px;
-      right: 20px;
+    /* Number column */
+    .inc-num {
       font-family: 'Oswald', sans-serif;
       font-weight: 700;
-      font-size: 148px;
+      font-size: 56px;
       line-height: 1;
-      color: var(--ink);
-      opacity: 0.04;
-      pointer-events: none;
+      color: var(--rule);
+      padding: 52px 0 52px 72px;
+      display: flex;
+      align-items: center;
+      transition: color 380ms ease;
       user-select: none;
-      transition: opacity 480ms ease, transform 480ms cubic-bezier(.16,1,.3,1), color 480ms ease;
     }
-    .included-card:hover .included-card-watermark {
-      opacity: 0.14;
-      color: #fff;
-      transform: scale(1.06) translateY(-6px);
+    .inc-row:hover .inc-num { color: #D4537E; }
+
+    /* Body column */
+    .inc-body {
+      padding: 52px 56px;
+      border-left: 1px solid var(--rule);
+      border-right: 1px solid var(--rule);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
-
-    /* Hover: fill card dark */
-    .included-card:hover { background: var(--ink); }
-
-    .included-card-num {
+    .inc-eyebrow {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 10px;
       letter-spacing: 4px;
       text-transform: uppercase;
       color: var(--ink-3);
       display: block;
-      margin-bottom: 12px;
-      transition: color 380ms ease;
-      position: relative;
+      margin-bottom: 10px;
     }
-    .included-card:hover .included-card-num { color: rgba(255,255,255,0.35); }
-
-    .included-card-name {
+    .inc-name {
       font-family: 'Poppins', sans-serif;
       font-weight: 500;
-      font-size: clamp(17px, 1.6vw, 22px);
+      font-size: clamp(17px, 1.5vw, 22px);
       color: var(--ink);
       display: block;
       line-height: 1.2;
-      margin-bottom: 14px;
-      transition: color 380ms ease;
-      position: relative;
+      margin-bottom: 12px;
+      transition: color 300ms ease;
     }
-    .included-card:hover .included-card-name { color: #fafaf8; }
-
-    .included-card-desc {
+    .inc-row:hover .inc-name { color: #D4537E; }
+    .inc-desc {
       font-family: 'Poppins', sans-serif;
       font-size: 13px;
       font-weight: 300;
       color: var(--ink-2);
       line-height: 1.75;
-      margin: 0 0 20px;
-      transition: color 380ms ease;
-      position: relative;
-    }
-    .included-card:hover .included-card-desc { color: rgba(255,255,255,0.55); }
-
-    /* Items slide up on hover */
-    .included-card-items {
-      overflow: hidden;
-      max-height: 0;
-      opacity: 0;
-      transition: max-height 520ms cubic-bezier(.16,1,.3,1), opacity 320ms ease 120ms;
-      position: relative;
-    }
-    .included-card:hover .included-card-items {
-      max-height: 200px;
-      opacity: 1;
+      margin: 0;
+      max-width: 52ch;
     }
 
-    .included-card-item {
+    /* Deliverables column */
+    .inc-items {
+      padding: 52px 56px 52px 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0;
+    }
+    .inc-item {
       font-family: 'Poppins', sans-serif;
       font-size: 12px;
       font-weight: 300;
       color: var(--ink-3);
-      padding: 7px 0;
-      border-top: 1px solid var(--rule);
-      transition: color 380ms ease, border-color 380ms ease;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--rule);
     }
-    .included-card:hover .included-card-item {
-      color: rgba(255,255,255,0.45);
-      border-top-color: rgba(255,255,255,0.1);
-    }
-    .included-card-item::before { content: '— '; }
+    .inc-item:first-child { border-top: 1px solid var(--rule); }
+    .inc-item::before { content: '— '; }
 
     /* ── Process ── */
     .process-timeline-wrap {
@@ -496,22 +477,26 @@
       .sp-breadcrumb { padding: 18px 24px; }
       .sp-section-head { padding: 36px 24px 28px; }
 
-      .included-grid { grid-template-columns: 1fr; }
-      .included-card {
-        border-right: none !important;
-        border-bottom: 1px solid var(--rule) !important;
+      .inc-row {
+        grid-template-columns: 1fr;
         padding: 32px 24px 40px;
         background: none !important;
       }
-      .included-card:last-child { border-bottom: none !important; }
-      .included-card::before { display: none; }
-      .included-card-watermark { display: none; }
-      .included-card-num,
-      .included-card-name,
-      .included-card-desc,
-      .included-card-item { color: revert !important; transition: none; }
-      .included-card-item { border-top-color: var(--rule) !important; }
-      .included-card-items { max-height: none !important; opacity: 1 !important; }
+      .inc-row::after { display: none; }
+      .inc-num {
+        font-size: 36px;
+        padding: 0 0 16px;
+        color: #D4537E;
+      }
+      .inc-body {
+        border-left: none;
+        border-right: none;
+        border-top: 1px solid var(--rule);
+        border-bottom: 1px solid var(--rule);
+        padding: 24px 0;
+      }
+      .inc-items { padding: 24px 0 0; }
+      .inc-row:hover .inc-name { color: var(--ink); }
 
       .process-timeline-wrap { display: none; }
       .process-row { grid-template-columns: 1fr; }
@@ -594,49 +579,57 @@
     <div class="sp-section-head">
       <span class="sp-section-label">What's Included</span>
     </div>
-    <div class="included-grid">
-      <div class="included-card">
-        <span class="included-card-watermark" aria-hidden="true">01</span>
-        <span class="included-card-num">01 / Direction</span>
-        <span class="included-card-name">Strategy &amp; Discovery</span>
-        <p class="included-card-desc">We start by understanding your brand, your clients, and what you need the site to do. Nothing is built until we agree on a clear direction.</p>
-        <div class="included-card-items">
-          <span class="included-card-item">Discovery &amp; Strategy Session</span>
-          <span class="included-card-item">Site Architecture</span>
-          <span class="included-card-item">Content Planning</span>
+    <div class="inc-rows">
+      <div class="inc-row">
+        <span class="inc-num">01</span>
+        <div class="inc-body">
+          <span class="inc-eyebrow">Direction</span>
+          <span class="inc-name">Strategy &amp; Discovery</span>
+          <p class="inc-desc">We start by understanding your brand, your clients, and what you need the site to do. Nothing is built until we agree on a clear direction.</p>
+        </div>
+        <div class="inc-items">
+          <span class="inc-item">Discovery &amp; Strategy Session</span>
+          <span class="inc-item">Site Architecture</span>
+          <span class="inc-item">Content Planning</span>
         </div>
       </div>
-      <div class="included-card">
-        <span class="included-card-watermark" aria-hidden="true">02</span>
-        <span class="included-card-num">02 / Design</span>
-        <span class="included-card-name">Custom Website Design</span>
-        <p class="included-card-desc">Every layout, typeface, and detail designed specifically for your brand. Nothing templated, nothing borrowed. Two rounds of revisions included.</p>
-        <div class="included-card-items">
-          <span class="included-card-item">Full Site Design</span>
-          <span class="included-card-item">Desktop &amp; Mobile</span>
-          <span class="included-card-item">Motion &amp; Interactions</span>
+      <div class="inc-row">
+        <span class="inc-num">02</span>
+        <div class="inc-body">
+          <span class="inc-eyebrow">Design</span>
+          <span class="inc-name">Custom Website Design</span>
+          <p class="inc-desc">Every layout, typeface, and detail designed specifically for your brand. Nothing templated, nothing borrowed. Two rounds of revisions included.</p>
+        </div>
+        <div class="inc-items">
+          <span class="inc-item">Full Site Design</span>
+          <span class="inc-item">Desktop &amp; Mobile</span>
+          <span class="inc-item">Motion &amp; Interactions</span>
         </div>
       </div>
-      <div class="included-card">
-        <span class="included-card-watermark" aria-hidden="true">03</span>
-        <span class="included-card-num">03 / Build</span>
-        <span class="included-card-name">Development &amp; Setup</span>
-        <p class="included-card-desc">Clean, fast code built to perform. No bloated builders, no unnecessary dependencies. Tested across all devices and browsers.</p>
-        <div class="included-card-items">
-          <span class="included-card-item">Custom Development</span>
-          <span class="included-card-item">Contact Form</span>
-          <span class="included-card-item">Technical SEO Setup</span>
+      <div class="inc-row">
+        <span class="inc-num">03</span>
+        <div class="inc-body">
+          <span class="inc-eyebrow">Build</span>
+          <span class="inc-name">Development &amp; Setup</span>
+          <p class="inc-desc">Clean, fast code built to perform. No bloated builders, no unnecessary dependencies. Tested across all devices and browsers.</p>
+        </div>
+        <div class="inc-items">
+          <span class="inc-item">Custom Development</span>
+          <span class="inc-item">Contact Form</span>
+          <span class="inc-item">Technical SEO Setup</span>
         </div>
       </div>
-      <div class="included-card">
-        <span class="included-card-watermark" aria-hidden="true">04</span>
-        <span class="included-card-num">04 / Launch</span>
-        <span class="included-card-name">Launch &amp; Post-Launch</span>
-        <p class="included-card-desc">Full launch coordination — domain, hosting, analytics. Two weeks of post-launch support included. Logo design and professional photography are not included.</p>
-        <div class="included-card-items">
-          <span class="included-card-item">Domain &amp; Hosting Deployment</span>
-          <span class="included-card-item">Analytics Setup</span>
-          <span class="included-card-item">Two Weeks Support</span>
+      <div class="inc-row">
+        <span class="inc-num">04</span>
+        <div class="inc-body">
+          <span class="inc-eyebrow">Launch</span>
+          <span class="inc-name">Launch &amp; Post-Launch</span>
+          <p class="inc-desc">Full launch coordination — domain, hosting, analytics. Two weeks of post-launch support included. Logo design and professional photography are not included.</p>
+        </div>
+        <div class="inc-items">
+          <span class="inc-item">Domain &amp; Hosting Deployment</span>
+          <span class="inc-item">Analytics Setup</span>
+          <span class="inc-item">Two Weeks Support</span>
         </div>
       </div>
     </div>
