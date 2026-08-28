@@ -7,13 +7,14 @@
   <title>Services · Pink</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Oswald:wght@400;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/styles.css" />
   <style>
 
     /* ── Page header ── */
     .sg-header {
-      padding: 64px 32px 20px;
+      padding: 64px 32px 28px;
+      text-align: center;
     }
     .sg-eyebrow {
       font-family: 'Poppins', sans-serif;
@@ -26,24 +27,26 @@
       margin-bottom: 12px;
     }
     .sg-headline {
-      font-family: 'Oswald', sans-serif;
-      font-weight: 400;
-      font-size: clamp(44px, 7vw, 96px);
-      line-height: 0.92;
-      letter-spacing: -1px;
-      color: var(--ink);
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(28px, 3.5vw, 48px);
+      line-height: 1;
+      letter-spacing: 0.01em;
+      color: var(--ink-2);
       display: block;
       text-align: center;
-      white-space: nowrap;
       margin-bottom: 40px;
     }
 
     /* ── Gallery wrap ── */
     .sg-wrap {
-      padding: 0 20px 20px;
+      padding: 0 72px 72px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
     /* ── Cards ── */
@@ -204,9 +207,9 @@
 
     /* ── Mobile ── */
     @media (max-width: 860px) {
-      .sg-header { padding: 40px 16px 16px; }
-      .sg-headline { font-size: clamp(28px, 8vw, 52px); white-space: nowrap; margin-bottom: 28px; }
-      .sg-wrap { padding: 0 12px 12px; gap: 8px; }
+      .sg-header { padding: 40px 16px 20px; }
+      .sg-headline { font-size: clamp(24px, 6vw, 36px); margin-bottom: 24px; }
+      .sg-wrap { padding: 0 16px 32px; gap: 8px; max-width: none; }
       .sg-hero { aspect-ratio: 4 / 3; }
       .sg-grid { gap: 8px; }
       .sg-card--grid { aspect-ratio: 3 / 2; }
@@ -248,7 +251,7 @@
 
   <div class="sg-header reveal">
     <span class="sg-eyebrow">Pink Web Studio</span>
-    <span class="sg-headline">How can we help?</span>
+    <span class="sg-headline">Services</span>
   </div>
 
   <div class="sg-wrap">
