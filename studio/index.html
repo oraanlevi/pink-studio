@@ -153,266 +153,115 @@
     /* ── Mobile layout hidden on desktop ── */
     .studio-mobile { display: none; }
 
-    /* ── Shared chapter ── */
-    .sm-chapter { width: 100%; border-bottom: 1px solid var(--rule); }
-
-    /* Chapter 1 — Opening */
-    .sm-opening {
-      min-height: 100svh;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 48px 32px;
-      text-align: center;
-      gap: 28px;
+    /* Portrait */
+    .sm-portrait-wrap {
+      width: 100%;
+      border-bottom: 1px solid var(--rule);
+      overflow: hidden;
     }
-    .sm-pink-logo {
-      font-family: "Parisienne", cursive;
-      font-size: 52px;
-      color: var(--ink);
+    .sm-portrait-wrap img {
+      width: 100%;
+      height: 72vw;
+      object-fit: cover;
+      object-position: center top;
       display: block;
-      line-height: 1;
+      filter: grayscale(100%) contrast(1.05) brightness(1.02);
     }
-    .sm-headline {
-      font-family: "Oswald", "Impact", sans-serif;
-      font-weight: 700;
-      font-size: clamp(32px, 8vw, 48px);
-      color: var(--ink);
-      line-height: 1;
-      letter-spacing: -1px;
-      margin: 0;
+
+    /* Bio */
+    .sm-bio {
+      padding: 40px 28px 48px;
+      border-bottom: 1px solid var(--rule);
     }
-    .sm-studio-meta {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 5px;
-    }
-    .sm-meta-line {
+    .sm-eyebrow {
+      display: block;
       font-family: "Bebas Neue", "Impact", sans-serif;
       font-size: 11px;
-      letter-spacing: 5px;
+      letter-spacing: 4px;
       text-transform: uppercase;
       color: var(--ink-3);
+      margin-bottom: 12px;
+    }
+    .sm-name {
+      display: block;
+      font-family: "Parisienne", cursive;
+      font-size: 40px;
+      color: var(--ink);
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+    .sm-title {
+      display: block;
+      font-family: "Bebas Neue", "Impact", sans-serif;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      margin-bottom: 28px;
+    }
+    .sm-bio-text {
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--ink-2);
+      line-height: 1.75;
+      margin: 0;
     }
 
-    /* Chapter 2 — Philosophy (fragmented) */
+    /* Philosophy */
     .sm-philosophy {
-      padding: 80px 32px 88px;
+      padding: 56px 28px 64px;
       display: flex;
       flex-direction: column;
-      gap: 36px;
+      gap: 28px;
+      border-bottom: 1px solid var(--rule);
     }
     .sm-fragment {
       font-family: "Cormorant Garamond", Georgia, serif;
       font-weight: 300;
-      font-size: clamp(26px, 7vw, 34px);
+      font-size: clamp(24px, 6.5vw, 32px);
       color: var(--ink);
       line-height: 1.4;
-      letter-spacing: 0.2px;
       margin: 0;
     }
-    .sm-fragment--dim { color: var(--ink-2); }
+    .sm-fragment--dim { color: var(--ink-3); }
 
-    /* Chapter 3 — Workspace (editorial stack) */
-    .sm-workspace {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      border-bottom: 1px solid var(--rule);
-      padding: 64px 28px 56px;
-    }
-    .sm-stack {
-      position: relative;
-      width: 100%;
-      height: 280px;
-      margin-bottom: 40px;
-    }
-    .sm-stack-img {
-      position: absolute;
-      width: 72%;
-      aspect-ratio: 4/3;
-      object-fit: cover;
-      object-position: center;
-      box-shadow: 0 8px 32px rgba(0,0,0,.14), 0 2px 8px rgba(0,0,0,.08);
-    }
-    .sm-stack-img:first-child {
-      top: 0;
-      left: 4%;
-      transform: rotate(-2.5deg);
-      z-index: 1;
-    }
-    .sm-stack-img:last-child {
-      bottom: 0;
-      right: 4%;
-      transform: rotate(2.8deg);
-      z-index: 2;
-    }
-    .sm-workspace-caption {
-      text-align: center;
-    }
-    .sm-workspace-caption span {
-      font-family: "Bebas Neue", "Impact", sans-serif;
-      font-size: 11px;
-      letter-spacing: 5px;
-      text-transform: uppercase;
-      color: var(--ink-3);
-    }
-
-    /* Chapter 4 — Artifact */
-    .sm-artifact {
+    /* Closing */
+    .sm-closing {
       padding: 56px 28px 64px;
       display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .sm-frame {
-      width: 100%;
-      background: #fff;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      box-shadow: 0 4px 24px rgba(0,0,0,.08), 0 1px 4px rgba(0,0,0,.04);
-    }
-    .sm-frame-chrome {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      padding: 8px 12px;
-      border-bottom: 1px solid #eee;
-      background: #f7f7f5;
-      border-radius: 6px 6px 0 0;
-    }
-    .sm-frame-dot { width: 7px; height: 7px; border-radius: 50%; background: #ddd; flex-shrink: 0; }
-    .sm-frame-url { flex: 1; height: 14px; background: #e8e8e6; border-radius: 3px; margin-left: 6px; }
-    .sm-frame-img {
-      width: 100%;
-      display: block;
-      aspect-ratio: 16/10;
-      object-fit: cover;
-      object-position: top center;
-      border-radius: 0 0 5px 5px;
-    }
-
-    /* Chapter 5 — Founder (dark room, earned reveal) */
-    .sm-founder {
-      background: #1C1A16;
-      border-bottom: none;
-      display: flex;
       flex-direction: column;
-      align-items: center;
-      padding: 56px 32px 48px;
+      gap: 16px;
     }
-    .sm-meet {
+    .sm-closing-label {
+      display: block;
       font-family: "Bebas Neue", "Impact", sans-serif;
       font-size: 11px;
-      letter-spacing: 5px;
-      text-transform: uppercase;
-      color: rgba(234,228,220,.3);
-      display: block;
-      margin-bottom: 28px;
-    }
-    .sm-portrait {
-      width: 78%;
-      display: block;
-      aspect-ratio: 3/4;
-      object-fit: cover;
-      object-position: center top;
-      filter: grayscale(100%) contrast(1.05) brightness(1.02);
-    }
-    .sm-founder-caption {
-      padding: 28px 32px 40px;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-    .sm-designed-by {
-      font-family: "Bebas Neue", "Impact", sans-serif;
-      font-size: 10px;
       letter-spacing: 4px;
       text-transform: uppercase;
-      color: rgba(234,228,220,.35);
-      display: block;
+      color: var(--ink-3);
       margin-bottom: 8px;
     }
-    .sm-founder-name {
-      font-family: "Parisienne", cursive;
-      font-size: 38px;
-      color: #EAE4DC;
-      display: block;
-      line-height: 1.1;
-    }
-    .sm-founder-title {
-      font-family: "Bebas Neue", "Impact", sans-serif;
-      font-size: 11px;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: rgba(234,228,220,.35);
-      display: block;
-      margin-top: 6px;
-    }
-
-    /* Chapter 5 — Closing (ceremonial) */
-    .sm-closing {
-      padding: 96px 32px 80px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: 0;
-      border-bottom: none;
-    }
-    .sm-closing-line {
-      font-family: "Oswald", "Impact", sans-serif;
-      font-weight: 300;
-      font-size: clamp(26px, 6.5vw, 36px);
-      color: var(--ink);
-      letter-spacing: -0.5px;
-      line-height: 1.2;
-      margin: 0 0 48px;
-    }
     .sm-cta {
-      font-family: "Oswald", "Impact", sans-serif;
-      font-weight: 700;
-      font-size: 17px;
-      letter-spacing: 2px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
       color: var(--ink);
       text-decoration: none;
-      text-transform: uppercase;
-      transition: opacity 250ms;
+      transition: opacity 220ms;
       display: block;
-      margin-bottom: 20px;
     }
-    .sm-cta:hover { opacity: .4; }
+    .sm-cta:hover { opacity: .45; }
     .sm-secondary {
-      font-family: "Oswald", "Impact", sans-serif;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
       font-weight: 300;
-      font-size: 15px;
-      letter-spacing: 2px;
       color: var(--ink-3);
       text-decoration: none;
-      text-transform: uppercase;
-      transition: opacity 250ms;
+      transition: opacity 220ms;
       display: block;
     }
-    .sm-secondary:hover { opacity: .4; }
-    .sm-colophon {
-      font-family: "Parisienne", cursive;
-      font-size: 44px;
-      color: var(--ink-3);
-      display: block;
-      margin-top: 64px;
-    }
-    .sm-copyright {
-      font-family: "Bebas Neue", "Impact", sans-serif;
-      font-size: 10px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--ink-3);
-      display: block;
-      margin-top: 16px;
-    }
+    .sm-secondary:hover { opacity: .45; }
 
     /* ── Mobile breakpoint ── */
     @media (max-width: 860px) {
@@ -466,62 +315,32 @@
   <!-- Mobile layout -->
   <div class="studio-mobile">
 
-    <!-- Chapter 1: Opening -->
-    <div class="sm-chapter sm-opening reveal">
-      <span class="sm-pink-logo">Pink</span>
-      <p class="sm-headline">Websites that mean something.</p>
-      <div class="sm-studio-meta">
-        <span class="sm-meta-line">Digital Product Studio</span>
-        <span class="sm-meta-line">Los Angeles</span>
-      </div>
+    <!-- Portrait -->
+    <div class="sm-portrait-wrap reveal">
+      <img src="/assets/oraan.png" alt="Oraan Levi" />
     </div>
 
-    <!-- Chapter 2: Philosophy -->
-    <div class="sm-chapter sm-philosophy reveal">
-      <p class="sm-fragment">Pink exists because there is a lack of intention online.</p>
-      <p class="sm-fragment sm-fragment--dim">Too many websites try to say everything.</p>
+    <!-- Bio -->
+    <div class="sm-bio reveal">
+      <span class="sm-eyebrow">Studio</span>
+      <span class="sm-name">Oraan Levi</span>
+      <span class="sm-title">Designer &amp; Builder</span>
+      <p class="sm-bio-text">I started Pink Web Studio because I felt there was a growing lack of intention online. Too many websites were trying to do more, say more, and show more. The brands that inspired me most did the opposite. They understood that every detail mattered.</p>
+    </div>
+
+    <!-- Philosophy -->
+    <div class="sm-philosophy reveal">
       <p class="sm-fragment">The brands I admired most said one thing, clearly.</p>
       <p class="sm-fragment sm-fragment--dim">That became the foundation of every website I build.</p>
+      <p class="sm-fragment">Every detail matters.</p>
     </div>
 
-    <!-- Chapter 3: Workspace -->
-    <div class="sm-chapter sm-workspace reveal">
-      <div class="sm-stack">
-        <img class="sm-stack-img" src="/assets/laptopvibe.png" alt="Studio workspace" />
-        <img class="sm-stack-img" src="/assets/laptopvibe2.png" alt="Studio workspace" />
-      </div>
-    </div>
-
-    <!-- Chapter 4: Artifact -->
-    <div class="sm-chapter sm-artifact reveal">
-      <div class="sm-frame">
-        <div class="sm-frame-chrome">
-          <span class="sm-frame-dot"></span>
-          <span class="sm-frame-dot"></span>
-          <span class="sm-frame-dot"></span>
-          <span class="sm-frame-url"></span>
-        </div>
-        <img class="sm-frame-img" src="/assets/loup.png" alt="Le Loup website" />
-      </div>
-    </div>
-
-    <!-- Chapter 5: Founder (dark room, earned reveal) -->
-    <div class="sm-chapter sm-founder reveal">
-      <img class="sm-portrait" src="/assets/oraan.png" alt="Oraan Levi" />
-      <div class="sm-founder-caption">
-        <span class="sm-designed-by">Designed by</span>
-        <span class="sm-founder-name">Oraan Levi</span>
-        <span class="sm-founder-title">Founder &middot; Designer &middot; Developer</span>
-      </div>
-    </div>
-
-    <!-- Chapter 5: Closing (ceremonial) -->
-    <div class="sm-chapter sm-closing reveal">
-      <p class="sm-closing-line">Let's build something meaningful.</p>
-      <a class="sm-cta" href="/contact/">Start a Project &rarr;</a>
-      <a class="sm-secondary" href="https://instagram.com/oraanlevi" target="_blank" rel="noopener">Instagram &rarr;</a>
-      <span class="sm-colophon">Pink</span>
-      <span class="sm-copyright">&copy; 2025 Pink Web Studio</span>
+    <!-- Closing -->
+    <div class="sm-closing reveal">
+      <span class="sm-closing-label">Work together</span>
+      <a class="sm-cta" href="/contact/">Start a Project →</a>
+      <a class="sm-secondary" href="/work/">View Projects →</a>
+      <a class="sm-secondary" href="/services/">Services →</a>
     </div>
 
   </div>
