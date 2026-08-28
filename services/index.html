@@ -7,13 +7,13 @@
   <title>Services · Pink</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/styles.css" />
   <style>
 
     /* ── Page header ── */
     .sg-header {
-      padding: 52px 32px 24px;
+      padding: 64px 32px 20px;
     }
     .sg-eyebrow {
       font-family: 'Bebas Neue', sans-serif;
@@ -21,6 +21,18 @@
       letter-spacing: 4px;
       text-transform: uppercase;
       color: var(--ink-3);
+      display: block;
+      margin-bottom: 16px;
+    }
+    .sg-headline {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: clamp(52px, 9vw, 120px);
+      line-height: 0.88;
+      letter-spacing: -2px;
+      color: var(--ink);
+      display: block;
+      margin-bottom: 40px;
     }
 
     /* ── Gallery wrap ── */
@@ -52,15 +64,15 @@
     }
 
     /* Hero card */
-    .sg-hero { aspect-ratio: 16 / 6; }
+    .sg-hero { aspect-ratio: 21 / 7; }
 
     /* Grid */
     .sg-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
+      gap: 10px;
     }
-    .sg-card--grid { aspect-ratio: 4 / 3; }
+    .sg-card--grid { aspect-ratio: 3 / 2; }
 
     /* ── Label ── */
     .sg-label {
@@ -190,10 +202,11 @@
     /* ── Mobile ── */
     @media (max-width: 860px) {
       .sg-header { padding: 40px 16px 16px; }
+      .sg-headline { font-size: clamp(44px, 13vw, 80px); margin-bottom: 28px; }
       .sg-wrap { padding: 0 12px 12px; gap: 8px; }
       .sg-hero { aspect-ratio: 4 / 3; }
       .sg-grid { gap: 8px; }
-      .sg-card--grid { aspect-ratio: 4 / 3; }
+      .sg-card--grid { aspect-ratio: 3 / 2; }
       .sg-detail { padding: 20px 18px 24px; }
       .sg-detail-name { font-size: 16px; }
       .sg-detail-list { display: none; }
@@ -231,7 +244,8 @@
   </div>
 
   <div class="sg-header reveal">
-    <span class="sg-eyebrow">Services</span>
+    <span class="sg-eyebrow">Pink Web Studio</span>
+    <span class="sg-headline">How can<br>we help?</span>
   </div>
 
   <div class="sg-wrap">
