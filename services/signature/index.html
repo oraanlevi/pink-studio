@@ -110,13 +110,18 @@
 
     /* ── Section shell ── */
     .sp-section { border-bottom: 1px solid var(--rule); }
-    .sp-section-head { padding: 48px 72px 40px; border-bottom: 1px solid var(--rule); }
+    .sp-section-head {
+      padding: 56px 72px 52px;
+      border-bottom: 1px solid var(--rule);
+      text-align: center;
+    }
     .sp-section-label {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 11px;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: var(--ink-3);
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(32px, 4.5vw, 56px);
+      font-weight: 300;
+      letter-spacing: -0.5px;
+      color: var(--ink);
+      display: block;
     }
 
     /* ── What's Included — editorial rows ── */
@@ -475,7 +480,7 @@
       .sp-hero-cta { align-self: flex-start; }
 
       .sp-breadcrumb { padding: 18px 24px; }
-      .sp-section-head { padding: 36px 24px 28px; }
+      .sp-section-head { padding: 40px 24px 36px; }
 
       .inc-row {
         grid-template-columns: 1fr;
