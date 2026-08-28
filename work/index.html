@@ -302,6 +302,8 @@
       .work-card.is-selected { border: 2px solid #D4537E !important; }
       .work-card-img { height: 200px; }
       .work-card--feature .work-card-img { height: 220px; }
+      .work-card-vid { display: none; }
+      .work-card-still { opacity: 1 !important; transform: none !important; }
       .work-card-body { padding: 18px 18px 20px; gap: 8px; }
       .work-card-name { font-size: 17px; }
       .work-card--feature .work-card-name { font-size: 17px; }
@@ -640,25 +642,7 @@
       if (vid) { vid.pause(); vid.currentTime = 0; }
     }
 
-    /* ── Mobile: play video when card scrolls into view ── */
-    if (window.matchMedia('(max-width: 860px)').matches) {
-      const cardObserver = new IntersectionObserver(entries => {
-        entries.forEach(e => {
-          const vid = e.target.querySelector('.work-card-vid');
-          if (!vid) return;
-          if (e.isIntersecting) {
-            e.target.classList.add('card-playing');
-            vid.play().catch(() => {});
-          } else {
-            e.target.classList.remove('card-playing');
-            vid.pause();
-            vid.currentTime = 0;
-          }
-        });
-      }, { threshold: 0.5 });
-      document.querySelectorAll('.work-card--leloup, .work-card--westone, .work-card--celeste, .work-card--junehouse')
-        .forEach(card => cardObserver.observe(card));
-    }
+    /* Mobile: videos hidden, images only */
 
     /* ── FORMA video: play after 2s, loop forever ── */
     const formaVideo = document.getElementById('formaVideo');
