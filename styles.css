@@ -2,7 +2,7 @@
    Pink Web Studio — Design System
    Font: Bebas Neue (Google Fonts)
    ============================================================ */
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@1,300&family=Poppins:wght@300;400;500;600&display=swap');
 
 :root {
   --bg:    #FAFAF8;
@@ -45,15 +45,17 @@ img { display: block; max-width: 100%; }
 .nav.scrolled { box-shadow: 0 1px 20px rgba(0,0,0,.04); }
 
 .nav-brand {
-  font-family: "Bebas Neue", "Impact", sans-serif;
-  font-size: 20px;
-  font-weight: 400;
-  letter-spacing: 4px;
-  text-transform: uppercase;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 300;
+  font-style: italic;
+  letter-spacing: 0.02em;
+  text-transform: none;
   color: var(--ink);
   transition: opacity 220ms;
   white-space: nowrap;
   flex-shrink: 0;
+  text-decoration: none;
 }
 .nav-brand:hover { opacity: .45; }
 
@@ -64,12 +66,13 @@ img { display: block; max-width: 100%; }
   flex: 1;
 }
 .nav-links a {
-  font-family: "Bebas Neue", "Impact", sans-serif;
-  font-size: 20px;
-  font-weight: 400;
-  letter-spacing: 2px;
-  text-transform: uppercase;
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  text-transform: none;
   color: var(--ink-2);
+  text-decoration: none;
   transition: color 220ms;
 }
 .nav-links a:hover,
@@ -82,11 +85,11 @@ img { display: block; max-width: 100%; }
   justify-content: flex-end;
 }
 .nav-end a {
-  font-family: "Bebas Neue", "Impact", sans-serif;
-  font-size: 20px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
   font-weight: 400;
-  letter-spacing: 2px;
-  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  text-transform: none;
   color: var(--ink-2);
   text-decoration: none;
   transition: color 220ms;
