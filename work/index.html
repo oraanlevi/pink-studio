@@ -81,26 +81,6 @@
       transition: opacity 500ms ease, transform 600ms cubic-bezier(.16,1,.3,1);
     }
     .work-card:hover .work-card-still { transform: scale(1.04); }
-    .work-card-vid {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      opacity: 0;
-      transition: opacity 500ms ease;
-    }
-    .work-card:hover .work-card-vid,
-    .work-card.card-playing .work-card-vid { opacity: 1; }
-    .work-card:hover .work-card-still.has-video,
-    .work-card.card-playing .work-card-still.has-video { opacity: 0; }
-    .work-card-video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
 
     /* ── Card body ── */
     .work-card-body {
@@ -302,8 +282,6 @@
       .work-card.is-selected { border: 2px solid #D4537E !important; }
       .work-card-img { height: 200px; }
       .work-card--feature .work-card-img { height: 220px; }
-      .work-card-vid { display: none; }
-      .work-card-still { opacity: 1 !important; transform: none !important; }
       .work-card-body { padding: 18px 18px 20px; gap: 8px; }
       .work-card-name { font-size: 17px; }
       .work-card--feature .work-card-name { font-size: 17px; }
@@ -368,9 +346,7 @@
       <!-- FORMA — feature -->
       <div class="work-card work-card--feature work-card--forma">
         <div class="work-card-img">
-          <video class="work-card-video" id="formaVideo" autoplay muted loop playsinline>
-            <source src="/assets/formaspeeds.mp4" type="video/mp4" />
-          </video>
+          <img class="work-card-still" src="/assets/forma-1.png" alt="" />
         </div>
         <div class="work-card-body">
           <span class="work-card-name">FORMA</span>
@@ -400,10 +376,9 @@
       </div>
 
       <!-- Le Loup -->
-      <div class="work-card work-card--leloup" onmouseenter="wsVideoPlay(this)" onmouseleave="wsVideoPause(this)">
+      <div class="work-card work-card--leloup">
         <div class="work-card-img">
-          <img class="work-card-still has-video" src="/assets/loup.png" alt="" />
-          <video class="work-card-vid" src="/assets/loupspeed.mov" muted loop playsinline preload="none"></video>
+          <img class="work-card-still" src="/assets/loup.png" alt="" />
         </div>
         <div class="work-card-body">
           <span class="work-card-name">Le Loup</span>
@@ -417,10 +392,9 @@
       </div>
 
       <!-- West & Stone -->
-      <div class="work-card work-card--westone" onmouseenter="wsVideoPlay(this)" onmouseleave="wsVideoPause(this)">
+      <div class="work-card work-card--westone">
         <div class="work-card-img">
-          <img class="work-card-still has-video" src="/assets/stone.png" alt="" />
-          <video class="work-card-vid" src="/assets/weststonespeeds.mov" muted loop playsinline preload="none"></video>
+          <img class="work-card-still" src="/assets/stone.png" alt="" />
         </div>
         <div class="work-card-body">
           <span class="work-card-name">West &amp; Stone</span>
@@ -434,10 +408,9 @@
       </div>
 
       <!-- Celeste -->
-      <div class="work-card work-card--celeste" onmouseenter="wsVideoPlay(this)" onmouseleave="wsVideoPause(this)">
+      <div class="work-card work-card--celeste">
         <div class="work-card-img">
-          <img class="work-card-still has-video" src="/assets/cel.png" alt="" />
-          <video class="work-card-vid" src="/assets/speedceleste.mov" muted loop playsinline preload="none"></video>
+          <img class="work-card-still" src="/assets/cel.png" alt="" />
         </div>
         <div class="work-card-body">
           <span class="work-card-name">Celeste</span>
@@ -451,10 +424,9 @@
       </div>
 
       <!-- June House -->
-      <div class="work-card work-card--junehouse" onmouseenter="wsVideoPlay(this)" onmouseleave="wsVideoPause(this)">
+      <div class="work-card work-card--junehouse">
         <div class="work-card-img">
-          <img class="work-card-still has-video" src="/assets/fashion.png" alt="" />
-          <video class="work-card-vid" src="/assets/speedjune.mov" muted loop playsinline preload="none"></video>
+          <img class="work-card-still" src="/assets/fashion.png" alt="" />
         </div>
         <div class="work-card-body">
           <span class="work-card-name">June House</span>
@@ -632,23 +604,6 @@
     }, { threshold: 0.06 });
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-    /* ── Desktop hover video ── */
-    function wsVideoPlay(card) {
-      const vid = card.querySelector('.work-card-vid');
-      if (vid) vid.play().catch(() => {});
-    }
-    function wsVideoPause(card) {
-      const vid = card.querySelector('.work-card-vid');
-      if (vid) { vid.pause(); vid.currentTime = 0; }
-    }
-
-    /* Mobile: videos hidden, images only */
-
-    /* ── FORMA video: play after 2s, loop forever ── */
-    const formaVideo = document.getElementById('formaVideo');
-    if (formaVideo) {
-      setTimeout(() => formaVideo.play().catch(() => {}), 2000);
-    }
 
     /* ── Mobile card tap selection ── */
     if (window.matchMedia('(max-width: 860px)').matches) {
