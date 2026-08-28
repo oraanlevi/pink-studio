@@ -20,103 +20,74 @@
       body { background: var(--bg); }
 
       /* ── Verde Hero ── */
-      .vh-breadcrumb {
-        display: block;
-        padding: 13px 48px;
-        font-family: 'Poppins', system-ui, sans-serif;
-        font-size: 11px;
-        font-weight: 400;
-        letter-spacing: 0.08em;
-        color: var(--ink-3);
-        text-decoration: none;
-        border-bottom: 1px solid var(--rule);
-        transition: color 200ms;
-      }
-      .vh-breadcrumb:hover { color: var(--ink); }
-
       .vh-hero {
-        min-height: calc(100vh - var(--nav-h) - 41px);
-        display: flex;
-        flex-direction: column;
+        position: relative;
+        min-height: calc(100vh - var(--nav-h));
+        background: #0E0E0C;
         overflow: hidden;
-      }
-      .vh-mobile { display: none; }
-      .vh-desktop {
-        flex: 1;
         display: flex;
         flex-direction: column;
-        padding: 0 48px;
+        justify-content: flex-end;
+        padding: 0 72px 72px;
       }
-
-      .vh-top {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        padding: 32px 0 0;
-        flex-shrink: 0;
+      .vh-img {
+        position: absolute;
+        top: 0; right: 0;
+        width: 42%; height: 100%;
+        background: url('/assets/verde-hover.png') center/cover no-repeat;
       }
-      .vh-meta-left,
-      .vh-meta-right {
+      .vh-img::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to right, #0E0E0C 0%, rgba(14,14,12,.6) 45%, rgba(14,14,12,0) 100%);
+      }
+      .vh-tag {
         font-family: "Bebas Neue", "Impact", sans-serif;
         font-size: 12px;
-        letter-spacing: 4px;
+        letter-spacing: 5px;
         text-transform: uppercase;
-        color: var(--ink-3);
-      }
-
-      .vh-main {
-        flex: 1;
-        display: grid;
-        grid-template-columns: 60% 40%;
-        align-items: end;
-        padding-bottom: 40px;
-      }
-      .vh-title-col {
-        display: flex;
-        flex-direction: column;
-        padding-top: 8px;
-        overflow: hidden;
+        color: rgba(255,255,255,.28);
+        display: block;
+        transform: rotate(-3.5deg);
+        transform-origin: left center;
+        margin-bottom: 12px;
+        position: relative;
+        z-index: 1;
       }
       .vh-title {
         display: block;
         font-family: "Oswald", "Impact", sans-serif;
-        font-size: clamp(100px, 13vw, 164px);
+        font-size: clamp(130px, 17vw, 210px);
         font-weight: 700;
-        color: var(--ink);
+        color: #fff;
         line-height: 0.88;
-        letter-spacing: -3px;
+        letter-spacing: -4px;
         text-transform: uppercase;
-        margin: 0;
+        transform: rotate(-3.5deg);
+        transform-origin: left center;
+        margin: 0 0 0 -6px;
+        position: relative;
+        z-index: 1;
       }
-      .vh-content-col {
-        padding: 0 0 6px 48px;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-      }
-      .vh-desc-lead {
+      .vh-desc {
         font-family: 'Poppins', system-ui, sans-serif;
-        font-size: 15px;
-        font-weight: 400;
-        color: var(--ink);
-        line-height: 1.7;
-        margin-bottom: 14px;
-      }
-      .vh-desc-sub {
-        font-family: 'Poppins', system-ui, sans-serif;
-        font-size: 13px;
+        font-size: 14px;
         font-weight: 300;
-        color: var(--ink-2);
-        line-height: 1.7;
+        color: rgba(255,255,255,.52);
+        line-height: 1.75;
+        max-width: 38ch;
+        margin-top: 44px;
+        margin-bottom: 52px;
+        position: relative;
+        z-index: 1;
       }
-
-      .vh-bottom {
+      .vh-links {
         display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-        padding: 28px 0 36px;
-        border-top: 1px solid var(--rule);
-        flex-shrink: 0;
+        align-items: center;
+        gap: 36px;
+        position: relative;
+        z-index: 1;
       }
       .vh-live {
         font-family: "Oswald", "Impact", sans-serif;
@@ -124,26 +95,21 @@
         font-weight: 300;
         letter-spacing: 4px;
         text-transform: uppercase;
-        color: var(--ink);
+        color: #fff;
         text-decoration: none;
         transition: opacity 220ms;
       }
-      .vh-live:hover { opacity: .4; }
-      .vh-credits {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        gap: 3px;
-      }
-      .vh-credits span {
+      .vh-live:hover { opacity: .45; }
+      .vh-back {
         font-family: 'Poppins', system-ui, sans-serif;
         font-size: 11px;
         font-weight: 300;
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
-        color: var(--ink-3);
+        color: rgba(255,255,255,.28);
+        text-decoration: none;
+        letter-spacing: 0.04em;
+        transition: color 200ms;
       }
-      .vh-bottom-rule { height: 1px; background: var(--rule); }
+      .vh-back:hover { color: rgba(255,255,255,.60); }
 
       /* Editorial Cards */
       .cards-row {
@@ -339,81 +305,29 @@
 
       /* Mobile-only elements hidden on desktop */
       .m-mood-img { display: none; }
-      .vh-mobile { display: none; }
 
       @media (max-width: 860px) {
         body { background: #FAFAF8; }
 
         /* Verde mobile hero */
-        .vh-breadcrumb { display: none; }
-        .vh-hero { min-height: 0; }
-        .vh-desktop { display: none; }
-        .vh-bottom-rule { display: none; }
-        .vh-mobile {
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-          padding: 36px 24px 48px;
-          overflow: hidden;
-          border-bottom: 1px solid var(--rule);
+        .vh-hero {
+          padding: 0 24px 56px;
+          min-height: calc(100vh - var(--nav-h));
         }
-        .vh-m-meta1,
-        .vh-m-meta2 {
-          font-family: "Bebas Neue", "Impact", sans-serif;
-          font-size: 11px;
-          letter-spacing: 4px;
-          text-transform: uppercase;
-          color: var(--ink-3);
-          display: block;
-          line-height: 1.5;
-        }
-        .vh-m-studio {
-          font-family: 'Poppins', system-ui, sans-serif;
-          font-size: 11px;
-          font-weight: 300;
-          letter-spacing: 0.06em;
-          text-transform: uppercase;
-          color: var(--ink-3);
-          display: block;
-          margin-top: 16px;
-          margin-bottom: 24px;
-        }
-        .vh-m-title {
-          display: block;
-          font-family: "Oswald", "Impact", sans-serif;
-          font-size: clamp(88px, 24vw, 108px);
-          font-weight: 700;
-          color: var(--ink);
-          line-height: 0.88;
+        .vh-img { width: 38%; height: 45%; }
+        .vh-title {
+          font-size: clamp(96px, 26vw, 120px);
           letter-spacing: -3px;
-          text-transform: uppercase;
-          margin: 0;
+          margin-left: -4px;
         }
-        .vh-m-desc {
-          font-family: 'Poppins', system-ui, sans-serif;
-          font-size: 14px;
-          font-weight: 300;
-          color: var(--ink-2);
-          line-height: 1.75;
-          margin-top: 32px;
-          margin-bottom: 32px;
-        }
-        .vh-m-live {
-          font-family: "Oswald", "Impact", sans-serif;
+        .vh-desc {
           font-size: 13px;
-          font-weight: 300;
-          letter-spacing: 4px;
-          text-transform: uppercase;
-          color: var(--ink);
-          text-decoration: none;
-          display: inline-block;
-          margin-bottom: 36px;
+          margin-top: 32px;
+          margin-bottom: 40px;
+          max-width: 100%;
+          padding-right: 8px;
         }
-        .vh-m-rule {
-          width: 100%;
-          height: 1px;
-          background: var(--rule);
-        }
+        .vh-links { gap: 24px; flex-wrap: wrap; }
 
         /* Narrative sections */
         .cards-row { display: block; border-bottom: none; }
@@ -571,50 +485,15 @@
       <a href="/contact/" class="mobile-nav-cta">Start a Project</a>
     </div>
 
-    <a class="vh-breadcrumb" href="/work/">← Work</a>
-
-    <div class="vh-hero">
-
-      <!-- Desktop layout -->
-      <div class="vh-desktop" data-reveal>
-        <div class="vh-top">
-          <span class="vh-meta-left">Design Exploration · Skincare &amp; Beauty</span>
-          <span class="vh-meta-right">01 / Case Study</span>
-        </div>
-        <div class="vh-main">
-          <div class="vh-title-col">
-            <span class="vh-title" aria-hidden="true">Verde</span>
-            <span class="vh-title" aria-hidden="true">Verde</span>
-            <h1 class="vh-title">Verde</h1>
-          </div>
-          <div class="vh-content-col">
-            <p class="vh-desc-lead">An editorial commerce experience built around a single formula.</p>
-            <p class="vh-desc-sub">Slow, considered, and campaign-led from the first scroll.</p>
-          </div>
-        </div>
-        <div class="vh-bottom">
-          <a class="vh-live" href="https://verde-skincare.vercel.app/" target="_blank" rel="noopener">View Live ↗</a>
-          <div class="vh-credits">
-            <span>Pink Web Studio</span>
-            <span>Web Design / Development</span>
-            <span>2026</span>
-          </div>
-        </div>
+    <div class="vh-hero" data-reveal>
+      <div class="vh-img" aria-hidden="true"></div>
+      <span class="vh-tag">Design Exploration · Skincare &amp; Beauty</span>
+      <h1 class="vh-title">Verde</h1>
+      <p class="vh-desc">An editorial commerce experience built around a single formula. Slow, considered, and campaign-led from the first scroll.</p>
+      <div class="vh-links">
+        <a class="vh-live" href="https://verde-skincare.vercel.app/" target="_blank" rel="noopener">View Live ↗</a>
+        <a class="vh-back" href="/work/">← Back to Work</a>
       </div>
-      <div class="vh-bottom-rule"></div>
-
-      <!-- Mobile layout -->
-      <div class="vh-mobile" data-reveal>
-        <span class="vh-m-meta1">Design Exploration</span>
-        <span class="vh-m-meta2">Skincare &amp; Beauty</span>
-        <span class="vh-m-studio">01 / Pink Web Studio</span>
-        <span class="vh-m-title" aria-hidden="true">Verde</span>
-        <h1 class="vh-m-title">Verde</h1>
-        <p class="vh-m-desc">An editorial commerce experience built around a single formula. Slow, considered, and campaign-led from the first scroll.</p>
-        <a class="vh-m-live" href="https://verde-skincare.vercel.app/" target="_blank" rel="noopener">View Live ↗</a>
-        <div class="vh-m-rule"></div>
-      </div>
-
     </div>
 
     <!-- Concept + Creative Direction -->
