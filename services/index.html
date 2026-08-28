@@ -7,158 +7,341 @@
   <title>Services · Pink</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@300;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/styles.css" />
   <style>
 
-    /* ── Page header ── */
-    .page-head {
-      padding: 72px 72px 64px;
-      border-bottom: 1px solid var(--rule);
+    /* ── Dark page overrides ── */
+    body { background: #0E0E0C; }
+    .nav-links a, .nav-brand, .nav-end a { color: rgba(250,250,248,.8); }
+    .nav-links a:hover, .nav-end a:hover { opacity: 0.5; }
+    .nav.scrolled { background: rgba(14,14,12,.96); backdrop-filter: blur(12px); }
+    .nav-ham span { background: rgba(250,250,248,.8); }
+    .mobile-nav { background: #131310; border-left: 1px solid rgba(250,250,248,.08); }
+    .mobile-nav a { color: rgba(250,250,248,.75); }
+    .mobile-nav-cta { background: #D4537E !important; color: #fff !important; }
+    .mobile-nav-close { color: rgba(250,250,248,.6); }
+
+    /* ── Question section ── */
+    .sq-section {
+      min-height: calc(100vh - var(--nav-h));
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 72px 72px;
+      border-bottom: 1px solid rgba(250,250,248,.07);
     }
-    .page-eyebrow {
+
+    .sq-eyebrow {
       display: block;
       font-family: 'Poppins', sans-serif;
       font-size: 11px;
       font-weight: 500;
       letter-spacing: 3px;
       text-transform: uppercase;
-      color: var(--ink-3);
-      margin-bottom: 14px;
-    }
-    .page-headline {
-      display: block;
-      font-family: 'Poppins', sans-serif;
-      font-weight: 400;
-      font-size: clamp(28px, 3vw, 44px);
-      color: var(--ink);
-      line-height: 1.15;
-      letter-spacing: -0.5px;
+      color: rgba(250,250,248,.25);
+      margin-bottom: 20px;
     }
 
-    /* ── Service list ── */
-    .service-list {
-      border-bottom: 1px solid var(--rule);
+    .sq-question {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(72px, 10vw, 140px);
+      font-weight: 700;
+      color: rgba(250,250,248,.92);
+      line-height: 0.88;
+      letter-spacing: -3px;
+      text-transform: uppercase;
+      margin: 0 0 64px -4px;
     }
 
-    .service-row {
+    .sq-tiles {
       display: grid;
-      grid-template-columns: 1fr 160px 160px 140px;
-      align-items: center;
-      padding: 28px 72px;
-      border-bottom: 1px solid var(--rule);
-      text-decoration: none;
-      transition: background 180ms ease;
-      gap: 24px;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
     }
-    .service-row:last-child { border-bottom: none; }
-    .service-row:hover { background: rgba(26,25,23,.025); }
 
-    .service-row-name {
+    .sq-tile {
+      background: rgba(250,250,248,.03);
+      border: 1px solid rgba(250,250,248,.1);
+      padding: 32px 28px 36px;
+      text-align: left;
+      cursor: pointer;
+      transition: background 260ms ease, border-color 260ms ease;
+    }
+    .sq-tile:hover {
+      background: rgba(250,250,248,.07);
+      border-color: rgba(250,250,248,.2);
+    }
+    .sq-tile.active {
+      background: rgba(212,83,126,.1);
+      border-color: #D4537E;
+    }
+
+    .sq-tile-num {
       display: block;
       font-family: 'Poppins', sans-serif;
-      font-size: clamp(18px, 1.6vw, 24px);
-      font-weight: 400;
-      color: var(--ink);
-      letter-spacing: -0.3px;
-      transition: color 200ms;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      color: rgba(250,250,248,.2);
+      margin-bottom: 20px;
+      transition: color 260ms;
     }
-    .service-row:hover .service-row-name { color: #D4537E; }
+    .sq-tile.active .sq-tile-num { color: #D4537E; }
 
-    .service-row-sub {
+    .sq-tile-label {
+      display: block;
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(16px, 1.5vw, 22px);
+      font-weight: 400;
+      color: rgba(250,250,248,.85);
+      letter-spacing: -0.3px;
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+
+    .sq-tile-sub {
       display: block;
       font-family: 'Poppins', sans-serif;
       font-size: 12px;
       font-weight: 300;
-      color: var(--ink-3);
-      margin-top: 8px;
+      color: rgba(250,250,248,.35);
+      line-height: 1.6;
     }
 
-    .service-row-meta {
+    /* ── Services list ── */
+    .sv-section {
+      border-bottom: 1px solid rgba(250,250,248,.07);
+    }
+
+    .sv-item {
+      border-bottom: 1px solid rgba(250,250,248,.07);
+    }
+    .sv-item:last-child { border-bottom: none; }
+    .sv-item.sv-hidden {
+      display: none;
+    }
+
+    .sv-row {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      align-items: center;
+      gap: 32px;
+      padding: 32px 72px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      transition: background 200ms ease;
+    }
+    .sv-row:hover { background: rgba(250,250,248,.025); }
+
+    .sv-row-name {
+      display: block;
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(20px, 2vw, 28px);
+      font-weight: 400;
+      color: rgba(250,250,248,.85);
+      letter-spacing: -0.3px;
+    }
+    .sv-row-sub {
+      display: block;
+      font-family: 'Poppins', sans-serif;
+      font-size: 12px;
+      font-weight: 300;
+      color: rgba(250,250,248,.3);
+      margin-top: 6px;
+    }
+
+    .sv-row-price {
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(250,250,248,.35);
+      white-space: nowrap;
+    }
+
+    .sv-toggle {
+      width: 30px;
+      height: 30px;
+      border: 1px solid rgba(250,250,248,.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      line-height: 1;
+      color: rgba(250,250,248,.4);
+      transition: border-color 240ms, color 240ms, transform 360ms cubic-bezier(.16,1,.3,1);
+      flex-shrink: 0;
+    }
+    .sv-item.open .sv-toggle {
+      transform: rotate(45deg);
+      border-color: #D4537E;
+      color: #D4537E;
+    }
+
+    /* Accordion */
+    .sv-drawer {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 500ms cubic-bezier(.16,1,.3,1);
+    }
+    .sv-item.open .sv-drawer { grid-template-rows: 1fr; }
+    .sv-drawer-inner { overflow: hidden; }
+
+    .sv-drawer-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-top: 1px solid rgba(250,250,248,.06);
+    }
+
+    .sv-drawer-left {
+      padding: 52px 72px 60px;
+      border-right: 1px solid rgba(250,250,248,.06);
       display: flex;
       flex-direction: column;
-      gap: 2px;
+      gap: 28px;
     }
-    .service-row-label {
+
+    .sv-detail-group { display: flex; flex-direction: column; gap: 5px; }
+    .sv-detail-label {
       font-family: 'Poppins', sans-serif;
-      font-size: 9px;
+      font-size: 10px;
       font-weight: 500;
-      letter-spacing: 0.14em;
+      letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--ink-3);
+      color: rgba(250,250,248,.22);
     }
-    .service-row-value {
+    .sv-detail-value {
       font-family: 'Poppins', sans-serif;
       font-size: 14px;
       font-weight: 300;
-      color: var(--ink-2);
+      color: rgba(250,250,248,.65);
+      line-height: 1.65;
     }
 
-    .service-row-arrow {
-      font-size: 18px;
-      color: var(--ink-3);
-      text-align: right;
-      transition: transform 220ms ease, color 220ms;
-    }
-    .service-row:hover .service-row-arrow { transform: translateX(4px); color: var(--ink); }
-
-    /* Custom solutions — full-width note row */
-    .service-note-row {
-      padding: 40px 72px;
-      border-top: 1px solid var(--rule);
-      display: flex;
+    .sv-drawer-link {
+      display: inline-flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 48px;
-    }
-    .service-note-text {
-      font-family: 'Poppins', sans-serif;
-      font-size: 13px;
-      font-weight: 300;
-      color: var(--ink-3);
-      line-height: 1.7;
-      max-width: 52ch;
-    }
-    .service-note-link {
+      gap: 8px;
       font-family: 'Poppins', sans-serif;
       font-size: 13px;
       font-weight: 500;
-      color: var(--ink);
+      color: rgba(250,250,248,.85);
       text-decoration: none;
-      white-space: nowrap;
-      transition: opacity 200ms;
+      border: 1px solid rgba(250,250,248,.18);
+      padding: 12px 24px;
+      transition: border-color 220ms, background 220ms;
+      align-self: flex-start;
+      margin-top: 4px;
     }
-    .service-note-link:hover { opacity: 0.5; }
+    .sv-drawer-link:hover {
+      border-color: rgba(250,250,248,.45);
+      background: rgba(250,250,248,.04);
+    }
+
+    .sv-drawer-right {
+      position: relative;
+      overflow: hidden;
+      min-height: 340px;
+    }
+    .sv-drawer-right img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      filter: brightness(0.65);
+      transition: filter 600ms ease, transform 600ms cubic-bezier(.16,1,.3,1);
+    }
+    .sv-item.open .sv-drawer-right img {
+      filter: brightness(0.8);
+      transform: scale(1.02);
+    }
+
+    .sv-outcome {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 28px 32px 28px;
+      background: linear-gradient(to top, rgba(14,14,12,.88) 0%, rgba(14,14,12,0) 100%);
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      font-weight: 300;
+      font-style: italic;
+      color: rgba(250,250,248,.65);
+      line-height: 1.55;
+    }
+
+    /* ── Bottom CTA ── */
+    .sv-cta {
+      padding: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+    }
+    .sv-cta-text {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(18px, 2vw, 28px);
+      font-weight: 300;
+      color: rgba(250,250,248,.4);
+      letter-spacing: -0.3px;
+      max-width: 40ch;
+    }
+    .sv-cta-link {
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(250,250,248,.85);
+      text-decoration: none;
+      border: 1px solid rgba(250,250,248,.18);
+      padding: 14px 32px;
+      white-space: nowrap;
+      transition: border-color 220ms, background 220ms;
+    }
+    .sv-cta-link:hover {
+      border-color: rgba(250,250,248,.45);
+      background: rgba(250,250,248,.04);
+    }
+
+    /* ── Footer override ── */
+    .site-footer {
+      background: #0E0E0C;
+      border-top: 1px solid rgba(250,250,248,.07);
+    }
+    .footer-brand { color: rgba(250,250,248,.65); }
+    .footer-brand-sub { color: rgba(250,250,248,.28); }
+    .footer-email { color: rgba(250,250,248,.35); }
+    .footer-social-icons a { color: rgba(250,250,248,.35); }
 
     /* ── Mobile ── */
     @media (max-width: 860px) {
-      .page-head { padding: 48px 24px 32px; border-bottom: none; }
-      .page-headline { font-size: 26px; }
+      .sq-section { padding: 0 24px 56px; min-height: calc(100vh - var(--nav-h)); justify-content: flex-end; }
+      .sq-question { font-size: clamp(56px, 16vw, 80px); letter-spacing: -2px; margin-bottom: 40px; }
+      .sq-tiles { grid-template-columns: 1fr; gap: 8px; }
+      .sq-tile { padding: 20px 20px 24px; }
+      .sq-tile-num { margin-bottom: 12px; }
+      .sq-tile-label { font-size: 17px; }
+      .sq-tile-sub { font-size: 12px; }
 
-      .service-row {
-        grid-template-columns: 1fr auto;
-        grid-template-rows: auto auto;
-        padding: 20px 24px;
-        min-height: auto;
-        gap: 0;
-      }
-      .service-row-name { font-size: 17px; grid-column: 1; grid-row: 1; }
-      .service-row-sub  { font-size: 11px; grid-column: 1; grid-row: 2; margin-top: 4px; }
-      .service-row-arrow { grid-column: 2; grid-row: 1 / 3; align-self: center; font-size: 16px; }
-      .service-row-meta { display: none; }
+      .sv-row { padding: 22px 24px; grid-template-columns: 1fr auto; gap: 16px; }
+      .sv-row-price { display: none; }
 
-      .service-note-row {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 16px;
-        padding: 28px 24px;
-      }
-      .service-note-text { font-size: 12px; max-width: none; }
+      .sv-drawer-content { grid-template-columns: 1fr; }
+      .sv-drawer-right { order: -1; min-height: 200px; }
+      .sv-drawer-right img { height: 200px; min-height: 200px; }
+      .sv-drawer-left { padding: 28px 24px 36px; border-right: none; border-top: 1px solid rgba(250,250,248,.06); gap: 20px; }
+
+      .sv-cta { flex-direction: column; align-items: flex-start; padding: 48px 24px; gap: 20px; }
+      .sv-cta-text { font-size: 18px; max-width: none; }
     }
 
   </style>
 </head>
 <body>
+  <div class="scroll-bar" id="scrollBar"></div>
 
   <nav class="nav" id="mainNav">
     <div class="nav-links">
@@ -179,76 +362,223 @@
     <a href="/contact/" class="mobile-nav-cta">Start a Project</a>
   </div>
 
-  <div class="page-head reveal">
-    <span class="page-eyebrow">Services</span>
-    <span class="page-headline">What do you need?</span>
-  </div>
-
-  <div class="service-list reveal">
-    <a class="service-row" href="/services/signature">
-      <div>
-        <span class="service-row-name">Signature Website</span>
-        <span class="service-row-sub">Built from scratch, for you.</span>
-      </div>
-      <div class="service-row-meta">
-        <span class="service-row-label">Investment</span>
-        <span class="service-row-value">From $4,000</span>
-      </div>
-      <div class="service-row-meta">
-        <span class="service-row-label">Timeline</span>
-        <span class="service-row-value">3 wks – 1 mo</span>
-      </div>
-      <span class="service-row-arrow">→</span>
-    </a>
-    <a class="service-row" href="/services/refresh">
-      <div>
-        <span class="service-row-name">Website Refresh</span>
-        <span class="service-row-sub">Your site, elevated.</span>
-      </div>
-      <div class="service-row-meta">
-        <span class="service-row-label">Investment</span>
-        <span class="service-row-value">From $2,000</span>
-      </div>
-      <div class="service-row-meta">
-        <span class="service-row-label">Timeline</span>
-        <span class="service-row-value">2 – 3 weeks</span>
-      </div>
-      <span class="service-row-arrow">→</span>
-    </a>
-    <a class="service-row" href="/services/audit">
-      <div>
-        <span class="service-row-name">Website Audit</span>
-        <span class="service-row-sub">Know exactly what to fix.</span>
-      </div>
-      <div class="service-row-meta">
-        <span class="service-row-label">Investment</span>
-        <span class="service-row-value">$199</span>
-      </div>
-      <div class="service-row-meta">
-        <span class="service-row-label">Timeline</span>
-        <span class="service-row-value">3 – 5 days</span>
-      </div>
-      <span class="service-row-arrow">→</span>
-    </a>
-    <a class="service-row" href="/services/care">
-      <div>
-        <span class="service-row-name">Monthly Support</span>
-        <span class="service-row-sub">Ongoing care, handled.</span>
-      </div>
-      <div class="service-row-meta">
-        <span class="service-row-label">Investment</span>
-        <span class="service-row-value">$250 / mo</span>
-      </div>
-      <div class="service-row-meta">
-        <span class="service-row-label">Timeline</span>
-        <span class="service-row-value">Ongoing</span>
-      </div>
-      <span class="service-row-arrow">→</span>
-    </a>
-    <div class="service-note-row">
-      <p class="service-note-text">Building something beyond a traditional website — a tool, portal, or custom product? Every custom project starts with a conversation.</p>
-      <a class="service-note-link" href="/contact/">Let's talk →</a>
+  <!-- Question -->
+  <section class="sq-section">
+    <span class="sq-eyebrow">Services</span>
+    <h1 class="sq-question">Where are<br>you right now?</h1>
+    <div class="sq-tiles">
+      <button class="sq-tile" data-filter="fresh">
+        <span class="sq-tile-num">01</span>
+        <span class="sq-tile-label">Starting fresh</span>
+        <span class="sq-tile-sub">I need a website built from the ground up.</span>
+      </button>
+      <button class="sq-tile" data-filter="launched">
+        <span class="sq-tile-num">02</span>
+        <span class="sq-tile-label">Already launched</span>
+        <span class="sq-tile-sub">I have a site but it's not working hard enough.</span>
+      </button>
+      <button class="sq-tile" data-filter="ongoing">
+        <span class="sq-tile-num">03</span>
+        <span class="sq-tile-label">Need ongoing help</span>
+        <span class="sq-tile-sub">I need a studio in my corner, month to month.</span>
+      </button>
     </div>
+  </section>
+
+  <!-- Services -->
+  <section class="sv-section" id="svSection">
+
+    <!-- Signature Website — fresh -->
+    <div class="sv-item" data-category="fresh">
+      <button class="sv-row" onclick="toggleService(this)">
+        <div>
+          <span class="sv-row-name">Signature Website</span>
+          <span class="sv-row-sub">Built from scratch, for you.</span>
+        </div>
+        <span class="sv-row-price">From $4,000 · 3–4 weeks</span>
+        <span class="sv-toggle">+</span>
+      </button>
+      <div class="sv-drawer">
+        <div class="sv-drawer-inner">
+          <div class="sv-drawer-content">
+            <div class="sv-drawer-left">
+              <div class="sv-detail-group">
+                <span class="sv-detail-label">Investment</span>
+                <span class="sv-detail-value">Starting from $4,000</span>
+              </div>
+              <div class="sv-detail-group">
+                <span class="sv-detail-label">Timeline</span>
+                <span class="sv-detail-value">3 weeks – 1 month</span>
+              </div>
+              <div class="sv-detail-group">
+                <span class="sv-detail-label">What's included</span>
+                <span class="sv-detail-value">Custom design, responsive build, copywriting support, domain setup, launch + full handoff.</span>
+              </div>
+              <a class="sv-drawer-link" href="/services/signature">Full details →</a>
+            </div>
+            <div class="sv-drawer-right">
+              <img src="/assets/loup.png" alt="Le Loup" />
+              <span class="sv-outcome">"Le Loup launched in 22 days. The site already felt like a place that had existed for years."</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Website Refresh — launched -->
+    <div class="sv-item" data-category="launched">
+      <button class="sv-row" onclick="toggleService(this)">
+        <div>
+          <span class="sv-row-name">Website Refresh</span>
+          <span class="sv-row-sub">Your site, elevated.</span>
+        </div>
+        <span class="sv-row-price">From $2,000 · 2–3 weeks</span>
+        <span class="sv-toggle">+</span>
+      </button>
+      <div class="sv-drawer">
+        <div class="sv-drawer-inner">
+          <div class="sv-drawer-content">
+            <div class="sv-drawer-left">
+              <div class="sv-detail-group">
+                <span class="sv-detail-label">Investment</span>
+                <span class="sv-detail-value">Starting from $2,000</span>
+              </div>
+              <div class="sv-detail-group">
+                <span class="sv-detail-label">Timeline</span>
+                <span class="sv-detail-value">2 – 3 weeks</span>
+              </div>
+              <div class="sv-detail-group">
+                <span class="sv-detail-label">What's included</span>
+                <span class="sv-detail-value">Visual overhaul, performance improvements, updated typography and copy, mobile fixes, relaunch.</span>
+              </div>
+              <a class="sv-drawer-link" href="/services/refresh">Full details →</a>
+            </div>
+            <div class="sv-drawer-right">
+              <img src="/assets/stone.png" alt="West & Stone" />
+              <span class="sv-outcome">"West &amp; Stone's refresh took 12 days. The experience went from transactional to considered."</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Website Audit — launched -->
+    <div class="sv-item" data-category="launched">
+      <button class="sv-row" onclick="toggleService(this)">
+        <div>
+          <span class="sv-row-name">Website Audit</span>
+          <span class="sv-row-sub">Know exactly what to fix.</span>
+        </div>
+        <span class="sv-row-price">$199 · 3–5 days</span>
+        <span class="sv-toggle">+</span>
+      </button>
+      <div class="sv-drawer">
+        <div class="sv-drawer-inner">
+          <div class="sv-drawer-content">
+            <div class="sv-drawer-left">
+              <div class="sv-detail-group">
+                <span class="sv-detail-label">Investment</span>
+                <span class="sv-detail-value">$199</span>
+              </div>
+              <div class="sv-detail-group">
+                <span class="sv-detail-label">Timeline</span>
+                <span class="sv-detail-value">3 – 5 days</span>
+              </div>
+              <div class="sv-detail-group">
+                <span class="sv-detail-label">What's included</span>
+                <span class="sv-detail-value">Full UX and conversion review. Written report with prioritised fixes. No fluff, no upsell.</span>
+              </div>
+              <a class="sv-drawer-link" href="/services/audit">Full details →</a>
+            </div>
+            <div class="sv-drawer-right">
+              <img src="/assets/cel.png" alt="Céleste" />
+              <span class="sv-outcome">"Céleste's audit identified 9 conversion gaps. Every one was addressed before relaunch."</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Monthly Support — ongoing -->
+    <div class="sv-item" data-category="ongoing">
+      <button class="sv-row" onclick="toggleService(this)">
+        <div>
+          <span class="sv-row-name">Monthly Support</span>
+          <span class="sv-row-sub">Ongoing care, handled.</span>
+        </div>
+        <span class="sv-row-price">$250 / mo · Ongoing</span>
+        <span class="sv-toggle">+</span>
+      </button>
+      <div class="sv-drawer">
+        <div class="sv-drawer-inner">
+          <div class="sv-drawer-content">
+            <div class="sv-drawer-left">
+              <div class="sv-detail-group">
+                <span class="sv-detail-label">Investment</span>
+                <span class="sv-detail-value">$250 per month</span>
+              </div>
+              <div class="sv-detail-group">
+                <span class="sv-detail-label">Timeline</span>
+                <span class="sv-detail-value">Ongoing, cancel anytime</span>
+              </div>
+              <div class="sv-detail-group">
+                <span class="sv-detail-label">What's included</span>
+                <span class="sv-detail-value">Unlimited edits, monthly performance check-in, priority turnaround, one studio contact.</span>
+              </div>
+              <a class="sv-drawer-link" href="/services/care">Full details →</a>
+            </div>
+            <div class="sv-drawer-right">
+              <img src="/assets/formahero.png" alt="Forma" />
+              <span class="sv-outcome">"Forma is maintained and evolving — no queue, no bottleneck, no surprises."</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Custom Solutions — fresh -->
+    <div class="sv-item" data-category="fresh">
+      <button class="sv-row" onclick="toggleService(this)">
+        <div>
+          <span class="sv-row-name">Custom Solutions</span>
+          <span class="sv-row-sub">Not every project fits a package.</span>
+        </div>
+        <span class="sv-row-price">Scoped per project</span>
+        <span class="sv-toggle">+</span>
+      </button>
+      <div class="sv-drawer">
+        <div class="sv-drawer-inner">
+          <div class="sv-drawer-content">
+            <div class="sv-drawer-left">
+              <div class="sv-detail-group">
+                <span class="sv-detail-label">Investment</span>
+                <span class="sv-detail-value">Scoped after discovery call</span>
+              </div>
+              <div class="sv-detail-group">
+                <span class="sv-detail-label">Examples</span>
+                <span class="sv-detail-value">Internal tools, client portals, custom workflows, digital products, software.</span>
+              </div>
+              <div class="sv-detail-group">
+                <span class="sv-detail-label">How it starts</span>
+                <span class="sv-detail-value">Every custom project begins with a conversation to understand your goals before defining scope.</span>
+              </div>
+              <a class="sv-drawer-link" href="/contact/">Let's talk →</a>
+            </div>
+            <div class="sv-drawer-right">
+              <img src="/assets/verde-hover.png" alt="Verde" />
+              <span class="sv-outcome">"Verde went from a brief conversation to a live editorial experience in 3 weeks."</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- CTA -->
+  <div class="sv-cta">
+    <span class="sv-cta-text">Not sure which service fits where you are?</span>
+    <a class="sv-cta-link" href="/contact/">Start a conversation →</a>
   </div>
 
   <footer class="site-footer">
@@ -270,14 +600,17 @@
   </footer>
 
   <script>
+    // Nav scroll
     const nav = document.getElementById('mainNav');
+    const bar = document.getElementById('scrollBar');
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 20);
+      if (bar) bar.style.width = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100) + '%';
     }, { passive: true });
 
+    // Mobile nav
     const ham = document.getElementById('navHam');
     const mob = document.getElementById('mobileNav');
-    // Sidebar nav
     const scrim = document.createElement('div');
     scrim.className = 'nav-scrim';
     document.body.appendChild(scrim);
@@ -300,13 +633,46 @@
     document.getElementById('navClose')?.addEventListener('click', closeNav);
     mob.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
 
-    const io = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
-      });
-    }, { threshold: 0.06 });
-    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    // Tile filter
+    const tiles = document.querySelectorAll('.sq-tile');
+    const items = document.querySelectorAll('.sv-item');
 
+    tiles.forEach(tile => {
+      tile.addEventListener('click', () => {
+        const filter = tile.dataset.filter;
+        const isActive = tile.classList.contains('active');
+
+        // Toggle active tile
+        tiles.forEach(t => t.classList.remove('active'));
+        if (!isActive) tile.classList.add('active');
+
+        // Filter services
+        items.forEach(item => {
+          if (isActive || item.dataset.category === filter) {
+            item.classList.remove('sv-hidden');
+          } else {
+            item.classList.add('sv-hidden');
+            item.classList.remove('open'); // close if hidden
+          }
+        });
+
+        // Scroll to services section
+        if (!isActive) {
+          setTimeout(() => {
+            document.getElementById('svSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 80);
+        }
+      });
+    });
+
+    // Accordion
+    function toggleService(btn) {
+      const item = btn.closest('.sv-item');
+      const isOpen = item.classList.contains('open');
+      // Close all others
+      document.querySelectorAll('.sv-item.open').forEach(el => el.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
   </script>
 
 </body>
