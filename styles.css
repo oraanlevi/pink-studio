@@ -209,47 +209,42 @@ img { display: block; max-width: 100%; }
   background: rgba(250, 250, 248, 0.80);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  height: 160px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
-  padding: 0 48px;
+  padding: 32px 48px 36px;
+  gap: 24px;
 }
-.footer-brand-wrap {
-  text-align: left;
-  padding: 0;
-}
+.footer-brand-wrap { flex: none; }
 .footer-brand {
-  font-family: "Bebas Neue", "Impact", sans-serif;
-  font-size: 18px;
-  font-weight: 400;
-  letter-spacing: 5px;
+  font-family: 'Poppins', system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--ink);
   display: block;
   line-height: 1;
-  white-space: nowrap;
 }
 .footer-brand-sub {
   display: block;
-  font-family: "Bebas Neue", "Impact", sans-serif;
-  font-size: 29px;
+  font-family: 'Poppins', system-ui, sans-serif;
+  font-size: 13px;
   font-weight: 400;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--ink-3);
-  margin-top: 12px;
+  letter-spacing: 0;
+  color: var(--ink-2);
+  margin-top: 4px;
 }
 .footer-social {
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 14px;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
 }
 .footer-social-icons {
   display: flex;
   align-items: center;
-  gap: 22px;
+  gap: 16px;
 }
 .footer-social-icons a {
   color: var(--ink-2);
@@ -259,12 +254,13 @@ img { display: block; max-width: 100%; }
 }
 .footer-social-icons a:hover { color: var(--ink); }
 .footer-email {
-  font-family: "Bebas Neue", "Impact", sans-serif;
-  font-size: 29px;
+  font-family: 'Poppins', system-ui, sans-serif;
+  font-size: 13px;
   font-weight: 400;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--ink-3);
+  letter-spacing: 0;
+  color: var(--ink-2);
+  text-decoration: none;
+  text-transform: none;
   transition: color 220ms;
 }
 .footer-email:hover { color: var(--ink); }
@@ -304,42 +300,10 @@ img { display: block; max-width: 100%; }
   }
   .mobile-nav-cta:hover { color: #fff !important; opacity: 0.9; }
   .site-footer {
-    height: auto;
     padding: 28px 24px 32px;
     flex-direction: column;
     align-items: flex-start;
     gap: 16px;
-  }
-  .footer-brand-wrap { flex: none; width: 100%; }
-  .footer-brand {
-    font-family: 'Poppins', system-ui, sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-  }
-  .footer-brand-sub {
-    font-family: 'Poppins', system-ui, sans-serif;
-    font-size: 13px;
-    font-weight: 400;
-    letter-spacing: 0;
-    color: var(--ink-2);
-    margin-top: 3px;
-  }
-  .footer-social {
-    flex: none;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 16px;
-  }
-  .footer-email {
-    font-family: 'Poppins', system-ui, sans-serif;
-    font-size: 13px;
-    font-weight: 400;
-    letter-spacing: 0;
-    color: var(--ink-2);
-    text-transform: none;
   }
 }
 
