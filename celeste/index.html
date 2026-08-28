@@ -112,58 +112,38 @@
       /* ── Editorial Cards ── */
       .cards-row {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
         border-bottom: 1px solid var(--rule);
       }
       .ed-card {
-        padding: 96px 56px 96px;
+        padding: 80px 52px;
         border-right: 1px solid var(--rule);
         display: flex;
         flex-direction: column;
         align-items: center;
         text-align: center;
-        justify-content: center;
+        justify-content: flex-start;
       }
       .ed-card:last-child { border-right: none; }
-      .ed-card--full {
-        padding: 112px 72px 128px;
-        display: flex;
-        flex-direction: column;
-        border-bottom: 1px solid var(--rule);
-        align-items: center;
-        text-align: center;
-        justify-content: center;
-      }
+      .ed-card--full { display: none; }
       .ed-card-label {
         font-family: 'Poppins', system-ui, sans-serif;
         font-size: 11px;
         font-weight: 500;
         letter-spacing: 3px;
         text-transform: uppercase;
-        color: var(--ink);
+        color: var(--ink-2);
         display: block;
-        margin-bottom: 36px;
+        margin-bottom: 28px;
       }
       .ed-card-lead {
         font-family: 'Poppins', system-ui, sans-serif;
-        font-size: 15px;
+        font-size: 14px;
         font-weight: 300;
-        color: var(--ink-2);
-        line-height: 1.8;
+        color: rgba(28,26,22,.72);
+        line-height: 1.9;
         letter-spacing: 0;
-        max-width: 36ch;
-        margin-bottom: 0;
-      }
-      .ed-card--full .ed-card-label {
-        font-size: 11px;
-        letter-spacing: 3px;
-      }
-      .ed-card--full .ed-card-lead {
-        font-size: 17px;
-        font-weight: 300;
-        line-height: 1.8;
-        white-space: normal;
-        max-width: 52ch;
+        max-width: 32ch;
         margin-bottom: 0;
       }
 
@@ -459,11 +439,10 @@
         <span class="ed-card-label">The Approach</span>
         <p class="ed-card-lead">Let warmth do the heavy lifting. I built the experience around soft light, considered typography, and a pace that never rushes the visitor. Every section was designed to feel like a private consultation rather than a booking page. Reassuring, unhurried, and personal.</p>
       </div>
-    </div>
-
-    <div class="ed-card--full reveal">
-      <span class="ed-card-label">The Outcome</span>
-      <p class="ed-card-lead">A website that earns trust before a word is read. Visitors arrive and immediately feel the care that goes into Céleste's work. The experience doesn't sell. It welcomes. Which is exactly the feeling that turns a first visit into a loyal client relationship.</p>
+      <div class="ed-card reveal">
+        <span class="ed-card-label">The Outcome</span>
+        <p class="ed-card-lead">A website that earns trust before a word is read. Visitors arrive and immediately feel the care that goes into Céleste's work. The experience doesn't sell. It welcomes. Which is exactly the feeling that turns a first visit into a loyal client relationship.</p>
+      </div>
     </div>
 
     <div class="p-video-section reveal">

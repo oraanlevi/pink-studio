@@ -115,21 +115,21 @@
       /* Editorial Cards */
       .cards-row {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
         border-bottom: 1px solid var(--rule);
       }
       .ed-card {
-        padding: 96px 56px 96px;
+        padding: 80px 52px;
         border-right: 1px solid var(--rule);
         display: flex;
         flex-direction: column;
         align-items: center;
         text-align: center;
-        justify-content: center;
+        justify-content: flex-start;
       }
       .ed-card:last-child { border-right: none; }
       .ed-card--full {
-        padding: 112px 72px 128px;
+        padding: 80px 72px;
         display: flex;
         flex-direction: column;
         border-bottom: 1px solid var(--rule);
@@ -143,31 +143,23 @@
         font-weight: 500;
         letter-spacing: 3px;
         text-transform: uppercase;
-        color: var(--ink);
+        color: var(--ink-2);
         display: block;
-        margin-bottom: 36px;
+        margin-bottom: 28px;
       }
       .ed-card-lead {
         font-family: 'Poppins', system-ui, sans-serif;
-        font-size: 15px;
+        font-size: 14px;
         font-weight: 300;
-        color: var(--ink-2);
-        line-height: 1.8;
+        color: rgba(26,26,24,.72);
+        line-height: 1.9;
         letter-spacing: 0;
-        max-width: 36ch;
+        max-width: 32ch;
         margin-bottom: 0;
-      }
-      .ed-card--full .ed-card-label {
-        font-size: 11px;
-        letter-spacing: 3px;
       }
       .ed-card--full .ed-card-lead {
-        font-size: 17px;
-        font-weight: 300;
-        line-height: 1.8;
-        white-space: normal;
+        font-size: 15px;
         max-width: 52ch;
-        margin-bottom: 0;
       }
 
       /* Screenshot section */
@@ -498,7 +490,7 @@
       </div>
     </div>
 
-    <!-- Concept + Creative Direction -->
+    <!-- Concept + Creative Direction + Design System -->
     <div class="cards-row">
       <div class="ed-card" data-reveal>
         <span class="ed-card-label">Concept</span>
@@ -510,12 +502,10 @@
         <span class="ed-card-label">Creative Direction</span>
         <p class="ed-card-lead">The visual language was built to feel like a magazine, not a store. Campaign photography leads. Typography recedes. Negative space does the heavy lifting. The palette of warm whites, deep forest tones and quiet blush was chosen to feel like a morning ritual rather than a product launch. Nothing should feel urgent. Everything should feel intentional.</p>
       </div>
-    </div>
-
-    <!-- Design System -->
-    <div class="ed-card--full" data-reveal>
-      <span class="ed-card-label">Design System</span>
-      <p class="ed-card-lead">Two typefaces. A single accent color. Spacing rules strict enough to feel considered but loose enough to breathe. The design system for Verde was built to scale, adaptable to any founder who wants the same editorial restraint for their own brand, without starting from scratch.</p>
+      <div class="ed-card" data-reveal>
+        <span class="ed-card-label">Design System</span>
+        <p class="ed-card-lead">Two typefaces. A single accent color. Spacing rules strict enough to feel considered but loose enough to breathe. The design system for Verde was built to scale, adaptable to any founder who wants the same editorial restraint for their own brand, without starting from scratch.</p>
+      </div>
     </div>
 
     <!-- Screenshot -->
