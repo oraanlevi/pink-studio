@@ -112,28 +112,20 @@
       /* ── Editorial Cards ── */
       .cards-row {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
         border-bottom: 1px solid var(--rule);
       }
       .ed-card {
-        padding: 80px 64px;
+        padding: 80px 52px;
         border-right: 1px solid var(--rule);
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
-        text-align: left;
+        align-items: center;
+        text-align: center;
         justify-content: flex-start;
       }
       .ed-card:last-child { border-right: none; }
-      .ed-card--full {
-        padding: 100px 72px 112px;
-        display: flex;
-        flex-direction: column;
-        border-bottom: 1px solid var(--rule);
-        align-items: center;
-        text-align: center;
-        justify-content: center;
-      }
+      .ed-card--full { display: none; }
       .ed-card-label {
         font-family: 'Poppins', system-ui, sans-serif;
         font-size: 11px;
@@ -146,28 +138,12 @@
       }
       .ed-card-lead {
         font-family: 'Poppins', system-ui, sans-serif;
-        font-size: 15px;
+        font-size: 14px;
         font-weight: 300;
         color: var(--ink-2);
         line-height: 1.9;
         letter-spacing: 0;
-        max-width: 38ch;
-        margin-bottom: 0;
-      }
-      .ed-card--full .ed-card-label {
-        font-size: 11px;
-        letter-spacing: 3px;
-        color: var(--ink-3);
-      }
-      .ed-card--full .ed-card-lead {
-        font-family: 'Cormorant Garamond', Georgia, serif;
-        font-size: clamp(22px, 2.4vw, 34px);
-        font-weight: 300;
-        font-style: italic;
-        line-height: 1.55;
-        white-space: normal;
-        max-width: 52ch;
-        color: var(--ink);
+        max-width: 32ch;
         margin-bottom: 0;
       }
 
@@ -345,8 +321,8 @@
           border-right: none;
           border-bottom: none;
           padding: 40px 24px 32px;
-          text-align: left;
-          align-items: flex-start;
+          text-align: center;
+          align-items: center;
         }
         .ed-card-label {
           font-size: 10px;
@@ -359,25 +335,6 @@
           font-weight: 300;
           line-height: 1.75;
           color: var(--ink-2);
-          max-width: 100%;
-        }
-        .ed-card--full {
-          padding: 40px 24px 48px;
-          border-bottom: none;
-          text-align: center;
-          align-items: center;
-        }
-        .ed-card--full .ed-card-label {
-          font-size: 10px;
-          letter-spacing: 0.2em;
-          color: var(--ink-3);
-          margin-bottom: 16px;
-        }
-        .ed-card--full .ed-card-lead {
-          font-size: 20px;
-          font-style: italic;
-          line-height: 1.55;
-          color: var(--ink);
           max-width: 100%;
         }
 
@@ -498,11 +455,10 @@
         <span class="ed-card-label">The Approach</span>
         <p class="ed-card-lead">Let the materials tell the story. I designed every page to feel like walking through a beautifully collected home. Natural textures, architectural photography, generous white space, and restrained typography allow every project to breathe. Rather than filling the website with decoration, I wanted each detail to feel intentional and carefully considered.</p>
       </div>
-    </div>
-
-    <div class="ed-card--full reveal">
-      <span class="ed-card-label">The Outcome</span>
-      <p class="ed-card-lead">A website that feels like stepping inside the home before it's even built. The experience encourages visitors to slow down and imagine how they want their own home to feel. Instead of showcasing beautiful interiors alone, the website communicates the studio's philosophy and the experience of working with them.</p>
+      <div class="ed-card reveal">
+        <span class="ed-card-label">The Outcome</span>
+        <p class="ed-card-lead">A website that feels like stepping inside the home before it's even built. The experience encourages visitors to slow down and imagine how they want their own home to feel. Instead of showcasing beautiful interiors alone, the website communicates the studio's philosophy and the experience of working with them.</p>
+      </div>
     </div>
 
     <div class="j-frames reveal">
