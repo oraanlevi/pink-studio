@@ -188,31 +188,33 @@
         flex-shrink: 0;
       }
 
-      /* ── Browser frame clusters ── */
+      /* ── Screenshot grid ── */
       .f-frames {
-        position: relative;
-        height: 520px;
+        padding: 64px;
         border-bottom: 1px solid var(--rule);
-        overflow: hidden;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        height: auto;
+        overflow: visible;
+        position: static;
       }
+      .f-frames--b { border-top: none; padding-top: 0; }
       .f-frame {
-        position: absolute;
-        width: 46%;
+        position: static;
+        width: 100%;
         background: #fff;
-        border: 1px solid #ddd;
-        border-radius: 6px;
-        box-shadow: 0 4px 24px rgba(0,0,0,.08), 0 1px 4px rgba(0,0,0,.04);
-        opacity: 0.75;
-        transition: opacity 480ms ease, transform 480ms ease, box-shadow 480ms ease;
-        cursor: default;
+        border: 1px solid #e0e0de;
+        border-radius: 8px;
+        box-shadow: 0 2px 12px rgba(0,0,0,.06);
+        opacity: 1;
+        transform: none;
+        transition: transform 300ms cubic-bezier(.16,1,.3,1), box-shadow 300ms ease;
       }
       .f-frame:hover {
-        opacity: 1;
-        transform: scale(1.04) !important;
-        box-shadow: 0 12px 48px rgba(0,0,0,.13), 0 2px 8px rgba(0,0,0,.06);
-        z-index: 10 !important;
+        transform: translateY(-4px);
+        box-shadow: 0 12px 36px rgba(0,0,0,.11);
       }
-      .f-frames:has(.f-frame:hover) .f-frame:not(:hover) { opacity: 0.35; }
       .f-frame-chrome {
         display: flex;
         align-items: center;
@@ -220,7 +222,7 @@
         padding: 8px 12px;
         border-bottom: 1px solid #eee;
         background: #f7f7f5;
-        border-radius: 6px 6px 0 0;
+        border-radius: 8px 8px 0 0;
       }
       .f-frame-dot { width: 7px; height: 7px; border-radius: 50%; background: #ddd; flex-shrink: 0; }
       .f-frame-url { flex: 1; height: 14px; background: #e8e8e6; border-radius: 3px; margin-left: 6px; }
@@ -230,20 +232,8 @@
         aspect-ratio: 16/10;
         object-fit: cover;
         object-position: top center;
-        border-radius: 0 0 5px 5px;
+        border-radius: 0 0 7px 7px;
       }
-
-      /* Cluster A positions */
-      .f-frames--a .f-frame:nth-child(1) { top: 6%;  left: 4%;  z-index: 4; transform: rotate(-1.5deg); }
-      .f-frames--a .f-frame:nth-child(2) { top: 20%; left: 32%; z-index: 3; transform: rotate(1.2deg); }
-      .f-frames--a .f-frame:nth-child(3) { top: 42%; left: 7%;  z-index: 2; transform: rotate(0.5deg); }
-      .f-frames--a .f-frame:nth-child(4) { top: 52%; left: 36%; z-index: 1; transform: rotate(-0.9deg); }
-
-      /* Cluster B positions — mirrored */
-      .f-frames--b .f-frame:nth-child(1) { top: 5%;  right: 4%;  left: auto; z-index: 4; transform: rotate(1.5deg); }
-      .f-frames--b .f-frame:nth-child(2) { top: 22%; right: 32%; left: auto; z-index: 3; transform: rotate(-1deg); }
-      .f-frames--b .f-frame:nth-child(3) { top: 44%; right: 7%;  left: auto; z-index: 2; transform: rotate(-0.5deg); }
-      .f-frames--b .f-frame:nth-child(4) { top: 56%; right: 36%; left: auto; z-index: 1; transform: rotate(0.8deg); }
 
       /* ── Features list ── */
       .f-modules {
@@ -458,10 +448,10 @@
         .hero-title { font-size: clamp(72px, 20vw, 96px); letter-spacing: -2px; }
         .hero-bg-img::after { display: none; }
 
-        /* Browser frames */
-        .f-frames { height: 240px; }
-        .f-frame { width: 68%; }
-        .f-frames--b { display: none; }
+        /* Screenshot grid */
+        .f-frames { padding: 24px; gap: 10px; }
+        .f-frames--b { padding-top: 0; }
+        .f-frame:hover { transform: none; box-shadow: 0 2px 12px rgba(0,0,0,.06); }
 
         /* Why / Result */
         .f-duo { grid-template-columns: 1fr; border-bottom: none; }
