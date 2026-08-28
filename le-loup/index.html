@@ -19,90 +19,97 @@
       }
       body { background: var(--bg); }
 
-      /* ── Split Hero ── */
+      /* ── Desktop Hero ── */
       .project-hero {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+        position: relative;
         min-height: calc(100vh - var(--nav-h));
-        border-bottom: 1px solid var(--rule);
-      }
-      .hero-left {
-        padding: 64px;
+        background: #0E0E0C;
+        overflow: hidden;
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        border-right: 1px solid var(--rule);
+        justify-content: flex-end;
+        padding: 0 72px 72px;
+        border-bottom: none;
       }
-      .hero-top { display: flex; flex-direction: column; }
-      .hero-title {
-        font-family: "Oswald", "Impact", sans-serif;
-        font-size: clamp(60px, 9vw, 116px);
-        font-weight: 700;
-        font-style: normal;
-        color: var(--ink);
-        line-height: .92;
-        letter-spacing: -2px;
-        margin-bottom: 40px;
-        display: block;
+      .hero-bg-img {
+        position: absolute;
+        top: 0; right: 0;
+        width: 42%; height: 100%;
+        background: url('/assets/loup.png') center/cover no-repeat;
       }
-      .hero-tag {
+      .hero-bg-img::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to right, #0E0E0C 0%, rgba(14,14,12,.6) 45%, rgba(14,14,12,0) 100%);
+      }
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+      }
+      .hero-eyebrow {
         font-family: "Bebas Neue", "Impact", sans-serif;
-        font-size: 16px;
-        font-weight: 400;
-        letter-spacing: 4px;
+        font-size: 12px;
+        letter-spacing: 5px;
         text-transform: uppercase;
-        color: var(--ink-2);
+        color: rgba(255,255,255,.28);
         display: block;
-        margin-bottom: 20px;
+        margin-bottom: 12px;
+      }
+      .hero-title {
+        display: block;
+        font-family: "Oswald", "Impact", sans-serif;
+        font-size: clamp(130px, 17vw, 210px);
+        font-weight: 700;
+        color: #fff;
+        line-height: 0.88;
+        letter-spacing: -4px;
+        text-transform: uppercase;
+        margin: 0 0 0 -6px;
       }
       .hero-desc {
-        font-size: 28px;
-        font-style: normal;
-        color: var(--ink-2);
-        line-height: 1.6;
-        white-space: nowrap;
-        margin-bottom: 36px;
+        font-family: 'Poppins', system-ui, sans-serif;
+        font-size: 14px;
+        font-weight: 300;
+        color: rgba(255,255,255,.52);
+        line-height: 1.75;
+        max-width: 38ch;
+        margin-top: 44px;
+        margin-bottom: 52px;
       }
-      .hero-concept {
-        font-family: "Bebas Neue", "Impact", sans-serif;
-        font-size: 16px;
-        font-weight: 400;
-        letter-spacing: 4px;
-        text-transform: uppercase;
-        color: var(--ink-2);
-        display: block;
-        margin-bottom: 64px;
+      .hero-links {
+        display: flex;
+        align-items: center;
+        gap: 36px;
       }
-      .hero-bottom { display: flex; flex-direction: row; gap: 28px; flex-wrap: wrap; justify-content: center; align-items: center; }
-      .hero-link {
+      .hero-live {
         font-family: "Oswald", "Impact", sans-serif;
         font-size: 13px;
         font-weight: 300;
-        letter-spacing: 3.5px;
+        letter-spacing: 4px;
         text-transform: uppercase;
-        color: var(--ink);
+        color: #fff;
         text-decoration: none;
-        transition: opacity 250ms;
-        display: inline-block;
+        transition: opacity 220ms;
       }
-      .hero-link:hover { opacity: .4; }
-      .hero-link--live { color: #C9607A; font-size: 15px; font-weight: 700; }
-      .hero-right {
-        position: relative;
-        overflow: hidden;
+      .hero-live:hover { opacity: 0.5; }
+      .hero-back {
+        font-family: "Oswald", "Impact", sans-serif;
+        font-size: 13px;
+        font-weight: 300;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: rgba(255,255,255,.35);
+        text-decoration: none;
+        transition: opacity 220ms;
       }
-      .hero-right-bg {
-        position: absolute;
-        inset: 0;
-        background: url('/assets/loup.png') center/cover no-repeat;
-        animation: slowZoom 18s ease-in-out infinite alternate;
-      }
-      @keyframes slowZoom {
-        from { transform: scale(1.04); }
-        to   { transform: scale(1); }
-      }
+      .hero-back:hover { opacity: 0.6; }
+
+      /* Hide old hero pieces / mobile hero on desktop */
+      .hero-left, .hero-right, .hero-right-bg { display: none; }
+      .m-hero { display: none; }
 
       /* ── Editorial Cards ── */
       .cards-row {
@@ -214,10 +221,9 @@
 
       @media (max-width: 860px) {
         body { background: #FAFAF8; }
-
-        /* Hide desktop hero panels */
-        .project-hero { display: block; border-bottom: none; min-height: 0; }
-        .hero-left, .hero-right { display: none; }
+        .project-hero { background: transparent; min-height: 0; padding: 0; display: block; border-bottom: none; }
+        .hero-bg-img { display: none; }
+        .hero-content { display: none; }
 
         /* ── Mobile hero card ── */
         .m-hero {
@@ -423,24 +429,19 @@
       <a href="/contact/" class="mobile-nav-cta">Start a Project</a>
     </div>
 
-    <div class="project-hero">
-      <div class="hero-left reveal">
-        <div class="hero-top">
-          <p class="hero-desc">Mystery, atmosphere, quiet exclusivity.</p>
-          <span class="hero-title">Le Loup</span>
-          <span class="hero-tag">Private Members Club</span>
-          <span class="hero-concept">Editorial Concept</span>
-        </div>
-        <div class="hero-bottom">
-          <a class="hero-link hero-link--live" href="https://le-loup.pinkwebstudio.com" target="_blank" rel="noopener noreferrer">View Live →</a>
-          <a class="hero-link" href="/work/">Back to Work →</a>
+    <div class="project-hero" data-reveal>
+      <div class="hero-bg-img" aria-hidden="true"></div>
+      <div class="hero-content">
+        <span class="hero-eyebrow">Website · Private Members Club</span>
+        <h1 class="hero-title">Le Loup</h1>
+        <p class="hero-desc">Mystery, atmosphere, quiet exclusivity.</p>
+        <div class="hero-links">
+          <a class="hero-live" href="https://le-loup.pinkwebstudio.com" target="_blank" rel="noopener">View Live ↗</a>
+          <a class="hero-back" href="/work/">← Back to Projects</a>
         </div>
       </div>
-      <a class="hero-right" href="https://le-loup.pinkwebstudio.com" target="_blank" rel="noopener" style="cursor:pointer;">
-        <div class="hero-right-bg"></div>
-      </a>
 
-      <!-- Mobile hero (hidden on desktop) -->
+      <!-- Mobile hero — hidden on desktop -->
       <div class="m-hero" data-reveal>
         <div class="m-hero-bg"></div>
         <div class="m-hero-scrim"></div>
@@ -452,7 +453,6 @@
       </div>
     </div>
 
-    <!-- Mobile link row (hidden on desktop) -->
     <div class="m-link-row">
       <a class="m-link-live" href="https://le-loup.pinkwebstudio.com" target="_blank" rel="noopener">View live ↗</a>
       <a class="m-link-back" href="/work/">← Back to work</a>
