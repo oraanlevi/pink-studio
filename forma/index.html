@@ -161,31 +161,22 @@
         color: var(--ink-3);
         line-height: 1.6;
       }
-      .f-lifecycle-nodes {
-        display: flex;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 0;
-      }
-      .f-node {
+      .f-lifecycle-flow {
         font-family: 'Poppins', system-ui, sans-serif;
-        font-size: 13px;
-        font-weight: 400;
-        color: var(--ink);
+        font-size: 14px;
+        font-weight: 300;
+        color: var(--ink-2);
         letter-spacing: 0;
-        padding: 10px 20px;
-        border: 1px solid var(--rule);
-        background: rgba(250,250,248,.7);
-        white-space: nowrap;
-        transition: background 280ms, border-color 280ms;
+        line-height: 1.9;
       }
-      .f-node:hover { background: rgba(46,36,24,.06); border-color: rgba(46,36,24,.25); }
-      .f-node-arrow {
-        font-size: 11px;
+      .f-lifecycle-flow .dot {
         color: var(--ink-3);
-        padding: 0 8px;
-        user-select: none;
-        flex-shrink: 0;
+        margin: 0 10px;
+        opacity: 0.5;
+      }
+      .f-lifecycle-flow .step-last {
+        color: #D4537E;
+        font-weight: 400;
       }
 
       /* ── Screenshot grid ── */
@@ -257,23 +248,24 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 0;
-        border: 1px solid var(--rule);
+        border: none;
       }
       .f-module-item {
-        padding: 28px 32px;
-        border-right: 1px solid var(--rule);
+        padding: 20px 0;
         border-bottom: 1px solid var(--rule);
+        border-right: none;
       }
-      .f-module-item:nth-child(even) { border-right: none; }
+      .f-module-item:nth-child(odd) { padding-right: 40px; }
+      .f-module-item:nth-child(even) { padding-left: 40px; border-left: 1px solid var(--rule); }
       .f-module-item:nth-last-child(-n+2) { border-bottom: none; }
       .f-module-name {
         font-family: 'Poppins', system-ui, sans-serif;
         font-weight: 500;
-        font-size: clamp(15px, 1.3vw, 18px);
+        font-size: 15px;
         color: var(--ink);
         letter-spacing: -0.2px;
         display: block;
-        margin-bottom: 6px;
+        margin-bottom: 4px;
       }
       .f-module-desc {
         font-family: 'Poppins', system-ui, sans-serif;
@@ -476,9 +468,8 @@
         /* Process (lifecycle) */
         .f-lifecycle {
           grid-template-columns: 1fr;
-          gap: 20px;
+          gap: 16px;
           padding: 40px 24px;
-          text-align: center;
           border-bottom: none;
         }
         .f-lifecycle-label {
@@ -488,26 +479,13 @@
           letter-spacing: 3px;
           text-transform: uppercase;
           color: var(--ink-3);
-          text-align: center;
           line-height: 1;
         }
         .f-lifecycle-label br { display: none; }
-        .f-lifecycle-nodes { flex-direction: column; align-items: center; gap: 0; }
-        .f-node {
-          font-family: 'Poppins', system-ui, sans-serif;
-          font-size: 14px;
-          font-weight: 400;
-          letter-spacing: 0;
-          text-transform: none;
-          padding: 10px 28px;
-          border-radius: 999px;
+        .f-lifecycle-flow {
+          font-size: 13px;
+          line-height: 2;
         }
-        .f-node:last-child {
-          background: #D4537E;
-          color: #fff;
-          border-color: #D4537E;
-        }
-        .f-node-arrow { transform: rotate(90deg); padding: 4px 0; }
 
         /* What's inside */
         .f-modules {
@@ -518,38 +496,36 @@
         }
         .f-modules-label {
           font-family: 'Poppins', system-ui, sans-serif;
-          font-size: 24px;
+          font-size: 10px;
           font-weight: 400;
-          letter-spacing: -0.5px;
-          text-align: left;
-          line-height: 1.2;
+          letter-spacing: 3px;
+          text-transform: uppercase;
+          color: var(--ink-3);
+          line-height: 1;
         }
         .f-modules-label br { display: none; }
         .f-module-list {
-          display: flex;
-          flex-direction: column;
+          grid-template-columns: 1fr 1fr;
           border: none;
-          gap: 8px;
         }
         .f-module-item {
-          border: 1px solid var(--rule) !important;
-          border-radius: 8px;
-          padding: 18px 20px;
+          padding: 16px 0 !important;
+          border-bottom: 1px solid var(--rule) !important;
+          border-right: none !important;
+          border-left: none !important;
         }
+        .f-module-item:nth-child(even) { padding-left: 16px !important; border-left: 1px solid var(--rule) !important; }
+        .f-module-item:nth-last-child(-n+2) { border-bottom: none !important; }
         .f-module-name {
-          font-family: 'Poppins', system-ui, sans-serif;
-          font-size: 15px;
-          font-weight: 400;
-          letter-spacing: 0;
-          text-transform: none;
+          font-size: 13px;
+          font-weight: 500;
           color: var(--ink);
-          margin-bottom: 4px;
+          margin-bottom: 3px;
         }
         .f-module-desc {
-          font-family: 'Poppins', system-ui, sans-serif;
-          font-size: 10px;
-          letter-spacing: 2px;
-          text-transform: uppercase;
+          font-size: 11px;
+          letter-spacing: 0;
+          text-transform: none;
           color: var(--ink-3);
         }
 
@@ -691,21 +667,9 @@
     <!-- Lifecycle -->
     <div class="f-lifecycle reveal">
       <span class="f-lifecycle-label">The full<br>lifecycle.</span>
-      <div class="f-lifecycle-nodes">
-        <span class="f-node">Project</span>
-        <span class="f-node-arrow">→</span>
-        <span class="f-node">Mood Boards</span>
-        <span class="f-node-arrow">→</span>
-        <span class="f-node">Selections</span>
-        <span class="f-node-arrow">→</span>
-        <span class="f-node">Client Approval</span>
-        <span class="f-node-arrow">→</span>
-        <span class="f-node">Procurement</span>
-        <span class="f-node-arrow">→</span>
-        <span class="f-node">Timeline</span>
-        <span class="f-node-arrow">→</span>
-        <span class="f-node">Installation</span>
-      </div>
+      <p class="f-lifecycle-flow">
+        Project<span class="dot">·</span>Mood Boards<span class="dot">·</span>Selections<span class="dot">·</span>Client Approval<span class="dot">·</span>Procurement<span class="dot">·</span>Timeline<span class="dot">·</span><span class="step-last">Installation</span>
+      </p>
     </div>
 
     <!-- Modules -->
@@ -736,11 +700,11 @@
           <span class="f-module-name">Files</span>
           <span class="f-module-desc">Contracts, drawings &amp; more</span>
         </div>
-        <div class="f-module-item" style="border-bottom:none;">
+        <div class="f-module-item">
           <span class="f-module-name">Design System</span>
           <span class="f-module-desc">Color, type &amp; components</span>
         </div>
-        <div class="f-module-item" style="border-bottom:none; border-right:none;">
+        <div class="f-module-item">
           <span class="f-module-name">Dashboard</span>
           <span class="f-module-desc">Everything at a glance</span>
         </div>
