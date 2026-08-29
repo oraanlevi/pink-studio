@@ -86,32 +86,34 @@
       .vh-links {
         display: flex;
         align-items: center;
-        gap: 36px;
+        gap: 12px;
         position: relative;
         z-index: 1;
       }
       .vh-live {
-        font-family: 'Poppins', system-ui, sans-serif;
+        display: inline-block;
+        padding: 14px 24px;
+        border: 1px solid var(--ink);
+        font-family: 'Poppins', sans-serif;
         font-size: 13px;
         font-weight: 500;
-        letter-spacing: 0.5px;
-        text-transform: none;
         color: var(--ink);
         text-decoration: none;
-        transition: opacity 220ms;
+        transition: background 220ms, color 220ms;
       }
-      .vh-live:hover { opacity: .45; }
+      .vh-live:hover { background: var(--ink); color: var(--bg); }
       .vh-back {
-        font-family: 'Poppins', system-ui, sans-serif;
+        display: inline-block;
+        padding: 14px 24px;
+        border: 1px solid var(--rule);
+        font-family: 'Poppins', sans-serif;
         font-size: 13px;
-        font-weight: 400;
-        letter-spacing: 0.5px;
-        text-transform: none;
-        color: var(--ink-3);
+        font-weight: 300;
+        color: var(--ink-2);
         text-decoration: none;
-        transition: color 200ms;
+        transition: border-color 220ms, color 220ms;
       }
-      .vh-back:hover { color: rgba(255,255,255,.60); }
+      .vh-back:hover { border-color: var(--ink-2); color: var(--ink); }
 
       /* Editorial Cards */
       .cards-row {
