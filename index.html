@@ -344,9 +344,32 @@
 
       /* Hero block */
       .mh-hero {
-        padding: 40px 24px 36px;
+        padding: 32px 24px 36px;
         border-bottom: 1px solid var(--rule);
       }
+
+      /* Staggered display words */
+      .mh-display-labels {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        margin-bottom: 36px;
+        overflow: hidden;
+      }
+      .mh-display-word {
+        font-family: 'Cormorant Garamond', serif;
+        font-style: italic;
+        font-weight: 300;
+        font-size: clamp(64px, 19vw, 88px);
+        color: var(--ink);
+        line-height: 1.0;
+        letter-spacing: -0.01em;
+        display: block;
+      }
+      .mh-display-word:nth-child(1) { margin-left: 0; }
+      .mh-display-word:nth-child(2) { margin-left: 8%; }
+      .mh-display-word:nth-child(3) { margin-left: 0; }
+
       .mh-hero-eyebrow {
         display: block;
         font-family: 'Poppins', sans-serif;
@@ -543,6 +566,11 @@
 
     <!-- Hero -->
     <div class="mh-hero">
+      <div class="mh-display-labels" aria-hidden="true">
+        <span class="mh-display-word">Pink</span>
+        <span class="mh-display-word">Web</span>
+        <span class="mh-display-word">Studio</span>
+      </div>
       <span class="mh-hero-eyebrow">Pink Web Studio</span>
       <span class="mh-hero-tagline">Websites. Software. Products.</span>
       <a class="mh-cta" href="/contact/">Start a Project</a>
