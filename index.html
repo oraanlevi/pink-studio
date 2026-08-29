@@ -193,36 +193,58 @@
       .lobby-bg-img { display: none; }
 
       /* Mobile home */
-      .mobile-home { display: block; padding: 0 24px 56px; }
+      .mobile-home { display: block; }
 
-      /* Nav cards */
-      .mh-links { display: flex; flex-direction: column; gap: 12px; margin-bottom: 40px; }
-      .mh-link-primary {
+      /* Availability strip */
+      .mh-strip {
+        background: #D4537E;
+        padding: 10px 24px;
+        text-align: center;
+        font-family: 'Poppins', sans-serif;
+        font-size: 11px;
+        font-weight: 400;
+        letter-spacing: 0.08em;
+        color: #fff;
+      }
+
+      /* Hero block */
+      .mh-hero {
+        padding: 40px 24px 36px;
+        border-bottom: 1px solid var(--rule);
+      }
+      .mh-hero-eyebrow {
         display: block;
+        font-family: 'Poppins', sans-serif;
+        font-size: 11px;
+        font-weight: 300;
+        letter-spacing: 0.08em;
+        color: var(--ink-3);
+        margin-bottom: 8px;
+      }
+      .mh-hero-tagline {
+        font-family: 'Cormorant Garamond', serif;
+        font-style: italic;
+        font-weight: 300;
+        font-size: clamp(28px, 7vw, 36px);
+        color: var(--ink-2);
+        line-height: 1.2;
+        margin-bottom: 28px;
+        display: block;
+      }
+      .mh-cta {
+        display: block;
+        width: 100%;
         padding: 16px 24px;
         border: 1px solid var(--ink);
-        text-decoration: none;
         font-family: 'Poppins', sans-serif;
         font-size: 13px;
         font-weight: 500;
         color: var(--ink);
         text-align: center;
+        text-decoration: none;
         transition: background 220ms, color 220ms;
       }
-      .mh-link-primary:hover { background: var(--ink); color: var(--bg); }
-      .mh-link-secondary {
-        display: block;
-        padding: 16px 24px;
-        border: 1px solid var(--rule);
-        text-decoration: none;
-        font-family: 'Poppins', sans-serif;
-        font-size: 13px;
-        font-weight: 300;
-        color: var(--ink-2);
-        text-align: center;
-        transition: border-color 220ms, color 220ms;
-      }
-      .mh-link-secondary:hover { border-color: var(--ink-2); color: var(--ink); }
+      .mh-cta:hover { background: var(--ink); color: var(--bg); }
 
       /* Recent Work */
       .mh-recent-label {
@@ -245,7 +267,7 @@
         margin-bottom: 12px;
         border: 1px solid var(--rule);
       }
-      .mh-recent-card:last-of-type { margin-bottom: 40px; }
+      .mh-recent-card:last-of-type { margin-bottom: 0; }
       .mh-recent-overlay {
         position: absolute;
         inset: 0;
@@ -345,16 +367,28 @@
   <!-- Mobile homepage layout -->
   <div class="mobile-home">
 
-    <!-- Nav cards -->
-    <nav class="mh-links" aria-label="Site sections">
-      <a href="/contact/" class="mh-link-primary">Start a Project</a>
-      <a href="/services/" class="mh-link-secondary">Services</a>
-      <a href="/work/"     class="mh-link-secondary">Projects</a>
-      <a href="/studio/"   class="mh-link-secondary">Studio</a>
-    </nav>
+    <!-- Availability strip -->
+    <div class="mh-strip">Los Angeles &middot; Currently Booking</div>
+
+    <!-- Hero -->
+    <div class="mh-hero">
+      <span class="mh-hero-eyebrow">Pink Web Studio</span>
+      <span class="mh-hero-tagline">Websites. Software. Products.</span>
+      <a class="mh-cta" href="/contact/">Start a Project</a>
+    </div>
+
+    <!-- Marquee -->
+    <div class="mh-marquee-wrap" aria-hidden="true">
+      <div class="mh-marquee">
+        <span class="mh-marquee-track">Websites&nbsp;&middot;&nbsp;Software&nbsp;&middot;&nbsp;Products&nbsp;&middot;&nbsp;Websites&nbsp;&middot;&nbsp;Software&nbsp;&middot;&nbsp;Products&nbsp;&middot;&nbsp;</span>
+        <span class="mh-marquee-track">Websites&nbsp;&middot;&nbsp;Software&nbsp;&middot;&nbsp;Products&nbsp;&middot;&nbsp;Websites&nbsp;&middot;&nbsp;Software&nbsp;&middot;&nbsp;Products&nbsp;&middot;&nbsp;</span>
+      </div>
+    </div>
 
     <!-- Recent Work -->
-    <span class="mh-recent-label">Recent Work</span>
+    <div style="padding: 32px 24px 0;">
+      <span class="mh-recent-label">Recent Work</span>
+    </div>
     <a href="/verde/" class="mh-recent-card" style="background: #1e1e1e url('/assets/verde.png') center top / cover no-repeat;">
       <div class="mh-recent-overlay"></div>
       <div class="mh-recent-content">
@@ -369,14 +403,7 @@
         <span class="mh-recent-desc">Interior design operations software</span>
       </div>
     </a>
-
-    <!-- Marquee -->
-    <div class="mh-marquee-wrap" aria-hidden="true">
-      <div class="mh-marquee">
-        <span class="mh-marquee-track">Websites&nbsp;&middot;&nbsp;Software&nbsp;&middot;&nbsp;Products&nbsp;&middot;&nbsp;Websites&nbsp;&middot;&nbsp;Software&nbsp;&middot;&nbsp;Products&nbsp;&middot;&nbsp;</span>
-        <span class="mh-marquee-track">Websites&nbsp;&middot;&nbsp;Software&nbsp;&middot;&nbsp;Products&nbsp;&middot;&nbsp;Websites&nbsp;&middot;&nbsp;Software&nbsp;&middot;&nbsp;Products&nbsp;&middot;&nbsp;</span>
-      </div>
-    </div>
+    <a href="/work/" style="display:block; text-align:center; font-family:'Poppins',sans-serif; font-size:12px; font-weight:300; color:var(--ink-2); text-decoration:none; padding: 20px 24px 48px;">View all projects →</a>
 
   </div>
 
