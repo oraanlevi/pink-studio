@@ -168,6 +168,7 @@
     }
 
     /* ── Mobile ── */
+    .mh-strip { display: none; }
     .mobile-home { display: none; }
 
     @keyframes mh-marquee-scroll {
@@ -196,6 +197,7 @@
       .mobile-home { display: block; }
 
       /* Availability strip */
+      .mh-strip { display: block; }
       .mh-strip {
         background: #D4537E;
         padding: 10px 24px;
@@ -321,6 +323,8 @@
 </head>
 <body>
 
+  <div class="mh-strip">Los Angeles &middot; Currently Booking</div>
+
   <nav class="nav" id="mainNav">
     <div class="nav-links">
       <a href="/work/">Projects</a>
@@ -366,9 +370,6 @@
 
   <!-- Mobile homepage layout -->
   <div class="mobile-home">
-
-    <!-- Availability strip -->
-    <div class="mh-strip">Los Angeles &middot; Currently Booking</div>
 
     <!-- Hero -->
     <div class="mh-hero">
