@@ -167,9 +167,108 @@
       color: var(--ink-3);
     }
 
+    /* ── Desktop below-fold ── */
+    .dh-marquee-wrap {
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      overflow: hidden;
+      padding: 14px 0;
+    }
+    .dh-marquee {
+      display: flex;
+      width: max-content;
+      animation: dh-marquee-scroll 30s linear infinite;
+    }
+    @keyframes dh-marquee-scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    .dh-marquee-track {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 18px;
+      color: var(--ink-2);
+      white-space: nowrap;
+      padding: 0 24px;
+    }
+    .dh-work {
+      padding: 56px 72px 80px;
+    }
+    .dh-work-label {
+      display: block;
+      font-family: 'Poppins', sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      margin-bottom: 28px;
+    }
+    .dh-work-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .dh-work-card {
+      display: block;
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      background: #1e1e1e center top / cover no-repeat;
+      text-decoration: none;
+    }
+    .dh-work-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 35%, rgba(0,0,0,0.72) 100%);
+      transition: opacity 300ms ease;
+    }
+    .dh-work-card:hover .dh-work-card-overlay { opacity: 0.9; }
+    .dh-work-card-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 20px 20px 24px;
+    }
+    .dh-work-card-eyebrow {
+      display: block;
+      font-family: 'Poppins', sans-serif;
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 4px;
+    }
+    .dh-work-card-name {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 28px;
+      font-weight: 300;
+      color: #fff;
+      line-height: 1.1;
+    }
+    .dh-work-see-all {
+      display: block;
+      text-align: center;
+      font-family: 'Poppins', sans-serif;
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--ink-2);
+      text-decoration: none;
+      margin-top: 28px;
+      padding: 16px 0;
+      border-top: 1px solid var(--rule);
+      transition: color 200ms ease;
+    }
+    .dh-work-see-all:hover { color: var(--ink); }
+
     /* ── Mobile ── */
     .mh-strip { display: none; }
     .mobile-home { display: none; }
+    .dh-marquee-wrap, .dh-work { display: block; }
 
     @keyframes mh-marquee-scroll {
       from { transform: translateX(0); }
@@ -177,6 +276,7 @@
     }
 
     @media (max-width: 860px) {
+      .dh-marquee-wrap, .dh-work { display: none; }
       .lobby { min-height: auto; }
       .lobby-inner { padding: calc(var(--nav-h) + 28px) 24px 28px; gap: 20px; }
       .lobby-labels { display: none; }
@@ -367,6 +467,42 @@
 
     </div>
   </main>
+
+  <!-- Desktop below-fold: marquee + work grid -->
+  <div class="dh-marquee-wrap" aria-hidden="true">
+    <div class="dh-marquee">
+      <span class="dh-marquee-track">Websites&nbsp;&middot;&nbsp;Software&nbsp;&middot;&nbsp;Products&nbsp;&middot;&nbsp;Websites&nbsp;&middot;&nbsp;Software&nbsp;&middot;&nbsp;Products&nbsp;&middot;&nbsp;</span>
+      <span class="dh-marquee-track">Websites&nbsp;&middot;&nbsp;Software&nbsp;&middot;&nbsp;Products&nbsp;&middot;&nbsp;Websites&nbsp;&middot;&nbsp;Software&nbsp;&middot;&nbsp;Products&nbsp;&middot;&nbsp;</span>
+    </div>
+  </div>
+
+  <section class="dh-work">
+    <span class="dh-work-label">Recent Work</span>
+    <div class="dh-work-grid">
+      <a class="dh-work-card" href="/verde/" style="background-image: url('/assets/verde.png');">
+        <div class="dh-work-card-overlay"></div>
+        <div class="dh-work-card-content">
+          <span class="dh-work-card-eyebrow">Skincare &amp; Beauty</span>
+          <span class="dh-work-card-name">Verde</span>
+        </div>
+      </a>
+      <a class="dh-work-card" href="/forma/" style="background-image: url('/assets/formahero.png');">
+        <div class="dh-work-card-overlay"></div>
+        <div class="dh-work-card-content">
+          <span class="dh-work-card-eyebrow">Interior Design Software</span>
+          <span class="dh-work-card-name">Forma</span>
+        </div>
+      </a>
+      <a class="dh-work-card" href="/work/" style="background-image: url('/assets/loup.png');">
+        <div class="dh-work-card-overlay"></div>
+        <div class="dh-work-card-content">
+          <span class="dh-work-card-eyebrow">Restaurant &middot; Los Angeles</span>
+          <span class="dh-work-card-name">Le Loup</span>
+        </div>
+      </a>
+    </div>
+    <a class="dh-work-see-all" href="/work/">View all projects →</a>
+  </section>
 
   <!-- Mobile homepage layout -->
   <div class="mobile-home">
