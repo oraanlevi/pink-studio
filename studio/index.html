@@ -150,6 +150,61 @@
       letter-spacing: -0.2px;
     }
 
+    /* ── Desktop closing CTA ── */
+    .studio-closing {
+      border-bottom: 1px solid var(--rule);
+      padding: 56px 72px 64px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+    .studio-closing-label {
+      display: block;
+      font-family: "Bebas Neue", "Impact", sans-serif;
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      margin-bottom: 4px;
+      text-align: center;
+    }
+    .studio-closing-btns {
+      display: flex;
+      gap: 12px;
+      width: 100%;
+      max-width: 480px;
+      flex-direction: column;
+    }
+    .studio-cta {
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink);
+      text-decoration: none;
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 16px 24px;
+      border: 1px solid var(--ink);
+      transition: background 220ms, color 220ms;
+    }
+    .studio-cta:hover { background: var(--ink); color: var(--bg); }
+    .studio-cta-secondary {
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--ink-2);
+      text-decoration: none;
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 16px 24px;
+      border: 1px solid var(--rule);
+      transition: border-color 220ms, color 220ms;
+    }
+    .studio-cta-secondary:hover { border-color: var(--ink-2); color: var(--ink); }
+
     /* ── Mobile layout hidden on desktop ── */
     .studio-mobile { display: none; }
 
@@ -286,6 +341,7 @@
     @media (max-width: 860px) {
       .studio { display: none; }
       .studio-caps { display: none; }
+      .studio-closing { display: none; }
       .studio-mobile { display: block; }
     }
 
@@ -329,6 +385,16 @@
       </div>
     </div>
 
+  </div>
+
+  <!-- Desktop closing CTA -->
+  <div class="studio-closing reveal">
+    <span class="studio-closing-label">Work together</span>
+    <div class="studio-closing-btns">
+      <a class="studio-cta" href="/contact/">Start a Project</a>
+      <a class="studio-cta-secondary" href="/work/">View Projects</a>
+      <a class="studio-cta-secondary" href="/services/">Services</a>
+    </div>
   </div>
 
   <!-- Mobile layout -->
