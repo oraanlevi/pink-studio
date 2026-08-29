@@ -48,22 +48,31 @@
       padding: 40px 72px;
       display: flex;
       flex-direction: column;
-      gap: 28px;
+      gap: 40px;
     }
 
     /* Hero text */
-    .lobby-hero { display: flex; flex-direction: column; gap: 4px; }
+    .lobby-hero {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--rule);
+    }
 
     .lobby-name {
       display: block;
       font-family: 'Poppins', sans-serif;
       font-weight: 300;
-      font-size: 13px;
-      letter-spacing: 0.1em;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
       color: var(--ink-3);
       opacity: 0;
       transform: translateY(8px);
       transition: opacity 700ms ease, transform 700ms ease;
+      margin-bottom: 6px;
     }
     .lobby-tagline {
       display: block;
@@ -72,7 +81,7 @@
       font-style: italic;
       font-size: clamp(22px, 2.6vw, 36px);
       color: var(--ink-2);
-      line-height: 1.3;
+      line-height: 1.2;
       letter-spacing: 0.01em;
       opacity: 0;
       transform: translateY(8px);
@@ -80,6 +89,32 @@
     }
     .lobby-name.in,
     .lobby-tagline.in { opacity: 1; transform: none; }
+
+    /* Right meta */
+    .lobby-hero-meta {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 3px;
+      opacity: 0;
+      transition: opacity 900ms ease;
+      flex-shrink: 0;
+    }
+    .lobby-hero-meta.in { opacity: 1; }
+    .lobby-meta-loc {
+      font-family: 'Poppins', sans-serif;
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      color: var(--ink-3);
+    }
+    .lobby-meta-avail {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--ink-3);
+    }
 
     /* Labels */
     .lobby-labels {
@@ -455,8 +490,14 @@
     <div class="lobby-inner">
 
       <div class="lobby-hero">
-        <span class="lobby-name">Pink Web Studio</span>
-        <span class="lobby-tagline">Websites. Software. Products.</span>
+        <div>
+          <span class="lobby-name">Pink Web Studio</span>
+          <span class="lobby-tagline">Websites. Software. Products.</span>
+        </div>
+        <div class="lobby-hero-meta">
+          <span class="lobby-meta-loc">Los Angeles, CA</span>
+          <span class="lobby-meta-avail">Currently Booking</span>
+        </div>
       </div>
 
       <nav class="lobby-labels" aria-label="Studio paths">
@@ -601,6 +642,8 @@
     heroItems.forEach((el, i) => {
       if (el) setTimeout(() => el.classList.add('in'), 160 + i * 190);
     });
+    const meta = document.querySelector('.lobby-hero-meta');
+    if (meta) setTimeout(() => meta.classList.add('in'), 500);
 
     /* ── Label entrance ── */
     const labels = document.querySelectorAll('.lobby-label');
