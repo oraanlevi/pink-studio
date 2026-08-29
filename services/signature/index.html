@@ -262,13 +262,14 @@
     /* ── Project Proof ── */
     .sp-proof {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 260px 1fr;
+      border-top: 1px solid var(--rule);
       border-bottom: 1px solid var(--rule);
-      min-height: 420px;
     }
     .sp-proof-image {
       overflow: hidden;
       border-right: 1px solid var(--rule);
+      height: 160px;
     }
     .sp-proof-image img {
       width: 100%;
@@ -279,10 +280,11 @@
     }
     .sp-proof:hover .sp-proof-image img { transform: scale(1.02); }
     .sp-proof-text {
-      padding: 56px 64px;
+      padding: 28px 48px;
       display: flex;
       flex-direction: column;
       justify-content: center;
+      gap: 6px;
     }
     .sp-proof-eyebrow {
       font-family: 'Bebas Neue', sans-serif;
@@ -291,30 +293,27 @@
       text-transform: uppercase;
       color: var(--ink-3);
       display: block;
-      margin-bottom: 16px;
     }
     .sp-proof-name {
-      font-family: 'Oswald', sans-serif;
-      font-weight: 700;
-      font-size: clamp(36px, 4.5vw, 60px);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500;
+      font-size: clamp(16px, 1.4vw, 20px);
       color: var(--ink);
       display: block;
-      line-height: 0.88;
-      letter-spacing: -1px;
-      margin-bottom: 24px;
+      line-height: 1.2;
     }
     .sp-proof-desc {
       font-family: 'Poppins', sans-serif;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 300;
       color: var(--ink-2);
-      line-height: 1.75;
-      margin: 0 0 32px;
-      max-width: 40ch;
+      line-height: 1.65;
+      margin: 0;
+      max-width: 52ch;
     }
     .sp-proof-link {
       font-family: 'Poppins', sans-serif;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 500;
       color: var(--ink);
       text-decoration: none;
@@ -500,11 +499,11 @@
       .process-step { border-right: none; border-bottom: 1px solid var(--rule); padding: 32px 24px 40px; }
       .process-step:last-child { border-bottom: none; }
 
-      .sp-proof { grid-template-columns: 1fr; min-height: auto; }
-      .sp-proof-image { border-right: none; border-bottom: 1px solid var(--rule); min-height: 220px; }
-      .sp-proof-image img { height: 220px; }
-      .sp-proof-text { padding: 36px 24px 48px; }
-      .sp-proof-name { font-size: clamp(36px, 10vw, 52px); }
+      .sp-proof { grid-template-columns: 120px 1fr; }
+      .sp-proof-image { height: 130px; border-right: 1px solid var(--rule); border-bottom: none; min-height: unset; }
+      .sp-proof-image img { height: 130px; }
+      .sp-proof-text { padding: 20px 20px; gap: 4px; }
+      .sp-proof-name { font-size: clamp(14px, 4vw, 18px); }
 
       .sp-investment { flex-direction: column; align-items: flex-start; padding: 48px 24px; gap: 24px; }
       .sp-investment-divider { width: 32px; height: 1px; }
@@ -658,19 +657,6 @@
     </div>
   </section>
 
-  <!-- Project Proof -->
-  <section class="sp-proof reveal">
-    <div class="sp-proof-image">
-      <img src="/assets/loup.png" alt="Le Loup" />
-    </div>
-    <div class="sp-proof-text">
-      <span class="sp-proof-eyebrow">In Practice</span>
-      <span class="sp-proof-name">Le Loup</span>
-      <p class="sp-proof-desc">A fully custom website designed and built from scratch for a Los Angeles restaurant — editorial photography, considered typography, clean code.</p>
-      <a class="sp-proof-link" href="/le-loup/">View Case Study →</a>
-    </div>
-  </section>
-
   <!-- Investment -->
   <section class="sp-section reveal">
     <div class="sp-investment">
@@ -719,6 +705,19 @@
     <div class="sp-cta-right">
       <a class="sp-cta-btn" href="https://calendly.com/oraanlevi1/30min" target="_blank" rel="noopener">Book a Call ↗</a>
       <a class="sp-cta-btn sp-cta-btn--secondary" href="/contact/">Send a Message →</a>
+    </div>
+  </section>
+
+  <!-- Project Proof -->
+  <section class="sp-proof reveal">
+    <div class="sp-proof-image">
+      <img src="/assets/loup.png" alt="Le Loup" />
+    </div>
+    <div class="sp-proof-text">
+      <span class="sp-proof-eyebrow">In Practice</span>
+      <span class="sp-proof-name">Le Loup</span>
+      <p class="sp-proof-desc">A fully custom website designed and built from scratch for a Los Angeles restaurant — editorial photography, considered typography, clean code.</p>
+      <a class="sp-proof-link" href="/le-loup/">View Case Study →</a>
     </div>
   </section>
 

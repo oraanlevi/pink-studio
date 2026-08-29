@@ -119,56 +119,86 @@
       color: var(--ink-3);
     }
 
-    /* ── What's Included ── */
-    .included-grid { display: grid; grid-template-columns: 1fr 1fr; }
-    .included-card {
-      padding: 48px 56px 56px;
-      border-right: 1px solid var(--rule);
+    /* ── What's Included — editorial rows ── */
+    .inc-row {
+      display: grid;
+      grid-template-columns: 120px 1fr 300px;
+      align-items: stretch;
       border-bottom: 1px solid var(--rule);
+      position: relative;
+      overflow: hidden;
+      transition: background 380ms ease;
     }
-    .included-card:nth-child(even) { border-right: none; }
-    .included-card:nth-last-child(-n+2) { border-bottom: none; }
-    .included-card:last-child { border-bottom: none; }
-    .included-card-num {
+    .inc-row:last-child { border-bottom: none; }
+    .inc-row::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: 0;
+      height: 2px;
+      width: 0;
+      background: #D4537E;
+      transition: width 500ms cubic-bezier(.16,1,.3,1);
+    }
+    .inc-row:hover::after { width: 100%; }
+    .inc-row:hover { background: rgba(212,83,126,0.028); }
+    .inc-num {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 10px;
+      font-size: 11px;
       letter-spacing: 4px;
       text-transform: uppercase;
       color: var(--ink-3);
-      display: block;
-      margin-bottom: 12px;
+      padding: 52px 0 52px 72px;
+      display: flex;
+      align-items: center;
+      transition: color 380ms ease;
+      user-select: none;
     }
-    .included-card-name {
+    .inc-row:hover .inc-num { color: #D4537E; }
+    .inc-body {
+      padding: 52px 56px;
+      border-left: 1px solid var(--rule);
+      border-right: 1px solid var(--rule);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .inc-name {
       font-family: 'Poppins', sans-serif;
       font-weight: 500;
-      font-size: clamp(17px, 1.6vw, 22px);
+      font-size: clamp(17px, 1.5vw, 22px);
       color: var(--ink);
       display: block;
       line-height: 1.2;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
+      transition: color 300ms ease;
     }
-    .included-card-desc {
+    .inc-row:hover .inc-name { color: #D4537E; }
+    .inc-desc {
       font-family: 'Poppins', sans-serif;
       font-size: 13px;
       font-weight: 300;
       color: var(--ink-2);
       line-height: 1.75;
-      margin: 0 0 20px;
+      margin: 0;
+      max-width: 52ch;
     }
-    .included-card-items {
+    .inc-items {
+      padding: 52px 56px 52px 48px;
       display: flex;
       flex-direction: column;
+      justify-content: center;
       gap: 0;
     }
-    .included-card-item {
+    .inc-item {
       font-family: 'Poppins', sans-serif;
       font-size: 12px;
       font-weight: 300;
-      color: var(--ink-3);
-      padding: 7px 0;
-      border-top: 1px solid var(--rule);
+      color: var(--ink-2);
+      padding: 8px 0;
+      border-bottom: 1px solid var(--rule);
     }
-    .included-card-item::before { content: '— '; }
+    .inc-item:first-child { border-top: 1px solid var(--rule); }
+    .inc-item::before { content: '— '; }
 
     /* ── Process ── */
     .process-timeline-wrap {
@@ -218,13 +248,14 @@
     /* ── Project Proof ── */
     .sp-proof {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 260px 1fr;
+      border-top: 1px solid var(--rule);
       border-bottom: 1px solid var(--rule);
-      min-height: 420px;
     }
     .sp-proof-image {
       overflow: hidden;
       border-right: 1px solid var(--rule);
+      height: 160px;
     }
     .sp-proof-image img {
       width: 100%;
@@ -235,10 +266,11 @@
     }
     .sp-proof:hover .sp-proof-image img { transform: scale(1.02); }
     .sp-proof-text {
-      padding: 56px 64px;
+      padding: 28px 48px;
       display: flex;
       flex-direction: column;
       justify-content: center;
+      gap: 6px;
     }
     .sp-proof-eyebrow {
       font-family: 'Bebas Neue', sans-serif;
@@ -247,30 +279,27 @@
       text-transform: uppercase;
       color: var(--ink-3);
       display: block;
-      margin-bottom: 16px;
     }
     .sp-proof-name {
-      font-family: 'Oswald', sans-serif;
-      font-weight: 700;
-      font-size: clamp(36px, 4.5vw, 60px);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500;
+      font-size: clamp(16px, 1.4vw, 20px);
       color: var(--ink);
       display: block;
-      line-height: 0.88;
-      letter-spacing: -1px;
-      margin-bottom: 24px;
+      line-height: 1.2;
     }
     .sp-proof-desc {
       font-family: 'Poppins', sans-serif;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 300;
       color: var(--ink-2);
-      line-height: 1.75;
-      margin: 0 0 32px;
-      max-width: 40ch;
+      line-height: 1.65;
+      margin: 0;
+      max-width: 52ch;
     }
     .sp-proof-link {
       font-family: 'Poppins', sans-serif;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 500;
       color: var(--ink);
       text-decoration: none;
@@ -430,24 +459,22 @@
       .sp-breadcrumb { padding: 18px 24px; }
       .sp-section-head { padding: 36px 24px 28px; }
 
-      .included-grid { grid-template-columns: 1fr; }
-      .included-card {
-        border-right: none !important;
-        border-bottom: 1px solid var(--rule) !important;
-        padding: 32px 24px 40px;
-      }
-      .included-card:last-child { border-bottom: none !important; }
-
       .process-timeline-wrap { display: none; }
       .process-row { grid-template-columns: 1fr; }
       .process-step { border-right: none; border-bottom: 1px solid var(--rule); padding: 32px 24px 40px; }
       .process-step:last-child { border-bottom: none; }
 
-      .sp-proof { grid-template-columns: 1fr; min-height: auto; }
-      .sp-proof-image { border-right: none; border-bottom: 1px solid var(--rule); min-height: 220px; }
-      .sp-proof-image img { height: 220px; }
-      .sp-proof-text { padding: 36px 24px 48px; }
-      .sp-proof-name { font-size: clamp(36px, 10vw, 52px); }
+      .sp-proof { grid-template-columns: 120px 1fr; }
+      .sp-proof-image { height: 130px; border-right: 1px solid var(--rule); border-bottom: none; min-height: unset; }
+      .sp-proof-image img { height: 130px; }
+      .sp-proof-text { padding: 20px 20px; gap: 4px; }
+      .sp-proof-name { font-size: clamp(14px, 4vw, 18px); }
+
+      .inc-row { grid-template-columns: 1fr; }
+      .inc-num { padding: 24px 24px 0; }
+      .inc-body { padding: 16px 24px; border-left: none; border-right: none; border-top: none; }
+      .inc-items { padding: 0 24px 32px; }
+      .inc-item:first-child { border-top: 1px solid var(--rule); }
 
       .sp-investment { flex-direction: column; align-items: flex-start; padding: 48px 24px; gap: 24px; }
       .sp-investment-divider { width: 32px; height: 1px; }
@@ -519,45 +546,53 @@
     <div class="sp-section-head">
       <span class="sp-section-label">What's Included</span>
     </div>
-    <div class="included-grid">
-      <div class="included-card">
-        <span class="included-card-num">01 / Always On</span>
-        <span class="included-card-name">Ongoing Maintenance</span>
-        <p class="included-card-desc">Your site stays current, secure, and fast. Plugins updated, backups run, performance monitored. You focus on your work — we keep the site running.</p>
-        <div class="included-card-items">
-          <span class="included-card-item">Monthly Backups</span>
-          <span class="included-card-item">Security Monitoring</span>
-          <span class="included-card-item">Performance Checks</span>
+    <div class="inc-rows">
+      <div class="inc-row">
+        <span class="inc-num">Always On</span>
+        <div class="inc-body">
+          <span class="inc-name">Ongoing Maintenance</span>
+          <p class="inc-desc">Your site stays current, secure, and fast. Plugins updated, backups run, performance monitored. You focus on your work — we keep the site running.</p>
+        </div>
+        <div class="inc-items">
+          <span class="inc-item">Monthly Backups</span>
+          <span class="inc-item">Security Monitoring</span>
+          <span class="inc-item">Performance Checks</span>
         </div>
       </div>
-      <div class="included-card">
-        <span class="included-card-num">02 / Content</span>
-        <span class="included-card-name">Content Updates</span>
-        <p class="included-card-desc">New project added, price changed, bio refreshed — handled the same week you send it. No tickets, no waiting. Just send a message.</p>
-        <div class="included-card-items">
-          <span class="included-card-item">Text &amp; Image Updates</span>
-          <span class="included-card-item">New Project Additions</span>
-          <span class="included-card-item">Page Edits</span>
+      <div class="inc-row">
+        <span class="inc-num">Content</span>
+        <div class="inc-body">
+          <span class="inc-name">Content Updates</span>
+          <p class="inc-desc">New project added, price changed, bio refreshed — handled the same week you send it. No tickets, no waiting. Just send a message.</p>
+        </div>
+        <div class="inc-items">
+          <span class="inc-item">Text &amp; Image Updates</span>
+          <span class="inc-item">New Project Additions</span>
+          <span class="inc-item">Page Edits</span>
         </div>
       </div>
-      <div class="included-card">
-        <span class="included-card-num">03 / On-Demand</span>
-        <span class="included-card-name">Small Design Fixes</span>
-        <p class="included-card-desc">Something looks off on mobile. A section needs a small tweak. These get handled as part of the retainer — no separate quotes, no hourly invoices.</p>
-        <div class="included-card-items">
-          <span class="included-card-item">Mobile Fixes</span>
-          <span class="included-card-item">Layout Tweaks</span>
-          <span class="included-card-item">Copy Edits</span>
+      <div class="inc-row">
+        <span class="inc-num">On-Demand</span>
+        <div class="inc-body">
+          <span class="inc-name">Small Design Fixes</span>
+          <p class="inc-desc">Something looks off on mobile. A section needs a small tweak. These get handled as part of the retainer — no separate quotes, no hourly invoices.</p>
+        </div>
+        <div class="inc-items">
+          <span class="inc-item">Mobile Fixes</span>
+          <span class="inc-item">Layout Tweaks</span>
+          <span class="inc-item">Copy Edits</span>
         </div>
       </div>
-      <div class="included-card">
-        <span class="included-card-num">04 / Priority</span>
-        <span class="included-card-name">Priority Access</span>
-        <p class="included-card-desc">Care clients get priority turnaround and first availability for larger projects. You're not starting from scratch when you need something bigger — the relationship is already there.</p>
-        <div class="included-card-items">
-          <span class="included-card-item">48-Hour Response</span>
-          <span class="included-card-item">Priority Scheduling</span>
-          <span class="included-card-item">Preferred Pricing on Add-Ons</span>
+      <div class="inc-row">
+        <span class="inc-num">Priority</span>
+        <div class="inc-body">
+          <span class="inc-name">Priority Access</span>
+          <p class="inc-desc">Care clients get priority turnaround and first availability for larger projects. The relationship is already there when you need something bigger.</p>
+        </div>
+        <div class="inc-items">
+          <span class="inc-item">48-Hour Response</span>
+          <span class="inc-item">Priority Scheduling</span>
+          <span class="inc-item">Preferred Pricing on Add-Ons</span>
         </div>
       </div>
     </div>
@@ -590,19 +625,6 @@
         <p class="process-body">Send updates, fixes, or requests whenever you need them. Message by email or WhatsApp. Turnaround is typically within 48 hours — often same day for small requests.</p>
         <p class="process-body">No tickets. No waiting. Just send a message.</p>
       </div>
-    </div>
-  </section>
-
-  <!-- Project Proof -->
-  <section class="sp-proof reveal">
-    <div class="sp-proof-image">
-      <img src="/assets/formahero.png" alt="Forma" />
-    </div>
-    <div class="sp-proof-text">
-      <span class="sp-proof-eyebrow">In Practice</span>
-      <span class="sp-proof-name">Forma</span>
-      <p class="sp-proof-desc">A Pilates studio whose site went from quarterly check-ins to fully hands-off. Three new instructors added, a seasonal offer updated, and a mobile layout fixed — all within the first month of Care.</p>
-      <a class="sp-proof-link" href="/forma/">View Case Study →</a>
     </div>
   </section>
 
@@ -654,6 +676,19 @@
     <div class="sp-cta-right">
       <a class="sp-cta-btn" href="/contact/">Get Started →</a>
       <a class="sp-cta-btn sp-cta-btn--secondary" href="https://calendly.com/oraanlevi1/30min" target="_blank" rel="noopener">Book a Call ↗</a>
+    </div>
+  </section>
+
+  <!-- Project Proof -->
+  <section class="sp-proof reveal">
+    <div class="sp-proof-image">
+      <img src="/assets/formahero.png" alt="Forma" />
+    </div>
+    <div class="sp-proof-text">
+      <span class="sp-proof-eyebrow">In Practice</span>
+      <span class="sp-proof-name">Forma</span>
+      <p class="sp-proof-desc">A Pilates studio whose site went from quarterly check-ins to fully hands-off. Three new instructors added, a seasonal offer updated, and a mobile layout fixed — all within the first month of Care.</p>
+      <a class="sp-proof-link" href="/forma/">View Case Study →</a>
     </div>
   </section>
 

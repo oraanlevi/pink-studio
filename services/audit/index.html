@@ -119,50 +119,86 @@
       color: var(--ink-3);
     }
 
-    /* ── What You Get ── */
-    .audit-block { padding: 64px 72px; }
-    .audit-intro {
-      font-family: 'Poppins', sans-serif;
-      font-size: 15px;
-      font-weight: 300;
-      color: var(--ink-2);
-      line-height: 1.8;
-      max-width: 58ch;
-      margin: 0 0 56px;
+    /* ── What's Included — editorial rows ── */
+    .inc-row {
+      display: grid;
+      grid-template-columns: 120px 1fr 300px;
+      align-items: stretch;
+      border-bottom: 1px solid var(--rule);
+      position: relative;
+      overflow: hidden;
+      transition: background 380ms ease;
     }
-    .audit-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0; }
-    .audit-item {
-      padding: 0 40px 48px 0;
-      border-right: 1px solid var(--rule);
-      margin-right: 40px;
+    .inc-row:last-child { border-bottom: none; }
+    .inc-row::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: 0;
+      height: 2px;
+      width: 0;
+      background: #D4537E;
+      transition: width 500ms cubic-bezier(.16,1,.3,1);
     }
-    .audit-item:last-child { border-right: none; margin-right: 0; padding-right: 0; }
-    .audit-item-num {
+    .inc-row:hover::after { width: 100%; }
+    .inc-row:hover { background: rgba(212,83,126,0.028); }
+    .inc-num {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 10px;
+      font-size: 11px;
       letter-spacing: 4px;
       text-transform: uppercase;
       color: var(--ink-3);
-      display: block;
-      margin-bottom: 12px;
+      padding: 52px 0 52px 72px;
+      display: flex;
+      align-items: center;
+      transition: color 380ms ease;
+      user-select: none;
     }
-    .audit-item-name {
+    .inc-row:hover .inc-num { color: #D4537E; }
+    .inc-body {
+      padding: 52px 56px;
+      border-left: 1px solid var(--rule);
+      border-right: 1px solid var(--rule);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .inc-name {
       font-family: 'Poppins', sans-serif;
       font-weight: 500;
-      font-size: 16px;
+      font-size: clamp(17px, 1.5vw, 22px);
       color: var(--ink);
       display: block;
-      margin-bottom: 10px;
       line-height: 1.2;
+      margin-bottom: 12px;
+      transition: color 300ms ease;
     }
-    .audit-item-desc {
+    .inc-row:hover .inc-name { color: #D4537E; }
+    .inc-desc {
       font-family: 'Poppins', sans-serif;
       font-size: 13px;
       font-weight: 300;
       color: var(--ink-2);
-      line-height: 1.7;
+      line-height: 1.75;
       margin: 0;
+      max-width: 52ch;
     }
+    .inc-items {
+      padding: 52px 56px 52px 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0;
+    }
+    .inc-item {
+      font-family: 'Poppins', sans-serif;
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--ink-2);
+      padding: 8px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .inc-item:first-child { border-top: 1px solid var(--rule); }
+    .inc-item::before { content: '— '; }
 
     /* ── Process ── */
     .process-timeline-wrap {
@@ -212,13 +248,14 @@
     /* ── Project Proof ── */
     .sp-proof {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 260px 1fr;
+      border-top: 1px solid var(--rule);
       border-bottom: 1px solid var(--rule);
-      min-height: 420px;
     }
     .sp-proof-image {
       overflow: hidden;
       border-right: 1px solid var(--rule);
+      height: 160px;
     }
     .sp-proof-image img {
       width: 100%;
@@ -229,10 +266,11 @@
     }
     .sp-proof:hover .sp-proof-image img { transform: scale(1.02); }
     .sp-proof-text {
-      padding: 56px 64px;
+      padding: 28px 48px;
       display: flex;
       flex-direction: column;
       justify-content: center;
+      gap: 6px;
     }
     .sp-proof-eyebrow {
       font-family: 'Bebas Neue', sans-serif;
@@ -241,30 +279,27 @@
       text-transform: uppercase;
       color: var(--ink-3);
       display: block;
-      margin-bottom: 16px;
     }
     .sp-proof-name {
-      font-family: 'Oswald', sans-serif;
-      font-weight: 700;
-      font-size: clamp(36px, 4.5vw, 60px);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500;
+      font-size: clamp(16px, 1.4vw, 20px);
       color: var(--ink);
       display: block;
-      line-height: 0.88;
-      letter-spacing: -1px;
-      margin-bottom: 24px;
+      line-height: 1.2;
     }
     .sp-proof-desc {
       font-family: 'Poppins', sans-serif;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 300;
       color: var(--ink-2);
-      line-height: 1.75;
-      margin: 0 0 32px;
-      max-width: 40ch;
+      line-height: 1.65;
+      margin: 0;
+      max-width: 52ch;
     }
     .sp-proof-link {
       font-family: 'Poppins', sans-serif;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 500;
       color: var(--ink);
       text-decoration: none;
@@ -424,21 +459,22 @@
       .sp-breadcrumb { padding: 18px 24px; }
       .sp-section-head { padding: 36px 24px 28px; }
 
-      .audit-block { padding: 36px 24px 48px; }
-      .audit-grid { grid-template-columns: 1fr; gap: 0; }
-      .audit-item { border-right: none; border-bottom: 1px solid var(--rule); margin-right: 0; padding-right: 0; padding-bottom: 32px; margin-bottom: 32px; }
-      .audit-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-
       .process-timeline-wrap { display: none; }
       .process-row { grid-template-columns: 1fr; }
       .process-step { border-right: none; border-bottom: 1px solid var(--rule); padding: 32px 24px 40px; }
       .process-step:last-child { border-bottom: none; }
 
-      .sp-proof { grid-template-columns: 1fr; min-height: auto; }
-      .sp-proof-image { border-right: none; border-bottom: 1px solid var(--rule); min-height: 220px; }
-      .sp-proof-image img { height: 220px; }
-      .sp-proof-text { padding: 36px 24px 48px; }
-      .sp-proof-name { font-size: clamp(36px, 10vw, 52px); }
+      .sp-proof { grid-template-columns: 120px 1fr; }
+      .sp-proof-image { height: 130px; border-right: 1px solid var(--rule); border-bottom: none; min-height: unset; }
+      .sp-proof-image img { height: 130px; }
+      .sp-proof-text { padding: 20px 20px; gap: 4px; }
+      .sp-proof-name { font-size: clamp(14px, 4vw, 18px); }
+
+      .inc-row { grid-template-columns: 1fr; }
+      .inc-num { padding: 24px 24px 0; }
+      .inc-body { padding: 16px 24px; border-left: none; border-right: none; border-top: none; }
+      .inc-items { padding: 0 24px 32px; }
+      .inc-item:first-child { border-top: 1px solid var(--rule); }
 
       .sp-investment { flex-direction: column; align-items: flex-start; padding: 48px 24px; gap: 24px; }
       .sp-investment-divider { width: 32px; height: 1px; }
@@ -510,23 +546,41 @@
     <div class="sp-section-head">
       <span class="sp-section-label">What You Get</span>
     </div>
-    <div class="audit-block">
-      <p class="audit-intro">A clear-eyed review of your site — what's working, what's costing you clients, and exactly what to do about it. Delivered as a written report with specific, actionable recommendations.</p>
-      <div class="audit-grid">
-        <div class="audit-item">
-          <span class="audit-item-num">01</span>
-          <span class="audit-item-name">First Impression Review</span>
-          <p class="audit-item-desc">What does your site communicate in the first five seconds? Does it match where your brand actually is? We look at headline clarity, visual hierarchy, and immediate trust signals.</p>
+    <div class="inc-rows">
+      <div class="inc-row">
+        <span class="inc-num">Impression</span>
+        <div class="inc-body">
+          <span class="inc-name">First Impression Review</span>
+          <p class="inc-desc">What does your site communicate in the first five seconds? We look at headline clarity, visual hierarchy, and immediate trust signals.</p>
         </div>
-        <div class="audit-item">
-          <span class="audit-item-num">02</span>
-          <span class="audit-item-name">Design &amp; Copy Critique</span>
-          <p class="audit-item-desc">Typography choices, color usage, spacing, imagery — and whether your copy is specific enough to convert. Every major page reviewed.</p>
+        <div class="inc-items">
+          <span class="inc-item">Headline Clarity</span>
+          <span class="inc-item">Visual Hierarchy</span>
+          <span class="inc-item">Trust Signals</span>
         </div>
-        <div class="audit-item">
-          <span class="audit-item-num">03</span>
-          <span class="audit-item-name">Mobile &amp; Performance</span>
-          <p class="audit-item-desc">How your site behaves on a phone and how fast it loads. Both matter enormously for the kind of client you want — and both are often overlooked.</p>
+      </div>
+      <div class="inc-row">
+        <span class="inc-num">Design</span>
+        <div class="inc-body">
+          <span class="inc-name">Design &amp; Copy Critique</span>
+          <p class="inc-desc">Typography choices, color usage, spacing, imagery — and whether your copy is specific enough to convert. Every major page reviewed.</p>
+        </div>
+        <div class="inc-items">
+          <span class="inc-item">Typography &amp; Color</span>
+          <span class="inc-item">Layout &amp; Spacing</span>
+          <span class="inc-item">Copy Effectiveness</span>
+        </div>
+      </div>
+      <div class="inc-row">
+        <span class="inc-num">Mobile</span>
+        <div class="inc-body">
+          <span class="inc-name">Mobile &amp; Performance</span>
+          <p class="inc-desc">How your site behaves on a phone and how fast it loads. Both matter enormously for the kind of client you want — and both are often overlooked.</p>
+        </div>
+        <div class="inc-items">
+          <span class="inc-item">Mobile Layout Review</span>
+          <span class="inc-item">Load Speed Check</span>
+          <span class="inc-item">Actionable Report</span>
         </div>
       </div>
     </div>
@@ -557,19 +611,6 @@
         <p class="process-body">Your audit arrives as a written report within one week. Organized, specific, and actionable — not vague notes. You'll know exactly what to fix and in what order.</p>
         <p class="process-body">A 30-minute follow-up call is included if you want to talk through the findings.</p>
       </div>
-    </div>
-  </section>
-
-  <!-- Project Proof -->
-  <section class="sp-proof reveal">
-    <div class="sp-proof-image">
-      <img src="/assets/cel.png" alt="Celeste" />
-    </div>
-    <div class="sp-proof-text">
-      <span class="sp-proof-eyebrow">In Practice</span>
-      <span class="sp-proof-name">Celeste</span>
-      <p class="sp-proof-desc">An audit that revealed three conversion blockers on a wellness brand's homepage — unclear headline, buried CTA, and a mobile layout that cut off the booking form. All three fixed in under a week.</p>
-      <a class="sp-proof-link" href="/celeste/">View Case Study →</a>
     </div>
   </section>
 
@@ -621,6 +662,19 @@
     <div class="sp-cta-right">
       <a class="sp-cta-btn" href="/contact/">Book an Audit →</a>
       <a class="sp-cta-btn sp-cta-btn--secondary" href="https://calendly.com/oraanlevi1/30min" target="_blank" rel="noopener">Book a Call ↗</a>
+    </div>
+  </section>
+
+  <!-- Project Proof -->
+  <section class="sp-proof reveal">
+    <div class="sp-proof-image">
+      <img src="/assets/cel.png" alt="Celeste" />
+    </div>
+    <div class="sp-proof-text">
+      <span class="sp-proof-eyebrow">In Practice</span>
+      <span class="sp-proof-name">Celeste</span>
+      <p class="sp-proof-desc">An audit that revealed three conversion blockers on a wellness brand's homepage — unclear headline, buried CTA, and a mobile layout that cut off the booking form. All three fixed in under a week.</p>
+      <a class="sp-proof-link" href="/celeste/">View Case Study →</a>
     </div>
   </section>
 
