@@ -48,18 +48,12 @@
       padding: 40px 72px;
       display: flex;
       flex-direction: column;
-      gap: 40px;
+      justify-content: center;
+      gap: 0;
     }
 
-    /* Hero text */
-    .lobby-hero {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: flex-end;
-      padding-bottom: 28px;
-      border-bottom: 1px solid var(--rule);
-    }
+    /* Hero text — desktop: hidden, labels own the full viewport */
+    .lobby-hero { display: none; }
 
     .lobby-name {
       display: block;
@@ -90,17 +84,20 @@
     .lobby-name.in,
     .lobby-tagline.in { opacity: 1; transform: none; }
 
-    /* Right meta */
-    .lobby-hero-meta {
+    /* Bottom corner meta (desktop only) */
+    .lobby-corner-meta {
+      position: absolute;
+      bottom: 36px;
+      right: 72px;
       display: flex;
       flex-direction: column;
       align-items: flex-end;
       gap: 3px;
       opacity: 0;
       transition: opacity 900ms ease;
-      flex-shrink: 0;
+      z-index: 1;
     }
-    .lobby-hero-meta.in { opacity: 1; }
+    .lobby-corner-meta.in { opacity: 1; }
     .lobby-meta-loc {
       font-family: 'Poppins', sans-serif;
       font-size: 11px;
@@ -111,7 +108,7 @@
     .lobby-meta-avail {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 300;
       color: var(--ink-3);
     }
@@ -312,6 +309,7 @@
 
     @media (max-width: 860px) {
       .dh-marquee-wrap, .dh-work { display: none; }
+      .lobby-corner-meta { display: none; }
       .lobby { min-height: auto; }
       .lobby-inner { padding: calc(var(--nav-h) + 28px) 24px 28px; gap: 20px; }
       .lobby-labels { display: none; }
@@ -489,23 +487,18 @@
   <main class="lobby">
     <div class="lobby-inner">
 
-      <div class="lobby-hero">
-        <div>
-          <span class="lobby-name">Pink Web Studio</span>
-          <span class="lobby-tagline">Websites. Software. Products.</span>
-        </div>
-        <div class="lobby-hero-meta">
-          <span class="lobby-meta-loc">Los Angeles, CA</span>
-          <span class="lobby-meta-avail">Currently Booking</span>
-        </div>
-      </div>
-
       <nav class="lobby-labels" aria-label="Studio paths">
         <a class="lobby-label" data-key="services" href="/services/">Services</a>
         <a class="lobby-label" data-key="work"     href="/work/">Projects</a>
         <a class="lobby-label" data-key="forma"    href="https://forma-rho-nine.vercel.app/early-access" target="_blank" rel="noopener">Forma</a>
       </nav>
 
+    </div>
+
+    <!-- Bottom-right meta: desktop only -->
+    <div class="lobby-corner-meta">
+      <span class="lobby-meta-loc">Los Angeles, CA</span>
+      <span class="lobby-meta-avail">Currently Booking</span>
     </div>
   </main>
 
@@ -642,8 +635,8 @@
     heroItems.forEach((el, i) => {
       if (el) setTimeout(() => el.classList.add('in'), 160 + i * 190);
     });
-    const meta = document.querySelector('.lobby-hero-meta');
-    if (meta) setTimeout(() => meta.classList.add('in'), 500);
+    const meta = document.querySelector('.lobby-corner-meta');
+    if (meta) setTimeout(() => meta.classList.add('in'), 1400);
 
     /* ── Label entrance ── */
     const labels = document.querySelectorAll('.lobby-label');
