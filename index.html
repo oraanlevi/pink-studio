@@ -344,21 +344,16 @@
 
       /* Hero block */
       .mh-hero {
-        padding: 48px 24px 40px;
+        padding: 32px 24px 36px;
         border-bottom: 1px solid var(--rule);
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
       }
 
       /* Staggered display words */
       .mh-display-labels {
         display: flex;
         flex-direction: column;
-        align-items: center;
         gap: 0;
-        margin-bottom: 40px;
-        padding: 16px 0 20px;
+        margin-bottom: 32px;
       }
       .mh-display-word {
         font-family: 'Cormorant Garamond', serif;
@@ -371,9 +366,9 @@
         display: block;
         width: fit-content;
       }
-      .mh-display-word:nth-child(1) { transform: rotate(-0.4deg) translateX(-12%); }
-      .mh-display-word:nth-child(2) { transform: rotate(0.5deg)  translateX(10%);  }
-      .mh-display-word:nth-child(3) { transform: rotate(-0.4deg) translateX(-8%);  }
+      .mh-display-word:nth-child(1) { margin-left: 0;   transform: rotate(-0.4deg); }
+      .mh-display-word:nth-child(2) { margin-left: 18%; transform: rotate(0.5deg);  }
+      .mh-display-word:nth-child(3) { margin-left: 4%;  transform: rotate(-0.4deg); }
 
       .mh-hero-eyebrow {
         display: block;
