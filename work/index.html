@@ -273,18 +273,18 @@
       .page-headline { font-size: clamp(24px, 6vw, 36px); }
       .work-grid-wrap { padding: 16px 16px 32px; border-bottom: none; max-width: none; }
       .work-grid { grid-template-columns: 1fr; gap: 12px; }
-      .work-card { border-radius: 12px; }
+      .work-card { border-radius: 0; }
       .work-card--feature { grid-column: auto; }
       .work-card:hover { transform: none; box-shadow: none; }
-      .work-card.is-selected { border: 2px solid #D4537E !important; }
+      .work-card.is-selected { border: 1px solid var(--ink) !important; }
       .work-card-img { height: 200px; }
       .work-card--feature .work-card-img { height: 220px; }
       .work-card-body { padding: 18px 18px 20px; gap: 8px; }
       .work-card-name { font-size: 17px; }
       .work-card--feature .work-card-name { font-size: 17px; }
       .work-card-links { gap: 14px; }
-      .work-card-link { color: #D4537E; }
-      .work-card-link--secondary { color: #D4537E; opacity: 0.7; }
+      .work-card-link { color: var(--ink); }
+      .work-card-link--secondary { color: var(--ink-3); }
       .work-cta-mobile { display: block; margin: 20px 24px 32px; }
       .work-cta-mobile a {
         display: block;
@@ -354,7 +354,7 @@
           <p class="work-card-desc">Full stack platform for interior designers. Project management, mood boards, client approvals, and procurement. Built from scratch.</p>
           <div class="work-card-links">
             <a class="work-card-link" href="/forma/">Case study <span class="work-card-link-arrow">→</span></a>
-            <a class="work-card-link work-card-link--secondary" href="https://forma-rho-nine.vercel.app/early-access" target="_blank" rel="noopener">Visit site ↗</a>
+            <a class="work-card-link work-card-link--secondary" href="https://forma-rho-nine.vercel.app/early-access" target="_blank" rel="noopener">Visit site ↗&#xFE0E;</a>
           </div>
         </div>
       </div>
@@ -370,7 +370,7 @@
           <p class="work-card-desc">An editorial commerce experience built around a single skincare formula — combining campaign storytelling, product discovery, and a focused path to purchase.</p>
           <div class="work-card-links">
             <a class="work-card-link" href="/verde/">Case study <span class="work-card-link-arrow">→</span></a>
-            <a class="work-card-link work-card-link--secondary" href="https://verde-skincare.vercel.app/" target="_blank" rel="noopener">View Live ↗</a>
+            <a class="work-card-link work-card-link--secondary" href="https://verde-skincare.vercel.app/" target="_blank" rel="noopener">View Live ↗&#xFE0E;</a>
           </div>
         </div>
       </div>
@@ -386,7 +386,7 @@
           <p class="work-card-desc">Brand identity and website for a French inspired restaurant. Editorial photography, custom menu design, and reservations integration.</p>
           <div class="work-card-links">
             <a class="work-card-link" href="/le-loup/">Case study <span class="work-card-link-arrow">→</span></a>
-            <a class="work-card-link work-card-link--secondary" href="https://le-loup.pinkwebstudio.com" target="_blank" rel="noopener">Visit site ↗</a>
+            <a class="work-card-link work-card-link--secondary" href="https://le-loup.pinkwebstudio.com" target="_blank" rel="noopener">Visit site ↗&#xFE0E;</a>
           </div>
         </div>
       </div>
@@ -402,7 +402,7 @@
           <p class="work-card-desc">Brand website for a home goods studio. Editorial product photography, collection pages, and a refined shopping experience.</p>
           <div class="work-card-links">
             <a class="work-card-link" href="/west-and-stone/">Case study <span class="work-card-link-arrow">→</span></a>
-            <a class="work-card-link work-card-link--secondary" href="https://west-and-stone.pinkwebstudio.com" target="_blank" rel="noopener">Visit site ↗</a>
+            <a class="work-card-link work-card-link--secondary" href="https://west-and-stone.pinkwebstudio.com" target="_blank" rel="noopener">Visit site ↗&#xFE0E;</a>
           </div>
         </div>
       </div>
@@ -418,7 +418,7 @@
           <p class="work-card-desc">Clean, elevated design for a luxury aesthetics clinic. Online booking, service menus, and before-and-after galleries.</p>
           <div class="work-card-links">
             <a class="work-card-link" href="/celeste/">Case study <span class="work-card-link-arrow">→</span></a>
-            <a class="work-card-link work-card-link--secondary" href="https://celeste.pinkwebstudio.com" target="_blank" rel="noopener">Visit site ↗</a>
+            <a class="work-card-link work-card-link--secondary" href="https://celeste.pinkwebstudio.com" target="_blank" rel="noopener">Visit site ↗&#xFE0E;</a>
           </div>
         </div>
       </div>
@@ -434,7 +434,7 @@
           <p class="work-card-desc">Fashion brand website with editorial photography, seasonal collections, and a lookbook style browsing experience.</p>
           <div class="work-card-links">
             <a class="work-card-link" href="/june-house/">Case study <span class="work-card-link-arrow">→</span></a>
-            <a class="work-card-link work-card-link--secondary" href="https://june-house.pinkwebstudio.com" target="_blank" rel="noopener">Visit site ↗</a>
+            <a class="work-card-link work-card-link--secondary" href="https://june-house.pinkwebstudio.com" target="_blank" rel="noopener">Visit site ↗&#xFE0E;</a>
           </div>
         </div>
       </div>
@@ -458,7 +458,7 @@
       <div class="live-row" onclick="toggleLive(this)">
         <div class="live-row-left">
           <span class="live-row-name">Santa Monica Primary Care</span>
-          <a class="live-row-see" href="https://santamonicaprimarycare.com" target="_blank" rel="noopener" onclick="event.stopPropagation()">See more ↗</a>
+          <a class="live-row-see" href="https://santamonicaprimarycare.com" target="_blank" rel="noopener" onclick="event.stopPropagation()">See more ↗&#xFE0E;</a>
         </div>
       </div>
       <div class="live-drawer"><div class="live-drawer-inner">
@@ -472,7 +472,7 @@
       <div class="live-row" onclick="toggleLive(this)">
         <div class="live-row-left">
           <span class="live-row-name">Right Choice Locksmith Dallas</span>
-          <a class="live-row-see" href="https://rightchoicelocksmithdallas.com" target="_blank" rel="noopener" onclick="event.stopPropagation()">See more ↗</a>
+          <a class="live-row-see" href="https://rightchoicelocksmithdallas.com" target="_blank" rel="noopener" onclick="event.stopPropagation()">See more ↗&#xFE0E;</a>
         </div>
       </div>
       <div class="live-drawer"><div class="live-drawer-inner">
@@ -486,7 +486,7 @@
       <div class="live-row" onclick="toggleLive(this)">
         <div class="live-row-left">
           <span class="live-row-name">Shabon LA</span>
-          <a class="live-row-see" href="https://shabonla.myshopify.com" target="_blank" rel="noopener" onclick="event.stopPropagation()">See more ↗</a>
+          <a class="live-row-see" href="https://shabonla.myshopify.com" target="_blank" rel="noopener" onclick="event.stopPropagation()">See more ↗&#xFE0E;</a>
         </div>
       </div>
       <div class="live-drawer"><div class="live-drawer-inner">
@@ -500,7 +500,7 @@
       <div class="live-row" onclick="toggleLive(this)">
         <div class="live-row-left">
           <span class="live-row-name">Twice Upon Us</span>
-          <a class="live-row-see" href="https://twiceuponus.com" target="_blank" rel="noopener" onclick="event.stopPropagation()">See more ↗</a>
+          <a class="live-row-see" href="https://twiceuponus.com" target="_blank" rel="noopener" onclick="event.stopPropagation()">See more ↗&#xFE0E;</a>
         </div>
       </div>
       <div class="live-drawer"><div class="live-drawer-inner">
@@ -514,7 +514,7 @@
       <div class="live-row" onclick="toggleLive(this)">
         <div class="live-row-left">
           <span class="live-row-name">Dr. Bretsky</span>
-          <a class="live-row-see" href="https://drbretsky.com" target="_blank" rel="noopener" onclick="event.stopPropagation()">See more ↗</a>
+          <a class="live-row-see" href="https://drbretsky.com" target="_blank" rel="noopener" onclick="event.stopPropagation()">See more ↗&#xFE0E;</a>
         </div>
       </div>
       <div class="live-drawer"><div class="live-drawer-inner">
@@ -528,7 +528,7 @@
       <div class="live-row" onclick="toggleLive(this)">
         <div class="live-row-left">
           <span class="live-row-name">Doctor Italy 24</span>
-          <a class="live-row-see" href="https://www.doctoritaly24.it/en/" target="_blank" rel="noopener" onclick="event.stopPropagation()">See more ↗</a>
+          <a class="live-row-see" href="https://www.doctoritaly24.it/en/" target="_blank" rel="noopener" onclick="event.stopPropagation()">See more ↗&#xFE0E;</a>
         </div>
       </div>
       <div class="live-drawer"><div class="live-drawer-inner">

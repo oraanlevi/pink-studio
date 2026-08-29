@@ -351,15 +351,14 @@
           text-transform: none;
           color: var(--ink);
         }
-        .p-video-wrap { border-radius: 12px; }
+        .p-video-wrap { border-radius: 0; }
 
         /* ── Next project card ── */
         .p-next {
           margin: 24px;
           padding: 20px 24px;
-          border: 2px solid #D4537E;
-          border-radius: 12px;
-          border-bottom: 2px solid #D4537E;
+          border: 1px solid var(--rule);
+          border-radius: 0;
         }
         .p-next-label {
           font-family: 'Poppins', system-ui, sans-serif;
@@ -370,13 +369,14 @@
           margin-bottom: 6px;
         }
         .p-next-name {
-          font-family: 'Poppins', system-ui, sans-serif;
-          font-size: 22px;
-          font-weight: 700;
-          letter-spacing: -0.2px;
+          font-family: 'Cormorant Garamond', Georgia, serif;
+          font-style: italic;
+          font-size: 36px;
+          font-weight: 300;
+          letter-spacing: 0;
           color: var(--ink);
         }
-        .p-next-arrow { color: #D4537E; font-size: 20px; }
+        .p-next-arrow { color: var(--ink-3); font-size: 20px; }
       }
     </style>
   </head>
@@ -409,7 +409,7 @@
         <h1 class="hero-title">Céleste</h1>
         <p class="hero-desc">Calm, trusted, quietly elegant.</p>
         <div class="hero-links">
-          <a class="hero-live" href="https://celeste.pinkwebstudio.com" target="_blank" rel="noopener">View Live ↗</a>
+          <a class="hero-live" href="https://celeste.pinkwebstudio.com" target="_blank" rel="noopener">View Live ↗&#xFE0E;</a>
           <a class="hero-back" href="/work/">← Back to Projects</a>
         </div>
       </div>
@@ -428,7 +428,7 @@
 
     <!-- Mobile link row (hidden on desktop) -->
     <div class="m-link-row">
-      <a class="m-link-live" href="https://celeste.pinkwebstudio.com" target="_blank" rel="noopener">View live ↗</a>
+      <a class="m-link-live" href="https://celeste.pinkwebstudio.com" target="_blank" rel="noopener">View live ↗&#xFE0E;</a>
       <a class="m-link-back" href="/work/">← Back to work</a>
     </div>
 

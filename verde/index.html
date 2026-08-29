@@ -402,7 +402,7 @@
           text-transform: none;
           color: var(--ink);
         }
-        .p-img-wrap { border-radius: 12px; }
+        .p-img-wrap { border-radius: 0; }
 
         /* Make Verde Yours — mobile editorial */
         .verde-pitch {
@@ -439,9 +439,8 @@
         .p-next {
           margin: 24px;
           padding: 20px 24px;
-          border: 2px solid #D4537E;
-          border-radius: 12px;
-          border-bottom: 2px solid #D4537E;
+          border: 1px solid var(--rule);
+          border-radius: 0;
         }
         .p-next-label {
           font-family: 'Poppins', system-ui, sans-serif;
@@ -452,13 +451,14 @@
           margin-bottom: 6px;
         }
         .p-next-name {
-          font-family: 'Poppins', system-ui, sans-serif;
-          font-size: 22px;
-          font-weight: 700;
-          letter-spacing: -0.2px;
+          font-family: 'Cormorant Garamond', Georgia, serif;
+          font-style: italic;
+          font-size: 36px;
+          font-weight: 300;
+          letter-spacing: 0;
           color: var(--ink);
         }
-        .p-next-arrow { color: #D4537E; font-size: 20px; }
+        .p-next-arrow { color: var(--ink-3); font-size: 20px; }
       }
     </style>
   </head>
@@ -490,7 +490,7 @@
       <h1 class="vh-title">Verde</h1>
       <p class="vh-desc">An editorial commerce experience built around a single formula. Slow, considered, and campaign-led from the first scroll.</p>
       <div class="vh-links">
-        <a class="vh-live" href="https://verde-skincare.vercel.app/" target="_blank" rel="noopener">View Live ↗</a>
+        <a class="vh-live" href="https://verde-skincare.vercel.app/" target="_blank" rel="noopener">View Live ↗&#xFE0E;</a>
         <a class="vh-back" href="/work/">← Back to Work</a>
       </div>
     </div>
