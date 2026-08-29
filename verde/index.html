@@ -197,7 +197,8 @@
 
       /* ── Make Verde Yours — editorial pitch ── */
       .verde-pitch {
-        background: #141412;
+        background: var(--bg);
+        border-top: 1px solid var(--rule);
         display: grid;
         grid-template-columns: 1fr 300px;
         overflow: hidden;
@@ -214,24 +215,24 @@
         font-size: 12px;
         letter-spacing: 6px;
         text-transform: uppercase;
-        color: rgba(255,255,255,.75);
+        color: var(--ink-3);
         display: block;
         margin-bottom: 44px;
       }
       .vp-heading {
-        font-family: "Oswald", "Impact", sans-serif;
-        font-size: clamp(80px, 10vw, 128px);
-        font-weight: 700;
+        font-family: 'Cormorant Garamond', serif;
+        font-style: italic;
+        font-size: clamp(52px, 7vw, 96px);
+        font-weight: 300;
         color: var(--ink);
-        line-height: 0.88;
-        letter-spacing: -2px;
-        text-transform: uppercase;
+        line-height: 0.95;
+        letter-spacing: -1px;
         margin: 0 0 36px;
       }
       .vp-rule {
         width: 48px;
         height: 1px;
-        background: rgba(255,255,255,.35);
+        background: var(--rule);
         margin-bottom: 28px;
         flex-shrink: 0;
       }
@@ -240,7 +241,7 @@
         font-size: 14px;
         font-style: italic;
         font-weight: 300;
-        color: rgba(255,255,255,.70);
+        color: var(--ink-2);
         margin-bottom: 20px;
         line-height: 1.65;
       }
@@ -248,23 +249,24 @@
         font-family: 'Poppins', system-ui, sans-serif;
         font-size: 13px;
         font-weight: 300;
-        color: rgba(255,255,255,.58);
+        color: var(--ink-2);
         line-height: 1.9;
         max-width: 38ch;
         margin-bottom: 52px;
       }
       .vp-tags { display: none; }
       .vp-cta {
-        font-family: "Oswald", "Impact", sans-serif;
-        font-size: 12px;
-        font-weight: 300;
-        letter-spacing: 4px;
-        text-transform: uppercase;
+        display: inline-block;
+        padding: 14px 24px;
+        border: 1px solid var(--ink);
+        font-family: 'Poppins', sans-serif;
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--ink);
         text-decoration: none;
-        color: rgba(255,255,255,.90);
-        transition: color 220ms;
+        transition: background 220ms, color 220ms;
       }
-      .vp-cta:hover { color: rgba(255,255,255,.50); }
+      .vp-cta:hover { background: var(--ink); color: var(--bg); }
       .vp-right {
         display: flex;
         flex-direction: column;
@@ -288,7 +290,7 @@
         font-weight: 400;
         letter-spacing: 0.14em;
         text-transform: uppercase;
-        color: rgba(255,255,255,.38);
+        color: var(--ink-3);
       }
 
       /* Next */
@@ -424,14 +426,14 @@
           position: relative;
           z-index: 1;
         }
-        .vp-label { font-size: 11px; letter-spacing: 5px; margin-bottom: 32px; color: rgba(255,255,255,.75); }
+        .vp-label { font-size: 11px; letter-spacing: 5px; margin-bottom: 32px; color: var(--ink-3); }
         .vp-heading { font-size: 60px; letter-spacing: -1.5px; margin-bottom: 28px; color: var(--ink); }
-        .vp-rule { width: 36px; margin-bottom: 20px; background: rgba(255,255,255,.35); }
-        .vp-sub { font-size: 13px; margin-bottom: 16px; color: rgba(255,255,255,.70); }
-        .vp-body { font-size: 13px; max-width: 100%; margin-bottom: 28px; color: rgba(255,255,255,.58); }
+        .vp-rule { width: 36px; margin-bottom: 20px; background: var(--rule); }
+        .vp-sub { font-size: 13px; margin-bottom: 16px; color: var(--ink-2); }
+        .vp-body { font-size: 13px; max-width: 100%; margin-bottom: 28px; color: var(--ink-2); }
         .vp-tags { display: flex; flex-direction: column; gap: 6px; margin-bottom: 36px; }
-        .vp-tags span { color: rgba(255,255,255,.38); }
-        .vp-cta { font-size: 12px; letter-spacing: 3px; padding: 12px 0; display: inline-block; color: rgba(255,255,255,.90); }
+        .vp-tags span { color: var(--ink-3); }
+        .vp-cta { font-size: 13px; padding: 14px 24px; border: 1px solid var(--ink); display: inline-block; color: var(--ink); }
 
         /* Next project card */
         .p-next {
