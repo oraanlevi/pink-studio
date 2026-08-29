@@ -262,6 +262,8 @@
 
     /* ── Project Proof ── */
     .sp-proof {
+      max-width: 860px;
+      margin: 0 auto;
       display: grid;
       grid-template-columns: 260px 1fr;
       border-top: 1px solid var(--rule);
@@ -513,7 +515,9 @@
       .process-step { border-right: none; border-bottom: 1px solid var(--rule); padding: 32px 24px 40px; }
       .process-step:last-child { border-bottom: none; }
 
-      .sp-proof { grid-template-columns: 120px 1fr; }
+      .sp-proof {
+      max-width: 860px;
+      margin: 0 auto; grid-template-columns: 120px 1fr; }
       .sp-proof-image { height: 130px; border-right: 1px solid var(--rule); border-bottom: none; min-height: unset; }
       .sp-proof-image img { height: 130px; }
       .sp-proof-text {
