@@ -447,6 +447,158 @@ img { display: block; max-width: 100%; }
   }
 }
 
+/* ── Mega Menu (desktop only) ── */
+@media (min-width: 861px) {
+
+  /* Hide old dropdown panels — mega replaces them on desktop */
+  .nav-links .nav-dd-menu { display: none !important; }
+
+  /* Nav must not clip its absolute children */
+  .nav { overflow: visible; }
+
+  .mega-panel {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    height: 400px;
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    border-top: none;
+    box-shadow: 0 24px 64px rgba(0,0,0,.06);
+    display: grid;
+    grid-template-columns: 230px 1fr 264px;
+    z-index: 201;
+    overflow: hidden;
+  }
+  .mega-panel[hidden] { display: none; }
+
+  /* Left column — nav list */
+  .mega-left {
+    padding: 40px 36px;
+    border-right: 1px solid var(--rule);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .mega-nav {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .mega-nav a {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 21px;
+    color: var(--ink-3);
+    text-decoration: none;
+    padding: 6px 0;
+    letter-spacing: 0;
+    border: none;
+    display: block;
+    transition: color 200ms;
+  }
+  .mega-nav a:hover,
+  .mega-nav a.mega-active { color: var(--ink); }
+
+  .mega-all {
+    display: block;
+    margin-top: 20px;
+    padding-top: 14px;
+    border-top: 1px solid var(--rule);
+    font-family: 'Poppins', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    text-decoration: none;
+    transition: color 220ms;
+  }
+  .mega-all:hover { color: var(--ink); }
+
+  /* Center column — editorial image */
+  .mega-center {
+    position: relative;
+    overflow: hidden;
+  }
+  .mega-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: opacity 160ms ease;
+  }
+  .mega-img.mega-fading { opacity: 0; }
+
+  /* Right column — information */
+  .mega-right {
+    padding: 40px 36px;
+    border-left: 1px solid var(--rule);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
+    transition: opacity 160ms ease;
+  }
+  .mega-right.mega-fading { opacity: 0; }
+
+  .mega-cat {
+    font-family: 'Poppins', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    display: block;
+    margin-bottom: 10px;
+  }
+  .mega-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(26px, 2.6vw, 40px);
+    color: var(--ink);
+    display: block;
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+  .mega-desc {
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--ink-2);
+    line-height: 1.65;
+    margin: 0;
+  }
+  .mega-meta {
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    color: var(--ink-3);
+    margin-top: 6px;
+  }
+  .mega-link {
+    display: inline-block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    margin-top: 22px;
+    transition: opacity 200ms;
+  }
+  .mega-link:hover { opacity: 0.4; }
+
+}
+
 /* ── Scroll Reveal ── */
 /* Initial hidden state is only applied when JS has loaded (.js on <html>).
    If the script fails, [data-reveal] elements remain fully visible. */
