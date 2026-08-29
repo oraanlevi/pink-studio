@@ -281,6 +281,8 @@
     }
     .sp-proof:hover .sp-proof-image img { transform: scale(1.02); }
     .sp-proof-text {
+      align-items: center;
+      text-align: center;
       padding: 28px 48px;
       display: flex;
       flex-direction: column;
@@ -514,7 +516,9 @@
       .sp-proof { grid-template-columns: 120px 1fr; }
       .sp-proof-image { height: 130px; border-right: 1px solid var(--rule); border-bottom: none; min-height: unset; }
       .sp-proof-image img { height: 130px; }
-      .sp-proof-text { padding: 20px 20px; gap: 4px; }
+      .sp-proof-text {
+      align-items: center;
+      text-align: center; padding: 20px 20px; gap: 4px; }
       .sp-proof-name { font-size: clamp(14px, 4vw, 18px); }
 
       .sp-investment { flex-direction: column; align-items: flex-start; padding: 48px 24px; gap: 24px; }
