@@ -21,12 +21,12 @@
   // ── Helpers ──────────────────────────────────────────────────────────────
   function isDesktop() { return window.matchMedia('(min-width: 861px)').matches; }
 
-  function renderRight(el, item, linkText) {
+  function renderRight(el, item, linkText, eyebrow) {
     var meta = item.meta
       ? '<span class="mega-meta">' + item.meta + '</span>'
       : '';
     el.innerHTML =
-      '<span class="mega-cat">' + item.cat + '</span>' +
+      '<span class="mega-cat">' + eyebrow + '</span>' +
       '<span class="mega-title">' + item.label + '</span>' +
       '<p class="mega-desc">' + item.desc + '</p>' +
       meta +
@@ -34,7 +34,7 @@
   }
 
   // ── Build panel ──────────────────────────────────────────────────────────
-  function buildPanel(id, items, allHref, allText, linkText) {
+  function buildPanel(id, items, allHref, allText, linkText, eyebrow) {
     var panel = document.createElement('div');
     panel.className = 'mega-panel';
     panel.id = id;
@@ -80,7 +80,7 @@
     panel.appendChild(center);
     panel.appendChild(right);
 
-    return { panel: panel, navEl: navEl, img: img, right: right, items: items, linkText: linkText, activeIndex: 0 };
+    return { panel: panel, navEl: navEl, img: img, right: right, items: items, linkText: linkText, eyebrow: eyebrow, activeIndex: 0 };
   }
 
   // ── Featured item update (soft fade) ─────────────────────────────────────
@@ -101,7 +101,7 @@
     setTimeout(function () {
       data.img.src = item.img;
       data.img.alt = item.label;
-      renderRight(data.right, item, data.linkText);
+      renderRight(data.right, item, data.linkText, data.eyebrow);
       // Force reflow so removal of fading triggers CSS transition back in
       void data.img.offsetWidth;
       data.img.classList.remove('mega-fading');
@@ -113,8 +113,12 @@
   var mainNav = document.getElementById('mainNav');
   if (!mainNav) return;
 
-  var proj = buildPanel('megaProjects', PROJECTS, '/work/',     'View All Projects \u2192', 'View Project');
-  var svc  = buildPanel('megaServices', SERVICES, '/services/', 'View All Services \u2192', 'View Service');
+  var proj = buildPanel('megaProjects', PROJECTS, '/work/',     'View All Projects \u2192', 'View Project', 'Featured Project');
+  var svc  = buildPanel('megaServices', SERVICES, '/services/', 'View All Services \u2192', 'View Service', 'Featured Service');
+
+  // Initial right panel content (uses eyebrow)
+  renderRight(proj.right, PROJECTS[0], proj.linkText, proj.eyebrow);
+  renderRight(svc.right,  SERVICES[0], svc.linkText,  svc.eyebrow);
 
   mainNav.appendChild(proj.panel);
   mainNav.appendChild(svc.panel);
@@ -129,39 +133,50 @@
   attachHovers(svc);
 
   // ── Open / close ─────────────────────────────────────────────────────────
-  function closeAll() {
+  var closeTimer = null;
+
+  function cancelClose() {
+    if (closeTimer) { clearTimeout(closeTimer); closeTimer = null; }
+  }
+
+  function scheduleClose() {
+    cancelClose();
+    closeTimer = setTimeout(function () {
+      [proj.panel, svc.panel].forEach(function (p) { p.setAttribute('hidden', ''); });
+    }, 150);
+  }
+
+  // Immediately show a panel — cancels any pending close and swaps cleanly
+  function showPanel(data) {
+    cancelClose();
     [proj.panel, svc.panel].forEach(function (p) { p.setAttribute('hidden', ''); });
-    document.querySelectorAll('.nav-links .nav-dd-toggle').forEach(function (b) {
-      b.classList.remove('open');
-      b.setAttribute('aria-expanded', 'false');
-    });
+    data.panel.removeAttribute('hidden');
   }
 
-  function openPanel(data, btn) {
-    var alreadyOpen = !data.panel.hasAttribute('hidden');
-    closeAll();
-    if (!alreadyOpen) {
-      data.panel.removeAttribute('hidden');
-      btn.classList.add('open');
-      btn.setAttribute('aria-expanded', 'true');
-    }
-  }
-
-  // ── Desktop toggle clicks ─────────────────────────────────────────────────
-  document.querySelectorAll('.nav-links .nav-dd-toggle').forEach(function (btn) {
-    btn.addEventListener('click', function (e) {
-      e.stopPropagation();
+  // ── Desktop hover on nav-dd triggers ─────────────────────────────────────
+  document.querySelectorAll('.nav-links .nav-dd').forEach(function (dd) {
+    dd.addEventListener('mouseenter', function () {
       if (!isDesktop()) return;
-      var href = btn.closest('.nav-dd').querySelector('.nav-dd-label').getAttribute('href');
-      var data = href.indexOf('/work') !== -1 ? proj : svc;
-      openPanel(data, btn);
+      var href = dd.querySelector('.nav-dd-label').getAttribute('href');
+      showPanel(href.indexOf('/work') !== -1 ? proj : svc);
     });
+    dd.addEventListener('mouseleave', function () {
+      if (!isDesktop()) return;
+      scheduleClose();
+    });
+  });
+
+  // Hovering inside the panel cancels the close timer
+  [proj.panel, svc.panel].forEach(function (panel) {
+    panel.addEventListener('mouseenter', cancelClose);
+    panel.addEventListener('mouseleave', scheduleClose);
   });
 
   // ── Click outside nav closes mega ────────────────────────────────────────
   document.addEventListener('click', function (e) {
     if (!e.target.closest('#mainNav')) {
-      closeAll();
+      cancelClose();
+      [proj.panel, svc.panel].forEach(function (p) { p.setAttribute('hidden', ''); });
     }
   });
 

@@ -453,30 +453,39 @@ img { display: block; max-width: 100%; }
   /* Hide old dropdown panels — mega replaces them on desktop */
   .nav-links .nav-dd-menu { display: none !important; }
 
+  /* Hide + button on desktop — hover opens the panel instead */
+  .nav-links .nav-dd-toggle { display: none !important; }
+
+  /* Remove any underline on nav labels */
+  .nav-links .nav-dd-label { text-decoration: none; }
+
   /* Nav must not clip its absolute children */
   .nav { overflow: visible; }
 
+  /* ── Panel ── */
   .mega-panel {
     position: absolute;
     top: 100%;
-    left: 0;
-    right: 0;
-    height: 400px;
+    left: 48px;
+    width: 720px;
+    max-width: calc(100vw - 60px);
+    height: 300px;
     background: var(--bg);
-    border: 1px solid var(--rule);
+    border: 1px solid #e8e5e1;
     border-top: none;
-    box-shadow: 0 24px 64px rgba(0,0,0,.06);
+    border-radius: 0 0 3px 3px;
+    box-shadow: 0 12px 40px rgba(0,0,0,.07), 0 2px 8px rgba(0,0,0,.04);
     display: grid;
-    grid-template-columns: 230px 1fr 264px;
+    grid-template-columns: 25% 40% 35%;
     z-index: 201;
     overflow: hidden;
   }
   .mega-panel[hidden] { display: none; }
 
-  /* Left column — nav list */
+  /* ── Left column — navigation list ── */
   .mega-left {
-    padding: 40px 36px;
-    border-right: 1px solid var(--rule);
+    padding: 24px 0;
+    border-right: 1px solid #e8e5e1;
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -485,30 +494,33 @@ img { display: block; max-width: 100%; }
     flex: 1;
     display: flex;
     flex-direction: column;
+    justify-content: center;
   }
   .mega-nav a {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-weight: 300;
-    font-size: 21px;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
     color: var(--ink-3);
     text-decoration: none;
-    padding: 6px 0;
-    letter-spacing: 0;
-    border: none;
+    padding: 5px 18px;
+    letter-spacing: 0.02em;
     display: block;
-    transition: color 200ms;
+    transition: color 200ms, background 200ms;
   }
   .mega-nav a:hover,
-  .mega-nav a.mega-active { color: var(--ink); }
+  .mega-nav a.mega-active {
+    color: var(--ink);
+    background: rgba(212, 83, 126, 0.06);
+  }
 
   .mega-all {
     display: block;
-    margin-top: 20px;
-    padding-top: 14px;
-    border-top: 1px solid var(--rule);
+    margin: 14px 18px 0;
+    padding-top: 10px;
+    border-top: 1px solid #e8e5e1;
     font-family: 'Poppins', sans-serif;
-    font-size: 10px;
+    font-size: 9px;
     font-weight: 400;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -518,29 +530,30 @@ img { display: block; max-width: 100%; }
   }
   .mega-all:hover { color: var(--ink); }
 
-  /* Center column — editorial image */
+  /* ── Center column — editorial image ── */
   .mega-center {
     position: relative;
     overflow: hidden;
   }
   .mega-img {
     position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
+    top: 32px;
+    left: 32px;
+    right: 32px;
+    bottom: 32px;
     object-fit: cover;
     display: block;
     transition: opacity 160ms ease;
   }
   .mega-img.mega-fading { opacity: 0; }
 
-  /* Right column — information */
+  /* ── Right column — information ── */
   .mega-right {
-    padding: 40px 36px;
-    border-left: 1px solid var(--rule);
+    padding: 28px 24px;
+    border-left: 1px solid #e8e5e1;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
     overflow: hidden;
     transition: opacity 160ms ease;
   }
@@ -548,36 +561,37 @@ img { display: block; max-width: 100%; }
 
   .mega-cat {
     font-family: 'Poppins', sans-serif;
-    font-size: 10px;
+    font-size: 9px;
     font-weight: 400;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--ink-3);
     display: block;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
   }
   .mega-title {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
     font-weight: 300;
-    font-size: clamp(26px, 2.6vw, 40px);
+    font-size: clamp(20px, 2vw, 28px);
     color: var(--ink);
     display: block;
     line-height: 1.1;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
   .mega-desc {
     font-family: 'Poppins', sans-serif;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 300;
     color: var(--ink-2);
     line-height: 1.65;
     margin: 0;
+    max-width: 200px;
   }
   .mega-meta {
     display: block;
     font-family: 'Poppins', sans-serif;
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 400;
     letter-spacing: 0.04em;
     color: var(--ink-3);
@@ -586,13 +600,13 @@ img { display: block; max-width: 100%; }
   .mega-link {
     display: inline-block;
     font-family: 'Poppins', sans-serif;
-    font-size: 10px;
+    font-size: 9px;
     font-weight: 400;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--ink);
     text-decoration: none;
-    margin-top: 22px;
+    margin-top: 16px;
     transition: opacity 200ms;
   }
   .mega-link:hover { opacity: 0.4; }
