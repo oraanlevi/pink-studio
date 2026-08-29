@@ -7,7 +7,7 @@
   <title>Pink — Digital Product Studio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/styles.css" />
   <style>
 
@@ -52,49 +52,33 @@
     }
 
     /* Hero text */
+    .lobby-hero { display: flex; flex-direction: column; gap: 4px; }
+
     .lobby-name {
       display: block;
-      font-family: "Oswald", "Bebas Neue", "Impact", sans-serif;
-      font-weight: 700;
-      font-size: 28px;
-      letter-spacing: 4px;
-      text-transform: uppercase;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 300;
+      font-size: 13px;
+      letter-spacing: 0.1em;
       color: var(--ink-3);
-      margin-bottom: 16px;
-      padding-top: 4px;
-      opacity: 0;
-      transform: translateY(8px);
-      transition: opacity 700ms ease, transform 700ms ease;
-    }
-    .lobby-position {
-      display: block;
-      font-family: "Oswald", "Bebas Neue", "Impact", sans-serif;
-      font-weight: 700;
-      font-size: 28px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--ink-3);
-      margin-bottom: 28px;
       opacity: 0;
       transform: translateY(8px);
       transition: opacity 700ms ease, transform 700ms ease;
     }
     .lobby-tagline {
       display: block;
-      font-family: "Bebas Neue", "Impact", sans-serif;
-      font-weight: 400;
-      font-size: clamp(22px, 2.4vw, 34px);
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(22px, 2.6vw, 36px);
       color: var(--ink-2);
       line-height: 1.3;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      margin-bottom: 40px;
+      letter-spacing: 0.01em;
       opacity: 0;
       transform: translateY(8px);
       transition: opacity 700ms ease, transform 700ms ease;
     }
     .lobby-name.in,
-    .lobby-position.in,
     .lobby-tagline.in { opacity: 1; transform: none; }
 
     /* Labels */
@@ -106,14 +90,14 @@
     .lobby-label {
       display: block;
       width: fit-content;
-      font-family: "Bebas Neue", "Impact", sans-serif;
-      font-weight: 400;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-style: italic;
       font-size: clamp(52px, 7vw, 100px);
-      text-transform: uppercase;
-      letter-spacing: 1px;
       color: var(--ink);
       text-decoration: none;
       line-height: 1.0;
+      letter-spacing: -1px;
       opacity: 0;
       will-change: transform;
     }
@@ -126,36 +110,29 @@
                   transform 1000ms cubic-bezier(.16,1,.3,1),
                   color 260ms ease;
     }
-    .lobby-label[data-key="products"] {
+    .lobby-label[data-key="work"] {
       margin-left: 27%;
-      margin-top: 48px;
+      margin-top: 12px;
       transform: rotate(0.9deg) translateY(18px);
       transition: opacity 1000ms cubic-bezier(.16,1,.3,1),
                   transform 1000ms cubic-bezier(.16,1,.3,1),
                   color 260ms ease;
     }
-    .lobby-label[data-key="work"] {
+    .lobby-label[data-key="forma"] {
       margin-left: 6%;
+      margin-top: 12px;
       transform: rotate(-1.1deg) translateY(18px);
       transition: opacity 1000ms cubic-bezier(.16,1,.3,1),
                   transform 1000ms cubic-bezier(.16,1,.3,1),
                   color 260ms ease;
     }
-    .lobby-label[data-key="forma"] {
-      margin-left: 36%;
-      transform: rotate(0.4deg) translateY(18px);
-      transition: opacity 1000ms cubic-bezier(.16,1,.3,1),
-                  transform 1000ms cubic-bezier(.16,1,.3,1),
-                  color 260ms ease;
-    }
 
-    /* Arrived — settled on the table */
+    /* Arrived */
     .lobby-label[data-key="services"].arrived { opacity: 1; transform: rotate(-0.6deg); }
-    .lobby-label[data-key="products"].arrived { opacity: 1; transform: rotate(0.9deg);  }
-    .lobby-label[data-key="work"].arrived     { opacity: 1; transform: rotate(-1.1deg); }
-    .lobby-label[data-key="forma"].arrived    { opacity: 1; transform: rotate(0.4deg);  }
+    .lobby-label[data-key="work"].arrived     { opacity: 1; transform: rotate(0.9deg);  }
+    .lobby-label[data-key="forma"].arrived    { opacity: 1; transform: rotate(-1.1deg); }
 
-    /* Settled — smooth snap back on un-hover */
+    /* Settled */
     .lobby-label.settled {
       transition: transform 500ms ease, color 260ms ease;
     }
@@ -167,30 +144,23 @@
       65%  { transform: rotate(-0.9deg) translate(-4px,-8px); }
       100% { transform: rotate(-0.6deg) translate(0,    0);   }
     }
-    @keyframes drift-products {
+    @keyframes drift-work {
       0%   { transform: rotate(0.9deg)  translate(0,    0);   }
       35%  { transform: rotate(1.3deg)  translate(-6px,-6px); }
       70%  { transform: rotate(0.5deg)  translate(7px, -4px); }
       100% { transform: rotate(0.9deg)  translate(0,    0);   }
     }
-    @keyframes drift-work {
+    @keyframes drift-forma {
       0%   { transform: rotate(-1.1deg) translate(0,    0);   }
       40%  { transform: rotate(-0.6deg) translate(5px, -7px); }
       75%  { transform: rotate(-1.4deg) translate(-3px,-3px); }
       100% { transform: rotate(-1.1deg) translate(0,    0);   }
     }
-    @keyframes drift-forma {
-      0%   { transform: rotate(0.4deg)  translate(0,    0);   }
-      45%  { transform: rotate(0.8deg)  translate(-7px,-5px); }
-      80%  { transform: rotate(0.1deg)  translate(4px, -8px); }
-      100% { transform: rotate(0.4deg)  translate(0,    0);   }
-    }
 
-    /* Hover drift — only once settled */
+    /* Hover drift */
     .lobby-label[data-key="services"].settled:hover { animation: drift-services 6s   ease-in-out infinite; }
-    .lobby-label[data-key="products"].settled:hover { animation: drift-products 7s   ease-in-out infinite; }
-    .lobby-label[data-key="work"].settled:hover     { animation: drift-work     5.5s ease-in-out infinite; }
-    .lobby-label[data-key="forma"].settled:hover    { animation: drift-forma    6.5s ease-in-out infinite; }
+    .lobby-label[data-key="work"].settled:hover     { animation: drift-work     7s   ease-in-out infinite; }
+    .lobby-label[data-key="forma"].settled:hover    { animation: drift-forma    5.5s ease-in-out infinite; }
 
     /* Siblings dim when one is hovered */
     .lobby-labels:has(.lobby-label:hover) .lobby-label:not(:hover) {
@@ -198,25 +168,6 @@
     }
 
     /* ── Mobile ── */
-    @media (max-width: 860px) {
-      .lobby-inner { padding: 48px 24px; gap: 36px; }
-
-      .lobby-label[data-key="services"] { margin-left: 0;  transform: rotate(-0.3deg) translateY(14px); }
-      .lobby-label[data-key="products"] { margin-left: 5%; transform: rotate(0.3deg)  translateY(14px); }
-      .lobby-label[data-key="work"]     { margin-left: 0;  transform: rotate(-0.2deg) translateY(14px); }
-      .lobby-label[data-key="forma"]    { margin-left: 4%; transform: rotate(0.2deg)  translateY(14px); }
-
-      .lobby-label[data-key="services"].arrived { transform: rotate(-0.3deg); }
-      .lobby-label[data-key="products"].arrived { transform: rotate(0.3deg);  }
-      .lobby-label[data-key="work"].arrived     { transform: rotate(-0.2deg); }
-      .lobby-label[data-key="forma"].arrived    { transform: rotate(0.2deg);  }
-
-      .lobby-label.settled:hover { animation: none !important; }
-      .lobby-labels:has(.lobby-label:hover) .lobby-label:not(:hover) { color: var(--ink); }
-      .lobby-bg-img { display: none; }
-    }
-
-    /* ── Mobile homepage ── */
     .mobile-home { display: none; }
 
     @keyframes mh-marquee-scroll {
@@ -225,31 +176,53 @@
     }
 
     @media (max-width: 860px) {
-      /* Force 4-line hero: PINK / DIGITAL / PRODUCT / STUDIO */
-      .lp-w { display: block; }
-
-      /* Restore lobby, trim height, hide floating labels */
       .lobby { min-height: auto; }
       .lobby-inner { padding: calc(var(--nav-h) + 28px) 24px 28px; gap: 20px; }
       .lobby-labels { display: none; }
 
-      /* Mobile home follows lobby */
-      .mobile-home { display: block; padding: 0 24px 48px; }
+      .lobby-label[data-key="services"] { margin-left: 0;  transform: rotate(-0.3deg) translateY(14px); }
+      .lobby-label[data-key="work"]     { margin-left: 5%; transform: rotate(0.3deg)  translateY(14px); }
+      .lobby-label[data-key="forma"]    { margin-left: 0;  transform: rotate(-0.2deg) translateY(14px); }
 
-      /* Link cards: card bg, uppercase, no border, no arrow */
-      .mh-links { display: flex; flex-direction: column; gap: 8px; margin-bottom: 32px; }
-      .mh-link-card {
+      .lobby-label[data-key="services"].arrived { transform: rotate(-0.3deg); }
+      .lobby-label[data-key="work"].arrived     { transform: rotate(0.3deg);  }
+      .lobby-label[data-key="forma"].arrived    { transform: rotate(-0.2deg); }
+
+      .lobby-label.settled:hover { animation: none !important; }
+      .lobby-labels:has(.lobby-label:hover) .lobby-label:not(:hover) { color: var(--ink); }
+      .lobby-bg-img { display: none; }
+
+      /* Mobile home */
+      .mobile-home { display: block; padding: 0 24px 56px; }
+
+      /* Nav cards */
+      .mh-links { display: flex; flex-direction: column; gap: 12px; margin-bottom: 40px; }
+      .mh-link-primary {
         display: block;
-        padding: 16px 20px;
-        border-radius: 12px;
-        background: rgba(26, 25, 23, 0.07);
+        padding: 16px 24px;
+        border: 1px solid var(--ink);
         text-decoration: none;
+        font-family: 'Poppins', sans-serif;
+        font-size: 13px;
+        font-weight: 500;
         color: var(--ink);
-        font-family: "Bebas Neue", "Impact", sans-serif;
-        font-size: 20px;
-        letter-spacing: 2px;
-        text-transform: uppercase;
+        text-align: center;
+        transition: background 220ms, color 220ms;
       }
+      .mh-link-primary:hover { background: var(--ink); color: var(--bg); }
+      .mh-link-secondary {
+        display: block;
+        padding: 16px 24px;
+        border: 1px solid var(--rule);
+        text-decoration: none;
+        font-family: 'Poppins', sans-serif;
+        font-size: 13px;
+        font-weight: 300;
+        color: var(--ink-2);
+        text-align: center;
+        transition: border-color 220ms, color 220ms;
+      }
+      .mh-link-secondary:hover { border-color: var(--ink-2); color: var(--ink); }
 
       /* Recent Work */
       .mh-recent-label {
@@ -259,23 +232,24 @@
         font-weight: 500;
         letter-spacing: 0.12em;
         text-transform: uppercase;
-        color: var(--ink-2);
-        margin-bottom: 10px;
+        color: var(--ink-3);
+        margin-bottom: 12px;
       }
       .mh-recent-card {
         display: block;
         position: relative;
-        border-radius: 12px;
         overflow: hidden;
-        background: #1e1e1e url('/assets/dashboardforma.png') center top / cover no-repeat;
-        min-height: 160px;
+        background: #1e1e1e center top / cover no-repeat;
+        min-height: 180px;
         text-decoration: none;
-        margin-bottom: 32px;
+        margin-bottom: 12px;
+        border: 1px solid var(--rule);
       }
+      .mh-recent-card:last-of-type { margin-bottom: 40px; }
       .mh-recent-overlay {
         position: absolute;
         inset: 0;
-        background: linear-gradient(to bottom, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.72) 100%);
+        background: linear-gradient(to bottom, rgba(0,0,0,0.05) 40%, rgba(0,0,0,0.65) 100%);
       }
       .mh-recent-content {
         position: absolute;
@@ -286,7 +260,7 @@
       .mh-recent-name {
         display: block;
         font-family: 'Poppins', sans-serif;
-        font-size: 16px;
+        font-size: 15px;
         font-weight: 500;
         color: #fff;
         margin-bottom: 2px;
@@ -295,6 +269,7 @@
         display: block;
         font-family: 'Poppins', sans-serif;
         font-size: 12px;
+        font-weight: 300;
         color: rgba(255,255,255,0.6);
       }
 
@@ -304,7 +279,7 @@
         border-bottom: 1px solid var(--rule);
         overflow: hidden;
         padding: 12px 0;
-        margin: 0 -24px 40px;
+        margin: 0 -24px;
       }
       .mh-marquee {
         display: flex;
@@ -317,86 +292,6 @@
         font-size: 16px;
         color: var(--ink-2);
         white-space: nowrap;
-      }
-
-      /* Services section */
-      .mh-section { margin-bottom: 40px; }
-      .mh-section-label {
-        display: block;
-        font-family: 'Poppins', sans-serif;
-        font-size: 10px;
-        font-weight: 500;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: var(--ink-2);
-        margin-bottom: 6px;
-      }
-      .mh-section-headline {
-        font-family: 'Poppins', sans-serif;
-        font-size: 22px;
-        font-weight: 400;
-        color: var(--ink);
-        margin: 0 0 16px;
-      }
-
-      /* Service card */
-      .mh-card {
-        border-radius: 12px;
-        border: 2px solid #D4537E;
-        padding: 20px;
-        margin-bottom: 12px;
-      }
-      .mh-card-name {
-        display: block;
-        font-family: 'Poppins', sans-serif;
-        font-size: 15px;
-        font-weight: 500;
-        color: var(--ink);
-        margin-bottom: 4px;
-      }
-      .mh-card-sub {
-        display: block;
-        font-family: 'Poppins', sans-serif;
-        font-size: 12px;
-        color: var(--ink-2);
-        margin-bottom: 16px;
-      }
-      .mh-card-meta { display: flex; gap: 24px; margin-bottom: 16px; }
-      .mh-card-field { display: flex; flex-direction: column; gap: 3px; }
-      .mh-card-field-label {
-        font-family: 'Poppins', sans-serif;
-        font-size: 9px;
-        font-weight: 500;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        color: var(--ink-2);
-      }
-      .mh-card-field-value {
-        font-family: 'Poppins', sans-serif;
-        font-size: 13px;
-        color: var(--ink);
-      }
-      .mh-card-cta {
-        display: block;
-        text-align: center;
-        padding: 12px;
-        background: #D4537E;
-        color: #fff;
-        border-radius: 999px;
-        font-family: 'Poppins', sans-serif;
-        font-size: 11px;
-        font-weight: 500;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        text-decoration: none;
-      }
-      .mh-see-all {
-        display: block;
-        text-align: center;
-        font-family: 'Poppins', sans-serif;
-        font-size: 12px;
-        color: var(--ink-2);
-        text-decoration: none;
       }
     }
 
@@ -426,8 +321,7 @@
   <!-- Editorial background images — revealed on hover -->
   <div class="lobby-bg" aria-hidden="true">
     <img class="lobby-bg-img" data-key="services" src="/assets/office.png"         alt="" />
-    <img class="lobby-bg-img" data-key="products" src="/assets/mag.png"            alt="" />
-    <img class="lobby-bg-img" data-key="work"     src="/assets/verde-hover.png" alt="" />
+    <img class="lobby-bg-img" data-key="work"     src="/assets/verde-hover.png"    alt="" />
     <img class="lobby-bg-img" data-key="forma"    src="/assets/dashboardforma.png" alt="" />
   </div>
 
@@ -435,28 +329,28 @@
     <div class="lobby-inner">
 
       <div class="lobby-hero">
-        <span class="lobby-name">Pink</span>
-        <span class="lobby-position"><span class="lp-w">Digital</span> <span class="lp-w">Product</span> <span class="lp-w">Studio</span></span>
+        <span class="lobby-name">Pink Web Studio</span>
         <span class="lobby-tagline">Websites. Software. Products.</span>
       </div>
 
       <nav class="lobby-labels" aria-label="Studio paths">
         <a class="lobby-label" data-key="services" href="/services/">Services</a>
         <a class="lobby-label" data-key="work"     href="/work/">Projects</a>
-        <a class="lobby-label" data-key="forma"    href="https://forma-rho-nine.vercel.app/early-access" target="_blank" rel="noopener">FORMA</a>
+        <a class="lobby-label" data-key="forma"    href="https://forma-rho-nine.vercel.app/early-access" target="_blank" rel="noopener">Forma</a>
       </nav>
 
     </div>
   </main>
 
-  <!-- Mobile homepage layout (mobile only — .lobby-labels hidden via CSS) -->
+  <!-- Mobile homepage layout -->
   <div class="mobile-home">
 
-    <!-- Section link cards -->
+    <!-- Nav cards -->
     <nav class="mh-links" aria-label="Site sections">
-      <a href="/services/" class="mh-link-card">Services</a>
-      <a href="/work/"     class="mh-link-card">Projects</a>
-      <a href="/studio/"   class="mh-link-card">Studio</a>
+      <a href="/contact/" class="mh-link-primary">Start a Project</a>
+      <a href="/services/" class="mh-link-secondary">Services</a>
+      <a href="/work/"     class="mh-link-secondary">Projects</a>
+      <a href="/studio/"   class="mh-link-secondary">Studio</a>
     </nav>
 
     <!-- Recent Work -->
@@ -468,7 +362,7 @@
         <span class="mh-recent-desc">Skincare &amp; beauty · Pink Template 01</span>
       </div>
     </a>
-    <a href="/forma/" class="mh-recent-card">
+    <a href="/forma/" class="mh-recent-card" style="background: #1e1e1e url('/assets/dashboardforma.png') center top / cover no-repeat;">
       <div class="mh-recent-overlay"></div>
       <div class="mh-recent-content">
         <span class="mh-recent-name">Forma</span>
@@ -483,28 +377,6 @@
         <span class="mh-marquee-track">Websites&nbsp;&middot;&nbsp;Software&nbsp;&middot;&nbsp;Products&nbsp;&middot;&nbsp;Websites&nbsp;&middot;&nbsp;Software&nbsp;&middot;&nbsp;Products&nbsp;&middot;&nbsp;</span>
       </div>
     </div>
-
-    <!-- Services preview -->
-    <section class="mh-section">
-      <span class="mh-section-label">Services</span>
-      <h2 class="mh-section-headline">What do you need?</h2>
-      <div class="mh-card">
-        <span class="mh-card-name">Signature website</span>
-        <span class="mh-card-sub">Built from scratch, for you.</span>
-        <div class="mh-card-meta">
-          <div class="mh-card-field">
-            <span class="mh-card-field-label">Investment</span>
-            <span class="mh-card-field-value">From $4,000</span>
-          </div>
-          <div class="mh-card-field">
-            <span class="mh-card-field-label">Timeline</span>
-            <span class="mh-card-field-value">3 wks–1 mo</span>
-          </div>
-        </div>
-        <a href="/services/signature" class="mh-card-cta">View details</a>
-      </div>
-      <a href="/services/" class="mh-see-all">See all services →</a>
-    </section>
 
   </div>
 
@@ -535,7 +407,6 @@
 
     const ham  = document.getElementById('navHam');
     const mob  = document.getElementById('mobileNav');
-    // Sidebar nav
     const scrim = document.createElement('div');
     scrim.className = 'nav-scrim';
     document.body.appendChild(scrim);
@@ -558,29 +429,27 @@
     document.getElementById('navClose')?.addEventListener('click', closeNav);
     mob.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
 
-    /* ── Hero entrance (staggered fade-in) ── */
+    /* ── Hero entrance ── */
     const heroItems = [
       document.querySelector('.lobby-name'),
-      document.querySelector('.lobby-position'),
       document.querySelector('.lobby-tagline'),
     ];
     heroItems.forEach((el, i) => {
-      setTimeout(() => el.classList.add('in'), 160 + i * 190);
+      if (el) setTimeout(() => el.classList.add('in'), 160 + i * 190);
     });
 
-    /* ── Label entrance (settle onto the table) ── */
+    /* ── Label entrance ── */
     const labels = document.querySelectorAll('.lobby-label');
     labels.forEach((label, i) => {
       setTimeout(() => {
         label.classList.add('arrived');
-        /* Mark settled after arrival transition completes */
         setTimeout(() => label.classList.add('settled'), 1000);
       }, 980 + i * 240);
     });
 
     /* ── Hover: reveal background image ── */
-    const bgImgs    = document.querySelectorAll('.lobby-bg-img');
-    const hasHover  = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    const bgImgs   = document.querySelectorAll('.lobby-bg-img');
+    const hasHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
     if (hasHover) {
       labels.forEach(label => {
@@ -594,7 +463,6 @@
       });
     }
   </script>
-  <script src="/js/scroll-reveal.js" defer></script>
 
 </body>
 </html>
