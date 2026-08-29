@@ -78,37 +78,47 @@ img { display: block; max-width: 100%; }
 .nav-links a:hover,
 .nav-links a.active { color: var(--ink); }
 
-/* Desktop Services dropdown */
-.nav-links .nav-svc-dropdown {
+/* ── Nav dropdowns (Projects + Services) ── */
+.nav-dd {
   position: relative;
-}
-.nav-links .nav-svc-toggle {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  padding: 0;
+  gap: 3px;
+}
+.nav-dd-label {
   font-family: 'Poppins', sans-serif;
   font-size: 12px;
   font-weight: 300;
   letter-spacing: 0.08em;
   color: var(--ink-2);
-  cursor: pointer;
+  text-decoration: none;
   transition: color 220ms;
 }
-.nav-links .nav-svc-toggle:hover { color: var(--ink); }
-.nav-links .nav-svc-icon {
+.nav-dd-label:hover { color: var(--ink); }
+.nav-dd-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0 2px;
+  color: var(--ink-3);
+  line-height: 1;
+}
+.nav-dd-icon {
   font-family: 'Poppins', sans-serif;
   font-style: normal;
   font-size: 10px;
   font-weight: 300;
   color: var(--ink-3);
-  line-height: 1;
   display: inline-block;
   transition: transform 260ms ease;
 }
-.nav-links details[open] .nav-svc-icon { transform: rotate(45deg); }
-.nav-links .nav-svc-submenu {
-  display: none;
+.nav-dd-toggle.open .nav-dd-icon { transform: rotate(45deg); }
+
+/* Desktop dropdown panel */
+.nav-links .nav-dd-menu {
   position: absolute;
   top: calc(100% + 16px);
   left: -20px;
@@ -119,34 +129,33 @@ img { display: block; max-width: 100%; }
   box-shadow: 0 20px 60px rgba(0,0,0,.09);
   z-index: 200;
 }
-details[open].nav-svc-dropdown .nav-svc-submenu { display: block; }
-.nav-links .nav-svc-submenu a {
-  display: block !important;
-  padding: 9px 22px !important;
-  font-family: 'Cormorant Garamond', serif !important;
-  font-style: italic !important;
-  font-weight: 300 !important;
-  font-size: 19px !important;
-  color: var(--ink-2) !important;
-  border-bottom: none !important;
-  letter-spacing: 0 !important;
-  text-transform: none !important;
-  transition: color 200ms, padding-left 180ms !important;
+.nav-links .nav-dd-menu[hidden] { display: none; }
+.nav-links .nav-dd-menu a {
+  display: block;
+  padding: 9px 22px;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 19px;
+  color: var(--ink-2);
+  text-decoration: none;
+  letter-spacing: 0;
+  transition: color 200ms, padding-left 180ms;
 }
-.nav-links .nav-svc-submenu a:hover { color: var(--ink) !important; padding-left: 28px !important; }
-.nav-links .nav-svc-submenu a:last-child {
-  margin-top: 6px !important;
-  border-top: 1px solid var(--rule) !important;
-  padding-top: 12px !important;
-  font-family: 'Poppins', sans-serif !important;
-  font-style: normal !important;
-  font-size: 10px !important;
-  font-weight: 400 !important;
-  letter-spacing: 0.1em !important;
-  color: var(--ink-3) !important;
-  text-transform: uppercase !important;
+.nav-links .nav-dd-menu a:hover { color: var(--ink); padding-left: 28px; }
+.nav-links .nav-dd-menu a:last-child {
+  margin-top: 6px;
+  border-top: 1px solid var(--rule);
+  padding-top: 12px;
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--ink-3);
+  text-transform: uppercase;
 }
-.nav-links .nav-svc-submenu a:last-child:hover { padding-left: 22px !important; color: var(--ink) !important; }
+.nav-links .nav-dd-menu a:last-child:hover { color: var(--ink); padding-left: 22px; }
 
 .nav-end {
   display: flex;
@@ -261,43 +270,37 @@ details[open].nav-svc-dropdown .nav-svc-submenu { display: block; }
 .mobile-nav a:hover { color: var(--ink); }
 .mobile-nav a:last-child { border-bottom: none; }
 
-/* ── Mobile nav — Services dropdown ── */
-.nav-svc-dropdown {
+/* Mobile sidebar dropdown */
+.mobile-nav .nav-dd {
+  display: block;
   border-bottom: 1px solid var(--rule);
+  position: relative;
 }
-.nav-svc-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 24px;
+.mobile-nav .nav-dd-label {
+  display: block;
+  padding: 20px 60px 20px 24px;
   font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
   font-size: 16px;
   font-weight: 400;
   letter-spacing: 0;
   color: var(--ink-2);
-  cursor: pointer;
-  list-style: none;
+  text-decoration: none;
   transition: color 200ms;
 }
-.nav-svc-toggle::-webkit-details-marker { display: none; }
-.nav-svc-toggle::marker { display: none; }
-.nav-svc-toggle:hover { color: var(--ink); }
-.nav-svc-icon {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: normal;
-  font-weight: 300;
-  font-size: 20px;
-  color: var(--ink-3);
-  line-height: 1;
-  display: inline-block;
-  transition: transform 300ms cubic-bezier(.16,1,.3,1);
+.mobile-nav .nav-dd-label:hover { color: var(--ink); }
+.mobile-nav .nav-dd-toggle {
+  position: absolute;
+  top: 50%;
+  right: 24px;
+  transform: translateY(-50%);
+  padding: 8px;
 }
-details[open] .nav-svc-icon { transform: rotate(45deg); }
-
-.nav-svc-submenu {
+.mobile-nav .nav-dd-icon { font-size: 18px; }
+.mobile-nav .nav-dd-menu[hidden] { display: none; }
+.mobile-nav .nav-dd-menu {
   border-top: 1px solid var(--rule);
 }
-.mobile-nav .nav-svc-submenu a {
+.mobile-nav .nav-dd-menu a {
   display: block;
   padding: 14px 24px 14px 32px;
   font-family: 'Cormorant Garamond', serif;
@@ -307,9 +310,10 @@ details[open] .nav-svc-icon { transform: rotate(45deg); }
   color: var(--ink-2);
   border-bottom: 1px solid var(--rule);
   letter-spacing: 0;
+  text-decoration: none;
   transition: color 200ms;
 }
-.mobile-nav .nav-svc-submenu a:last-child {
+.mobile-nav .nav-dd-menu a:last-child {
   font-family: 'Poppins', sans-serif;
   font-style: normal;
   font-size: 10px;
@@ -319,9 +323,10 @@ details[open] .nav-svc-icon { transform: rotate(45deg); }
   color: var(--ink-3);
   padding-top: 14px;
   border-top: 1px solid var(--rule);
+  border-bottom: none;
   margin-top: 4px;
 }
-.mobile-nav .nav-svc-submenu a:hover { color: var(--ink); }
+.mobile-nav .nav-dd-menu a:hover { color: var(--ink); }
 
 /* ── Reveal ── */
 .reveal {

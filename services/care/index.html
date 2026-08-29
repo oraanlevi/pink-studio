@@ -512,9 +512,9 @@
 
   <nav class="nav" id="mainNav">
     <div class="nav-links">
-      <details class="nav-svc-dropdown">
-      <summary class="nav-svc-toggle">Projects <span class="nav-svc-icon">+</span></summary>
-      <div class="nav-svc-submenu">
+      <div class="nav-dd">
+      <a class="nav-dd-label" href="/work/">Projects</a><button class="nav-dd-toggle" aria-expanded="false" aria-label="Open Projects menu"><span class="nav-dd-icon">+</span></button>
+      <div class="nav-dd-menu" hidden>
         <a href="/forma/">Forma</a>
         <a href="/verde/">Verde</a>
         <a href="/le-loup/">Le Loup</a>
@@ -523,17 +523,17 @@
         <a href="/june-house/">June House</a>
         <a href="/work/">All Projects</a>
       </div>
-    </details>
-      <details class="nav-svc-dropdown">
-      <summary class="nav-svc-toggle">Services <span class="nav-svc-icon">+</span></summary>
-      <div class="nav-svc-submenu">
+    </div>
+      <div class="nav-dd">
+      <a class="nav-dd-label" href="/services/">Services</a><button class="nav-dd-toggle" aria-expanded="false" aria-label="Open Services menu"><span class="nav-dd-icon">+</span></button>
+      <div class="nav-dd-menu" hidden>
         <a href="/services/signature/">Signature Website</a>
         <a href="/services/refresh/">Refresh</a>
         <a href="/services/audit/">Audit</a>
         <a href="/services/care/">Care</a>
         <a href="/services/">All Services</a>
       </div>
-    </details>
+    </div>
       <a href="/studio/">Studio</a>
     </div>
     <a class="nav-brand" href="/">Pink Studio</a>
@@ -543,9 +543,9 @@
     </button>
   </nav>
   <div class="mobile-nav" id="mobileNav" aria-hidden="true">
-    <details class="nav-svc-dropdown">
-      <summary class="nav-svc-toggle">Projects <span class="nav-svc-icon">+</span></summary>
-      <div class="nav-svc-submenu">
+    <div class="nav-dd">
+      <a class="nav-dd-label" href="/work/">Projects</a><button class="nav-dd-toggle" aria-expanded="false" aria-label="Open Projects menu"><span class="nav-dd-icon">+</span></button>
+      <div class="nav-dd-menu" hidden>
         <a href="/forma/">Forma</a>
         <a href="/verde/">Verde</a>
         <a href="/le-loup/">Le Loup</a>
@@ -554,17 +554,17 @@
         <a href="/june-house/">June House</a>
         <a href="/work/">All Projects</a>
       </div>
-    </details>
-    <details class="nav-svc-dropdown">
-      <summary class="nav-svc-toggle">Services <span class="nav-svc-icon">+</span></summary>
-      <div class="nav-svc-submenu">
+    </div>
+    <div class="nav-dd">
+      <a class="nav-dd-label" href="/services/">Services</a><button class="nav-dd-toggle" aria-expanded="false" aria-label="Open Services menu"><span class="nav-dd-icon">+</span></button>
+      <div class="nav-dd-menu" hidden>
         <a href="/services/signature/">Signature Website</a>
         <a href="/services/refresh/">Refresh</a>
         <a href="/services/audit/">Audit</a>
         <a href="/services/care/">Care</a>
         <a href="/services/">All Services</a>
       </div>
-    </details>
+    </div>
     <a href="/studio/">Studio</a>
     <a href="/contact/" class="mobile-nav-cta">Start a Project</a>
   </div>
@@ -813,5 +813,6 @@
     }, { threshold: 0.04, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
   </script>
+<script src="/nav.js"></script>
 </body>
 </html>

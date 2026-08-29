@@ -355,9 +355,9 @@
 
   <nav class="nav" id="mainNav">
     <div class="nav-links">
-      <details class="nav-svc-dropdown">
-      <summary class="nav-svc-toggle">Projects <span class="nav-svc-icon">+</span></summary>
-      <div class="nav-svc-submenu">
+      <div class="nav-dd">
+      <a class="nav-dd-label" href="/work/">Projects</a><button class="nav-dd-toggle" aria-expanded="false" aria-label="Open Projects menu"><span class="nav-dd-icon">+</span></button>
+      <div class="nav-dd-menu" hidden>
         <a href="/forma/">Forma</a>
         <a href="/verde/">Verde</a>
         <a href="/le-loup/">Le Loup</a>
@@ -366,7 +366,7 @@
         <a href="/june-house/">June House</a>
         <a href="/work/">All Projects</a>
       </div>
-    </details>
+    </div>
       <a href="/services/">Services</a>
       <a href="/studio/" class="active">Studio</a>
     </div>
@@ -377,9 +377,9 @@
     </button>
   </nav>
   <div class="mobile-nav" id="mobileNav" aria-hidden="true">
-    <details class="nav-svc-dropdown">
-      <summary class="nav-svc-toggle">Projects <span class="nav-svc-icon">+</span></summary>
-      <div class="nav-svc-submenu">
+    <div class="nav-dd">
+      <a class="nav-dd-label" href="/work/">Projects</a><button class="nav-dd-toggle" aria-expanded="false" aria-label="Open Projects menu"><span class="nav-dd-icon">+</span></button>
+      <div class="nav-dd-menu" hidden>
         <a href="/forma/">Forma</a>
         <a href="/verde/">Verde</a>
         <a href="/le-loup/">Le Loup</a>
@@ -388,7 +388,7 @@
         <a href="/june-house/">June House</a>
         <a href="/work/">All Projects</a>
       </div>
-    </details>
+    </div>
     <a href="/services/">Services</a>
     <a href="/studio/" class="active">Studio</a>
     <a href="/contact/" class="mobile-nav-cta">Start a Project</a>
@@ -514,6 +514,7 @@
     }, { threshold: 0.06 });
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
   </script>
+<script src="/nav.js"></script>
 
 </body>
 </html>
