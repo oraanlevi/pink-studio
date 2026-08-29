@@ -180,19 +180,22 @@
 
     /* ── Footer note ── */
     .sg-note {
-      padding: 40px 32px 48px;
+      padding: 56px 72px 64px;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: space-between;
-      gap: 24px;
+      gap: 16px;
       border-top: 1px solid var(--rule);
       margin-top: 8px;
     }
     .sg-note span {
-      font-family: 'Poppins', sans-serif;
-      font-size: 13px;
+      font-family: 'Cormorant Garamond', serif;
       font-weight: 300;
-      color: var(--ink-3);
+      font-style: italic;
+      font-size: clamp(28px, 3.5vw, 48px);
+      color: var(--ink-2);
+      text-align: center;
+      letter-spacing: 0.01em;
     }
     .sg-note a {
       font-family: 'Poppins', sans-serif;
@@ -200,10 +203,15 @@
       font-weight: 500;
       color: var(--ink);
       text-decoration: none;
-      white-space: nowrap;
-      transition: opacity 200ms;
+      display: block;
+      width: 100%;
+      max-width: 480px;
+      text-align: center;
+      padding: 16px 24px;
+      border: 1px solid var(--ink);
+      transition: background 220ms, color 220ms;
     }
-    .sg-note a:hover { opacity: 0.45; }
+    .sg-note a:hover { background: var(--ink); color: var(--bg); }
 
     /* ── Mobile ── */
     @media (max-width: 860px) {
@@ -219,10 +227,11 @@
       .sg-detail-sub { margin-bottom: 12px; }
       .sg-detail-meta { margin-bottom: 20px; }
       .sg-note {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
-        padding: 32px 20px 40px;
+        padding: 48px 24px 56px;
+        gap: 16px;
+      }
+      .sg-note a {
+        max-width: none;
       }
     }
 
