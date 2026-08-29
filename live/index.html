@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="/assets/favicon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Live Work · Pink Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+  <style>
+
+    .live-page-head {
+      padding: 56px 24px 32px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .live-page-eyebrow {
+      display: block;
+      font-family: 'Poppins', sans-serif;
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      margin-bottom: 10px;
+    }
+    .live-page-title {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(36px, 8vw, 56px);
+      color: var(--ink);
+      line-height: 1.1;
+    }
+    .live-page-sub {
+      display: block;
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--ink-3);
+      margin-top: 12px;
+    }
+
+    .live-list {
+      border-bottom: 1px solid var(--rule);
+    }
+    .live-entry {
+      padding: 28px 24px;
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      text-decoration: none;
+    }
+    .live-entry:last-child { border-bottom: none; }
+    .live-entry-name {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(24px, 6vw, 32px);
+      color: var(--ink);
+      line-height: 1.1;
+    }
+    .live-entry-desc {
+      display: block;
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--ink-3);
+      line-height: 1.65;
+    }
+    .live-entry-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-2);
+      text-decoration: none;
+      margin-top: 4px;
+      transition: color 200ms;
+    }
+    .live-entry-link:hover { color: var(--ink); }
+
+    .live-page-back {
+      display: block;
+      padding: 28px 24px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 12px;
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      color: var(--ink-3);
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 200ms;
+    }
+    .live-page-back:hover { color: var(--ink); }
+
+  </style>
+</head>
+<body>
+
+  <nav class="nav" id="mainNav">
+    <div class="nav-links">
+      <a href="/work/" class="active">Projects</a>
+      <details class="nav-svc-dropdown">
+      <summary class="nav-svc-toggle">Services <span class="nav-svc-icon">+</span></summary>
+      <div class="nav-svc-submenu">
+        <a href="/services/signature/">Signature Website</a>
+        <a href="/services/refresh/">Refresh</a>
+        <a href="/services/audit/">Audit</a>
+        <a href="/services/care/">Care</a>
+        <a href="/services/">All Services</a>
+      </div>
+    </details>
+      <a href="/studio/">Studio</a>
+    </div>
+    <a class="nav-brand" href="/">Pink Studio</a>
+    <div class="nav-end"><a href="/contact/">Start a Project</a></div>
+    <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+    <a href="/work/" class="active">Projects</a>
+    <details class="nav-svc-dropdown">
+      <summary class="nav-svc-toggle">Services <span class="nav-svc-icon">+</span></summary>
+      <div class="nav-svc-submenu">
+        <a href="/services/signature/">Signature Website</a>
+        <a href="/services/refresh/">Refresh</a>
+        <a href="/services/audit/">Audit</a>
+        <a href="/services/care/">Care</a>
+        <a href="/services/">All Services</a>
+      </div>
+    </details>
+    <a href="/studio/">Studio</a>
+    <a href="/contact/" class="mobile-nav-cta">Start a Project</a>
+  </div>
+
+  <div class="live-page-head reveal">
+    <span class="live-page-eyebrow">Pink Web Studio</span>
+    <span class="live-page-title">Live Work</span>
+    <span class="live-page-sub">Client sites in the wild.</span>
+  </div>
+
+  <div class="live-list">
+
+    <div class="live-entry reveal">
+      <span class="live-entry-name">Santa Monica Primary Care</span>
+      <span class="live-entry-desc">Healthcare website for a primary care clinic in Santa Monica. Clean, trustworthy design built to convert new patients and clearly communicate services.</span>
+      <a class="live-entry-link" href="https://santamonicaprimarycare.com" target="_blank" rel="noopener">Visit site ↗&#xFE0E;</a>
+    </div>
+
+    <div class="live-entry reveal">
+      <span class="live-entry-name">Right Choice Locksmith</span>
+      <span class="live-entry-desc">Service business website for a locksmith in Dallas. Built for local SEO, fast load times, and clear calls to action for emergency service calls.</span>
+      <a class="live-entry-link" href="https://rightchoicelocksmithdallas.com" target="_blank" rel="noopener">Visit site ↗&#xFE0E;</a>
+    </div>
+
+    <div class="live-entry reveal">
+      <span class="live-entry-name">Shabon LA</span>
+      <span class="live-entry-desc">E-commerce experience for a Los Angeles beauty brand on Shopify. Elevated product presentation with a clean, editorial shopping experience.</span>
+      <a class="live-entry-link" href="https://shabonla.myshopify.com" target="_blank" rel="noopener">Visit site ↗&#xFE0E;</a>
+    </div>
+
+    <div class="live-entry reveal">
+      <span class="live-entry-name">Twice Upon Us</span>
+      <span class="live-entry-desc">Platform website with a focus on clear user flows, intuitive navigation, and a design system built to scale with the product.</span>
+      <a class="live-entry-link" href="https://twiceuponus.com" target="_blank" rel="noopener">Visit site ↗&#xFE0E;</a>
+    </div>
+
+    <div class="live-entry reveal">
+      <span class="live-entry-name">Dr. Bretsky</span>
+      <span class="live-entry-desc">Medical practice website with a professional, approachable aesthetic. Built to establish trust and guide patients through services and booking.</span>
+      <a class="live-entry-link" href="https://drbretsky.com" target="_blank" rel="noopener">Visit site ↗&#xFE0E;</a>
+    </div>
+
+    <div class="live-entry reveal">
+      <span class="live-entry-name">Doctor Italy 24</span>
+      <span class="live-entry-desc">International medical platform serving English-speaking patients across Italy. Multilingual design built for clarity, trust, and global accessibility.</span>
+      <a class="live-entry-link" href="https://www.doctoritaly24.it/en/" target="_blank" rel="noopener">Visit site ↗&#xFE0E;</a>
+    </div>
+
+  </div>
+
+  <a class="live-page-back" href="/work/">← Back to Projects</a>
+
+  <footer class="site-footer">
+    <div class="footer-brand-wrap">
+      <span class="footer-brand">Pink Web Studio</span>
+      <span class="footer-brand-sub">Los Angeles &middot; Currently Booking</span>
+    </div>
+    <div class="footer-social">
+      <div class="footer-social-icons">
+        <a href="https://instagram.com/oraanlevi" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/oraan-levi-898a89200/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+      </div>
+      <a href="mailto:studio@pinkwebstudio.com" class="footer-email">studio@pinkwebstudio.com</a>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
+
+    const ham = document.getElementById('navHam');
+    const mob = document.getElementById('mobileNav');
+    const scrim = document.createElement('div');
+    scrim.className = 'nav-scrim';
+    document.body.appendChild(scrim);
+    const navHeader = document.createElement('div');
+    navHeader.className = 'mobile-nav-header';
+    navHeader.innerHTML = '<button class="mobile-nav-close" id="navClose" aria-label="Close menu">&#215;</button>';
+    mob.insertBefore(navHeader, mob.firstChild);
+    function openNav() {
+      ham.classList.add('open'); mob.classList.add('open'); scrim.classList.add('open');
+      ham.setAttribute('aria-expanded', 'true'); mob.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeNav() {
+      ham.classList.remove('open'); mob.classList.remove('open'); scrim.classList.remove('open');
+      ham.setAttribute('aria-expanded', 'false'); mob.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+    ham.addEventListener('click', () => { mob.classList.contains('open') ? closeNav() : openNav(); });
+    scrim.addEventListener('click', closeNav);
+    document.getElementById('navClose')?.addEventListener('click', closeNav);
+    mob.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
+
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.06 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
+
+</body>
+</html>
