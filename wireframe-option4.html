@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wireframe — Option 4</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #FAFAF8; color: #1a1917; font-family: 'Poppins', sans-serif; max-width: 390px; margin: 0 auto; border-left: 1px solid #e0e0dc; border-right: 1px solid #e0e0dc; min-height: 100vh; }
+
+    /* Label */
+    .wf-label { background: #1a1917; color: white; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 12px; text-align: center; font-family: 'Poppins', sans-serif; }
+
+    /* Nav */
+    .nav { height: 56px; border-bottom: 1px solid rgba(26,25,23,.1); display: flex; align-items: center; justify-content: center; position: relative; }
+    .nav-brand { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 20px; font-weight: 300; }
+    .nav-ham { position: absolute; right: 16px; display: flex; flex-direction: column; gap: 4px; }
+    .nav-ham span { display: block; width: 16px; height: 1px; background: #1a1917; }
+
+    /* Tight hero — eyebrow only */
+    .hero { padding: 32px 24px 28px; border-bottom: 1px solid rgba(26,25,23,.1); }
+    .hero-eyebrow { font-size: 11px; font-weight: 300; letter-spacing: 0.08em; color: rgba(26,25,23,.4); display: block; margin-bottom: 6px; }
+    .hero-tagline { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 28px; font-weight: 300; color: rgba(26,25,23,.55); line-height: 1.2; }
+
+    /* Work cards — full bleed, stacked */
+    .work-stack { display: flex; flex-direction: column; }
+    .work-card { position: relative; overflow: hidden; min-height: 260px; border-bottom: 1px solid rgba(26,25,23,.1); background: #e0e0dc; }
+    .work-card-img { width: 100%; height: 260px; object-fit: cover; display: block; }
+    .work-card-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 30%, rgba(0,0,0,.72) 100%); }
+    .work-card-body { position: absolute; bottom: 0; left: 0; right: 0; padding: 20px 20px 24px; }
+    .work-card-eyebrow { display: block; font-size: 9px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,.5); margin-bottom: 4px; }
+    .work-card-name { display: block; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 28px; font-weight: 300; color: #fff; line-height: 1.1; margin-bottom: 4px; }
+    .work-card-sub { display: block; font-size: 11px; font-weight: 300; color: rgba(255,255,255,.55); }
+
+    /* Placeholder */
+    .img-placeholder { width: 100%; height: 260px; background: #ddd; display: flex; align-items: center; justify-content: center; }
+    .img-placeholder span { font-size: 11px; color: rgba(26,25,23,.3); letter-spacing: 0.08em; text-transform: uppercase; }
+
+    /* Bottom CTA */
+    .bottom-cta { padding: 32px 24px 40px; display: flex; flex-direction: column; gap: 10px; border-top: 1px solid rgba(26,25,23,.1); }
+    .cta-label { font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(26,25,23,.35); text-align: center; margin-bottom: 4px; }
+    .cta-primary { display: block; padding: 16px 24px; border: 1px solid #1a1917; font-size: 13px; font-weight: 500; text-align: center; color: #1a1917; }
+    .cta-secondary { display: block; padding: 16px 24px; border: 1px solid rgba(26,25,23,.1); font-size: 13px; font-weight: 300; text-align: center; color: rgba(26,25,23,.5); }
+
+    /* Marquee */
+    .marquee-wrap { border-top: 1px solid rgba(26,25,23,.1); border-bottom: 1px solid rgba(26,25,23,.1); padding: 12px 24px; overflow: hidden; }
+    .marquee-text { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 15px; color: rgba(26,25,23,.4); white-space: nowrap; }
+
+    /* Footer */
+    .footer { padding: 28px 24px; }
+    .footer-brand { font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; display: block; margin-bottom: 4px; }
+    .footer-sub { font-size: 11px; font-weight: 300; color: rgba(26,25,23,.5); }
+  </style>
+</head>
+<body>
+
+  <div class="wf-label">Option 4 — Work First, CTA Last</div>
+
+  <nav class="nav">
+    <span class="nav-brand">Pink</span>
+    <div class="nav-ham"><span></span><span></span><span></span></div>
+  </nav>
+
+  <div class="hero">
+    <span class="hero-eyebrow">Pink Web Studio · Los Angeles</span>
+    <div class="hero-tagline">Websites. Software. Products.</div>
+  </div>
+
+  <div class="work-stack">
+
+    <div class="work-card">
+      <div class="img-placeholder"><span>Verde · image</span></div>
+      <div class="work-card-overlay"></div>
+      <div class="work-card-body">
+        <span class="work-card-eyebrow">Skincare &amp; Beauty</span>
+        <span class="work-card-name">Verde</span>
+        <span class="work-card-sub">Pink Template 01</span>
+      </div>
+    </div>
+
+    <div class="work-card">
+      <div class="img-placeholder"><span>Forma · image</span></div>
+      <div class="work-card-overlay"></div>
+      <div class="work-card-body">
+        <span class="work-card-eyebrow">Interior Design Software</span>
+        <span class="work-card-name">Forma</span>
+        <span class="work-card-sub">Operations platform</span>
+      </div>
+    </div>
+
+    <div class="work-card">
+      <div class="img-placeholder"><span>Le Loup · image</span></div>
+      <div class="work-card-overlay"></div>
+      <div class="work-card-body">
+        <span class="work-card-eyebrow">Restaurant · Los Angeles</span>
+        <span class="work-card-name">Le Loup</span>
+        <span class="work-card-sub">Custom website</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="marquee-wrap">
+    <div class="marquee-text">Websites · Software · Products · Websites · Software · Products ·</div>
+  </div>
+
+  <div class="bottom-cta">
+    <span class="cta-label">Ready to start?</span>
+    <a class="cta-primary" href="#">Start a Project</a>
+    <a class="cta-secondary" href="#">View all projects →</a>
+  </div>
+
+  <div class="footer">
+    <span class="footer-brand">Pink Web Studio</span>
+    <span class="footer-sub">Los Angeles · Currently Booking</span>
+  </div>
+
+</body>
+</html>
