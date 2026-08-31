@@ -37,34 +37,53 @@
         margin-bottom: 40px;
       }
 
-      /* ── Testimonials ── */
-      .contact-testimonials {
+      /* ── Quiz card ── */
+      .contact-quiz {
         border-top: 1px solid var(--rule);
         border-bottom: 1px solid var(--rule);
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-      }
-      .contact-quote {
-        padding: 56px 64px;
+        padding: 72px 64px;
         display: flex;
         flex-direction: column;
-        gap: 12px;
+        align-items: center;
+        gap: 14px;
+        text-align: center;
       }
-      .contact-quote:first-child {
-        border-right: 1px solid var(--rule);
-      }
-      .contact-quote-text {
+      .contact-quiz-eye {
         font-family: 'Poppins', sans-serif;
-        font-size: clamp(14px, 1.4vw, 18px);
+        font-size: 11px;
         font-weight: 300;
-        line-height: 1.8;
-        color: var(--ink);
+        letter-spacing: 0.04em;
+        color: var(--ink-3);
       }
-      .contact-quote-name {
+      .contact-quiz-heading {
+        font-family: 'Cormorant Garamond', serif;
+        font-style: italic;
+        font-weight: 300;
+        font-size: clamp(26px, 3vw, 40px);
+        color: var(--ink);
+        line-height: 1.2;
+      }
+      .contact-quiz-btn {
+        display: inline-block;
+        padding: 14px 32px;
+        background: var(--ink);
+        color: var(--bg);
         font-family: 'Poppins', sans-serif;
-        font-size: 13px;
-        font-weight: 400;
-        color: #D4537E;
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        margin-top: 8px;
+        align-self: center;
+        transition: opacity 200ms;
+      }
+      .contact-quiz-btn:hover { opacity: 0.82; }
+      @media (max-width: 860px) {
+        .contact-quiz { padding: 40px 24px; }
+        .contact-quiz-btn { width: 100%; text-align: center; align-self: stretch; }
       }
 
       /* ── Two paths ── */
@@ -316,16 +335,11 @@
       <span class="contact-headline">Start a Project</span>
     </div>
 
-    <!-- Testimonials -->
-    <div class="contact-testimonials">
-      <div class="contact-quote reveal">
-        <p class="contact-quote-text">"Working with Pink was the best decision we made for our brand. The site launched on time, looked incredible, and our clients noticed immediately."</p>
-        <span class="contact-quote-name">— Dr. B</span>
-      </div>
-      <div class="contact-quote reveal">
-        <p class="contact-quote-text">"Honestly she killed it. I messaged her with all my ideas and she was so quick to add to the site. She understood the vision."</p>
-        <span class="contact-quote-name">— Mike C</span>
-      </div>
+    <!-- Quiz card -->
+    <div class="contact-quiz reveal">
+      <span class="contact-quiz-eye">Not sure where to start?</span>
+      <span class="contact-quiz-heading">Start somewhere.</span>
+      <button class="contact-quiz-btn" id="quizTrigger">Take the Quiz &rarr;</button>
     </div>
 
     <!-- Two Paths -->
@@ -458,5 +472,6 @@
       }
     </script>
 <script src="/nav.js"></script>
+<script src="/quiz.js"></script>
   </body>
 </html>

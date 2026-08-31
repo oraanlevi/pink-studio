@@ -341,6 +341,109 @@
     }
     .sm-secondary:hover { border-color: var(--ink-2); color: var(--ink); }
 
+    /* ── Mobile reviews ── */
+    .sm-reviews {
+      padding: 56px 28px 64px;
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+    .sm-reviews-eye {
+      display: block;
+      font-family: 'Poppins', sans-serif;
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      margin-bottom: 32px;
+    }
+    .sm-review {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .sm-review:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .sm-review-stars {
+      display: flex;
+      gap: 3px;
+    }
+    .sm-review-star {
+      width: 12px;
+      height: 12px;
+      color: #D4537E;
+    }
+    .sm-review-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(20px, 5.5vw, 26px);
+      color: var(--ink);
+      line-height: 1.45;
+      margin: 0;
+    }
+    .sm-review-name {
+      font-family: 'Poppins', sans-serif;
+      font-size: 11px;
+      font-weight: 400;
+      color: #D4537E;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── Mobile quiz card ── */
+    .sm-quiz-card {
+      margin: 0 28px;
+      padding: 32px 28px 36px;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+    .sm-quiz-eye {
+      font-family: 'Poppins', sans-serif;
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+    }
+    .sm-quiz-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(22px, 6vw, 28px);
+      color: var(--ink);
+      line-height: 1.2;
+    }
+    .sm-quiz-btn {
+      display: block;
+      width: 100%;
+      padding: 14px 24px;
+      background: var(--ink);
+      color: var(--bg);
+      font-family: 'Poppins', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-align: center;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: opacity 200ms;
+      text-decoration: none;
+    }
+    .sm-quiz-btn:hover { opacity: 0.82; }
+
     /* ── Mobile breakpoint ── */
     @media (max-width: 860px) {
       .studio { display: none; }
@@ -420,6 +523,7 @@
       <a class="studio-cta" href="/contact/">Start a Project</a>
       <a class="studio-cta-secondary" href="/work/">View Projects</a>
       <a class="studio-cta-secondary" href="/services/">Services</a>
+      <a class="studio-cta-secondary" href="/reviews/">Read Reviews →</a>
     </div>
   </div>
 
@@ -446,6 +550,43 @@
       <p class="sm-fragment">The brands I admired most said one thing, clearly.</p>
       <p class="sm-fragment sm-fragment--dim">That became the foundation of every website I build.</p>
       <p class="sm-fragment">Every detail matters.</p>
+    </div>
+
+    <!-- Reviews -->
+    <div class="sm-reviews reveal">
+      <span class="sm-reviews-eye">Client Words</span>
+
+      <div class="sm-review">
+        <div class="sm-review-stars">
+          <svg class="sm-review-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="sm-review-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="sm-review-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="sm-review-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="sm-review-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="sm-review-text">"Working with Pink was the best decision we made for our brand. The site launched on time, looked incredible, and our clients noticed immediately."</p>
+        <span class="sm-review-name">— Dr. B</span>
+      </div>
+
+      <div class="sm-review">
+        <div class="sm-review-stars">
+          <svg class="sm-review-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="sm-review-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="sm-review-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="sm-review-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="sm-review-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="sm-review-text">"Honestly she killed it. I messaged her with all my ideas and she was so quick to add to the site. She understood the vision."</p>
+        <span class="sm-review-name">— Mike C</span>
+      </div>
+
+    </div>
+
+    <!-- Quiz card -->
+    <div class="sm-quiz-card reveal">
+      <span class="sm-quiz-eye">Not sure where to start?</span>
+      <span class="sm-quiz-heading">Find your perfect service in 2 minutes.</span>
+      <button class="sm-quiz-btn" id="quizTrigger">Take the Quiz &rarr;</button>
     </div>
 
     <!-- Closing -->
@@ -515,6 +656,7 @@
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
   </script>
 <script src="/nav.js"></script>
+<script src="/quiz.js"></script>
 
 </body>
 </html>
