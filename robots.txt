@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Disallow: /studio/proposal/
+Disallow: /studio/contract/
+
+Sitemap: https://www.pinkwebstudio.com/sitemap.xml
