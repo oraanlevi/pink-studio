@@ -231,6 +231,17 @@
     }
     .sg-note a:hover { opacity: 0.82; }
 
+    .sg-note-reviews {
+      font-family: 'Poppins', sans-serif;
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      color: var(--ink-3);
+      text-decoration: none;
+      transition: color 220ms;
+    }
+    .sg-note-reviews:hover { color: var(--ink-2); }
+
     /* ── Mobile ── */
     @media (max-width: 860px) {
       .sg-header { padding: 40px 16px 20px; }
@@ -283,7 +294,7 @@
     </div>
       <a href="/studio/">Studio</a>
     </div>
-    <a class="nav-brand" href="/">Pink Studio</a>
+    <a class="nav-brand" href="/">Pink Web Studio</a>
     <div class="nav-end"><a href="/contact/">Start a Project</a></div>
     <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -318,7 +329,7 @@
 
   <div class="sg-header reveal">
     <span class="sg-eyebrow">Pink Web Studio</span>
-    <span class="sg-headline">Services</span>
+    <h1 class="sg-headline">Services</h1>
   </div>
 
   <div class="sg-wrap">
@@ -402,6 +413,7 @@
     <span class="sg-note-eye">Not sure where to start?</span>
     <span>Start somewhere.</span>
     <a href="/contact/" id="quizTrigger">Take the Quiz →</a>
+    <a href="/reviews/" class="sg-note-reviews">Read client reviews →</a>
   </div>
 
   <footer class="site-footer">
