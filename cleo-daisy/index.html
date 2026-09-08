@@ -195,7 +195,7 @@
       .cd-duo-img img {
         width: 100%;
         display: block;
-        aspect-ratio: 4/3;
+        aspect-ratio: 16/9;
         object-fit: cover;
         object-position: center top;
         transition: transform 600ms cubic-bezier(.16,1,.3,1);
@@ -247,44 +247,34 @@
       }
       .cd-detail-img:hover img { transform: scale(1.04); }
 
-      /* ── Mobile trio ── */
-      .cd-mobile {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 0;
+      /* ── Centered editorial image ── */
+      .cd-editorial {
+        padding: 56px 72px;
         border-bottom: 1px solid var(--rule);
-        background: #f0ede8;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #f5f2ee;
       }
-      .cd-mobile-frame {
-        overflow: hidden;
-        border-right: 1px solid var(--rule);
-        line-height: 0;
-        background: #e0dcd5;
-      }
-      .cd-mobile-frame:last-child { border-right: none; }
-      .cd-mobile-frame img {
+      .cd-editorial img {
+        max-width: 400px;
         width: 100%;
         display: block;
-        aspect-ratio: 9/19;
-        object-fit: cover;
-        object-position: center top;
-        transition: transform 500ms cubic-bezier(.16,1,.3,1);
       }
-      .cd-mobile-frame:hover img { transform: scale(1.03); }
 
       /* ── Closing image ── */
       .cd-close {
         border-bottom: 1px solid var(--rule);
         overflow: hidden;
-        background: #111;
+        background: #f0ece6;
         line-height: 0;
+        display: flex;
+        justify-content: center;
       }
       .cd-close img {
+        max-width: 600px;
         width: 100%;
         display: block;
-        aspect-ratio: 16/9;
-        object-fit: cover;
-        object-position: center;
       }
 
       /* ── CTA ── */
@@ -396,17 +386,15 @@
         .cd-caption { padding: 40px 24px; }
         .cd-caption-text { font-size: clamp(20px, 5.5vw, 28px); }
 
+        .cd-editorial { padding: 32px 24px; }
+        .cd-editorial img { max-width: 280px; }
+
         .cd-detail { grid-template-columns: 1fr; gap: 16px; padding: 32px 24px; }
         .cd-detail-img img { aspect-ratio: 4/3; }
         .cd-detail-img:hover img { transform: none; }
 
-        .cd-mobile { grid-template-columns: 1fr; }
-        .cd-mobile-frame { border-right: none; border-bottom: 1px solid var(--rule); }
-        .cd-mobile-frame:last-child { border-bottom: none; }
-        .cd-mobile-frame img { aspect-ratio: 9/16; }
-        .cd-mobile-frame:hover img { transform: none; }
-
-        .cd-close img { aspect-ratio: 4/3; }
+        .cd-close { padding: 0; }
+        .cd-close img { max-width: 100%; }
 
         .cd-cta { padding: 56px 24px; }
         .cd-cta-sub { font-size: 13px; }
@@ -487,7 +475,7 @@
 
     <!-- Hero -->
     <section class="cd-hero reveal">
-      <img class="cd-hero-bg" src="/assets/cleo-hero.png" alt="" aria-hidden="true" />
+      <img class="cd-hero-bg" src="/assets/cleo/closing.png" alt="" aria-hidden="true" />
       <div class="cd-hero-overlay" aria-hidden="true"></div>
       <div class="cd-hero-content">
         <div class="cd-concept-badge">
@@ -521,19 +509,24 @@
       </div>
     </div>
 
-    <!-- Full-width desktop hero screen -->
+    <!-- Full-width homepage screen -->
     <div class="cd-full reveal">
-      <img src="/assets/cleo-1.png" alt="Cleo Daisy homepage — full desktop view" />
+      <img src="/assets/cleo/cleohero.png" alt="Cleo Daisy homepage — full desktop view" />
     </div>
 
-    <!-- Desktop screens 2-up -->
+    <!-- Look screens 2-up -->
     <div class="cd-duo reveal">
       <div class="cd-duo-img">
-        <img src="/assets/cleo-2.png" alt="Cleo Daisy editorial layout" />
+        <img src="/assets/cleo/cleolook3.png" alt="Cleo Daisy — Look 01: The Draped Dress" />
       </div>
       <div class="cd-duo-img">
-        <img src="/assets/cleo-3.png" alt="Cleo Daisy collection page" />
+        <img src="/assets/cleo/cleolook1.png" alt="Cleo Daisy — Look 02: The Column Skirt" />
       </div>
+    </div>
+
+    <!-- Third look screen full-width -->
+    <div class="cd-full reveal">
+      <img src="/assets/cleo/celolook2.png" alt="Cleo Daisy — Look 03: The Veil Top" />
     </div>
 
     <!-- Caption -->
@@ -541,32 +534,24 @@
       <p class="cd-caption-text">Typography, pacing, and negative space — the way a magazine art director would use them.</p>
     </div>
 
-    <!-- Detail / interaction screens -->
-    <div class="cd-detail reveal">
-      <div class="cd-detail-img">
-        <img src="/assets/cleo-4.png" alt="Cleo Daisy detail — typography" />
-      </div>
-      <div class="cd-detail-img">
-        <img src="/assets/cleo-5.png" alt="Cleo Daisy detail — interaction" />
-      </div>
+    <!-- Editorial photography — centered -->
+    <div class="cd-editorial reveal">
+      <img src="/assets/cleo/editorial.png" alt="Cleo Daisy — editorial photography" />
     </div>
 
-    <!-- Mobile screens -->
-    <div class="cd-mobile reveal">
-      <div class="cd-mobile-frame">
-        <img src="/assets/cleo-m1.png" alt="Cleo Daisy — mobile home" />
+    <!-- Raw portrait 2-up -->
+    <div class="cd-detail reveal">
+      <div class="cd-detail-img">
+        <img src="/assets/cleo/look-01.png" alt="Cleo Daisy — The Draped Dress" />
       </div>
-      <div class="cd-mobile-frame">
-        <img src="/assets/cleo-m2.png" alt="Cleo Daisy — mobile collection" />
-      </div>
-      <div class="cd-mobile-frame">
-        <img src="/assets/cleo-m3.png" alt="Cleo Daisy — mobile detail" />
+      <div class="cd-detail-img">
+        <img src="/assets/cleo/look-02.png" alt="Cleo Daisy — The Veil Top" />
       </div>
     </div>
 
     <!-- Closing image -->
     <div class="cd-close reveal">
-      <img src="/assets/cleo-close.png" alt="Cleo Daisy — closing" />
+      <img src="/assets/cleo/closing.png" alt="Cleo Daisy — closing" />
     </div>
 
     <!-- CTA -->
