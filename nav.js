@@ -8,6 +8,7 @@
     { label: 'West & Stone', href: '/west-and-stone/', img: '/assets/stone.png',       cat: 'Website \u00b7 Home Goods & Interior Objects',  desc: 'Private, architectural, deliberate.' },
     { label: 'C\u00e9leste', href: '/celeste/',        img: '/assets/cel.png',         cat: 'Website \u00b7 Medical Aesthetics',             desc: 'Calm, trusted, quietly elegant.' },
     { label: 'June House',   href: '/june-house/',     img: '/assets/fashion.png',     cat: 'Website \u00b7 Interior Design Studio',         desc: 'Timeless, collected, quietly considered.' },
+    { label: 'Cleo Daisy',  href: '/cleo-daisy/',     img: '/assets/cleo-card.png',   cat: 'Fashion Editorial \u00b7 Concept Project',       desc: 'Art direction, typography, and interaction — with full creative freedom.' },
   ];
 
   var SERVICES = [

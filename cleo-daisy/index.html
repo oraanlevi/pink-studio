@@ -1,0 +1,647 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/assets/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cleo Daisy · Pink Web Studio</title>
+    <meta name="description" content="Cleo Daisy — an editorial fashion concept by Pink Web Studio, exploring art direction, typography, and interaction design for fashion and luxury brands." />
+    <link rel="canonical" href="https://www.pinkwebstudio.com/cleo-daisy/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Cleo Daisy · Pink Web Studio" />
+    <meta property="og:description" content="Cleo Daisy — an editorial fashion concept by Pink Web Studio, exploring art direction, typography, and interaction design for fashion and luxury brands." />
+    <meta property="og:url" content="https://www.pinkwebstudio.com/cleo-daisy/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+    <style>
+
+      /* ── Hero ── */
+      .cd-hero {
+        position: relative;
+        min-height: calc(100vh - var(--nav-h));
+        background: #111;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 0 72px 72px;
+      }
+      .cd-hero-bg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
+        display: block;
+        opacity: 0.72;
+      }
+      .cd-hero-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(0,0,0,.72) 0%, rgba(0,0,0,.2) 55%, rgba(0,0,0,.08) 100%);
+      }
+      .cd-hero-content {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+      }
+      .cd-concept-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 20px;
+        align-self: flex-start;
+      }
+      .cd-concept-pill {
+        display: inline-block;
+        padding: 4px 10px;
+        border: 1px solid rgba(255,255,255,.3);
+        border-radius: 999px;
+        font-family: 'Poppins', sans-serif;
+        font-size: 9px;
+        font-weight: 400;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,.7);
+      }
+      .cd-eyebrow {
+        font-family: 'Poppins', sans-serif;
+        font-size: 11px;
+        font-weight: 300;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,.5);
+        display: block;
+        margin-bottom: 14px;
+      }
+      .cd-hero-title {
+        display: block;
+        font-family: 'Cormorant Garamond', serif;
+        font-style: italic;
+        font-size: clamp(72px, 10vw, 140px);
+        font-weight: 300;
+        color: #fff;
+        line-height: 0.88;
+        letter-spacing: -2px;
+        margin: 0 0 40px;
+      }
+      .cd-hero-desc {
+        font-family: 'Poppins', sans-serif;
+        font-size: 14px;
+        font-weight: 300;
+        color: rgba(255,255,255,.65);
+        line-height: 1.75;
+        max-width: 40ch;
+        margin-bottom: 36px;
+      }
+      .cd-hero-back {
+        display: inline-block;
+        padding: 13px 22px;
+        border: 1px solid rgba(255,255,255,.25);
+        font-family: 'Poppins', sans-serif;
+        font-size: 12px;
+        font-weight: 300;
+        color: rgba(255,255,255,.7);
+        text-decoration: none;
+        align-self: flex-start;
+        transition: border-color 220ms, color 220ms;
+      }
+      .cd-hero-back:hover { border-color: rgba(255,255,255,.6); color: #fff; }
+
+      /* ── Intro strip ── */
+      .cd-intro {
+        display: grid;
+        grid-template-columns: 1fr 320px;
+        gap: 0;
+        border-bottom: 1px solid var(--rule);
+      }
+      .cd-intro-desc {
+        padding: 72px 64px 72px 72px;
+        border-right: 1px solid var(--rule);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .cd-intro-p {
+        font-family: 'Cormorant Garamond', serif;
+        font-style: italic;
+        font-weight: 300;
+        font-size: clamp(20px, 2.2vw, 30px);
+        color: var(--ink-2);
+        line-height: 1.5;
+        max-width: 52ch;
+      }
+      .cd-intro-meta {
+        padding: 72px 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 36px;
+        justify-content: center;
+      }
+      .cd-meta-label {
+        display: block;
+        font-family: 'Poppins', sans-serif;
+        font-size: 9px;
+        font-weight: 400;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--ink-3);
+        margin-bottom: 8px;
+      }
+      .cd-meta-value {
+        display: block;
+        font-family: 'Poppins', sans-serif;
+        font-size: 13px;
+        font-weight: 300;
+        color: var(--ink);
+        line-height: 1.8;
+      }
+
+      /* ── Full-width image ── */
+      .cd-full {
+        border-bottom: 1px solid var(--rule);
+        overflow: hidden;
+        background: #111;
+        line-height: 0;
+      }
+      .cd-full img {
+        width: 100%;
+        display: block;
+        aspect-ratio: 16/7;
+        object-fit: cover;
+        object-position: center top;
+      }
+
+      /* ── 2-column image grid ── */
+      .cd-duo {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        border-bottom: 1px solid var(--rule);
+        background: #f5f3f0;
+        gap: 0;
+      }
+      .cd-duo-img {
+        overflow: hidden;
+        line-height: 0;
+        border-right: 1px solid var(--rule);
+        background: #e8e4de;
+      }
+      .cd-duo-img:last-child { border-right: none; }
+      .cd-duo-img img {
+        width: 100%;
+        display: block;
+        aspect-ratio: 4/3;
+        object-fit: cover;
+        object-position: center top;
+        transition: transform 600ms cubic-bezier(.16,1,.3,1);
+      }
+      .cd-duo-img:hover img { transform: scale(1.03); }
+
+      /* ── Caption ── */
+      .cd-caption {
+        padding: 64px 72px;
+        border-bottom: 1px solid var(--rule);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .cd-caption-text {
+        font-family: 'Cormorant Garamond', serif;
+        font-style: italic;
+        font-weight: 300;
+        font-size: clamp(22px, 2.6vw, 40px);
+        color: var(--ink-2);
+        text-align: center;
+        max-width: 56ch;
+        line-height: 1.4;
+      }
+
+      /* ── Detail 2-up (padded, for detail/interaction screens) ── */
+      .cd-detail {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+        padding: 56px 72px;
+        border-bottom: 1px solid var(--rule);
+        background: var(--bg);
+      }
+      .cd-detail-img {
+        overflow: hidden;
+        border-radius: 6px;
+        background: #e8e4de;
+        line-height: 0;
+        border: 1px solid var(--rule);
+      }
+      .cd-detail-img img {
+        width: 100%;
+        display: block;
+        aspect-ratio: 3/4;
+        object-fit: cover;
+        object-position: center top;
+        transition: transform 500ms cubic-bezier(.16,1,.3,1);
+      }
+      .cd-detail-img:hover img { transform: scale(1.04); }
+
+      /* ── Mobile trio ── */
+      .cd-mobile {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0;
+        border-bottom: 1px solid var(--rule);
+        background: #f0ede8;
+      }
+      .cd-mobile-frame {
+        overflow: hidden;
+        border-right: 1px solid var(--rule);
+        line-height: 0;
+        background: #e0dcd5;
+      }
+      .cd-mobile-frame:last-child { border-right: none; }
+      .cd-mobile-frame img {
+        width: 100%;
+        display: block;
+        aspect-ratio: 9/19;
+        object-fit: cover;
+        object-position: center top;
+        transition: transform 500ms cubic-bezier(.16,1,.3,1);
+      }
+      .cd-mobile-frame:hover img { transform: scale(1.03); }
+
+      /* ── Closing image ── */
+      .cd-close {
+        border-bottom: 1px solid var(--rule);
+        overflow: hidden;
+        background: #111;
+        line-height: 0;
+      }
+      .cd-close img {
+        width: 100%;
+        display: block;
+        aspect-ratio: 16/9;
+        object-fit: cover;
+        object-position: center;
+      }
+
+      /* ── CTA ── */
+      .cd-cta {
+        padding: 96px 72px;
+        border-bottom: 1px solid var(--rule);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 20px;
+      }
+      .cd-cta-eye {
+        font-family: 'Poppins', sans-serif;
+        font-size: 11px;
+        font-weight: 300;
+        letter-spacing: 0.1em;
+        color: var(--ink-3);
+        text-transform: uppercase;
+      }
+      .cd-cta-heading {
+        font-family: 'Cormorant Garamond', serif;
+        font-style: italic;
+        font-weight: 300;
+        font-size: clamp(28px, 4vw, 56px);
+        color: var(--ink);
+        line-height: 1.1;
+        max-width: 22ch;
+      }
+      .cd-cta-sub {
+        font-family: 'Poppins', sans-serif;
+        font-size: 14px;
+        font-weight: 300;
+        color: var(--ink-2);
+        line-height: 1.7;
+        max-width: 44ch;
+        margin-top: -4px;
+      }
+      .cd-cta-btn {
+        display: inline-block;
+        padding: 16px 36px;
+        background: var(--ink);
+        color: var(--bg);
+        font-family: 'Poppins', sans-serif;
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-decoration: none;
+        margin-top: 8px;
+        transition: opacity 220ms;
+      }
+      .cd-cta-btn:hover { opacity: 0.82; }
+
+      /* ── Next project ── */
+      .cd-next {
+        padding: 64px 72px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid var(--rule);
+        text-decoration: none;
+        transition: background 180ms;
+      }
+      .cd-next:hover { background: rgba(26,25,23,.025); }
+      .cd-next-label {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 300;
+        font-size: 10px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--ink-3);
+        display: block;
+        margin-bottom: 10px;
+      }
+      .cd-next-name {
+        font-family: 'Cormorant Garamond', serif;
+        font-style: italic;
+        font-weight: 300;
+        font-size: clamp(36px, 4vw, 64px);
+        color: var(--ink);
+        letter-spacing: -1px;
+        display: block;
+      }
+      .cd-next-arrow {
+        font-size: 22px;
+        color: var(--ink-3);
+        transition: transform 220ms ease, color 220ms;
+      }
+      .cd-next:hover .cd-next-arrow { transform: translateX(6px); color: var(--ink); }
+
+      /* ── Mobile ── */
+      @media (max-width: 860px) {
+        .cd-hero { padding: 0 24px 48px; min-height: 80vh; }
+        .cd-hero-title { font-size: clamp(64px, 18vw, 90px); margin-bottom: 28px; }
+        .cd-hero-desc { font-size: 13px; max-width: none; }
+
+        .cd-intro { grid-template-columns: 1fr; }
+        .cd-intro-desc { padding: 40px 24px; border-right: none; border-bottom: 1px solid var(--rule); }
+        .cd-intro-meta { padding: 32px 24px; flex-direction: row; flex-wrap: wrap; gap: 24px; }
+
+        .cd-full img { aspect-ratio: 4/3; }
+
+        .cd-duo { grid-template-columns: 1fr; }
+        .cd-duo-img { border-right: none; border-bottom: 1px solid var(--rule); }
+        .cd-duo-img:last-child { border-bottom: none; }
+        .cd-duo-img img { aspect-ratio: 3/2; }
+        .cd-duo-img:hover img { transform: none; }
+
+        .cd-caption { padding: 40px 24px; }
+        .cd-caption-text { font-size: clamp(20px, 5.5vw, 28px); }
+
+        .cd-detail { grid-template-columns: 1fr; gap: 16px; padding: 32px 24px; }
+        .cd-detail-img img { aspect-ratio: 4/3; }
+        .cd-detail-img:hover img { transform: none; }
+
+        .cd-mobile { grid-template-columns: 1fr; }
+        .cd-mobile-frame { border-right: none; border-bottom: 1px solid var(--rule); }
+        .cd-mobile-frame:last-child { border-bottom: none; }
+        .cd-mobile-frame img { aspect-ratio: 9/16; }
+        .cd-mobile-frame:hover img { transform: none; }
+
+        .cd-close img { aspect-ratio: 4/3; }
+
+        .cd-cta { padding: 56px 24px; }
+        .cd-cta-sub { font-size: 13px; }
+        .cd-cta-btn { width: 100%; text-align: center; }
+
+        .cd-next { padding: 36px 24px; }
+        .cd-next-name { font-size: clamp(32px, 9vw, 48px); }
+      }
+
+    </style>
+  </head>
+  <body>
+
+    <div class="mh-strip">Los Angeles &middot; Currently Booking</div>
+    <div class="scroll-bar" id="scrollBar"></div>
+
+    <nav class="nav" id="mainNav">
+      <div class="nav-links">
+        <div class="nav-dd">
+          <a class="nav-dd-label" href="/work/">Projects</a><button class="nav-dd-toggle" aria-expanded="false" aria-label="Open Projects menu"><span class="nav-dd-icon">+</span></button>
+          <div class="nav-dd-menu" hidden>
+            <a href="/forma/">Forma</a>
+            <a href="/verde/">Verde</a>
+            <a href="/le-loup/">Le Loup</a>
+            <a href="/west-and-stone/">West &amp; Stone</a>
+            <a href="/celeste/">Celeste</a>
+            <a href="/june-house/">June House</a>
+            <a href="/cleo-daisy/">Cleo Daisy</a>
+            <a href="/work/">All Projects</a>
+          </div>
+        </div>
+        <div class="nav-dd">
+          <a class="nav-dd-label" href="/services/">Services</a><button class="nav-dd-toggle" aria-expanded="false" aria-label="Open Services menu"><span class="nav-dd-icon">+</span></button>
+          <div class="nav-dd-menu" hidden>
+            <a href="/services/signature/">Signature Website</a>
+            <a href="/services/refresh/">Refresh</a>
+            <a href="/services/audit/">Audit</a>
+            <a href="/services/care/">Care</a>
+            <a href="/services/">All Services</a>
+          </div>
+        </div>
+        <a href="/studio/">Studio</a>
+      </div>
+      <a class="nav-brand" href="/">Pink Web Studio</a>
+      <div class="nav-end"><a href="/contact/">Start a Project</a></div>
+      <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+      <div class="nav-dd">
+        <a class="nav-dd-label" href="/work/">Projects</a><button class="nav-dd-toggle" aria-expanded="false" aria-label="Open Projects menu"><span class="nav-dd-icon">+</span></button>
+        <div class="nav-dd-menu" hidden>
+          <a href="/forma/">Forma</a>
+          <a href="/verde/">Verde</a>
+          <a href="/le-loup/">Le Loup</a>
+          <a href="/west-and-stone/">West &amp; Stone</a>
+          <a href="/celeste/">Celeste</a>
+          <a href="/june-house/">June House</a>
+          <a href="/cleo-daisy/">Cleo Daisy</a>
+          <a href="/work/">All Projects</a>
+        </div>
+      </div>
+      <div class="nav-dd">
+        <a class="nav-dd-label" href="/services/">Services</a><button class="nav-dd-toggle" aria-expanded="false" aria-label="Open Services menu"><span class="nav-dd-icon">+</span></button>
+        <div class="nav-dd-menu" hidden>
+          <a href="/services/signature/">Signature Website</a>
+          <a href="/services/refresh/">Refresh</a>
+          <a href="/services/audit/">Audit</a>
+          <a href="/services/care/">Care</a>
+          <a href="/services/">All Services</a>
+        </div>
+      </div>
+      <a href="/studio/">Studio</a>
+      <a href="/contact/" class="mobile-nav-cta">Start a Project</a>
+    </div>
+
+    <!-- Hero -->
+    <section class="cd-hero reveal">
+      <img class="cd-hero-bg" src="/assets/cleo-hero.png" alt="" aria-hidden="true" />
+      <div class="cd-hero-overlay" aria-hidden="true"></div>
+      <div class="cd-hero-content">
+        <div class="cd-concept-badge">
+          <span class="cd-concept-pill">Concept Project</span>
+        </div>
+        <span class="cd-eyebrow">Fashion Editorial &middot; 2026</span>
+        <h1 class="cd-hero-title">Cleo Daisy</h1>
+        <p class="cd-hero-desc">An editorial fashion concept exploring the intersection of art direction, digital design, and development.</p>
+        <a class="cd-hero-back" href="/work/">&#8592; Back to Projects</a>
+      </div>
+    </section>
+
+    <!-- Intro -->
+    <div class="cd-intro reveal">
+      <div class="cd-intro-desc">
+        <p class="cd-intro-p">This concept explores how the pacing, typography, imagery, and composition of a fashion editorial can translate into an interactive digital experience — where every scroll, transition, and typographic choice feels intentional.</p>
+      </div>
+      <div class="cd-intro-meta">
+        <div class="cd-meta-block">
+          <span class="cd-meta-label">Role</span>
+          <span class="cd-meta-value">Creative Direction<br>Web Design<br>Development</span>
+        </div>
+        <div class="cd-meta-block">
+          <span class="cd-meta-label">Type</span>
+          <span class="cd-meta-value">Self-initiated<br>Concept Project</span>
+        </div>
+        <div class="cd-meta-block">
+          <span class="cd-meta-label">Year</span>
+          <span class="cd-meta-value">2026</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Full-width desktop hero screen -->
+    <div class="cd-full reveal">
+      <img src="/assets/cleo-1.png" alt="Cleo Daisy homepage — full desktop view" />
+    </div>
+
+    <!-- Desktop screens 2-up -->
+    <div class="cd-duo reveal">
+      <div class="cd-duo-img">
+        <img src="/assets/cleo-2.png" alt="Cleo Daisy editorial layout" />
+      </div>
+      <div class="cd-duo-img">
+        <img src="/assets/cleo-3.png" alt="Cleo Daisy collection page" />
+      </div>
+    </div>
+
+    <!-- Caption -->
+    <div class="cd-caption reveal">
+      <p class="cd-caption-text">Typography, pacing, and negative space — the way a magazine art director would use them.</p>
+    </div>
+
+    <!-- Detail / interaction screens -->
+    <div class="cd-detail reveal">
+      <div class="cd-detail-img">
+        <img src="/assets/cleo-4.png" alt="Cleo Daisy detail — typography" />
+      </div>
+      <div class="cd-detail-img">
+        <img src="/assets/cleo-5.png" alt="Cleo Daisy detail — interaction" />
+      </div>
+    </div>
+
+    <!-- Mobile screens -->
+    <div class="cd-mobile reveal">
+      <div class="cd-mobile-frame">
+        <img src="/assets/cleo-m1.png" alt="Cleo Daisy — mobile home" />
+      </div>
+      <div class="cd-mobile-frame">
+        <img src="/assets/cleo-m2.png" alt="Cleo Daisy — mobile collection" />
+      </div>
+      <div class="cd-mobile-frame">
+        <img src="/assets/cleo-m3.png" alt="Cleo Daisy — mobile detail" />
+      </div>
+    </div>
+
+    <!-- Closing image -->
+    <div class="cd-close reveal">
+      <img src="/assets/cleo-close.png" alt="Cleo Daisy — closing" />
+    </div>
+
+    <!-- CTA -->
+    <div class="cd-cta reveal">
+      <span class="cd-cta-eye">Pink Web Studio</span>
+      <span class="cd-cta-heading">Like what you see? Let&rsquo;s build something like this for your brand.</span>
+      <p class="cd-cta-sub">If you&rsquo;re building a fashion, beauty, or luxury brand and want a website that feels this considered — I&rsquo;d love to hear about it.</p>
+      <a class="cd-cta-btn" href="/contact/">Start a Project &rarr;</a>
+    </div>
+
+    <!-- Next project -->
+    <a class="cd-next reveal" href="/forma/">
+      <div>
+        <span class="cd-next-label">Next Project</span>
+        <span class="cd-next-name">Forma</span>
+      </div>
+      <span class="cd-next-arrow">&#8594;</span>
+    </a>
+
+    <footer class="site-footer">
+      <div class="footer-brand-wrap">
+        <span class="footer-brand">Pink Web Studio</span>
+        <span class="footer-brand-sub">Los Angeles &middot; Currently Booking</span>
+      </div>
+      <div class="footer-social">
+        <div class="footer-social-icons">
+          <a href="https://instagram.com/oraanlevi" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/oraan-levi-898a89200/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+        </div>
+        <a href="mailto:studio@pinkwebstudio.com" class="footer-email">studio@pinkwebstudio.com</a>
+      </div>
+    </footer>
+
+    <script>
+      const nav = document.getElementById('mainNav');
+      const bar = document.getElementById('scrollBar');
+      window.addEventListener('scroll', () => {
+        nav.classList.toggle('scrolled', window.scrollY > 20);
+        if (bar) bar.style.width = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100) + '%';
+      }, { passive: true });
+
+      const ham = document.getElementById('navHam');
+      const mob = document.getElementById('mobileNav');
+      const scrim = document.createElement('div');
+      scrim.className = 'nav-scrim';
+      document.body.appendChild(scrim);
+      const navHeader = document.createElement('div');
+      navHeader.className = 'mobile-nav-header';
+      navHeader.innerHTML = '<button class="mobile-nav-close" id="navClose" aria-label="Close menu">&#215;</button>';
+      mob.insertBefore(navHeader, mob.firstChild);
+      function openNav() {
+        ham.classList.add('open'); mob.classList.add('open'); scrim.classList.add('open');
+        ham.setAttribute('aria-expanded', 'true'); mob.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeNav() {
+        ham.classList.remove('open'); mob.classList.remove('open'); scrim.classList.remove('open');
+        ham.setAttribute('aria-expanded', 'false'); mob.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+      ham.addEventListener('click', () => { mob.classList.contains('open') ? closeNav() : openNav(); });
+      scrim.addEventListener('click', closeNav);
+      document.getElementById('navClose')?.addEventListener('click', closeNav);
+      mob.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
+
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+      }, { threshold: 0.04, rootMargin: '0px 0px -32px 0px' });
+      document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    </script>
+    <script src="/nav.js"></script>
+    <script src="/quiz.js"></script>
+  </body>
+</html>
