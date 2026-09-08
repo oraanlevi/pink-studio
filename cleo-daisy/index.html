@@ -136,9 +136,9 @@
         padding: 64px 32px 64px 72px;
         border-right: 1px solid var(--rule);
         font-family: 'Poppins', sans-serif;
-        font-size: 9px;
-        font-weight: 400;
-        letter-spacing: 0.16em;
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 3px;
         text-transform: uppercase;
         color: var(--ink-3);
         position: sticky;
@@ -166,11 +166,11 @@
       /* ── Section body copy ── */
       .cd-section-copy {
         font-family: 'Poppins', sans-serif;
-        font-size: 14px;
+        font-size: 15px;
         font-weight: 300;
         color: var(--ink-2);
-        line-height: 1.85;
-        max-width: 58ch;
+        line-height: 1.8;
+        max-width: 56ch;
       }
 
       /* ── Full-width image ── */
@@ -221,47 +221,6 @@
         object-position: center top;
       }
 
-      /* ── Placeholder ── */
-      .cd-placeholder {
-        background: #f5f2ee;
-        border: 1.5px dashed rgba(26,25,23,.18);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        padding: 48px 32px;
-        min-height: 240px;
-      }
-      .cd-placeholder-icon {
-        width: 32px;
-        height: 32px;
-        border: 1.5px dashed rgba(26,25,23,.2);
-        border-radius: 4px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--ink-3);
-        font-size: 18px;
-        font-weight: 300;
-        line-height: 1;
-      }
-      .cd-placeholder-label {
-        font-family: 'Poppins', sans-serif;
-        font-size: 11px;
-        font-weight: 400;
-        letter-spacing: 0.06em;
-        color: var(--ink-3);
-        text-align: center;
-      }
-      .cd-placeholder-sub {
-        font-family: 'Poppins', sans-serif;
-        font-size: 10px;
-        font-weight: 300;
-        letter-spacing: 0.04em;
-        color: rgba(26,25,23,.2);
-        text-align: center;
-      }
 
       /* ── Interaction video ── */
       .cd-video-wrap {
@@ -522,11 +481,7 @@
       <div class="cd-section-label">Creative Direction</div>
       <div class="cd-section-body">
         <p class="cd-section-copy">CLEO DAISY was art-directed around restraint and contrast — warm ivory space against black, dusty rose, and delicate lace textures. I used oversized typography, asymmetrical layouts, and intentional negative space to make the site feel closer to an independent fashion editorial than a traditional brand website. The goal was for every screen to feel composed, but never overly polished or predictable.</p>
-        <div class="cd-placeholder">
-          <div class="cd-placeholder-icon">+</div>
-          <span class="cd-placeholder-label">Figma moodboard &amp; early exploration</span>
-          <span class="cd-placeholder-sub">Add /assets/cleo/figma-moodboard.png</span>
-        </div>
+        <img src="/assets/cleo/figma-moodboard.png" alt="Cleo Daisy — Figma design exploration" style="width:100%; display:block; border: 1px solid var(--rule);" />
       </div>
     </div>
 
@@ -545,11 +500,6 @@
       <div class="cd-section-label">Figma &rarr; Code</div>
       <div class="cd-section-body">
         <p class="cd-section-copy">I started in Figma to establish the visual language, composition, typography, and overall rhythm of the experience before moving into development. The final build translates those layouts into a responsive experience while adding movement and interaction that couldn&rsquo;t exist in the static designs.</p>
-        <div class="cd-placeholder">
-          <div class="cd-placeholder-icon">+</div>
-          <span class="cd-placeholder-label">Figma design alongside finished build</span>
-          <span class="cd-placeholder-sub">Add /assets/cleo/figma-vs-code.png</span>
-        </div>
       </div>
     </div>
 
