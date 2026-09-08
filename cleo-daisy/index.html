@@ -27,6 +27,7 @@
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
+        align-items: flex-end;
         padding: 0 72px 72px;
       }
       .cd-hero-bg {
@@ -49,6 +50,9 @@
         z-index: 1;
         display: flex;
         flex-direction: column;
+        align-items: flex-end;
+        text-align: right;
+        max-width: 520px;
       }
       .cd-concept-badge {
         display: inline-flex;
@@ -367,7 +371,8 @@
 
       /* ── Mobile ── */
       @media (max-width: 860px) {
-        .cd-hero { padding: 0 24px 48px; min-height: 80vh; }
+        .cd-hero { padding: 0 24px 48px; min-height: 80vh; align-items: flex-start; }
+        .cd-hero-content { align-items: flex-start; text-align: left; max-width: none; }
         .cd-hero-title { font-size: clamp(64px, 18vw, 90px); margin-bottom: 28px; }
         .cd-hero-desc { font-size: 13px; max-width: none; }
 
