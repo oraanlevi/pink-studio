@@ -14,6 +14,8 @@
     { "source": "/services/development.html",    "destination": "/services/", "permanent": true },
     { "source": "/services/landing-pages.html",  "destination": "/services/", "permanent": true },
     { "source": "/services/maintenance.html",    "destination": "/services/", "permanent": true },
-    { "source": "/services/shopify.html",        "destination": "/services/", "permanent": true }
+    { "source": "/services/shopify.html",        "destination": "/services/", "permanent": true },
+    { "source": "/investment",                   "destination": "/services/", "permanent": true },
+    { "source": "/investment/",                  "destination": "/services/", "permanent": true }
   ]
 }

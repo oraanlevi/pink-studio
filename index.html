@@ -338,6 +338,48 @@
     }
     .dh-work-see-all:hover { color: var(--ink); }
 
+    /* ── Project card descriptor ── */
+    .dh-work-card-desc {
+      display: block;
+      font-family: 'Poppins', sans-serif;
+      font-size: 10px;
+      font-weight: 300;
+      color: rgba(255,255,255,.42);
+      letter-spacing: 0.04em;
+      margin-top: 4px;
+      font-style: italic;
+    }
+
+    /* ── Homepage testimonial ── */
+    .hp-testimonial {
+      padding: 84px 72px 92px;
+      border-top: 1px solid var(--rule);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 22px;
+      text-align: center;
+    }
+    .hp-testimonial-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(22px, 2.2vw, 30px);
+      color: var(--ink-2);
+      line-height: 1.45;
+      max-width: 54ch;
+      margin: 0;
+    }
+    .hp-testimonial-attr {
+      display: block;
+      font-family: 'Poppins', sans-serif;
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      color: var(--ink-3);
+      text-transform: uppercase;
+    }
+
     /* ── Mobile ── */
     .mobile-home { display: none; }
     .dh-marquee-wrap, .dh-work { display: block; }
@@ -348,7 +390,7 @@
     }
 
     @media (max-width: 860px) {
-      .dh-marquee-wrap, .dh-work { display: none; }
+      .dh-marquee-wrap, .dh-work, .hp-testimonial { display: none; }
       .lobby-corner-meta { display: none; }
       .lobby { min-height: auto; }
       .lobby-inner { padding: calc(var(--nav-h) + 28px) 24px 28px; gap: 20px; }
@@ -484,6 +526,15 @@
         color: rgba(255,255,255,0.6);
       }
 
+      /* Mobile testimonial */
+      .hp-testimonial {
+        padding: 56px 24px 64px;
+        gap: 18px;
+      }
+      .hp-testimonial-quote {
+        font-size: clamp(20px, 5.5vw, 26px);
+      }
+
       /* Marquee */
       .mh-marquee-wrap {
         border-top: 1px solid var(--rule);
@@ -615,6 +666,7 @@
         <div class="dh-work-card-content">
           <span class="dh-work-card-eyebrow">Skincare &amp; Beauty</span>
           <span class="dh-work-card-name">Verde</span>
+          <span class="dh-work-card-desc">An editorial commerce concept built around a single formula.</span>
         </div>
       </a>
       <a class="dh-work-card" href="/forma/" style="background-image: url('/assets/formahero.png');">
@@ -622,18 +674,26 @@
         <div class="dh-work-card-content">
           <span class="dh-work-card-eyebrow">Interior Design Software</span>
           <span class="dh-work-card-name">Forma</span>
+          <span class="dh-work-card-desc">Interior design operations software. Built from scratch.</span>
         </div>
       </a>
       <a class="dh-work-card" href="/work/" style="background-image: url('/assets/loup.png');">
         <div class="dh-work-card-overlay"></div>
         <div class="dh-work-card-content">
-          <span class="dh-work-card-eyebrow">Restaurant / Los Angeles</span>
+          <span class="dh-work-card-eyebrow">Private Members Club</span>
           <span class="dh-work-card-name">Le Loup</span>
+          <span class="dh-work-card-desc">Mystery, atmosphere, quiet exclusivity.</span>
         </div>
       </a>
     </div>
     <a class="dh-work-see-all" href="/work/">View all projects →</a>
   </section>
+
+  <!-- Testimonial — desktop -->
+  <div class="hp-testimonial">
+    <p class="hp-testimonial-quote">"Working with Pink was the best decision we made for our brand. The site launched on time, looked incredible, and our clients noticed immediately."</p>
+    <span class="hp-testimonial-attr">— Dr. B</span>
+  </div>
 
   <!-- Mobile homepage layout -->
   <div class="mobile-home">
@@ -665,17 +725,23 @@
       <div class="mh-recent-overlay"></div>
       <div class="mh-recent-content">
         <span class="mh-recent-name">Verde</span>
-        <span class="mh-recent-desc">Skincare &amp; beauty · Pink Template 01</span>
+        <span class="mh-recent-desc">An editorial commerce concept · Skincare & beauty</span>
       </div>
     </a>
     <a href="/forma/" class="mh-recent-card" style="background: #1e1e1e url('/assets/dashboardforma.png') center top / cover no-repeat;">
       <div class="mh-recent-overlay"></div>
       <div class="mh-recent-content">
         <span class="mh-recent-name">Forma</span>
-        <span class="mh-recent-desc">Interior design operations software</span>
+        <span class="mh-recent-desc">Interior design operations software · Built from scratch</span>
       </div>
     </a>
-    <a href="/work/" style="display:block; text-align:center; font-family:'Poppins',sans-serif; font-size:12px; font-weight:300; color:var(--ink-2); text-decoration:none; padding: 20px 24px 48px;">View all projects →</a>
+    <a href="/work/" style="display:block; text-align:center; font-family:'Poppins',sans-serif; font-size:12px; font-weight:300; color:var(--ink-2); text-decoration:none; padding: 20px 24px 32px;">View all projects →</a>
+
+    <!-- Testimonial — mobile -->
+    <div class="hp-testimonial" style="display:flex;">
+      <p class="hp-testimonial-quote">"Working with Pink was the best decision we made for our brand. The site launched on time, looked incredible, and our clients noticed immediately."</p>
+      <span class="hp-testimonial-attr">— Dr. B</span>
+    </div>
 
   </div>
 
