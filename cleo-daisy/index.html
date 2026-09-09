@@ -4,18 +4,68 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/assets/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cleo Daisy · Pink Web Studio</title>
-    <meta name="description" content="Cleo Daisy — an editorial fashion concept by Pink Web Studio, exploring art direction, typography, and interaction design for fashion and luxury brands." />
+    <title>Cleo Daisy — Fashion Website Design / Pink Web Studio</title>
+    <meta name="description" content="Editorial fashion website design concept by Pink Web Studio — Figma-to-code development, custom interaction design, and luxury brand aesthetics for independent fashion labels." />
     <link rel="canonical" href="https://www.pinkwebstudio.com/cleo-daisy/" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Cleo Daisy · Pink Web Studio" />
-    <meta property="og:description" content="Cleo Daisy — an editorial fashion concept by Pink Web Studio, exploring art direction, typography, and interaction design for fashion and luxury brands." />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Pink Web Studio" />
+    <meta property="og:title" content="Cleo Daisy — Fashion Website Design / Pink Web Studio" />
+    <meta property="og:description" content="Editorial fashion website design concept by Pink Web Studio — Figma-to-code development, custom interaction design, and luxury brand aesthetics for independent fashion labels." />
     <meta property="og:url" content="https://www.pinkwebstudio.com/cleo-daisy/" />
+    <meta property="og:image" content="https://www.pinkwebstudio.com/assets/cleo/cleohero.png" />
+    <meta property="og:image:width" content="3000" />
+    <meta property="og:image:height" content="1714" />
+    <meta property="og:image:alt" content="Cleo Daisy — fashion website design concept by Pink Web Studio" />
+
+    <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Cleo Daisy — Fashion Website Design / Pink Web Studio" />
+    <meta name="twitter:description" content="Editorial fashion website design concept by Pink Web Studio — Figma-to-code development, custom interaction design, and luxury brand aesthetics for independent fashion labels." />
+    <meta name="twitter:image" content="https://www.pinkwebstudio.com/assets/cleo/cleohero.png" />
+    <meta name="twitter:image:alt" content="Cleo Daisy — fashion website design concept by Pink Web Studio" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet" />
+    <link rel="preload" as="image" href="/assets/cleo/closing.png" fetchpriority="high" />
     <link rel="stylesheet" href="/styles.css" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Cleo Daisy — Fashion Website Design Concept",
+      "description": "A self-initiated editorial fashion website design concept by Pink Web Studio, exploring Figma-to-code development, custom interaction design, and luxury brand aesthetics for independent fashion labels.",
+      "image": "https://www.pinkwebstudio.com/assets/cleo/cleohero.png",
+      "url": "https://www.pinkwebstudio.com/cleo-daisy/",
+      "datePublished": "2026-09-08",
+      "author": {
+        "@type": "Organization",
+        "name": "Pink Web Studio",
+        "url": "https://www.pinkwebstudio.com/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Pink Web Studio",
+        "url": "https://www.pinkwebstudio.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.pinkwebstudio.com/assets/favicon.png"
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.pinkwebstudio.com/cleo-daisy/"
+      },
+      "about": {
+        "@type": "CreativeWork",
+        "name": "Cleo Daisy",
+        "description": "An editorial fashion website design concept exploring custom web development, Figma-to-code translation, and luxury brand aesthetics."
+      },
+      "keywords": "fashion website design, editorial web design, luxury fashion website design, Figma to code, custom web development, Figma website design"
+    }
+    </script>
     <style>
 
       /* ── Hero ── */
@@ -125,6 +175,7 @@
         border-bottom: 1px solid var(--rule);
       }
       .cd-section-label {
+        margin: 0;
         padding: 64px 32px 64px 72px;
         border-right: 1px solid var(--rule);
         font-family: 'Poppins', sans-serif;
@@ -242,6 +293,7 @@
         padding: 48px 72px 0;
       }
       .cd-gallery-eyebrow {
+        margin: 0;
         font-family: 'Poppins', sans-serif;
         font-size: 9px;
         font-weight: 400;
@@ -301,6 +353,18 @@
         transition: opacity 220ms;
       }
       .cd-cta-btn:hover { opacity: 0.82; }
+      .cd-cta-service-link {
+        font-family: 'Poppins', sans-serif;
+        font-size: 11px;
+        font-weight: 300;
+        letter-spacing: 0.04em;
+        color: var(--ink);
+        opacity: 0.45;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        transition: opacity 200ms;
+      }
+      .cd-cta-service-link:hover { opacity: 0.8; }
 
       /* ── Next project ── */
       .cd-next {
@@ -442,7 +506,7 @@
 
     <!-- ── HERO ── -->
     <section class="cd-hero reveal">
-      <img class="cd-hero-bg" src="/assets/cleo/closing.png" alt="" aria-hidden="true" />
+      <img class="cd-hero-bg" src="/assets/cleo/closing.png" alt="" aria-hidden="true" width="1024" height="1536" fetchpriority="high" />
       <div class="cd-hero-overlay" aria-hidden="true"></div>
       <div class="cd-hero-content">
         <span class="cd-concept-pill">Concept Project</span>
@@ -469,7 +533,7 @@
 
     <!-- ── THE CONCEPT ── -->
     <div class="cd-section reveal">
-      <div class="cd-section-label">The Concept</div>
+      <h2 class="cd-section-label">The Concept</h2>
       <div class="cd-section-body">
         <p class="cd-concept-text">CLEO DAISY began as an exploration of what a fictional independent fashion label could feel like online. Rather than building a traditional ecommerce experience, I approached the site like a digital fashion editorial: oversized typography, unconventional composition and imagery that becomes part of the interface.</p>
       </div>
@@ -477,31 +541,31 @@
 
     <!-- ── HOMEPAGE SCREENSHOT ── -->
     <div class="cd-full reveal">
-      <img src="/assets/cleo/cleohero.png" alt="Cleo Daisy homepage — full desktop view" />
+      <img src="/assets/cleo/cleohero.png" alt="Cleo Daisy fashion website homepage — full desktop design by Pink Web Studio" width="3000" height="1714" loading="lazy" />
     </div>
 
     <!-- ── CREATIVE DIRECTION ── -->
     <div class="cd-section reveal">
-      <div class="cd-section-label">Creative Direction</div>
+      <h2 class="cd-section-label">Creative Direction</h2>
       <div class="cd-section-body">
         <p class="cd-section-copy">CLEO DAISY was art-directed around restraint and contrast: warm ivory space against black, dusty rose, and delicate lace textures. I used oversized typography, asymmetrical layouts, and intentional negative space to make the site feel closer to an independent fashion editorial than a traditional brand website. The goal was for every screen to feel composed, but never overly polished or predictable.</p>
-        <img src="/assets/cleo/figma-moodboard.png" alt="Cleo Daisy — Figma design exploration" style="width:100%; display:block; border: 1px solid var(--rule);" />
+        <img src="/assets/cleo/figma-moodboard.png" alt="Cleo Daisy — Figma design moodboard and visual language exploration for fashion website" width="1054" height="1310" loading="lazy" style="width:100%; display:block; border: 1px solid var(--rule);" />
       </div>
     </div>
 
     <!-- ── EDITORIAL REFERENCE IMAGES ── -->
     <div class="cd-duo reveal">
       <div class="cd-duo-img cd-duo-img--portrait">
-        <img src="/assets/cleo/editorial.png" alt="Cleo Daisy — editorial art direction reference" />
+        <img src="/assets/cleo/editorial.png" alt="Cleo Daisy editorial art direction — oversized typography and asymmetric layout" width="1076" height="1244" loading="lazy" />
       </div>
       <div class="cd-duo-img cd-duo-img--portrait">
-        <img src="/assets/cleo/manifesto.png" alt="Cleo Daisy — editorial art direction reference" />
+        <img src="/assets/cleo/manifesto.png" alt="Cleo Daisy editorial art direction — fashion photography as interface composition" width="1024" height="1536" loading="lazy" />
       </div>
     </div>
 
     <!-- ── FROM FIGMA → CODE ── -->
     <div class="cd-section cd-section--figma reveal">
-      <div class="cd-section-label">Figma to Code</div>
+      <h2 class="cd-section-label">Figma to Code</h2>
       <div class="cd-section-body">
         <p class="cd-section-copy">I started in Figma to establish the visual language, composition, typography, and overall rhythm of the experience before moving into development. The final build translates those layouts into a responsive experience while adding movement and interaction that couldn&rsquo;t exist in the static designs.</p>
       </div>
@@ -509,7 +573,7 @@
 
     <!-- ── INTERACTION & DEVELOPMENT ── -->
     <div class="cd-section cd-section--interaction reveal">
-      <div class="cd-section-label">Interaction &amp; Development</div>
+      <h2 class="cd-section-label">Interaction &amp; Development</h2>
       <div class="cd-section-body">
         <p class="cd-section-copy">Typography leads the layout — oversized, asymmetric, and unapologetically present. Imagery is composition, not decoration. Transitions are slow enough to feel intentional: scroll pacing, image reveals, and hover states all follow the same unhurried logic as the editorial itself.</p>
         <div class="cd-video-wrap">
@@ -522,33 +586,33 @@
 
     <!-- ── FINAL EXPERIENCE ── -->
     <div class="cd-gallery-head reveal">
-      <span class="cd-gallery-eyebrow">Final Experience</span>
+      <h2 class="cd-gallery-eyebrow">Final Experience</h2>
     </div>
 
     <div class="cd-duo reveal">
       <div class="cd-duo-img">
-        <img src="/assets/cleo/cleolook3.png" alt="Cleo Daisy — Look 01: The Draped Dress" />
+        <img src="/assets/cleo/cleolook3.png" alt="Cleo Daisy fashion website — Look 01: The Draped Dress product page design" width="3010" height="1680" loading="lazy" />
       </div>
       <div class="cd-duo-img">
-        <img src="/assets/cleo/cleolook1.png" alt="Cleo Daisy — Look 02: The Column Skirt" />
+        <img src="/assets/cleo/cleolook1.png" alt="Cleo Daisy fashion website — Look 02: The Column Skirt product page design" width="3010" height="1688" loading="lazy" />
       </div>
     </div>
 
     <div class="cd-full reveal">
-      <img src="/assets/cleo/celolook2.png" alt="Cleo Daisy — Look 03: The Veil Top" />
+      <img src="/assets/cleo/celolook2.png" alt="Cleo Daisy fashion website — Look 03: The Veil Top full-width editorial layout" width="2968" height="1608" loading="lazy" />
     </div>
 
     <div class="cd-duo reveal">
       <div class="cd-duo-img cd-duo-img--portrait">
-        <img src="/assets/cleo/look-01.png" alt="Cleo Daisy — The Draped Dress" />
+        <img src="/assets/cleo/look-01.png" alt="Cleo Daisy — The Draped Dress, editorial fashion photography" width="1024" height="1536" loading="lazy" />
       </div>
       <div class="cd-duo-img cd-duo-img--portrait">
-        <img src="/assets/cleo/look-02.png" alt="Cleo Daisy — The Veil Top" />
+        <img src="/assets/cleo/look-02.png" alt="Cleo Daisy — The Veil Top, editorial fashion photography" width="1024" height="1536" loading="lazy" />
       </div>
     </div>
 
     <div class="cd-full reveal" style="background: #f0ece6; display: flex; justify-content: center;">
-      <img src="/assets/cleo/closing.png" style="max-width: 600px; width: 100%; aspect-ratio: unset; object-fit: contain;" alt="Cleo Daisy — closing" />
+      <img src="/assets/cleo/closing.png" style="max-width: 600px; width: 100%; aspect-ratio: unset; object-fit: contain;" alt="Cleo Daisy fashion website design — final editorial closing image" width="1024" height="1536" loading="lazy" />
     </div>
 
     <!-- ── CTA ── -->
@@ -557,6 +621,7 @@
       <span class="cd-cta-heading">Consider this your sign to make the website you actually want.</span>
       <p class="cd-cta-sub">Design, development, and a little obsession with the details.</p>
       <a class="cd-cta-btn" href="/contact/">Start a Project &rarr;</a>
+      <a class="cd-cta-service-link" href="/services/signature/">Explore our Signature Website service &rarr;</a>
     </div>
 
     <!-- ── NEXT PROJECT ── -->
