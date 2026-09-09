@@ -117,14 +117,6 @@
         letter-spacing: 0.06em;
         color: var(--ink);
       }
-      .cd-meta-dot {
-        width: 3px;
-        height: 3px;
-        border-radius: 50%;
-        background: var(--ink);
-        opacity: 0.5;
-        flex-shrink: 0;
-      }
 
       /* ── Section: label left + content right ── */
       .cd-section {
@@ -152,15 +144,15 @@
         gap: 36px;
       }
 
-      /* ── Concept text — editorial Cormorant ── */
+      /* ── Concept text ── */
       .cd-concept-text {
-        font-family: 'Cormorant Garamond', serif;
-        font-style: italic;
+        font-family: 'Poppins', sans-serif;
+        font-style: normal;
         font-weight: 300;
-        font-size: clamp(22px, 2.4vw, 34px);
+        font-size: clamp(16px, 1.6vw, 22px);
         color: var(--ink);
-        line-height: 1.5;
-        max-width: 52ch;
+        line-height: 1.8;
+        max-width: 56ch;
       }
 
       /* ── Section body copy ── */
@@ -171,6 +163,14 @@
         color: var(--ink);
         line-height: 1.8;
         max-width: 56ch;
+      }
+
+      /* ── Section-specific copy widths (editorial asymmetry) ── */
+      .cd-section--figma .cd-section-copy {
+        max-width: 660px;
+      }
+      .cd-section--interaction .cd-section-copy {
+        max-width: 540px;
       }
 
       /* ── Full-width image ── */
@@ -350,6 +350,8 @@
         .cd-section-body { padding: 16px 24px 40px; gap: 24px; }
         .cd-concept-text { font-size: clamp(20px, 5vw, 26px); }
         .cd-section-copy { font-size: 13px; }
+        .cd-section--figma .cd-section-copy,
+        .cd-section--interaction .cd-section-copy { max-width: 100%; }
 
         .cd-full img { aspect-ratio: 4/3; }
         .cd-duo { grid-template-columns: 1fr; }
@@ -371,7 +373,7 @@
   </head>
   <body>
 
-    <div class="mh-strip">Los Angeles &middot; Currently Booking</div>
+    <div class="mh-strip">Los Angeles / Currently Booking</div>
     <div class="scroll-bar" id="scrollBar"></div>
 
     <nav class="nav" id="mainNav">
@@ -442,7 +444,7 @@
       <div class="cd-hero-overlay" aria-hidden="true"></div>
       <div class="cd-hero-content">
         <span class="cd-concept-pill">Concept Project</span>
-        <span class="cd-hero-eyebrow">Fashion Editorial &middot; Winter 2027</span>
+        <span class="cd-hero-eyebrow">Fashion Editorial / Winter 2027</span>
         <h1 class="cd-hero-title">Cleo Daisy</h1>
         <a class="cd-hero-back" href="/work/">&#8592; Back to Projects</a>
       </div>
@@ -451,15 +453,15 @@
     <!-- ── METADATA STRIP ── -->
     <div class="cd-meta-strip">
       <span class="cd-meta-item">Self-Initiated Concept</span>
-      <span class="cd-meta-dot"></span>
+      <span class="cd-meta-item">/</span>
       <span class="cd-meta-item">Fashion</span>
-      <span class="cd-meta-dot"></span>
+      <span class="cd-meta-item">/</span>
       <span class="cd-meta-item">Creative Direction</span>
-      <span class="cd-meta-dot"></span>
+      <span class="cd-meta-item">/</span>
       <span class="cd-meta-item">Web Design</span>
-      <span class="cd-meta-dot"></span>
+      <span class="cd-meta-item">/</span>
       <span class="cd-meta-item">Development</span>
-      <span class="cd-meta-dot"></span>
+      <span class="cd-meta-item">/</span>
       <span class="cd-meta-item">2026</span>
     </div>
 
@@ -496,7 +498,7 @@
     </div>
 
     <!-- ── FROM FIGMA → CODE ── -->
-    <div class="cd-section reveal">
+    <div class="cd-section cd-section--figma reveal">
       <div class="cd-section-label">Figma to Code</div>
       <div class="cd-section-body">
         <p class="cd-section-copy">I started in Figma to establish the visual language, composition, typography, and overall rhythm of the experience before moving into development. The final build translates those layouts into a responsive experience while adding movement and interaction that couldn&rsquo;t exist in the static designs.</p>
@@ -504,7 +506,7 @@
     </div>
 
     <!-- ── INTERACTION & DEVELOPMENT ── -->
-    <div class="cd-section reveal">
+    <div class="cd-section cd-section--interaction reveal">
       <div class="cd-section-label">Interaction &amp; Development</div>
       <div class="cd-section-body">
         <p class="cd-section-copy">Typography leads the layout — oversized, asymmetric, and unapologetically present. Imagery is composition, not decoration. Transitions are slow enough to feel intentional: scroll pacing, image reveals, and hover states all follow the same unhurried logic as the editorial itself.</p>
@@ -567,7 +569,7 @@
     <footer class="site-footer">
       <div class="footer-brand-wrap">
         <span class="footer-brand">Pink Web Studio</span>
-        <span class="footer-brand-sub">Los Angeles &middot; Currently Booking</span>
+        <span class="footer-brand-sub">Los Angeles / Currently Booking</span>
       </div>
       <div class="footer-social">
         <div class="footer-social-icons">
