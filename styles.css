@@ -835,6 +835,14 @@ img { display: block; max-width: 100%; }
   .quiz-card { width: 600px; }
 }
 
+/* ── FAQ answer text ── */
+/* All service page FAQ answers share this color.
+   rgba(26,25,23,.72) ≈ #4a4947 — clearly readable against --bg,
+   softer than the full --ink used on FAQ questions. */
+.faq-answer-inner p {
+  color: rgba(26,25,23,.72);
+}
+
 /* ── Scroll Reveal ── */
 /* Initial hidden state is only applied when JS has loaded (.js on <html>).
    If the script fails, [data-reveal] elements remain fully visible. */
