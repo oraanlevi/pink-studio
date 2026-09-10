@@ -301,10 +301,16 @@ img { display: block; max-width: 100%; }
   text-decoration: none;
   transition: color 200ms;
 }
+.mobile-nav .nav-dd-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 .mobile-nav .nav-dd-label::after {
-  content: ' →';
+  content: '→';
   font-weight: 300;
   color: var(--ink-3);
+  flex-shrink: 0;
 }
 .mobile-nav .nav-dd-label:hover { color: var(--ink-2); }
 .mobile-nav .nav-dd-toggle {
@@ -333,10 +339,6 @@ img { display: block; max-width: 100%; }
   border-bottom: 1px solid var(--rule);
   text-decoration: none;
   transition: color 200ms;
-}
-.mobile-nav .nav-dd-menu a::after {
-  content: ' →';
-  color: var(--ink-3);
 }
 .mobile-nav .nav-dd-menu a:last-child {
   font-family: 'Poppins', sans-serif;
