@@ -228,7 +228,6 @@
       }
       .cd-artifact--wide   .cd-artifact-inner { max-width: 960px; }
       .cd-artifact--narrow .cd-artifact-inner { max-width: 720px; }
-      .cd-artifact--offset .cd-artifact-inner { margin-left: auto; margin-right: 0; }
       .cd-artifact-frame {
         border: 1px solid var(--rule);
         overflow: hidden;
@@ -237,13 +236,13 @@
       }
       .cd-artifact-frame--dark { background: #111; }
       .cd-artifact-frame--crop img {
-        aspect-ratio: 4/3;
-        object-fit: cover;
-        object-position: top;
+        aspect-ratio: auto;
+        object-fit: contain;
       }
       .cd-artifact-frame img,
       .cd-artifact-frame video {
         width: 100%;
+        height: auto;
         display: block;
       }
       .cd-artifact-caption {
@@ -628,7 +627,7 @@
     </div>
 
     <!-- ── 05 COLLECTION ── -->
-    <div class="cd-artifact cd-artifact--narrow cd-artifact--offset reveal">
+    <div class="cd-artifact cd-artifact--narrow reveal">
       <div class="cd-artifact-inner">
         <div class="cd-artifact-frame">
           <img src="/assets/cleo/cleolook1.png" alt="Cleo Daisy fashion website — The Column Skirt editorial interface, desktop" width="3010" height="1688" loading="lazy" />
