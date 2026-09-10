@@ -228,15 +228,15 @@
 
       /* ── Artifact / media frame system ── */
       .cd-artifact {
-        padding: 64px 72px;
+        padding: 48px 72px;
         border-bottom: 1px solid var(--rule);
       }
       .cd-artifact-inner {
         margin: 0 auto;
-        max-width: 780px;
+        max-width: 840px;
       }
-      .cd-artifact--wide   .cd-artifact-inner { max-width: 940px; }
-      .cd-artifact--narrow .cd-artifact-inner { max-width: 600px; }
+      .cd-artifact--wide   .cd-artifact-inner { max-width: 960px; }
+      .cd-artifact--narrow .cd-artifact-inner { max-width: 720px; }
       .cd-artifact--offset .cd-artifact-inner { margin-left: auto; margin-right: 0; }
       .cd-artifact-frame {
         border: 1px solid var(--rule);
@@ -245,6 +245,11 @@
         background: var(--bg);
       }
       .cd-artifact-frame--dark { background: #111; }
+      .cd-artifact-frame--crop img {
+        aspect-ratio: 4/3;
+        object-fit: cover;
+        object-position: top;
+      }
       .cd-artifact-frame img,
       .cd-artifact-frame video {
         width: 100%;
@@ -565,7 +570,7 @@
     <!-- ── 02 VISUAL DIRECTION ── -->
     <div class="cd-artifact cd-artifact--narrow reveal">
       <div class="cd-artifact-inner">
-        <div class="cd-artifact-frame">
+        <div class="cd-artifact-frame cd-artifact-frame--crop">
           <img src="/assets/cleo/figma-moodboard.png" alt="Cleo Daisy — Figma design moodboard and visual language exploration for fashion website" width="1054" height="1310" loading="lazy" />
         </div>
         <div class="cd-artifact-caption">
@@ -583,19 +588,6 @@
       </div>
     </div>
 
-    <!-- ── 03 DESIGN DEVELOPMENT ── -->
-    <div class="cd-artifact cd-artifact--standard reveal">
-      <div class="cd-artifact-inner">
-        <div class="cd-artifact-frame">
-          <img src="/assets/cleo/cleolook3.png" alt="Cleo Daisy fashion website — product page design, The Draped Dress" width="3010" height="1680" loading="lazy" />
-        </div>
-        <div class="cd-artifact-caption">
-          <span class="cd-artifact-label">03 &mdash; Design Development</span>
-          <span class="cd-artifact-desc">Interface &middot; Product page &middot; Figma to browser</span>
-        </div>
-      </div>
-    </div>
-
     <!-- ── INTERACTION & DEVELOPMENT ── -->
     <div class="cd-section cd-section--interaction reveal">
       <h2 class="cd-section-label">Interaction &amp; Development</h2>
@@ -604,16 +596,16 @@
       </div>
     </div>
 
-    <!-- ── 04 INTERACTION ── -->
+    <!-- ── 03 INTERACTION ── -->
     <div class="cd-artifact cd-artifact--standard reveal">
       <div class="cd-artifact-inner">
         <div class="cd-artifact-frame cd-artifact-frame--dark">
           <video autoplay muted loop playsinline>
-            <source src="/assets/cleo/cleovid.mov" type="video/mp4" />
+            <source src="/assets/cleo/videocleo.mov" type="video/mp4" />
           </video>
         </div>
         <div class="cd-artifact-caption">
-          <span class="cd-artifact-label">04 &mdash; Interaction</span>
+          <span class="cd-artifact-label">03 &mdash; Interaction</span>
           <span class="cd-artifact-desc">Interaction study &middot; Responsive build &middot; HTML / CSS / JavaScript</span>
         </div>
       </div>
@@ -624,35 +616,30 @@
       <h2 class="cd-gallery-eyebrow">Final Experience</h2>
     </div>
 
-    <!-- ── 05 HOMEPAGE ── -->
+    <!-- ── 04 FINAL EXPERIENCE ── -->
     <div class="cd-artifact cd-artifact--wide reveal">
       <div class="cd-artifact-inner">
         <div class="cd-artifact-frame">
-          <img src="/assets/cleo/celolook2.png" alt="Cleo Daisy fashion website — Look 03: The Veil Top editorial interface" width="2968" height="1608" loading="lazy" />
+          <img src="/assets/cleo/celolook2.png" alt="Cleo Daisy fashion website — The Veil Top editorial interface, desktop" width="2968" height="1608" loading="lazy" />
         </div>
         <div class="cd-artifact-caption">
-          <span class="cd-artifact-label">05 &mdash; Final Experience</span>
+          <span class="cd-artifact-label">04 &mdash; Final Experience</span>
           <span class="cd-artifact-desc">Homepage &middot; Desktop &middot; Winter 2027</span>
         </div>
       </div>
     </div>
 
-    <!-- ── 06 COLLECTION ── -->
+    <!-- ── 05 COLLECTION ── -->
     <div class="cd-artifact cd-artifact--narrow cd-artifact--offset reveal">
       <div class="cd-artifact-inner">
         <div class="cd-artifact-frame">
-          <img src="/assets/cleo/cleolook1.png" alt="Cleo Daisy fashion website — Look 02: The Column Skirt editorial interface" width="3010" height="1688" loading="lazy" />
+          <img src="/assets/cleo/cleolook1.png" alt="Cleo Daisy fashion website — The Column Skirt editorial interface, desktop" width="3010" height="1688" loading="lazy" />
         </div>
         <div class="cd-artifact-caption">
-          <span class="cd-artifact-label">06 &mdash; Collection</span>
+          <span class="cd-artifact-label">05 &mdash; Collection</span>
           <span class="cd-artifact-desc">Winter 2027 &middot; Editorial interface</span>
         </div>
       </div>
-    </div>
-
-    <!-- ── CLOSING EDITORIAL IMAGE ── -->
-    <div class="cd-editorial-close reveal">
-      <img src="/assets/cleo/look-01.png" alt="Cleo Daisy — The Draped Dress, editorial fashion photography" width="1024" height="1536" loading="lazy" />
     </div>
 
     <!-- ── CTA ── -->
