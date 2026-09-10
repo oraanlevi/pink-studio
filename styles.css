@@ -766,11 +766,38 @@ img { display: block; max-width: 100%; }
   letter-spacing: 0.04em;
 }
 .quiz-back:hover { color: var(--ink-2); }
+.quiz-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 28px;
+  border-bottom: 1px solid var(--rule);
+  flex-shrink: 0;
+}
+.quiz-progress {
+  font-family: 'Poppins', sans-serif;
+  font-size: 10px;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  color: var(--ink-3);
+}
+.quiz-close {
+  background: none;
+  border: none;
+  color: var(--ink-3);
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 2px 0 2px 8px;
+  transition: color 160ms;
+}
+.quiz-close:hover { color: var(--ink); }
+
 .quiz-result {
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
 }
 .quiz-result-eye {
   font-family: 'Poppins', sans-serif;
@@ -830,9 +857,62 @@ img { display: block; max-width: 100%; }
   transition: color 200ms;
 }
 .quiz-result-alt:hover { color: var(--ink-2); }
+.quiz-result-price {
+  font-family: 'Poppins', sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 20px;
+}
+.quiz-result-credit {
+  font-family: 'Poppins', sans-serif;
+  font-size: 11px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--ink-2);
+  line-height: 1.55;
+  padding: 12px 14px;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  margin-bottom: 20px;
+}
+.quiz-result-secondary {
+  display: block;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--ink-3);
+  text-decoration: none;
+  padding: 8px;
+  transition: color 200ms;
+}
+.quiz-result-secondary:hover { color: var(--ink-2); }
+.quiz-restart {
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-size: 10px;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  color: var(--ink-3);
+  cursor: pointer;
+  padding: 8px;
+  margin-top: 6px;
+  transition: color 200ms;
+}
+.quiz-restart:hover { color: var(--ink-2); }
 
 @media (min-width: 861px) {
   .quiz-card { width: 600px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .quiz-scrim, .quiz-card { transition: none; }
+  .quiz-step { animation: none; }
 }
 
 /* ── FAQ answer text ── */
