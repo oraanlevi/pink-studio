@@ -253,6 +253,23 @@
       margin: -10px 0 18px;
     }
 
+    /* ── Best for line ── */
+    .sg-detail-bestfor {
+      font-family: 'Poppins', sans-serif;
+      font-size: 10px;
+      font-weight: 300;
+      color: rgba(255,255,255,.5);
+      letter-spacing: 0.02em;
+      font-style: italic;
+      margin: 0 0 16px;
+      line-height: 1.5;
+    }
+
+    /* ── Disable hover image scale on touch devices ── */
+    @media (hover: none) {
+      .sg-card:hover img { transform: none; }
+    }
+
     /* ── Mobile ── */
     @media (max-width: 860px) {
       .sg-header { padding: 40px 16px 20px; }
@@ -273,6 +290,13 @@
       .sg-note a {
         max-width: none;
       }
+
+      /* 1-column grid on mobile */
+      .sg-grid { grid-template-columns: 1fr; }
+
+      /* Reorder CTAs: Full details → is primary on mobile */
+      .sg-detail-link { order: 2; font-weight: 500; color: white; margin-top: 0; }
+      .sg-detail-cta  { order: 3; font-weight: 300; color: rgba(255,255,255,.65); font-size: 12px; }
     }
 
   </style>
@@ -358,6 +382,7 @@
         <p class="sg-detail-name">Signature Website</p>
         <p class="sg-detail-sub">Built from scratch, for you.</p>
         <p class="sg-detail-meta">From $4,000 &nbsp;·&nbsp; 3–4 weeks</p>
+        <p class="sg-detail-bestfor">Best for: building a completely custom site from the ground up.</p>
         <a class="sg-detail-cta" href="/contact/">Start a Project →</a>
         <a class="sg-detail-link" href="/services/signature/">Full details →</a>
       </div>
@@ -375,6 +400,7 @@
           <p class="sg-detail-name">Website Refresh</p>
           <p class="sg-detail-sub">Your site, elevated.</p>
           <p class="sg-detail-meta">From $2,000 &nbsp;·&nbsp; 2–3 weeks</p>
+          <p class="sg-detail-bestfor">Best for: brands with a solid site that no longer reflects where they are.</p>
           <a class="sg-detail-cta" href="/contact/">Start a Project →</a>
           <a class="sg-detail-link" href="/services/refresh/">Full details →</a>
         </div>
@@ -389,6 +415,7 @@
           <p class="sg-detail-name">Website Audit</p>
           <p class="sg-detail-sub">Know exactly what to fix.</p>
           <p class="sg-detail-meta">$199 &nbsp;·&nbsp; 3–5 days</p>
+          <p class="sg-detail-bestfor">Best for: anyone unsure what's holding their current site back.</p>
           <p class="sg-detail-credit">Fee credited toward any Refresh or Signature build within 60 days.</p>
           <a class="sg-detail-cta" href="/contact/">Book an Audit →</a>
           <a class="sg-detail-link" href="/services/audit/">Full details →</a>
@@ -404,6 +431,7 @@
           <p class="sg-detail-name">Monthly Support</p>
           <p class="sg-detail-sub">Ongoing care, handled.</p>
           <p class="sg-detail-meta">$250 / mo &nbsp;·&nbsp; Ongoing</p>
+          <p class="sg-detail-bestfor">Best for: brands with a solid site who want ongoing updates handled.</p>
           <a class="sg-detail-cta" href="/contact/">Get Started →</a>
           <a class="sg-detail-link" href="/services/care/">Full details →</a>
         </div>
@@ -485,7 +513,7 @@
     // Card gallery
     document.querySelectorAll('.sg-card').forEach(card => {
       card.addEventListener('click', function(e) {
-        if (e.target.closest('.sg-close') || e.target.closest('.sg-detail-cta')) return;
+        if (e.target.closest('.sg-close') || e.target.closest('.sg-detail-cta') || e.target.closest('.sg-detail-link')) return;
         const isOpen = this.classList.contains('open');
         document.querySelectorAll('.sg-card.open').forEach(c => c.classList.remove('open'));
         if (!isOpen) this.classList.add('open');
