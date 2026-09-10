@@ -275,6 +275,11 @@
       }
 
 
+      /* ── Single closing portrait (asymmetric: empty left / image right) ── */
+      .cd-duo-img--empty {
+        background: var(--bg);
+      }
+
       /* ── Interaction video ── */
       .cd-video-wrap {
         width: 100%;
@@ -290,7 +295,7 @@
 
       /* ── Final Experience eyebrow ── */
       .cd-gallery-head {
-        padding: 48px 72px 0;
+        padding: 48px 72px 32px;
       }
       .cd-gallery-eyebrow {
         margin: 0;
@@ -426,6 +431,7 @@
         .cd-duo-img:hover img { transform: none; }
         .cd-duo-img--portrait img { aspect-ratio: 3/4; }
 
+        .cd-duo-img--empty { display: none; }
         .cd-gallery-head { padding: 32px 24px 0; }
 
         .cd-cta { padding: 56px 24px; }
@@ -541,7 +547,7 @@
 
     <!-- ── HOMEPAGE SCREENSHOT ── -->
     <div class="cd-full reveal">
-      <img src="/assets/cleo/cleohero.png" alt="Cleo Daisy fashion website homepage — full desktop design by Pink Web Studio" width="3000" height="1714" loading="lazy" style="object-fit: contain; object-position: center center;" />
+      <img src="/assets/cleo/cleohero.png" alt="Cleo Daisy fashion website homepage — full desktop design by Pink Web Studio" width="3000" height="1714" loading="lazy" style="object-fit: cover; object-position: center 50%;" />
     </div>
 
     <!-- ── CREATIVE DIRECTION ── -->
@@ -549,7 +555,7 @@
       <h2 class="cd-section-label">Creative Direction</h2>
       <div class="cd-section-body">
         <p class="cd-section-copy">CLEO DAISY was art-directed around restraint and contrast: warm ivory space against black, dusty rose, and delicate lace textures. I used oversized typography, asymmetrical layouts, and intentional negative space to make the site feel closer to an independent fashion editorial than a traditional brand website. The goal was for every screen to feel composed, but never overly polished or predictable.</p>
-        <img src="/assets/cleo/figma-moodboard.png" alt="Cleo Daisy — Figma design moodboard and visual language exploration for fashion website" width="1054" height="1310" loading="lazy" style="width:100%; display:block; border: 1px solid var(--rule);" />
+        <img src="/assets/cleo/figma-moodboard.png" alt="Cleo Daisy — Figma design moodboard and visual language exploration for fashion website" width="1054" height="1310" loading="lazy" style="width:100%; max-height: 560px; object-fit: cover; object-position: top; display:block; border: 1px solid var(--rule);" />
       </div>
     </div>
 
@@ -603,16 +609,10 @@
     </div>
 
     <div class="cd-duo reveal">
+      <div class="cd-duo-img cd-duo-img--empty"></div>
       <div class="cd-duo-img cd-duo-img--portrait">
         <img src="/assets/cleo/look-01.png" alt="Cleo Daisy — The Draped Dress, editorial fashion photography" width="1024" height="1536" loading="lazy" />
       </div>
-      <div class="cd-duo-img cd-duo-img--portrait">
-        <img src="/assets/cleo/look-02.png" alt="Cleo Daisy — The Veil Top, editorial fashion photography" width="1024" height="1536" loading="lazy" />
-      </div>
-    </div>
-
-    <div class="cd-full reveal" style="background: #f0ece6; display: flex; justify-content: center;">
-      <img src="/assets/cleo/closing.png" style="max-width: 600px; width: 100%; aspect-ratio: unset; object-fit: contain;" alt="Cleo Daisy fashion website design — final editorial closing image" width="1024" height="1536" loading="lazy" />
     </div>
 
     <!-- ── CTA ── -->
