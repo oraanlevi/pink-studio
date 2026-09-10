@@ -427,13 +427,28 @@
         .cd-section--figma .cd-section-copy,
         .cd-section--interaction .cd-section-copy { max-width: 100%; }
 
-        .cd-artifact { padding: 40px 24px; }
+        /* ── Artifact system — mobile reset ── */
+        /* border-bottom stays full-width; content gets 16px page margins */
+        .cd-artifact { padding: 28px 0; }
         .cd-artifact-inner,
         .cd-artifact--wide .cd-artifact-inner,
-        .cd-artifact--narrow .cd-artifact-inner { max-width: 100%; }
-        .cd-artifact--offset .cd-artifact-inner { margin-left: 0; }
-        .cd-editorial-close img { aspect-ratio: 4/3; }
-        .cd-gallery-head { padding: 40px 24px 24px; }
+        .cd-artifact--narrow .cd-artifact-inner {
+          width: calc(100% - 32px);
+          max-width: 100%;
+          margin-left: auto;
+          margin-right: auto;
+        }
+        /* cancel desktop right-offset; center everything on mobile */
+        .cd-artifact--offset .cd-artifact-inner { margin-left: auto; margin-right: auto; }
+
+        /* Preserve natural image aspect ratio — prevents height-attribute distortion */
+        .cd-artifact-frame img,
+        .cd-artifact-frame video { width: 100%; height: auto; display: block; }
+
+        /* Remove desktop 4/3 crop from moodboard — show full design on mobile */
+        .cd-artifact-frame--crop img { aspect-ratio: auto; object-fit: initial; }
+
+        .cd-gallery-head { padding: 32px 16px 16px; }
 
         .cd-cta { padding: 56px 24px; }
         .cd-cta-btn { width: 100%; text-align: center; }
