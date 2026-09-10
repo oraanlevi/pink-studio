@@ -207,6 +207,42 @@
     }
     .studio-cta-secondary:hover { border-color: var(--ink-2); color: var(--ink); }
 
+    /* ── Desktop reviews ── */
+    .studio-reviews {
+      border-bottom: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .studio-review {
+      padding: 64px 72px;
+      border-right: 1px solid var(--rule);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .studio-review:last-child { border-right: none; }
+    .studio-review-stars { display: flex; gap: 3px; }
+    .studio-review-star { width: 12px; height: 12px; color: #D4537E; }
+    .studio-review-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(20px, 1.8vw, 26px);
+      color: var(--ink);
+      line-height: 1.45;
+      margin: 0;
+    }
+    .studio-review-name {
+      font-family: 'Poppins', sans-serif;
+      font-size: 11px;
+      font-weight: 400;
+      color: #D4537E;
+      letter-spacing: 0.04em;
+    }
+    @media (max-width: 860px) {
+      .studio-reviews { display: none; }
+    }
+
     /* ── Mobile layout hidden on desktop ── */
     .studio-mobile { display: none; }
 
@@ -516,6 +552,32 @@
       </div>
     </div>
 
+  </div>
+
+  <!-- Desktop reviews -->
+  <div class="studio-reviews reveal">
+    <div class="studio-review">
+      <div class="studio-review-stars">
+        <svg class="studio-review-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="studio-review-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="studio-review-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="studio-review-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="studio-review-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <p class="studio-review-text">"Working with Pink was the best decision we made for our brand. The site launched on time, looked incredible, and our clients noticed immediately."</p>
+      <span class="studio-review-name">— Dr. B</span>
+    </div>
+    <div class="studio-review">
+      <div class="studio-review-stars">
+        <svg class="studio-review-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="studio-review-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="studio-review-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="studio-review-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="studio-review-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <p class="studio-review-text">"Honestly she killed it. I messaged her with all my ideas and she was so quick to add to the site. She understood the vision."</p>
+      <span class="studio-review-name">— Mike C</span>
+    </div>
   </div>
 
   <!-- Desktop closing CTA -->

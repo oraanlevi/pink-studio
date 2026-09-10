@@ -188,6 +188,29 @@
       .form-field input[type="email"]:focus { border-color: var(--ink); }
       .form-field input[type="text"]::placeholder,
       .form-field input[type="email"]::placeholder { color: rgba(26,25,23,.38); }
+      .form-field select {
+        width: 100%;
+        background: transparent;
+        border: 1px solid var(--rule);
+        padding: 16px;
+        padding-right: 40px;
+        font-family: 'Poppins', sans-serif;
+        font-size: 14px;
+        font-weight: 300;
+        color: var(--ink);
+        outline: none;
+        -webkit-appearance: none;
+        border-radius: 0;
+        display: block;
+        box-sizing: border-box;
+        cursor: pointer;
+        transition: border-color 300ms;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%231a1917' stroke-width='1.2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 16px center;
+      }
+      .form-field select:focus { border-color: var(--ink); }
+      .form-field select option { color: var(--ink); }
       .form-submit {
         font-family: 'Poppins', sans-serif;
         font-size: 13px;
@@ -408,6 +431,17 @@
             <input type="email" name="email" placeholder="Your email" required />
           </div>
           <div class="form-field">
+            <select name="service" id="serviceSelect">
+              <option value="">I'm interested in…</option>
+              <option value="Signature Website">Signature Website</option>
+              <option value="Website Refresh">Website Refresh</option>
+              <option value="Website Audit">Website Audit</option>
+              <option value="Monthly Care">Monthly Care</option>
+              <option value="Custom Solutions">Custom Solutions</option>
+              <option value="Not sure yet">Not sure yet</option>
+            </select>
+          </div>
+          <div class="form-field">
             <textarea name="message" placeholder="Tell me about your project…" required></textarea>
           </div>
           <button type="submit" id="contactSubmit" class="form-submit">Send Message <span class="btn-arrow">→</span></button>
@@ -487,6 +521,13 @@
         entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
       }, { threshold: 0.06 });
       document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+      const serviceMap = { signature: 'Signature Website', refresh: 'Website Refresh', audit: 'Website Audit', care: 'Monthly Care', custom: 'Custom Solutions' };
+      const serviceParam = new URLSearchParams(window.location.search).get('service');
+      if (serviceParam && serviceMap[serviceParam]) {
+        const sel = document.getElementById('serviceSelect');
+        if (sel) sel.value = serviceMap[serviceParam];
+      }
 
       if (new URLSearchParams(window.location.search).get('sent') === '1') {
         document.querySelectorAll('.form-field').forEach(el => el.style.display = 'none');
