@@ -20,97 +20,50 @@
 
       /* ── Page header ── */
       .contact-header {
-        padding: 64px 32px 28px;
+        padding: 80px 32px 56px;
         text-align: center;
       }
       .contact-eyebrow {
         font-family: 'Poppins', sans-serif;
         font-size: 13px;
         font-weight: 300;
-        letter-spacing: 0.1em;
-        color: rgba(26,25,23,.42);
+        letter-spacing: 0.14em;
+        color: rgba(26,25,23,.6);
         display: block;
-        margin-bottom: 12px;
+        margin-bottom: 20px;
       }
       .contact-headline {
         font-family: 'Cormorant Garamond', serif;
         font-weight: 300;
         font-style: italic;
-        font-size: clamp(28px, 3.5vw, 48px);
+        font-size: clamp(44px, 6vw, 80px);
         line-height: 1;
         letter-spacing: 0.01em;
-        color: var(--ink-2);
-        display: block;
-        margin-bottom: 40px;
-      }
-
-      /* ── Quiz card ── */
-      .contact-quiz {
-        border-top: 1px solid var(--rule);
-        border-bottom: 1px solid var(--rule);
-        padding: 72px 64px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 14px;
-        text-align: center;
-      }
-      .contact-quiz-eye {
-        font-family: 'Poppins', sans-serif;
-        font-size: 11px;
-        font-weight: 300;
-        letter-spacing: 0.04em;
-        color: rgba(26,25,23,.42);
-      }
-      .contact-quiz-heading {
-        font-family: 'Cormorant Garamond', serif;
-        font-style: italic;
-        font-weight: 300;
-        font-size: clamp(26px, 3vw, 40px);
         color: var(--ink);
-        line-height: 1.2;
+        display: block;
+        margin-bottom: 20px;
       }
-      .contact-quiz-btn {
-        display: inline-block;
-        padding: 14px 32px;
-        background: var(--ink);
-        color: var(--bg);
-        font-family: 'Poppins', sans-serif;
-        font-size: 11px;
-        font-weight: 500;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        border: none;
-        border-radius: 3px;
-        cursor: pointer;
-        margin-top: 8px;
-        align-self: center;
-        transition: opacity 200ms;
-      }
-      .contact-quiz-btn:hover { opacity: 0.82; }
-      @media (max-width: 860px) {
-        .contact-quiz { padding: 40px 24px; }
-        .contact-quiz-btn { width: 100%; text-align: center; align-self: stretch; }
+      .contact-subtext {
+        font-family: 'Cormorant Garamond', serif;
+        font-weight: 300;
+        font-style: italic;
+        font-size: clamp(17px, 1.6vw, 22px);
+        color: rgba(26,25,23,.65);
+        letter-spacing: 0.01em;
+        margin: 0 0 0;
+        line-height: 1.4;
       }
 
-      /* ── Two paths ── */
-      .contact-paths {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+      /* ── Form section ── */
+      .contact-form-wrap {
         border-bottom: 1px solid var(--rule);
-      }
-      .path-call {
-        padding: 64px 64px 72px;
-        border-right: 1px solid var(--rule);
+        padding: 64px 32px 72px;
         display: flex;
-        flex-direction: column;
-        gap: 0;
-        text-decoration: none;
-        transition: background 300ms;
+        justify-content: center;
       }
-      .path-call:hover { background: rgba(26,25,23,.02); }
-      .path-form {
-        padding: 64px 64px 72px;
+      .contact-form-inner {
+        width: 100%;
+        max-width: 560px;
       }
       .path-label {
         font-family: 'Poppins', sans-serif;
@@ -121,6 +74,37 @@
         display: block;
         margin-bottom: 10px;
       }
+      .path-label-promise {
+        font-family: 'Poppins', sans-serif;
+        font-size: 12px;
+        font-weight: 400;
+        letter-spacing: 0.04em;
+        color: var(--ink);
+        display: block;
+        margin-top: -16px;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+      .form-secondary-links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        margin-top: 28px;
+        padding-top: 24px;
+        border-top: 1px solid var(--rule);
+        text-align: center;
+      }
+      .form-quiz-link {
+        font-family: 'Poppins', sans-serif;
+        font-size: 12px;
+        font-weight: 400;
+        letter-spacing: 0.03em;
+        color: var(--ink-2);
+        text-decoration: none;
+        transition: color 220ms;
+      }
+      .form-quiz-link:hover { color: var(--ink); }
       .path-heading {
         font-family: 'Cormorant Garamond', serif;
         font-weight: 300;
@@ -130,21 +114,18 @@
         line-height: 1.1;
         display: block;
         margin-bottom: 24px;
+        text-align: center;
       }
-      .path-cta {
+      .form-call-link {
         font-family: 'Poppins', sans-serif;
-        font-size: 13px;
-        font-weight: 400;
-        color: var(--ink-2);
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
+        font-size: 12px;
+        font-weight: 300;
+        letter-spacing: 0.03em;
+        color: rgba(26,25,23,.42);
+        text-decoration: none;
         transition: color 220ms;
-        margin-top: auto;
       }
-      .path-call:hover .path-cta { color: var(--ink); }
-      .path-cta-arrow { transition: transform 220ms ease; display: inline-block; }
-      .path-call:hover .path-cta-arrow { transform: translateX(4px); }
+      .form-call-link:hover { color: var(--ink-2); }
 
       /* Form */
       .form-field { margin-bottom: 16px; }
@@ -188,29 +169,62 @@
       .form-field input[type="email"]:focus { border-color: var(--ink); }
       .form-field input[type="text"]::placeholder,
       .form-field input[type="email"]::placeholder { color: rgba(26,25,23,.38); }
-      .form-field select {
+      /* Custom select */
+      .custom-select { position: relative; }
+      .custom-select-trigger {
         width: 100%;
         background: transparent;
         border: 1px solid var(--rule);
         padding: 16px;
-        padding-right: 40px;
         font-family: 'Poppins', sans-serif;
         font-size: 14px;
         font-weight: 300;
         color: var(--ink);
         outline: none;
-        -webkit-appearance: none;
-        border-radius: 0;
-        display: block;
-        box-sizing: border-box;
         cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        text-align: left;
         transition: border-color 300ms;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%231a1917' stroke-width='1.2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-        background-repeat: no-repeat;
-        background-position: right 16px center;
+        box-sizing: border-box;
+        border-radius: 0;
+        -webkit-appearance: none;
       }
-      .form-field select:focus { border-color: var(--ink); }
-      .form-field select option { color: var(--ink); }
+      .custom-select-trigger[aria-expanded="true"] { border-color: var(--ink); }
+      .custom-select-value { flex: 1; }
+      .custom-select-value.is-placeholder { color: rgba(26,25,23,.38); }
+      .custom-select-arrow {
+        flex-shrink: 0;
+        margin-left: 12px;
+        transition: transform 220ms ease;
+        color: var(--ink);
+      }
+      .custom-select-trigger[aria-expanded="true"] .custom-select-arrow { transform: rotate(180deg); }
+      .custom-select-menu {
+        position: absolute;
+        top: calc(100% + 1px);
+        left: 0;
+        right: 0;
+        background: var(--bg, #faf9f7);
+        border: 1px solid var(--ink);
+        z-index: 200;
+        list-style: none;
+        margin: 0;
+        padding: 6px 0;
+      }
+      .custom-select-option {
+        font-family: 'Poppins', sans-serif;
+        font-size: 13px;
+        font-weight: 300;
+        color: var(--ink);
+        padding: 11px 16px;
+        cursor: pointer;
+        transition: background 150ms;
+      }
+      .custom-select-option:hover { background: rgba(26,25,23,.05); }
+      .custom-select-option[aria-selected="true"] { font-weight: 400; }
+      .custom-select-option.is-placeholder { color: rgba(26,25,23,.38); }
       .form-submit {
         font-family: 'Poppins', sans-serif;
         font-size: 13px;
@@ -220,11 +234,13 @@
         border: 1px solid var(--ink);
         padding: 14px 28px;
         cursor: pointer;
-        display: inline-flex;
+        display: flex;
         align-items: center;
+        justify-content: center;
         gap: 8px;
         transition: background 220ms, color 220ms;
         margin-top: 4px;
+        width: 100%;
       }
       .form-submit:hover { background: var(--ink); color: var(--bg); }
       .form-submit .btn-arrow { transition: transform 220ms ease; display: inline-block; }
@@ -292,8 +308,9 @@
 
       /* ── Mobile ── */
       @media (max-width: 860px) {
-        .contact-header { padding: 40px 24px 24px; }
-        .contact-headline { font-size: clamp(28px, 7vw, 40px); margin-bottom: 0; }
+        .contact-header { padding: 56px 24px 40px; }
+        .contact-headline { font-size: clamp(40px, 10vw, 56px); margin-bottom: 16px; }
+        .contact-subtext { font-size: 17px; }
 
         .contact-testimonials {
           grid-template-columns: 1fr;
@@ -306,15 +323,7 @@
           border-bottom: 1px solid var(--rule);
         }
 
-        .contact-paths {
-          grid-template-columns: 1fr;
-        }
-        .path-call {
-          padding: 40px 24px;
-          border-right: none;
-          border-bottom: 1px solid var(--rule);
-        }
-        .path-form { padding: 40px 24px; }
+        .contact-form-wrap { padding: 40px 24px; }
         .form-submit {
           width: 100%;
           justify-content: center;
@@ -403,25 +412,11 @@
       <h1 class="contact-headline">Start a Project</h1>
     </div>
 
-    <!-- Quiz card -->
-    <div class="contact-quiz reveal">
-      <span class="contact-quiz-eye">Not sure where to start?</span>
-      <span class="contact-quiz-heading">Start somewhere.</span>
-      <button class="contact-quiz-btn" id="quizTrigger">Take the Quiz &rarr;</button>
-    </div>
-
-    <!-- Two Paths -->
-    <div class="contact-paths">
-
-      <a class="path-call reveal" href="https://calendly.com/oraanlevi1/30min" target="_blank" rel="noopener">
-        <span class="path-label">Prefer to talk?</span>
-        <span class="path-heading">Book a Discovery Call</span>
-        <span class="path-cta">Schedule on Calendly <span class="path-cta-arrow">→</span></span>
-      </a>
-
-      <div class="path-form reveal" id="send-message">
-        <span class="path-label">Back within 48 hours</span>
-        <span class="path-heading">Send a Message</span>
+    <!-- Form -->
+    <div class="contact-form-wrap">
+      <div class="contact-form-inner reveal" id="send-message">
+        <span class="path-heading">Tell me about your project</span>
+        <span class="path-label-promise">Back within 48 hours. You'll hear from Oraan directly.</span>
         <form id="contactForm" action="https://formspree.io/f/mbdejokw" method="POST">
           <input type="hidden" name="_next" value="https://www.pinkwebstudio.com/contact/?sent=1" />
           <div class="form-field">
@@ -431,24 +426,36 @@
             <input type="email" name="email" placeholder="Your email" required />
           </div>
           <div class="form-field">
-            <select name="service" id="serviceSelect">
-              <option value="">I'm interested in…</option>
-              <option value="Signature Website">Signature Website</option>
-              <option value="Website Refresh">Website Refresh</option>
-              <option value="Website Audit">Website Audit</option>
-              <option value="Monthly Care">Monthly Care</option>
-              <option value="Custom Solutions">Custom Solutions</option>
-              <option value="Not sure yet">Not sure yet</option>
-            </select>
+            <div class="custom-select" id="serviceDropdown">
+              <button type="button" class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false" id="serviceSelectTrigger">
+                <span class="custom-select-value is-placeholder" id="serviceSelectValue">I'm interested in…</span>
+                <svg class="custom-select-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+                  <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <ul class="custom-select-menu" role="listbox" id="serviceSelectMenu" hidden>
+                <li class="custom-select-option is-placeholder" data-value="" role="option">I'm interested in…</li>
+                <li class="custom-select-option" data-value="Signature Website" role="option">Signature Website</li>
+                <li class="custom-select-option" data-value="Website Refresh" role="option">Website Refresh</li>
+                <li class="custom-select-option" data-value="Website Audit" role="option">Website Audit</li>
+                <li class="custom-select-option" data-value="Monthly Care" role="option">Monthly Care</li>
+                <li class="custom-select-option" data-value="Custom Solutions" role="option">Custom Solutions</li>
+                <li class="custom-select-option" data-value="Not sure yet" role="option">Not sure yet</li>
+              </ul>
+              <input type="hidden" name="service" id="serviceSelect" value="" />
+            </div>
           </div>
           <div class="form-field">
             <textarea name="message" placeholder="Tell me about your project…" required></textarea>
           </div>
           <button type="submit" id="contactSubmit" class="form-submit">Send Message <span class="btn-arrow">→</span></button>
-          <p id="contactSuccess">Sent. I'll be in touch.</p>
+          <p id="contactSuccess">Sent. I'll be back within 48 hours.</p>
         </form>
+        <div class="form-secondary-links">
+          <a href="/quiz/" class="form-quiz-link">Not sure which service fits? Take the quiz &rarr;</a>
+          <a href="https://calendly.com/oraanlevi1/30min" class="form-call-link" target="_blank" rel="noopener">Prefer to talk first? Book a discovery call &rarr;</a>
+        </div>
       </div>
-
     </div>
 
     <!-- FAQ -->
@@ -522,11 +529,44 @@
       }, { threshold: 0.06 });
       document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
+      // Custom service dropdown
+      const sDropdown = document.getElementById('serviceDropdown');
+      const sTrigger  = document.getElementById('serviceSelectTrigger');
+      const sMenu     = document.getElementById('serviceSelectMenu');
+      const sValue    = document.getElementById('serviceSelectValue');
+      const sHidden   = document.getElementById('serviceSelect');
+
+      function openSel()  { sMenu.hidden = false; sTrigger.setAttribute('aria-expanded','true'); }
+      function closeSel() { sMenu.hidden = true;  sTrigger.setAttribute('aria-expanded','false'); }
+
+      function pickOption(value, label, isPlaceholder) {
+        sHidden.value = value;
+        sValue.textContent = label;
+        sValue.classList.toggle('is-placeholder', isPlaceholder);
+        sMenu.querySelectorAll('.custom-select-option').forEach(o =>
+          o.setAttribute('aria-selected', o.dataset.value === value ? 'true' : 'false')
+        );
+        closeSel();
+      }
+
+      sTrigger.addEventListener('click', () => sMenu.hidden ? openSel() : closeSel());
+
+      sMenu.querySelectorAll('.custom-select-option').forEach(opt => {
+        opt.addEventListener('click', () =>
+          pickOption(opt.dataset.value, opt.textContent.trim(), opt.classList.contains('is-placeholder'))
+        );
+      });
+
+      document.addEventListener('click', e => { if (!sDropdown.contains(e.target)) closeSel(); });
+      document.addEventListener('keydown', e => { if (e.key === 'Escape') closeSel(); });
+
+      // ?service= preselection
       const serviceMap = { signature: 'Signature Website', refresh: 'Website Refresh', audit: 'Website Audit', care: 'Monthly Care', custom: 'Custom Solutions' };
       const serviceParam = new URLSearchParams(window.location.search).get('service');
       if (serviceParam && serviceMap[serviceParam]) {
-        const sel = document.getElementById('serviceSelect');
-        if (sel) sel.value = serviceMap[serviceParam];
+        const val = serviceMap[serviceParam];
+        const match = sMenu.querySelector(`[data-value="${val}"]`);
+        if (match) pickOption(val, match.textContent.trim(), false);
       }
 
       if (new URLSearchParams(window.location.search).get('sent') === '1') {
