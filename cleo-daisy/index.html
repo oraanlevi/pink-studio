@@ -226,76 +226,74 @@
         width: 100%;
       }
 
-      /* ── Full-width image ── */
-      .cd-full {
+      /* ── Artifact / media frame system ── */
+      .cd-artifact {
+        padding: 64px 72px;
         border-bottom: 1px solid var(--rule);
+      }
+      .cd-artifact-inner {
+        margin: 0 auto;
+        max-width: 780px;
+      }
+      .cd-artifact--wide   .cd-artifact-inner { max-width: 940px; }
+      .cd-artifact--narrow .cd-artifact-inner { max-width: 600px; }
+      .cd-artifact--offset .cd-artifact-inner { margin-left: auto; margin-right: 0; }
+      .cd-artifact-frame {
+        border: 1px solid var(--rule);
         overflow: hidden;
-        background: #f0ede8;
         line-height: 0;
-      }
-      .cd-full img {
-        width: 100%;
-        display: block;
-        aspect-ratio: 16/7;
-        object-fit: cover;
-        object-position: center top;
-      }
-      .cd-full--portrait img {
-        aspect-ratio: unset;
-        max-height: 90vh;
-        object-fit: contain;
-      }
-
-      /* ── 2-up images ── */
-      .cd-duo {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        border-bottom: 1px solid var(--rule);
-        gap: 0;
-      }
-      .cd-duo-img {
-        overflow: hidden;
-        border-right: 1px solid var(--rule);
-        background: #ece8e2;
-        line-height: 0;
-      }
-      .cd-duo-img:last-child { border-right: none; }
-      .cd-duo-img img {
-        width: 100%;
-        display: block;
-        aspect-ratio: 16/9;
-        object-fit: cover;
-        object-position: center top;
-        transition: transform 600ms cubic-bezier(.16,1,.3,1);
-      }
-      .cd-duo-img:hover img { transform: scale(1.03); }
-      .cd-duo-img--portrait img {
-        aspect-ratio: 2/3;
-        object-position: center top;
-      }
-
-
-      /* ── Single closing portrait (asymmetric: empty left / image right) ── */
-      .cd-duo-img--empty {
         background: var(--bg);
       }
-
-      /* ── Interaction video ── */
-      .cd-video-wrap {
-        width: 100%;
-        background: #111;
-        overflow: hidden;
-        line-height: 0;
-        border-radius: 4px;
-      }
-      .cd-video-wrap video {
+      .cd-artifact-frame--dark { background: #111; }
+      .cd-artifact-frame img,
+      .cd-artifact-frame video {
         width: 100%;
         display: block;
+      }
+      .cd-artifact-caption {
+        margin-top: 16px;
+        padding-top: 12px;
+        border-top: 1px solid var(--rule);
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+      .cd-artifact-label {
+        font-family: 'Poppins', sans-serif;
+        font-size: 9px;
+        font-weight: 500;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--ink);
+      }
+      .cd-artifact-desc {
+        font-family: 'Poppins', sans-serif;
+        font-size: 9px;
+        font-weight: 300;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--ink-3);
+      }
+
+      /* ── Closing editorial spread ── */
+      .cd-editorial-close {
+        border-top: 1px solid var(--rule);
+        border-bottom: 1px solid var(--rule);
+        overflow: hidden;
+        line-height: 0;
+        margin-top: 80px;
+      }
+      .cd-editorial-close img {
+        width: 100%;
+        display: block;
+        aspect-ratio: 16/6;
+        object-fit: cover;
+        object-position: center top;
       }
 
       /* ── Final Experience eyebrow ── */
       .cd-gallery-head {
-        padding: 48px 72px 32px;
+        padding: 56px 72px 40px;
       }
       .cd-gallery-eyebrow {
         margin: 0;
@@ -424,15 +422,13 @@
         .cd-section--figma .cd-section-copy,
         .cd-section--interaction .cd-section-copy { max-width: 100%; }
 
-        .cd-full img { aspect-ratio: 4/3; }
-        .cd-duo { grid-template-columns: 1fr; }
-        .cd-duo-img { border-right: none; border-bottom: 1px solid var(--rule); }
-        .cd-duo-img:last-child { border-bottom: none; }
-        .cd-duo-img:hover img { transform: none; }
-        .cd-duo-img--portrait img { aspect-ratio: 3/4; }
-
-        .cd-duo-img--empty { display: none; }
-        .cd-gallery-head { padding: 32px 24px 0; }
+        .cd-artifact { padding: 40px 24px; }
+        .cd-artifact-inner,
+        .cd-artifact--wide .cd-artifact-inner,
+        .cd-artifact--narrow .cd-artifact-inner { max-width: 100%; }
+        .cd-artifact--offset .cd-artifact-inner { margin-left: 0; }
+        .cd-editorial-close img { aspect-ratio: 4/3; }
+        .cd-gallery-head { padding: 40px 24px 24px; }
 
         .cd-cta { padding: 56px 24px; }
         .cd-cta-btn { width: 100%; text-align: center; }
@@ -545,9 +541,17 @@
       </div>
     </div>
 
-    <!-- ── HOMEPAGE SCREENSHOT ── -->
-    <div class="cd-full reveal">
-      <img src="/assets/cleo/cleohero.png" alt="Cleo Daisy fashion website homepage — full desktop design by Pink Web Studio" width="3000" height="1714" loading="lazy" style="object-fit: cover; object-position: center 50%;" />
+    <!-- ── 01 WEBSITE CONCEPT ── -->
+    <div class="cd-artifact cd-artifact--standard reveal">
+      <div class="cd-artifact-inner">
+        <div class="cd-artifact-frame">
+          <img src="/assets/cleo/cleohero.png" alt="Cleo Daisy fashion website homepage — full desktop design by Pink Web Studio" width="3000" height="1714" loading="lazy" />
+        </div>
+        <div class="cd-artifact-caption">
+          <span class="cd-artifact-label">01 &mdash; Website Concept</span>
+          <span class="cd-artifact-desc">CLEO DAISY &middot; Homepage &middot; Desktop &middot; Winter 2027</span>
+        </div>
+      </div>
     </div>
 
     <!-- ── CREATIVE DIRECTION ── -->
@@ -555,17 +559,19 @@
       <h2 class="cd-section-label">Creative Direction</h2>
       <div class="cd-section-body">
         <p class="cd-section-copy">CLEO DAISY was art-directed around restraint and contrast: warm ivory space against black, dusty rose, and delicate lace textures. I used oversized typography, asymmetrical layouts, and intentional negative space to make the site feel closer to an independent fashion editorial than a traditional brand website. The goal was for every screen to feel composed, but never overly polished or predictable.</p>
-        <img src="/assets/cleo/figma-moodboard.png" alt="Cleo Daisy — Figma design moodboard and visual language exploration for fashion website" width="1054" height="1310" loading="lazy" style="width:100%; max-height: 560px; object-fit: cover; object-position: top; display:block; border: 1px solid var(--rule);" />
       </div>
     </div>
 
-    <!-- ── EDITORIAL REFERENCE IMAGES ── -->
-    <div class="cd-duo reveal">
-      <div class="cd-duo-img cd-duo-img--portrait">
-        <img src="/assets/cleo/editorial.png" alt="Cleo Daisy editorial art direction — oversized typography and asymmetric layout" width="1076" height="1244" loading="lazy" />
-      </div>
-      <div class="cd-duo-img cd-duo-img--portrait">
-        <img src="/assets/cleo/manifesto.png" alt="Cleo Daisy editorial art direction — fashion photography as interface composition" width="1024" height="1536" loading="lazy" />
+    <!-- ── 02 VISUAL DIRECTION ── -->
+    <div class="cd-artifact cd-artifact--narrow reveal">
+      <div class="cd-artifact-inner">
+        <div class="cd-artifact-frame">
+          <img src="/assets/cleo/figma-moodboard.png" alt="Cleo Daisy — Figma design moodboard and visual language exploration for fashion website" width="1054" height="1310" loading="lazy" />
+        </div>
+        <div class="cd-artifact-caption">
+          <span class="cd-artifact-label">02 &mdash; Visual Direction</span>
+          <span class="cd-artifact-desc">Creative Direction &middot; Figma &middot; Typography &middot; Composition &middot; Image language</span>
+        </div>
       </div>
     </div>
 
@@ -577,15 +583,38 @@
       </div>
     </div>
 
+    <!-- ── 03 DESIGN DEVELOPMENT ── -->
+    <div class="cd-artifact cd-artifact--standard reveal">
+      <div class="cd-artifact-inner">
+        <div class="cd-artifact-frame">
+          <img src="/assets/cleo/cleolook3.png" alt="Cleo Daisy fashion website — product page design, The Draped Dress" width="3010" height="1680" loading="lazy" />
+        </div>
+        <div class="cd-artifact-caption">
+          <span class="cd-artifact-label">03 &mdash; Design Development</span>
+          <span class="cd-artifact-desc">Interface &middot; Product page &middot; Figma to browser</span>
+        </div>
+      </div>
+    </div>
+
     <!-- ── INTERACTION & DEVELOPMENT ── -->
     <div class="cd-section cd-section--interaction reveal">
       <h2 class="cd-section-label">Interaction &amp; Development</h2>
       <div class="cd-section-body">
         <p class="cd-section-copy">Typography leads the layout — oversized, asymmetric, and unapologetically present. Imagery is composition, not decoration. Transitions are slow enough to feel intentional: scroll pacing, image reveals, and hover states all follow the same unhurried logic as the editorial itself.</p>
-        <div class="cd-video-wrap">
+      </div>
+    </div>
+
+    <!-- ── 04 INTERACTION ── -->
+    <div class="cd-artifact cd-artifact--standard reveal">
+      <div class="cd-artifact-inner">
+        <div class="cd-artifact-frame cd-artifact-frame--dark">
           <video autoplay muted loop playsinline>
             <source src="/assets/cleo/cleovid.mov" type="video/mp4" />
           </video>
+        </div>
+        <div class="cd-artifact-caption">
+          <span class="cd-artifact-label">04 &mdash; Interaction</span>
+          <span class="cd-artifact-desc">Interaction study &middot; Responsive build &middot; HTML / CSS / JavaScript</span>
         </div>
       </div>
     </div>
@@ -595,24 +624,35 @@
       <h2 class="cd-gallery-eyebrow">Final Experience</h2>
     </div>
 
-    <div class="cd-duo reveal">
-      <div class="cd-duo-img">
-        <img src="/assets/cleo/cleolook3.png" alt="Cleo Daisy fashion website — Look 01: The Draped Dress product page design" width="3010" height="1680" loading="lazy" />
-      </div>
-      <div class="cd-duo-img">
-        <img src="/assets/cleo/cleolook1.png" alt="Cleo Daisy fashion website — Look 02: The Column Skirt product page design" width="3010" height="1688" loading="lazy" />
+    <!-- ── 05 HOMEPAGE ── -->
+    <div class="cd-artifact cd-artifact--wide reveal">
+      <div class="cd-artifact-inner">
+        <div class="cd-artifact-frame">
+          <img src="/assets/cleo/celolook2.png" alt="Cleo Daisy fashion website — Look 03: The Veil Top editorial interface" width="2968" height="1608" loading="lazy" />
+        </div>
+        <div class="cd-artifact-caption">
+          <span class="cd-artifact-label">05 &mdash; Final Experience</span>
+          <span class="cd-artifact-desc">Homepage &middot; Desktop &middot; Winter 2027</span>
+        </div>
       </div>
     </div>
 
-    <div class="cd-full reveal">
-      <img src="/assets/cleo/celolook2.png" alt="Cleo Daisy fashion website — Look 03: The Veil Top full-width editorial layout" width="2968" height="1608" loading="lazy" style="object-position: center center;" />
+    <!-- ── 06 COLLECTION ── -->
+    <div class="cd-artifact cd-artifact--narrow cd-artifact--offset reveal">
+      <div class="cd-artifact-inner">
+        <div class="cd-artifact-frame">
+          <img src="/assets/cleo/cleolook1.png" alt="Cleo Daisy fashion website — Look 02: The Column Skirt editorial interface" width="3010" height="1688" loading="lazy" />
+        </div>
+        <div class="cd-artifact-caption">
+          <span class="cd-artifact-label">06 &mdash; Collection</span>
+          <span class="cd-artifact-desc">Winter 2027 &middot; Editorial interface</span>
+        </div>
+      </div>
     </div>
 
-    <div class="cd-duo reveal">
-      <div class="cd-duo-img cd-duo-img--empty"></div>
-      <div class="cd-duo-img cd-duo-img--portrait">
-        <img src="/assets/cleo/look-01.png" alt="Cleo Daisy — The Draped Dress, editorial fashion photography" width="1024" height="1536" loading="lazy" />
-      </div>
+    <!-- ── CLOSING EDITORIAL IMAGE ── -->
+    <div class="cd-editorial-close reveal">
+      <img src="/assets/cleo/look-01.png" alt="Cleo Daisy — The Draped Dress, editorial fashion photography" width="1024" height="1536" loading="lazy" />
     </div>
 
     <!-- ── CTA ── -->
