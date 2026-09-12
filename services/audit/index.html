@@ -457,6 +457,9 @@
     }
     .sp-cta-btn--secondary:hover { background: none; border-color: var(--ink-2); color: var(--ink); }
 
+    /* Desktop: hide mobile-only condensed process copy */
+    .process-body--summary { display: none; }
+
     /* ── Mobile ── */
     @media (max-width: 860px) {
       .sp-hero { min-height: auto; }
@@ -474,34 +477,45 @@
       .sp-hero-stats { gap: 28px; }
       .sp-hero-cta { align-self: flex-start; display: block; width: 100%; text-align: center; }
 
-      .sp-breadcrumb { padding: 18px 24px; }
+      .sp-breadcrumb { padding: 12px 24px; }
       .sp-section-head { padding: 40px 24px 36px; }
 
-      .process-timeline-wrap { display: none; }
-      .process-row { grid-template-columns: 1fr; }
-      .process-step { border-right: none; border-bottom: 1px solid var(--rule); padding: 32px 24px 40px; }
-      .process-step:last-child { border-bottom: none; }
+      /* What's Included — card layout on mobile */
+      .inc-rows { display: flex; flex-direction: column; gap: 12px; padding: 0 20px 32px; }
+      .inc-row { grid-template-columns: 1fr; padding: 0; border: 1px solid var(--rule); border-bottom: 1px solid var(--rule); background: none !important; }
+      .inc-row::after { display: none; }
+      .inc-num { display: none; }
+      .inc-body { border: none; padding: 20px 20px 16px; }
+      .inc-eyebrow { display: none; }
+      .inc-name { font-family: 'Poppins', sans-serif; color: var(--ink); margin-bottom: 8px; }
+      .inc-desc { color: var(--ink-2); }
+      .inc-items { padding: 12px 20px 20px; border-top: 1px solid var(--rule); }
+      .inc-item { color: var(--ink-2); }
+      .inc-row:hover .inc-name { color: var(--ink); }
 
-      .sp-proof {
-      max-width: 860px;
-      margin: 0 auto; grid-template-columns: 120px 1fr; }
-      .sp-proof-image { height: 130px; border-right: 1px solid var(--rule); border-bottom: none; min-height: unset; }
-      .sp-proof-image img { height: 130px; }
-      .sp-proof-text {
-      align-items: center;
-      text-align: center; padding: 20px 20px; gap: 4px; }
+      /* Project Proof — full-width stacked on mobile */
+      .sp-proof { grid-template-columns: 1fr; max-width: 100%; }
+      .sp-proof-image { height: auto; aspect-ratio: 16 / 9; border-right: none; border-bottom: 1px solid var(--rule); min-height: unset; }
+      .sp-proof-image img { height: 100%; }
+      .sp-proof-text { align-items: flex-start; text-align: left; padding: 24px; gap: 8px; }
       .sp-proof-name { font-size: clamp(14px, 4vw, 18px); }
 
-      .inc-row { grid-template-columns: 1fr; }
-      .inc-num { padding: 24px 24px 0; }
-      .inc-body { padding: 16px 24px; border-left: none; border-right: none; border-top: none; }
-      .inc-items { padding: 0 24px 32px; }
-      .inc-item:first-child { border-top: 1px solid var(--rule); }
+      /* Investment — one row, compact on mobile */
+      .sp-investment { flex-direction: row; align-items: center; flex-wrap: wrap; padding: 28px 24px; gap: 16px 28px; }
+      .sp-investment-stat { gap: 4px; }
+      .sp-investment-label { font-family: 'Poppins', sans-serif; letter-spacing: 0.06em; }
+      .sp-investment-value { font-size: 22px; letter-spacing: -0.5px; }
+      .sp-investment-divider { width: 1px; height: 32px; }
+      .sp-investment-note { width: 100%; margin: 0; }
+      .sp-investment-cta { display: none; }
 
-      .sp-investment { flex-direction: column; align-items: flex-start; padding: 48px 24px; gap: 24px; }
-      .sp-investment-divider { width: 32px; height: 1px; }
-      .sp-investment-cta { margin-left: 0; }
-      .sp-investment-note { max-width: none; }
+      /* Process — condensed copy on mobile */
+      .process-timeline-wrap { display: none; }
+      .process-row { grid-template-columns: 1fr; }
+      .process-step { border-right: none; border-bottom: 1px solid var(--rule); padding: 32px 24px 36px; }
+      .process-step:last-child { border-bottom: none; }
+      .process-body--detail { display: none; }
+      .process-body--summary { display: block; }
 
       .sp-faq { padding: 0 24px 48px; }
       .faq-question { padding: 22px 0; }
@@ -651,31 +665,16 @@
     </div>
   </section>
 
-  <!-- Process -->
-  <section class="sp-section reveal">
-    <div class="sp-section-head">
-      <span class="sp-section-label">How It Works</span>
+  <!-- Project Proof -->
+  <section class="sp-proof reveal">
+    <div class="sp-proof-image">
+      <img src="/assets/cel.png" alt="Celeste" />
     </div>
-    <div class="process-timeline-wrap">
-      <div class="process-timeline-fill" id="processTimelineFill"></div>
-    </div>
-    <div class="process-row" id="processRow">
-      <div class="process-step">
-        <span class="process-num">01</span>
-        <span class="process-label">Book</span>
-        <p class="process-body">Share your site URL and a short note about what you'd like the audit to focus on. No calls required to get started.</p>
-      </div>
-      <div class="process-step">
-        <span class="process-num">02</span>
-        <span class="process-label">Review</span>
-        <p class="process-body">I spend dedicated time on your site — not a ten-minute scan. Every page gets looked at in context. Notes, screenshots, and specific observations gathered throughout.</p>
-      </div>
-      <div class="process-step">
-        <span class="process-num">03</span>
-        <span class="process-label">Receive</span>
-        <p class="process-body">Your audit arrives as a written report within one week. Organized, specific, and actionable — not vague notes. You'll know exactly what to fix and in what order.</p>
-        <p class="process-body">A 30-minute follow-up call is included if you want to talk through the findings.</p>
-      </div>
+    <div class="sp-proof-text">
+      <span class="sp-proof-eyebrow">In Practice</span>
+      <span class="sp-proof-name">Celeste</span>
+      <p class="sp-proof-desc">An audit that revealed three conversion blockers on a wellness brand's homepage — unclear headline, buried CTA, and a mobile layout that cut off the booking form. All three fixed in under a week.</p>
+      <a class="sp-proof-link" href="/celeste/">View Case Study →</a>
     </div>
   </section>
 
@@ -693,6 +692,37 @@
       </div>
       <p class="sp-investment-note">Flat rate, no scope creep. Pay once, receive a complete written report with a follow-up call included.</p>
       <a class="sp-investment-cta" href="/contact/?service=audit">Book an Audit →</a>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="sp-section reveal">
+    <div class="sp-section-head">
+      <span class="sp-section-label">How It Works</span>
+    </div>
+    <div class="process-timeline-wrap">
+      <div class="process-timeline-fill" id="processTimelineFill"></div>
+    </div>
+    <div class="process-row" id="processRow">
+      <div class="process-step">
+        <span class="process-num">01</span>
+        <span class="process-label">Book</span>
+        <p class="process-body process-body--summary">Submit your site URL and what you'd like the audit to focus on. No call needed to get started.</p>
+        <p class="process-body process-body--detail">Share your site URL and a short note about what you'd like the audit to focus on. No calls required to get started.</p>
+      </div>
+      <div class="process-step">
+        <span class="process-num">02</span>
+        <span class="process-label">Review</span>
+        <p class="process-body process-body--summary">I spend dedicated time on every page in context — not a quick scan.</p>
+        <p class="process-body process-body--detail">I spend dedicated time on your site — not a ten-minute scan. Every page gets looked at in context. Notes, screenshots, and specific observations gathered throughout.</p>
+      </div>
+      <div class="process-step">
+        <span class="process-num">03</span>
+        <span class="process-label">Receive</span>
+        <p class="process-body process-body--summary">Your report arrives within a week. Specific, prioritized, and actionable. A 30-min follow-up call is included.</p>
+        <p class="process-body process-body--detail">Your audit arrives as a written report within one week. Organized, specific, and actionable — not vague notes. You'll know exactly what to fix and in what order.</p>
+        <p class="process-body process-body--detail">A 30-minute follow-up call is included if you want to talk through the findings.</p>
+      </div>
     </div>
   </section>
 
@@ -727,19 +757,6 @@
     <div class="sp-cta-right">
       <a class="sp-cta-btn" href="/contact/?service=audit">Book an Audit →</a>
       <a class="sp-cta-btn sp-cta-btn--secondary" href="https://calendly.com/oraanlevi1/30min" target="_blank" rel="noopener">Book a Call ↗&#xFE0E;</a>
-    </div>
-  </section>
-
-  <!-- Project Proof -->
-  <section class="sp-proof reveal">
-    <div class="sp-proof-image">
-      <img src="/assets/cel.png" alt="Celeste" />
-    </div>
-    <div class="sp-proof-text">
-      <span class="sp-proof-eyebrow">In Practice</span>
-      <span class="sp-proof-name">Celeste</span>
-      <p class="sp-proof-desc">An audit that revealed three conversion blockers on a wellness brand's homepage — unclear headline, buried CTA, and a mobile layout that cut off the booking form. All three fixed in under a week.</p>
-      <a class="sp-proof-link" href="/celeste/">View Case Study →</a>
     </div>
   </section>
 
