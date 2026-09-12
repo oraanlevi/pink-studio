@@ -1,10 +1,16 @@
 'use strict';
 
+/**
+ * Admin-only endpoint to clear and re-seed drafts from the current INITIAL_DRAFTS.
+ * Safety gate: refuses to run if any pin has been published.
+ * Use this only when copy or image data in seed.js has changed before publishing begins.
+ */
+
 const { isAdminAuth }            = require('../_lib/auth');
-const { getDrafts, saveDrafts }  = require('../_lib/blob');
+const { getDrafts, saveDrafts, getHistory } = require('../_lib/blob');
 const { validateDestinationUrl } = require('../_lib/validate');
-const INITIAL_DRAFTS             = require('./_drafts');
-// Copy rules: see _lib/copy-rules.js. All drafts in _drafts.js must follow them.
+
+const INITIAL_DRAFTS = require('./_drafts');
 
 module.exports = async (req, res) => {
   if (req.method !== 'POST') {
@@ -17,20 +23,25 @@ module.exports = async (req, res) => {
     return res.end(JSON.stringify({ error: 'unauthorized' }));
   }
 
-  // Validate all destination URLs before writing anything
+  // Refuse if anything has been published
+  const [existing, history] = await Promise.all([getDrafts(), getHistory()]);
+  const published = existing.filter(d => d.status === 'published');
+
+  if (published.length > 0 || history.length > 0) {
+    res.writeHead(409, { 'Content-Type': 'application/json' });
+    return res.end(JSON.stringify({
+      error:   'published_pins_exist',
+      message: 'Cannot reset after pins have been published.',
+    }));
+  }
+
+  // Validate all destination URLs before writing
   for (const draft of INITIAL_DRAFTS) {
     const check = validateDestinationUrl(draft.destinationUrl);
     if (!check.valid) {
       res.writeHead(500, { 'Content-Type': 'application/json' });
       return res.end(JSON.stringify({ error: 'invalid_draft_data', id: draft.id, reason: check.reason }));
     }
-  }
-
-  // Only seed if no drafts exist yet — never overwrite existing data
-  const existing = await getDrafts();
-  if (existing.length > 0) {
-    res.writeHead(409, { 'Content-Type': 'application/json' });
-    return res.end(JSON.stringify({ error: 'already_seeded', count: existing.length }));
   }
 
   const now = new Date().toISOString();
@@ -45,5 +56,5 @@ module.exports = async (req, res) => {
   await saveDrafts(drafts);
 
   res.writeHead(200, { 'Content-Type': 'application/json' });
-  res.end(JSON.stringify({ seeded: drafts.length }));
+  res.end(JSON.stringify({ reset: drafts.length }));
 };
