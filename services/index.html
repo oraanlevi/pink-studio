@@ -285,7 +285,7 @@
       .sg-hero,
       .sg-card--grid { aspect-ratio: unset; height: 160px; }
       .sg-grid { display: contents; }
-      .sg-card--grid:last-child { display: none; } /* hide Custom Solutions on mobile */
+      .sg-card--grid { cursor: pointer; }
 
       /* Hide desktop label and detail overlay */
       .sg-label { display: none; }
@@ -360,6 +360,7 @@
         <a href="/services/refresh/">Refresh</a>
         <a href="/services/audit/">Audit</a>
         <a href="/services/care/">Care</a>
+        <a href="/services/automation/">Custom Automation</a>
         <a href="/services/">All Services</a>
       </div>
     </div>
@@ -392,6 +393,7 @@
         <a href="/services/refresh/">Refresh</a>
         <a href="/services/audit/">Audit</a>
         <a href="/services/care/">Care</a>
+        <a href="/services/automation/">Custom Automation</a>
         <a href="/services/">All Services</a>
       </div>
     </div>
@@ -498,17 +500,25 @@
         </div>
       </div>
 
-      <!-- Custom Solutions -->
-      <div class="sg-card sg-card--grid">
-        <img src="/assets/CS.png" alt="Custom Solutions" />
-        <span class="sg-label">Custom Solutions</span>
+      <!-- Custom Automation -->
+      <div class="sg-card sg-card--grid" data-href="/services/automation/">
+        <img src="/assets/CS.png" alt="Custom Automation" />
+        <span class="sg-label">Custom Automation</span>
+        <div class="sg-mob-overlay">
+          <div class="sg-mob-text">
+            <span class="sg-mob-title">Custom Automation</span>
+            <span class="sg-mob-tag">Systems + Integrations</span>
+          </div>
+          <span class="sg-mob-arrow">→</span>
+        </div>
         <div class="sg-detail">
           <button class="sg-close" aria-label="Close">×</button>
-          <p class="sg-detail-name">Custom Solutions</p>
-          <p class="sg-detail-sub">Something beyond a website.</p>
-          <p class="sg-detail-meta">Custom pricing</p>
-          <p class="sg-detail-bestfor">Best for: custom builds, tools, or ideas that don't fit a standard package.</p>
-          <a class="sg-detail-cta" href="/contact/?service=custom">Let's Talk →</a>
+          <p class="sg-detail-name">Custom Automation</p>
+          <p class="sg-detail-sub">The systems behind your business.</p>
+          <p class="sg-detail-meta">From $1,500 &nbsp;·&nbsp; Varies by scope</p>
+          <p class="sg-detail-bestfor">Best for: businesses that need custom workflows, integrations, or internal tools built.</p>
+          <a class="sg-detail-cta" href="/contact/?service=automation">Let's Talk →</a>
+          <a class="sg-detail-link" href="/services/automation/">Full details →</a>
         </div>
       </div>
 

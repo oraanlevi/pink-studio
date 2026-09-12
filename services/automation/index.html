@@ -1,0 +1,760 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="/assets/favicon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Custom Automation · Pink Web Studio</title>
+  <meta name="description" content="Custom Automation by Pink Web Studio — bespoke workflows, integrations, dashboards, and systems built around your business." />
+  <link rel="canonical" href="https://www.pinkwebstudio.com/services/automation/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Custom Automation · Pink Web Studio" />
+  <meta property="og:description" content="Custom Automation by Pink Web Studio — bespoke workflows, integrations, dashboards, and systems built around your business." />
+  <meta property="og:url" content="https://www.pinkwebstudio.com/services/automation/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Oswald:wght@700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+  <style>
+
+    /* ── Hero ── */
+    .sp-hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      overflow: hidden;
+      border-bottom: 1px solid var(--rule);
+    }
+    .sp-hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('/assets/CS.png') center / cover no-repeat;
+      transform: scale(1.04);
+      animation: heroZoom 20s ease-in-out infinite alternate;
+    }
+    @keyframes heroZoom {
+      from { transform: scale(1.04); }
+      to   { transform: scale(1.00); }
+    }
+    .sp-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(250,250,248,0.97) 0%, rgba(250,250,248,0.80) 35%, rgba(250,250,248,0.10) 70%, rgba(250,250,248,0.00) 100%);
+    }
+    .sp-hero-img { display: none; }
+    .sp-hero-inner {
+      position: relative;
+      z-index: 1;
+      padding: 0 72px 80px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+    .sp-hero-eyebrow {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--ink-3);
+    }
+    .sp-hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(72px, 10vw, 140px);
+      line-height: 0.9;
+      letter-spacing: -2px;
+      color: var(--ink);
+    }
+    .sp-hero-bottom {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 40px;
+    }
+    .sp-hero-stats { display: flex; gap: 56px; }
+    .sp-stat { display: flex; flex-direction: column; gap: 6px; }
+    .sp-stat-label {
+      font-family: 'Poppins', sans-serif;
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--ink-3);
+    }
+    .sp-stat-value {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 300;
+      font-size: 22px;
+      color: var(--ink);
+      line-height: 1;
+    }
+    .sp-hero-cta {
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink);
+      text-decoration: none;
+      display: inline-block;
+      padding: 14px 28px;
+      border: 1px solid var(--ink);
+      transition: background 220ms, color 220ms;
+      white-space: nowrap;
+      align-self: flex-end;
+    }
+    .sp-hero-cta:hover { background: var(--ink); color: var(--bg); }
+
+    /* ── Breadcrumb ── */
+    .sp-breadcrumb { padding: 20px 72px; border-bottom: 1px solid var(--rule); }
+    .sp-breadcrumb a {
+      font-family: 'Poppins', sans-serif;
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 0.06em;
+      color: var(--ink-3);
+      text-decoration: none;
+      transition: color 200ms;
+    }
+    .sp-breadcrumb a:hover { color: var(--ink-2); }
+
+    /* ── Section shell ── */
+    .sp-section { border-bottom: 1px solid var(--rule); }
+    .sp-section-head {
+      padding: 56px 72px 52px;
+      border-bottom: 1px solid var(--rule);
+      text-align: center;
+    }
+    .sp-section-label {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(22px, 3vw, 38px);
+      font-weight: 300;
+      letter-spacing: -0.5px;
+      color: var(--ink);
+      display: block;
+    }
+
+    /* ── What's Included — editorial rows ── */
+    .inc-row {
+      display: grid;
+      grid-template-columns: 120px 1fr 300px;
+      align-items: stretch;
+      border-bottom: 1px solid var(--rule);
+      position: relative;
+      overflow: hidden;
+      transition: background 380ms ease;
+    }
+    .inc-row:last-child { border-bottom: none; }
+    .inc-row::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: 0;
+      height: 2px;
+      width: 0;
+      background: #D4537E;
+      transition: width 500ms cubic-bezier(.16,1,.3,1);
+    }
+    .inc-row:hover::after { width: 100%; }
+    .inc-row:hover { background: rgba(212,83,126,0.028); }
+    .inc-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      padding: 52px 0 52px 72px;
+      display: flex;
+      align-items: center;
+      transition: color 380ms ease;
+      user-select: none;
+    }
+    .inc-row:hover .inc-num { color: #D4537E; }
+    .inc-body {
+      padding: 52px 56px;
+      border-left: 1px solid var(--rule);
+      border-right: 1px solid var(--rule);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .inc-name {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500;
+      font-size: clamp(17px, 1.5vw, 22px);
+      color: var(--ink);
+      display: block;
+      line-height: 1.2;
+      margin-bottom: 12px;
+      transition: color 300ms ease;
+    }
+    .inc-row:hover .inc-name { color: #D4537E; }
+    .inc-desc {
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--ink-2);
+      line-height: 1.75;
+      margin: 0;
+      max-width: 52ch;
+    }
+    .inc-items {
+      padding: 52px 56px 52px 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0;
+    }
+    .inc-item {
+      font-family: 'Poppins', sans-serif;
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--ink-2);
+      padding: 8px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .inc-item:first-child { border-top: 1px solid var(--rule); }
+    .inc-item::before { content: '— '; }
+
+    /* ── Process ── */
+    .process-timeline-wrap {
+      height: 1px;
+      background: var(--rule);
+      position: relative;
+      overflow: hidden;
+    }
+    .process-timeline-fill {
+      position: absolute;
+      left: 0; top: 0;
+      height: 100%;
+      width: 0;
+      background: var(--ink);
+      transition: width 400ms cubic-bezier(.16,1,.3,1);
+    }
+    .process-row { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .process-step { padding: 52px 48px 60px; border-right: 1px solid var(--rule); }
+    .process-step:last-child { border-right: none; }
+    .process-num { display: none; }
+    .process-label {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 300;
+      font-size: 28px;
+      color: var(--ink);
+      display: block;
+      margin-bottom: 16px;
+    }
+    .process-body {
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--ink-2);
+      line-height: 1.75;
+    }
+    .process-body + .process-body { margin-top: 14px; }
+
+    /* ── Investment ── */
+    .sp-investment {
+      display: flex;
+      align-items: center;
+      gap: 64px;
+      padding: 72px 72px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .sp-investment-stat { display: flex; flex-direction: column; gap: 8px; }
+    .sp-investment-label {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--ink-3);
+    }
+    .sp-investment-value {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 300;
+      font-size: 52px;
+      color: var(--ink);
+      line-height: 0.88;
+      letter-spacing: -2px;
+    }
+    .sp-investment-divider { width: 1px; height: 72px; background: var(--rule); flex-shrink: 0; }
+    .sp-investment-note {
+      font-family: 'Poppins', sans-serif;
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--ink-2);
+      line-height: 1.65;
+      max-width: 44ch;
+    }
+    .sp-investment-cta {
+      margin-left: auto;
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink);
+      text-decoration: none;
+      transition: opacity 250ms;
+      white-space: nowrap;
+    }
+    .sp-investment-cta:hover { opacity: 0.45; }
+
+    /* ── FAQ ── */
+    .sp-faq { padding: 0 72px 72px; }
+    .faq-item { border-bottom: 1px solid var(--rule); }
+    .faq-item:first-child { border-top: 1px solid var(--rule); margin-top: 48px; }
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 28px 0;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--ink);
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      transition: color 250ms;
+    }
+    .faq-icon {
+      flex-shrink: 0;
+      font-size: 18px;
+      font-weight: 300;
+      color: var(--ink-3);
+      transition: transform 300ms cubic-bezier(.16,1,.3,1);
+      line-height: 1;
+    }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-answer {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 380ms cubic-bezier(.16,1,.3,1);
+    }
+    .faq-answer-inner { overflow: hidden; }
+    .faq-item.open .faq-answer { grid-template-rows: 1fr; }
+    .faq-answer-inner p {
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 1.8;
+      padding-bottom: 28px;
+      max-width: 60ch;
+    }
+
+    /* ── Final CTA ── */
+    .sp-cta {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 240px;
+    }
+    .sp-cta-left {
+      padding: 72px 72px;
+      display: flex;
+      align-items: center;
+      border-right: 1px solid var(--rule);
+    }
+    .sp-cta-headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(24px, 3vw, 42px);
+      color: var(--ink-2);
+      line-height: 1.1;
+      letter-spacing: 0.01em;
+    }
+    .sp-cta-right {
+      padding: 72px 72px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 12px;
+    }
+    .sp-cta-btn {
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink);
+      text-decoration: none;
+      display: block;
+      text-align: center;
+      padding: 16px 24px;
+      border: 1px solid var(--ink);
+      transition: background 220ms, color 220ms;
+    }
+    .sp-cta-btn:hover { background: var(--ink); color: var(--bg); }
+    .sp-cta-btn--secondary {
+      font-weight: 300;
+      color: var(--ink-2);
+      border: 1px solid var(--rule);
+      background: none;
+      transition: border-color 220ms, color 220ms;
+    }
+    .sp-cta-btn--secondary:hover { background: none; border-color: var(--ink-2); color: var(--ink); }
+
+    /* Desktop: hide mobile-only condensed process copy */
+    .process-body--summary { display: none; }
+
+    /* ── Mobile ── */
+    @media (max-width: 860px) {
+      .sp-hero { min-height: auto; }
+      .sp-hero-bg, .sp-hero-overlay { display: none; }
+      .sp-hero-img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+        object-position: center;
+      }
+      .sp-hero-inner { position: static; padding: 32px 24px 40px; gap: 16px; }
+      .sp-hero-title { font-size: clamp(48px, 12vw, 80px); font-style: italic; }
+      .sp-hero-bottom { flex-direction: column; align-items: flex-start; gap: 20px; }
+      .sp-hero-stats { gap: 28px; }
+      .sp-hero-cta { align-self: flex-start; display: block; width: 100%; text-align: center; }
+
+      .sp-breadcrumb { padding: 12px 24px; }
+      .sp-section-head { padding: 40px 24px 36px; }
+
+      /* What's Included — card layout on mobile */
+      .inc-rows { display: flex; flex-direction: column; gap: 12px; padding: 0 20px 32px; }
+      .inc-row { grid-template-columns: 1fr; padding: 0; border: 1px solid var(--rule); border-bottom: 1px solid var(--rule); background: none !important; }
+      .inc-row::after { display: none; }
+      .inc-num { display: none; }
+      .inc-body { border: none; padding: 20px 20px 16px; }
+      .inc-eyebrow { display: none; }
+      .inc-name { font-family: 'Poppins', sans-serif; color: var(--ink); margin-bottom: 8px; }
+      .inc-desc { color: var(--ink-2); }
+      .inc-items { padding: 12px 20px 20px; border-top: 1px solid var(--rule); }
+      .inc-item { color: var(--ink-2); }
+      .inc-row:hover .inc-name { color: var(--ink); }
+
+      /* Investment — one row, compact on mobile */
+      .sp-investment { flex-direction: row; align-items: center; flex-wrap: wrap; padding: 28px 24px; gap: 16px 28px; }
+      .sp-investment-stat { gap: 4px; }
+      .sp-investment-label { font-family: 'Poppins', sans-serif; letter-spacing: 0.06em; }
+      .sp-investment-value { font-size: 22px; letter-spacing: -0.5px; }
+      .sp-investment-divider { width: 1px; height: 32px; }
+      .sp-investment-note { width: 100%; margin: 0; }
+      .sp-investment-cta { display: none; }
+
+      /* Process — condensed copy on mobile */
+      .process-timeline-wrap { display: none; }
+      .process-row { grid-template-columns: 1fr; }
+      .process-step { border-right: none; border-bottom: 1px solid var(--rule); padding: 32px 24px 36px; }
+      .process-step:last-child { border-bottom: none; }
+      .process-body--detail { display: none; }
+      .process-body--summary { display: block; }
+
+      .sp-faq { padding: 0 24px 48px; }
+      .faq-question { padding: 22px 0; }
+
+      .sp-cta { grid-template-columns: 1fr; min-height: auto; }
+      .sp-cta-left { padding: 48px 24px 32px; border-right: none; border-bottom: 1px solid var(--rule); }
+      .sp-cta-right { padding: 32px 24px 56px; gap: 12px; }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="mh-strip">Los Angeles / Currently Booking</div>
+  <div class="scroll-bar" id="scrollBar"></div>
+
+  <nav class="nav" id="mainNav">
+    <div class="nav-links">
+      <div class="nav-dd">
+      <a class="nav-dd-label" href="/work/">Projects</a><button class="nav-dd-toggle" aria-expanded="false" aria-label="Open Projects menu"><span class="nav-dd-icon">+</span></button>
+      <div class="nav-dd-menu" hidden>
+        <a href="/forma/">Forma</a>
+        <a href="/verde/">Verde</a>
+        <a href="/le-loup/">Le Loup</a>
+        <a href="/west-and-stone/">West &amp; Stone</a>
+        <a href="/celeste/">Celeste</a>
+        <a href="/june-house/">June House</a>
+        <a href="/cleo-daisy/">Cleo Daisy</a>
+        <a href="/work/">All Projects</a>
+      </div>
+    </div>
+      <div class="nav-dd">
+      <a class="nav-dd-label" href="/services/">Services</a><button class="nav-dd-toggle" aria-expanded="false" aria-label="Open Services menu"><span class="nav-dd-icon">+</span></button>
+      <div class="nav-dd-menu" hidden>
+        <a href="/services/signature/">Signature Website</a>
+        <a href="/services/refresh/">Refresh</a>
+        <a href="/services/audit/">Audit</a>
+        <a href="/services/care/">Care</a>
+        <a href="/services/automation/">Custom Automation</a>
+        <a href="/services/">All Services</a>
+      </div>
+    </div>
+      <a href="/studio/">Studio</a>
+    </div>
+    <a class="nav-brand" href="/">Pink Web Studio</a>
+    <div class="nav-end"><a href="/contact/">Start a Project</a></div>
+    <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+    <div class="nav-dd">
+      <a class="nav-dd-label" href="/work/">Projects</a><button class="nav-dd-toggle" aria-expanded="false" aria-label="Open Projects menu"><span class="nav-dd-icon">+</span></button>
+      <div class="nav-dd-menu" hidden>
+        <a href="/forma/">Forma</a>
+        <a href="/verde/">Verde</a>
+        <a href="/le-loup/">Le Loup</a>
+        <a href="/west-and-stone/">West &amp; Stone</a>
+        <a href="/celeste/">Celeste</a>
+        <a href="/june-house/">June House</a>
+        <a href="/cleo-daisy/">Cleo Daisy</a>
+        <a href="/work/">All Projects</a>
+      </div>
+    </div>
+    <div class="nav-dd">
+      <a class="nav-dd-label" href="/services/">Services</a><button class="nav-dd-toggle" aria-expanded="false" aria-label="Open Services menu"><span class="nav-dd-icon">+</span></button>
+      <div class="nav-dd-menu" hidden>
+        <a href="/services/signature/">Signature Website</a>
+        <a href="/services/refresh/">Refresh</a>
+        <a href="/services/audit/">Audit</a>
+        <a href="/services/care/">Care</a>
+        <a href="/services/automation/">Custom Automation</a>
+        <a href="/services/">All Services</a>
+      </div>
+    </div>
+    <a href="/studio/">Studio</a>
+    <a href="/contact/" class="mobile-nav-cta">Start a Project</a>
+  </div>
+
+  <div class="sp-breadcrumb">
+    <a href="/services/">← All Services</a>
+  </div>
+
+  <!-- Hero -->
+  <section class="sp-hero reveal">
+    <div class="sp-hero-bg"></div>
+    <div class="sp-hero-overlay"></div>
+    <img class="sp-hero-img" src="/assets/CS.png" alt="Custom Automation" />
+    <div class="sp-hero-inner">
+      <span class="sp-hero-eyebrow">Service</span>
+      <h1 class="sp-hero-title">Custom Automation</h1>
+      <div class="sp-hero-bottom">
+        <div class="sp-hero-stats">
+          <div class="sp-stat">
+            <span class="sp-stat-label">Starting from</span>
+            <span class="sp-stat-value">$1,500</span>
+          </div>
+          <div class="sp-stat">
+            <span class="sp-stat-label">Timeline</span>
+            <span class="sp-stat-value">Varies by scope</span>
+          </div>
+        </div>
+        <a class="sp-hero-cta" href="https://calendly.com/oraanlevi1/30min" target="_blank" rel="noopener">Book a Call ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- What's Included -->
+  <section class="sp-section reveal">
+    <div class="sp-section-head">
+      <span class="sp-section-label">What's Included</span>
+    </div>
+    <div class="inc-rows">
+      <div class="inc-row">
+        <span class="inc-num">Discover</span>
+        <div class="inc-body">
+          <span class="inc-name">Systems Discovery</span>
+          <p class="inc-desc">We map your existing tools, workflows, and processes to understand where things slow down, repeat unnecessarily, or break. A clear plan before anything gets built.</p>
+        </div>
+        <div class="inc-items">
+          <span class="inc-item">Workflow Mapping</span>
+          <span class="inc-item">Tool Audit</span>
+          <span class="inc-item">Integration Plan</span>
+        </div>
+      </div>
+      <div class="inc-row">
+        <span class="inc-num">Connect</span>
+        <div class="inc-body">
+          <span class="inc-name">Custom Integrations</span>
+          <p class="inc-desc">We connect the platforms you already use or build new connections from scratch. CRMs, lead flows, content pipelines, APIs, and anything in between.</p>
+        </div>
+        <div class="inc-items">
+          <span class="inc-item">API Integrations</span>
+          <span class="inc-item">CRM Setup</span>
+          <span class="inc-item">Workflow Automation</span>
+        </div>
+      </div>
+      <div class="inc-row">
+        <span class="inc-num">Build</span>
+        <div class="inc-body">
+          <span class="inc-name">Internal Tools &amp; Dashboards</span>
+          <p class="inc-desc">Dashboards, admin panels, and client portals built for exactly what your business needs. Not a template adapted to fit. Built to spec.</p>
+        </div>
+        <div class="inc-items">
+          <span class="inc-item">Admin Dashboards</span>
+          <span class="inc-item">Client Portals</span>
+          <span class="inc-item">Custom Data Views</span>
+        </div>
+      </div>
+      <div class="inc-row">
+        <span class="inc-num">Launch</span>
+        <div class="inc-body">
+          <span class="inc-name">Launch &amp; Handoff</span>
+          <p class="inc-desc">Everything tested, deployed, and documented so your team knows exactly what they have and how to use it. No loose ends.</p>
+        </div>
+        <div class="inc-items">
+          <span class="inc-item">Full QA Testing</span>
+          <span class="inc-item">Clear Documentation</span>
+          <span class="inc-item">Team Handoff</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Investment -->
+  <section class="sp-section reveal">
+    <div class="sp-investment">
+      <div class="sp-investment-stat">
+        <span class="sp-investment-label">Starting from</span>
+        <span class="sp-investment-value">$1,500</span>
+      </div>
+      <div class="sp-investment-divider"></div>
+      <div class="sp-investment-stat">
+        <span class="sp-investment-label">Timeline</span>
+        <span class="sp-investment-value">Varies</span>
+      </div>
+      <p class="sp-investment-note">Scoped to what your business actually needs. Some projects are a single integration. Others are a full system build. Quoted after discovery.</p>
+      <a class="sp-investment-cta" href="https://calendly.com/oraanlevi1/30min" target="_blank" rel="noopener">Book a Call ↗</a>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="sp-section reveal">
+    <div class="sp-section-head">
+      <span class="sp-section-label">How It Works</span>
+    </div>
+    <div class="process-timeline-wrap">
+      <div class="process-timeline-fill" id="processTimelineFill"></div>
+    </div>
+    <div class="process-row" id="processRow">
+      <div class="process-step">
+        <span class="process-num">01</span>
+        <span class="process-label">Map</span>
+        <p class="process-body process-body--summary">We understand your current setup, where things get stuck, and what the system needs to do.</p>
+        <p class="process-body process-body--detail">We start by understanding your current setup: what tools you use, where things get stuck, and what the system actually needs to do. Nothing gets built until we both agree on the plan.</p>
+      </div>
+      <div class="process-step">
+        <span class="process-num">02</span>
+        <span class="process-label">Build</span>
+        <p class="process-body process-body--summary">Integrations, automations, and tools built to your exact spec. You review at each milestone.</p>
+        <p class="process-body process-body--detail">Integrations, automations, and tools built to your exact spec. You review at each milestone before anything goes live. The logic and the experience are designed before any code is written.</p>
+      </div>
+      <div class="process-step">
+        <span class="process-num">03</span>
+        <span class="process-label">Launch</span>
+        <p class="process-body process-body--summary">Everything tested, deployed, and documented. We stay available for two weeks after launch.</p>
+        <p class="process-body process-body--detail">Everything is tested, deployed, and documented. We stay available for two weeks after launch to address anything that comes up. Clear handoff, nothing left open.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="sp-section reveal">
+    <div class="sp-section-head">
+      <span class="sp-section-label">Questions</span>
+    </div>
+    <div class="sp-faq">
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question">Do I need a Pink Web Studio website to use this service? <span class="faq-icon">+</span></button>
+          <div class="faq-answer"><div class="faq-answer-inner"><p>No. We build custom systems for businesses regardless of who designed their site. If you already have a Pink Web site, we know exactly how it works and can connect to it directly.</p></div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">How is this different from hiring a developer? <span class="faq-icon">+</span></button>
+          <div class="faq-answer"><div class="faq-answer-inner"><p>We design the system before we build it. That means the logic, the user experience, and the integration plan are worked out before any code is written. You get a system that fits your business, not just one that technically works.</p></div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">What is included in the discovery phase? <span class="faq-icon">+</span></button>
+          <div class="faq-answer"><div class="faq-answer-inner"><p>We walk through your current workflows, tools, and pain points together. From that we put together a clear scope: what gets built, how it connects, what the handoff looks like, and what it will cost. Discovery is included in the project.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="sp-cta reveal">
+    <div class="sp-cta-left">
+      <span class="sp-cta-headline">The right system changes everything.</span>
+    </div>
+    <div class="sp-cta-right">
+      <a class="sp-cta-btn" href="https://calendly.com/oraanlevi1/30min" target="_blank" rel="noopener">Book a Call ↗</a>
+      <a class="sp-cta-btn sp-cta-btn--secondary" href="/contact/?service=automation">Send a Message →</a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-brand-wrap">
+      <span class="footer-brand">Pink Web Studio</span>
+      <span class="footer-brand-sub">Los Angeles / Currently Booking</span>
+        <a href="/privacy/" class="footer-privacy">Privacy Policy</a>
+    </div>
+    <div class="footer-social">
+      <div class="footer-social-icons">
+        <a href="https://instagram.com/oraanlevi" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/oraan-levi-898a89200/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+      </div>
+      <a href="mailto:studio@pinkwebstudio.com" class="footer-email">studio@pinkwebstudio.com</a>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('mainNav');
+    const bar = document.getElementById('scrollBar');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+      if (bar) bar.style.width = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100) + '%';
+    }, { passive: true });
+
+    const ham = document.getElementById('navHam');
+    const mob = document.getElementById('mobileNav');
+    const scrim = document.createElement('div');
+    scrim.className = 'nav-scrim';
+    document.body.appendChild(scrim);
+    const navHeader = document.createElement('div');
+    navHeader.className = 'mobile-nav-header';
+    navHeader.innerHTML = '<button class="mobile-nav-close" id="navClose" aria-label="Close menu">&#215;</button>';
+    mob.insertBefore(navHeader, mob.firstChild);
+    function openNav() { ham.classList.add('open'); mob.classList.add('open'); scrim.classList.add('open'); ham.setAttribute('aria-expanded','true'); mob.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+    function closeNav() { ham.classList.remove('open'); mob.classList.remove('open'); scrim.classList.remove('open'); ham.setAttribute('aria-expanded','false'); mob.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+    ham.addEventListener('click', () => mob.classList.contains('open') ? closeNav() : openNav());
+    scrim.addEventListener('click', closeNav);
+    document.getElementById('navClose')?.addEventListener('click', closeNav);
+    mob.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
+
+    const processRow = document.getElementById('processRow');
+    const timelineFill = document.getElementById('processTimelineFill');
+    if (processRow && timelineFill) {
+      processRow.querySelectorAll('.process-step').forEach((step, i, arr) => {
+        step.addEventListener('mouseenter', () => { timelineFill.style.width = ((i+1)/arr.length*100)+'%'; });
+      });
+      processRow.addEventListener('mouseleave', () => { timelineFill.style.width = '0'; });
+    }
+
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const wasOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!wasOpen) item.classList.add('open');
+      });
+    });
+
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.04, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
+<script src="/nav.js"></script>
+</body>
+</html>
