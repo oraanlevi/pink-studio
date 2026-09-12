@@ -1,5 +1,10 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "functions": {
+    "api/**/*.js": {
+      "runtime": "nodejs18.x"
+    }
+  },
   "redirects": [
     { "source": "/enter-the-studio", "destination": "/contact/", "permanent": true },
     { "source": "/connect",          "destination": "/contact/", "permanent": true },

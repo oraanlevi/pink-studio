@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Pinterest · Pink Web Studio Admin</title>
+    <link rel="icon" type="image/png" href="/assets/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet" />
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+      :root {
+        --ink:   #1a1917;
+        --ink-2: #3a3834;
+        --bg:    #faf9f7;
+        --rule:  rgba(26,25,23,.12);
+        --muted: rgba(26,25,23,.42);
+      }
+
+      body {
+        background: var(--bg);
+        color: var(--ink);
+        font-family: 'Poppins', sans-serif;
+        font-weight: 300;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 24px;
+      }
+
+      .card {
+        width: 100%;
+        max-width: 480px;
+        border: 1px solid var(--rule);
+        padding: 48px 40px 40px;
+        background: var(--bg);
+      }
+
+      .card-eyebrow {
+        font-size: 11px;
+        font-weight: 300;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--muted);
+        display: block;
+        margin-bottom: 14px;
+      }
+
+      .card-title {
+        font-family: 'Cormorant Garamond', serif;
+        font-weight: 300;
+        font-style: italic;
+        font-size: 32px;
+        line-height: 1;
+        color: var(--ink);
+        display: block;
+        margin-bottom: 32px;
+      }
+
+      .field {
+        margin-bottom: 16px;
+      }
+
+      .field label {
+        display: block;
+        font-size: 11px;
+        font-weight: 400;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 8px;
+      }
+
+      .field input {
+        width: 100%;
+        background: transparent;
+        border: 1px solid var(--rule);
+        padding: 14px 16px;
+        font-family: 'Poppins', sans-serif;
+        font-size: 14px;
+        font-weight: 300;
+        color: var(--ink);
+        outline: none;
+        transition: border-color 200ms;
+        border-radius: 0;
+        -webkit-appearance: none;
+      }
+
+      .field input:focus { border-color: var(--ink); }
+
+      .btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 24px;
+        font-family: 'Poppins', sans-serif;
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        cursor: pointer;
+        border-radius: 0;
+        transition: background 200ms, color 200ms, opacity 200ms;
+        text-decoration: none;
+        border: none;
+        margin-top: 8px;
+      }
+
+      .btn-primary {
+        background: var(--ink);
+        color: var(--bg);
+      }
+      .btn-primary:hover { opacity: 0.82; }
+
+      .btn-outline {
+        background: transparent;
+        color: var(--ink);
+        border: 1px solid var(--ink);
+      }
+      .btn-outline:hover { background: var(--ink); color: var(--bg); }
+
+      .btn-danger {
+        background: transparent;
+        color: #c0392b;
+        border: 1px solid #c0392b;
+        font-size: 11px;
+        padding: 10px 20px;
+        width: auto;
+        margin-top: 24px;
+      }
+      .btn-danger:hover { background: #c0392b; color: #fff; }
+
+      .status-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 8px;
+      }
+
+      .status-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        flex-shrink: 0;
+      }
+      .status-dot.connected    { background: #27ae60; }
+      .status-dot.disconnected { background: var(--muted); }
+
+      .status-label {
+        font-size: 13px;
+        font-weight: 400;
+        color: var(--ink);
+      }
+
+      .meta-text {
+        font-size: 11px;
+        color: var(--muted);
+        line-height: 1.6;
+        margin-top: 4px;
+      }
+
+      .divider {
+        border: none;
+        border-top: 1px solid var(--rule);
+        margin: 28px 0;
+      }
+
+      .notice {
+        font-size: 12px;
+        font-weight: 300;
+        color: var(--muted);
+        line-height: 1.6;
+        margin-top: 20px;
+      }
+
+      .notice.error {
+        color: #c0392b;
+      }
+
+      .notice.success {
+        color: #27ae60;
+      }
+
+      .logout-link {
+        display: block;
+        text-align: center;
+        font-size: 11px;
+        color: var(--muted);
+        text-decoration: none;
+        margin-top: 24px;
+        transition: color 200ms;
+      }
+      .logout-link:hover { color: var(--ink-2); }
+
+      /* Sections hidden by default, shown by JS */
+      [data-section] { display: none; }
+      [data-section].visible { display: block; }
+
+      .loading-text {
+        font-size: 13px;
+        color: var(--muted);
+        text-align: center;
+        padding: 8px 0;
+      }
+
+      @media (max-width: 540px) {
+        .card { padding: 36px 24px 28px; }
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="card">
+      <span class="card-eyebrow">Pink Web Studio Admin</span>
+      <span class="card-title">Pinterest</span>
+
+      <!-- Loading state -->
+      <div id="sectionLoading">
+        <p class="loading-text">Loading…</p>
+      </div>
+
+      <!-- Login form -->
+      <div data-section id="sectionLogin">
+        <form method="POST" action="/api/pinterest/admin/login">
+          <div class="field">
+            <label for="password">Admin Password</label>
+            <input type="password" id="password" name="password" autocomplete="current-password" required />
+          </div>
+          <button type="submit" class="btn btn-primary">Sign In →</button>
+        </form>
+        <p class="notice error" id="loginError" style="display:none;">Incorrect password.</p>
+      </div>
+
+      <!-- Connected state -->
+      <div data-section id="sectionConnected">
+        <div class="status-row">
+          <span class="status-dot connected"></span>
+          <span class="status-label">Connected to Pinterest</span>
+        </div>
+        <p class="meta-text" id="connectedMeta"></p>
+        <hr class="divider" />
+        <p class="notice">Your Pinterest account is connected. Refresh tokens are stored securely in private Vercel Blob and are never exposed in source code or logs.</p>
+        <form method="POST" action="/api/pinterest/admin/logout" style="display:inline;">
+          <button type="submit" class="btn btn-danger">Disconnect</button>
+        </form>
+        <a href="#" class="logout-link" onclick="logout(event)">Sign out of admin</a>
+      </div>
+
+      <!-- Not connected (authenticated) -->
+      <div data-section id="sectionNotConnected">
+        <div class="status-row">
+          <span class="status-dot disconnected"></span>
+          <span class="status-label">Not connected</span>
+        </div>
+        <p class="meta-text">No Pinterest account is currently linked.</p>
+        <hr class="divider" />
+        <a href="/api/pinterest/oauth/start" class="btn btn-outline">Connect Pinterest Account →</a>
+        <p class="notice" id="oauthNotice"></p>
+        <a href="#" class="logout-link" onclick="logout(event)">Sign out of admin</a>
+      </div>
+
+    </div>
+
+    <script>
+      const params = new URLSearchParams(window.location.search);
+
+      function show(id) {
+        document.querySelectorAll('[data-section]').forEach(el => el.classList.remove('visible'));
+        const el = document.getElementById(id);
+        if (el) el.classList.add('visible');
+        document.getElementById('sectionLoading').style.display = 'none';
+      }
+
+      function logout(e) {
+        e.preventDefault();
+        fetch('/api/pinterest/admin/logout', { method: 'POST', redirect: 'follow' })
+          .then(() => { window.location.href = '/admin/pinterest/connect/'; });
+      }
+
+      async function loadStatus() {
+        try {
+          const res  = await fetch('/api/pinterest/admin/status');
+          const data = await res.json();
+
+          if (!data.authenticated) {
+            show('sectionLogin');
+            if (params.get('error') === 'invalid') {
+              document.getElementById('loginError').style.display = 'block';
+            }
+            return;
+          }
+
+          if (data.connected) {
+            show('sectionConnected');
+            if (data.connectedAt) {
+              const d = new Date(data.connectedAt);
+              document.getElementById('connectedMeta').textContent =
+                'Connected ' + d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) +
+                (data.scope ? ' · Scopes: ' + data.scope : '');
+            }
+          } else {
+            show('sectionNotConnected');
+            const notice = document.getElementById('oauthNotice');
+            const error  = params.get('error');
+            if (params.get('connected') === '1') {
+              // shouldn't happen but handle gracefully
+            }
+            if (error) {
+              const messages = {
+                access_denied:         'Pinterest access was denied. Please try again.',
+                invalid_state:         'Security check failed. Please try again.',
+                token_exchange_failed: 'Could not complete authentication with Pinterest.',
+                no_refresh_token:      'Pinterest did not return a refresh token.',
+                storage_failed:        'Token was received but could not be stored. Check Blob configuration.',
+                network_error:         'Network error during authentication. Please try again.',
+                unauthorized:          'Session expired. Please sign in again.',
+              };
+              notice.textContent = messages[error] || 'An error occurred. Please try again.';
+              notice.classList.add('error');
+            }
+          }
+        } catch {
+          document.getElementById('sectionLoading').innerHTML =
+            '<p class="loading-text" style="color:#c0392b;">Could not load status. Check your connection.</p>';
+        }
+      }
+
+      loadStatus();
+    </script>
+
+  </body>
+</html>
