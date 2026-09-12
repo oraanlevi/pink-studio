@@ -5,6 +5,9 @@
   "engines": {
     "node": ">=18"
   },
+  "scripts": {
+    "build": "echo 'Static site — no build required'"
+  },
   "dependencies": {
     "@vercel/blob": "^2.8.0"
   }
