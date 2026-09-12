@@ -1,0 +1,750 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Pinterest Pins · Pink Web Studio Admin</title>
+    <link rel="icon" type="image/png" href="/assets/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet" />
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+      :root {
+        --ink:   #1a1917;
+        --ink-2: #3a3834;
+        --bg:    #faf9f7;
+        --rule:  rgba(26,25,23,.12);
+        --muted: rgba(26,25,23,.42);
+        --green: #27ae60;
+        --red:   #c0392b;
+      }
+
+      body {
+        background: var(--bg);
+        color: var(--ink);
+        font-family: 'Poppins', sans-serif;
+        font-weight: 300;
+        min-height: 100vh;
+        padding: 48px 24px 80px;
+      }
+
+      .page-header {
+        max-width: 900px;
+        margin: 0 auto 40px;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 16px;
+        flex-wrap: wrap;
+        border-bottom: 1px solid var(--rule);
+        padding-bottom: 24px;
+      }
+
+      .page-eyebrow {
+        font-size: 11px;
+        font-weight: 300;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--muted);
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      .page-title {
+        font-family: 'Cormorant Garamond', serif;
+        font-weight: 300;
+        font-style: italic;
+        font-size: 36px;
+        line-height: 1;
+        color: var(--ink);
+      }
+
+      .header-nav {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+      }
+
+      .nav-link {
+        font-size: 11px;
+        font-weight: 300;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--muted);
+        text-decoration: none;
+        transition: color 180ms;
+      }
+      .nav-link:hover { color: var(--ink-2); }
+
+      /* Stats bar */
+      .stats-bar {
+        max-width: 900px;
+        margin: 0 auto 36px;
+        display: flex;
+        gap: 24px;
+        flex-wrap: wrap;
+      }
+
+      .stat {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .stat-value {
+        font-family: 'Cormorant Garamond', serif;
+        font-style: italic;
+        font-size: 28px;
+        line-height: 1;
+        color: var(--ink);
+      }
+
+      .stat-label {
+        font-size: 11px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      .stat-divider {
+        width: 1px;
+        background: var(--rule);
+        align-self: stretch;
+        margin: 4px 0;
+      }
+
+      /* Sections */
+      .section {
+        max-width: 900px;
+        margin: 0 auto 48px;
+      }
+
+      .section-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      .section-title {
+        font-size: 11px;
+        font-weight: 400;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      /* Buttons */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        padding: 10px 20px;
+        font-family: 'Poppins', sans-serif;
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        cursor: pointer;
+        border-radius: 0;
+        border: none;
+        transition: background 180ms, color 180ms, opacity 180ms;
+        text-decoration: none;
+        white-space: nowrap;
+      }
+      .btn:disabled { opacity: 0.4; cursor: default; pointer-events: none; }
+
+      .btn-primary { background: var(--ink); color: var(--bg); }
+      .btn-primary:hover { opacity: 0.82; }
+
+      .btn-approve { background: var(--green); color: #fff; }
+      .btn-approve:hover { opacity: 0.82; }
+
+      .btn-reject {
+        background: transparent;
+        color: var(--red);
+        border: 1px solid var(--red);
+      }
+      .btn-reject:hover { background: var(--red); color: #fff; }
+
+      .btn-publish {
+        background: var(--ink);
+        color: var(--bg);
+      }
+      .btn-publish:hover { opacity: 0.82; }
+
+      .btn-seed {
+        background: transparent;
+        color: var(--ink);
+        border: 1px solid var(--ink);
+      }
+      .btn-seed:hover { background: var(--ink); color: var(--bg); }
+
+      /* Pin cards */
+      .pin-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 20px;
+      }
+
+      .pin-card {
+        border: 1px solid var(--rule);
+        background: var(--bg);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        transition: border-color 180ms;
+      }
+
+      .pin-card.is-approved  { border-color: rgba(39,174,96,.35); }
+      .pin-card.is-rejected  { opacity: 0.5; }
+      .pin-card.is-published { border-color: rgba(26,25,23,.32); }
+
+      .pin-img-wrap {
+        width: 100%;
+        aspect-ratio: 3/4;
+        overflow: hidden;
+        background: rgba(26,25,23,.04);
+        flex-shrink: 0;
+      }
+
+      .pin-img-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .pin-body {
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        gap: 8px;
+      }
+
+      .pin-status-row {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .status-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        flex-shrink: 0;
+      }
+      .status-dot.draft     { background: var(--muted); }
+      .status-dot.approved  { background: var(--green); }
+      .status-dot.rejected  { background: var(--red); }
+      .status-dot.published { background: var(--ink); }
+
+      .status-label {
+        font-size: 10px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      .pin-board {
+        font-size: 10px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-left: auto;
+      }
+
+      .pin-title {
+        font-family: 'Cormorant Garamond', serif;
+        font-style: italic;
+        font-size: 17px;
+        line-height: 1.25;
+        color: var(--ink);
+      }
+
+      .pin-desc {
+        font-size: 12px;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .pin-url {
+        font-size: 11px;
+        color: var(--muted);
+        word-break: break-all;
+        text-decoration: none;
+        transition: color 180ms;
+      }
+      .pin-url:hover { color: var(--ink-2); }
+
+      .pin-actions {
+        display: flex;
+        gap: 8px;
+        margin-top: auto;
+        padding-top: 12px;
+        border-top: 1px solid var(--rule);
+        flex-wrap: wrap;
+      }
+
+      /* Publish queue */
+      .queue-list {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .queue-item {
+        border: 1px solid rgba(39,174,96,.25);
+        padding: 14px 16px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .queue-position {
+        font-family: 'Cormorant Garamond', serif;
+        font-style: italic;
+        font-size: 22px;
+        color: var(--muted);
+        flex-shrink: 0;
+        width: 28px;
+        text-align: center;
+      }
+
+      .queue-info {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .queue-title {
+        font-size: 13px;
+        color: var(--ink);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .queue-meta {
+        font-size: 11px;
+        color: var(--muted);
+        margin-top: 2px;
+      }
+
+      /* History */
+      .history-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .history-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 0;
+        border-bottom: 1px solid var(--rule);
+        flex-wrap: wrap;
+      }
+
+      .history-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--ink);
+        flex-shrink: 0;
+      }
+
+      .history-title {
+        flex: 1;
+        font-size: 13px;
+        color: var(--ink);
+        min-width: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .history-meta {
+        font-size: 11px;
+        color: var(--muted);
+        white-space: nowrap;
+      }
+
+      /* Empty / notice states */
+      .empty-state {
+        font-size: 13px;
+        color: var(--muted);
+        padding: 20px 0;
+        line-height: 1.6;
+      }
+
+      .notice {
+        font-size: 12px;
+        color: var(--muted);
+        line-height: 1.6;
+        margin-top: 8px;
+      }
+      .notice.error   { color: var(--red); }
+      .notice.success { color: var(--green); }
+
+      .loading-text {
+        font-size: 13px;
+        color: var(--muted);
+        padding: 20px 0;
+      }
+
+      /* Publish section */
+      .publish-bar {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      @media (max-width: 600px) {
+        body { padding: 32px 16px 60px; }
+        .page-header { flex-direction: column; align-items: flex-start; }
+        .pin-grid { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="page-header">
+      <div>
+        <span class="page-eyebrow">Pink Web Studio Admin · Pinterest</span>
+        <span class="page-title">Pin Drafts</span>
+      </div>
+      <nav class="header-nav">
+        <a href="/admin/pinterest/connect/" class="nav-link">Connection</a>
+        <a href="#" class="nav-link" onclick="adminLogout(event)">Sign out</a>
+      </nav>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-bar" id="statsBar" style="display:none;">
+      <div class="stat">
+        <span class="stat-value" id="statDraft">—</span>
+        <span class="stat-label">Drafts</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-value" id="statApproved">—</span>
+        <span class="stat-label">Approved</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-value" id="statPublished">—</span>
+        <span class="stat-label">Published</span>
+      </div>
+    </div>
+
+    <!-- Seed section (hidden after seeding) -->
+    <div class="section" id="seedSection" style="display:none;">
+      <div class="section-header">
+        <span class="section-title">Initial Content</span>
+      </div>
+      <p class="empty-state">No drafts yet. Seed the initial 7 pins to get started.</p>
+      <button class="btn btn-seed" id="seedBtn" onclick="seedDrafts()" style="margin-top:16px;">Seed 7 Drafts</button>
+      <p class="notice" id="seedNotice"></p>
+    </div>
+
+    <!-- All drafts -->
+    <div class="section" id="draftsSection" style="display:none;">
+      <div class="section-header">
+        <span class="section-title">All Drafts</span>
+      </div>
+      <div class="pin-grid" id="pinGrid"></div>
+    </div>
+
+    <!-- Approved queue + publish -->
+    <div class="section" id="queueSection" style="display:none;">
+      <div class="section-header">
+        <span class="section-title">Approved Queue</span>
+        <div class="publish-bar">
+          <button class="btn btn-publish" id="publishBtn" onclick="publishNext()">Publish Next Pin</button>
+          <p class="notice" id="publishNotice"></p>
+        </div>
+      </div>
+      <div class="queue-list" id="queueList"></div>
+    </div>
+
+    <!-- History -->
+    <div class="section" id="historySection" style="display:none;">
+      <div class="section-header">
+        <span class="section-title">Published History</span>
+      </div>
+      <div class="history-list" id="historyList"></div>
+    </div>
+
+    <div id="loadingState">
+      <p class="loading-text">Loading…</p>
+    </div>
+
+    <script>
+      let allDrafts  = [];
+      let allHistory = [];
+
+      // ── Auth ──────────────────────────────────────────────────────────────
+
+      function adminLogout(e) {
+        e.preventDefault();
+        fetch('/api/pinterest/admin/logout', { method: 'POST' })
+          .then(() => { window.location.href = '/admin/pinterest/connect/'; });
+      }
+
+      // ── Data ──────────────────────────────────────────────────────────────
+
+      async function loadData() {
+        try {
+          const res  = await fetch('/api/pinterest/pins/list');
+          if (res.status === 401) {
+            window.location.href = '/admin/pinterest/connect/';
+            return;
+          }
+          const data = await res.json();
+          allDrafts  = data.drafts  || [];
+          allHistory = data.history || [];
+          render();
+        } catch {
+          document.getElementById('loadingState').innerHTML =
+            '<p class="loading-text" style="color:var(--red);">Could not load data. Check your connection.</p>';
+        }
+      }
+
+      // ── Render ────────────────────────────────────────────────────────────
+
+      function render() {
+        document.getElementById('loadingState').style.display = 'none';
+
+        const hasDrafts = allDrafts.length > 0;
+
+        // Stats
+        const nDraft     = allDrafts.filter(d => d.status === 'draft').length;
+        const nApproved  = allDrafts.filter(d => d.status === 'approved').length;
+        const nPublished = allDrafts.filter(d => d.status === 'published').length + allHistory.length;
+
+        document.getElementById('statDraft').textContent    = nDraft;
+        document.getElementById('statApproved').textContent = nApproved;
+        document.getElementById('statPublished').textContent = allHistory.length;
+        document.getElementById('statsBar').style.display   = hasDrafts ? 'flex' : 'none';
+
+        // Seed section
+        document.getElementById('seedSection').style.display = hasDrafts ? 'none' : 'block';
+
+        // Drafts grid
+        if (hasDrafts) {
+          document.getElementById('draftsSection').style.display = 'block';
+          renderDrafts();
+        }
+
+        // Queue
+        const approved = allDrafts
+          .filter(d => d.status === 'approved')
+          .sort((a, b) => new Date(a.approvedAt) - new Date(b.approvedAt));
+
+        document.getElementById('queueSection').style.display = approved.length > 0 ? 'block' : 'none';
+        document.getElementById('publishBtn').disabled = approved.length === 0;
+
+        const queueList = document.getElementById('queueList');
+        queueList.innerHTML = '';
+        approved.forEach((pin, i) => {
+          const el = document.createElement('div');
+          el.className = 'queue-item';
+          el.innerHTML = `
+            <span class="queue-position">${i + 1}</span>
+            <div class="queue-info">
+              <div class="queue-title">${esc(pin.title)}</div>
+              <div class="queue-meta">${esc(pin.board)} · Approved ${fmtDate(pin.approvedAt)}</div>
+            </div>
+          `;
+          queueList.appendChild(el);
+        });
+
+        // History
+        if (allHistory.length > 0) {
+          document.getElementById('historySection').style.display = 'block';
+          const historyList = document.getElementById('historyList');
+          historyList.innerHTML = '';
+          [...allHistory].reverse().forEach(h => {
+            const el = document.createElement('div');
+            el.className = 'history-item';
+            el.innerHTML = `
+              <span class="history-dot"></span>
+              <span class="history-title">${esc(h.title)}</span>
+              <span class="history-meta">${fmtDate(h.publishedAt)}</span>
+            `;
+            historyList.appendChild(el);
+          });
+        }
+      }
+
+      function renderDrafts() {
+        const grid = document.getElementById('pinGrid');
+        grid.innerHTML = '';
+
+        allDrafts.forEach(pin => {
+          const card = document.createElement('div');
+          card.className = `pin-card is-${pin.status}`;
+          card.id = `card-${pin.id}`;
+
+          const approveDisabled = (pin.status === 'approved' || pin.status === 'published') ? 'disabled' : '';
+          const rejectDisabled  = (pin.status === 'rejected'  || pin.status === 'published') ? 'disabled' : '';
+
+          let actionButtons = '';
+          if (pin.status !== 'published') {
+            actionButtons = `
+              <div class="pin-actions">
+                <button class="btn btn-approve" onclick="approvePin('${pin.id}')" ${approveDisabled}>Approve</button>
+                <button class="btn btn-reject"  onclick="rejectPin('${pin.id}')"  ${rejectDisabled}>Reject</button>
+              </div>
+            `;
+          } else {
+            actionButtons = `<div class="pin-actions"><span class="status-label">Published ${fmtDate(pin.publishedAt)}</span></div>`;
+          }
+
+          card.innerHTML = `
+            <div class="pin-img-wrap">
+              <img src="${esc(pin.imageUrl)}" alt="${esc(pin.title)}" loading="lazy" />
+            </div>
+            <div class="pin-body">
+              <div class="pin-status-row">
+                <span class="status-dot ${pin.status}"></span>
+                <span class="status-label">${pin.status}</span>
+                <span class="pin-board">${esc(pin.board)}</span>
+              </div>
+              <div class="pin-title">${esc(pin.title)}</div>
+              <div class="pin-desc">${esc(pin.description)}</div>
+              <a href="${esc(pin.destinationUrl)}" class="pin-url" target="_blank" rel="noopener">${esc(pin.destinationUrl)}</a>
+              ${actionButtons}
+            </div>
+          `;
+
+          grid.appendChild(card);
+        });
+      }
+
+      // ── Actions ───────────────────────────────────────────────────────────
+
+      async function approvePin(id) {
+        const btn = document.querySelector(`#card-${id} .btn-approve`);
+        if (btn) btn.disabled = true;
+
+        try {
+          const res = await fetch('/api/pinterest/pins/approve', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id }),
+          });
+          const data = await res.json();
+          if (!res.ok) throw new Error(data.error || res.status);
+          const idx = allDrafts.findIndex(d => d.id === id);
+          if (idx !== -1) { allDrafts[idx].status = 'approved'; allDrafts[idx].approvedAt = new Date().toISOString(); }
+          render();
+        } catch (err) {
+          if (btn) btn.disabled = false;
+          alert('Approve failed: ' + err.message);
+        }
+      }
+
+      async function rejectPin(id) {
+        const btn = document.querySelector(`#card-${id} .btn-reject`);
+        if (btn) btn.disabled = true;
+
+        try {
+          const res = await fetch('/api/pinterest/pins/reject', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id }),
+          });
+          const data = await res.json();
+          if (!res.ok) throw new Error(data.error || res.status);
+          const idx = allDrafts.findIndex(d => d.id === id);
+          if (idx !== -1) { allDrafts[idx].status = 'rejected'; }
+          render();
+        } catch (err) {
+          if (btn) btn.disabled = false;
+          alert('Reject failed: ' + err.message);
+        }
+      }
+
+      async function publishNext() {
+        const btn    = document.getElementById('publishBtn');
+        const notice = document.getElementById('publishNotice');
+        btn.disabled = true;
+        notice.textContent = '';
+        notice.className   = 'notice';
+
+        try {
+          const res  = await fetch('/api/pinterest/pins/publish', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({}),
+          });
+          const data = await res.json();
+          if (!res.ok) throw new Error(data.message || data.error || res.status);
+
+          notice.textContent = `Published. Pinterest Pin ID: ${data.pinterestPinId}`;
+          notice.classList.add('success');
+          await loadData(); // full refresh
+        } catch (err) {
+          notice.textContent = 'Publish failed: ' + err.message;
+          notice.classList.add('error');
+          btn.disabled = false;
+        }
+      }
+
+      async function seedDrafts() {
+        const btn    = document.getElementById('seedBtn');
+        const notice = document.getElementById('seedNotice');
+        btn.disabled = true;
+        notice.textContent = '';
+        notice.className   = 'notice';
+
+        try {
+          const res  = await fetch('/api/pinterest/pins/seed', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+          });
+          const data = await res.json();
+          if (!res.ok) throw new Error(data.error || res.status);
+          notice.textContent = `${data.seeded} drafts created.`;
+          notice.classList.add('success');
+          await loadData();
+        } catch (err) {
+          notice.textContent = 'Seed failed: ' + err.message;
+          notice.classList.add('error');
+          btn.disabled = false;
+        }
+      }
+
+      // ── Helpers ───────────────────────────────────────────────────────────
+
+      function esc(str) {
+        return String(str ?? '')
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      }
+
+      function fmtDate(iso) {
+        if (!iso) return '';
+        try {
+          return new Date(iso).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+        } catch { return iso; }
+      }
+
+      loadData();
+    </script>
+
+  </body>
+</html>
