@@ -1,21 +1,23 @@
 'use strict';
 
-const { isAdminAuth }         = require('../_lib/auth');
-const { getDrafts, saveDrafts } = require('../_lib/blob');
+const { isAdminAuth }            = require('../_lib/auth');
+const { getDrafts, saveDrafts }  = require('../_lib/blob');
 const { validateDestinationUrl } = require('../_lib/validate');
+// Copy rules are stored in _lib/copy-rules.js and must be followed for all future batches.
 
 /**
  * Initial content library.
  * Images must live in /assets/pinterest/ — never reference arbitrary project folders.
  * destinationUrl must point to a real pinkwebstudio.com page.
+ * Copy must follow the rules in _lib/copy-rules.js.
  */
 const INITIAL_DRAFTS = [
   {
     id:             'pin_001',
     status:         'draft',
     imageUrl:       'https://pinkwebstudio.com/assets/pinterest/celeste-medspa-website-design.png',
-    title:          'A Medical Spa Website That Feels Like the Treatment',
-    description:    'Calm, trusted, quietly elegant. We built Céleste\'s online presence to carry the same energy as walking through the door — no noise, no clutter, just reassurance. Full website design for a luxury medical aesthetics brand.',
+    title:          'Celeste Med Spa Website',
+    description:    'Calm, trusted, quietly elegant. Built for a luxury medical aesthetics brand in LA.',
     destinationUrl: 'https://pinkwebstudio.com/celeste/',
     board:          'Web Design Inspiration',
   },
@@ -23,8 +25,8 @@ const INITIAL_DRAFTS = [
     id:             'pin_002',
     status:         'draft',
     imageUrl:       'https://pinkwebstudio.com/assets/pinterest/june-house-interior-design-website.png',
-    title:          'Interior Design Website for June House',
-    description:    'Timeless, collected, quietly considered. June House needed a site that felt like their work — curated, unhurried, editorial. Built by Pink Web Studio.',
+    title:          'June House Website Design',
+    description:    'Timeless, collected, unhurried. A site built to feel exactly like the studio behind it.',
     destinationUrl: 'https://pinkwebstudio.com/june-house/',
     board:          'Web Design Inspiration',
   },
@@ -32,8 +34,8 @@ const INITIAL_DRAFTS = [
     id:             'pin_003',
     status:         'draft',
     imageUrl:       'https://pinkwebstudio.com/assets/pinterest/west-and-stone-home-goods-website.png',
-    title:          'Private & Architectural: West & Stone Web Design',
-    description:    'A home goods brand that leads with atmosphere. No popups, no announcements — just the objects and the story behind them. Web design by Pink Web Studio.',
+    title:          'West and Stone Website Design',
+    description:    'A home goods brand built around atmosphere. Just the objects and the story.',
     destinationUrl: 'https://pinkwebstudio.com/west-and-stone/',
     board:          'Luxury Brand Design',
   },
@@ -41,8 +43,8 @@ const INITIAL_DRAFTS = [
     id:             'pin_004',
     status:         'draft',
     imageUrl:       'https://pinkwebstudio.com/assets/pinterest/le-loup-members-club-website.png',
-    title:          'Le Loup: Website Design for a Private Members Club',
-    description:    'Mystery, atmosphere, quiet exclusivity. Designing for a private members club means knowing what to leave out. This is the site we built for Le Loup.',
+    title:          'Le Loup Website Design',
+    description:    'Quiet exclusivity for a private members club. Knowing what to leave out is the whole design.',
     destinationUrl: 'https://pinkwebstudio.com/le-loup/',
     board:          'Luxury Brand Design',
   },
@@ -50,8 +52,8 @@ const INITIAL_DRAFTS = [
     id:             'pin_005',
     status:         'draft',
     imageUrl:       'https://pinkwebstudio.com/assets/pinterest/forma-interior-design-software.png',
-    title:          'Interior Design Operations Software — Built from Scratch',
-    description:    'Forma is a full-stack SaaS product for interior designers. We designed and built the entire product — from dashboard to client-facing portal.',
+    title:          'Forma, Interior Design Software',
+    description:    'A full product for interior designers. Designed, built, and shipped by Pink Web Studio.',
     destinationUrl: 'https://pinkwebstudio.com/forma/',
     board:          'Web Design Inspiration',
   },
@@ -59,8 +61,8 @@ const INITIAL_DRAFTS = [
     id:             'pin_006',
     status:         'draft',
     imageUrl:       'https://pinkwebstudio.com/assets/pinterest/celeste-medspa-mobile-design.png',
-    title:          'What Luxury Looks Like on Mobile',
-    description:    'Céleste Med Spa — designed for the scroll. Every detail optimized for mobile. No compromise on atmosphere. Pink Web Studio.',
+    title:          'Celeste on Mobile',
+    description:    'Designed for the scroll. No compromise on atmosphere.',
     destinationUrl: 'https://pinkwebstudio.com/celeste/',
     board:          'Luxury Brand Design',
   },
@@ -68,8 +70,8 @@ const INITIAL_DRAFTS = [
     id:             'pin_007',
     status:         'draft',
     imageUrl:       'https://pinkwebstudio.com/assets/pinterest/verde-skincare-editorial-website.png',
-    title:          'A Skincare Brand Website Built Around One Formula',
-    description:    'Slow, considered, campaign-led from the first scroll. Verde is an editorial commerce concept — designed to feel like a magazine, not a store.',
+    title:          'Verde, a Skincare Concept',
+    description:    'An editorial commerce site that feels more like a magazine than a store.',
     destinationUrl: 'https://pinkwebstudio.com/verde/',
     board:          'Web Design Inspiration',
   },
