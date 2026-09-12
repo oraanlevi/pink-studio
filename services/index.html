@@ -270,33 +270,66 @@
       .sg-card:hover img { transform: none; }
     }
 
+    /* ── Mobile overlay (hidden on desktop) ── */
+    .sg-mob-overlay { display: none; }
+
     /* ── Mobile ── */
     @media (max-width: 860px) {
       .sg-header { padding: 40px 16px 20px; }
       .sg-headline { font-size: clamp(24px, 6vw, 36px); margin-bottom: 24px; }
-      .sg-wrap { padding: 0 16px 32px; gap: 8px; max-width: none; }
-      .sg-hero { aspect-ratio: 4 / 3; }
-      .sg-grid { gap: 8px; }
-      .sg-card--grid { aspect-ratio: 3 / 2; }
-      .sg-detail { padding: 20px 18px 24px; }
-      .sg-detail-name { font-size: 16px; }
-      .sg-detail-list { display: none; }
-      .sg-detail-sub { margin-bottom: 12px; }
-      .sg-detail-meta { margin-bottom: 20px; }
-      .sg-note {
-        padding: 48px 24px 56px;
-        gap: 16px;
-      }
-      .sg-note a {
-        max-width: none;
-      }
+      .sg-wrap { padding: 0 16px 32px; gap: 10px; max-width: none; }
+      .sg-note { padding: 48px 24px 56px; gap: 16px; }
+      .sg-note a { max-width: none; }
 
-      /* 1-column grid on mobile */
-      .sg-grid { grid-template-columns: 1fr; }
+      /* All cards: full-width stacked rows */
+      .sg-hero,
+      .sg-card--grid { aspect-ratio: unset; height: 160px; }
+      .sg-grid { display: contents; }
+      .sg-card--grid:last-child { display: none; } /* hide Custom Solutions on mobile */
 
-      /* Reorder CTAs: Full details → is primary on mobile */
-      .sg-detail-link { order: 2; font-weight: 500; color: white; margin-top: 0; }
-      .sg-detail-cta  { order: 3; font-weight: 300; color: rgba(255,255,255,.65); font-size: 12px; }
+      /* Hide desktop label and detail overlay */
+      .sg-label { display: none; }
+      .sg-detail { display: none; }
+
+      /* Mobile overlay — always visible */
+      .sg-mob-overlay {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: absolute;
+        inset: 0;
+        padding: 0 22px;
+        background: linear-gradient(to right, rgba(10,9,8,.62) 0%, rgba(10,9,8,.28) 100%);
+        pointer-events: none;
+      }
+      .sg-mob-text {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .sg-mob-title {
+        font-family: 'Cormorant Garamond', serif;
+        font-weight: 300;
+        font-style: italic;
+        font-size: 32px;
+        color: white;
+        line-height: 1;
+        letter-spacing: -0.5px;
+      }
+      .sg-mob-tag {
+        font-family: 'Poppins', sans-serif;
+        font-size: 9px;
+        font-weight: 400;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,.55);
+      }
+      .sg-mob-arrow {
+        font-family: 'Poppins', sans-serif;
+        font-size: 16px;
+        font-weight: 300;
+        color: rgba(255,255,255,.7);
+      }
     }
 
   </style>
@@ -374,9 +407,16 @@
   <div class="sg-wrap">
 
     <!-- Hero — Signature Website -->
-    <div class="sg-card sg-hero reveal">
+    <div class="sg-card sg-hero reveal" data-href="/services/signature/">
       <img src="/assets/sigwebsite2.png" alt="Signature Website" />
       <span class="sg-label">Signature Website</span>
+      <div class="sg-mob-overlay">
+        <div class="sg-mob-text">
+          <span class="sg-mob-title">Signature Website</span>
+          <span class="sg-mob-tag">Custom Build</span>
+        </div>
+        <span class="sg-mob-arrow">→</span>
+      </div>
       <div class="sg-detail">
         <button class="sg-close" aria-label="Close">×</button>
         <p class="sg-detail-name">Signature Website</p>
@@ -392,9 +432,16 @@
     <div class="sg-grid reveal">
 
       <!-- Website Refresh -->
-      <div class="sg-card sg-card--grid">
+      <div class="sg-card sg-card--grid" data-href="/services/refresh/">
         <img src="/assets/WR2.png" alt="Website Refresh" />
         <span class="sg-label">Website Refresh</span>
+        <div class="sg-mob-overlay">
+          <div class="sg-mob-text">
+            <span class="sg-mob-title">Website Refresh</span>
+            <span class="sg-mob-tag">Refine + Elevate</span>
+          </div>
+          <span class="sg-mob-arrow">→</span>
+        </div>
         <div class="sg-detail">
           <button class="sg-close" aria-label="Close">×</button>
           <p class="sg-detail-name">Website Refresh</p>
@@ -407,9 +454,16 @@
       </div>
 
       <!-- Website Audit -->
-      <div class="sg-card sg-card--grid">
+      <div class="sg-card sg-card--grid" data-href="/services/audit/">
         <img src="/assets/WA2.png" alt="Website Audit" />
         <span class="sg-label">Website Audit</span>
+        <div class="sg-mob-overlay">
+          <div class="sg-mob-text">
+            <span class="sg-mob-title">Website Audit</span>
+            <span class="sg-mob-tag">Expert Review</span>
+          </div>
+          <span class="sg-mob-arrow">→</span>
+        </div>
         <div class="sg-detail">
           <button class="sg-close" aria-label="Close">×</button>
           <p class="sg-detail-name">Website Audit</p>
@@ -423,9 +477,16 @@
       </div>
 
       <!-- Monthly Support -->
-      <div class="sg-card sg-card--grid">
+      <div class="sg-card sg-card--grid" data-href="/services/care/">
         <img src="/assets/MS.png" alt="Monthly Support" />
         <span class="sg-label">Monthly Support</span>
+        <div class="sg-mob-overlay">
+          <div class="sg-mob-text">
+            <span class="sg-mob-title">Monthly Care</span>
+            <span class="sg-mob-tag">Ongoing Support</span>
+          </div>
+          <span class="sg-mob-arrow">→</span>
+        </div>
         <div class="sg-detail">
           <button class="sg-close" aria-label="Close">×</button>
           <p class="sg-detail-name">Monthly Support</p>
@@ -516,6 +577,11 @@
     document.querySelectorAll('.sg-card').forEach(card => {
       card.addEventListener('click', function(e) {
         if (e.target.closest('.sg-close') || e.target.closest('.sg-detail-cta') || e.target.closest('.sg-detail-link')) return;
+        // On mobile, navigate directly
+        if (window.innerWidth <= 860 && this.dataset.href) {
+          window.location.href = this.dataset.href;
+          return;
+        }
         const isOpen = this.classList.contains('open');
         document.querySelectorAll('.sg-card.open').forEach(c => c.classList.remove('open'));
         if (!isOpen) this.classList.add('open');
