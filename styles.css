@@ -325,6 +325,8 @@ img { display: block; max-width: 100%; }
 .mobile-nav .nav-dd-menu {
   border-top: 1px solid var(--rule);
   background: rgba(26,25,23,.02);
+  position: relative;
+  z-index: 1;
 }
 .mobile-nav .nav-dd-menu a {
   display: block;
