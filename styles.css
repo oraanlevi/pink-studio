@@ -146,13 +146,13 @@ img { display: block; max-width: 100%; }
 .nav-links .nav-dd-menu a {
   display: block;
   padding: 9px 22px;
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
   font-weight: 300;
-  font-size: 19px;
-  color: var(--ink-2);
+  font-size: 13px;
+  color: var(--ink);
   text-decoration: none;
-  letter-spacing: 0;
+  letter-spacing: 0.02em;
   transition: color 200ms, padding-left 180ms;
 }
 .nav-links .nav-dd-menu a:hover { color: var(--ink); padding-left: 28px; }
@@ -337,7 +337,7 @@ img { display: block; max-width: 100%; }
   font-size: 12px;
   letter-spacing: 0.04em;
   text-transform: none;
-  color: var(--ink-2);
+  color: var(--ink);
   border-bottom: 1px solid var(--rule);
   text-decoration: none;
   transition: color 200ms;
