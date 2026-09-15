@@ -18,26 +18,18 @@
   <link rel="stylesheet" href="/styles.css" />
   <style>
 
-    /* ─────────────────────────────────────────
-       Philosophy — staggered entrance
-    ───────────────────────────────────────── */
-
+    /* ── Philosophy ── */
     @keyframes beatIn {
       from { opacity: 0; transform: translateY(10px); }
       to   { opacity: 1; transform: none; }
     }
-
     .sw-philosophy {
       min-height: 88vh;
       display: flex;
       align-items: center;
       border-bottom: 1px solid var(--rule);
     }
-
-    .sw-philosophy-inner {
-      padding: 0 72px;
-    }
-
+    .sw-philosophy-inner { padding: 0 72px; }
     .sw-beat {
       display: block;
       opacity: 0;
@@ -51,21 +43,13 @@
       color: var(--ink);
       max-width: 680px;
     }
-
     .sw-beat + .sw-beat { margin-top: 2px; }
     .sw-beat-1 { animation-delay: 150ms; }
     .sw-beat-2 { animation-delay: 600ms; }
     .sw-beat-3 { animation-delay: 1050ms; }
 
-    /* ─────────────────────────────────────────
-       Problems — what we solve
-    ───────────────────────────────────────── */
-
-    .sw-problems {
-      padding: 52px 72px;
-      border-bottom: 1px solid var(--rule);
-    }
-
+    /* ── Problems ── */
+    .sw-problems { padding: 52px 72px; border-bottom: 1px solid var(--rule); }
     .sw-section-label {
       display: block;
       font-family: 'Poppins', sans-serif;
@@ -77,7 +61,6 @@
       margin-bottom: 36px;
       text-align: center;
     }
-
     .sw-problem-row {
       display: grid;
       grid-template-columns: 1fr 1fr auto;
@@ -87,37 +70,21 @@
       gap: 40px;
       transition: border-color 250ms ease;
     }
-
-    .sw-problem-row:last-child {
-      border-bottom: 1px solid var(--rule);
-    }
-
+    .sw-problem-row:last-child { border-bottom: 1px solid var(--rule); }
     @media (hover: hover) {
-      .sw-problem-row:hover {
-        border-color: rgba(26,25,23,0.22);
-      }
-      .sw-problem-row:hover .sw-problem-name {
-        font-weight: 500;
-        color: var(--ink);
-      }
-      .sw-problem-row:hover .sw-problem-desc {
-        color: var(--ink);
-      }
-      .sw-problem-row:hover .sw-problem-arrow {
-        opacity: 1;
-        transform: translateX(0);
-      }
+      .sw-problem-row:hover { border-color: rgba(26,25,23,0.22); }
+      .sw-problem-row:hover .sw-problem-name { font-weight: 500; }
+      .sw-problem-row:hover .sw-problem-desc { color: var(--ink); }
+      .sw-problem-row:hover .sw-problem-arrow { opacity: 1; transform: translateX(0); }
     }
-
     .sw-problem-name {
       font-family: 'Poppins', sans-serif;
       font-size: 14px;
       font-weight: 400;
       color: var(--ink);
       letter-spacing: 0.01em;
-      transition: font-weight 250ms ease, color 250ms ease;
+      transition: font-weight 250ms ease;
     }
-
     .sw-problem-desc {
       font-family: 'Poppins', sans-serif;
       font-size: 13px;
@@ -126,7 +93,6 @@
       line-height: 1.6;
       transition: color 250ms ease;
     }
-
     .sw-problem-arrow {
       font-size: 13px;
       color: var(--ink-2);
@@ -136,147 +102,732 @@
       user-select: none;
     }
 
-    /* ─────────────────────────────────────────
-       Featured work — clean text rows
-    ───────────────────────────────────────── */
-
-    .sw-featured {
+    /* ── Gallery intro ── */
+    .sw-gallery-intro {
+      padding: 80px 72px;
       border-bottom: 1px solid var(--rule);
     }
-
-    .sw-featured-row {
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 60px;
-      padding: 40px 72px;
-      border-top: 1px solid var(--rule);
-      align-items: start;
-    }
-
-    .sw-featured-tag {
-      display: block;
-      font-family: 'Poppins', sans-serif;
-      font-size: 10px;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--ink-3);
-      margin-bottom: 10px;
-    }
-
-    .sw-featured-name {
+    .sw-gallery-intro-line {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
       font-weight: 300;
-      font-size: clamp(28px, 3vw, 44px);
+      font-size: clamp(24px, 3vw, 42px);
       color: var(--ink);
-      line-height: 1.05;
+      line-height: 1.2;
+      letter-spacing: -0.015em;
+      margin: 0;
+      max-width: 700px;
+    }
+
+    /* ── Exhibit: two-column editorial spread ── */
+    .sw-exhibit {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 1px solid var(--rule);
+      min-height: 50vh;
+    }
+    .sw-exhibit-copy {
+      padding: 80px 64px 80px 72px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-right: 1px solid var(--rule);
+    }
+    .sw-exhibit-demo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px;
+    }
+    /* Flip: demo left, copy right */
+    .sw-exhibit--flip .sw-exhibit-copy {
+      order: 2;
+      padding: 80px 72px 80px 64px;
+      border-right: none;
+    }
+    .sw-exhibit--flip .sw-exhibit-demo {
+      order: 1;
+      border-right: 1px solid var(--rule);
+    }
+    /* Demo column backgrounds */
+    .sw-exhibit-demo--cream  { background: #F5F2EA; }
+    .sw-exhibit-demo--dark   { background: var(--ink); padding: 0; align-items: stretch; }
+    .sw-exhibit-demo--white  { background: #ffffff; }
+    .sw-exhibit-demo--slate  { background: #F0EFEB; }
+
+    .sw-exhibit-label {
+      display: block;
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(28px, 3.2vw, 44px);
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: 14px;
+      line-height: 1;
+    }
+    .sw-exhibit-hed {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(20px, 2.4vw, 34px);
+      line-height: 1.2;
       letter-spacing: -0.01em;
+      color: var(--ink);
+      margin: 0 0 16px;
+    }
+    .sw-exhibit-sub {
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--ink-2);
+      line-height: 1.7;
       margin: 0;
     }
 
-    .sw-featured-desc {
+    /* ════════════════════════════════════════
+       DEMO 1 — Client Portal (paper, elegant)
+    ════════════════════════════════════════ */
+    .demo-portal {
+      width: 100%;
+      max-width: 420px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .demo-portal-doc {
+      position: relative;
+      background: #fff;
+      border: 1px solid rgba(26,25,23,0.12);
+      overflow: hidden;
+    }
+    .demo-portal-mock-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px;
+      border-bottom: 1px solid rgba(26,25,23,0.06);
+    }
+    .demo-portal-mock-logo {
+      width: 56px; height: 7px;
+      background: rgba(26,25,23,0.14);
+      border-radius: 1px;
+    }
+    .demo-portal-mock-links {
+      display: flex; gap: 8px;
+    }
+    .demo-portal-mock-links span {
+      display: block;
+      width: 24px; height: 5px;
+      background: rgba(26,25,23,0.07);
+      border-radius: 1px;
+    }
+    .demo-portal-mock-hero {
+      height: 130px;
+      background: linear-gradient(145deg, #e8e5de 0%, #d4d1c8 100%);
+    }
+    .demo-portal-mock-body {
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .demo-portal-mock-line {
+      height: 5px;
+      background: rgba(26,25,23,0.07);
+      border-radius: 1px;
+    }
+    .demo-portal-mock-line--short { width: 58%; }
+    /* approved overlay */
+    .demo-portal-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(30,110,66,0.07);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 500ms ease;
+    }
+    .demo-portal-overlay.show { opacity: 1; }
+    .demo-portal-overlay svg { filter: drop-shadow(0 2px 12px rgba(30,110,66,0.3)); }
+    /* meta row */
+    .demo-portal-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .demo-portal-filename {
+      display: block;
       font-family: 'Poppins', sans-serif;
       font-size: 13px;
-      font-weight: 300;
-      color: var(--ink-2);
-      line-height: 1.8;
-      margin: 0 0 24px;
-    }
-
-    .sw-featured-links {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .sw-story-link-primary {
-      font-family: 'Poppins', sans-serif;
-      font-size: 12px;
       font-weight: 400;
-      letter-spacing: 0.06em;
-      text-decoration: none;
-      color: var(--bg);
-      background: var(--ink);
-      padding: 12px 22px;
-      display: inline-block;
-      transition: opacity 200ms ease;
-    }
-    .sw-story-link-primary:hover { opacity: 0.75; }
-
-    .sw-story-link-secondary {
-      font-family: 'Poppins', sans-serif;
-      font-size: 12px;
-      font-weight: 400;
-      letter-spacing: 0.06em;
       color: var(--ink);
-      text-decoration: none;
-      border: 1px solid var(--ink);
-      padding: 12px 22px;
-      display: inline-block;
-      transition: background 220ms ease, color 220ms ease;
+      margin-bottom: 3px;
     }
-    .sw-story-link-secondary:hover { background: var(--ink); color: var(--bg); }
-
-    /* ─────────────────────────────────────────
-       Process — simple step grid
-    ───────────────────────────────────────── */
-
-    .sw-process {
-      padding: 52px 72px;
-      border-bottom: 1px solid var(--rule);
-    }
-
-    .sw-process-title {
-      font-family: 'Poppins', sans-serif;
-      font-size: 15px;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--ink);
-      margin: 0 0 32px;
-      text-align: center;
-    }
-
-    .sw-steps {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 40px;
-    }
-
-    .sw-step-name {
+    .demo-portal-filesize {
       display: block;
       font-family: 'Poppins', sans-serif;
       font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--ink);
-      margin-bottom: 12px;
+      font-weight: 300;
+      color: var(--ink-3);
     }
-
-    .sw-step-desc {
+    .demo-portal-badge {
+      font-family: 'Poppins', sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      padding: 5px 11px;
+      border: 1px solid rgba(26,25,23,0.16);
+      color: var(--ink-2);
+      border-radius: 20px;
+      white-space: nowrap;
+      transition: color 350ms ease, border-color 350ms ease, background 350ms ease;
+    }
+    .demo-portal-badge.approved {
+      color: #1e6e42;
+      border-color: rgba(30,110,66,0.35);
+      background: rgba(30,110,66,0.07);
+    }
+    /* actions */
+    .demo-portal-actions { display: flex; gap: 10px; }
+    .demo-portal-btn {
+      font-family: 'Poppins', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      padding: 11px 22px;
+      transition: opacity 200ms ease, color 200ms ease, border-color 200ms ease;
+    }
+    .demo-portal-btn--approve { background: var(--ink); color: var(--bg); }
+    .demo-portal-btn--approve:hover:not(:disabled) { opacity: 0.75; }
+    .demo-portal-btn--approve:disabled { opacity: 0.38; cursor: default; }
+    .demo-portal-btn--changes {
+      background: transparent;
+      color: var(--ink-2);
+      border: 1px solid rgba(26,25,23,0.17);
+    }
+    .demo-portal-btn--changes:hover { color: var(--ink); border-color: var(--ink-2); }
+    /* success */
+    .demo-portal-success {
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .demo-portal-success-msg {
+      display: flex;
+      align-items: center;
+      gap: 9px;
       font-family: 'Poppins', sans-serif;
       font-size: 13px;
+      font-weight: 400;
+      color: #1e6e42;
+    }
+    .demo-portal-success-msg em {
+      font-style: normal;
+      font-size: 11px;
       font-weight: 300;
-      color: var(--ink-2);
-      line-height: 1.75;
+      color: var(--ink-3);
+    }
+    .demo-portal-reset {
+      font-family: 'Poppins', sans-serif;
+      font-size: 11px;
+      font-weight: 300;
+      color: var(--ink-3);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      transition: color 150ms ease;
+    }
+    .demo-portal-reset:hover { color: var(--ink); }
+
+    /* ════════════════════════════════════════
+       DEMO 2 — Automation (timeline, no chrome)
+    ════════════════════════════════════════ */
+    .demo-timeline {
+      display: flex;
+      flex-direction: column;
+    }
+    .demo-tl-track {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 32px;
+    }
+    .demo-tl-node {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      position: relative;
+    }
+    .demo-tl-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(26,25,23,0.22);
+      background: var(--bg);
+      flex-shrink: 0;
+      transition: background 380ms ease, border-color 380ms ease;
+      position: relative;
+      z-index: 1;
+    }
+    .demo-tl-node.done .demo-tl-dot {
+      background: var(--ink);
+      border-color: var(--ink);
+    }
+    .demo-tl-text {
+      font-family: 'Poppins', sans-serif;
+      font-size: 16px;
+      font-weight: 300;
+      color: rgba(26,25,23,0.28);
+      line-height: 1;
+      padding: 16px 0;
+      transition: color 380ms ease;
+    }
+    .demo-tl-node.done .demo-tl-text { color: var(--ink); }
+    /* connector between nodes */
+    .demo-tl-seg {
+      display: flex;
+      align-items: stretch;
+      height: 0; /* grows via JS padding trick or fixed */
+    }
+    .demo-tl-seg-track {
+      width: 1px;
+      margin-left: 5.5px; /* center of 12px dot */
+      background: rgba(26,25,23,0.09);
+      position: relative;
+      flex-shrink: 0;
+      overflow: hidden;
+      /* height set inline to match text height */
+    }
+    .demo-tl-seg-fill {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 0%;
+      background: var(--ink);
+      transition: height 350ms ease;
+    }
+    .demo-tl-seg-fill.done { height: 100%; }
+    /* footer */
+    .demo-tl-footer {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .demo-tl-btn {
+      font-family: 'Poppins', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: var(--ink);
+      color: var(--bg);
+      border: none;
+      padding: 11px 24px;
+      cursor: pointer;
+      transition: opacity 200ms ease;
+    }
+    .demo-tl-btn:hover:not(:disabled) { opacity: 0.75; }
+    .demo-tl-btn:disabled { opacity: 0.38; cursor: default; }
+    .demo-tl-status {
+      font-family: 'Poppins', sans-serif;
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--ink-3);
     }
 
-    /* ─────────────────────────────────────────
-       Closing CTA
-    ───────────────────────────────────────── */
+    /* ════════════════════════════════════════
+       DEMO 3 — AI Workflow (dark, minimal)
+    ════════════════════════════════════════ */
+    .demo-ai {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      width: 100%;
+      height: 100%;
+      padding: 52px 60px;
+      gap: 28px;
+    }
+    .demo-ai-convo {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 28px;
+    }
+    .demo-ai-sent {
+      text-align: right;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      color: rgba(250,250,248,0.45);
+      line-height: 1.5;
+    }
+    .demo-ai-response { display: flex; flex-direction: column; }
+    @keyframes aiDot {
+      0%, 60%, 100% { opacity: 0.25; transform: translateY(0); }
+      30% { opacity: 1; transform: translateY(-3px); }
+    }
+    .demo-ai-thinking {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+      padding: 4px 0;
+    }
+    .demo-ai-thinking span {
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: rgba(250,250,248,0.35);
+      animation: aiDot 1.2s ease-in-out infinite;
+    }
+    .demo-ai-thinking span:nth-child(2) { animation-delay: 0.18s; }
+    .demo-ai-thinking span:nth-child(3) { animation-delay: 0.36s; }
+    .demo-ai-row {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 9px 0;
+      border-bottom: 1px solid rgba(250,250,248,0.07);
+      opacity: 0;
+      transform: translateY(5px);
+      transition: opacity 280ms ease, transform 280ms ease;
+    }
+    .demo-ai-row:last-child { border-bottom: none; }
+    .demo-ai-row.in { opacity: 1; transform: none; }
+    .demo-ai-client {
+      font-family: 'Poppins', sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      color: rgba(250,250,248,0.9);
+      min-width: 110px;
+      flex-shrink: 0;
+    }
+    .demo-ai-note {
+      font-family: 'Poppins', sans-serif;
+      font-size: 12px;
+      font-weight: 300;
+      color: rgba(250,250,248,0.45);
+    }
+    .demo-ai-row--flag .demo-ai-note { color: rgba(250,250,248,0.8); }
+    /* input bar */
+    .demo-ai-bar {
+      border-top: 1px solid rgba(250,250,248,0.1);
+      padding-top: 20px;
+    }
+    .demo-ai-send {
+      font-family: 'Poppins', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(250,250,248,0.85);
+      background: rgba(250,250,248,0.07);
+      border: 1px solid rgba(250,250,248,0.14);
+      padding: 10px 22px;
+      cursor: pointer;
+      transition: background 200ms ease;
+    }
+    .demo-ai-send:hover:not(:disabled) { background: rgba(250,250,248,0.11); }
+    .demo-ai-send:disabled { opacity: 0.35; cursor: default; }
 
+    /* ════════════════════════════════════════
+       DEMO 4 — CRM (workspace, Notion-like)
+    ════════════════════════════════════════ */
+    .demo-crm {
+      width: 100%;
+      max-width: 400px;
+    }
+    .demo-crm-person {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid rgba(26,25,23,0.07);
+      margin-bottom: 0;
+    }
+    .demo-crm-avatar {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      background: rgba(26,25,23,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Poppins', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--ink);
+      flex-shrink: 0;
+    }
+    .demo-crm-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: 22px;
+      color: var(--ink);
+      margin: 0 0 3px;
+      line-height: 1;
+    }
+    .demo-crm-role {
+      font-family: 'Poppins', sans-serif;
+      font-size: 11px;
+      font-weight: 300;
+      color: var(--ink-3);
+    }
+    /* tabs */
+    .demo-crm-tabs {
+      display: flex;
+      border-bottom: 1px solid rgba(26,25,23,0.08);
+    }
+    .demo-crm-tab {
+      font-family: 'Poppins', sans-serif;
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--ink-3);
+      background: none;
+      border: none;
+      padding: 13px 14px;
+      cursor: pointer;
+      position: relative;
+      transition: color 180ms ease;
+      letter-spacing: 0.01em;
+    }
+    .demo-crm-tab:hover { color: var(--ink-2); }
+    .demo-crm-tab.active { color: var(--ink); }
+    .demo-crm-tab.active::after {
+      content: '';
+      position: absolute;
+      bottom: -1px; left: 0; right: 0;
+      height: 1px;
+      background: var(--ink);
+    }
+    .demo-crm-content { padding: 18px 0; min-height: 160px; }
+    /* project tab */
+    .demo-crm-proj-name {
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 3px;
+    }
+    .demo-crm-proj-meta {
+      font-family: 'Poppins', sans-serif;
+      font-size: 11px;
+      font-weight: 300;
+      color: var(--ink-3);
+      margin-bottom: 18px;
+    }
+    .demo-crm-bar {
+      height: 2px;
+      background: rgba(26,25,23,0.09);
+      border-radius: 2px;
+      margin-bottom: 6px;
+      overflow: hidden;
+    }
+    .demo-crm-bar-fill {
+      height: 100%;
+      background: var(--ink);
+      border-radius: 2px;
+      width: 0%;
+      transition: width 650ms ease;
+    }
+    .demo-crm-bar-label {
+      font-family: 'Poppins', sans-serif;
+      font-size: 10px;
+      font-weight: 300;
+      color: var(--ink-3);
+    }
+    /* payments tab */
+    .demo-crm-pay-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 9px 0;
+      border-bottom: 1px solid rgba(26,25,23,0.06);
+      font-family: 'Poppins', sans-serif;
+      font-size: 12px;
+    }
+    .demo-crm-pay-row:last-child { border-bottom: none; }
+    .demo-crm-pay-label { font-weight: 300; color: var(--ink); }
+    .demo-crm-pay-right { display: flex; align-items: center; gap: 10px; }
+    .demo-crm-pay-amount { font-weight: 400; color: var(--ink); }
+    .demo-crm-pay-badge {
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      border-radius: 20px;
+    }
+    .demo-crm-pay-badge--done { color: #1e6e42; background: rgba(30,110,66,0.08); }
+    .demo-crm-pay-badge--pending { color: var(--ink-3); background: rgba(26,25,23,0.05); }
+    /* timeline tab */
+    .demo-crm-tl-row {
+      display: flex;
+      gap: 14px;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(26,25,23,0.06);
+      font-family: 'Poppins', sans-serif;
+    }
+    .demo-crm-tl-row:last-child { border-bottom: none; }
+    .demo-crm-tl-date { font-size: 10px; font-weight: 300; color: var(--ink-3); min-width: 68px; flex-shrink: 0; padding-top: 1px; }
+    .demo-crm-tl-event { font-size: 12px; font-weight: 300; color: var(--ink); }
+    /* notes tab */
+    .demo-crm-note {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: 18px;
+      color: var(--ink);
+      line-height: 1.55;
+    }
+
+    /* ════════════════════════════════════════
+       DEMO 5 — Custom Software (bold board)
+    ════════════════════════════════════════ */
+    .demo-board {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .demo-board-cols {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      flex: 1;
+    }
+    .demo-board-col {
+      border-right: 1px solid rgba(26,25,23,0.09);
+      display: flex;
+      flex-direction: column;
+    }
+    .demo-board-col:last-child { border-right: none; }
+    .demo-board-col.drag-over .demo-board-cards { background: rgba(26,25,23,0.025); }
+    .demo-board-head {
+      padding: 18px 16px 14px;
+      border-bottom: 1px solid rgba(26,25,23,0.09);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .demo-board-head-name {
+      font-family: 'Poppins', sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--ink-2);
+    }
+    .demo-board-cnt {
+      font-family: 'Poppins', sans-serif;
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--ink-3);
+      background: rgba(26,25,23,0.07);
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .demo-board-cards {
+      flex: 1;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      transition: background 200ms ease;
+    }
+    .demo-job {
+      background: #fff;
+      border: 1px solid rgba(26,25,23,0.1);
+      padding: 10px 12px;
+      cursor: grab;
+      user-select: none;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      transition: box-shadow 200ms ease, border-color 400ms ease, background 400ms ease;
+    }
+    .demo-job:hover { box-shadow: 0 2px 8px rgba(26,25,23,0.08); }
+    .demo-job:active { cursor: grabbing; }
+    .demo-job.dragging { opacity: 0.3; }
+    #colComplete .demo-job {
+      border-color: rgba(30,110,66,0.22);
+      background: rgba(30,110,66,0.04);
+    }
+    .demo-job-id {
+      font-family: 'Poppins', sans-serif;
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      color: var(--ink-3);
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+    .demo-job-type {
+      font-family: 'Poppins', sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--ink);
+    }
+    .demo-job-addr {
+      font-family: 'Poppins', sans-serif;
+      font-size: 10px;
+      font-weight: 300;
+      color: var(--ink-2);
+    }
+    .demo-job-time {
+      font-family: 'Poppins', sans-serif;
+      font-size: 9px;
+      font-weight: 300;
+      color: var(--ink-3);
+      margin-top: 3px;
+    }
+    .demo-board-hint {
+      padding: 10px 16px;
+      border-top: 1px solid rgba(26,25,23,0.09);
+      font-family: 'Poppins', sans-serif;
+      font-size: 10px;
+      font-weight: 300;
+      color: var(--ink-3);
+      letter-spacing: 0.02em;
+    }
+
+    /* ── Process minimal ── */
+    .sw-process-minimal {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 72px;
+      border-bottom: 1px solid var(--rule);
+      gap: 12px;
+    }
+    .sw-pm-step {
+      font-family: 'Poppins', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+    .sw-pm-arrow { font-size: 13px; color: var(--ink-3); line-height: 1; }
+
+    /* ── CTA ── */
     .sw-cta {
       padding: 100px 72px;
       display: flex;
-      flex-direction: row;
       align-items: flex-end;
       justify-content: space-between;
       gap: 48px;
     }
-
     .sw-cta-hed {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
@@ -288,7 +839,6 @@
       margin: 0;
       max-width: 620px;
     }
-
     .sw-cta-btn {
       display: inline-block;
       font-family: 'Poppins', sans-serif;
@@ -300,58 +850,63 @@
       background: var(--ink);
       padding: 14px 32px;
       transition: opacity 200ms ease;
+      white-space: nowrap;
     }
-
     .sw-cta-btn:hover { opacity: 0.75; }
 
-    /* ─────────────────────────────────────────
-       Reveal
-    ───────────────────────────────────────── */
+    /* ── Reveal ── */
+    .reveal { opacity: 0; transform: translateY(16px); transition: opacity 700ms ease, transform 700ms ease; }
+    .reveal.in { opacity: 1; transform: none; }
 
-    .reveal {
-      opacity: 0;
-      transform: translateY(16px);
-      transition: opacity 700ms ease, transform 700ms ease;
-    }
-
-    .reveal.in {
-      opacity: 1;
-      transform: none;
-    }
-
-    /* ─────────────────────────────────────────
-       Mobile
-    ───────────────────────────────────────── */
-
+    /* ── Mobile ── */
     @media (max-width: 860px) {
-
-      /* Philosophy */
       .sw-philosophy { min-height: 60vh; }
       .sw-philosophy-inner { padding: 0 24px; }
       .sw-beat { font-size: clamp(26px, 8vw, 40px); }
 
-      /* Problems */
       .sw-problems { padding: 40px 24px; }
       .sw-problem-row { grid-template-columns: 1fr; gap: 6px; padding: 18px 0; }
       .sw-problem-arrow { display: none; }
 
-      /* Featured work */
-      .sw-featured-row { grid-template-columns: 1fr; gap: 16px; padding: 32px 24px; }
-      .sw-featured-name { font-size: clamp(26px, 7vw, 36px); }
-      .sw-featured-links { flex-direction: column; align-items: stretch; }
-      .sw-story-link-primary,
-      .sw-story-link-secondary { text-align: center; box-sizing: border-box; }
+      .sw-gallery-intro { padding: 52px 24px; }
 
-      /* Process */
-      .sw-process { padding: 40px 24px; }
-      .sw-steps { grid-template-columns: 1fr; gap: 0; }
-      .sw-step { padding: 24px 0; border-bottom: 1px solid var(--rule); }
-      .sw-step:last-child { border-bottom: none; }
+      /* Exhibits stack vertically on mobile */
+      .sw-exhibit {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+      .sw-exhibit-copy {
+        order: 1 !important;
+        padding: 52px 24px 40px;
+        border-right: none;
+        border-bottom: 1px solid var(--rule);
+      }
+      .sw-exhibit-demo {
+        order: 2 !important;
+        border-right: none !important;
+        padding: 40px 24px;
+        min-height: 340px;
+      }
+      .sw-exhibit-demo--dark { padding: 0; min-height: 360px; }
 
-      /* CTA */
-      .sw-cta { padding: 64px 24px; gap: 24px; flex-direction: column; align-items: flex-start; }
-      .sw-cta-btn { text-align: center; }
+      /* Portal demo */
+      .demo-portal { max-width: none; }
 
+      /* Timeline demo */
+      .demo-tl-text { font-size: 14px; }
+
+      /* AI demo */
+      .demo-ai { padding: 36px 24px; }
+
+      /* CRM demo */
+      .demo-crm { max-width: none; }
+      .demo-crm-tabs { overflow-x: auto; }
+
+      /* Board demo */
+      .demo-board-cols { overflow-x: auto; grid-template-columns: repeat(3, minmax(160px, 1fr)); }
+
+      .sw-process-minimal { padding: 52px 24px; }
+      .sw-cta { padding: 64px 24px; flex-direction: column; align-items: flex-start; gap: 24px; }
     }
 
   </style>
@@ -360,7 +915,7 @@
 
   <div class="mh-strip">Los Angeles / Currently Booking</div>
 
-    <nav class="nav" id="mainNav">
+  <nav class="nav" id="mainNav">
     <div class="nav-links">
       <a href="/services/">Websites</a>
       <a href="/software/" class="active">Software</a>
@@ -375,7 +930,7 @@
       <span></span><span></span><span></span>
     </button>
   </nav>
-    <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+  <div class="mobile-nav" id="mobileNav" aria-hidden="true">
     <a href="/services/">Websites</a>
     <a href="/software/" class="active">Software</a>
     <a href="/products/">Products</a>
@@ -385,7 +940,7 @@
 
   <main>
 
-    <!-- ── Philosophy ── -->
+    <!-- Philosophy -->
     <section class="sw-philosophy" aria-label="Opening statement">
       <div class="sw-philosophy-inner">
         <p class="sw-beat sw-beat-1">Every business has its own way of working.</p>
@@ -394,10 +949,9 @@
       </div>
     </section>
 
-    <!-- ── Problems ── -->
+    <!-- Problems -->
     <section class="sw-problems reveal">
       <span class="sw-section-label">Built around your business</span>
-
       <div class="sw-problem-row">
         <span class="sw-problem-name">Client Portals</span>
         <span class="sw-problem-desc">Keep clients informed, involved, and out of your inbox.</span>
@@ -424,70 +978,232 @@
         <span class="sw-problem-arrow" aria-hidden="true">→</span>
       </div>
       <div class="sw-problem-row">
-        <span class="sw-problem-name">AI&ndash;Assisted Workflows</span>
+        <span class="sw-problem-name">AI&#8209;Assisted Workflows</span>
         <span class="sw-problem-desc">Automate business processes with intelligent tools built around your operations.</span>
         <span class="sw-problem-arrow" aria-hidden="true">→</span>
       </div>
-
     </section>
 
-    <!-- ── Featured work ── -->
-    <section class="sw-featured reveal">
-      <div class="sw-featured-row sw-featured-row--forma">
-        <div class="sw-featured-left">
-          <span class="sw-featured-tag">Flagship · Built by Pink Web Studio</span>
-          <h2 class="sw-featured-name">Forma</h2>
-        </div>
-        <div class="sw-featured-right">
-          <p class="sw-featured-desc">A full-stack operations platform for interior designers. Project management, client approvals, mood boards, and procurement — built from scratch, designed around the way studios actually work.</p>
-          <div class="sw-featured-links">
-            <a href="/forma/" class="sw-story-link-primary">Read the Case Study</a>
-            <a href="https://forma-rho-nine.vercel.app/early-access" target="_blank" rel="noopener" class="sw-story-link-secondary">Visit Forma &#x2197;&#xFE0E;</a>
+    <!-- Gallery intro -->
+    <div class="sw-gallery-intro reveal">
+      <p class="sw-gallery-intro-line">Every business works differently. So should its software.</p>
+    </div>
+
+    <!-- ═══════════════════════════════════
+         EXHIBIT 1 — Client Portal
+         Copy LEFT · Demo RIGHT (cream)
+    ═══════════════════════════════════ -->
+    <section class="sw-exhibit reveal">
+      <div class="sw-exhibit-copy">
+        <span class="sw-exhibit-label">Client Portal</span>
+        <h2 class="sw-exhibit-hed">Your clients shouldn&rsquo;t have to email you for updates.</h2>
+        <p class="sw-exhibit-sub">A shared workspace keeps everyone on the same page.</p>
+      </div>
+      <div class="sw-exhibit-demo sw-exhibit-demo--cream">
+        <div class="demo-portal" id="demoPortal">
+          <!-- Document preview -->
+          <div class="demo-portal-doc">
+            <div class="demo-portal-mock-nav">
+              <div class="demo-portal-mock-logo"></div>
+              <div class="demo-portal-mock-links">
+                <span></span><span></span><span></span>
+              </div>
+            </div>
+            <div class="demo-portal-mock-hero"></div>
+            <div class="demo-portal-mock-body">
+              <div class="demo-portal-mock-line"></div>
+              <div class="demo-portal-mock-line demo-portal-mock-line--short"></div>
+            </div>
+            <!-- Approved overlay -->
+            <div class="demo-portal-overlay" id="portalOverlay">
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+                <circle cx="24" cy="24" r="23" stroke="#1e6e42" stroke-width="1.5"/>
+                <path d="M14 24l7 7 13-13" stroke="#1e6e42" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+          <!-- File meta -->
+          <div class="demo-portal-meta">
+            <div>
+              <span class="demo-portal-filename">Homepage_v3_Final</span>
+              <span class="demo-portal-filesize">Version 3 &middot; Uploaded today</span>
+            </div>
+            <span class="demo-portal-badge" id="portalBadge">Awaiting Review</span>
+          </div>
+          <!-- Actions -->
+          <div class="demo-portal-actions" id="portalActions">
+            <button class="demo-portal-btn demo-portal-btn--approve" id="portalApprove">Approve</button>
+            <button class="demo-portal-btn demo-portal-btn--changes">Request Changes</button>
+          </div>
+          <!-- Success state -->
+          <div class="demo-portal-success" id="portalSuccess">
+            <div class="demo-portal-success-msg">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <circle cx="7" cy="7" r="6.5" stroke="#1e6e42"/>
+                <path d="M4 7l2.5 2.5L10 5" stroke="#1e6e42" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Approved <em>&nbsp;&middot; Just now</em>
+            </div>
+            <button class="demo-portal-reset" id="portalReset">Reset</button>
           </div>
         </div>
       </div>
-      <div class="sw-featured-row">
-        <div class="sw-featured-left">
-          <span class="sw-featured-tag">CRM &amp; Operations</span>
-          <h2 class="sw-featured-name">Locksmith CRM</h2>
-        </div>
-        <div class="sw-featured-right">
-          <p class="sw-featured-desc">Lead management, job dispatch, and invoicing built for a mobile service business. Replaced a stack of spreadsheets with one system that mirrors how the team actually works.</p>
-        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════
+         EXHIBIT 2 — Automation
+         Demo LEFT · Copy RIGHT (flipped)
+    ═══════════════════════════════════ -->
+    <section class="sw-exhibit sw-exhibit--flip reveal">
+      <div class="sw-exhibit-copy">
+        <span class="sw-exhibit-label">Automation</span>
+        <h2 class="sw-exhibit-hed">The same task happens every morning.</h2>
+        <p class="sw-exhibit-sub">The best work is the work you never have to think about twice.</p>
       </div>
-      <div class="sw-featured-row">
-        <div class="sw-featured-left">
-          <span class="sw-featured-tag">Automation</span>
-          <h2 class="sw-featured-name">Pinterest Automation</h2>
-        </div>
-        <div class="sw-featured-right">
-          <p class="sw-featured-desc">Internal content pipeline that automates publishing and tracks performance across boards. What once took hours now runs on its own.</p>
+      <div class="sw-exhibit-demo">
+        <div class="demo-timeline" id="demoAuto">
+          <div class="demo-tl-track" id="tlTrack">
+            <!-- nodes injected by JS -->
+          </div>
+          <div class="demo-tl-footer">
+            <button class="demo-tl-btn" id="autoRun">Run Workflow</button>
+            <span class="demo-tl-status" id="autoStatus"></span>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ── Process ── -->
-    <section class="sw-process reveal">
-      <h2 class="sw-process-title">How it works</h2>
-      <div class="sw-steps">
-        <div class="sw-step">
-          <span class="sw-step-name">Map</span>
-          <p class="sw-step-desc">We learn how your business actually operates — the workflows, the bottlenecks, the tools that aren't quite working. Nothing is designed until we understand the real problem.</p>
-        </div>
-        <div class="sw-step">
-          <span class="sw-step-name">Build</span>
-          <p class="sw-step-desc">We design and develop the system around your specific workflow. Every decision is tied to how you work, not how generic software thinks you should.</p>
-        </div>
-        <div class="sw-step">
-          <span class="sw-step-name">Launch</span>
-          <p class="sw-step-desc">We deploy, test with your team, and make sure everything runs exactly as intended before we hand it off. Post-launch support included.</p>
+    <!-- ═══════════════════════════════════
+         EXHIBIT 3 — AI Workflow
+         Copy LEFT · Demo RIGHT (dark)
+    ═══════════════════════════════════ -->
+    <section class="sw-exhibit reveal">
+      <div class="sw-exhibit-copy">
+        <span class="sw-exhibit-label">AI Workflow</span>
+        <h2 class="sw-exhibit-hed">You&rsquo;re doing work a computer could do.</h2>
+        <p class="sw-exhibit-sub">The right tools make the tedious parts disappear.</p>
+      </div>
+      <div class="sw-exhibit-demo sw-exhibit-demo--dark">
+        <div class="demo-ai" id="demoAI">
+          <div class="demo-ai-convo" id="aiConvo">
+            <div class="demo-ai-sent">Summarize this week&rsquo;s client feedback</div>
+            <div class="demo-ai-response" id="aiResponse"></div>
+          </div>
+          <div class="demo-ai-bar">
+            <button class="demo-ai-send" id="aiRun">Summarize</button>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ── CTA ── -->
+    <!-- ═══════════════════════════════════
+         EXHIBIT 4 — CRM
+         Demo LEFT · Copy RIGHT (flipped, white bg)
+    ═══════════════════════════════════ -->
+    <section class="sw-exhibit sw-exhibit--flip reveal">
+      <div class="sw-exhibit-copy">
+        <span class="sw-exhibit-label">CRM</span>
+        <h2 class="sw-exhibit-hed">Your business shouldn&rsquo;t run on spreadsheets.</h2>
+        <p class="sw-exhibit-sub">Everything your team needs, in one place.</p>
+      </div>
+      <div class="sw-exhibit-demo sw-exhibit-demo--white">
+        <div class="demo-crm" id="demoCRM">
+          <div class="demo-crm-person">
+            <div class="demo-crm-avatar">EF</div>
+            <div>
+              <p class="demo-crm-name">Emily Foster</p>
+              <span class="demo-crm-role">Brand Identity &bull; Active</span>
+            </div>
+          </div>
+          <nav class="demo-crm-tabs" aria-label="Client record tabs">
+            <button class="demo-crm-tab active" data-tab="project">Project</button>
+            <button class="demo-crm-tab" data-tab="payments">Payments</button>
+            <button class="demo-crm-tab" data-tab="timeline">Timeline</button>
+            <button class="demo-crm-tab" data-tab="notes">Notes</button>
+          </nav>
+          <div class="demo-crm-content" id="crmContent"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════
+         EXHIBIT 5 — Custom Software
+         Copy LEFT · Demo RIGHT (slate)
+    ═══════════════════════════════════ -->
+    <section class="sw-exhibit reveal">
+      <div class="sw-exhibit-copy">
+        <span class="sw-exhibit-label">Custom Software</span>
+        <h2 class="sw-exhibit-hed">Sometimes the software you need doesn&rsquo;t exist.</h2>
+        <p class="sw-exhibit-sub">So we build it.</p>
+      </div>
+      <div class="sw-exhibit-demo sw-exhibit-demo--slate" style="padding:0; align-items:stretch; justify-content:stretch;">
+        <div class="demo-board" id="demoBoard">
+          <div class="demo-board-cols">
+            <div class="demo-board-col" id="colUnassigned">
+              <div class="demo-board-head">
+                <span class="demo-board-head-name">Unassigned</span>
+                <span class="demo-board-cnt" id="cntUnassigned">3</span>
+              </div>
+              <div class="demo-board-cards" id="cardsUnassigned">
+                <div class="demo-job" draggable="true" data-job="j1">
+                  <span class="demo-job-id">#1847</span>
+                  <span class="demo-job-type">Residential Lockout</span>
+                  <span class="demo-job-addr">2847 Sunset Blvd</span>
+                  <span class="demo-job-time">8:14 AM</span>
+                </div>
+                <div class="demo-job" draggable="true" data-job="j2">
+                  <span class="demo-job-id">#1848</span>
+                  <span class="demo-job-type">Key Duplication</span>
+                  <span class="demo-job-addr">4102 Melrose Ave</span>
+                  <span class="demo-job-time">9:02 AM</span>
+                </div>
+                <div class="demo-job" draggable="true" data-job="j3">
+                  <span class="demo-job-id">#1849</span>
+                  <span class="demo-job-type">Safe Installation</span>
+                  <span class="demo-job-addr">9301 Wilshire Blvd</span>
+                  <span class="demo-job-time">9:45 AM</span>
+                </div>
+              </div>
+            </div>
+            <div class="demo-board-col" id="colInProgress">
+              <div class="demo-board-head">
+                <span class="demo-board-head-name">In Progress</span>
+                <span class="demo-board-cnt" id="cntInProgress">1</span>
+              </div>
+              <div class="demo-board-cards" id="cardsInProgress">
+                <div class="demo-job" draggable="true" data-job="j4">
+                  <span class="demo-job-id">#1844</span>
+                  <span class="demo-job-type">Car Lockout</span>
+                  <span class="demo-job-addr">1256 Cahuenga Blvd</span>
+                  <span class="demo-job-time">Started 8:30 AM</span>
+                </div>
+              </div>
+            </div>
+            <div class="demo-board-col" id="colComplete">
+              <div class="demo-board-head">
+                <span class="demo-board-head-name">Complete</span>
+                <span class="demo-board-cnt" id="cntComplete">0</span>
+              </div>
+              <div class="demo-board-cards" id="cardsComplete"></div>
+            </div>
+          </div>
+          <div class="demo-board-hint" id="boardHint">Drag cards to update</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section class="sw-process-minimal reveal">
+      <span class="sw-pm-step">Map</span>
+      <span class="sw-pm-arrow" aria-hidden="true">&#8595;</span>
+      <span class="sw-pm-step">Build</span>
+      <span class="sw-pm-arrow" aria-hidden="true">&#8595;</span>
+      <span class="sw-pm-step">Launch</span>
+    </section>
+
+    <!-- CTA -->
     <section class="sw-cta">
-      <p class="sw-cta-hed">Every business works differently.<br>Let's map yours.</p>
+      <p class="sw-cta-hed">Every business works differently.<br>Let&rsquo;s build software around yours.</p>
       <a href="https://calendly.com/oraanlevi1/30min" target="_blank" rel="noopener" class="sw-cta-btn">Book a Discovery Call &#x2197;&#xFE0E;</a>
     </section>
 
@@ -513,22 +1229,18 @@
   </footer>
 
   <script>
-    // ── Nav scroll shadow ──
+    // ── Nav ──
     const nav = document.getElementById('mainNav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 20);
-    }, { passive: true });
-
-    // ── Mobile nav ──
-    const ham  = document.getElementById('navHam');
-    const mob  = document.getElementById('mobileNav');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 20), { passive: true });
+    const ham = document.getElementById('navHam');
+    const mob = document.getElementById('mobileNav');
     const scrim = document.createElement('div');
     scrim.className = 'nav-scrim';
     document.body.appendChild(scrim);
-    const navHeader = document.createElement('div');
-    navHeader.className = 'mobile-nav-header';
-    navHeader.innerHTML = '<button class="mobile-nav-close" id="navClose" aria-label="Close menu">&#215;</button>';
-    mob.insertBefore(navHeader, mob.firstChild);
+    const navHdr = document.createElement('div');
+    navHdr.className = 'mobile-nav-header';
+    navHdr.innerHTML = '<button class="mobile-nav-close" id="navClose" aria-label="Close menu">&#215;</button>';
+    mob.insertBefore(navHdr, mob.firstChild);
     function openNav()  { ham.classList.add('open'); mob.classList.add('open'); scrim.classList.add('open'); ham.setAttribute('aria-expanded','true'); mob.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
     function closeNav() { ham.classList.remove('open'); mob.classList.remove('open'); scrim.classList.remove('open'); ham.setAttribute('aria-expanded','false'); mob.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
     ham.addEventListener('click', () => mob.classList.contains('open') ? closeNav() : openNav());
@@ -536,13 +1248,304 @@
     document.getElementById('navClose')?.addEventListener('click', closeNav);
     mob.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
 
-    // ── Section reveals ──
-    const revealIO = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('in'); revealIO.unobserve(e.target); }
-      });
-    }, { threshold: 0.08 });
+    // ── Reveals ──
+    const revealIO = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); revealIO.unobserve(e.target); } });
+    }, { threshold: 0.06 });
     document.querySelectorAll('.reveal').forEach(el => revealIO.observe(el));
+
+    // ═══════════════════════════════════════
+    // DEMO 1 — Client Portal
+    // ═══════════════════════════════════════
+    (function() {
+      const approveBtn = document.getElementById('portalApprove');
+      const badge      = document.getElementById('portalBadge');
+      const overlay    = document.getElementById('portalOverlay');
+      const actions    = document.getElementById('portalActions');
+      const success    = document.getElementById('portalSuccess');
+      const resetBtn   = document.getElementById('portalReset');
+
+      approveBtn.addEventListener('click', function() {
+        this.disabled = true;
+        this.textContent = 'Approving…';
+        setTimeout(function() {
+          badge.textContent = '✓ Approved';
+          badge.classList.add('approved');
+          overlay.classList.add('show');
+          actions.style.display = 'none';
+          success.style.display = 'flex';
+        }, 420);
+      });
+
+      resetBtn.addEventListener('click', function() {
+        badge.textContent = 'Awaiting Review';
+        badge.classList.remove('approved');
+        overlay.classList.remove('show');
+        actions.style.display = 'flex';
+        success.style.display = 'none';
+        approveBtn.disabled = false;
+        approveBtn.textContent = 'Approve';
+      });
+    })();
+
+    // ═══════════════════════════════════════
+    // DEMO 2 — Automation Timeline
+    // ═══════════════════════════════════════
+    (function() {
+      var steps = [
+        'Inquiry',
+        'Client Created',
+        'Welcome Email Sent',
+        'Project Started',
+        'Done'
+      ];
+      var track = document.getElementById('tlTrack');
+
+      // Build the timeline DOM
+      steps.forEach(function(label, i) {
+        var nodeEl = document.createElement('div');
+        nodeEl.className = 'demo-tl-node';
+        nodeEl.dataset.idx = i;
+        nodeEl.innerHTML = '<div class="demo-tl-dot"></div><span class="demo-tl-text">' + label + '</span>';
+        track.appendChild(nodeEl);
+
+        if (i < steps.length - 1) {
+          var seg = document.createElement('div');
+          seg.style.paddingLeft = '5.5px';
+          seg.style.height = '28px';
+          seg.innerHTML = '<div class="demo-tl-seg-track" style="height:100%"><div class="demo-tl-seg-fill" data-seg="' + i + '"></div></div>';
+          track.appendChild(seg);
+        }
+      });
+
+      var btn    = document.getElementById('autoRun');
+      var status = document.getElementById('autoStatus');
+      var nodes  = track.querySelectorAll('.demo-tl-node');
+      var fills  = track.querySelectorAll('.demo-tl-seg-fill');
+      var running = false;
+
+      function reset() {
+        nodes.forEach(function(n) { n.classList.remove('done'); });
+        fills.forEach(function(f) { f.classList.remove('done'); });
+      }
+
+      btn.addEventListener('click', function() {
+        if (running) return;
+        running = true;
+        btn.disabled = true;
+        btn.textContent = 'Running…';
+        status.textContent = '';
+        reset();
+
+        nodes.forEach(function(node, i) {
+          setTimeout(function() {
+            node.classList.add('done');
+            // fill the connector below this node
+            if (fills[i]) {
+              setTimeout(function() { fills[i].classList.add('done'); }, 80);
+            }
+            if (i === nodes.length - 1) {
+              setTimeout(function() {
+                status.textContent = 'Complete';
+                btn.disabled = false;
+                btn.textContent = 'Run again';
+                running = false;
+              }, 320);
+            }
+          }, i * 520);
+        });
+      });
+    })();
+
+    // ═══════════════════════════════════════
+    // DEMO 3 — AI Workflow
+    // ═══════════════════════════════════════
+    (function() {
+      var btn      = document.getElementById('aiRun');
+      var response = document.getElementById('aiResponse');
+      var running  = false;
+
+      var rows = [
+        { client: 'Studio Fern',   note: 'Homepage revision approved',          flag: false },
+        { client: 'Maison Allard', note: 'Awaiting logo files from client',      flag: true  },
+        { client: 'Le Bureau',     note: 'Follow-up confirmed for Friday',       flag: false },
+        { client: 'This week',     note: '1 item needs attention before Friday', flag: true  }
+      ];
+
+      function run() {
+        if (running) return;
+        running = true;
+        btn.disabled = true;
+        response.innerHTML = '<div class="demo-ai-thinking"><span></span><span></span><span></span></div>';
+
+        setTimeout(function() {
+          response.innerHTML = '';
+          rows.forEach(function(r, i) {
+            setTimeout(function() {
+              var row = document.createElement('div');
+              row.className = 'demo-ai-row' + (r.flag ? ' demo-ai-row--flag' : '');
+              row.innerHTML = '<span class="demo-ai-client">' + r.client + '</span><span class="demo-ai-note">' + r.note + '</span>';
+              response.appendChild(row);
+              requestAnimationFrame(function() {
+                setTimeout(function() { row.classList.add('in'); }, 20);
+              });
+              if (i === rows.length - 1) {
+                setTimeout(function() {
+                  btn.disabled = false;
+                  btn.textContent = 'Run again';
+                  running = false;
+                }, 350);
+              }
+            }, i * 340);
+          });
+        }, 1300);
+      }
+
+      btn.addEventListener('click', function() {
+        if (this.textContent === 'Run again') {
+          response.innerHTML = '';
+          this.textContent = 'Summarize';
+          running = false;
+          setTimeout(run, 60);
+        } else {
+          run();
+        }
+      });
+    })();
+
+    // ═══════════════════════════════════════
+    // DEMO 4 — CRM Tabs
+    // ═══════════════════════════════════════
+    (function() {
+      var tabs    = document.querySelectorAll('.demo-crm-tab');
+      var content = document.getElementById('crmContent');
+
+      var tabContent = {
+        project: function() {
+          return '<p class="demo-crm-proj-name">Brand Identity Redesign</p>' +
+                 '<p class="demo-crm-proj-meta">Started March 2025 &bull; Est. completion June 2025</p>' +
+                 '<div class="demo-crm-bar"><div class="demo-crm-bar-fill" data-w="65"></div></div>' +
+                 '<span class="demo-crm-bar-label">65% complete &bull; Next: Final presentation</span>';
+        },
+        payments: function() {
+          return [
+            { label: 'Deposit (50%)',  amount: '$2,500', status: 'Received', done: true },
+            { label: 'Phase 1',        amount: '$1,250', status: 'Received', done: true },
+            { label: 'Phase 2',        amount: '$1,250', status: 'Due Jun 1', done: false }
+          ].map(function(p) {
+            return '<div class="demo-crm-pay-row">' +
+              '<span class="demo-crm-pay-label">' + p.label + '</span>' +
+              '<span class="demo-crm-pay-right">' +
+                '<span class="demo-crm-pay-amount">' + p.amount + '</span>' +
+                '<span class="demo-crm-pay-badge demo-crm-pay-badge--' + (p.done ? 'done' : 'pending') + '">' + p.status + '</span>' +
+              '</span></div>';
+          }).join('');
+        },
+        timeline: function() {
+          return [
+            { date: 'May 12', event: 'Final logo delivered' },
+            { date: 'Apr 28', event: 'Brand guidelines approved' },
+            { date: 'Apr 10', event: 'Mood board presented' },
+            { date: 'Mar 18', event: 'Discovery call completed' }
+          ].map(function(t) {
+            return '<div class="demo-crm-tl-row"><span class="demo-crm-tl-date">' + t.date + '</span><span class="demo-crm-tl-event">' + t.event + '</span></div>';
+          }).join('');
+        },
+        notes: function() {
+          return '<p class="demo-crm-note">Emily has a very clear vision — minimal, editorial, warm. Avoid anything that feels corporate. She loves the Aesop reference.</p>';
+        }
+      };
+
+      function renderTab(id) {
+        content.style.opacity = '0';
+        setTimeout(function() {
+          content.innerHTML = tabContent[id]();
+          content.style.transition = 'opacity 200ms ease';
+          content.style.opacity = '1';
+          var fill = content.querySelector('.demo-crm-bar-fill');
+          if (fill) {
+            setTimeout(function() { fill.style.width = fill.dataset.w + '%'; }, 60);
+          }
+        }, 140);
+      }
+
+      tabs.forEach(function(tab) {
+        tab.addEventListener('click', function() {
+          tabs.forEach(function(t) { t.classList.remove('active'); });
+          this.classList.add('active');
+          renderTab(this.dataset.tab);
+        });
+      });
+
+      renderTab('project');
+    })();
+
+    // ═══════════════════════════════════════
+    // DEMO 5 — Job Board
+    // ═══════════════════════════════════════
+    (function() {
+      var dragCard = null;
+      var dragFrom = null;
+
+      if (window.matchMedia('(pointer: coarse)').matches) {
+        document.getElementById('boardHint').textContent = 'Tap a card to advance it';
+      }
+
+      function updateCounts() {
+        [['colUnassigned','cntUnassigned'],['colInProgress','cntInProgress'],['colComplete','cntComplete']].forEach(function(pair) {
+          var col = document.getElementById(pair[0]);
+          var cnt = document.getElementById(pair[1]);
+          if (col && cnt) cnt.textContent = col.querySelectorAll('.demo-job').length;
+        });
+      }
+
+      function initJob(card) {
+        card.addEventListener('dragstart', function(e) {
+          dragCard = this;
+          dragFrom = this.closest('.demo-board-col');
+          var self = this;
+          setTimeout(function() { self.classList.add('dragging'); }, 0);
+          e.dataTransfer.effectAllowed = 'move';
+        });
+        card.addEventListener('dragend', function() {
+          this.classList.remove('dragging');
+          dragCard = null; dragFrom = null;
+        });
+        // Tap-to-advance on touch
+        card.addEventListener('click', function() {
+          if (!window.matchMedia('(pointer: coarse)').matches) return;
+          var cols = ['colUnassigned','colInProgress','colComplete'];
+          var cur  = this.closest('.demo-board-col').id;
+          var idx  = cols.indexOf(cur);
+          if (idx < cols.length - 1) {
+            document.getElementById(cols[idx + 1]).querySelector('.demo-board-cards').appendChild(this);
+            updateCounts();
+          }
+        });
+      }
+
+      function initCol(col) {
+        col.addEventListener('dragover', function(e) {
+          e.preventDefault();
+          e.dataTransfer.dropEffect = 'move';
+          this.classList.add('drag-over');
+        });
+        col.addEventListener('dragleave', function(e) {
+          if (!this.contains(e.relatedTarget)) this.classList.remove('drag-over');
+        });
+        col.addEventListener('drop', function(e) {
+          e.preventDefault();
+          this.classList.remove('drag-over');
+          if (dragCard && this !== dragFrom) {
+            this.querySelector('.demo-board-cards').appendChild(dragCard);
+            updateCounts();
+          }
+        });
+      }
+
+      document.querySelectorAll('.demo-job').forEach(initJob);
+      document.querySelectorAll('.demo-board-col').forEach(initCol);
+    })();
   </script>
   <script src="/nav.js"></script>
 
