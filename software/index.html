@@ -183,15 +183,21 @@
 
     .sw-story-row:hover .sw-story-img img { transform: scale(1.02); }
 
-    /* Rows with no image — go full-width editorial text */
-    .sw-story-img--ph { display: none; }
-    .sw-story-row:has(.sw-story-img--ph) {
-      grid-template-columns: 1fr;
-      min-height: auto;
+    /* Placeholder when no image yet */
+    .sw-story-img--ph {
+      background: rgba(26,25,23,0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .sw-story-row:has(.sw-story-img--ph) .sw-story-text {
-      padding: 72px 72px;
-      max-width: 760px;
+    .sw-story-img--ph::after {
+      content: 'Image placeholder';
+      font-family: 'Poppins', sans-serif;
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-3);
     }
 
     /* Text column */
@@ -343,15 +349,20 @@
       display: block;
     }
 
-    /* Process rows with no image — full-width text */
-    .sw-process-img--ph { display: none; }
-    .sw-process-row:has(.sw-process-img--ph) {
-      grid-template-columns: 1fr;
-      min-height: auto;
+    .sw-process-img--ph {
+      background: rgba(26,25,23,0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .sw-process-row:has(.sw-process-img--ph) .sw-process-step {
-      padding: 56px 72px;
-      max-width: 680px;
+    .sw-process-img--ph::after {
+      content: 'Image placeholder';
+      font-family: 'Poppins', sans-serif;
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-3);
     }
 
     .sw-process-step {
@@ -469,8 +480,8 @@
         grid-template-columns: 1fr;
         min-height: auto;
       }
-      .sw-story-row .sw-story-img:not(.sw-story-img--ph),
-      .sw-story-row--flip .sw-story-img:not(.sw-story-img--ph) {
+      .sw-story-row .sw-story-img,
+      .sw-story-row--flip .sw-story-img {
         order: 1 !important;
         border-left: none !important;
         border-right: none !important;
@@ -486,8 +497,8 @@
 
       /* Process rows */
       .sw-process-header { padding: 40px 24px 0; }
-      .sw-process-row:nth-child(odd)  .sw-process-img:not(.sw-process-img--ph),
-      .sw-process-row:nth-child(even) .sw-process-img:not(.sw-process-img--ph) {
+      .sw-process-row:nth-child(odd)  .sw-process-img,
+      .sw-process-row:nth-child(even) .sw-process-img {
         order: 1 !important;
         border-left: none !important;
         border-right: none !important;
