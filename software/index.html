@@ -137,136 +137,58 @@
     }
 
     /* ─────────────────────────────────────────
-       Editorial story rows
+       Featured work — clean text rows
     ───────────────────────────────────────── */
 
-    .sw-story {
+    .sw-featured {
       border-bottom: 1px solid var(--rule);
     }
 
-    .sw-story-row {
+    .sw-featured-row {
       display: grid;
-      grid-template-columns: 45fr 55fr;
-      min-height: 520px;
+      grid-template-columns: 1fr 2fr;
+      gap: 60px;
+      padding: 40px 72px;
       border-top: 1px solid var(--rule);
-      position: relative;
-      overflow: hidden;
+      align-items: start;
     }
 
-    .sw-story-row--flip {
-      grid-template-columns: 55fr 45fr;
-    }
-
-    /* Image column */
-    .sw-story-img {
-      overflow: hidden;
-      position: relative;
-    }
-
-    .sw-story-row:not(.sw-story-row--flip) .sw-story-img {
-      order: 2;
-      border-left: 1px solid var(--rule);
-    }
-
-    .sw-story-row--flip .sw-story-img {
-      order: 1;
-      border-right: 1px solid var(--rule);
-    }
-
-    .sw-story-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    .sw-featured-tag {
       display: block;
-      transition: transform 600ms ease;
-    }
-
-    .sw-story-row:hover .sw-story-img img { transform: scale(1.02); }
-
-    /* Placeholder when no image yet */
-    .sw-story-img--ph {
-      background: rgba(26,25,23,0.05);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .sw-story-img--ph::after {
-      content: 'Image placeholder';
-      font-family: 'Poppins', sans-serif;
-      font-size: 10px;
-      font-weight: 300;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--ink-3);
-    }
-
-    /* Text column */
-    .sw-story-text {
-      padding: 64px 72px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 18px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .sw-story-row:not(.sw-story-row--flip) .sw-story-text { order: 1; }
-    .sw-story-row--flip .sw-story-text                     { order: 2; }
-
-    /* Chapter marker — faded name behind content */
-    .sw-story-marker {
-      position: absolute;
-      bottom: -0.18em;
-      left: 0;
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-weight: 300;
-      font-size: clamp(72px, 11vw, 150px);
-      color: var(--ink);
-      opacity: 0.05;
-      pointer-events: none;
-      user-select: none;
-      line-height: 1;
-      white-space: nowrap;
-      z-index: 0;
-    }
-
-    /* Story text elements */
-    .sw-story-tag {
       font-family: 'Poppins', sans-serif;
       font-size: 10px;
       font-weight: 500;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--ink-3);
+      margin-bottom: 10px;
     }
 
-    .sw-story-name {
+    .sw-featured-name {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
       font-weight: 300;
-      font-size: clamp(28px, 3.2vw, 48px);
+      font-size: clamp(28px, 3vw, 44px);
       color: var(--ink);
       line-height: 1.05;
       letter-spacing: -0.01em;
+      margin: 0;
     }
 
-    .sw-story-desc {
+    .sw-featured-desc {
       font-family: 'Poppins', sans-serif;
       font-size: 13px;
       font-weight: 300;
       color: var(--ink-2);
       line-height: 1.8;
-      max-width: 38ch;
+      margin: 0 0 24px;
     }
 
-    .sw-story-links {
+    .sw-featured-links {
       display: flex;
       gap: 12px;
       align-items: center;
       flex-wrap: wrap;
-      margin-top: 8px;
     }
 
     .sw-story-link-primary {
@@ -298,16 +220,12 @@
     .sw-story-link-secondary:hover { background: var(--ink); color: var(--bg); }
 
     /* ─────────────────────────────────────────
-       Process — compact alternating rows
+       Process — simple step grid
     ───────────────────────────────────────── */
 
     .sw-process {
+      padding: 52px 72px;
       border-bottom: 1px solid var(--rule);
-    }
-
-    .sw-process-header {
-      padding: 48px 72px 0;
-      text-align: center;
     }
 
     .sw-process-title {
@@ -317,71 +235,14 @@
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--ink);
-      margin: 0;
+      margin: 0 0 32px;
+      text-align: center;
     }
 
-    .sw-process-row {
+    .sw-steps {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      min-height: 320px;
-      border-top: 1px solid var(--rule);
-      position: relative;
-      overflow: hidden;
-      margin-top: 40px;
-    }
-
-    .sw-process-row:first-of-type { margin-top: 40px; }
-
-    .sw-process-img {
-      overflow: hidden;
-      position: relative;
-    }
-
-    .sw-process-row:nth-child(odd)  .sw-process-img { order: 2; border-left: 1px solid var(--rule); }
-    .sw-process-row:nth-child(even) .sw-process-img { order: 1; border-right: 1px solid var(--rule); }
-    .sw-process-row:nth-child(odd)  .sw-process-step { order: 1; }
-    .sw-process-row:nth-child(even) .sw-process-step { order: 2; }
-
-    .sw-process-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .sw-process-img--ph {
-      background: rgba(26,25,23,0.05);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .sw-process-img--ph::after {
-      content: 'Image placeholder';
-      font-family: 'Poppins', sans-serif;
-      font-size: 10px;
-      font-weight: 300;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--ink-3);
-    }
-
-    .sw-process-step {
-      padding: 48px 72px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 12px;
-      position: relative;
-    }
-
-    .sw-process-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-weight: 300;
-      font-size: clamp(48px, 6vw, 80px);
-      color: var(--ink-3);
-      line-height: 1;
-      opacity: 0.4;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
     }
 
     .sw-step-name {
@@ -392,6 +253,7 @@
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--ink);
+      margin-bottom: 12px;
     }
 
     .sw-step-desc {
@@ -400,7 +262,6 @@
       font-weight: 300;
       color: var(--ink-2);
       line-height: 1.75;
-      max-width: 38ch;
     }
 
     /* ─────────────────────────────────────────
@@ -474,41 +335,18 @@
       .sw-problem-row { grid-template-columns: 1fr; gap: 6px; padding: 18px 0; }
       .sw-problem-arrow { display: none; }
 
-      /* Story rows */
-      .sw-story-row,
-      .sw-process-row {
-        grid-template-columns: 1fr;
-        min-height: auto;
-      }
-      .sw-story-row .sw-story-img,
-      .sw-story-row--flip .sw-story-img {
-        order: 1 !important;
-        border-left: none !important;
-        border-right: none !important;
-        border-bottom: 1px solid var(--rule);
-        height: 56vw;
-        min-height: 200px;
-      }
-      .sw-story-row .sw-story-text,
-      .sw-story-row--flip .sw-story-text { order: 2 !important; padding: 40px 24px; }
-      .sw-story-name { font-size: clamp(26px, 7vw, 36px); }
-      .sw-story-desc { max-width: none; }
-      .sw-story-marker { display: none; }
+      /* Featured work */
+      .sw-featured-row { grid-template-columns: 1fr; gap: 16px; padding: 32px 24px; }
+      .sw-featured-name { font-size: clamp(26px, 7vw, 36px); }
+      .sw-featured-links { flex-direction: column; align-items: stretch; }
+      .sw-story-link-primary,
+      .sw-story-link-secondary { text-align: center; box-sizing: border-box; }
 
-      /* Process rows */
-      .sw-process-header { padding: 40px 24px 0; }
-      .sw-process-row:nth-child(odd)  .sw-process-img,
-      .sw-process-row:nth-child(even) .sw-process-img {
-        order: 1 !important;
-        border-left: none !important;
-        border-right: none !important;
-        border-bottom: 1px solid var(--rule);
-        height: 48vw;
-        min-height: 180px;
-      }
-      .sw-process-row:nth-child(odd)  .sw-process-step,
-      .sw-process-row:nth-child(even) .sw-process-step { order: 2 !important; padding: 32px 24px; }
-      .sw-process-num { font-size: clamp(36px, 10vw, 56px); }
+      /* Process */
+      .sw-process { padding: 40px 24px; }
+      .sw-steps { grid-template-columns: 1fr; gap: 0; }
+      .sw-step { padding: 24px 0; border-bottom: 1px solid var(--rule); }
+      .sw-step:last-child { border-bottom: none; }
 
       /* CTA */
       .sw-cta { padding: 64px 24px; gap: 24px; flex-direction: column; align-items: flex-start; }
@@ -593,83 +431,58 @@
 
     </section>
 
-    <!-- ── Editorial story rows ── -->
-    <div class="sw-story">
-
-      <!-- Forma -->
-      <div class="sw-story-row reveal">
-        <div class="sw-story-text">
-          <span class="sw-story-marker" aria-hidden="true">Forma</span>
-          <span class="sw-story-tag">Flagship product · Built by Pink Web Studio</span>
-          <h2 class="sw-story-name">Forma</h2>
-          <p class="sw-story-desc">A full-stack operations platform for interior designers. Project management, client approvals, mood boards, and procurement — built from scratch, designed around the way studios actually work.</p>
-          <div class="sw-story-links">
+    <!-- ── Featured work ── -->
+    <section class="sw-featured reveal">
+      <div class="sw-featured-row sw-featured-row--forma">
+        <div class="sw-featured-left">
+          <span class="sw-featured-tag">Flagship · Built by Pink Web Studio</span>
+          <h2 class="sw-featured-name">Forma</h2>
+        </div>
+        <div class="sw-featured-right">
+          <p class="sw-featured-desc">A full-stack operations platform for interior designers. Project management, client approvals, mood boards, and procurement — built from scratch, designed around the way studios actually work.</p>
+          <div class="sw-featured-links">
             <a href="/forma/" class="sw-story-link-primary">Read the Case Study</a>
             <a href="https://forma-rho-nine.vercel.app/early-access" target="_blank" rel="noopener" class="sw-story-link-secondary">Visit Forma &#x2197;&#xFE0E;</a>
           </div>
         </div>
-        <div class="sw-story-img">
-          <img src="/assets/dashboardforma.png" alt="Forma dashboard" loading="lazy" />
+      </div>
+      <div class="sw-featured-row">
+        <div class="sw-featured-left">
+          <span class="sw-featured-tag">CRM &amp; Operations</span>
+          <h2 class="sw-featured-name">Locksmith CRM</h2>
+        </div>
+        <div class="sw-featured-right">
+          <p class="sw-featured-desc">Lead management, job dispatch, and invoicing built for a mobile service business. Replaced a stack of spreadsheets with one system that mirrors how the team actually works.</p>
         </div>
       </div>
-
-      <!-- Locksmith CRM -->
-      <div class="sw-story-row sw-story-row--flip reveal">
-        <div class="sw-story-img sw-story-img--ph"></div>
-        <div class="sw-story-text">
-          <span class="sw-story-marker" aria-hidden="true">Locksmith</span>
-          <span class="sw-story-tag">CRM &amp; Operations</span>
-          <h2 class="sw-story-name">Locksmith CRM</h2>
-          <p class="sw-story-desc">Lead management, job dispatch, and invoicing built for a mobile service business. Replaced a stack of spreadsheets with one system that mirrors how the team actually works.</p>
+      <div class="sw-featured-row">
+        <div class="sw-featured-left">
+          <span class="sw-featured-tag">Automation</span>
+          <h2 class="sw-featured-name">Pinterest Automation</h2>
+        </div>
+        <div class="sw-featured-right">
+          <p class="sw-featured-desc">Internal content pipeline that automates publishing and tracks performance across boards. What once took hours now runs on its own.</p>
         </div>
       </div>
-
-      <!-- Pinterest Automation -->
-      <div class="sw-story-row reveal">
-        <div class="sw-story-text">
-          <span class="sw-story-marker" aria-hidden="true">Pinterest</span>
-          <span class="sw-story-tag">Automation</span>
-          <h2 class="sw-story-name">Pinterest Automation</h2>
-          <p class="sw-story-desc">Internal content pipeline that automates publishing and tracks performance across boards. What once took hours now runs on its own.</p>
-        </div>
-        <div class="sw-story-img sw-story-img--ph"></div>
-      </div>
-
-    </div>
+    </section>
 
     <!-- ── Process ── -->
     <section class="sw-process reveal">
-      <div class="sw-process-header">
-        <h2 class="sw-process-title">How it works</h2>
-      </div>
-
-      <div class="sw-process-row">
-        <div class="sw-process-step">
-          <span class="sw-process-num">01</span>
+      <h2 class="sw-process-title">How it works</h2>
+      <div class="sw-steps">
+        <div class="sw-step">
           <span class="sw-step-name">Map</span>
           <p class="sw-step-desc">We learn how your business actually operates — the workflows, the bottlenecks, the tools that aren't quite working. Nothing is designed until we understand the real problem.</p>
         </div>
-        <div class="sw-process-img sw-process-img--ph"></div>
-      </div>
-
-      <div class="sw-process-row">
-        <div class="sw-process-img sw-process-img--ph"></div>
-        <div class="sw-process-step">
-          <span class="sw-process-num">02</span>
+        <div class="sw-step">
           <span class="sw-step-name">Build</span>
           <p class="sw-step-desc">We design and develop the system around your specific workflow. Every decision is tied to how you work, not how generic software thinks you should.</p>
         </div>
-      </div>
-
-      <div class="sw-process-row">
-        <div class="sw-process-step">
-          <span class="sw-process-num">03</span>
+        <div class="sw-step">
           <span class="sw-step-name">Launch</span>
           <p class="sw-step-desc">We deploy, test with your team, and make sure everything runs exactly as intended before we hand it off. Post-launch support included.</p>
         </div>
-        <div class="sw-process-img sw-process-img--ph"></div>
       </div>
-
     </section>
 
     <!-- ── CTA ── -->
