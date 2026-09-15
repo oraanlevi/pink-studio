@@ -26,14 +26,6 @@
       position: relative;
       min-height: 520px;
     }
-    .studio-portrait img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center top;
-      display: block;
-      filter: grayscale(100%) contrast(1.05) brightness(1.02);
-    }
 
     /* Right — statement */
     .studio-text {
@@ -118,41 +110,19 @@
     .studio-link-arrow { transition: transform 220ms ease; }
     .studio-link:hover .studio-link-arrow { transform: translateX(3px); }
 
-    /* ── Capabilities strip ── */
-    .studio-caps {
-      border-bottom: 1px solid var(--rule);
-      display: flex;
-      align-items: stretch;
+    /* Portrait frame — visible on mobile only */
+    .studio-portrait-frame {
+      width: 100%;
+      height: 100%;
     }
-    .studio-cap {
-      flex: 1;
-      padding: 36px 56px;
-      border-right: 1px solid var(--rule);
-    }
-    .studio-cap:last-child { border-right: none; }
-    .studio-cap-label {
+    .studio-portrait-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
       display: block;
-      font-family: "Bebas Neue", "Impact", sans-serif;
-      font-size: 16px;
-      font-weight: 400;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: var(--ink-3);
-      margin-bottom: 14px;
+      filter: grayscale(100%) contrast(1.05) brightness(1.02);
     }
-    .studio-cap-name {
-      display: block;
-      font-family: 'Poppins', sans-serif;
-      font-weight: 500;
-      font-size: clamp(16px, 1.6vw, 22px);
-      color: var(--ink);
-      line-height: 1.2;
-      letter-spacing: 0;
-      transition: color 220ms;
-    }
-    a.studio-cap:hover { background: rgba(26,25,23,.02); }
-    a.studio-cap:hover .studio-cap-label { color: var(--ink-2); }
-    a.studio-cap { transition: background 220ms; }
 
     /* ── Desktop closing CTA ── */
     .studio-closing {
@@ -243,258 +213,69 @@
       color: #D4537E;
       letter-spacing: 0.04em;
     }
+    /* ── Responsive ── */
     @media (max-width: 860px) {
-      .studio-reviews { display: none; }
-    }
+      /* Hero grid → stacked column */
+      .studio {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
 
-    /* ── Mobile layout hidden on desktop ── */
-    .studio-mobile { display: none; }
+      /* Portrait — framed, centered, mobile style */
+      .studio-portrait {
+        border-right: none;
+        border-bottom: 1px solid var(--rule);
+        min-height: auto;
+        padding: 32px 28px 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--bg);
+      }
+      .studio-portrait-frame {
+        width: 72%;
+        height: auto;
+        border: 1px solid var(--ink);
+        box-shadow: 6px 6px 0 var(--ink);
+        overflow: hidden;
+      }
+      .studio-portrait-frame img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 3/4;
+        object-position: center top;
+      }
 
-    /* Portrait */
-    .sm-portrait-wrap {
-      width: 100%;
-      border-bottom: 1px solid var(--rule);
-      padding: 32px 28px 40px;
-      background: var(--bg);
-    }
-    .sm-portrait-frame {
-      position: relative;
-      border: 1px solid var(--ink);
-      box-shadow: 6px 6px 0 var(--ink);
-      overflow: hidden;
-      margin: 0 auto;
-      width: 72%;
-    }
-    .sm-portrait-wrap img {
-      width: 100%;
-      aspect-ratio: 3 / 4;
-      object-fit: cover;
-      object-position: right bottom;
-      display: block;
-      filter: grayscale(100%) contrast(1.05) brightness(1.02);
-    }
+      /* Text — centered, tighter padding */
+      .studio-text {
+        padding: 32px 28px 40px;
+        align-items: center;
+        text-align: center;
+        gap: 28px;
+      }
+      .studio-eyebrow { display: none; }
+      .studio-body p { font-size: clamp(15px, 4vw, 17px); }
+      .studio-links { align-items: center; }
 
-    /* Bio */
-    .sm-bio {
-      padding: 32px 28px 40px;
-      border-bottom: 1px solid var(--rule);
-      text-align: center;
-    }
-    .sm-eyebrow {
-      display: block;
-      font-family: "Bebas Neue", "Impact", sans-serif;
-      font-size: 11px;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: var(--ink-3);
-      margin-bottom: 12px;
-    }
-    .sm-name {
-      display: block;
-      font-family: "Parisienne", cursive;
-      font-size: 40px;
-      color: var(--ink);
-      line-height: 1.1;
-      margin-bottom: 4px;
-    }
-    .sm-title {
-      display: block;
-      font-family: 'Poppins', sans-serif;
-      font-size: 11px;
-      font-weight: 300;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--ink-3);
-      margin-bottom: 28px;
-    }
-    .sm-bio-text {
-      font-family: 'Poppins', sans-serif;
-      font-size: 14px;
-      font-weight: 300;
-      color: var(--ink-2);
-      line-height: 1.75;
-      margin: 0;
-    }
+      /* Reviews — stack vertically */
+      .studio-reviews {
+        display: flex;
+        flex-direction: column;
+      }
+      .studio-review {
+        border-right: none;
+        border-bottom: 1px solid var(--rule);
+        padding: 40px 28px;
+        text-align: center;
+        align-items: center;
+      }
+      .studio-review:last-child { border-bottom: none; }
+      .studio-review-stars { justify-content: center; }
+      .studio-review-text { font-size: clamp(20px, 5.5vw, 24px); }
 
-    /* Philosophy */
-    .sm-philosophy {
-      padding: 28px 28px 32px;
-      display: flex;
-      flex-direction: column;
-      gap: 28px;
-      border-bottom: 1px solid var(--rule);
-      text-align: center;
-    }
-    .sm-fragment {
-      font-family: "Cormorant Garamond", Georgia, serif;
-      font-weight: 300;
-      font-size: clamp(24px, 6.5vw, 32px);
-      color: var(--ink);
-      line-height: 1.4;
-      margin: 0;
-    }
-    .sm-fragment--dim { color: var(--ink-3); }
-
-    /* Closing */
-    .sm-closing {
-      padding: 40px 24px 52px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 12px;
-    }
-    .sm-closing-label {
-      display: block;
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 300;
-      font-style: italic;
-      font-size: clamp(28px, 7vw, 40px);
-      color: var(--ink-2);
-      margin-bottom: 16px;
-      text-align: center;
-      letter-spacing: 0.01em;
-      text-transform: none;
-    }
-    .sm-cta {
-      font-family: 'Poppins', sans-serif;
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--ink);
-      text-decoration: none;
-      display: block;
-      width: 100%;
-      text-align: center;
-      padding: 16px 24px;
-      border: 1px solid var(--ink);
-      transition: background 220ms, color 220ms;
-    }
-    .sm-cta:hover { background: var(--ink); color: var(--bg); }
-    .sm-secondary {
-      font-family: 'Poppins', sans-serif;
-      font-size: 13px;
-      font-weight: 300;
-      color: var(--ink-2);
-      text-decoration: none;
-      display: block;
-      width: 100%;
-      text-align: center;
-      padding: 16px 24px;
-      border: 1px solid var(--rule);
-      transition: border-color 220ms, color 220ms;
-    }
-    .sm-secondary:hover { border-color: var(--ink-2); color: var(--ink); }
-
-    /* ── Mobile reviews ── */
-    .sm-reviews {
-      padding: 36px 28px 44px;
-      border-bottom: 1px solid var(--rule);
-      display: flex;
-      flex-direction: column;
-      gap: 40px;
-      text-align: center;
-    }
-    .sm-reviews-eye {
-      display: block;
-      font-family: 'Poppins', sans-serif;
-      font-size: 10px;
-      font-weight: 400;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--ink-3);
-      margin-bottom: 32px;
-    }
-    .sm-review {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      padding-bottom: 40px;
-      border-bottom: 1px solid var(--rule);
-    }
-    .sm-review:last-child {
-      border-bottom: none;
-      padding-bottom: 0;
-    }
-    .sm-review-stars {
-      display: flex;
-      gap: 3px;
-      justify-content: center;
-    }
-    .sm-review-star {
-      width: 12px;
-      height: 12px;
-      color: #D4537E;
-    }
-    .sm-review-text {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-weight: 300;
-      font-size: clamp(20px, 5.5vw, 26px);
-      color: var(--ink);
-      line-height: 1.45;
-      margin: 0;
-    }
-    .sm-review-name {
-      font-family: 'Poppins', sans-serif;
-      font-size: 11px;
-      font-weight: 400;
-      color: #D4537E;
-      letter-spacing: 0.04em;
-    }
-
-    /* ── Mobile quiz card ── */
-    .sm-quiz-card {
-      margin: 0 28px;
-      padding: 32px 28px 36px;
-      border: 1px solid var(--rule);
-      border-radius: 4px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-bottom: 40px;
-    }
-    .sm-quiz-eye {
-      font-family: 'Poppins', sans-serif;
-      font-size: 10px;
-      font-weight: 400;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--ink-3);
-    }
-    .sm-quiz-heading {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-weight: 300;
-      font-size: clamp(22px, 6vw, 28px);
-      color: var(--ink);
-      line-height: 1.2;
-    }
-    .sm-quiz-btn {
-      display: block;
-      width: 100%;
-      padding: 14px 24px;
-      background: var(--ink);
-      color: var(--bg);
-      font-family: 'Poppins', sans-serif;
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      text-align: center;
-      border: none;
-      border-radius: 3px;
-      cursor: pointer;
-      margin-top: 8px;
-      transition: opacity 200ms;
-      text-decoration: none;
-    }
-    .sm-quiz-btn:hover { opacity: 0.82; }
-
-    /* ── Mobile breakpoint ── */
-    @media (max-width: 860px) {
-      .studio { display: none; }
-      .studio-caps { display: none; }
-      .studio-closing { display: none; }
-      .studio-mobile { display: block; }
+      /* Closing CTA */
+      .studio-closing { padding: 40px 24px 52px; }
+      .studio-closing-btns { max-width: 100%; }
     }
 
   </style>
@@ -527,7 +308,9 @@
   <div class="studio reveal">
 
     <div class="studio-portrait">
-      <img src="/assets/oraan.png" alt="Oraan Levi" />
+      <div class="studio-portrait-frame">
+        <img src="/assets/oraan.png" alt="Oraan Levi" />
+      </div>
     </div>
 
     <div class="studio-text">
@@ -538,6 +321,7 @@
       </div>
       <div class="studio-body">
         <p>I started Pink Web Studio because I felt there was a growing lack of intention online. Too many websites were trying to do more, say more, and show more. The brands that inspired me most did the opposite. They understood that every detail mattered.</p>
+        <p>I design and build custom websites for independent brands and service businesses, from the ground up or refined from where you are.</p>
       </div>
     </div>
 
@@ -580,54 +364,6 @@
     </div>
   </div>
 
-  <!-- Mobile layout -->
-  <div class="studio-mobile">
-
-    <!-- Portrait -->
-    <div class="sm-portrait-wrap reveal">
-      <div class="sm-portrait-frame">
-        <img src="/assets/oraan.png" alt="Oraan Levi" />
-      </div>
-    </div>
-
-    <!-- Bio -->
-    <div class="sm-bio reveal">
-      <span class="sm-name">Oraan Levi</span>
-      <span class="sm-title">Designer &amp; Builder</span>
-      <p class="sm-bio-text">I started Pink Web Studio because I felt there was a growing lack of intention online. Too many websites were trying to do more, say more, and show more. The brands that inspired me most did the opposite. They understood that every detail mattered.</p>
-      <p class="sm-bio-text" style="margin-top: 16px; color: var(--ink-2);">I design and build custom websites for independent brands and service businesses, from the ground up or refined from where you are.</p>
-    </div>
-
-    <!-- Philosophy -->
-    <div class="sm-philosophy reveal">
-      <p class="sm-fragment">Every detail matters.</p>
-    </div>
-
-    <!-- Closing -->
-    <div class="sm-closing reveal">
-      <span class="sm-closing-label">Work together</span>
-      <a class="sm-cta" href="/contact/">Start a Project</a>
-      <a class="sm-secondary" href="/services/">Websites</a>
-      <a class="sm-secondary" href="/software/">Software</a>
-      <a class="sm-secondary" href="/products/">Products</a>
-    </div>
-
-    <!-- Reviews -->
-    <div class="sm-reviews reveal">
-      <div class="sm-review">
-        <div class="sm-review-stars">
-          <svg class="sm-review-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="sm-review-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="sm-review-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="sm-review-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="sm-review-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        </div>
-        <p class="sm-review-text">"Working with Oraan was the best decision we made for our brand. The site launched on time, looked incredible, and our clients noticed immediately."</p>
-        <span class="sm-review-name">— Mike</span>
-      </div>
-    </div>
-
-  </div>
 
   <footer class="site-footer">
     <div class="footer-brand-wrap">
