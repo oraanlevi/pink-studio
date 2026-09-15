@@ -16,7 +16,6 @@
     { label: 'Website Refresh',   href: '/services/refresh/',   img: '/assets/WR.png', cat: 'Pink Web Studio', desc: 'Your site, elevated.',          meta: 'From $2,000' },
     { label: 'Website Audit',     href: '/services/audit/',     img: '/assets/WA.png', cat: 'Pink Web Studio', desc: 'Know exactly what to fix.',     meta: '$199' },
     { label: 'Monthly Support',   href: '/services/care/',      img: '/assets/MS.png', cat: 'Pink Web Studio', desc: 'Ongoing care, handled.',        meta: '$250 / mo' },
-    { label: 'Custom Solutions',  href: '/contact/',            img: '/assets/CS.png', cat: 'Pink Web Studio', desc: 'Something beyond a website.',   meta: 'Custom pricing' },
   ];
 
   // ── Helpers ──────────────────────────────────────────────────────────────
@@ -114,8 +113,8 @@
   var mainNav = document.getElementById('mainNav');
   if (!mainNav) return;
 
-  var proj = buildPanel('megaProjects', PROJECTS, '/work/',     'View All Projects \u2192', 'View Project', 'Featured Project');
-  var svc  = buildPanel('megaServices', SERVICES, '/services/', 'View All Services \u2192', 'View Service', 'Featured Service');
+  var proj = buildPanel('megaProjects', PROJECTS, '/work/',     'View All Work \u2192',     'View Project', 'Featured Project');
+  var svc  = buildPanel('megaServices', SERVICES, '/services/', 'View All Websites \u2192', 'View Service', 'Featured Service');
 
   // Initial right panel content (uses eyebrow)
   renderRight(proj.right, PROJECTS[0], proj.linkText, proj.eyebrow);
