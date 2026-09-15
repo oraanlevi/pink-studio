@@ -432,89 +432,46 @@
       text-transform: uppercase;
     }
 
-    /* ── Mobile ── */
-    .mobile-home { display: none; }
-    .dh-marquee-wrap, .dh-work { display: block; }
-
-    @keyframes mh-marquee-scroll {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
-    }
+    /* ── Mobile lobby footer (hidden on desktop) ── */
+    .lobby-mobile-footer { display: none; }
 
     @media (max-width: 860px) {
-      .dh-marquee-wrap, .dh-work, .hp-testimonial { display: none; }
-      .lobby-corner-meta { display: none; }
+      /* Lobby */
       .lobby { min-height: auto; }
-      .lobby-inner { padding: calc(var(--nav-h) + 28px) 24px 28px; gap: 20px; }
-      .lobby-labels { display: none; }
+      .lobby-inner { padding: calc(var(--nav-h) + 20px) 24px 36px; gap: 20px; }
+      .lobby-corner-meta { display: none; }
+      .lobby-bg-img { display: none; }
 
-      .lobby-label[data-key="services"] { margin-left: 0;  transform: rotate(-0.3deg) translateY(14px); }
-      .lobby-label[data-key="work"]     { margin-left: 5%; transform: rotate(0.3deg)  translateY(14px); }
-      .lobby-label[data-key="forma"]    { margin-left: 0;  transform: rotate(-0.2deg) translateY(14px); }
-
+      /* Labels — show on mobile, simplified */
+      .lobby-labels { display: flex; }
+      .lobby-label { font-size: clamp(46px, 12vw, 62px); }
+      .lobby-label[data-key="services"] { margin-left: 8%;  transform: rotate(-0.3deg) translateY(14px); }
+      .lobby-label[data-key="work"]     { margin-left: 32%; transform: rotate(0.3deg)  translateY(14px); }
+      .lobby-label[data-key="forma"]    { margin-left: 6%;  transform: rotate(-0.2deg) translateY(14px); }
       .lobby-label[data-key="services"].arrived { transform: rotate(-0.3deg); }
       .lobby-label[data-key="work"].arrived     { transform: rotate(0.3deg);  }
       .lobby-label[data-key="forma"].arrived    { transform: rotate(-0.2deg); }
-
       .lobby-label.settled:hover { animation: none !important; }
       .lobby-labels:has(.lobby-label:hover) .lobby-label:not(:hover) { color: var(--ink); }
-      .lobby-bg-img { display: none; }
 
-      /* Mobile home */
-      .mobile-home { display: block; }
-
-      /* Availability strip — already shown on all viewports */
-
-      /* Hero block */
-      .mh-hero {
-        padding: 0 24px 36px;
-        margin-top: -8px;
-        border-bottom: 1px solid var(--rule);
-      }
-
-      /* Staggered display words */
-      .mh-display-labels {
+      /* Mobile tagline + CTA — revealed below the labels */
+      .lobby-mobile-footer {
         display: flex;
         flex-direction: column;
-        gap: 25px;
-        margin-bottom: 32px;
+        gap: 20px;
+        padding-top: 16px;
+        border-top: 1px solid var(--rule);
       }
-      .mh-display-word {
+      .lobby-mobile-tagline {
         font-family: 'Cormorant Garamond', serif;
         font-style: italic;
         font-weight: 300;
-        font-size: clamp(48px, 13vw, 60px);
-        color: var(--ink);
-        line-height: 1.1;
-        letter-spacing: -0.01em;
-        display: block;
-        width: fit-content;
-      }
-      .mh-display-word:nth-child(1) { margin-left: 10%; transform: rotate(-0.4deg); }
-      .mh-display-word:nth-child(2) { margin-left: 38%; transform: rotate(0.5deg);  }
-      .mh-display-word:nth-child(3) { margin-left: 10%; transform: rotate(-0.4deg); }
-
-      .mh-hero-eyebrow {
-        display: block;
-        font-family: 'Poppins', sans-serif;
-        font-size: 11px;
-        font-weight: 300;
-        letter-spacing: 0.08em;
-        color: var(--ink-3);
-        margin-bottom: 8px;
-      }
-      .mh-hero-tagline {
-        font-family: 'Cormorant Garamond', serif;
-        font-style: italic;
-        font-weight: 300;
-        font-size: clamp(28px, 7vw, 36px);
+        font-size: clamp(22px, 6vw, 28px);
         color: var(--ink-2);
-        line-height: 1.2;
-        margin-bottom: 28px;
-        display: block;
+        line-height: 1.25;
         text-align: center;
       }
-      .mh-cta {
+      .lobby-mobile-cta {
         display: block;
         width: 100%;
         padding: 16px 24px;
@@ -525,88 +482,24 @@
         color: var(--ink);
         text-align: center;
         text-decoration: none;
+        box-sizing: border-box;
         transition: background 220ms, color 220ms;
       }
-      .mh-cta:hover { background: var(--ink); color: var(--bg); }
+      .lobby-mobile-cta:hover { background: var(--ink); color: var(--bg); }
 
-      /* Recent Work */
-      .mh-recent-label {
-        display: block;
-        font-family: 'Poppins', sans-serif;
-        font-size: 10px;
-        font-weight: 500;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: var(--ink-3);
-        margin-bottom: 12px;
-      }
-      .mh-recent-card {
-        display: block;
-        position: relative;
-        overflow: hidden;
-        background: #1e1e1e center top / cover no-repeat;
-        min-height: 180px;
-        text-decoration: none;
-        margin-bottom: 12px;
-        border: 1px solid var(--rule);
-      }
-      .mh-recent-card:last-of-type { margin-bottom: 0; }
-      .mh-recent-overlay {
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(to bottom, rgba(0,0,0,0.05) 40%, rgba(0,0,0,0.65) 100%);
-      }
-      .mh-recent-content {
-        position: absolute;
-        bottom: 16px;
-        left: 16px;
-        right: 16px;
-      }
-      .mh-recent-name {
-        display: block;
-        font-family: 'Poppins', sans-serif;
-        font-size: 15px;
-        font-weight: 500;
-        color: #fff;
-        margin-bottom: 2px;
-      }
-      .mh-recent-desc {
-        display: block;
-        font-family: 'Poppins', sans-serif;
-        font-size: 12px;
-        font-weight: 300;
-        color: rgba(255,255,255,0.6);
-      }
+      /* Marquee — show on mobile */
+      .dh-marquee-wrap { display: block; padding: 12px 0; }
+      .dh-marquee { animation-duration: 20s; }
+      .dh-marquee-track { font-size: 16px; }
 
-      /* Mobile testimonial */
-      .hp-testimonial {
-        padding: 56px 24px 64px;
-        gap: 18px;
-      }
-      .hp-testimonial-quote {
-        font-size: clamp(20px, 5.5vw, 26px);
-      }
+      /* Work grid — single column */
+      .dh-work { display: block; padding: 32px 24px 40px; }
+      .dh-work-grid { grid-template-columns: 1fr; }
+      .dh-work-card { aspect-ratio: 4/3; }
 
-      /* Marquee */
-      .mh-marquee-wrap {
-        border-top: 1px solid var(--rule);
-        border-bottom: 1px solid var(--rule);
-        overflow: hidden;
-        padding: 12px 0;
-        margin: 0 -24px;
-      }
-      .mh-marquee {
-        display: flex;
-        width: max-content;
-        animation: mh-marquee-scroll 20s linear infinite;
-      }
-      .mh-marquee-track {
-        font-family: 'Cormorant Garamond', serif;
-        font-style: italic;
-        font-size: 16px;
-        color: var(--ink-2);
-        white-space: nowrap;
-      }
+      /* Testimonial */
+      .hp-testimonial { display: flex; padding: 56px 24px 64px; gap: 18px; }
+      .hp-testimonial-quote { font-size: clamp(20px, 5.5vw, 26px); }
     }
 
   </style>
@@ -654,6 +547,11 @@
         <a class="lobby-label" data-key="work"     href="/work/">Web</a>
         <a class="lobby-label" data-key="forma"    href="/studio/">Studio</a>
       </nav>
+
+      <div class="lobby-mobile-footer">
+        <span class="lobby-mobile-tagline">Websites. Software. Products.</span>
+        <a class="lobby-mobile-cta" href="/contact/">Start a Project</a>
+      </div>
 
     </div>
 
@@ -726,56 +624,6 @@
   <div class="hp-testimonial">
     <p class="hp-testimonial-quote">"Working with Pink was the best decision we made for our brand. The site launched on time, looked incredible, and our clients noticed immediately."</p>
     <span class="hp-testimonial-attr">— Dr. B</span>
-  </div>
-
-  <!-- Mobile homepage layout -->
-  <div class="mobile-home">
-
-    <!-- Hero -->
-    <div class="mh-hero">
-      <div class="mh-display-labels">
-        <span class="mh-display-word">Pink</span>
-        <span class="mh-display-word">Web</span>
-        <span class="mh-display-word">Studio</span>
-      </div>
-      <span class="mh-hero-tagline">Websites. Software. Products.</span>
-      <a class="mh-cta" href="/contact/">Start a Project</a>
-    </div>
-
-    <!-- Marquee -->
-    <div class="mh-marquee-wrap" aria-hidden="true">
-      <div class="mh-marquee">
-        <span class="mh-marquee-track">Websites&nbsp;/&nbsp;Software&nbsp;/&nbsp;Products&nbsp;/&nbsp;Websites&nbsp;/&nbsp;Software&nbsp;/&nbsp;Products&nbsp;/&nbsp;</span>
-        <span class="mh-marquee-track">Websites&nbsp;/&nbsp;Software&nbsp;/&nbsp;Products&nbsp;/&nbsp;Websites&nbsp;/&nbsp;Software&nbsp;/&nbsp;Products&nbsp;/&nbsp;</span>
-      </div>
-    </div>
-
-    <!-- Recent Work -->
-    <div style="padding: 32px 24px 0;">
-      <span class="mh-recent-label">Recent Work</span>
-    </div>
-    <a href="/verde/" class="mh-recent-card" style="background: #1e1e1e url('/assets/verde.png') center top / cover no-repeat;">
-      <div class="mh-recent-overlay"></div>
-      <div class="mh-recent-content">
-        <span class="mh-recent-name">Verde</span>
-        <span class="mh-recent-desc">An editorial commerce concept · Skincare & beauty</span>
-      </div>
-    </a>
-    <a href="/forma/" class="mh-recent-card" style="background: #1e1e1e url('/assets/dashboardforma.png') center top / cover no-repeat;">
-      <div class="mh-recent-overlay"></div>
-      <div class="mh-recent-content">
-        <span class="mh-recent-name">Forma</span>
-        <span class="mh-recent-desc">Interior design operations software · Built from scratch</span>
-      </div>
-    </a>
-    <a href="/work/" style="display:block; text-align:center; font-family:'Poppins',sans-serif; font-size:12px; font-weight:300; color:var(--ink-2); text-decoration:none; padding: 20px 24px 32px;">View all projects →</a>
-
-    <!-- Testimonial — mobile -->
-    <div class="hp-testimonial" style="display:flex;">
-      <p class="hp-testimonial-quote">"Working with Pink was the best decision we made for our brand. The site launched on time, looked incredible, and our clients noticed immediately."</p>
-      <span class="hp-testimonial-attr">— Dr. B</span>
-    </div>
-
   </div>
 
   <footer class="site-footer">

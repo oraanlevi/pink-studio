@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="/assets/favicon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pink Web Studio — Back Soon</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Poppins:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:   #1a1917;
+      --ink-2: rgba(26,25,23,.50);
+      --ink-3: rgba(26,25,23,.26);
+      --bg:    #FAFAF8;
+      --rule:  rgba(26,25,23,.10);
+    }
+
+    html, body {
+      height: 100%;
+      background: var(--bg);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Top strip */
+    .strip {
+      font-family: 'Poppins', sans-serif;
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--bg);
+      background: var(--ink);
+      text-align: center;
+      padding: 10px 24px;
+    }
+
+    /* Main */
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 32px;
+      text-align: center;
+    }
+
+    .wordmark {
+      font-family: 'Poppins', sans-serif;
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      margin-bottom: 64px;
+    }
+
+    .headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(52px, 10vw, 96px);
+      color: var(--ink);
+      line-height: 1.0;
+      letter-spacing: -0.02em;
+      margin-bottom: 32px;
+    }
+
+    .body-text {
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--ink-2);
+      max-width: 36ch;
+      margin-bottom: 48px;
+    }
+
+    .divider {
+      width: 32px;
+      height: 1px;
+      background: var(--rule);
+      margin: 0 auto 48px;
+    }
+
+    .contact-line {
+      font-family: 'Poppins', sans-serif;
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 0.06em;
+      color: var(--ink-3);
+    }
+
+    .contact-line a {
+      color: var(--ink-2);
+      text-decoration: none;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 1px;
+      transition: color 200ms, border-color 200ms;
+    }
+
+    .contact-line a:hover {
+      color: var(--ink);
+      border-color: var(--ink-2);
+    }
+
+    /* Footer */
+    footer {
+      padding: 24px 32px;
+      border-top: 1px solid var(--rule);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .footer-name {
+      font-family: 'Poppins', sans-serif;
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+    }
+
+    .footer-loc {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--ink-3);
+    }
+
+    @media (max-width: 600px) {
+      footer { flex-direction: column; align-items: center; gap: 6px; }
+      .headline { letter-spacing: -0.01em; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="strip">Los Angeles / Currently Booking</div>
+
+  <main>
+    <span class="wordmark">Pink Web Studio</span>
+    <h1 class="headline">Back soon.</h1>
+    <p class="body-text">We're making a few updates behind the scenes. Check back shortly — it won't be long.</p>
+    <div class="divider"></div>
+    <p class="contact-line">In the meantime, reach us at <a href="mailto:studio@pinkwebstudio.com">studio@pinkwebstudio.com</a></p>
+  </main>
+
+  <footer>
+    <span class="footer-name">Pink Web Studio</span>
+    <span class="footer-loc">Los Angeles, CA</span>
+  </footer>
+
+</body>
+</html>
