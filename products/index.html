@@ -278,10 +278,16 @@
     ───────────────────────────────────────── */
 
     @media (max-width: 860px) {
+      /* Philosophy */
+      .pd-philosophy { min-height: 55vh; }
       .pd-philosophy-inner { padding: 0 24px; }
+      .pd-beat { font-size: clamp(26px, 8vw, 40px); }
 
+      /* Why */
       .pd-why { padding: 40px 24px; }
+      .pd-why-body { font-size: 16px; }
 
+      /* Forma */
       .pd-forma {
         grid-template-columns: 1fr;
         grid-template-rows: 300px auto;
@@ -289,13 +295,17 @@
       .pd-forma-image { border-right: none; border-bottom: 1px solid var(--rule); }
       .pd-forma-details { padding: 36px 24px; }
       .pd-forma-name { font-size: clamp(56px, 14vw, 90px); }
+      .pd-forma-cta { align-self: stretch; text-align: center; }
 
+      /* What's next */
       .pd-next { padding: 40px 24px; }
       .pd-next-grid { grid-template-columns: 1fr; gap: 0; }
       .pd-next-card { padding: 24px 0; }
 
+      /* CTA */
       .pd-cta { padding: 48px 24px; }
-      .pd-cta-links { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .pd-cta-links { flex-direction: column; align-items: center; gap: 12px; width: 100%; }
+      .pd-cta-primary { text-align: center; width: 100%; box-sizing: border-box; }
     }
 
   </style>
