@@ -5,33 +5,68 @@
   <link rel="icon" type="image/png" href="/assets/favicon.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Software · Pink Web Studio</title>
-  <meta name="description" content="Pink Web Studio designs and builds custom business software—client portals, internal dashboards, workflow automation, and AI-powered tools." />
+  <meta name="description" content="Pink Web Studio builds custom business software—client portals, internal dashboards, CRMs, workflow automation, and AI-powered tools. Los Angeles." />
   <link rel="canonical" href="https://www.pinkwebstudio.com/software/" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Software · Pink Web Studio" />
-  <meta property="og:description" content="Pink Web Studio designs and builds custom business software—client portals, internal dashboards, workflow automation, and AI-powered tools." />
+  <meta property="og:description" content="Pink Web Studio builds custom business software—client portals, internal dashboards, CRMs, workflow automation, and AI-powered tools. Los Angeles." />
   <meta property="og:url" content="https://www.pinkwebstudio.com/software/" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/styles.css" />
   <style>
 
-    /* ── Software hero ── */
-    .sw-hero {
-      min-height: calc(100vh - var(--nav-h));
+    /* ─────────────────────────────────────────
+       Philosophy — staggered entrance
+    ───────────────────────────────────────── */
+
+    @keyframes beatIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    .sw-philosophy {
+      min-height: 88vh;
       display: flex;
       align-items: center;
-      padding: 80px 72px;
       border-bottom: 1px solid var(--rule);
     }
 
-    .sw-inner {
-      max-width: 640px;
+    .sw-philosophy-inner {
+      padding: 0 72px;
     }
 
-    .sw-eyebrow {
+    .sw-beat {
+      display: block;
+      opacity: 0;
+      animation: beatIn 700ms ease forwards;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(30px, 4.4vw, 60px);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      max-width: 680px;
+    }
+
+    .sw-beat + .sw-beat { margin-top: 2px; }
+    .sw-beat-1 { animation-delay: 150ms; }
+    .sw-beat-2 { animation-delay: 600ms; }
+    .sw-beat-3 { animation-delay: 1050ms; }
+
+    /* ─────────────────────────────────────────
+       Problems — what we solve
+    ───────────────────────────────────────── */
+
+    .sw-problems {
+      padding: 52px 72px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .sw-section-label {
       display: block;
       font-family: 'Poppins', sans-serif;
       font-size: 10px;
@@ -39,63 +74,108 @@
       letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--ink-3);
-      margin-bottom: 28px;
+      margin-bottom: 36px;
     }
 
-    .sw-headline {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-weight: 300;
-      font-size: clamp(36px, 4.8vw, 62px);
-      color: var(--ink);
-      line-height: 1.1;
-      letter-spacing: -0.5px;
-      margin: 0 0 26px;
+    .sw-problem-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: baseline;
+      padding: 20px 0;
+      border-top: 1px solid var(--rule);
+      gap: 40px;
     }
 
-    .sw-body {
+    .sw-problem-row:last-child {
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .sw-problem-name {
       font-family: 'Poppins', sans-serif;
-      font-weight: 300;
       font-size: 14px;
-      line-height: 1.75;
+      font-weight: 400;
+      color: var(--ink);
+      letter-spacing: 0.01em;
+    }
+
+    .sw-problem-desc {
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      font-weight: 300;
       color: var(--ink-2);
-      margin: 0 0 48px;
+      line-height: 1.6;
     }
 
-    .sw-rule {
-      width: 36px;
-      height: 1px;
-      background: var(--rule);
-      margin-bottom: 28px;
+    /* ─────────────────────────────────────────
+       Proof — Forma
+    ───────────────────────────────────────── */
+
+    .sw-forma {
+      display: grid;
+      grid-template-columns: 55fr 45fr;
+      border-bottom: 1px solid var(--rule);
     }
 
-    .sw-aside {
+    .sw-forma-img-wrap {
+      overflow: hidden;
+      background: #111;
+      border-right: 1px solid var(--rule);
+    }
+
+    .sw-forma-img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      transition: opacity 400ms ease;
+    }
+
+    .sw-forma-img-wrap:hover .sw-forma-img { opacity: 0.88; }
+
+    .sw-forma-detail {
+      padding: 52px 56px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 24px;
+    }
+
+    .sw-forma-tag {
+      font-family: 'Poppins', sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+    }
+
+    .sw-forma-name {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
       font-weight: 300;
-      font-size: 18px;
-      line-height: 1.5;
-      color: var(--ink-2);
-      margin: 0 0 10px;
+      font-size: clamp(32px, 3.2vw, 48px);
+      color: var(--ink);
+      line-height: 1.05;
+      letter-spacing: -0.01em;
     }
 
-    .sw-note {
+    .sw-forma-desc {
       font-family: 'Poppins', sans-serif;
-      font-weight: 300;
       font-size: 13px;
-      line-height: 1.65;
-      color: var(--ink-3);
-      margin: 0 0 36px;
+      font-weight: 300;
+      color: var(--ink-2);
+      line-height: 1.75;
+      max-width: 340px;
     }
 
-    .sw-ctas {
+    .sw-forma-links {
       display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
+      flex-direction: column;
+      gap: 10px;
     }
 
-    .sw-cta-primary {
-      display: inline-block;
+    .sw-forma-link-primary {
       font-family: 'Poppins', sans-serif;
       font-size: 12px;
       font-weight: 400;
@@ -103,42 +183,210 @@
       text-decoration: none;
       color: var(--bg);
       background: var(--ink);
-      padding: 13px 24px;
+      padding: 12px 22px;
+      display: inline-block;
       transition: opacity 200ms ease;
+      align-self: flex-start;
     }
-    .sw-cta-primary:hover { opacity: 0.75; }
 
-    .sw-cta-secondary {
+    .sw-forma-link-primary:hover { opacity: 0.75; }
+
+    .sw-forma-link-secondary {
+      font-family: 'Poppins', sans-serif;
+      font-size: 12px;
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      color: var(--ink-2);
+      text-decoration: none;
+      transition: color 200ms ease;
+    }
+
+    .sw-forma-link-secondary:hover { color: var(--ink); }
+
+    /* ─────────────────────────────────────────
+       Other systems
+    ───────────────────────────────────────── */
+
+    .sw-other {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .sw-other-card {
+      padding: 48px 72px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .sw-other-card + .sw-other-card {
+      border-left: 1px solid var(--rule);
+    }
+
+    .sw-other-tag {
+      font-family: 'Poppins', sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+    }
+
+    .sw-other-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(22px, 2.4vw, 34px);
+      color: var(--ink);
+      line-height: 1.1;
+    }
+
+    .sw-other-desc {
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--ink-2);
+      line-height: 1.7;
+    }
+
+    /* ─────────────────────────────────────────
+       Process
+    ───────────────────────────────────────── */
+
+    .sw-process {
+      padding: 52px 72px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .sw-process-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      margin: 0 0 32px;
+    }
+
+    .sw-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+    }
+
+    .sw-step-name {
+      display: block;
+      font-family: 'Poppins', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+
+    .sw-step-desc {
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--ink-2);
+      line-height: 1.7;
+    }
+
+    /* ─────────────────────────────────────────
+       Closing CTA
+    ───────────────────────────────────────── */
+
+    .sw-cta {
+      padding: 100px 72px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 32px;
+    }
+
+    .sw-cta-hed {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(28px, 4vw, 56px);
+      color: var(--ink);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin: 0;
+      max-width: 620px;
+    }
+
+    .sw-cta-btn {
       display: inline-block;
       font-family: 'Poppins', sans-serif;
       font-size: 12px;
       font-weight: 400;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.08em;
       text-decoration: none;
-      color: var(--ink);
-      border: 1px solid var(--rule);
-      padding: 13px 24px;
-      transition: border-color 200ms ease;
+      color: var(--bg);
+      background: var(--ink);
+      padding: 14px 32px;
+      transition: opacity 200ms ease;
     }
-    .sw-cta-secondary:hover { border-color: var(--ink-2); }
 
-    /* ── Mobile ── */
+    .sw-cta-btn:hover { opacity: 0.75; }
+
+    /* ─────────────────────────────────────────
+       Reveal
+    ───────────────────────────────────────── */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 700ms ease, transform 700ms ease;
+    }
+
+    .reveal.in {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ─────────────────────────────────────────
+       Mobile
+    ───────────────────────────────────────── */
+
     @media (max-width: 860px) {
-      .sw-hero {
-        min-height: auto;
-        padding: calc(var(--nav-h) + 52px) 24px 64px;
-        align-items: flex-start;
-      }
-      .sw-headline {
-        font-size: clamp(34px, 10vw, 50px);
-      }
-      .sw-ctas {
-        flex-direction: column;
-      }
-      .sw-cta-primary,
-      .sw-cta-secondary {
-        text-align: center;
-      }
+
+      /* Philosophy */
+      .sw-philosophy { min-height: 70vh; }
+      .sw-philosophy-inner { padding: 0 24px; }
+      .sw-beat { font-size: clamp(26px, 8vw, 40px); }
+
+      /* Problems */
+      .sw-problems { padding: 40px 24px; }
+      .sw-problem-row { grid-template-columns: 1fr; gap: 6px; padding: 18px 0; }
+
+      /* Forma */
+      .sw-forma { grid-template-columns: 1fr; }
+      .sw-forma-img-wrap { border-right: none; border-bottom: 1px solid var(--rule); }
+      .sw-forma-img { height: 52vw; min-height: 220px; }
+      .sw-forma-detail { padding: 36px 24px; gap: 20px; }
+      .sw-forma-name { font-size: clamp(28px, 8vw, 40px); }
+      .sw-forma-desc { max-width: none; }
+      .sw-forma-link-primary { align-self: stretch; text-align: center; }
+
+      /* Other systems */
+      .sw-other { grid-template-columns: 1fr; }
+      .sw-other-card { padding: 36px 24px; }
+      .sw-other-card + .sw-other-card { border-left: none; border-top: 1px solid var(--rule); }
+
+      /* Process */
+      .sw-process { padding: 40px 24px; }
+      .sw-steps { grid-template-columns: 1fr; gap: 0; }
+      .sw-step { padding: 24px 0; border-bottom: 1px solid var(--rule); }
+      .sw-step:last-child { border-bottom: none; }
+
+      /* CTA */
+      .sw-cta { padding: 64px 24px; gap: 24px; align-items: stretch; }
+      .sw-cta-btn { text-align: center; }
+
     }
 
   </style>
@@ -213,20 +461,114 @@
   </div>
 
   <main>
-    <section class="sw-hero">
-      <div class="sw-inner">
-        <span class="sw-eyebrow">Software</span>
-        <h1 class="sw-headline">Software built around the way your business works.</h1>
-        <p class="sw-body">We design and build custom business systems—from client portals and internal dashboards to workflow automation and AI-powered tools.</p>
-        <div class="sw-rule"></div>
-        <p class="sw-aside">This page is currently evolving alongside our software offering.</p>
-        <p class="sw-note">In the meantime, explore FORMA or book a discovery call to discuss your project.</p>
-        <div class="sw-ctas">
-          <a class="sw-cta-primary" href="/forma/">Explore FORMA</a>
-          <a class="sw-cta-secondary" href="https://calendly.com/oraanlevi1/30min" target="_blank" rel="noopener">Book a Discovery Call &#x2197;&#xFE0E;</a>
+
+    <!-- ── Philosophy ── -->
+    <section class="sw-philosophy" aria-label="Opening statement">
+      <div class="sw-philosophy-inner">
+        <p class="sw-beat sw-beat-1">Every business has its own way of working.</p>
+        <p class="sw-beat sw-beat-2">Generic software asks you to change it.</p>
+        <p class="sw-beat sw-beat-3">We build around it.</p>
+      </div>
+    </section>
+
+    <!-- ── Problems ── -->
+    <section class="sw-problems reveal">
+      <span class="sw-section-label">What we solve</span>
+
+      <div class="sw-problem-row">
+        <span class="sw-problem-name">Client Portals</span>
+        <span class="sw-problem-desc">Keep clients informed, involved, and out of your inbox.</span>
+      </div>
+      <div class="sw-problem-row">
+        <span class="sw-problem-name">Internal Dashboards</span>
+        <span class="sw-problem-desc">Run your business from one place instead of five.</span>
+      </div>
+      <div class="sw-problem-row">
+        <span class="sw-problem-name">Custom CRMs</span>
+        <span class="sw-problem-desc">Manage leads, customers, invoices, and operations your way.</span>
+      </div>
+      <div class="sw-problem-row">
+        <span class="sw-problem-name">Workflow Automation</span>
+        <span class="sw-problem-desc">Eliminate the repetitive steps that eat your team's time.</span>
+      </div>
+      <div class="sw-problem-row">
+        <span class="sw-problem-name">CMS Platforms</span>
+        <span class="sw-problem-desc">Manage your own content and data without depending on a developer.</span>
+      </div>
+      <div class="sw-problem-row">
+        <span class="sw-problem-name">AI&ndash;Assisted Workflows</span>
+        <span class="sw-problem-desc">Automate business processes with intelligent tools built around your operations.</span>
+      </div>
+
+    </section>
+
+    <!-- ── Forma proof ── -->
+    <section class="sw-forma reveal">
+      <div class="sw-forma-img-wrap">
+        <img
+          src="/assets/dashboardforma.png"
+          alt="Forma — interior design operations platform"
+          class="sw-forma-img"
+          loading="lazy"
+        />
+      </div>
+      <div class="sw-forma-detail">
+        <span class="sw-forma-tag">Built by Pink Web Studio</span>
+        <h2 class="sw-forma-name">Forma</h2>
+        <p class="sw-forma-desc">A full-stack operations platform for interior designers. Project management, client approvals, mood boards, and procurement—built from scratch, designed around the way studios actually work.</p>
+        <div class="sw-forma-links">
+          <a href="/forma/" class="sw-forma-link-primary">Read the Case Study</a>
+          <a href="https://forma-rho-nine.vercel.app/early-access" target="_blank" rel="noopener" class="sw-forma-link-secondary">Visit Forma &#x2197;&#xFE0E;</a>
         </div>
       </div>
     </section>
+
+    <!-- ── Other systems ── -->
+    <section class="sw-other reveal">
+
+      <div class="sw-other-card">
+        <span class="sw-other-tag">CRM &amp; Operations</span>
+        <span class="sw-other-name">Locksmith CRM</span>
+        <p class="sw-other-desc">Lead management, job dispatch, and invoicing built for a mobile service business. Replaced a stack of spreadsheets with one system that mirrors how the team actually works.</p>
+      </div>
+
+      <div class="sw-other-card">
+        <span class="sw-other-tag">Automation</span>
+        <span class="sw-other-name">Pinterest Automation</span>
+        <p class="sw-other-desc">Internal content pipeline that automates publishing and tracks performance across boards. What once took hours now runs on its own.</p>
+      </div>
+
+    </section>
+
+    <!-- ── Process ── -->
+    <section class="sw-process reveal">
+      <h2 class="sw-process-title">How it works</h2>
+      <div class="sw-steps">
+
+        <div class="sw-step">
+          <span class="sw-step-name">Map</span>
+          <p class="sw-step-desc">We learn how your business actually operates — the workflows, the bottlenecks, the tools that aren't quite working. Nothing is designed until we understand the real problem.</p>
+        </div>
+
+        <div class="sw-step">
+          <span class="sw-step-name">Build</span>
+          <p class="sw-step-desc">We design and develop the system around your specific workflow. Every decision is tied to how you work, not how generic software thinks you should.</p>
+        </div>
+
+        <div class="sw-step">
+          <span class="sw-step-name">Launch</span>
+          <p class="sw-step-desc">We deploy, test with your team, and make sure everything runs exactly as intended before we hand it off. Post-launch support included.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── CTA ── -->
+    <section class="sw-cta">
+      <p class="sw-cta-hed">Every business works differently.<br>Let's map yours.</p>
+      <a href="https://calendly.com/oraanlevi1/30min" target="_blank" rel="noopener" class="sw-cta-btn">Book a Discovery Call &#x2197;&#xFE0E;</a>
+    </section>
+
   </main>
 
   <footer class="site-footer">
@@ -249,10 +591,36 @@
   </footer>
 
   <script>
+    // ── Nav scroll shadow ──
     const nav = document.getElementById('mainNav');
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 20);
     }, { passive: true });
+
+    // ── Mobile nav ──
+    const ham  = document.getElementById('navHam');
+    const mob  = document.getElementById('mobileNav');
+    const scrim = document.createElement('div');
+    scrim.className = 'nav-scrim';
+    document.body.appendChild(scrim);
+    const navHeader = document.createElement('div');
+    navHeader.className = 'mobile-nav-header';
+    navHeader.innerHTML = '<button class="mobile-nav-close" id="navClose" aria-label="Close menu">&#215;</button>';
+    mob.insertBefore(navHeader, mob.firstChild);
+    function openNav()  { ham.classList.add('open'); mob.classList.add('open'); scrim.classList.add('open'); ham.setAttribute('aria-expanded','true'); mob.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+    function closeNav() { ham.classList.remove('open'); mob.classList.remove('open'); scrim.classList.remove('open'); ham.setAttribute('aria-expanded','false'); mob.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+    ham.addEventListener('click', () => mob.classList.contains('open') ? closeNav() : openNav());
+    scrim.addEventListener('click', closeNav);
+    document.getElementById('navClose')?.addEventListener('click', closeNav);
+    mob.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
+
+    // ── Section reveals ──
+    const revealIO = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); revealIO.unobserve(e.target); }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => revealIO.observe(el));
   </script>
   <script src="/nav.js"></script>
 
