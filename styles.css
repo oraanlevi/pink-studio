@@ -175,6 +175,7 @@ img { display: block; max-width: 100%; }
   align-items: center;
   flex: 1;
   justify-content: flex-end;
+  gap: 32px;
 }
 .nav-end a {
   font-family: 'Poppins', sans-serif;

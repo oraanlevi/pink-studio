@@ -240,6 +240,58 @@
       color: var(--ink-3);
     }
 
+    /* ── Pillars strip ── */
+    .hp-pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-bottom: 1px solid var(--rule);
+    }
+    .hp-pillar {
+      padding: 40px 52px;
+      border-right: 1px solid var(--rule);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .hp-pillar:last-child { border-right: none; }
+    .hp-pillar-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(24px, 2.4vw, 34px);
+      color: var(--ink);
+      line-height: 1.0;
+      transition: color 220ms;
+    }
+    .hp-pillar-desc {
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--ink-2);
+      line-height: 1.7;
+      transition: color 220ms;
+    }
+    .hp-pillar-link {
+      font-family: 'Poppins', sans-serif;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: var(--ink-3);
+      margin-top: auto;
+      padding-top: 16px;
+      transition: color 220ms;
+    }
+    .hp-pillar:hover .hp-pillar-name { color: var(--ink); }
+    .hp-pillar:hover .hp-pillar-desc { color: var(--ink); }
+    .hp-pillar:hover .hp-pillar-link { color: var(--ink); }
+
+    @media (max-width: 860px) {
+      .hp-pillars { grid-template-columns: 1fr; }
+      .hp-pillar { padding: 28px 24px; border-right: none; border-bottom: 1px solid var(--rule); }
+      .hp-pillar:last-child { border-bottom: none; }
+    }
+
     /* ── Desktop below-fold ── */
     .dh-marquee-wrap {
       border-top: 1px solid var(--rule);
@@ -563,65 +615,23 @@
 
   <div class="mh-strip">Los Angeles / Currently Booking</div>
 
-  <nav class="nav" id="mainNav">
+    <nav class="nav" id="mainNav">
     <div class="nav-links">
-      <div class="nav-dd">
-      <a class="nav-dd-label" href="/work/">Work</a><button class="nav-dd-toggle" aria-expanded="false" aria-label="Open Work menu"><span class="nav-dd-icon">+</span></button>
-      <div class="nav-dd-menu" hidden>
-        <a href="/forma/">Forma</a>
-        <a href="/verde/">Verde</a>
-        <a href="/le-loup/">Le Loup</a>
-        <a href="/west-and-stone/">West &amp; Stone</a>
-        <a href="/celeste/">Celeste</a>
-        <a href="/june-house/">June House</a>
-        <a href="/cleo-daisy/">Cleo Daisy</a>
-        <a href="/work/">All Work</a>
-      </div>
-    </div>
-      <div class="nav-dd">
-      <a class="nav-dd-label" href="/services/">Websites</a><button class="nav-dd-toggle" aria-expanded="false" aria-label="Open Websites menu"><span class="nav-dd-icon">+</span></button>
-      <div class="nav-dd-menu" hidden>
-        <a href="/services/signature/">Signature Website</a>
-        <a href="/services/refresh/">Refresh</a>
-        <a href="/services/audit/">Audit</a>
-        <a href="/services/care/">Care</a>
-        <a href="/services/">All Websites</a>
-      </div>
-    </div>
+      <a href="/services/">Websites</a>
       <a href="/software/">Software</a>
       <a href="/products/">Products</a>
-      <a href="/studio/">Studio</a>
     </div>
     <a class="nav-brand" href="/">Pink Web Studio</a>
-    <div class="nav-end"><a href="/contact/">Start a Project</a></div>
+    <div class="nav-end">
+      <a href="/studio/">Studio</a>
+      <a href="/contact/">Start a Project</a>
+    </div>
     <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
   </nav>
-  <div class="mobile-nav" id="mobileNav" aria-hidden="true">
-    <div class="nav-dd">
-      <a class="nav-dd-label" href="/work/">Work</a><button class="nav-dd-toggle" aria-expanded="false" aria-label="Open Work menu"><span class="nav-dd-icon">+</span></button>
-      <div class="nav-dd-menu" hidden>
-        <a href="/forma/">Forma</a>
-        <a href="/verde/">Verde</a>
-        <a href="/le-loup/">Le Loup</a>
-        <a href="/west-and-stone/">West &amp; Stone</a>
-        <a href="/celeste/">Celeste</a>
-        <a href="/june-house/">June House</a>
-        <a href="/cleo-daisy/">Cleo Daisy</a>
-        <a href="/work/">All Work</a>
-      </div>
-    </div>
-    <div class="nav-dd">
-      <a class="nav-dd-label" href="/services/">Websites</a><button class="nav-dd-toggle" aria-expanded="false" aria-label="Open Websites menu"><span class="nav-dd-icon">+</span></button>
-      <div class="nav-dd-menu" hidden>
-        <a href="/services/signature/">Signature Website</a>
-        <a href="/services/refresh/">Refresh</a>
-        <a href="/services/audit/">Audit</a>
-        <a href="/services/care/">Care</a>
-        <a href="/services/">All Websites</a>
-      </div>
-    </div>
+    <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+    <a href="/services/">Websites</a>
     <a href="/software/">Software</a>
     <a href="/products/">Products</a>
     <a href="/studio/">Studio</a>
@@ -653,6 +663,25 @@
       <span class="lobby-meta-avail">Currently Booking</span>
     </div>
   </main>
+
+  <!-- Three pillars -->
+  <div class="hp-pillars">
+    <a class="hp-pillar" href="/services/">
+      <span class="hp-pillar-name">Websites</span>
+      <span class="hp-pillar-desc">Custom websites for brands that care about how they're seen.</span>
+      <span class="hp-pillar-link">Explore Websites →</span>
+    </a>
+    <a class="hp-pillar" href="/software/">
+      <span class="hp-pillar-name">Software</span>
+      <span class="hp-pillar-desc">Business software built around the way you actually work.</span>
+      <span class="hp-pillar-link">Explore Software →</span>
+    </a>
+    <a class="hp-pillar" href="/products/">
+      <span class="hp-pillar-name">Products</span>
+      <span class="hp-pillar-desc">Products built for the problems worth solving. For everyone.</span>
+      <span class="hp-pillar-link">Explore Products →</span>
+    </a>
+  </div>
 
   <!-- Desktop below-fold: marquee + work grid -->
   <div class="dh-marquee-wrap" aria-hidden="true">

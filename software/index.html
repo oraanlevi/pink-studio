@@ -69,25 +69,44 @@
     .sw-section-label {
       display: block;
       font-family: 'Poppins', sans-serif;
-      font-size: 10px;
+      font-size: 15px;
       font-weight: 500;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--ink-3);
+      color: var(--ink);
       margin-bottom: 36px;
+      text-align: center;
     }
 
     .sw-problem-row {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr auto;
       align-items: baseline;
       padding: 20px 0;
       border-top: 1px solid var(--rule);
       gap: 40px;
+      transition: border-color 250ms ease;
     }
 
     .sw-problem-row:last-child {
       border-bottom: 1px solid var(--rule);
+    }
+
+    @media (hover: hover) {
+      .sw-problem-row:hover {
+        border-color: rgba(26,25,23,0.22);
+      }
+      .sw-problem-row:hover .sw-problem-name {
+        font-weight: 500;
+        color: var(--ink);
+      }
+      .sw-problem-row:hover .sw-problem-desc {
+        color: var(--ink);
+      }
+      .sw-problem-row:hover .sw-problem-arrow {
+        opacity: 1;
+        transform: translateX(0);
+      }
     }
 
     .sw-problem-name {
@@ -96,6 +115,7 @@
       font-weight: 400;
       color: var(--ink);
       letter-spacing: 0.01em;
+      transition: font-weight 250ms ease, color 250ms ease;
     }
 
     .sw-problem-desc {
@@ -104,6 +124,16 @@
       font-weight: 300;
       color: var(--ink-2);
       line-height: 1.6;
+      transition: color 250ms ease;
+    }
+
+    .sw-problem-arrow {
+      font-size: 13px;
+      color: var(--ink-2);
+      opacity: 0;
+      transform: translateX(-4px);
+      transition: opacity 250ms ease, transform 250ms ease;
+      user-select: none;
     }
 
     /* ─────────────────────────────────────────
@@ -171,8 +201,10 @@
 
     .sw-forma-links {
       display: flex;
-      flex-direction: column;
-      gap: 10px;
+      flex-direction: row;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
     }
 
     .sw-forma-link-primary {
@@ -186,7 +218,6 @@
       padding: 12px 22px;
       display: inline-block;
       transition: opacity 200ms ease;
-      align-self: flex-start;
     }
 
     .sw-forma-link-primary:hover { opacity: 0.75; }
@@ -194,14 +225,17 @@
     .sw-forma-link-secondary {
       font-family: 'Poppins', sans-serif;
       font-size: 12px;
-      font-weight: 300;
-      letter-spacing: 0.04em;
-      color: var(--ink-2);
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: var(--ink);
       text-decoration: none;
-      transition: color 200ms ease;
+      border: 1px solid var(--ink);
+      padding: 12px 22px;
+      display: inline-block;
+      transition: background 220ms ease, color 220ms ease;
     }
 
-    .sw-forma-link-secondary:hover { color: var(--ink); }
+    .sw-forma-link-secondary:hover { background: var(--ink); color: var(--bg); }
 
     /* ─────────────────────────────────────────
        Other systems
@@ -226,11 +260,12 @@
 
     .sw-other-tag {
       font-family: 'Poppins', sans-serif;
-      font-size: 10px;
+      font-size: 15px;
       font-weight: 500;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--ink-3);
+      color: var(--ink);
+      text-align: center;
     }
 
     .sw-other-name {
@@ -261,12 +296,13 @@
 
     .sw-process-title {
       font-family: 'Poppins', sans-serif;
-      font-size: 10px;
+      font-size: 15px;
       font-weight: 500;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--ink-3);
+      color: var(--ink);
       margin: 0 0 32px;
+      text-align: center;
     }
 
     .sw-steps {
@@ -301,9 +337,10 @@
     .sw-cta {
       padding: 100px 72px;
       display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 32px;
+      flex-direction: row;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 48px;
     }
 
     .sw-cta-hed {
@@ -362,6 +399,7 @@
       /* Problems */
       .sw-problems { padding: 40px 24px; }
       .sw-problem-row { grid-template-columns: 1fr; gap: 6px; padding: 18px 0; }
+      .sw-problem-arrow { display: none; }
 
       /* Forma */
       .sw-forma { grid-template-columns: 1fr; }
@@ -384,7 +422,7 @@
       .sw-step:last-child { border-bottom: none; }
 
       /* CTA */
-      .sw-cta { padding: 64px 24px; gap: 24px; align-items: stretch; }
+      .sw-cta { padding: 64px 24px; gap: 24px; flex-direction: column; align-items: flex-start; }
       .sw-cta-btn { text-align: center; }
 
     }
@@ -395,66 +433,24 @@
 
   <div class="mh-strip">Los Angeles / Currently Booking</div>
 
-  <nav class="nav" id="mainNav">
+    <nav class="nav" id="mainNav">
     <div class="nav-links">
-      <div class="nav-dd">
-      <a class="nav-dd-label" href="/work/">Work</a><button class="nav-dd-toggle" aria-expanded="false" aria-label="Open Work menu"><span class="nav-dd-icon">+</span></button>
-      <div class="nav-dd-menu" hidden>
-        <a href="/forma/">Forma</a>
-        <a href="/verde/">Verde</a>
-        <a href="/le-loup/">Le Loup</a>
-        <a href="/west-and-stone/">West &amp; Stone</a>
-        <a href="/celeste/">Celeste</a>
-        <a href="/june-house/">June House</a>
-        <a href="/cleo-daisy/">Cleo Daisy</a>
-        <a href="/work/">All Work</a>
-      </div>
-    </div>
-      <div class="nav-dd">
-      <a class="nav-dd-label" href="/services/">Websites</a><button class="nav-dd-toggle" aria-expanded="false" aria-label="Open Websites menu"><span class="nav-dd-icon">+</span></button>
-      <div class="nav-dd-menu" hidden>
-        <a href="/services/signature/">Signature Website</a>
-        <a href="/services/refresh/">Refresh</a>
-        <a href="/services/audit/">Audit</a>
-        <a href="/services/care/">Care</a>
-        <a href="/services/">All Websites</a>
-      </div>
-    </div>
+      <a href="/services/">Websites</a>
       <a href="/software/" class="active">Software</a>
       <a href="/products/">Products</a>
-      <a href="/studio/">Studio</a>
     </div>
     <a class="nav-brand" href="/">Pink Web Studio</a>
-    <div class="nav-end"><a href="/contact/">Start a Project</a></div>
+    <div class="nav-end">
+      <a href="/studio/">Studio</a>
+      <a href="/contact/">Start a Project</a>
+    </div>
     <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
   </nav>
-  <div class="mobile-nav" id="mobileNav" aria-hidden="true">
-    <div class="nav-dd">
-      <a class="nav-dd-label" href="/work/">Work</a><button class="nav-dd-toggle" aria-expanded="false" aria-label="Open Work menu"><span class="nav-dd-icon">+</span></button>
-      <div class="nav-dd-menu" hidden>
-        <a href="/forma/">Forma</a>
-        <a href="/verde/">Verde</a>
-        <a href="/le-loup/">Le Loup</a>
-        <a href="/west-and-stone/">West &amp; Stone</a>
-        <a href="/celeste/">Celeste</a>
-        <a href="/june-house/">June House</a>
-        <a href="/cleo-daisy/">Cleo Daisy</a>
-        <a href="/work/">All Work</a>
-      </div>
-    </div>
-    <div class="nav-dd">
-      <a class="nav-dd-label" href="/services/">Websites</a><button class="nav-dd-toggle" aria-expanded="false" aria-label="Open Websites menu"><span class="nav-dd-icon">+</span></button>
-      <div class="nav-dd-menu" hidden>
-        <a href="/services/signature/">Signature Website</a>
-        <a href="/services/refresh/">Refresh</a>
-        <a href="/services/audit/">Audit</a>
-        <a href="/services/care/">Care</a>
-        <a href="/services/">All Websites</a>
-      </div>
-    </div>
-    <a href="/software/">Software</a>
+    <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+    <a href="/services/">Websites</a>
+    <a href="/software/" class="active">Software</a>
     <a href="/products/">Products</a>
     <a href="/studio/">Studio</a>
     <a href="/contact/" class="mobile-nav-cta">Start a Project</a>
@@ -473,31 +469,37 @@
 
     <!-- ── Problems ── -->
     <section class="sw-problems reveal">
-      <span class="sw-section-label">What we solve</span>
+      <span class="sw-section-label">Built around your business</span>
 
       <div class="sw-problem-row">
         <span class="sw-problem-name">Client Portals</span>
         <span class="sw-problem-desc">Keep clients informed, involved, and out of your inbox.</span>
+        <span class="sw-problem-arrow" aria-hidden="true">→</span>
       </div>
       <div class="sw-problem-row">
         <span class="sw-problem-name">Internal Dashboards</span>
         <span class="sw-problem-desc">Run your business from one place instead of five.</span>
+        <span class="sw-problem-arrow" aria-hidden="true">→</span>
       </div>
       <div class="sw-problem-row">
         <span class="sw-problem-name">Custom CRMs</span>
         <span class="sw-problem-desc">Manage leads, customers, invoices, and operations your way.</span>
+        <span class="sw-problem-arrow" aria-hidden="true">→</span>
       </div>
       <div class="sw-problem-row">
         <span class="sw-problem-name">Workflow Automation</span>
         <span class="sw-problem-desc">Eliminate the repetitive steps that eat your team's time.</span>
+        <span class="sw-problem-arrow" aria-hidden="true">→</span>
       </div>
       <div class="sw-problem-row">
         <span class="sw-problem-name">CMS Platforms</span>
         <span class="sw-problem-desc">Manage your own content and data without depending on a developer.</span>
+        <span class="sw-problem-arrow" aria-hidden="true">→</span>
       </div>
       <div class="sw-problem-row">
         <span class="sw-problem-name">AI&ndash;Assisted Workflows</span>
         <span class="sw-problem-desc">Automate business processes with intelligent tools built around your operations.</span>
+        <span class="sw-problem-arrow" aria-hidden="true">→</span>
       </div>
 
     </section>

@@ -5,175 +5,297 @@
   <link rel="icon" type="image/png" href="/assets/favicon.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Products · Pink Web Studio</title>
-  <meta name="description" content="Pink Web Studio products — ready-made website templates and digital tools for elevated brands." />
+  <meta name="description" content="Pink Web Studio builds products for the problems worth solving. Forma is our first — operations software for interior designers." />
   <link rel="canonical" href="https://www.pinkwebstudio.com/products/" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Products · Pink Web Studio" />
-  <meta property="og:description" content="Pink Web Studio products — ready-made website templates and digital tools for elevated brands." />
+  <meta property="og:description" content="Pink Web Studio builds products for the problems worth solving. Forma is our first — operations software for interior designers." />
   <meta property="og:url" content="https://www.pinkwebstudio.com/products/" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/styles.css" />
   <style>
 
-    /* ── Page header ── */
-    .page-head {
-      padding: 72px 72px 56px;
-      border-bottom: 1px solid var(--rule);
-    }
-    .page-eyebrow {
-      display: block;
-      font-family: "Bebas Neue", "Impact", sans-serif;
-      font-size: 13px;
-      font-weight: 400;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: var(--ink-3);
-      margin-bottom: 20px;
-    }
-    .page-headline {
-      display: block;
-      font-family: "Bebas Neue", "Impact", sans-serif;
+    /* ─────────────────────────────────────────
+       Philosophy — staggered entrance
+    ───────────────────────────────────────── */
 
-      font-weight: 400;
-      font-size: clamp(37px, 3.8vw, 61px);
-      color: var(--ink);
-      line-height: 1.0;
-      letter-spacing: -0.5px;
-    }
-    .page-sub {
-      display: block;
-      font-family: "Bebas Neue", "Impact", sans-serif;
-      font-size: 20px;
-      font-weight: 400;
-      letter-spacing: 1.5px;
-      color: var(--ink-3);
-      margin-top: 16px;
-      line-height: 1.8;
+    @keyframes beatIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: none; }
     }
 
-    /* ── Product rows ── */
-    .product-list {
-      border-bottom: 1px solid var(--rule);
-    }
-    .product-row {
+    .pd-philosophy {
+      min-height: 65vh;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .pd-philosophy-inner {
       padding: 0 72px;
-      height: 80px;
-      border-bottom: 1px solid var(--rule);
-      text-decoration: none;
-      transition: background 180ms ease;
-    }
-    .product-row:last-child { border-bottom: none; }
-    .product-row:not(.product-row--soon):hover {
-      background: rgba(26,25,23,.025);
     }
 
-    .product-row-left {
-      display: flex;
-      align-items: baseline;
-      gap: 28px;
-    }
-    .product-row-name {
-      font-family: "Bebas Neue", "Impact", sans-serif;
-
-      font-weight: 400;
-      font-size: clamp(23px, 2vw, 31px);
-      color: var(--ink-2);
-      transition: color 180ms ease;
-    }
-    .product-row:not(.product-row--soon):hover .product-row-name { color: var(--ink); }
-
-    .product-row-desc {
-      font-family: "Bebas Neue", "Impact", sans-serif;
-      font-size: 14px;
-      font-weight: 400;
-      letter-spacing: 1.5px;
-      color: var(--ink-3);
-      display: none;
-    }
-
-    .product-row-right {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-    }
-    .product-row-status {
-      font-family: "Bebas Neue", "Impact", sans-serif;
-      font-size: 13px;
-      font-weight: 400;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      color: var(--ink-3);
-      transition: color 180ms ease;
-    }
-    .product-row:not(.product-row--soon):hover .product-row-status { color: var(--ink-2); }
-
-    .product-row-arrow {
-      font-family: "Bebas Neue", "Impact", sans-serif;
-      font-size: 15px;
-      color: var(--ink-3);
-      transition: color 180ms ease, transform 180ms ease;
-    }
-    .product-row:not(.product-row--soon):hover .product-row-arrow {
+    .pd-beat {
+      display: block;
+      opacity: 0;
+      animation: beatIn 700ms ease forwards;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(30px, 4.4vw, 60px);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
       color: var(--ink);
-      transform: translateX(3px);
+      max-width: 680px;
     }
 
-    /* Soon state */
-    .product-row--soon { cursor: default; }
-    .product-row--soon .product-row-name {
-      color: var(--ink-3);
-      font-style: normal;
-    }
+    .pd-beat + .pd-beat { margin-top: 2px; }
+    .pd-beat-1 { animation-delay: 150ms; }
+    .pd-beat-2 { animation-delay: 600ms; }
 
-    /* Soon badge */
-    .soon-badge {
-      font-family: "Bebas Neue", "Impact", sans-serif;
-      font-size: 18px;
-      font-weight: 400;
-      letter-spacing: 2px;
+    /* ─────────────────────────────────────────
+       Shared
+    ───────────────────────────────────────── */
+
+    .pd-section-label {
+      display: block;
+      font-family: 'Poppins', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--ink-3);
-      border: 1px solid var(--rule);
-      padding: 4px 10px;
-    }
-
-    /* ── Notify section ── */
-    .products-notify {
-      padding: 48px 72px;
-      border-bottom: 1px solid var(--rule);
-    }
-    .products-notify p {
-      font-family: "Bebas Neue", "Impact", sans-serif;
-      font-size: 40px;
-      font-weight: 400;
-      letter-spacing: 1.5px;
-      color: var(--ink-3);
-      line-height: 1.4;
+      color: var(--ink);
+      margin-bottom: 36px;
       text-align: center;
     }
-    .products-notify a {
-      color: var(--ink-2);
-      text-decoration: underline;
-      text-underline-offset: 3px;
-      text-decoration-color: var(--rule);
-      transition: color 220ms;
-    }
-    .products-notify a:hover { color: var(--ink); }
 
-    @media (min-width: 960px) {
-      .product-row-desc { display: block; }
+    /* ─────────────────────────────────────────
+       Why we build products
+    ───────────────────────────────────────── */
+
+    .pd-why {
+      padding: 52px 72px;
+      border-bottom: 1px solid var(--rule);
+      text-align: center;
     }
+
+    .pd-why-body {
+      font-family: 'Poppins', sans-serif;
+      font-size: 20px;
+      font-weight: 300;
+      color: var(--ink-2);
+      line-height: 1.8;
+      max-width: 42ch;
+      margin: 0 auto;
+    }
+    .pd-why-body + .pd-why-body { margin-top: 24px; }
+
+    /* ─────────────────────────────────────────
+       Forma — featured product
+    ───────────────────────────────────────── */
+
+    .pd-forma {
+      display: grid;
+      grid-template-columns: 55fr 45fr;
+      border-bottom: 1px solid var(--rule);
+      min-height: 520px;
+    }
+
+    .pd-forma-image {
+      overflow: hidden;
+      border-right: 1px solid var(--rule);
+    }
+
+    .pd-forma-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .pd-forma-details {
+      padding: 52px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .pd-forma-name {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(56px, 6.5vw, 90px);
+      line-height: 0.88;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+
+    .pd-forma-tagline {
+      display: block;
+      font-family: 'Poppins', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      margin-bottom: 28px;
+    }
+
+    .pd-forma-desc {
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--ink-2);
+      line-height: 1.8;
+      max-width: 40ch;
+      margin-bottom: 40px;
+    }
+
+    .pd-forma-cta {
+      display: inline-block;
+      padding: 14px 28px;
+      border: 1px solid var(--ink);
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink);
+      text-decoration: none;
+      transition: background 220ms, color 220ms;
+      align-self: flex-start;
+    }
+    .pd-forma-cta:hover { background: var(--ink); color: var(--bg); }
+
+    /* ─────────────────────────────────────────
+       What's Next
+    ───────────────────────────────────────── */
+
+    .pd-next {
+      padding: 52px 72px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .pd-next-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .pd-next-card {
+      padding: 28px 0;
+      border-top: 1px solid var(--rule);
+      text-align: left;
+    }
+
+    .pd-next-card-name {
+      display: block;
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+
+    .pd-next-card-desc {
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--ink-2);
+      line-height: 1.75;
+    }
+
+    .pd-next-card-status {
+      display: inline-block;
+      margin-top: 16px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+    }
+
+    /* ─────────────────────────────────────────
+       CTA
+    ───────────────────────────────────────── */
+
+    .pd-cta {
+      padding: 64px 72px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .pd-cta-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(28px, 3.2vw, 46px);
+      line-height: 1.25;
+      color: var(--ink);
+      max-width: 28ch;
+      margin-bottom: 36px;
+    }
+
+    .pd-cta-links {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .pd-cta-primary {
+      display: inline-block;
+      padding: 14px 28px;
+      border: 1px solid var(--ink);
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink);
+      text-decoration: none;
+      transition: background 220ms, color 220ms;
+    }
+    .pd-cta-primary:hover { background: var(--ink); color: var(--bg); }
+
+    .pd-cta-secondary {
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--ink-2);
+      text-decoration: none;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 2px;
+      transition: color 220ms, border-color 220ms;
+    }
+    .pd-cta-secondary:hover { color: var(--ink); border-color: var(--ink-2); }
+
+    /* ─────────────────────────────────────────
+       Mobile
+    ───────────────────────────────────────── */
 
     @media (max-width: 860px) {
-      .page-head { padding: 48px 24px 40px; }
-      .product-row { padding: 0 24px; height: 72px; }
-      .products-notify { padding: 36px 24px; }
+      .pd-philosophy-inner { padding: 0 24px; }
+
+      .pd-why { padding: 40px 24px; }
+
+      .pd-forma {
+        grid-template-columns: 1fr;
+        grid-template-rows: 300px auto;
+      }
+      .pd-forma-image { border-right: none; border-bottom: 1px solid var(--rule); }
+      .pd-forma-details { padding: 36px 24px; }
+      .pd-forma-name { font-size: clamp(56px, 14vw, 90px); }
+
+      .pd-next { padding: 40px 24px; }
+      .pd-next-grid { grid-template-columns: 1fr; gap: 0; }
+      .pd-next-card { padding: 24px 0; }
+
+      .pd-cta { padding: 48px 24px; }
+      .pd-cta-links { flex-direction: column; align-items: flex-start; gap: 12px; }
     }
 
   </style>
@@ -182,126 +304,88 @@
 
   <div class="mh-strip">Los Angeles / Currently Booking</div>
 
-  <nav class="nav" id="mainNav">
+    <nav class="nav" id="mainNav">
     <div class="nav-links">
-      <div class="nav-dd">
-      <a class="nav-dd-label" href="/work/">Work</a><button class="nav-dd-toggle" aria-expanded="false" aria-label="Open Work menu"><span class="nav-dd-icon">+</span></button>
-      <div class="nav-dd-menu" hidden>
-        <a href="/forma/">Forma</a>
-        <a href="/verde/">Verde</a>
-        <a href="/le-loup/">Le Loup</a>
-        <a href="/west-and-stone/">West &amp; Stone</a>
-        <a href="/celeste/">Celeste</a>
-        <a href="/june-house/">June House</a>
-        <a href="/cleo-daisy/">Cleo Daisy</a>
-        <a href="/work/">All Work</a>
-      </div>
-    </div>
-      <div class="nav-dd">
-      <a class="nav-dd-label" href="/services/">Websites</a><button class="nav-dd-toggle" aria-expanded="false" aria-label="Open Websites menu"><span class="nav-dd-icon">+</span></button>
-      <div class="nav-dd-menu" hidden>
-        <a href="/services/signature/">Signature Website</a>
-        <a href="/services/refresh/">Refresh</a>
-        <a href="/services/audit/">Audit</a>
-        <a href="/services/care/">Care</a>
-        <a href="/services/">All Websites</a>
-      </div>
-    </div>
-      <a href="/products/" class="active">Products</a>
+      <a href="/services/">Websites</a>
       <a href="/software/">Software</a>
-      <a href="/products/">Products</a>
-      <a href="/studio/">Studio</a>
+      <a href="/products/" class="active">Products</a>
     </div>
     <a class="nav-brand" href="/">Pink Web Studio</a>
-    <div class="nav-end"><a href="/contact/">Start a Project</a></div>
+    <div class="nav-end">
+      <a href="/studio/">Studio</a>
+      <a href="/contact/">Start a Project</a>
+    </div>
     <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
   </nav>
-  <div class="mobile-nav" id="mobileNav" aria-hidden="true">
-    <div class="nav-dd">
-      <a class="nav-dd-label" href="/work/">Work</a><button class="nav-dd-toggle" aria-expanded="false" aria-label="Open Work menu"><span class="nav-dd-icon">+</span></button>
-      <div class="nav-dd-menu" hidden>
-        <a href="/forma/">Forma</a>
-        <a href="/verde/">Verde</a>
-        <a href="/le-loup/">Le Loup</a>
-        <a href="/west-and-stone/">West &amp; Stone</a>
-        <a href="/celeste/">Celeste</a>
-        <a href="/june-house/">June House</a>
-        <a href="/cleo-daisy/">Cleo Daisy</a>
-        <a href="/work/">All Work</a>
-      </div>
-    </div>
-    <div class="nav-dd">
-      <a class="nav-dd-label" href="/services/">Websites</a><button class="nav-dd-toggle" aria-expanded="false" aria-label="Open Websites menu"><span class="nav-dd-icon">+</span></button>
-      <div class="nav-dd-menu" hidden>
-        <a href="/services/signature/">Signature Website</a>
-        <a href="/services/refresh/">Refresh</a>
-        <a href="/services/audit/">Audit</a>
-        <a href="/services/care/">Care</a>
-        <a href="/services/">All Websites</a>
-      </div>
-    </div>
-    <a href="/products/" class="active">Products</a>
+    <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+    <a href="/services/">Websites</a>
     <a href="/software/">Software</a>
-    <a href="/products/">Products</a>
+    <a href="/products/" class="active">Products</a>
     <a href="/studio/">Studio</a>
     <a href="/contact/" class="mobile-nav-cta">Start a Project</a>
   </div>
 
-  <div class="page-head reveal">
-    <span class="page-eyebrow">Products</span>
-    <span class="page-headline">Browse what's available.</span>
-    <span class="page-sub">Ready-made templates, kits, and resources — designed to the same standard as custom work.</span>
-  </div>
+  <!-- Philosophy -->
+  <section class="pd-philosophy" aria-label="Opening statement">
+    <div class="pd-philosophy-inner">
+      <p class="pd-beat pd-beat-1">Some ideas are worth building.</p>
+      <p class="pd-beat pd-beat-2">Forma is the first.</p>
+    </div>
+  </section>
 
-  <div class="product-list">
+  <!-- Why -->
+  <section class="pd-why reveal">
+    <span class="pd-section-label">Why we build products</span>
+    <p class="pd-why-body">We build products when we see the same problem repeated across businesses.</p>
+    <p class="pd-why-body pd-why-body--2">FORMA began as a custom solution. When we realized interior designers everywhere faced the same challenges, it became something bigger.</p>
+    <p class="pd-why-body pd-why-body--3">Simple. Thoughtful. Built for everyone.</p>
+  </section>
 
-    <div class="product-row product-row--soon reveal">
-      <div class="product-row-left">
-        <span class="product-row-name">Website Templates</span>
-        <span class="product-row-desc">Full-site templates for creative businesses</span>
+  <!-- Featured Product: Forma -->
+  <section class="pd-forma reveal" aria-label="Featured product">
+    <div class="pd-forma-image">
+      <img src="/assets/dashboardforma.png" alt="Forma dashboard interface" loading="lazy" />
+    </div>
+    <div class="pd-forma-details">
+      <span class="pd-forma-name">Forma</span>
+      <span class="pd-forma-tagline">Operations software for interior designers</span>
+      <p class="pd-forma-desc">Proposals, project tracking, client communication, and invoicing. All in one place. Built for the way designers actually work.</p>
+      <a href="/forma/" class="pd-forma-cta">Explore Forma ↗</a>
+    </div>
+  </section>
+
+  <!-- What's Next -->
+  <section class="pd-next reveal">
+    <span class="pd-section-label">What's next</span>
+    <div class="pd-next-grid">
+      <div class="pd-next-card">
+        <span class="pd-next-card-name">Website Templates</span>
+        <p class="pd-next-card-desc">Full-site templates for creative businesses, designed to the same standard as custom work.</p>
+        <span class="pd-next-card-status">Coming soon</span>
       </div>
-      <div class="product-row-right">
-        <span class="soon-badge">Coming Soon</span>
+      <div class="pd-next-card">
+        <span class="pd-next-card-name">Resources</span>
+        <p class="pd-next-card-desc">Guides, checklists, and references for founders building their web presence.</p>
+        <span class="pd-next-card-status">Coming soon</span>
+      </div>
+      <div class="pd-next-card">
+        <span class="pd-next-card-name">More products</span>
+        <p class="pd-next-card-desc">We're watching the problems. When the right one repeats often enough, we'll build around it.</p>
+        <span class="pd-next-card-status">In progress</span>
       </div>
     </div>
+  </section>
 
-    <div class="product-row product-row--soon reveal d1">
-      <div class="product-row-left">
-        <span class="product-row-name">Landing Page Templates</span>
-        <span class="product-row-desc">Single-page templates for launches and campaigns</span>
-      </div>
-      <div class="product-row-right">
-        <span class="soon-badge">Coming Soon</span>
-      </div>
+  <!-- CTA -->
+  <section class="pd-cta reveal">
+    <p class="pd-cta-heading">The right product makes a business feel possible.</p>
+    <div class="pd-cta-links">
+      <a href="/forma/" class="pd-cta-primary">Explore Forma ↗</a>
+      <a href="mailto:studio@pinkwebstudio.com" class="pd-cta-secondary">Join early access</a>
     </div>
-
-    <div class="product-row product-row--soon reveal d2">
-      <div class="product-row-left">
-        <span class="product-row-name">UI Kits</span>
-        <span class="product-row-desc">Component libraries for designers and developers</span>
-      </div>
-      <div class="product-row-right">
-        <span class="soon-badge">Coming Soon</span>
-      </div>
-    </div>
-
-    <div class="product-row product-row--soon reveal d3">
-      <div class="product-row-left">
-        <span class="product-row-name">Resources</span>
-        <span class="product-row-desc">Guides, checklists, and references</span>
-      </div>
-      <div class="product-row-right">
-        <span class="soon-badge">Coming Soon</span>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="products-notify reveal">
-    <p>Products launch this year. <a href="mailto:studio@pinkwebstudio.com">Send an email</a> to be notified when they're available.</p>
-  </div>
+  </section>
 
   <footer class="site-footer">
     <div class="footer-brand-wrap">
@@ -330,7 +414,6 @@
 
     const ham = document.getElementById('navHam');
     const mob = document.getElementById('mobileNav');
-    // Sidebar nav
     const scrim = document.createElement('div');
     scrim.className = 'nav-scrim';
     document.body.appendChild(scrim);
@@ -357,7 +440,7 @@
       entries.forEach(e => {
         if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
       });
-    }, { threshold: 0.1, rootMargin: '0px 0px -32px 0px' });
+    }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
   </script>
 
