@@ -5,331 +5,557 @@
   <link rel="icon" type="image/png" href="/assets/favicon.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Websites · Pink Web Studio</title>
-  <meta name="description" content="Pink Web Studio offers bespoke website design, software development, and digital branding for elevated businesses. Based in Los Angeles." />
+  <meta name="description" content="Pink Web Studio designs and builds beautiful, custom websites for brands that care about how they're seen. Los Angeles." />
   <link rel="canonical" href="https://www.pinkwebstudio.com/services/" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Websites · Pink Web Studio" />
-  <meta property="og:description" content="Pink Web Studio offers bespoke website design, software development, and digital branding for elevated businesses. Based in Los Angeles." />
+  <meta property="og:description" content="Pink Web Studio designs and builds beautiful, custom websites for brands that care about how they're seen. Los Angeles." />
   <meta property="og:url" content="https://www.pinkwebstudio.com/services/" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Oswald:wght@400;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/styles.css" />
   <style>
 
-    /* ── Page header ── */
-    .sg-header {
-      padding: 64px 32px 28px;
-      text-align: center;
-    }
-    .sg-eyebrow {
-      font-family: 'Poppins', sans-serif;
-      font-size: 13px;
-      font-weight: 300;
-      letter-spacing: 0.1em;
-      color: var(--ink-3);
-      display: block;
-      text-align: center;
-      margin-bottom: 12px;
-    }
-    .sg-headline {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 300;
-      font-style: italic;
-      font-size: clamp(28px, 3.5vw, 48px);
-      line-height: 1;
-      letter-spacing: 0.01em;
-      color: var(--ink-2);
-      display: block;
-      text-align: center;
-      margin-bottom: 40px;
+    /* ─────────────────────────────────────────
+       Philosophy — staggered entrance
+    ───────────────────────────────────────── */
+
+    @keyframes beatIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: none; }
     }
 
-    /* ── Gallery wrap ── */
-    .sg-wrap {
-      padding: 0 72px 72px;
+    .ws-philosophy {
+      min-height: 88vh;
       display: flex;
-      flex-direction: column;
-      gap: 10px;
-      max-width: 1200px;
-      margin: 0 auto;
+      align-items: center;
+      border-bottom: 1px solid var(--rule);
     }
 
-    /* ── Cards ── */
-    .sg-card {
+    .ws-philosophy-inner {
+      padding: 0 72px;
+    }
+
+    .ws-beat {
+      display: block;
+      opacity: 0;
+      animation: beatIn 700ms ease forwards;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(30px, 4.4vw, 60px);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      max-width: 680px;
+    }
+
+    .ws-beat + .ws-beat { margin-top: 2px; }
+
+    .ws-beat-1 { animation-delay: 150ms; }
+    .ws-beat-2 { animation-delay: 600ms; }
+    .ws-beat-3 { animation-delay: 1050ms; }
+
+    /* ─────────────────────────────────────────
+       Verde — featured proof moment
+    ───────────────────────────────────────── */
+
+    .ws-proof {
+      display: block;
       position: relative;
       overflow: hidden;
-      border-radius: 10px;
-      cursor: pointer;
+      text-decoration: none;
+      background: #111;
     }
-    .sg-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+
+    .ws-proof-img {
       display: block;
-      transition: transform 600ms ease, filter 500ms ease;
-    }
-    .sg-card:hover img { transform: scale(1.02); }
-    .sg-card.open img {
-      transform: scale(1.03);
-      filter: brightness(0.38);
-    }
-
-    /* Hero card */
-    .sg-hero { aspect-ratio: 21 / 7; }
-
-    /* Grid */
-    .sg-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
-    .sg-card--grid { aspect-ratio: 3 / 2; }
-
-    /* ── Label ── */
-    .sg-label {
-      position: absolute;
-      bottom: 22px;
-      left: 24px;
-      font-family: 'Poppins', sans-serif;
-      font-size: 12px;
-      font-weight: 400;
-      color: rgba(255,255,255,.88);
-      letter-spacing: 0.01em;
-      transition: color 220ms, opacity 300ms;
-      pointer-events: none;
-      z-index: 1;
-    }
-    .sg-card.open .sg-label { opacity: 0; }
-
-    /* ── Detail overlay ── */
-    .sg-detail {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 28px 28px 32px;
-      opacity: 0;
-      pointer-events: none;
+      width: 100%;
+      height: 48vh;
+      min-height: 280px;
+      max-height: 500px;
+      object-fit: cover;
+      object-position: center;
       transition: opacity 400ms ease;
     }
-    .sg-card.open .sg-detail {
-      opacity: 1;
-      pointer-events: all;
-    }
 
-    .sg-close {
+    .ws-proof:hover .ws-proof-img { opacity: 0.88; }
+
+    .ws-proof-meta {
       position: absolute;
-      top: 18px;
-      right: 20px;
-      background: none;
-      border: none;
-      color: rgba(255,255,255,.6);
-      font-size: 22px;
-      line-height: 1;
-      cursor: pointer;
-      padding: 4px 8px;
-      transition: color 180ms;
-      font-family: 'Poppins', sans-serif;
-      font-weight: 300;
+      bottom: 36px;
+      left: 72px;
+      right: 72px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
     }
-    .sg-close:hover { color: white; }
 
-    .sg-detail-name {
-      font-family: 'Poppins', sans-serif;
-      font-size: clamp(18px, 2.2vw, 26px);
-      font-weight: 400;
-      color: white;
-      margin: 0 0 4px;
-    }
-    .sg-detail-sub {
-      font-family: 'Poppins', sans-serif;
-      font-size: 13px;
-      font-weight: 300;
-      color: rgba(255,255,255,.55);
-      margin: 0 0 18px;
-      font-style: italic;
-    }
-    .sg-detail-meta {
-      font-family: 'Poppins', sans-serif;
-      font-size: 10px;
-      font-weight: 400;
-      color: rgba(255,255,255,.45);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin: 0 0 22px;
-    }
-    .sg-detail-list { display: none; }
-    .sg-detail-cta {
-      display: inline-block;
-      font-family: 'Poppins', sans-serif;
-      font-size: 13px;
-      font-weight: 500;
-      color: white;
-      text-decoration: none;
-      transition: opacity 180ms;
-    }
-    .sg-detail-cta:hover { opacity: 0.55; }
-
-    .sg-detail-link {
-      display: inline-block;
-      font-family: 'Poppins', sans-serif;
-      font-size: 13px;
-      font-weight: 400;
-      color: rgba(255,255,255,.6);
-      text-decoration: none;
-      margin-top: 8px;
-      transition: color 180ms;
-    }
-    .sg-detail-link:hover { color: rgba(255,255,255,.9); }
-
-    /* ── Footer note ── */
-    .sg-note {
-      padding: 72px 72px 80px;
+    .ws-proof-left {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      gap: 16px;
-      border-top: 1px solid var(--rule);
-      margin-top: 8px;
+      gap: 4px;
     }
-    .sg-note-eye {
-      font-family: 'Poppins', sans-serif;
-      font-size: 11px;
-      font-weight: 300;
-      letter-spacing: 0.04em;
-      color: var(--ink-3);
-    }
-    .sg-note span {
+
+    .ws-proof-name {
       font-family: 'Cormorant Garamond', serif;
-      font-weight: 300;
       font-style: italic;
-      font-size: clamp(28px, 3vw, 44px);
-      color: var(--ink);
-      text-align: center;
+      font-weight: 300;
+      font-size: 22px;
+      color: #fff;
       letter-spacing: 0.01em;
-      line-height: 1.1;
     }
-    .sg-note a {
+
+    .ws-proof-cat {
       font-family: 'Poppins', sans-serif;
-      font-size: 11px;
-      font-weight: 500;
+      font-size: 10px;
+      font-weight: 300;
       letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.55);
       text-transform: uppercase;
-      color: var(--bg);
-      text-decoration: none;
+    }
+
+    .ws-proof-arrow {
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.6);
+      transition: color 300ms ease, transform 300ms ease;
       display: inline-block;
-      text-align: center;
-      padding: 14px 36px;
-      background: var(--ink);
-      border: 1px solid var(--ink);
-      border-radius: 3px;
-      margin-top: 8px;
-      transition: opacity 220ms;
     }
-    .sg-note a:hover { opacity: 0.82; }
 
-    .sg-note-reviews {
+    .ws-proof:hover .ws-proof-arrow {
+      color: #fff;
+      transform: translate(3px, -3px);
+    }
+
+    /* ─────────────────────────────────────────
+       Portfolio — selected work grid
+    ───────────────────────────────────────── */
+
+    .ws-portfolio {
+      padding: 52px 72px;
+      border-top: 1px solid var(--rule);
+    }
+
+    .ws-section-label {
+      display: block;
       font-family: 'Poppins', sans-serif;
-      font-size: 11px;
-      font-weight: 300;
-      letter-spacing: 0.04em;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
       color: var(--ink-3);
+      margin-bottom: 20px;
+    }
+
+    .ws-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .ws-card {
+      display: block;
+      position: relative;
+      overflow: hidden;
       text-decoration: none;
-      transition: color 220ms;
+      background: #111;
     }
-    .sg-note-reviews:hover { color: var(--ink-2); }
 
-    /* ── Audit credit note ── */
-    .sg-detail-credit {
+    .ws-card-img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      object-position: center top;
+      transition: transform 600ms ease, opacity 400ms ease;
+    }
+
+    .ws-card:hover .ws-card-img {
+      transform: scale(1.02);
+      opacity: 0.88;
+    }
+
+    .ws-card-info {
+      padding: 14px 0 0;
+    }
+
+    .ws-card-name {
+      display: block;
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--ink);
+      letter-spacing: 0.01em;
+    }
+
+    .ws-card-cat {
+      display: block;
       font-family: 'Poppins', sans-serif;
       font-size: 10px;
       font-weight: 300;
-      color: rgba(255,255,255,.38);
-      letter-spacing: 0.03em;
-      font-style: italic;
-      margin: -10px 0 18px;
+      letter-spacing: 0.08em;
+      color: var(--ink-3);
+      text-transform: uppercase;
+      margin-top: 2px;
     }
 
-    /* ── Best for line ── */
-    .sg-detail-bestfor {
+    .ws-all-work {
+      display: inline-block;
+      margin-top: 28px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 12px;
+      font-weight: 300;
+      letter-spacing: 0.06em;
+      color: var(--ink-2);
+      text-decoration: none;
+      transition: color 220ms ease;
+    }
+
+    .ws-all-work:hover { color: var(--ink); }
+
+    /* ─────────────────────────────────────────
+       Services — what we build
+    ───────────────────────────────────────── */
+
+    .ws-services {
+      border-top: 1px solid var(--rule);
+      padding: 52px 72px;
+    }
+
+    .ws-section-title {
       font-family: 'Poppins', sans-serif;
       font-size: 10px;
-      font-weight: 300;
-      color: rgba(255,255,255,.5);
-      letter-spacing: 0.02em;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      margin: 0 0 32px;
+    }
+
+    .ws-service {
+      display: grid;
+      grid-template-columns: 2fr 3fr;
+      gap: 60px;
+      padding: 32px 0;
+      border-top: 1px solid var(--rule);
+    }
+
+    .ws-service:first-of-type { border-top: none; padding-top: 0; }
+
+    .ws-service-left {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .ws-service-name {
+      font-family: 'Cormorant Garamond', serif;
       font-style: italic;
-      margin: 0 0 16px;
+      font-weight: 300;
+      font-size: clamp(24px, 2.4vw, 36px);
+      color: var(--ink);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+    }
+
+    .ws-service-tag {
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--ink-2);
+      font-style: italic;
       line-height: 1.5;
     }
 
-    /* ── Disable hover image scale on touch devices ── */
-    @media (hover: none) {
-      .sg-card:hover img { transform: none; }
+    .ws-service-right {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      justify-content: center;
     }
 
-    /* ── Mobile overlay (hidden on desktop) ── */
-    .sg-mob-overlay { display: none; }
+    .ws-service-inc {
+      font-family: 'Poppins', sans-serif;
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--ink-2);
+      letter-spacing: 0.01em;
+      line-height: 1.8;
+    }
 
-    /* ── Mobile ── */
+    .ws-service-pricing {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .ws-service-price {
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--ink);
+      letter-spacing: 0.01em;
+    }
+
+    .ws-service-time {
+      font-family: 'Poppins', sans-serif;
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--ink-3);
+      letter-spacing: 0.01em;
+    }
+
+    .ws-service-note {
+      font-family: 'Poppins', sans-serif;
+      font-size: 11px;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--ink-3);
+    }
+
+    .ws-service-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .ws-btn {
+      display: inline-block;
+      font-family: 'Poppins', sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      color: var(--bg);
+      background: var(--ink);
+      padding: 12px 22px;
+      transition: opacity 200ms ease;
+      white-space: nowrap;
+    }
+
+    .ws-btn:hover { opacity: 0.75; }
+
+    .ws-link {
+      font-family: 'Poppins', sans-serif;
+      font-size: 12px;
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      color: var(--ink-2);
+      text-decoration: none;
+      transition: color 200ms ease;
+      white-space: nowrap;
+    }
+
+    .ws-link:hover { color: var(--ink); }
+
+    /* ─────────────────────────────────────────
+       Process — how it works
+    ───────────────────────────────────────── */
+
+    .ws-process {
+      border-top: 1px solid var(--rule);
+      padding: 52px 72px;
+    }
+
+    .ws-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+      margin-top: 32px;
+    }
+
+    .ws-step-name {
+      display: block;
+      font-family: 'Poppins', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+
+    .ws-step-desc {
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--ink-2);
+      line-height: 1.7;
+    }
+
+    /* ─────────────────────────────────────────
+       Reviews
+    ───────────────────────────────────────── */
+
+    .ws-reviews {
+      border-top: 1px solid var(--rule);
+      padding: 52px 72px;
+    }
+
+    .ws-reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+    }
+
+    .ws-review {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .ws-review-stars {
+      font-size: 13px;
+      color: var(--ink-3);
+      letter-spacing: 3px;
+    }
+
+    .ws-review-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: 19px;
+      line-height: 1.55;
+      color: var(--ink);
+    }
+
+    .ws-review-by {
+      font-family: 'Poppins', sans-serif;
+      font-size: 11px;
+      font-weight: 300;
+      color: var(--ink-3);
+      letter-spacing: 0.06em;
+    }
+
+    /* ─────────────────────────────────────────
+       CTA
+    ───────────────────────────────────────── */
+
+    .ws-cta {
+      border-top: 1px solid var(--rule);
+      padding: 64px 72px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 28px;
+    }
+
+    .ws-cta-hed {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(28px, 3.6vw, 52px);
+      color: var(--ink);
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      margin: 0;
+    }
+
+    .ws-cta-btn {
+      display: inline-block;
+      font-family: 'Poppins', sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      color: var(--bg);
+      background: var(--ink);
+      padding: 14px 32px;
+      transition: opacity 200ms ease;
+    }
+
+    .ws-cta-btn:hover { opacity: 0.75; }
+
+    .ws-cta-secondary {
+      font-family: 'Poppins', sans-serif;
+      font-size: 12px;
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      color: var(--ink-3);
+      text-decoration: none;
+      transition: color 200ms ease;
+    }
+
+    .ws-cta-secondary:hover { color: var(--ink); }
+
+    /* ─────────────────────────────────────────
+       Reveal
+    ───────────────────────────────────────── */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 700ms ease, transform 700ms ease;
+    }
+
+    .reveal.in {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ─────────────────────────────────────────
+       Mobile
+    ───────────────────────────────────────── */
+
     @media (max-width: 860px) {
-      .sg-header { padding: 40px 16px 20px; }
-      .sg-headline { font-size: clamp(24px, 6vw, 36px); margin-bottom: 24px; }
-      .sg-wrap { padding: 0 16px 32px; gap: 10px; max-width: none; }
-      .sg-note { padding: 48px 24px 56px; gap: 16px; }
-      .sg-note a { max-width: none; }
 
-      /* All cards: full-width stacked rows */
-      .sg-hero,
-      .sg-card--grid { aspect-ratio: unset; height: 160px; }
-      .sg-grid { display: contents; }
-      .sg-card--grid { cursor: pointer; }
+      /* Philosophy */
+      .ws-philosophy { min-height: 70vh; }
 
-      /* Hide desktop label and detail overlay */
-      .sg-label { display: none; }
-      .sg-detail { display: none; }
+      .ws-philosophy-inner { padding: 0 24px; }
 
-      /* Mobile overlay — always visible */
-      .sg-mob-overlay {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        position: absolute;
-        inset: 0;
-        padding: 0 22px;
-        background: linear-gradient(to right, rgba(10,9,8,.62) 0%, rgba(10,9,8,.28) 100%);
-        pointer-events: none;
-      }
-      .sg-mob-text {
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-      }
-      .sg-mob-title {
-        font-family: 'Cormorant Garamond', serif;
-        font-weight: 300;
-        font-style: italic;
-        font-size: 32px;
-        color: white;
-        line-height: 1;
-        letter-spacing: -0.5px;
-      }
-      .sg-mob-tag {
-        font-family: 'Poppins', sans-serif;
-        font-size: 9px;
-        font-weight: 400;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        color: rgba(255,255,255,.55);
-      }
-      .sg-mob-arrow {
-        font-family: 'Poppins', sans-serif;
-        font-size: 16px;
-        font-weight: 300;
-        color: rgba(255,255,255,.7);
-      }
+      .ws-beat { font-size: clamp(26px, 8vw, 40px); }
+
+      /* Verde proof */
+      .ws-proof-img { height: 40vh; min-height: 220px; max-height: 360px; }
+
+      .ws-proof-meta { bottom: 20px; left: 24px; right: 24px; }
+
+      .ws-proof-name { font-size: 18px; }
+
+      /* Portfolio */
+      .ws-portfolio { padding: 40px 24px; }
+
+      .ws-grid { grid-template-columns: 1fr; gap: 24px; }
+
+      .ws-card-img { aspect-ratio: 4 / 3; }
+
+      /* Services */
+      .ws-services { padding: 40px 24px; }
+
+      .ws-service { grid-template-columns: 1fr; gap: 16px; padding: 28px 0; }
+
+      .ws-service-name { font-size: clamp(22px, 7vw, 32px); }
+
+      .ws-service-actions { flex-direction: column; align-items: flex-start; }
+
+      .ws-btn { width: 100%; text-align: center; }
+
+      /* Process */
+      .ws-process { padding: 40px 24px; }
+
+      .ws-steps { grid-template-columns: 1fr; gap: 0; margin-top: 28px; }
+
+      .ws-step { padding: 24px 0; border-bottom: 1px solid var(--rule); }
+
+      .ws-step:last-child { border-bottom: none; }
+
+      /* Reviews */
+      .ws-reviews { padding: 40px 24px; }
+
+      .ws-reviews-grid { grid-template-columns: 1fr; gap: 36px; }
+
+      /* CTA */
+      .ws-cta { padding: 52px 24px; gap: 20px; }
+
+      .ws-cta-btn { width: 100%; text-align: center; }
+
     }
 
   </style>
@@ -354,7 +580,7 @@
       </div>
     </div>
       <div class="nav-dd">
-      <a class="nav-dd-label" href="/services/">Websites</a><button class="nav-dd-toggle" aria-expanded="false" aria-label="Open Websites menu"><span class="nav-dd-icon">+</span></button>
+      <a class="nav-dd-label active" href="/services/">Websites</a><button class="nav-dd-toggle" aria-expanded="false" aria-label="Open Websites menu"><span class="nav-dd-icon">+</span></button>
       <div class="nav-dd-menu" hidden>
         <a href="/services/signature/">Signature Website</a>
         <a href="/services/refresh/">Refresh</a>
@@ -403,142 +629,231 @@
     <a href="/contact/" class="mobile-nav-cta">Start a Project</a>
   </div>
 
-  <div class="sg-header reveal">
-    <span class="sg-eyebrow">Pink Web Studio</span>
-    <h1 class="sg-headline">Websites</h1>
-  </div>
+  <main>
 
-  <div class="sg-wrap">
+    <!-- ── Philosophy ── -->
+    <section class="ws-philosophy" id="wsPhilosophy" aria-label="Opening statement">
+      <div class="ws-philosophy-inner">
+        <p class="ws-beat ws-beat-1">Every brand has a story.</p>
+        <p class="ws-beat ws-beat-2">Most websites don't tell it.</p>
+        <p class="ws-beat ws-beat-3">Ours do.</p>
+      </div>
+    </section>
 
-    <!-- Hero — Signature Website -->
-    <div class="sg-card sg-hero reveal" data-href="/services/signature/">
-      <img src="/assets/sigwebsite2.png" alt="Signature Website" />
-      <span class="sg-label">Signature Website</span>
-      <div class="sg-mob-overlay">
-        <div class="sg-mob-text">
-          <span class="sg-mob-title">Signature Website</span>
-          <span class="sg-mob-tag">Custom Build</span>
+    <!-- ── Verde proof moment ── -->
+    <a href="/verde/" class="ws-proof" aria-label="View Verde project">
+      <img
+        src="/assets/verde-hover.png"
+        alt="Verde — design exploration for a skincare brand"
+        class="ws-proof-img"
+        loading="eager"
+      />
+      <div class="ws-proof-meta">
+        <div class="ws-proof-left">
+          <span class="ws-proof-name">Verde</span>
+          <span class="ws-proof-cat">Design Exploration · Skincare &amp; Beauty</span>
         </div>
-        <span class="sg-mob-arrow">→</span>
+        <span class="ws-proof-arrow">&#x2197;&#xFE0E;</span>
       </div>
-      <div class="sg-detail">
-        <button class="sg-close" aria-label="Close">×</button>
-        <p class="sg-detail-name">Signature Website</p>
-        <p class="sg-detail-sub">Built from scratch, for you.</p>
-        <p class="sg-detail-meta">From $4,000 &nbsp;·&nbsp; 3–4 weeks</p>
-        <p class="sg-detail-bestfor">Best for: building a completely custom site from the ground up.</p>
-        <a class="sg-detail-cta" href="/contact/?service=signature">Start a Project →</a>
-        <a class="sg-detail-link" href="/services/signature/">Full details →</a>
-      </div>
-    </div>
+    </a>
 
-    <!-- Grid -->
-    <div class="sg-grid reveal">
+    <!-- ── Portfolio ── -->
+    <section class="ws-portfolio reveal">
+      <span class="ws-section-label">Selected Work</span>
+      <div class="ws-grid">
 
-      <!-- Website Refresh -->
-      <div class="sg-card sg-card--grid" data-href="/services/refresh/">
-        <img src="/assets/WR2.png" alt="Website Refresh" />
-        <span class="sg-label">Website Refresh</span>
-        <div class="sg-mob-overlay">
-          <div class="sg-mob-text">
-            <span class="sg-mob-title">Website Refresh</span>
-            <span class="sg-mob-tag">Refine + Elevate</span>
+        <a href="/le-loup/" class="ws-card">
+          <img src="/assets/loup.png" alt="Le Loup" class="ws-card-img" loading="lazy" />
+          <div class="ws-card-info">
+            <span class="ws-card-name">Le Loup</span>
+            <span class="ws-card-cat">Website · Private Members Club</span>
           </div>
-          <span class="sg-mob-arrow">→</span>
-        </div>
-        <div class="sg-detail">
-          <button class="sg-close" aria-label="Close">×</button>
-          <p class="sg-detail-name">Website Refresh</p>
-          <p class="sg-detail-sub">Your site, elevated.</p>
-          <p class="sg-detail-meta">From $2,000 &nbsp;·&nbsp; 2–3 weeks</p>
-          <p class="sg-detail-bestfor">Best for: brands with a solid site that no longer reflects where they are.</p>
-          <a class="sg-detail-cta" href="/contact/?service=refresh">Start a Project →</a>
-          <a class="sg-detail-link" href="/services/refresh/">Full details →</a>
-        </div>
-      </div>
+        </a>
 
-      <!-- Website Audit -->
-      <div class="sg-card sg-card--grid" data-href="/services/audit/">
-        <img src="/assets/WA2.png" alt="Website Audit" />
-        <span class="sg-label">Website Audit</span>
-        <div class="sg-mob-overlay">
-          <div class="sg-mob-text">
-            <span class="sg-mob-title">Website Audit</span>
-            <span class="sg-mob-tag">Expert Review</span>
+        <a href="/west-and-stone/" class="ws-card">
+          <img src="/assets/stone.png" alt="West &amp; Stone" class="ws-card-img" loading="lazy" />
+          <div class="ws-card-info">
+            <span class="ws-card-name">West &amp; Stone</span>
+            <span class="ws-card-cat">Website · Home Goods &amp; Interiors</span>
           </div>
-          <span class="sg-mob-arrow">→</span>
-        </div>
-        <div class="sg-detail">
-          <button class="sg-close" aria-label="Close">×</button>
-          <p class="sg-detail-name">Website Audit</p>
-          <p class="sg-detail-sub">Know exactly what to fix.</p>
-          <p class="sg-detail-meta">$199 &nbsp;·&nbsp; 3–5 days</p>
-          <p class="sg-detail-bestfor">Best for: anyone unsure what's holding their current site back.</p>
-          <p class="sg-detail-credit">Fee credited toward any Refresh or Signature build within 60 days.</p>
-          <a class="sg-detail-cta" href="/contact/?service=audit">Book an Audit →</a>
-          <a class="sg-detail-link" href="/services/audit/">Full details →</a>
-        </div>
-      </div>
+        </a>
 
-      <!-- Monthly Support -->
-      <div class="sg-card sg-card--grid" data-href="/services/care/">
-        <img src="/assets/MS.png" alt="Monthly Support" />
-        <span class="sg-label">Monthly Support</span>
-        <div class="sg-mob-overlay">
-          <div class="sg-mob-text">
-            <span class="sg-mob-title">Monthly Care</span>
-            <span class="sg-mob-tag">Ongoing Support</span>
+        <a href="/celeste/" class="ws-card">
+          <img src="/assets/cel.png" alt="Céleste" class="ws-card-img" loading="lazy" />
+          <div class="ws-card-info">
+            <span class="ws-card-name">Céleste</span>
+            <span class="ws-card-cat">Website · Medical Aesthetics</span>
           </div>
-          <span class="sg-mob-arrow">→</span>
-        </div>
-        <div class="sg-detail">
-          <button class="sg-close" aria-label="Close">×</button>
-          <p class="sg-detail-name">Monthly Support</p>
-          <p class="sg-detail-sub">Ongoing care, handled.</p>
-          <p class="sg-detail-meta">$250 / mo &nbsp;·&nbsp; Ongoing</p>
-          <p class="sg-detail-bestfor">Best for: brands with a solid site who want ongoing updates handled.</p>
-          <a class="sg-detail-cta" href="/contact/?service=care">Get Started →</a>
-          <a class="sg-detail-link" href="/services/care/">Full details →</a>
-        </div>
-      </div>
+        </a>
 
-      <!-- Custom Automation -->
-      <div class="sg-card sg-card--grid" data-href="/services/automation/">
-        <img src="/assets/CS.png" alt="Custom Automation" />
-        <span class="sg-label">Custom Automation</span>
-        <div class="sg-mob-overlay">
-          <div class="sg-mob-text">
-            <span class="sg-mob-title">Custom Automation</span>
-            <span class="sg-mob-tag">Systems + Integrations</span>
+        <a href="/june-house/" class="ws-card">
+          <img src="/assets/fashion.png" alt="June House" class="ws-card-img" loading="lazy" />
+          <div class="ws-card-info">
+            <span class="ws-card-name">June House</span>
+            <span class="ws-card-cat">Website · Interior Design Studio</span>
           </div>
-          <span class="sg-mob-arrow">→</span>
+        </a>
+
+        <a href="/verde/" class="ws-card">
+          <img src="/assets/verde3.png" alt="Verde" class="ws-card-img" loading="lazy" />
+          <div class="ws-card-info">
+            <span class="ws-card-name">Verde</span>
+            <span class="ws-card-cat">Design Exploration · Skincare &amp; Beauty</span>
+          </div>
+        </a>
+
+        <a href="/cleo-daisy/" class="ws-card">
+          <img src="/assets/cleo/cleohero.png" alt="Cleo Daisy" class="ws-card-img" loading="lazy" />
+          <div class="ws-card-info">
+            <span class="ws-card-name">Cleo Daisy</span>
+            <span class="ws-card-cat">Fashion Editorial · Concept Project</span>
+          </div>
+        </a>
+
+      </div>
+      <a href="/work/" class="ws-all-work">View all work &#x2192;</a>
+    </section>
+
+    <!-- ── Services ── -->
+    <section class="ws-services">
+      <h2 class="ws-section-title">What we build</h2>
+
+      <div class="ws-service reveal">
+        <div class="ws-service-left">
+          <span class="ws-service-name">Signature Website</span>
+          <span class="ws-service-tag">Built from scratch, for you.</span>
         </div>
-        <div class="sg-detail">
-          <button class="sg-close" aria-label="Close">×</button>
-          <p class="sg-detail-name">Custom Automation</p>
-          <p class="sg-detail-sub">The systems behind your business.</p>
-          <p class="sg-detail-meta">From $1,500 &nbsp;·&nbsp; Varies by scope</p>
-          <p class="sg-detail-bestfor">Best for: businesses that need custom workflows, integrations, or internal tools built.</p>
-          <a class="sg-detail-cta" href="/contact/?service=automation">Let's Talk →</a>
-          <a class="sg-detail-link" href="/services/automation/">Full details →</a>
+        <div class="ws-service-right">
+          <p class="ws-service-inc">Strategy &amp; Discovery · Full Site Design · Custom Development · Launch &amp; Support</p>
+          <div class="ws-service-pricing">
+            <span class="ws-service-price">From $4,000</span>
+            <span class="ws-service-time">3–4 weeks</span>
+          </div>
+          <div class="ws-service-actions">
+            <a href="/contact/" class="ws-btn">Start a Project</a>
+            <a href="/services/signature/" class="ws-link">See full details &#x2192;</a>
+          </div>
         </div>
       </div>
 
-    </div>
-  </div>
+      <div class="ws-service reveal">
+        <div class="ws-service-left">
+          <span class="ws-service-name">Website Refresh</span>
+          <span class="ws-service-tag">Your site, elevated.</span>
+        </div>
+        <div class="ws-service-right">
+          <p class="ws-service-inc">Site Review &amp; Audit · Redesign · Rebuild · Relaunch</p>
+          <div class="ws-service-pricing">
+            <span class="ws-service-price">From $2,000</span>
+            <span class="ws-service-time">2–3 weeks</span>
+          </div>
+          <div class="ws-service-actions">
+            <a href="/contact/" class="ws-btn">Start a Project</a>
+            <a href="/services/refresh/" class="ws-link">See full details &#x2192;</a>
+          </div>
+        </div>
+      </div>
 
-  <div class="sg-note">
-    <span class="sg-note-eye">Not sure where to start?</span>
-    <span>Start somewhere.</span>
-    <a href="/contact/" id="quizTrigger">Take the Quiz →</a>
-    <a href="/reviews/" class="sg-note-reviews">Read client reviews →</a>
-  </div>
+      <div class="ws-service reveal">
+        <div class="ws-service-left">
+          <span class="ws-service-name">Website Audit</span>
+          <span class="ws-service-tag">Know exactly what to fix.</span>
+        </div>
+        <div class="ws-service-right">
+          <p class="ws-service-inc">Full Site Review · Written Recommendations · Priority Roadmap</p>
+          <div class="ws-service-pricing">
+            <span class="ws-service-price">$199</span>
+            <span class="ws-service-time">3–5 days</span>
+            <span class="ws-service-note">Credited toward any Signature or Refresh within 60 days.</span>
+          </div>
+          <div class="ws-service-actions">
+            <a href="/contact/" class="ws-btn">Start a Project</a>
+            <a href="/services/audit/" class="ws-link">See full details &#x2192;</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="ws-service reveal">
+        <div class="ws-service-left">
+          <span class="ws-service-name">Website Care</span>
+          <span class="ws-service-tag">Ongoing care, handled.</span>
+        </div>
+        <div class="ws-service-right">
+          <p class="ws-service-inc">Monthly Updates · Content Changes · Performance Monitoring</p>
+          <div class="ws-service-pricing">
+            <span class="ws-service-price">$250 / month</span>
+            <span class="ws-service-time">Ongoing</span>
+          </div>
+          <div class="ws-service-actions">
+            <a href="/contact/" class="ws-btn">Start a Project</a>
+            <a href="/services/care/" class="ws-link">See full details &#x2192;</a>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ── Process ── -->
+    <section class="ws-process reveal">
+      <h2 class="ws-section-title">How it works</h2>
+      <div class="ws-steps">
+
+        <div class="ws-step">
+          <span class="ws-step-name">Discovery</span>
+          <p class="ws-step-desc">We learn your brand, your clients, and what the site needs to do. Nothing is built until we agree on a clear direction.</p>
+        </div>
+
+        <div class="ws-step">
+          <span class="ws-step-name">Design</span>
+          <p class="ws-step-desc">Every layout, typeface, and detail designed specifically for your brand. Desktop and mobile, considered together from the start.</p>
+        </div>
+
+        <div class="ws-step">
+          <span class="ws-step-name">Build</span>
+          <p class="ws-step-desc">Clean, fast code built to perform. No bloated builders, no unnecessary dependencies. Tested across all devices and browsers.</p>
+        </div>
+
+        <div class="ws-step">
+          <span class="ws-step-name">Launch</span>
+          <p class="ws-step-desc">We handle deployment, domain connection, and analytics setup. Two weeks of support included after every launch.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── Reviews ── -->
+    <section class="ws-reviews reveal">
+      <div class="ws-reviews-grid">
+
+        <div class="ws-review">
+          <span class="ws-review-stars">★★★★★</span>
+          <p class="ws-review-quote">"Working with Pink was the best decision we made for our brand. The site launched on time, looked incredible, and our clients noticed immediately."</p>
+          <span class="ws-review-by">— Dr. B &nbsp;·&nbsp; Medical Aesthetics</span>
+        </div>
+
+        <div class="ws-review">
+          <span class="ws-review-stars">★★★★★</span>
+          <p class="ws-review-quote">"Honestly she killed it. I messaged her with all my ideas and she was so quick to add to the site. She understood the vision."</p>
+          <span class="ws-review-by">— Mike C &nbsp;·&nbsp; Signature Website</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── CTA ── -->
+    <section class="ws-cta">
+      <p class="ws-cta-hed">Ready to build something beautiful?</p>
+      <a href="/contact/" class="ws-cta-btn">Start a Project</a>
+      <a href="https://calendly.com/oraanlevi1/30min" target="_blank" rel="noopener" class="ws-cta-secondary">or Book a Discovery Call &#x2197;&#xFE0E;</a>
+    </section>
+
+  </main>
 
   <footer class="site-footer">
     <div class="footer-brand-wrap">
       <span class="footer-brand">Pink Web Studio</span>
       <span class="footer-brand-sub">Los Angeles / Currently Booking</span>
-        <a href="/privacy/" class="footer-privacy">Privacy Policy</a>
+      <a href="/privacy/" class="footer-privacy">Privacy Policy</a>
     </div>
     <div class="footer-social">
       <div class="footer-social-icons">
@@ -554,15 +869,15 @@
   </footer>
 
   <script>
-    // Nav scroll
+    // ── Nav scroll shadow ──
     const nav = document.getElementById('mainNav');
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 20);
     }, { passive: true });
 
-    // Sidebar nav
-    const ham = document.getElementById('navHam');
-    const mob = document.getElementById('mobileNav');
+    // ── Mobile nav ──
+    const ham  = document.getElementById('navHam');
+    const mob  = document.getElementById('mobileNav');
     const scrim = document.createElement('div');
     scrim.className = 'nav-scrim';
     document.body.appendChild(scrim);
@@ -570,53 +885,27 @@
     navHeader.className = 'mobile-nav-header';
     navHeader.innerHTML = '<button class="mobile-nav-close" id="navClose" aria-label="Close menu">&#215;</button>';
     mob.insertBefore(navHeader, mob.firstChild);
-    function openNav() {
-      ham.classList.add('open'); mob.classList.add('open'); scrim.classList.add('open');
-      ham.setAttribute('aria-expanded', 'true'); mob.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-    }
-    function closeNav() {
-      ham.classList.remove('open'); mob.classList.remove('open'); scrim.classList.remove('open');
-      ham.setAttribute('aria-expanded', 'false'); mob.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
-    }
-    ham.addEventListener('click', () => { mob.classList.contains('open') ? closeNav() : openNav(); });
+    function openNav()  { ham.classList.add('open'); mob.classList.add('open'); scrim.classList.add('open'); ham.setAttribute('aria-expanded','true'); mob.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+    function closeNav() { ham.classList.remove('open'); mob.classList.remove('open'); scrim.classList.remove('open'); ham.setAttribute('aria-expanded','false'); mob.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+    ham.addEventListener('click', () => mob.classList.contains('open') ? closeNav() : openNav());
     scrim.addEventListener('click', closeNav);
     document.getElementById('navClose')?.addEventListener('click', closeNav);
     mob.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
 
-    // Card gallery
-    document.querySelectorAll('.sg-card').forEach(card => {
-      card.addEventListener('click', function(e) {
-        if (e.target.closest('.sg-close') || e.target.closest('.sg-detail-cta') || e.target.closest('.sg-detail-link')) return;
-        // On mobile, navigate directly
-        if (window.innerWidth <= 860 && this.dataset.href) {
-          window.location.href = this.dataset.href;
-          return;
+    // Philosophy beats animate via CSS (beatIn keyframe + animation-delay)
+
+    // ── Section reveals ──
+    var revealIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          revealIO.unobserve(e.target);
         }
-        const isOpen = this.classList.contains('open');
-        document.querySelectorAll('.sg-card.open').forEach(c => c.classList.remove('open'));
-        if (!isOpen) this.classList.add('open');
       });
-    });
-
-    document.querySelectorAll('.sg-close').forEach(btn => {
-      btn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        this.closest('.sg-card').classList.remove('open');
-      });
-    });
-
-    // Reveal on scroll
-    const io = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
-      });
-    }, { threshold: 0.06 });
-    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(function (el) { revealIO.observe(el); });
   </script>
-<script src="/nav.js"></script>
-<script src="/quiz.js"></script>
+  <script src="/nav.js"></script>
 
 </body>
 </html>
