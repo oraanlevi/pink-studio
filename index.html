@@ -180,10 +180,15 @@
     }
     @keyframes webDraw {
       0%   { stroke-dashoffset: 1; opacity: 0; }
-      2%   { opacity: 0.065; }
-      100% { stroke-dashoffset: 0; opacity: 0.065; }
+      2%   { opacity: 0.22; }
+      100% { stroke-dashoffset: 0; opacity: 0.22; }
     }
-    @media (max-width: 860px) { .lobby-web { display: none; } }
+    @media (max-width: 860px) {
+      .lobby-web {
+        width: 100vw;
+        height: 60vw;
+      }
+    }
 
     /* Labels */
     .lobby-labels {
@@ -742,7 +747,7 @@
 
     /* ── Hero web ── */
     const webEl = document.getElementById('lobbyWeb');
-    if (webEl && window.matchMedia('(min-width: 861px)').matches) {
+    if (webEl) {
       setTimeout(() => webEl.classList.add('animate'), 1000);
       const lobbyEl = document.querySelector('.lobby');
       window.addEventListener('scroll', () => {
