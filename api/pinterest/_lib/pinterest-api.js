@@ -99,8 +99,8 @@ async function getBoardId(accessToken, boardName) {
   });
 
   if (!createRes.ok) {
-    await createRes.text();
-    throw new Error(`Sandbox board creation failed: ${createRes.status}`);
+    const detail = await createRes.text();
+    throw new Error(`Sandbox board creation failed: ${createRes.status} — ${detail}`);
   }
 
   const created = await createRes.json();
