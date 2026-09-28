@@ -69,26 +69,39 @@ async function refreshAccessToken() {
  * In production mode the board must already exist (original behaviour).
  */
 async function getBoardId(accessToken, boardName) {
-  const res = await fetch(`${baseUrl()}/boards?page_size=100`, {
-    headers: { Authorization: `Bearer ${accessToken}` },
-  });
+  // Fetch all pages of boards (cursor-based pagination)
+  const allBoards = [];
+  let bookmark   = null;
 
-  if (!res.ok) {
-    await res.text();
-    throw new Error(`Board list failed: ${res.status}`);
-  }
+  do {
+    const url = bookmark
+      ? `${baseUrl()}/boards?page_size=100&bookmark=${encodeURIComponent(bookmark)}`
+      : `${baseUrl()}/boards?page_size=100`;
 
-  const data = await res.json();
-  const boards = data.items || [];
-  const match = boards.find(
-    b => b.name.toLowerCase() === boardName.toLowerCase(),
-  );
+    const res = await fetch(url, {
+      headers: { Authorization: `Bearer ${accessToken}` },
+    });
+
+    if (!res.ok) {
+      await res.text();
+      throw new Error(`Board list failed: ${res.status}`);
+    }
+
+    const data = await res.json();
+    allBoards.push(...(data.items || []));
+    bookmark = data.bookmark || null;
+  } while (bookmark);
+
+  const needle = boardName.trim().toLowerCase();
+  const match  = allBoards.find(b => b.name.trim().toLowerCase() === needle);
   if (match) return match.id;
 
   // Production: board must exist — preserve original behaviour
   if (!isSandbox()) throw new Error(`Board not found: "${boardName}"`);
 
-  // Sandbox: create the board so publishing can proceed without manual setup
+  // Sandbox: create the board so publishing can proceed without manual setup.
+  // If creation returns 400 (duplicate name), the board list didn't include it —
+  // surface available names so the mismatch can be diagnosed.
   const createRes = await fetch(`${baseUrl()}/boards`, {
     method: 'POST',
     headers: {
@@ -99,8 +112,13 @@ async function getBoardId(accessToken, boardName) {
   });
 
   if (!createRes.ok) {
-    const detail = await createRes.text();
-    throw new Error(`Sandbox board creation failed: ${createRes.status} — ${detail}`);
+    const detail    = await createRes.text();
+    // Surface available board names to aid debugging (safe — not credentials)
+    const available = allBoards.map(b => `"${b.name}"`).join(', ') || '(none)';
+    throw new Error(
+      `Sandbox board creation failed: ${createRes.status} — ${detail}. ` +
+      `Boards returned by GET /boards: [${available}]`,
+    );
   }
 
   const created = await createRes.json();
