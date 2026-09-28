@@ -2,12 +2,35 @@
 
 const { getRefreshToken } = require('./blob');
 
+// ── Sandbox mode ──────────────────────────────────────────────────────────────
+// Active when PINTEREST_SANDBOX_ACCESS_TOKEN is set in the environment.
+// To return to production: remove / unset that env var — no code changes needed.
+
+function isSandbox() {
+  return Boolean(process.env.PINTEREST_SANDBOX_ACCESS_TOKEN);
+}
+
+function baseUrl() {
+  return isSandbox()
+    ? 'https://api-sandbox.pinterest.com/v5'
+    : 'https://api.pinterest.com/v5';
+}
+
+// ── Auth ──────────────────────────────────────────────────────────────────────
+
 /**
- * Exchange the stored refresh token for a short-lived access token.
- * Returns the access token string, or throws on failure.
+ * Return a valid access token for API calls.
+ * - Sandbox: returns the static sandbox token directly (no OAuth exchange).
+ * - Production: exchanges the stored refresh token for a short-lived access token.
  * The token value is NEVER logged.
  */
 async function refreshAccessToken() {
+  if (isSandbox()) {
+    const token = process.env.PINTEREST_SANDBOX_ACCESS_TOKEN;
+    if (!token) throw new Error('PINTEREST_SANDBOX_ACCESS_TOKEN is not set');
+    return token;
+  }
+
   const refreshToken = await getRefreshToken();
   if (!refreshToken) throw new Error('No refresh token stored');
 
@@ -37,12 +60,16 @@ async function refreshAccessToken() {
   return data.access_token;
 }
 
+// ── Boards ────────────────────────────────────────────────────────────────────
+
 /**
- * Resolve a board name to its Pinterest board ID.
- * Returns the board ID string, or throws if not found.
+ * Resolve a board name to its board ID, creating the board if it doesn't exist.
+ * In sandbox mode the board list is independent of production — if the named
+ * board isn't found it is created automatically so publishing can proceed.
+ * In production mode the board must already exist (original behaviour).
  */
 async function getBoardId(accessToken, boardName) {
-  const res = await fetch('https://api.pinterest.com/v5/boards?page_size=100', {
+  const res = await fetch(`${baseUrl()}/boards?page_size=100`, {
     headers: { Authorization: `Bearer ${accessToken}` },
   });
 
@@ -56,9 +83,31 @@ async function getBoardId(accessToken, boardName) {
   const match = boards.find(
     b => b.name.toLowerCase() === boardName.toLowerCase(),
   );
-  if (!match) throw new Error(`Board not found: "${boardName}"`);
-  return match.id;
+  if (match) return match.id;
+
+  // Production: board must exist — preserve original behaviour
+  if (!isSandbox()) throw new Error(`Board not found: "${boardName}"`);
+
+  // Sandbox: create the board so publishing can proceed without manual setup
+  const createRes = await fetch(`${baseUrl()}/boards`, {
+    method: 'POST',
+    headers: {
+      Authorization:  `Bearer ${accessToken}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ name: boardName, privacy: 'PUBLIC' }),
+  });
+
+  if (!createRes.ok) {
+    await createRes.text();
+    throw new Error(`Sandbox board creation failed: ${createRes.status}`);
+  }
+
+  const created = await createRes.json();
+  return created.id;
 }
+
+// ── Pins ──────────────────────────────────────────────────────────────────────
 
 /**
  * Publish a single Pin to Pinterest.
@@ -86,7 +135,7 @@ async function createPin({ title, description, imageUrl, destinationUrl, boardNa
     },
   };
 
-  const res = await fetch('https://api.pinterest.com/v5/pins', {
+  const res = await fetch(`${baseUrl()}/pins`, {
     method: 'POST',
     headers: {
       Authorization:  `Bearer ${accessToken}`,
