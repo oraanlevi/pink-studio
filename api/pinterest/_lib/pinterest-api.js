@@ -69,6 +69,12 @@ async function refreshAccessToken() {
  * In production mode the board must already exist (original behaviour).
  */
 async function getBoardId(accessToken, boardName) {
+  // Sandbox shortcut: if a known board ID is configured, use it directly.
+  // Bypasses GET /boards, which has a documented Sandbox listing inconsistency.
+  if (isSandbox() && process.env.PINTEREST_SANDBOX_BOARD_ID) {
+    return process.env.PINTEREST_SANDBOX_BOARD_ID;
+  }
+
   // Fetch all pages of boards (cursor-based pagination)
   const allBoards = [];
   let bookmark   = null;
