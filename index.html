@@ -184,10 +184,7 @@
       100% { stroke-dashoffset: 0; opacity: 0.22; }
     }
     @media (max-width: 860px) {
-      .lobby-web {
-        width: 100vw;
-        height: 60vw;
-      }
+      .lobby-web { display: none; }
     }
 
     /* Labels */
@@ -496,15 +493,21 @@
       .lobby-corner-meta { display: none; }
       .lobby-bg-img { display: none; }
 
-      /* Labels — show on mobile, simplified */
-      .lobby-labels { display: flex; }
-      .lobby-label { font-size: clamp(46px, 12vw, 62px); }
-      .lobby-label[data-key="services"] { margin-left: 8%;  transform: rotate(-0.3deg) translateY(14px); }
-      .lobby-label[data-key="work"]     { margin-left: 32%; transform: rotate(0.3deg)  translateY(14px); }
-      .lobby-label[data-key="forma"]    { margin-left: 6%;  transform: rotate(-0.2deg) translateY(14px); }
-      .lobby-label[data-key="services"].arrived { transform: rotate(-0.3deg); }
-      .lobby-label[data-key="work"].arrived     { transform: rotate(0.3deg);  }
-      .lobby-label[data-key="forma"].arrived    { transform: rotate(-0.2deg); }
+      /* Labels — one tiny centered line on mobile */
+      .lobby-labels { flex-direction: row; justify-content: center; gap: 0.35em; }
+      .lobby-label {
+        font-size: 13px;
+        font-family: 'Poppins', sans-serif;
+        font-style: normal;
+        font-weight: 300;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        margin: 0 !important;
+        transform: none !important;
+      }
+      .lobby-label[data-key="services"].arrived,
+      .lobby-label[data-key="work"].arrived,
+      .lobby-label[data-key="forma"].arrived { transform: none; }
       .lobby-label.settled:hover { animation: none !important; }
       .lobby-labels:has(.lobby-label:hover) .lobby-label:not(:hover) { color: var(--ink); }
 
